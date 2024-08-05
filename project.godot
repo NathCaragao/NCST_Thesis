@@ -11,12 +11,26 @@ config_version=5
 [application]
 
 config/name="System"
+run/main_scene="res://src/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="System"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://src/": "red"
+}
 
 [rendering]
 
