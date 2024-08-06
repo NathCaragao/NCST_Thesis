@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5tu88x32sjkf"
-path="res://.godot/imported/custom_portrait_thumbnail.png-f6f81087bee5f4c19362f7b04ea3e721.ctex"
+path="res://.godot/imported/custom_portrait_thumbnail.png-0513583853d87342a634d56bc0bec965.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/dialogic/Modules/Character/custom_portrait_thumbnail.png"
-dest_files=["res://.godot/imported/custom_portrait_thumbnail.png-f6f81087bee5f4c19362f7b04ea3e721.ctex"]
+source_file="res://addons/dialogic/Modules/Character/custom_portrait_thumbnail.png"
+dest_files=["res://.godot/imported/custom_portrait_thumbnail.png-0513583853d87342a634d56bc0bec965.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chwceyllgma82"
-path="res://.godot/imported/elitemeta.jpg-74bf5c49773b298969f8595bc0dea892.ctex"
+path="res://.godot/imported/elitemeta.jpg-f57adc35ad8bb14742337bb1a9e5b856.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/gdcef/doc/gallery/elitemeta.jpg"
-dest_files=["res://.godot/imported/elitemeta.jpg-74bf5c49773b298969f8595bc0dea892.ctex"]
+source_file="res://addons/gdcef/doc/gallery/elitemeta.jpg"
+dest_files=["res://.godot/imported/elitemeta.jpg-f57adc35ad8bb14742337bb1a9e5b856.ctex"]
 
 [params]
 

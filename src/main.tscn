@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba5ry6gcukxp0"]
+[gd_scene load_steps=3 format=3 uid="uid://ba5ry6gcukxp0"]
 
+[ext_resource type="PackedScene" uid="uid://dkhrjx61mti5p" path="res://src/MusicManager/MusicManager.tscn" id="1_dvcbr"]
 [ext_resource type="PackedScene" uid="uid://b41it63hevnve" path="res://src/SceneManager/SceneManager.tscn" id="1_gcaoj"]
 
 [node name="Main" type="Node"]
+
+[node name="MusicManager" parent="." instance=ExtResource("1_dvcbr")]
 
 [node name="SceneManager" parent="." instance=ExtResource("1_gcaoj")]

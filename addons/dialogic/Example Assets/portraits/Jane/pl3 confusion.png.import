@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://r23r6iywkw0n"
-path="res://.godot/imported/pl3 confusion.png-db1a29a7e450b726235883bbc62e6c46.ctex"
+path="res://.godot/imported/pl3 confusion.png-447505e4db69107e418a56eb99214d80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/dialogic/Example Assets/portraits/Jane/pl3 confusion.png"
-dest_files=["res://.godot/imported/pl3 confusion.png-db1a29a7e450b726235883bbc62e6c46.ctex"]
+source_file="res://addons/dialogic/Example Assets/portraits/Jane/pl3 confusion.png"
+dest_files=["res://.godot/imported/pl3 confusion.png-447505e4db69107e418a56eb99214d80.ctex"]
 
 [params]
 

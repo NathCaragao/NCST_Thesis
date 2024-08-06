@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rslog4jar4gu"
-path="res://.godot/imported/update_position.svg-f349f9f4cfa5b67ba043e9619010bd7f.ctex"
+path="res://.godot/imported/update_position.svg-4be50608dc0768e715ff659ca62cf187.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://src/SceneManager/addons/dialogic/Modules/Character/update_position.svg"
-dest_files=["res://.godot/imported/update_position.svg-f349f9f4cfa5b67ba043e9619010bd7f.ctex"]
+source_file="res://addons/dialogic/Modules/Character/update_position.svg"
+dest_files=["res://.godot/imported/update_position.svg-4be50608dc0768e715ff659ca62cf187.ctex"]
 
 [params]
 

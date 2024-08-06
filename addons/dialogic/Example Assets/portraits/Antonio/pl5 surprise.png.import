@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpvtdr1itkbd7"
-path="res://.godot/imported/pl5 surprise.png-611a0f1eb6a573d7a92dc72cf378a9a1.ctex"
+path="res://.godot/imported/pl5 surprise.png-9f07d67f3c68589bb2cfec738d68b9a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/dialogic/Example Assets/portraits/Antonio/pl5 surprise.png"
-dest_files=["res://.godot/imported/pl5 surprise.png-611a0f1eb6a573d7a92dc72cf378a9a1.ctex"]
+source_file="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 surprise.png"
+dest_files=["res://.godot/imported/pl5 surprise.png-9f07d67f3c68589bb2cfec738d68b9a7.ctex"]
 
 [params]
 

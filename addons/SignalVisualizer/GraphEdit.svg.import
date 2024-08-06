@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxj8ep08wbnm6"
-path="res://.godot/imported/GraphEdit.svg-73f9437a1b17395e6f1154d092857b46.ctex"
+path="res://.godot/imported/GraphEdit.svg-90dae61e8e0b157ab8eff95fe4b91e53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/SignalVisualizer/GraphEdit.svg"
-dest_files=["res://.godot/imported/GraphEdit.svg-73f9437a1b17395e6f1154d092857b46.ctex"]
+source_file="res://addons/SignalVisualizer/GraphEdit.svg"
+dest_files=["res://.godot/imported/GraphEdit.svg-90dae61e8e0b157ab8eff95fe4b91e53.ctex"]
 
 [params]
 

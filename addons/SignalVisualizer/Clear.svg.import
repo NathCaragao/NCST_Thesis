@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmnff63evbdhv"
-path="res://.godot/imported/Clear.svg-de6230a8fb53cbcda6847d1ed3823b6b.ctex"
+path="res://.godot/imported/Clear.svg-d661617e27b91e3580171e3447fde514.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/SignalVisualizer/Clear.svg"
-dest_files=["res://.godot/imported/Clear.svg-de6230a8fb53cbcda6847d1ed3823b6b.ctex"]
+source_file="res://addons/SignalVisualizer/Clear.svg"
+dest_files=["res://.godot/imported/Clear.svg-d661617e27b91e3580171e3447fde514.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkw5pwof3pmnn"
-path="res://.godot/imported/cef.png-376e5bccffb64644f430e254f7aab003.ctex"
+path="res://.godot/imported/cef.png-ec19bde9cd8d9e6e6e6cb1438e06d672.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/gdcef/doc/scenegraph/cef.png"
-dest_files=["res://.godot/imported/cef.png-376e5bccffb64644f430e254f7aab003.ctex"]
+source_file="res://addons/gdcef/doc/scenegraph/cef.png"
+dest_files=["res://.godot/imported/cef.png-ec19bde9cd8d9e6e6e6cb1438e06d672.ctex"]
 
 [params]
 

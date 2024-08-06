@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn2b53n51smoo"
-path="res://.godot/imported/preview.png-712e33045c01cd0d8f14015ad0b16c28.ctex"
+path="res://.godot/imported/preview.png-bcceb5d2b7f92c1d0f818071294dc895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/SceneManager/addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/preview.png"
-dest_files=["res://.godot/imported/preview.png-712e33045c01cd0d8f14015ad0b16c28.ctex"]
+source_file="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/preview.png"
+dest_files=["res://.godot/imported/preview.png-bcceb5d2b7f92c1d0f818071294dc895.ctex"]
 
 [params]
 
