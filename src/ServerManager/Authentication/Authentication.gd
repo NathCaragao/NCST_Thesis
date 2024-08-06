@@ -1,6 +1,6 @@
 extends Node
 
-@export var serverManager : Node = null
+@export var serverManager : Node
 
 #
 #func handleRequestEmailAndPassLogin(email: String, password: String):

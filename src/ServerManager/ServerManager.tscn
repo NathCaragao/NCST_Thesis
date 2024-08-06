@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://crpj8ntxu22ew"]
+[gd_scene load_steps=3 format=3 uid="uid://crpj8ntxu22ew"]
 
 [ext_resource type="Script" path="res://src/ServerManager/ServerManager.gd" id="1_mqhrn"]
+[ext_resource type="PackedScene" uid="uid://dvp3a5uox5ojn" path="res://src/ServerManager/Authentication/Authentication.tscn" id="2_lwypp"]
 
 [node name="ServerManager" type="Node"]
 script = ExtResource("1_mqhrn")
+
+[node name="Authentication" parent="." node_paths=PackedStringArray("serverManager") instance=ExtResource("2_lwypp")]
+serverManager = NodePath("..")
