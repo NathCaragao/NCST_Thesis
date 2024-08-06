@@ -15,6 +15,10 @@ run/main_scene="res://src/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+
 [display]
 
 window/size/viewport_width=1366
