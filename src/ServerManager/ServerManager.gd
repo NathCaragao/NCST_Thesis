@@ -3,25 +3,27 @@ extends Node
 
 # KEEP THESE HERE, LET SUBFILES ACCESS IT THROUGH THIS FILE ONLY
 const SERVER_KEY := "thesisServer"
-@onready var _client : NakamaClient = Nakama.create_client(SERVER_KEY, "7350-nathcaragao-nakamaserve-iu5ff8h7h91.ws-us115.gitpod.io", 443, "https")
-@onready var _session : NakamaSession = null
-@onready var _socket : NakamaSocket = null
+@onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, "7350-nathcaragao-nakamaserve-iu5ff8h7h91.ws-us115.gitpod.io", 443, "https")
+@onready var nakamaSession : NakamaSession = null
+@onready var nakamaSocket : NakamaSocket = null
 
-func getUser():
-	return await _client.get_account_async(_session)
-	
-	
+# dunno where to put yet
+func getCurrentUserInfo():
+	return await nakamaClient.get_account_async(nakamaSession)
+
+
+
 #-------------------------------------------------
-# DB RELATED
+# DB RELATED - will move to "NakamaStorage.gd"
 enum ReadPermissions { NO_READ, OWNER_READ, PUBLIC_READ }
 enum WritePermissions { NO_WRITE, OWNER_WRITE }
 
 func createUserInDBasync(playerInfo := {}) -> void:
-	if _session == null:
+	if nakamaSession == null:
 		return
 	
-	await _client.write_storage_objects_async(
-		_session,
+	await nakamaClient.write_storage_objects_async(
+		nakamaSession,
 		[
 			NakamaWriteStorageObject.new(
 				"playerData",
@@ -46,9 +48,9 @@ func createUserInDBasync(playerInfo := {}) -> void:
 	)
 
 func getUserInfoInDBasync():
-	var storage_objects: NakamaAPI.ApiStorageObjects =  await _client.read_storage_objects_async(
-		_session, 
-		[NakamaStorageObjectId.new("playerData", "playerInfo", _session.user_id)]
+	var storage_objects: NakamaAPI.ApiStorageObjects =  await nakamaClient.read_storage_objects_async(
+		nakamaSession, 
+		[NakamaStorageObjectId.new("playerData", "playerInfo", nakamaSession.user_id)]
 	)
 	
 	if storage_objects.objects:
@@ -106,8 +108,8 @@ func updateUserInfoInDBasync(keyToUpdate, value):
 # --------------------------------------------------------
 # MULTIPLAYER RELATED
 func connectSocketToServerAsync() -> int:
-	_socket = Nakama.create_socket_from(_client)
-	var result: NakamaAsyncResult = await _socket.connect_async(_session)
+	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
+	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
 	
 	if not result.is_exception():
 		_socket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
