@@ -59,9 +59,10 @@ func getUserInfoInDBasync():
 	
 	return null
 
-
+# Update this, might be better to break it to several individual functions
+# updateUserFreeCurrency, updateUserPremiumCurrency, etc.
 func updateUserInfoInDBasync(keyToUpdate, value):
-	var currentUserInfo = await Server.getUserInfoInDBasync()
+	var currentUserInfo = await getUserInfoInDBasync()
 	
 	if currentUserInfo.has(keyToUpdate):
 		var existing_value = currentUserInfo[keyToUpdate]
@@ -106,21 +107,21 @@ func updateUserInfoInDBasync(keyToUpdate, value):
 	)
 
 # --------------------------------------------------------
-# MULTIPLAYER RELATED
+# MULTIPLAYER RELATED - will be moved to "Multiplayer.gd"
 func connectSocketToServerAsync() -> int:
 	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
 	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
 	
 	if not result.is_exception():
-		_socket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
-		#_socket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
+		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
+		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
 		
 		return OK
 		
 	return ERR_CANT_CONNECT
 
 func _on_NakamaSocket_closed():
-	_socket = null
+	nakamaSocket = null
 
 # TEST
 func joinMatch(matchId):
@@ -128,7 +129,7 @@ func joinMatch(matchId):
 	# THE SERVER-SIDE MUST CREATE A MATCH OR IMPLEMENT A CLIENT-SIDE
 	# FUNCTION TO DO THIS
 	var match_id = "matchId"
-	var joined_match = await _socket.join_match_async(match_id)
+	var joined_match = await nakamaSocket.join_match_async(match_id)
 
 	if joined_match.is_exception():
 		print("An error occurred: %s" % joined_match)
