@@ -1,11 +1,16 @@
 extends Node
 
 
-# KEEP THESE HERE, LET SUBFILES ACCESS IT THROUGH THIS FILE ONLY
+# Global variables for server-wide operations
 const SERVER_KEY := "thesisServer"
-@onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, "7350-nathcaragao-nakamaserve-iu5ff8h7h91.ws-us115.gitpod.io", 443, "https")
+@onready var serverURL := "7350-nathcaragao-nakamaserve-iu5ff8h7h91.ws-us115.gitpod.io"
+@onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
+
+# Children references
+@onready var Authenticator := %Authentication
+@onready var Multiplayer := %Multiplayer
 
 # dunno where to put yet
 func getCurrentUserInfo():
@@ -61,50 +66,50 @@ func getUserInfoInDBasync():
 
 # Update this, might be better to break it to several individual functions
 # updateUserFreeCurrency, updateUserPremiumCurrency, etc.
-func updateUserInfoInDBasync(keyToUpdate, value):
-	var currentUserInfo = await getUserInfoInDBasync()
-	
-	if currentUserInfo.has(keyToUpdate):
-		var existing_value = currentUserInfo[keyToUpdate]
-		
-		if typeof(existing_value) == TYPE_FLOAT or typeof(existing_value) == TYPE_INT:
-			# If it's a float or int, add or subtract the value
-			currentUserInfo[keyToUpdate] += value
-		elif typeof(existing_value) == TYPE_ARRAY:
-			# If it's an array, handle JSON objects within the array
-			for entry in value:
-				var found = false
-				# Loop over the items in DB, but no way to add multiple items from arg yet
-				for item in existing_value:
-					var keysInValue = entry.keys()
-					if item.has(keysInValue[0]):
-						item[keysInValue[0]] += entry[keysInValue[0]]
-						found = true
-						break
-				if not found:
-					existing_value.append(entry)
-	else:
-		# If the key does not exist, initialize it appropriately
-		if typeof(value) == TYPE_FLOAT or typeof(value) == TYPE_INT:
-			currentUserInfo[keyToUpdate] = value
-		elif typeof(value) == TYPE_ARRAY:
-			currentUserInfo[keyToUpdate] = [value]
-
-	#print_debug(currentUserInfo)
-	# Optionally, update the server with the new user info if needed
-	await _client.write_storage_objects_async(
-		_session,
-		[
-			NakamaWriteStorageObject.new(
-				"playerData",
-				"playerInfo",
-				ReadPermissions.OWNER_READ,
-				WritePermissions.OWNER_WRITE,
-				JSON.stringify(currentUserInfo),
-				""
-			)
-		]
-	)
+#func updateUserInfoInDBasync(keyToUpdate, value):
+	#var currentUserInfo = await getUserInfoInDBasync()
+	#
+	#if currentUserInfo.has(keyToUpdate):
+		#var existing_value = currentUserInfo[keyToUpdate]
+		#
+		#if typeof(existing_value) == TYPE_FLOAT or typeof(existing_value) == TYPE_INT:
+			## If it's a float or int, add or subtract the value
+			#currentUserInfo[keyToUpdate] += value
+		#elif typeof(existing_value) == TYPE_ARRAY:
+			## If it's an array, handle JSON objects within the array
+			#for entry in value:
+				#var found = false
+				## Loop over the items in DB, but no way to add multiple items from arg yet
+				#for item in existing_value:
+					#var keysInValue = entry.keys()
+					#if item.has(keysInValue[0]):
+						#item[keysInValue[0]] += entry[keysInValue[0]]
+						#found = true
+						#break
+				#if not found:
+					#existing_value.append(entry)
+	#else:
+		## If the key does not exist, initialize it appropriately
+		#if typeof(value) == TYPE_FLOAT or typeof(value) == TYPE_INT:
+			#currentUserInfo[keyToUpdate] = value
+		#elif typeof(value) == TYPE_ARRAY:
+			#currentUserInfo[keyToUpdate] = [value]
+#
+	##print_debug(currentUserInfo)
+	## Optionally, update the server with the new user info if needed
+	#await _client.write_storage_objects_async(
+		#_session,
+		#[
+			#NakamaWriteStorageObject.new(
+				#"playerData",
+				#"playerInfo",
+				#ReadPermissions.OWNER_READ,
+				#WritePermissions.OWNER_WRITE,
+				#JSON.stringify(currentUserInfo),
+				#""
+			#)
+		#]
+	#)
 
 # --------------------------------------------------------
 # MULTIPLAYER RELATED - will be moved to "Multiplayer.gd"
