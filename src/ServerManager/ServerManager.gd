@@ -12,6 +12,8 @@ const SERVER_KEY := "thesisServer"
 @onready var Authenticator := %Authentication
 @onready var Multiplayer := %Multiplayer
 
+# Signals 
+
 # dunno where to put yet
 func getCurrentUserInfo():
 	return await nakamaClient.get_account_async(nakamaSession)

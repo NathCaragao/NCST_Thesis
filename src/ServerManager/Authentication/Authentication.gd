@@ -2,6 +2,7 @@ extends Node
 
 @export var serverManager : Node
 
+
 #func handleRequestEmailAndPassLogin(email: String, password: String):
 	#_session = await _client.authenticate_email_async(email, password, null, false)
 	#if not _session.is_exception():
