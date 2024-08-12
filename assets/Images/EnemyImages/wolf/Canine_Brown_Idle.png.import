@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boeawnvyov8hy"
-path="res://.godot/imported/Canine_Brown_Idle.png-9b516adfbb6e9466881fbb9cd9d22ce6.ctex"
+path="res://.godot/imported/Canine_Brown_Idle.png-6d6390810bf74d42bff218f038c276a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/enemies/wolf/Canine_Brown_Idle.png"
-dest_files=["res://.godot/imported/Canine_Brown_Idle.png-9b516adfbb6e9466881fbb9cd9d22ce6.ctex"]
+source_file="res://assets/Images/EnemyImages/wolf/Canine_Brown_Idle.png"
+dest_files=["res://.godot/imported/Canine_Brown_Idle.png-6d6390810bf74d42bff218f038c276a2.ctex"]
 
 [params]
 

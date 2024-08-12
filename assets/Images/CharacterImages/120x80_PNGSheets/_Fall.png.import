@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bllterbsj068v"
-path.s3tc="res://.godot/imported/_Fall.png-5526dfaa705bf3517a3c39c8849f296c.s3tc.ctex"
+path.s3tc="res://.godot/imported/_Fall.png-c424c9f80ff1ae4335243122b3f12e25.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/assets/character/120x80_PNGSheets/_Fall.png"
-dest_files=["res://.godot/imported/_Fall.png-5526dfaa705bf3517a3c39c8849f296c.s3tc.ctex"]
+source_file="res://assets/Images/CharacterImages/120x80_PNGSheets/_Fall.png"
+dest_files=["res://.godot/imported/_Fall.png-c424c9f80ff1ae4335243122b3f12e25.s3tc.ctex"]
 
 [params]
 

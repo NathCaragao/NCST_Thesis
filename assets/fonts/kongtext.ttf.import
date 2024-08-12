@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://88m34joq3qm0"
-path="res://.godot/imported/kongtext.ttf-3b6a2555bbaca6875bb765164e53dbc0.fontdata"
+path="res://.godot/imported/kongtext.ttf-b77a9c4dca258617a12754b2f4f13ba4.fontdata"
 
 [deps]
 
-source_file="res://assets/Assets2/fonts/kongtext.ttf"
-dest_files=["res://.godot/imported/kongtext.ttf-3b6a2555bbaca6875bb765164e53dbc0.fontdata"]
+source_file="res://assets/Fonts/kongtext.ttf"
+dest_files=["res://.godot/imported/kongtext.ttf-b77a9c4dca258617a12754b2f4f13ba4.fontdata"]
 
 [params]
 

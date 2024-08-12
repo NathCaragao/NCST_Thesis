@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmy6vf4d2lu35"
-path="res://.godot/imported/bronze_sword_transparent.png-a4e3e48f1f8ddead7ebbf2b6cfce4000.ctex"
+path="res://.godot/imported/bronze_sword_transparent.png-afd4556eff40bf3f8376e4526b166cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/weapons/bronze_sword_transparent.png"
-dest_files=["res://.godot/imported/bronze_sword_transparent.png-a4e3e48f1f8ddead7ebbf2b6cfce4000.ctex"]
+source_file="res://assets/Images/WeaponImages/bronze_sword_transparent.png"
+dest_files=["res://.godot/imported/bronze_sword_transparent.png-afd4556eff40bf3f8376e4526b166cae.ctex"]
 
 [params]
 

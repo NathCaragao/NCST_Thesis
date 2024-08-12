@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvu7cfc0r7xs1"
-path="res://.godot/imported/Divine shardsaseprite.png-35857c022a65741a951ef188b2eb2195.ctex"
+path="res://.godot/imported/Divine shardsaseprite.png-c16fd3a4b69088e593022f360493142d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/objects/coins/Divine shardsaseprite.png"
-dest_files=["res://.godot/imported/Divine shardsaseprite.png-35857c022a65741a951ef188b2eb2195.ctex"]
+source_file="res://assets/Images/GameObjectImages/coins/Divine shardsaseprite.png"
+dest_files=["res://.godot/imported/Divine shardsaseprite.png-c16fd3a4b69088e593022f360493142d.ctex"]
 
 [params]
 

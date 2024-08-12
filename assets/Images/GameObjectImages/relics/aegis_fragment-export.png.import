@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0xfmcfy3gfuh"
-path="res://.godot/imported/aegis_fragment-export.png-908eb0910f8c626ea0e7a8ac739eab8c.ctex"
+path="res://.godot/imported/aegis_fragment-export.png-f05e2cec23d853970093a6f8e38802c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/objects/relics/aegis_fragment-export.png"
-dest_files=["res://.godot/imported/aegis_fragment-export.png-908eb0910f8c626ea0e7a8ac739eab8c.ctex"]
+source_file="res://assets/Images/GameObjectImages/relics/aegis_fragment-export.png"
+dest_files=["res://.godot/imported/aegis_fragment-export.png-f05e2cec23d853970093a6f8e38802c2.ctex"]
 
 [params]
 

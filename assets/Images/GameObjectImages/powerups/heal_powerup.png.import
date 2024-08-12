@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dau2av2vfugt2"
-path="res://.godot/imported/heal_powerup.png-1cf6ddf7d543f2ceef9842e18c377a13.ctex"
+path="res://.godot/imported/heal_powerup.png-9c1ea27c5743af6abc42a8771e0133a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/objects/powerups/heal_powerup.png"
-dest_files=["res://.godot/imported/heal_powerup.png-1cf6ddf7d543f2ceef9842e18c377a13.ctex"]
+source_file="res://assets/Images/GameObjectImages/powerups/heal_powerup.png"
+dest_files=["res://.godot/imported/heal_powerup.png-9c1ea27c5743af6abc42a8771e0133a0.ctex"]
 
 [params]
 

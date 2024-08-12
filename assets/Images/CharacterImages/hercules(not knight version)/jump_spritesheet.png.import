@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bovylk6i45lgx"
-path="res://.godot/imported/jump_spritesheet.png-35cf1539175bca83d0f01a5bce012053.ctex"
+path="res://.godot/imported/jump_spritesheet.png-08df90cab4dfd2f4c1ba8b7dfa48d6c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Assets2/sprites/characters/hercules/jump_spritesheet.png"
-dest_files=["res://.godot/imported/jump_spritesheet.png-35cf1539175bca83d0f01a5bce012053.ctex"]
+source_file="res://assets/Images/CharacterImages/hercules(not knight version)/jump_spritesheet.png"
+dest_files=["res://.godot/imported/jump_spritesheet.png-08df90cab4dfd2f4c1ba8b7dfa48d6c0.ctex"]
 
 [params]
 

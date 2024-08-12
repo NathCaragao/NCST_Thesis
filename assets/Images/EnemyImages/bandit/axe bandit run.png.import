@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c06v6lu6rjet7"
-path="res://.godot/imported/axe bandit run.png-473804d88eb692177daf2ec9b7262200.ctex"
+path="res://.godot/imported/axe bandit run.png-e4b0ce7ea59438555bf8a0d0398dba57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/enemies/bandit/axe bandit run.png"
-dest_files=["res://.godot/imported/axe bandit run.png-473804d88eb692177daf2ec9b7262200.ctex"]
+source_file="res://assets/Images/EnemyImages/bandit/axe bandit run.png"
+dest_files=["res://.godot/imported/axe bandit run.png-e4b0ce7ea59438555bf8a0d0398dba57.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vd5833lwgjbw"
-path="res://.godot/imported/pine1.png-230ef46c7ebdc86a1d6828917576e898.ctex"
+path="res://.godot/imported/pine1.png-20e6a8af28712bb97fdb8c64952d834c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/backgrounds/pine1.png"
-dest_files=["res://.godot/imported/pine1.png-230ef46c7ebdc86a1d6828917576e898.ctex"]
+source_file="res://assets/Images/BackgroundImages/pine1.png"
+dest_files=["res://.godot/imported/pine1.png-20e6a8af28712bb97fdb8c64952d834c.ctex"]
 
 [params]
 

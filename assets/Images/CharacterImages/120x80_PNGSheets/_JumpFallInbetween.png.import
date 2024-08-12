@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm26pnaitpkx2"
-path="res://.godot/imported/_JumpFallInbetween.png-caaf8fe5d0f6299c185c2927617c944f.ctex"
+path="res://.godot/imported/_JumpFallInbetween.png-3f28cf704f8cf264054a1b35d288f820.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/character/120x80_PNGSheets/_JumpFallInbetween.png"
-dest_files=["res://.godot/imported/_JumpFallInbetween.png-caaf8fe5d0f6299c185c2927617c944f.ctex"]
+source_file="res://assets/Images/CharacterImages/120x80_PNGSheets/_JumpFallInbetween.png"
+dest_files=["res://.godot/imported/_JumpFallInbetween.png-3f28cf704f8cf264054a1b35d288f820.ctex"]
 
 [params]
 

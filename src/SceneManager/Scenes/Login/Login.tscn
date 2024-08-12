@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://chfl6lthyslws"]
+[gd_scene load_steps=7 format=3 uid="uid://chfl6lthyslws"]
 
-[ext_resource type="Texture2D" uid="uid://bhkrgjuwq4kf4" path="res://Assets2/tilesets/pop-up-window(real).png" id="1_0r0b3"]
-[ext_resource type="Script" path="res://scenes/loginScreen/login_window.gd" id="1_dblco"]
-[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://Assets2/fonts/kongtext.ttf" id="2_i62vf"]
-[ext_resource type="Texture2D" uid="uid://5rbx8m0ok3ew" path="res://Assets2/ui/backgrounds/Google_Icons-09-512.png" id="4_ntrum"]
-[ext_resource type="Texture2D" uid="uid://ddqppekbggyua" path="res://Assets2/ui/backgrounds/fb-logo.png" id="5_8b48o"]
-[ext_resource type="FontFile" uid="uid://oq4x8vufdeis" path="res://assets/fonts/kongtext.ttf" id="6_3drv8"]
+[ext_resource type="Texture2D" uid="uid://bhkrgjuwq4kf4" path="res://assets/tilesets(idk how to categorize files inside yet)/pop-up-window(real).png" id="1_0r0b3"]
+[ext_resource type="Script" path="res://src/SceneManager/Scenes/Login/Login.gd" id="1_dblco"]
+[ext_resource type="Texture2D" uid="uid://5rbx8m0ok3ew" path="res://assets/Images/Icons/Google_Icons-09-512.png" id="4_ntrum"]
+[ext_resource type="Texture2D" uid="uid://ddqppekbggyua" path="res://assets/Images/Icons/fb-logo.png" id="5_8b48o"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/Fonts/kongtext.ttf" id="6_3drv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nx4dp"]
 bg_color = Color(0.462745, 0.317647, 0.105882, 1)
@@ -52,7 +51,7 @@ theme_override_constants/separation = 40
 [node name="Header" type="Label" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 56
 text = "LOGIN"
 horizontal_alignment = 1
@@ -69,7 +68,7 @@ theme_override_constants/separation = 20
 [node name="Email" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 25
 text = "EMAIL"
 
@@ -84,7 +83,7 @@ clear_button_enabled = true
 [node name="Password" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 25
 text = "PASSWORD"
 
@@ -109,7 +108,7 @@ theme_override_constants/separation = 10
 [node name="LoginBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "LOGIN"
 
@@ -142,14 +141,14 @@ theme_override_constants/separation = 55
 [node name="Header" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 20
 text = "Need an account? "
 horizontal_alignment = 1
 
 [node name="SignupBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "SIGN UP"
 

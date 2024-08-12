@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://canvanhagwwrk"
-path="res://.godot/imported/bonfire_activated.png-e526e7c844eb2da5cfc53d453102baa0.ctex"
+path="res://.godot/imported/bonfire_activated.png-d0db4b24b8fd3e71aaf4d3376d3753e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/objects/mechanisms/bonfire_activated.png"
-dest_files=["res://.godot/imported/bonfire_activated.png-e526e7c844eb2da5cfc53d453102baa0.ctex"]
+source_file="res://assets/Images/GameObjectImages/mechanisms/bonfire_activated.png"
+dest_files=["res://.godot/imported/bonfire_activated.png-d0db4b24b8fd3e71aaf4d3376d3753e0.ctex"]
 
 [params]
 

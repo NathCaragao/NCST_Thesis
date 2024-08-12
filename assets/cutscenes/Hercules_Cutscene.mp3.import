@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dyolc5srfdvnq"
-path="res://.godot/imported/Hercules_Cutscene.mp3-9ba068325330c06b1684dc8894ba1fe9.mp3str"
+path="res://.godot/imported/Hercules_Cutscene.mp3-94a2e0638003948f56424f69ce01a28b.mp3str"
 
 [deps]
 
-source_file="res://assets/assets/cutscenes/Hercules_Cutscene.mp3"
-dest_files=["res://.godot/imported/Hercules_Cutscene.mp3-9ba068325330c06b1684dc8894ba1fe9.mp3str"]
+source_file="res://assets/Cutscenes/Hercules_Cutscene.mp3"
+dest_files=["res://.godot/imported/Hercules_Cutscene.mp3-94a2e0638003948f56424f69ce01a28b.mp3str"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b33meu2vqxubg"
-path="res://.godot/imported/account-icon.png-b277ae3e096eef54a8245c5bc867d086.ctex"
+path="res://.godot/imported/account-icon.png-284ae531ce9ed4b9d17d5d3ec99ee69f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Assets2/tilesets/account-icon.png"
-dest_files=["res://.godot/imported/account-icon.png-b277ae3e096eef54a8245c5bc867d086.ctex"]
+source_file="res://assets/tilesets(idk how to categorize files inside yet)/account-icon.png"
+dest_files=["res://.godot/imported/account-icon.png-284ae531ce9ed4b9d17d5d3ec99ee69f.ctex"]
 
 [params]
 

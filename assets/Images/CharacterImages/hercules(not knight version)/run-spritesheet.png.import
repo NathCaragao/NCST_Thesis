@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkboqeo8vwud8"
-path="res://.godot/imported/run-spritesheet.png-d2b3d176079faf361d4fc0407e6df316.ctex"
+path="res://.godot/imported/run-spritesheet.png-aa68cfcdb7a2409294bfe6efc1333c6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Assets2/sprites/characters/hercules/run-spritesheet.png"
-dest_files=["res://.godot/imported/run-spritesheet.png-d2b3d176079faf361d4fc0407e6df316.ctex"]
+source_file="res://assets/Images/CharacterImages/hercules(not knight version)/run-spritesheet.png"
+dest_files=["res://.godot/imported/run-spritesheet.png-aa68cfcdb7a2409294bfe6efc1333c6d.ctex"]
 
 [params]
 

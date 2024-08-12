@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dradfqq5x1afo"
-path="res://.godot/imported/attack1_Sheet_test.png-906cf41245206913ef53b989cc16a458.ctex"
+path="res://.godot/imported/attack1_Sheet_test.png-3ebfdbdc32350c9c62b7e971d5f155b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Assets2/sprites/characters/hercules/attack1_Sheet_test.png"
-dest_files=["res://.godot/imported/attack1_Sheet_test.png-906cf41245206913ef53b989cc16a458.ctex"]
+source_file="res://assets/Images/CharacterImages/hercules(not knight version)/attack1_Sheet_test.png"
+dest_files=["res://.godot/imported/attack1_Sheet_test.png-3ebfdbdc32350c9c62b7e971d5f155b5.ctex"]
 
 [params]
 
