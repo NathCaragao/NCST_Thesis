@@ -15,8 +15,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.990953)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
@@ -27,50 +28,38 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0r0b3")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(1366, 768)
+[node name="MainContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.10352e-05
-offset_top = 1.52588e-05
-offset_right = -554.0
-offset_bottom = -312.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.45, 1.45)
-theme_override_constants/margin_top = 130
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+[node name="Header" type="Label" parent="MainContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
-
-[node name="Header" type="Label" parent="MarginContainer2/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_3drv8")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 40
 text = "LOGIN"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="MarginForInputFields" type="MarginContainer" parent="MainContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 250
-theme_override_constants/margin_right = 300
 
-[node name="CredentialForm" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer"]
+[node name="InputFields" type="VBoxContainer" parent="MainContainer/MarginForInputFields"]
 layout_mode = 2
-theme_override_constants/separation = 20
 
-[node name="Email" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+[node name="Email" type="Label" parent="MainContainer/MarginForInputFields/InputFields"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 25
 text = "EMAIL"
 
-[node name="EmailInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+[node name="EmailInput" type="LineEdit" parent="MainContainer/MarginForInputFields/InputFields"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
@@ -78,14 +67,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nx4dp")
 placeholder_text = "Enter Email here"
 clear_button_enabled = true
 
-[node name="Password" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+[node name="Password" type="Label" parent="MainContainer/MarginForInputFields/InputFields"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 25
 text = "PASSWORD"
 
-[node name="PassInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+[node name="PassInput" type="LineEdit" parent="MainContainer/MarginForInputFields/InputFields"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
@@ -94,23 +83,17 @@ placeholder_text = "Enter password"
 clear_button_enabled = true
 secret = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="LoginButtons" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 250
-theme_override_constants/margin_right = 750
 
-[node name="AuthButtons" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LoginBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+[node name="LoginBtn" type="Button" parent="MainContainer/LoginButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "LOGIN"
 
-[node name="GoogleBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+[node name="GoogleBtn" type="Button" parent="MainContainer/LoginButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -118,7 +101,7 @@ icon = ExtResource("4_ntrum")
 icon_alignment = 1
 expand_icon = true
 
-[node name="FbBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+[node name="FbBtn" type="Button" parent="MainContainer/LoginButtons"]
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
@@ -128,15 +111,10 @@ icon = ExtResource("5_8b48o")
 icon_alignment = 1
 expand_icon = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="SignupButton" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 250
 
-[node name="AuthButtons" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
-layout_mode = 2
-theme_override_constants/separation = 55
-
-[node name="Header" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+[node name="Header2" type="Label" parent="MainContainer/SignupButton"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_3drv8")
@@ -144,18 +122,18 @@ theme_override_font_sizes/font_size = 20
 text = "Need an account? "
 horizontal_alignment = 1
 
-[node name="SignupBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+[node name="SignupBtn" type="Button" parent="MainContainer/SignupButton"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "SIGN UP"
 
-[node name="QuitBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+[node name="QuitBtn" type="Button" parent="MainContainer/SignupButton"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "QUIT"
 
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons/LoginBtn" to="." method="_on_login_btn_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons/SignupBtn" to="." method="_on_signup_btn_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="MainContainer/LoginButtons/LoginBtn" to="." method="_on_login_btn_pressed"]
+[connection signal="pressed" from="MainContainer/SignupButton/SignupBtn" to="." method="_on_signup_btn_pressed"]
+[connection signal="pressed" from="MainContainer/SignupButton/QuitBtn" to="." method="_on_quit_btn_pressed"]
