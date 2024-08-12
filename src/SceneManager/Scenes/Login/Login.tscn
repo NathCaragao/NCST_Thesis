@@ -43,6 +43,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 40
 text = "LOGIN"
@@ -112,6 +114,7 @@ alignment = 1
 [node name="LoginBtn" type="Button" parent="MainContainer/MarginForLoginButtons/LoginButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 36
 text = "LOGIN"
@@ -142,6 +145,8 @@ alignment = 1
 [node name="Header2" type="Label" parent="MainContainer/SignupButton"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_3drv8")
 theme_override_font_sizes/font_size = 20
 text = "Need an account? "
