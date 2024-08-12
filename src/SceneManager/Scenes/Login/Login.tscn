@@ -1,0 +1,164 @@
+[gd_scene load_steps=8 format=3 uid="uid://chfl6lthyslws"]
+
+[ext_resource type="Texture2D" uid="uid://bhkrgjuwq4kf4" path="res://Assets2/tilesets/pop-up-window(real).png" id="1_0r0b3"]
+[ext_resource type="Script" path="res://scenes/loginScreen/login_window.gd" id="1_dblco"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://Assets2/fonts/kongtext.ttf" id="2_i62vf"]
+[ext_resource type="Texture2D" uid="uid://5rbx8m0ok3ew" path="res://Assets2/ui/backgrounds/Google_Icons-09-512.png" id="4_ntrum"]
+[ext_resource type="Texture2D" uid="uid://ddqppekbggyua" path="res://Assets2/ui/backgrounds/fb-logo.png" id="5_8b48o"]
+[ext_resource type="FontFile" uid="uid://oq4x8vufdeis" path="res://assets/fonts/kongtext.ttf" id="6_3drv8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nx4dp"]
+bg_color = Color(0.462745, 0.317647, 0.105882, 1)
+
+[node name="LoginWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dblco")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0r0b3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1366, 768)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.10352e-05
+offset_top = 1.52588e-05
+offset_right = -554.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.45, 1.45)
+theme_override_constants/margin_top = 130
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Header" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 56
+text = "LOGIN"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 300
+
+[node name="CredentialForm" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Email" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 25
+text = "EMAIL"
+
+[node name="EmailInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nx4dp")
+placeholder_text = "Enter Email here"
+clear_button_enabled = true
+
+[node name="Password" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 25
+text = "PASSWORD"
+
+[node name="PassInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/CredentialForm"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nx4dp")
+placeholder_text = "Enter password"
+clear_button_enabled = true
+secret = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 750
+
+[node name="AuthButtons" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LoginBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 36
+text = "LOGIN"
+
+[node name="GoogleBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("4_ntrum")
+icon_alignment = 1
+expand_icon = true
+
+[node name="FbBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("5_8b48o")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+
+[node name="AuthButtons" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="Header" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 20
+text = "Need an account? "
+horizontal_alignment = 1
+
+[node name="SignupBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i62vf")
+theme_override_font_sizes/font_size = 36
+text = "SIGN UP"
+
+[node name="QuitBtn" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3drv8")
+theme_override_font_sizes/font_size = 36
+text = "QUIT"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer2/AuthButtons/LoginBtn" to="." method="_on_login_btn_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons/SignupBtn" to="." method="_on_signup_btn_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer3/AuthButtons/QuitBtn" to="." method="_on_quit_btn_pressed"]
