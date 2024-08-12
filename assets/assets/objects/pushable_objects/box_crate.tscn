@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://lw7jo7ieylo0"]
+
+[ext_resource type="Texture2D" uid="uid://s7ys6helegie" path="res://scenes/Chapter1Level1/crate.png" id="1_lidb4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb2of"]
+radius = 17.0294
+
+[node name="BoxCrate" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 65
+mass = 10.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lidb4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kb2of")
