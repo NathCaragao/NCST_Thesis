@@ -13,7 +13,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	#ScreenTransitions.load_scene("res://scenes/signupScreen/signup_window.tscn")
+	SignalsAutoload.requestChangeScene.emit(Enums.Scenes.LOBBY)
 	
 
 func _on_login_btn_pressed():
