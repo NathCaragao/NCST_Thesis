@@ -1,6 +1,6 @@
-class_name Nibber
+class_name Enums
 
-enum PlayerTypes {
-	LOCAL,
-	REMOTE
+enum Scenes {
+	LOBBY,
+	LOGIN
 }

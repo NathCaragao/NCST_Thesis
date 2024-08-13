@@ -36,6 +36,7 @@ project/assembly_name="System"
 folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
+"res://enums/": "purple",
 "res://src/": "red"
 }
 

@@ -1,3 +1,3 @@
 extends Node
 
-signal requestChangeScene(nameOfScene : Nibber.PlayerTypes)
+signal requestChangeScene(nameOfScene : Enums.Scenes)
