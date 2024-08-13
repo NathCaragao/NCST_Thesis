@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://chfl6lthyslws"]
+[gd_scene load_steps=7 format=3 uid="uid://chfl6lthyslws"]
 
 [ext_resource type="Texture2D" uid="uid://bhkrgjuwq4kf4" path="res://assets/tilesets(idk how to categorize files inside yet)/pop-up-window(real).png" id="1_0r0b3"]
+[ext_resource type="Script" path="res://src/SceneManager/Scenes/Login/Login.gd" id="1_dblco"]
 [ext_resource type="Texture2D" uid="uid://5rbx8m0ok3ew" path="res://assets/Images/Icons/Google_Icons-09-512.png" id="4_ntrum"]
 [ext_resource type="Texture2D" uid="uid://ddqppekbggyua" path="res://assets/Images/Icons/fb-logo.png" id="5_8b48o"]
 [ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/Fonts/kongtext.ttf" id="6_3drv8"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.990953)
+script = ExtResource("1_dblco")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b41it63hevnve"]
+[gd_scene load_steps=3 format=3 uid="uid://b41it63hevnve"]
 
 [ext_resource type="Script" path="res://src/SceneManager/SceneManager.gd" id="1_mgkds"]
+[ext_resource type="PackedScene" uid="uid://chfl6lthyslws" path="res://src/SceneManager/Scenes/Login/Login.tscn" id="2_5ascy"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_mgkds")
+
+[node name="LoginWindow" parent="." instance=ExtResource("2_5ascy")]

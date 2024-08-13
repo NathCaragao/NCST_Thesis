@@ -1,9 +1,11 @@
 extends Control
 
+# Signals used to communicate with other nodes
+
+
 func _ready():
 	%GoogleBtn.disabled = true
 	%FbBtn.disabled = true
-
 	
 func resetLoginWindow():
 	%EmailInput.clear()
@@ -11,7 +13,8 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	ScreenTransitions.load_scene("res://scenes/signupScreen/signup_window.tscn")
+	#ScreenTransitions.load_scene("res://scenes/signupScreen/signup_window.tscn")
+	
 
 func _on_login_btn_pressed():
 	# Change with direct calling
