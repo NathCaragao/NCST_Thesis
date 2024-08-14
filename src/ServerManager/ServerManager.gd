@@ -12,7 +12,16 @@ const SERVER_KEY := "thesisServer"
 @onready var Authenticator := %Authentication
 @onready var Multiplayer := %Multiplayer
 
-# Signals 
+func loginWithEmailAndPassword(email : String, password : String):
+	nakamaSession = await Authenticator.loginWithEmailAndPassword(nakamaClient, email, password)
+	if nakamaSession == null:
+		# failed, show success message OR send signal saying success
+		# which is received by main.gd and then received by GUIManager or similar
+		# to then display the message sent alongside with the signal
+		pass
+	else:
+		# success
+		pass
 
 # dunno where to put yet
 func getCurrentUserInfo():

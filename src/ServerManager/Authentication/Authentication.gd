@@ -3,13 +3,13 @@ extends Node
 @export var serverManager : Node
 
 
-#func handleRequestEmailAndPassLogin(email: String, password: String):
-	#_session = await _client.authenticate_email_async(email, password, null, false)
-	#if not _session.is_exception():
-		#return OK
-	#else: 
-		#return null
-	#
+func loginWithEmailAndPassword(client : NakamaClient, email: String, password: String) -> NakamaSession:
+	var session = await client.authenticate_email_async(email, password, null, false)
+	if not session.is_exception():
+		return session
+	else: 
+		return null
+
 #func handleRequestEmailAndPassRegister(username: String, email: String, password: String):
 	#_session = await _client.authenticate_email_async(email, password, null, true)
 	#if not _session.is_exception():

@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="System"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

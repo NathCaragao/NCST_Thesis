@@ -1,12 +1,21 @@
 extends Node
 
-
+@onready var ServerManager = $ServerManager
+@onready var MusicManager = $MusicManager
+@onready var SceneManager = $SceneManager
 
 
 func _ready():
-	pass # Replace with function body.
+	connectToSignals()
 
+func connectToSignals():
+	# ServerManager related signals
+	#	- Auth
+	SignalsAutoload.requestEmailAndPassLogin.connect(handleRequestEmailAndPassLogin)
+	# SceneManager related signals
+	SignalsAutoload.requestChangeScene.connect()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# ServerManager related handlers
+#	- Auth
+func handleRequestEmailAndPassLogin(email : String, password : String):
+	ServerManager.loginWithEmailAndPassword(email, password)
