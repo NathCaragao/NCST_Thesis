@@ -18,8 +18,7 @@ func _on_signup_btn_pressed():
 func _on_login_btn_pressed():
 	# Just send the credentials through signal, no need to wait for its result.
 	SignalsAutoload.requestEmailAndPassLogin.emit(%EmailInput.text, %PassInput.text)
-	
-	# Either finish now, or await for success message, OR trigger loading screen
+	# Ends here, let other main.gd show up as loading screen in its handler method
 
 #func handleAuthSuccess():
 	#resetLoginWindow()

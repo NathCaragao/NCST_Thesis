@@ -18,4 +18,10 @@ func connectToSignals():
 # ServerManager related handlers
 #	- Auth
 func handleRequestEmailAndPassLogin(email : String, password : String):
+	# Steps to do:
+	# 1. Setup a loading screen
+	# 2. Let ServerManager execute the login
 	ServerManager.loginWithEmailAndPassword(email, password)
+	# 3. Await ServerManager's signal that it finished in its operations
+	# 4. Take down loading screen
+	

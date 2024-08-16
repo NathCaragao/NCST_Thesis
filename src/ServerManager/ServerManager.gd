@@ -3,7 +3,7 @@ extends Node
 
 # Global variables for server-wide operations
 const SERVER_KEY := "thesisServer"
-@onready var serverURL := "7350-nathcaragao-nakamaserve-iu5ff8h7h91.ws-us115.gitpod.io"
+@onready var serverURL := "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us115.gitpod.io"
 @onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
@@ -15,12 +15,10 @@ const SERVER_KEY := "thesisServer"
 func loginWithEmailAndPassword(email : String, password : String):
 	nakamaSession = await Authenticator.loginWithEmailAndPassword(nakamaClient, email, password)
 	if nakamaSession == null:
-		# failed, show success message OR send signal saying success
-		# which is received by main.gd and then received by GUIManager or similar
-		# to then display the message sent alongside with the signal
+		# failed, send signal to end operation
 		pass
 	else:
-		# success
+		# success, send signal to end operation
 		pass
 
 # dunno where to put yet
