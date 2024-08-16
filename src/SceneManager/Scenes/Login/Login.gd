@@ -16,9 +16,15 @@ func _on_signup_btn_pressed():
 	
 
 func _on_login_btn_pressed():
-	# Just send the credentials through signal, no need to wait for its result.
+	# Validate the fields first
+	# 1. Make sure no fields are empty.
+	if(%EmailInput.text == null || %PassInput.text == null):
+		# idk if send a signal, and if signal, what signal?
+		pass
+	
+	# Just send the credentials through signal, no need to wait for its result
+	# since other nodes will take care of it.
 	SignalsAutoload.requestEmailAndPassLogin.emit(%EmailInput.text, %PassInput.text)
-	# Ends here, let other main.gd show up as loading screen in its handler method
 
 #func handleAuthSuccess():
 	#resetLoginWindow()

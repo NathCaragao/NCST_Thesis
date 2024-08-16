@@ -15,11 +15,9 @@ const SERVER_KEY := "thesisServer"
 func loginWithEmailAndPassword(email : String, password : String):
 	nakamaSession = await Authenticator.loginWithEmailAndPassword(nakamaClient, email, password)
 	if nakamaSession == null:
-		# failed, send signal to end operation
-		pass
+		return FAILED
 	else:
-		# success, send signal to end operation
-		pass
+		return OK
 
 # dunno where to put yet
 func getCurrentUserInfo():
