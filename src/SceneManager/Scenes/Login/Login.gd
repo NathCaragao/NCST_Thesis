@@ -12,15 +12,14 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	#SceneManager.changeScene(SceneManager.Scenes.SIGN_UP)
+	Notification.showMessage("SUP BITCH", 1)
 	
 
 func _on_login_btn_pressed():
 	# Validate the fields first
 	# 1. Make sure no fields are empty.
-	if(%EmailInput.text == null || %PassInput.text == null):
-		# idk if send a signal, and if signal, what signal?
-		pass
+	if(%EmailInput.text == "" || %PassInput.text == ""):
+		Notification.showMessage("Please fill up empty fields.", 10)
 	
 
 #func handleAuthSuccess():

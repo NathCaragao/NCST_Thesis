@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4vqac3phh4i8"]
 
-[ext_resource type="Script" path="res://script/singleton/Notification/Notification.gd" id="1_14uid"]
+[ext_resource type="Script" path="res://src/Notification/Notification.gd" id="1_14uid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_357qm"]
 bg_color = Color(0.701961, 0.396078, 0, 1)
