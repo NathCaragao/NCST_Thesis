@@ -22,8 +22,6 @@ func _on_login_btn_pressed():
 		# idk if send a signal, and if signal, what signal?
 		pass
 	
-	# Just send the credentials through signal, no need to wait for its result
-	# since other nodes will take care of it.
 
 #func handleAuthSuccess():
 	#resetLoginWindow()

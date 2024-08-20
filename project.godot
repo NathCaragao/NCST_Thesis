@@ -22,6 +22,7 @@ SignalsAutoload="*res://autoload/SignalsAutoload.gd"
 ServerManager="*res://src/ServerManager/ServerManager.tscn"
 SceneManager="*res://src/SceneManager/SceneManager.tscn"
 MusicManager="*res://src/MusicManager/MusicManager.tscn"
+Notification="*res://src/Notification/Notification.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]

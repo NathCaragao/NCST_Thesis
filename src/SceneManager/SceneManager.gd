@@ -12,11 +12,11 @@ func _ready():
 
 func changeScene(pathOfsceneToDisplay : String):
 	# Load the scene to display first, target : add loading screen
-	var instanceOfScene = await ResourceLoader.load(pathOfsceneToDisplay)
+	var instanceOfScene = await ResourceLoader.load(pathOfsceneToDisplay).instantiate()
 	
 	# Add the instance scene to the tree
 	%Transition.fadeOut()
 	await %Transition.fadeOutDone
 	%CurrentScene.remove_child(get_child(0))
-	%CurrentScene.add_child(instanceOfScene.instantiate())
+	%CurrentScene.add_child(instanceOfScene)
 
