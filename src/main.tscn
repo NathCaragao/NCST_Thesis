@@ -1,15 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba5ry6gcukxp0"]
+[gd_scene load_steps=2 format=3 uid="uid://ddbscvfyxqker"]
 
-[ext_resource type="PackedScene" uid="uid://crpj8ntxu22ew" path="res://src/ServerManager/ServerManager.tscn" id="1_4w2v3"]
-[ext_resource type="PackedScene" uid="uid://dkhrjx61mti5p" path="res://src/MusicManager/MusicManager.tscn" id="1_dvcbr"]
-[ext_resource type="PackedScene" uid="uid://b41it63hevnve" path="res://src/SceneManager/SceneManager.tscn" id="1_gcaoj"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_hnmce"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hnmce")
-
-[node name="ServerManager" parent="." instance=ExtResource("1_4w2v3")]
-
-[node name="MusicManager" parent="." instance=ExtResource("1_dvcbr")]
-
-[node name="SceneManager" parent="." instance=ExtResource("1_gcaoj")]
