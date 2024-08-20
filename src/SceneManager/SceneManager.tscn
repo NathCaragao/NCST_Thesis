@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b41it63hevnve"]
+[gd_scene load_steps=6 format=3 uid="uid://b41it63hevnve"]
 
 [ext_resource type="Script" path="res://src/SceneManager/SceneManager.gd" id="1_mgkds"]
-[ext_resource type="PackedScene" uid="uid://chfl6lthyslws" path="res://src/SceneManager/Scenes/Login/Login.tscn" id="2_5ascy"]
 [ext_resource type="Script" path="res://src/SceneManager/Transition.gd" id="3_igsta"]
 
 [sub_resource type="Animation" id="Animation_6dqh2"]
@@ -43,8 +42,6 @@ _data = {
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_mgkds")
 
-[node name="LoginWindow" parent="." instance=ExtResource("2_5ascy")]
-
 [node name="Transition" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_igsta")
@@ -62,6 +59,9 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_jivdi")
 }
+
+[node name="CurrentScene" type="Node" parent="."]
+unique_name_in_owner = true
 
 [connection signal="fadeOutDone" from="Transition" to="." method="_on_transition_fade_out_done"]
 [connection signal="animation_finished" from="Transition/AnimationPlayer" to="Transition" method="_on_animation_player_animation_finished"]

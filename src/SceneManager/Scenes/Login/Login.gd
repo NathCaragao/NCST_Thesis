@@ -12,7 +12,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	SceneManager.changeScene(SceneManager.Scenes.SIGN_UP)
+	#SceneManager.changeScene(SceneManager.Scenes.SIGN_UP)
 	
 
 func _on_login_btn_pressed():

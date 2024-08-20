@@ -8,13 +8,15 @@ enum Scenes {
 
 
 func _ready():
-	pass
+	changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
 
-func changeScene(sceneToDisplay : String):
-	load(sceneToDisplay)
+func changeScene(pathOfsceneToDisplay : String):
+	# Load the scene to display first, target : add loading screen
+	var instanceOfScene = await ResourceLoader.load(pathOfsceneToDisplay)
+	
+	# Add the instance scene to the tree
 	%Transition.fadeOut()
 	await %Transition.fadeOutDone
-	remove_child(get_child(0))
-	add_child(sceneToDisplay.instantiate())
-	pass
+	%CurrentScene.remove_child(get_child(0))
+	%CurrentScene.add_child(instanceOfScene.instantiate())
 
