@@ -12,7 +12,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	SignalsAutoload.requestChangeScene.emit(Enums.Scenes.LOBBY)
+	SceneManager.changeScene(SceneManager.Scenes.SIGN_UP)
 	
 
 func _on_login_btn_pressed():
@@ -24,7 +24,6 @@ func _on_login_btn_pressed():
 	
 	# Just send the credentials through signal, no need to wait for its result
 	# since other nodes will take care of it.
-	SignalsAutoload.requestEmailAndPassLogin.emit(%EmailInput.text, %PassInput.text)
 
 #func handleAuthSuccess():
 	#resetLoginWindow()

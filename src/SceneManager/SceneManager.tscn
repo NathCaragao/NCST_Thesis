@@ -1,9 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://b41it63hevnve"]
+[gd_scene load_steps=7 format=3 uid="uid://b41it63hevnve"]
 
 [ext_resource type="Script" path="res://src/SceneManager/SceneManager.gd" id="1_mgkds"]
 [ext_resource type="PackedScene" uid="uid://chfl6lthyslws" path="res://src/SceneManager/Scenes/Login/Login.tscn" id="2_5ascy"]
+[ext_resource type="Script" path="res://src/SceneManager/Transition.gd" id="3_igsta"]
+
+[sub_resource type="Animation" id="Animation_6dqh2"]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_etju3"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jivdi"]
+_data = {
+"fadeIn": SubResource("Animation_6dqh2"),
+"fadeOut": SubResource("Animation_etju3")
+}
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_mgkds")
 
 [node name="LoginWindow" parent="." instance=ExtResource("2_5ascy")]
+
+[node name="Transition" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_igsta")
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_jivdi")
+}
+
+[connection signal="fadeOutDone" from="Transition" to="." method="_on_transition_fade_out_done"]
+[connection signal="animation_finished" from="Transition/AnimationPlayer" to="Transition" method="_on_animation_player_animation_finished"]
