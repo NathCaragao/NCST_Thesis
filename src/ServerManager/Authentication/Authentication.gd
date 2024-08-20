@@ -1,8 +1,5 @@
 extends Node
 
-@export var serverManager : Node
-
-
 func loginWithEmailAndPassword(client : NakamaClient, email: String, password: String) -> NakamaSession:
 	var session = await client.authenticate_email_async(email, password, null, false)
 	if not session.is_exception():

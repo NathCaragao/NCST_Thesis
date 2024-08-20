@@ -7,9 +7,8 @@
 [node name="ServerManager" type="Node"]
 script = ExtResource("1_mqhrn")
 
-[node name="Authentication" parent="." node_paths=PackedStringArray("serverManager") instance=ExtResource("2_lwypp")]
+[node name="Authentication" parent="." instance=ExtResource("2_lwypp")]
 unique_name_in_owner = true
-serverManager = NodePath("..")
 
 [node name="Multiplayer" parent="." instance=ExtResource("3_ujdfb")]
 unique_name_in_owner = true

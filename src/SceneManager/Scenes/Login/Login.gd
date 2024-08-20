@@ -12,7 +12,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	Notification.showMessage("SUP BITCH", 1)
+	SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
 	
 
 func _on_login_btn_pressed():
@@ -20,6 +20,14 @@ func _on_login_btn_pressed():
 	# 1. Make sure no fields are empty.
 	if(%EmailInput.text == "" || %PassInput.text == ""):
 		Notification.showMessage("Please fill up empty fields.", 10)
+	else:
+		var result = await ServerManager.loginWithEmailAndPassword(%EmailInput.text, %PassInput.text)
+		if result == OK:
+			Notification.showMessage("Login succesfully!", 3)
+			SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+		else:
+			Notification.showMessage("Login failed, please try again.", 3)
+	
 	
 
 #func handleAuthSuccess():
