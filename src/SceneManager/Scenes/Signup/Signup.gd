@@ -26,15 +26,18 @@ func _on_signup_btn_pressed():
 		return
 		
 	if %PassInput.text == %PassInput2.text:
-		var registerResult = await Server.handleRequestEmailAndPassRegister(%UsernameInput.text, 
+		#var registerResult = await Server.handleRequestEmailAndPassRegister(%UsernameInput.text, 
+			#%EmailInput.text,
+			#%PassInput.text)
+		var registerResult = await ServerManager.registerEmailAndPassword(%UsernameInput.text, 
 			%EmailInput.text,
 			%PassInput.text)
-		
+			
 		if registerResult == OK:
-			await Server.createUserInDBasync()
+			#await Server.createUserInDBasync()
 			Notification.showMessage("User registered successfully!", 3.0)
-			await get_tree().create_timer(3.0).timeout
-			ScreenTransitions.load_scene("res://scenes/titleScreen/title_screen.tscn")
+			#await get_tree().create_timer(3.0).timeout
+			#ScreenTransitions.load_scene("res://scenes/titleScreen/title_screen.tscn")
 		else:
 			Notification.showMessage("Error occured during user registration, please ensure proper inputs and try again.", 3.0)
 	else:

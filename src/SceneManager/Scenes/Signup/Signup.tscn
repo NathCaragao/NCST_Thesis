@@ -61,7 +61,6 @@ alignment = 1
 
 [node name="Username" type="VBoxContainer" parent="MainContainer/HBoxContainer/InputFields"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_constants/separation = 5
 
 [node name="Username" type="Label" parent="MainContainer/HBoxContainer/InputFields/Username"]
@@ -75,6 +74,7 @@ text = "USERNAME"
 [node name="UsernameInput" type="LineEdit" parent="MainContainer/HBoxContainer/InputFields/Username"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_nx4dp")
 placeholder_text = "Enter Username here"
