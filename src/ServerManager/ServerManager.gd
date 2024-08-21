@@ -19,6 +19,13 @@ func loginWithEmailAndPassword(email : String, password : String):
 	else:
 		return OK
 
+func registerEmailAndPassword(username : String, email : String, password : String):
+	nakamaSession = await Authenticator.registerWithEmailAndPass(nakamaClient, username, email, password)
+	if nakamaSession == null:
+		return FAILED
+	else:
+		return OK
+
 # dunno where to put yet
 func getCurrentUserInfo():
 	return await nakamaClient.get_account_async(nakamaSession)
