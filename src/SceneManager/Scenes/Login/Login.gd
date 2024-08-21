@@ -12,7 +12,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+	SceneManager.changeScene("res://src/SceneManager/Scenes/Signup/Signup.tscn")
 	
 
 func _on_login_btn_pressed():

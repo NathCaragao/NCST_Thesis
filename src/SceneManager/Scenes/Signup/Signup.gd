@@ -9,7 +9,7 @@ func resetSignupWindow():
 
 func _on_login_btn_pressed():
 	resetSignupWindow()
-	ScreenTransitions.load_scene("res://scenes/loginScreen/login_window.tscn")
+	#ScreenTransitions.load_scene("res://scenes/loginScreen/login_window.tscn")
 
 
 func _on_signup_btn_pressed():
