@@ -11,9 +11,9 @@ const SERVER_KEY : String = "thesisServer"
 # Children references
 @onready var Authenticator : Node = %Authentication
 @onready var Multiplayer : Node = %Multiplayer
-@onready var storage: Node = $Storage
+@onready var Storage: Node = $Storage
 
-
+# Auth related ops
 func loginWithEmailAndPassword(email : String, password : String) -> int:
 	nakamaSession = await Authenticator.loginWithEmailAndPassword(nakamaClient, email, password)
 	if nakamaSession == null:
@@ -27,6 +27,16 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 		return FAILED
 	else:
 		return OK
+
+
+# Storage related ops
+func addUserInDB() -> int:
+	var playerInfo = 0
+	var result = await Storage.createUserInDB(nakamaClient, nakamaSession)
+	if result == OK:
+		return OK
+	else:
+		return FAILED
 
 # dunno where to put yet
 func getCurrentUserInfo():

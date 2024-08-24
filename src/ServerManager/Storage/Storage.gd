@@ -1,15 +1,15 @@
 extends Node
 
 
-# DB RELATED - will move to "NakamaStorage.gd"
 enum ReadPermissions { NO_READ, OWNER_READ, PUBLIC_READ }
 enum WritePermissions { NO_WRITE, OWNER_WRITE }
 
-func createUserInDBasync(playerInfo := {}) -> void:
+func createUserInDB(nakamaClient: NakamaClient, nakamaSession: NakamaSession) -> int:
+	# no user is logged in yet
 	if nakamaSession == null:
-		return
+		return FAILED
 	
-	await nakamaClient.write_storage_objects_async(
+	var result = await nakamaClient.write_storage_objects_async(
 		nakamaSession,
 		[
 			NakamaWriteStorageObject.new(
@@ -33,18 +33,23 @@ func createUserInDBasync(playerInfo := {}) -> void:
 			)
 		]
 	)
+	
+	if result != null:
+		return OK
+	else:
+		return FAILED
 
-func getUserInfoInDBasync():
-	var storage_objects: NakamaAPI.ApiStorageObjects =  await nakamaClient.read_storage_objects_async(
-		nakamaSession, 
-		[NakamaStorageObjectId.new("playerData", "playerInfo", nakamaSession.user_id)]
-	)
-	
-	if storage_objects.objects:
-		var decodedObject = JSON.parse_string(storage_objects.objects[0].value) 
-		return decodedObject
-	
-	return null
+#func getUserInfoInDBasync():
+	#var storage_objects: NakamaAPI.ApiStorageObjects =  await nakamaClient.read_storage_objects_async(
+		#nakamaSession, 
+		#[NakamaStorageObjectId.new("playerData", "playerInfo", nakamaSession.user_id)]
+	#)
+	#
+	#if storage_objects.objects:
+		#var decodedObject = JSON.parse_string(storage_objects.objects[0].value) 
+		#return decodedObject
+	#
+	#return null
 
 # Update this, might be better to break it to several individual functions
 # updateUserFreeCurrency, updateUserPremiumCurrency, etc.

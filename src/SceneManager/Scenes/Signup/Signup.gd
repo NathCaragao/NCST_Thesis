@@ -1,18 +1,19 @@
 extends Control
 
 
-func resetSignupWindow():
+func resetSignupWindow() -> void:
 	%UsernameInput.clear()
 	%EmailInput.clear()
 	%PassInput.clear()
 	%PassInput2.clear()
 
-func _on_login_btn_pressed():
+func _on_login_btn_pressed() -> void:
 	resetSignupWindow()
 	SceneManager.changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
 
 
-func _on_signup_btn_pressed():
+func _on_signup_btn_pressed() -> void:
+	# Validation
 	if %UsernameInput.text.length() == 0:
 		Notification.showMessage("Username is required.", 3.0)
 		return
@@ -25,17 +26,27 @@ func _on_signup_btn_pressed():
 		Notification.showMessage("Password length must be 8 or longer.", 3.0)
 		return
 		
-	if %PassInput.text == %PassInput2.text:
-		var registerResult = await ServerManager.registerEmailAndPassword(%UsernameInput.text, 
-			%EmailInput.text,
-			%PassInput.text)
-			
-		if registerResult == OK:
-			#await Server.createUserInDBasync()
-			Notification.showMessage("User registered successfully!", 3.0)
-			await get_tree().create_timer(3.0).timeout
-			SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
-		else:
-			Notification.showMessage("Error occured during user registration, please ensure proper inputs and try again.", 3.0)
-	else:
+	if %PassInput.text != %PassInput2.text:
 		Notification.showMessage("Passwords doesn't match.", 3.0)
+		return
+	#---------------------------------------------------------------------------
+	# Creation of account
+	var registerResult = await ServerManager.registerEmailAndPassword(%UsernameInput.text, 
+		%EmailInput.text,
+		%PassInput.text)
+		
+	if registerResult != OK:
+		Notification.showMessage("Error occured during user registration, please ensure proper inputs and try again.", 3.0)
+		return
+	
+	# Addition of account in DB
+	var addUserToDBResult = await ServerManager.addUserInDB()
+	if addUserToDBResult != OK:
+		Notification.showMessage("Error occured during user registration, please ensure proper inputs and try again.", 3.0)
+		return
+	
+	Notification.showMessage("User registered successfully!", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+		
+		
