@@ -19,4 +19,3 @@ func changeScene(pathOfsceneToDisplay : String):
 	await %Transition.fadeOutDone
 	%CurrentScene.remove_child(get_child(0))
 	%CurrentScene.add_child(instanceOfScene)
-
