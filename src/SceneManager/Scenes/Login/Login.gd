@@ -12,7 +12,7 @@ func resetLoginWindow():
 
 func _on_signup_btn_pressed():
 	resetLoginWindow()
-	SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+	SceneManager.changeScene("res://src/SceneManager/Scenes/Signup/Signup.tscn")
 	
 
 func _on_login_btn_pressed():
@@ -24,6 +24,7 @@ func _on_login_btn_pressed():
 		var result = await ServerManager.loginWithEmailAndPassword(%EmailInput.text, %PassInput.text)
 		if result == OK:
 			Notification.showMessage("Login succesfully!", 3)
+			await get_tree().create_timer(3.0).timeout
 			SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
 		else:
 			Notification.showMessage("Login failed, please try again.", 3)

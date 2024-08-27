@@ -7,16 +7,16 @@ func loginWithEmailAndPassword(client : NakamaClient, email: String, password: S
 	else: 
 		return null
 
-#func handleRequestEmailAndPassRegister(username: String, email: String, password: String):
-	#_session = await _client.authenticate_email_async(email, password, null, true)
-	#if not _session.is_exception():
-		## Change the displayname of user
-		#var update : NakamaAsyncResult = await _client.update_account_async(_session, null,username, null, null, null)
-		#return OK
-	#else:
-		#return null
-	#
-#
+func registerWithEmailAndPass(client: NakamaClient, username: String, email: String, password: String):
+	var session = await client.authenticate_email_async(email, password, null, true)
+	if not session.is_exception():
+		# Change the displayname of user
+		var update : NakamaAsyncResult = await client.update_account_async(session, null, username, null, null, null)
+		return session
+	else:
+		return null
+
+
 #func loginWithGoogle():
 	#pass
 #
