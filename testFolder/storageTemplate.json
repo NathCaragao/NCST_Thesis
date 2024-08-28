@@ -1,0 +1,21 @@
+[
+  {
+    "collection": "system",
+    "key": "leveling",
+    "permission_read": 0,
+    "permission_write": 0,
+    "user_id": "00000000-0000-0000-0000-000000000000",
+    "value": {
+      "level_rewards": {
+        "10": {
+          "rewards": [
+            {
+              "amount": 2500,
+              "name": "chips"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
