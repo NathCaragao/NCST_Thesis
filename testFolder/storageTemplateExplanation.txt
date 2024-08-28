@@ -1,0 +1,5 @@
+"collection" can be the categorization of the data, "system" is the value in the template meaning it is used by the system
+"key" is the further elaboration of the data, "leveling" is the value indicating that the data is used for leveling logic of the system
+"permission_read" and "..._write" is needed to determine who can access the data in the server
+"user_id" means who is the owner of the data "0000..." indicates server/global ownership
+"value" contains the data
