@@ -45,10 +45,13 @@ folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
 "res://enums/": "purple",
+"res://fsm/": "gray",
+"res://scenes/": "teal",
 "res://src/": "red"
 }
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
