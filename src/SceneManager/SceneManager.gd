@@ -17,6 +17,5 @@ func changeScene(pathOfsceneToDisplay : String):
 	# Add the instance scene to the tree
 	%Transition.fadeOut()
 	await %Transition.fadeOutDone
-	if %CurrentScene.get_child_count() != 0:
-		%CurrentScene.remove_child(get_child(0))
+	%CurrentScene.remove_child(get_child(0))
 	%CurrentScene.add_child(instanceOfScene)
