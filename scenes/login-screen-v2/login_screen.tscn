@@ -37,40 +37,60 @@ horizontal_alignment = 1
 
 [node name="UserLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 320.0
-offset_right = 639.0
-offset_bottom = 387.0
+offset_left = 296.0
+offset_top = 392.0
+offset_right = 679.0
+offset_bottom = 459.0
 theme_override_fonts/font = ExtResource("1_fdvia")
 theme_override_font_sizes/font_size = 66
 text = "USERNAME"
 
 [node name="PassLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 432.0
-offset_right = 656.0
-offset_bottom = 499.0
+offset_left = 296.0
+offset_top = 504.0
+offset_right = 696.0
+offset_bottom = 571.0
 theme_override_fonts/font = ExtResource("1_fdvia")
 theme_override_font_sizes/font_size = 66
 text = "PASSWORD"
 
 [node name="EmailInput" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 688.0
-offset_top = 304.0
-offset_right = 1536.0
-offset_bottom = 379.0
+offset_left = 728.0
+offset_top = 384.0
+offset_right = 1576.0
+offset_bottom = 451.0
 theme_override_fonts/font = ExtResource("2_khtmm")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 50
 placeholder_text = "Email"
+clear_button_enabled = true
 
 [node name="PassInput" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 688.0
-offset_top = 424.0
-offset_right = 1536.0
-offset_bottom = 499.0
+offset_left = 728.0
+offset_top = 512.0
+offset_right = 1576.0
+offset_bottom = 576.0
 theme_override_fonts/font = ExtResource("2_khtmm")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 50
 placeholder_text = "Password..."
+clear_button_enabled = true
+secret = true
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -134.0
+offset_right = 99.5
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_fdvia")
+theme_override_font_sizes/font_size = 56
+text = "CLOSE"
