@@ -65,6 +65,15 @@ theme_override_fonts/font = ExtResource("1_iqvho")
 theme_override_font_sizes/font_size = 47
 text = "Password"
 
+[node name="PassLabel2" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 470.0
+offset_right = 685.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("1_iqvho")
+theme_override_font_sizes/font_size = 47
+text = "Confirm Password"
+
 [node name="EmailInput" type="LineEdit" parent="."]
 offset_left = 728.0
 offset_top = 222.0
@@ -85,15 +94,6 @@ theme_override_font_sizes/font_size = 50
 placeholder_text = "Password..."
 clear_button_enabled = true
 secret = true
-
-[node name="PassLabel2" type="Label" parent="."]
-offset_left = 256.0
-offset_top = 470.0
-offset_right = 685.0
-offset_bottom = 537.0
-theme_override_fonts/font = ExtResource("1_iqvho")
-theme_override_font_sizes/font_size = 47
-text = "Confirm Password"
 
 [node name="PassInput2" type="LineEdit" parent="."]
 offset_left = 728.0
