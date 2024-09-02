@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b25xaiokehkja"]
+[gd_scene load_steps=4 format=3 uid="uid://b25xaiokehkja"]
 
+[ext_resource type="Script" path="res://scenes/ui-scenes/login-screen-v2/login_screen.gd" id="1_c7lv1"]
 [ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="1_q7s8n"]
 [ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c7lv1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -19,6 +21,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.118581, 0.118581, 0.118581, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="Header" type="Label" parent="."]
 layout_mode = 1
@@ -94,3 +108,39 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 56
 text = "CLOSE"
+
+[node name="LoginBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = -471.0
+offset_right = 332.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7s8n")
+theme_override_font_sizes/font_size = 56
+text = "LOGIN"
+
+[node name="SignUpBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 373.0
+offset_top = -471.0
+offset_right = 615.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7s8n")
+theme_override_font_sizes/font_size = 56
+text = "SIGN UP"
+
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]

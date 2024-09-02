@@ -8,7 +8,7 @@ enum Scenes {
 
 
 func _ready():
-	changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
+	changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
 
 func changeScene(pathOfsceneToDisplay : String):
 	# Load the scene to display first, target : add loading screen
