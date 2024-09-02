@@ -48,6 +48,7 @@ text = "SIGN UP"
 horizontal_alignment = 1
 
 [node name="UserLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 230.0
 offset_right = 639.0
@@ -57,6 +58,7 @@ theme_override_font_sizes/font_size = 47
 text = "Email"
 
 [node name="PassLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 342.0
 offset_right = 656.0
@@ -66,6 +68,7 @@ theme_override_font_sizes/font_size = 47
 text = "Password"
 
 [node name="PassLabel2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 470.0
 offset_right = 685.0
@@ -75,6 +78,7 @@ theme_override_font_sizes/font_size = 47
 text = "Confirm Password"
 
 [node name="EmailInput" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 728.0
 offset_top = 222.0
 offset_right = 1576.0
@@ -85,6 +89,7 @@ placeholder_text = "Email"
 clear_button_enabled = true
 
 [node name="PassInput" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 728.0
 offset_top = 350.0
 offset_right = 1576.0
@@ -96,6 +101,7 @@ clear_button_enabled = true
 secret = true
 
 [node name="PassInput2" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 728.0
 offset_top = 478.0
 offset_right = 1576.0
