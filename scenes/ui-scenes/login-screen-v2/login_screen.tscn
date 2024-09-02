@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b25xaiokehkja"]
 
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="1_fdvia"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_khtmm"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="1_q7s8n"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
 
 [node name="LoginScreen" type="Control"]
 layout_mode = 3
@@ -30,7 +30,7 @@ offset_top = 34.0
 offset_right = 21.0
 offset_bottom = 57.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_fdvia")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 101
 text = "LOGIN"
 horizontal_alignment = 1
@@ -41,7 +41,7 @@ offset_left = 296.0
 offset_top = 392.0
 offset_right = 679.0
 offset_bottom = 459.0
-theme_override_fonts/font = ExtResource("1_fdvia")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 66
 text = "USERNAME"
 
@@ -51,7 +51,7 @@ offset_left = 296.0
 offset_top = 504.0
 offset_right = 696.0
 offset_bottom = 571.0
-theme_override_fonts/font = ExtResource("1_fdvia")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 66
 text = "PASSWORD"
 
@@ -61,7 +61,7 @@ offset_left = 728.0
 offset_top = 384.0
 offset_right = 1576.0
 offset_bottom = 451.0
-theme_override_fonts/font = ExtResource("2_khtmm")
+theme_override_fonts/font = ExtResource("2_n6qj4")
 theme_override_font_sizes/font_size = 50
 placeholder_text = "Email"
 clear_button_enabled = true
@@ -72,7 +72,7 @@ offset_left = 728.0
 offset_top = 512.0
 offset_right = 1576.0
 offset_bottom = 576.0
-theme_override_fonts/font = ExtResource("2_khtmm")
+theme_override_fonts/font = ExtResource("2_n6qj4")
 theme_override_font_sizes/font_size = 50
 placeholder_text = "Password..."
 clear_button_enabled = true
@@ -91,6 +91,6 @@ offset_right = 99.5
 offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_fdvia")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 56
 text = "CLOSE"
