@@ -44,7 +44,6 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
 folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
-"res://enums/": "purple",
 "res://fsm/": "gray",
 "res://scenes/": "teal",
 "res://src/": "red"
