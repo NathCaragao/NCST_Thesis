@@ -8,7 +8,7 @@ enum Scenes {
 
 
 func _ready():
-	#changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
+	changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
 	pass
 
 func changeScene(pathOfsceneToDisplay : String):
