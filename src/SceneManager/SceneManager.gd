@@ -1,21 +1,24 @@
 extends Node
 
-enum Scenes {
-	LOGIN,
-	SIGN_UP,
-	LOBBY
-}
-
 
 func _ready():
 	changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
 
+func showLoadingScreen():
+	%LoadingScreen.show()
+
+func hideLoadingScreen():
+	%LoadingScreen.hide()
+
 func changeScene(pathOfsceneToDisplay : String):
-	# Load the scene to display first, target : add loading screen
-	var instanceOfScene = await ResourceLoader.load(pathOfsceneToDisplay).instantiate()
-	
-	# Add the instance scene to the tree
-	%Transition.fadeOut()
-	await %Transition.fadeOutDone
+	# Load the scene to display first before iniating loading of resource, hide with loading screen
+	showLoadingScreen()
+	var loadedScene = await ResourceLoader.load(pathOfsceneToDisplay)
+	var instanceOfLoadedScene = loadedScene.instantiate()
+
+	# Once resource is loaded, add it to the tree and run its _ready() into it
+	# _ready holds initialization stuffs like connecting to server for user info
+	# so make sure to change into the scene ONLY AFTER IT IS EXECUTED
+	instanceOfLoadedScene.ready.connect(hideLoadingScreen)
 	%CurrentScene.remove_child(get_child(0))
-	%CurrentScene.add_child(instanceOfScene)
+	%CurrentScene.add_child(instanceOfLoadedScene)
