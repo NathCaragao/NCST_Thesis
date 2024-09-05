@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://crpj8ntxu22ew"]
+
+[ext_resource type="Script" path="res://autoloads/ServerManager/ServerManager.gd" id="1_mqhrn"]
+[ext_resource type="PackedScene" uid="uid://dvp3a5uox5ojn" path="res://autoloads/ServerManager/Authentication/Authentication.tscn" id="2_lwypp"]
+[ext_resource type="PackedScene" uid="uid://bwi4vuu3nymfs" path="res://autoloads/ServerManager/Multiplayer/Multiplayer.tscn" id="3_ujdfb"]
+[ext_resource type="PackedScene" uid="uid://desks74x0iil5" path="res://autoloads/ServerManager/Storage/Storage.tscn" id="4_v6pyb"]
+
+[node name="ServerManager" type="Node"]
+script = ExtResource("1_mqhrn")
+
+[node name="Authentication" parent="." instance=ExtResource("2_lwypp")]
+unique_name_in_owner = true
+
+[node name="Multiplayer" parent="." instance=ExtResource("3_ujdfb")]
+unique_name_in_owner = true
+
+[node name="Storage" parent="." instance=ExtResource("4_v6pyb")]

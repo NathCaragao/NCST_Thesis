@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="System"
-run/main_scene="res://src/main.tscn"
+run/main_scene="res://autoloads/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-ServerManager="*res://src/ServerManager/ServerManager.tscn"
-SceneManager="*res://src/SceneManager/SceneManager.tscn"
-MusicManager="*res://src/MusicManager/MusicManager.tscn"
-Notification="*res://src/Notification/Notification.tscn"
+ServerManager="*res://autoloads/ServerManager/ServerManager.tscn"
+SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
+MusicManager="*res://autoloads/MusicManager/MusicManager.tscn"
+Notification="*res://autoloads/Notification/Notification.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
@@ -44,10 +44,11 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
 folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
+"res://autoloads/": "red",
+"res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
-"res://scenes/": "teal",
-"res://src/": "red"
+"res://scenes/": "teal"
 }
 
 [input]
