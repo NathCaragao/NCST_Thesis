@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cha4508ye1b32"]
 
-[ext_resource type="FontFile" uid="uid://bhus4oa482s8x" path="res://asset/fonts/Metropolis-Regular.otf" id="1_fosfx"]
-[ext_resource type="FontFile" uid="uid://beearu3v5dn87" path="res://asset/fonts/joystix monospace.otf" id="1_yvoap"]
-[ext_resource type="FontFile" uid="uid://4b37gdkojcw" path="res://asset/fonts/kongtext.ttf" id="2_ocaw8"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="1_fosfx"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_yvoap"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="2_ocaw8"]
 
 [node name="SettingsTab" type="Control"]
 layout_mode = 3
