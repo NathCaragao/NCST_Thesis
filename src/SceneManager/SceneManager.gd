@@ -13,6 +13,7 @@ func hideLoadingScreen():
 func changeScene(pathOfsceneToDisplay : String):
 	# Load the scene to display first before iniating loading of resource, hide with loading screen
 	showLoadingScreen()
+	await get_tree().create_timer(1.0).timeout
 	var loadedScene = await ResourceLoader.load(pathOfsceneToDisplay)
 	var instanceOfLoadedScene = loadedScene.instantiate()
 
@@ -20,5 +21,7 @@ func changeScene(pathOfsceneToDisplay : String):
 	# _ready holds initialization stuffs like connecting to server for user info
 	# so make sure to change into the scene ONLY AFTER IT IS EXECUTED
 	instanceOfLoadedScene.ready.connect(hideLoadingScreen)
-	%CurrentScene.remove_child(get_child(0))
+	for n in %CurrentScene.get_children():
+		%CurrentScene.remove_child(n)
+		n.queue_free()
 	%CurrentScene.add_child(instanceOfLoadedScene)

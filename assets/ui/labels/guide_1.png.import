@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccqsjx3r848ap"
-path="res://.godot/imported/guide4.png-361397a8b932d87f74d52e4c57800b4f.ctex"
+uid="uid://et13mh5w7nt5"
+path="res://.godot/imported/guide_1.png-724344c89d0aac2976681f9282d5ce14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui(idk how to categorize files inside yet)/labels/guide4.png"
-dest_files=["res://.godot/imported/guide4.png-361397a8b932d87f74d52e4c57800b4f.ctex"]
+source_file="res://assets/ui/labels/guide_1.png"
+dest_files=["res://.godot/imported/guide_1.png-724344c89d0aac2976681f9282d5ce14.ctex"]
 
 [params]
 
