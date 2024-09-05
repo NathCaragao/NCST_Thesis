@@ -1,20 +1,125 @@
-[gd_scene load_steps=2 format=3 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=3 format=3 uid="uid://bew17a4cm663b"]
 
-[ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui(idk how to categorize files inside yet)/backgrounds/main-lobby-png/main_lobby_02.png" id="1_vmnl6"]
+[ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_22pfw"]
 
-[node name="LobbyScreen" type="Control"]
+[node name="LobbyScreen" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_72mr3")
+
+[node name="Labels" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_vmnl6")
+[node name="TopLabels" type="Control" parent="CanvasLayer/Labels"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Acc" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 47.0
+offset_right = 436.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "ACCOUNT NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrCurrency" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+layout_mode = 0
+offset_left = 1251.0
+offset_top = 47.0
+offset_right = 1549.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OfflineCurrency2" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+layout_mode = 0
+offset_left = 1622.0
+offset_top = 47.0
+offset_right = 1920.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotLabels" type="Control" parent="CanvasLayer/Labels"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Store" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+offset_left = 1104.0
+offset_top = 1025.0
+offset_right = 1250.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "STORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+offset_left = 1302.0
+offset_top = 1025.0
+offset_right = 1448.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+offset_left = 461.0
+offset_top = 1025.0
+offset_right = 647.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Almanac" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+offset_left = 676.0
+offset_top = 1025.0
+offset_right = 838.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "ALMANAC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inv" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+offset_left = 871.0
+offset_top = 1025.0
+offset_right = 1080.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 28
+text = "INVENTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]

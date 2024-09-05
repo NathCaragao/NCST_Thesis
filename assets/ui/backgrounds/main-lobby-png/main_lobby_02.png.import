@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://21nd8rdxje1e"
-path="res://.godot/imported/stone-theme-button.png-f953fc235afabc1aaa3b19b03b6a530f.ctex"
+uid="uid://dnjy37qbefga7"
+path="res://.godot/imported/main_lobby_02.png-81eeed39907d5766511d5ed150b36715.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui(idk how to categorize files inside yet)/buttons/stone-theme-button.png"
-dest_files=["res://.godot/imported/stone-theme-button.png-f953fc235afabc1aaa3b19b03b6a530f.ctex"]
+source_file="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png"
+dest_files=["res://.godot/imported/main_lobby_02.png-81eeed39907d5766511d5ed150b36715.ctex"]
 
 [params]
 

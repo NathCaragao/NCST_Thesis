@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b71lxjphe7kcs"
-path="res://.godot/imported/main_lobby_01.png-c97d875862a31675a2438a983dba3985.ctex"
+uid="uid://et13mh5w7nt5"
+path="res://.godot/imported/guide_1.png-724344c89d0aac2976681f9282d5ce14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui(idk how to categorize files inside yet)/backgrounds/main-lobby-png/main_lobby_01.png"
-dest_files=["res://.godot/imported/main_lobby_01.png-c97d875862a31675a2438a983dba3985.ctex"]
+source_file="res://assets/ui/labels/guide_1.png"
+dest_files=["res://.godot/imported/guide_1.png-724344c89d0aac2976681f9282d5ce14.ctex"]
 
 [params]
 
