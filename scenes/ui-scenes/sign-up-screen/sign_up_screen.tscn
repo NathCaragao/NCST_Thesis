@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfmhlyleul8db"]
 
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="1_iqvho"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_4r0a3"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="1_iqvho"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/Fonts/Metropolis-Regular.otf" id="2_4r0a3"]
 
 [node name="SignUpScreen" type="Control"]
 layout_mode = 3
