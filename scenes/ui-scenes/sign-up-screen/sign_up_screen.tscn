@@ -129,6 +129,23 @@ theme_override_fonts/font = ExtResource("1_iqvho")
 theme_override_font_sizes/font_size = 56
 text = "LOGIN"
 
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -103.0
+offset_right = 121.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_iqvho")
+theme_override_font_sizes/font_size = 56
+text = "CLOSE"
+
 [node name="SignupBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
