@@ -85,5 +85,23 @@ theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
 text = "EXIt"
 
+[node name="SwitchAcc" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -23.0
+offset_right = -29.0
+offset_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_l5igl")
+theme_override_font_sizes/font_size = 31
+text = "Account"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
+[connection signal="pressed" from="SwitchAcc" to="." method="_on_switch_acc_pressed"]
