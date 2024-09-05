@@ -67,14 +67,14 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Store" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+[node name="Shop" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 offset_left = 1104.0
 offset_top = 1025.0
 offset_right = 1250.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
 theme_override_font_sizes/font_size = 28
-text = "STORE"
+text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
