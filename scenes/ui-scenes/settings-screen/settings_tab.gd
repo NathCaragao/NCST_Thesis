@@ -15,4 +15,8 @@ func _on_res_option_item_selected(index: int) -> void:
 
 # Window Mode Selection
 func _on_window_mode_item_selected(index: int) -> void:
-	pass # Replace with function body.
+	match index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
