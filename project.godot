@@ -45,6 +45,7 @@ folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
 "res://autoloads/": "red",
+"res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
 "res://scenes/": "teal"
