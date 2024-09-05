@@ -20,10 +20,10 @@ func _on_res_option_item_selected(index: int) -> void:
 func _on_window_mode_item_selected(index: int) -> void:
 	match index:
 		0:
-			# changes the window to fullscreen mode
+			# changes the screen to fullscreen mode
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		1:
-			# changes the window to windowed mode
+			# changes the screen to windowed mode
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			# puts the window to the center of the screen
 			center_window()

@@ -85,4 +85,5 @@ theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
 text = "EXIt"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
