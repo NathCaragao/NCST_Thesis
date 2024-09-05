@@ -13,6 +13,7 @@ func hideLoadingScreen():
 func changeScene(pathOfsceneToDisplay : String):
 	# Load the scene to display first before iniating loading of resource, hide with loading screen
 	showLoadingScreen()
+	await get_tree().create_timer(1.0).timeout
 	var loadedScene = await ResourceLoader.load(pathOfsceneToDisplay)
 	var instanceOfLoadedScene = loadedScene.instantiate()
 
