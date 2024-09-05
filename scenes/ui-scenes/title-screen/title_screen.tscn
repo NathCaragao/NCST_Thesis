@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=3 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mh60y")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -82,3 +84,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
 text = "EXIt"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
