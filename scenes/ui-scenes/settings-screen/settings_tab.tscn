@@ -1,0 +1,216 @@
+[gd_scene load_steps=4 format=3 uid="uid://cha4508ye1b32"]
+
+[ext_resource type="FontFile" uid="uid://bhus4oa482s8x" path="res://asset/fonts/Metropolis-Regular.otf" id="1_fosfx"]
+[ext_resource type="FontFile" uid="uid://beearu3v5dn87" path="res://asset/fonts/joystix monospace.otf" id="1_yvoap"]
+[ext_resource type="FontFile" uid="uid://4b37gdkojcw" path="res://asset/fonts/kongtext.ttf" id="2_ocaw8"]
+
+[node name="SettingsTab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fosfx")
+theme_override_font_sizes/font_size = 66
+tab_alignment = 1
+current_tab = 1
+
+[node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 939
+
+[node name="ResLabel" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "RESOLUTION"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ocaw8")
+theme_override_font_sizes/font_size = 30
+selected = 0
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1366x768"
+popup/item_1/id = 1
+popup/item_2/text = "1289x720"
+popup/item_2/id = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 896
+
+[node name="FullscreenLabel" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "Window mode"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ocaw8")
+theme_override_font_sizes/font_size = 30
+selected = 0
+item_count = 2
+popup/item_0/text = "Fullscreen"
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 834
+
+[node name="MasterVol" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "MASTER VOL"
+
+[node name="VolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+tick_count = 8
+ticks_on_borders = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 749
+
+[node name="SE" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "SOUND EFFECT"
+
+[node name="VolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+tick_count = 8
+ticks_on_borders = true
+
+[node name="Account" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Account"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 939
+
+[node name="ResLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "RESOLUTION"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1366x768"
+popup/item_1/id = 1
+popup/item_2/text = "1289x720"
+popup/item_2/id = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 896
+
+[node name="FullscreenLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "Window mode"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1366x768"
+popup/item_1/id = 1
+popup/item_2/text = "1289x720"
+popup/item_2/id = 2
