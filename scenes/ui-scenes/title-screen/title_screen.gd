@@ -2,7 +2,9 @@ extends Control
 
 
 func _ready() -> void:
-	pass
+	var isUserLoggedIn = await ServerManager.isUserLoggedIn()
+	if not isUserLoggedIn:
+		%StartBtn.disabled = true
 
 func _on_start_btn_pressed() -> void:
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
