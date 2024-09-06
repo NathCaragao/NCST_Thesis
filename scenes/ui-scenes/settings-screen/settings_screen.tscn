@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://do2iqe61jb5ok"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_screen.gd" id="1_haurn"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_jelrx"]
-[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="2_mqqoo"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_jelrx"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/Fonts/kongtext.ttf" id="2_mqqoo"]
 [ext_resource type="PackedScene" uid="uid://cha4508ye1b32" path="res://scenes/ui-scenes/settings-screen/settings_tab.tscn" id="2_tggw8"]
 
 [node name="SettingsScreen" type="Control"]
