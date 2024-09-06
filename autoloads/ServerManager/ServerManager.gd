@@ -3,7 +3,7 @@ extends Node
 
 # Global variables for server-wide operations
 const SERVER_KEY : String = "thesisServer"
-@onready var serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us115.gitpod.io"
+@onready var serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
 @onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
@@ -22,7 +22,7 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 	var session = await nakamaClient.authenticate_email_async(email, password, null, true)
 	if not session.is_exception():
 		# Change the displayname of user
-		var update : NakamaAsyncResult = await nakamaClient.update_account_async(session, null, username, null, null, null)
+		var update : NakamaAsyncResult = await nakamaClient.update_account_async(session, null, username, username, null, null)
 		nakamaSession = session
 		return OK
 	else:
