@@ -2,7 +2,7 @@ extends Node
 
 
 func _ready():
-	changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
+	changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
 
 func showLoadingScreen():
 	%LoadingScreen.show()
