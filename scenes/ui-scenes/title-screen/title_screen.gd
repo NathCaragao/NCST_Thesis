@@ -2,11 +2,15 @@ extends Control
 
 
 func _ready() -> void:
-	var isUserLoggedIn = await ServerManager.isUserLoggedIn()
-	if not isUserLoggedIn:
-		%StartBtn.disabled = true
+	pass
 
 func _on_start_btn_pressed() -> void:
+	SceneManager.showLoadingScreen()
+	var isUserLoggedIn = await ServerManager.isUserLoggedIn()
+	SceneManager.hideLoadingScreen()
+	if not isUserLoggedIn:
+		Notification.showMessage("Please login first.", 3.0)
+		return
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
 
 
