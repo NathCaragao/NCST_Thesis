@@ -9,7 +9,7 @@ func resetSignupWindow() -> void:
 
 func _on_login_btn_pressed() -> void:
 	resetSignupWindow()
-	SceneManager.changeScene("res://src/SceneManager/Scenes/Login/Login.tscn")
+	SceneManager.changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
 
 
 func _on_signup_btn_pressed() -> void:
@@ -47,6 +47,6 @@ func _on_signup_btn_pressed() -> void:
 	
 	Notification.showMessage("User registered successfully!", 3.0)
 	await get_tree().create_timer(3.0).timeout
-	SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+	SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
 		
 		
