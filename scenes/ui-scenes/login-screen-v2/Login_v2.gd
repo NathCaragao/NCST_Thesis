@@ -24,9 +24,9 @@ func _on_login_btn_pressed():
 			Notification.showMessage("Login succesfully!", 3)
 			await get_tree().create_timer(3.0).timeout
 			# Change screen to title screen
-			SceneManager.changeScene("res://src/SceneManager/Scenes/Loading/Loading.tscn")
+			SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
 		else:
 			Notification.showMessage("Login failed, please try again.", 3)
 
 func _on_close_btn_pressed():
-	get_tree().quit()
+	SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")

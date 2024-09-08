@@ -20,3 +20,7 @@ func _on_option_btn_pressed() -> void:
 
 func _on_switch_acc_pressed() -> void:
 	SceneManager.changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
+
+
+func _on_exit_btn_pressed() -> void:
+	get_tree().quit()

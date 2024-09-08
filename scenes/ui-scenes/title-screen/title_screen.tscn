@@ -105,4 +105,5 @@ text = "Account"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="SwitchAcc" to="." method="_on_switch_acc_pressed"]
