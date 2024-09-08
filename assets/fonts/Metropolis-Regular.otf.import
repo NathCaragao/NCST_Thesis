@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cd8ykjyygruw3"
-path="res://.godot/imported/Metropolis-Regular.otf-c8ebc350e15ae268afe11f3ce8d18d36.fontdata"
+path="res://.godot/imported/Metropolis-Regular.otf-0bbdec5fa9e8d638f49e39f5d1bd08c3.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/Metropolis-Regular.otf"
-dest_files=["res://.godot/imported/Metropolis-Regular.otf-c8ebc350e15ae268afe11f3ce8d18d36.fontdata"]
+source_file="res://assets/fonts/Metropolis-Regular.otf"
+dest_files=["res://.godot/imported/Metropolis-Regular.otf-0bbdec5fa9e8d638f49e39f5d1bd08c3.fontdata"]
 
 [params]
 
