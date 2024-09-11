@@ -7,6 +7,7 @@ extends State
 @export var skill_state : State
 
 @export var jump_force : float = 700.0  # Same force for both jumps
+@export var jump_force2 : float = 400.0
 @onready var state_label: Label = $"../../StateLabel"
 
 var has_double_jumped: bool = false  # Track whether the player has double jumped
@@ -27,7 +28,7 @@ func process_input(event: InputEvent) -> State:
 		return skill_state
 	elif Input.is_action_just_pressed("jump") and not has_double_jumped:
 		# Allow the double jump if the player hasn't double jumped yet
-		parent.velocity.y = -jump_force  # Use the same jump force as the initial jump
+		parent.velocity.y = -jump_force2
 		has_double_jumped = true  # Mark double jump as used
 		parent.animation_player.play("jump")
 		has_double_jumped = false  # You can create a separate animation for double jump if you want
