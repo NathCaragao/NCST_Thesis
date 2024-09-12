@@ -27,6 +27,8 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 		nakamaSession = session
 		return OK
 	else:
+		if session.get_exception().grpc_status_code == 16:
+			return 1000 # Error for existing account
 		return FAILED
 
 #func loginWithGoogle():

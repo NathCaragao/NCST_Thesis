@@ -35,10 +35,14 @@ func _on_signup_btn_pressed() -> void:
 		%EmailInput.text,
 		%PassInput.text)
 		
-	if registerResult != OK:
+	if registerResult == FAILED:
 		Notification.showMessage("Error occured during user registration, please ensure proper inputs and try again.", 3.0)
 		return
 	
+	if registerResult == 1000:
+		Notification.showMessage("Email already in use.", 3.0)
+		return
+		
 	# Addition of account in DB
 	var addUserToDBResult = await ServerManager.addUserInDB()
 	if addUserToDBResult != OK:
