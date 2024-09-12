@@ -31,13 +31,10 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 			return 1000 # Error for existing account
 		return FAILED
 
-#func loginWithGoogle():
-	#pass
-#
-#func logoutUser():
-	#await Server._client.session_logout_async(Server._session)
-	#_session = null
-	#_socket = null
+func logoutUser():
+	await nakamaClient.session_logout_async(nakamaSession)
+	nakamaSession = null
+	nakamaClient = null
 
 func isUserLoggedIn() -> bool:
 	if nakamaSession == null:

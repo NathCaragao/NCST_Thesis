@@ -1,12 +1,13 @@
 extends Control
 
+@onready var isUserLoggedIn = false
 
 func _ready() -> void:
-	pass
+	%UserInfo.hide()
 
 func _on_start_btn_pressed() -> void:
 	SceneManager.showLoadingScreen()
-	var isUserLoggedIn = await ServerManager.isUserLoggedIn()
+	isUserLoggedIn = await ServerManager.isUserLoggedIn()
 	SceneManager.hideLoadingScreen()
 	if not isUserLoggedIn:
 		Notification.showMessage("Please login first.", 3.0)
@@ -19,7 +20,13 @@ func _on_option_btn_pressed() -> void:
 
 
 func _on_switch_acc_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
+	SceneManager.showLoadingModal()
+	isUserLoggedIn = await ServerManager.isUserLoggedIn()
+	SceneManager.hideLoadingModal()
+	if !isUserLoggedIn:
+		SceneManager.changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
+	else:
+		%UserInfo.show()
 
 
 func _on_exit_btn_pressed() -> void:
