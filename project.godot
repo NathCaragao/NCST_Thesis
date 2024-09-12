@@ -18,10 +18,10 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-ServerManager="*res://autoloads/ServerManager/ServerManager.tscn"
-SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
+ServerManager="*res://autoloads/ServerManager/ServerManager.gd"
 MusicManager="*res://autoloads/MusicManager/MusicManager.tscn"
 Notification="*res://autoloads/Notification/Notification.tscn"
+SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
