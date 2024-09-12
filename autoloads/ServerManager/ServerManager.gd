@@ -41,6 +41,8 @@ func isUserLoggedIn() -> bool:
 		return false
 	return true
 
+func getUserLoggedInInfo():
+	return await nakamaClient.get_account_async(nakamaSession)
 
 
 # Storage related ops
@@ -142,13 +144,6 @@ func addUserInDB() -> int:
 			#)
 		#]
 	#)
-
-
-
-# dunno where to put yet
-func getCurrentUserInfo():
-	return await nakamaClient.get_account_async(nakamaSession)
-
 
 
 #-------------------------------------------------

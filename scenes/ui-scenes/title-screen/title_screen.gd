@@ -22,10 +22,12 @@ func _on_option_btn_pressed() -> void:
 func _on_switch_acc_pressed() -> void:
 	SceneManager.showLoadingModal()
 	isUserLoggedIn = await ServerManager.isUserLoggedIn()
-	SceneManager.hideLoadingModal()
 	if !isUserLoggedIn:
+		SceneManager.hideLoadingModal()
 		SceneManager.changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
 	else:
+		%UserInfo.loggedInUser = await ServerManager.getUserLoggedInInfo()
+		SceneManager.hideLoadingModal()
 		%UserInfo.show()
 
 
