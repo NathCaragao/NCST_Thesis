@@ -10,7 +10,7 @@ extends State
 @export var jump_force2 : float = 400.0
 @onready var state_label: Label = $"../../StateLabel"
 
-var has_double_jumped: bool = false  # Track whether the player has double jumped
+var jump_count : int = 0; # for double jump
 
 
 func enter() -> void:
@@ -26,12 +26,11 @@ func process_input(event: InputEvent) -> State:
 		return attack_state
 	elif Input.is_action_just_pressed("skill"):
 		return skill_state
-	elif Input.is_action_just_pressed("jump") and not has_double_jumped:
+	elif Input.is_action_just_pressed("jump") and jump_count < 1:
 		# Allow the double jump if the player hasn't double jumped yet
 		parent.velocity.y = -jump_force2
-		has_double_jumped = true  # Mark double jump as used
+		jump_count += 1
 		parent.animation_player.play("jump")
-		has_double_jumped = false  # You can create a separate animation for double jump if you want
 		state_label.text = "Current State: Double Jump"
 		return null  # Stay in the current state
 	return null
@@ -51,10 +50,11 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	
 	if parent.is_on_floor():
-		# Reset the double jump when the player lands
-		has_double_jumped = false  # Ensure it resets every time the player touches the ground
 		if movement != 0:
 			return run_state
 		return idle_state
 	
 	return null
+
+func exit() -> void:
+	jump_count = 0
