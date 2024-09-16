@@ -31,7 +31,7 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 			return 1000 # Error for existing account
 		return FAILED
 
-func logoutUser():
+func logoutUser() -> void:
 	await nakamaClient.session_logout_async(nakamaSession)
 	nakamaSession = null
 	nakamaClient = null
@@ -41,11 +41,15 @@ func isUserLoggedIn() -> bool:
 		return false
 	return true
 
+# Idk the return type
 func getUserLoggedInInfo():
 	return await nakamaClient.get_account_async(nakamaSession)
 
 
+
+#-------------------------------------------------------------------------------
 # Storage related ops
+#-------------------------------------------------------------------------------
 enum ReadPermissions { NO_READ, OWNER_READ, PUBLIC_READ }
 enum WritePermissions { NO_WRITE, OWNER_WRITE }
 
@@ -149,8 +153,9 @@ func addUserInDB() -> int:
 #-------------------------------------------------
 
 
-# --------------------------------------------------------
-# MULTIPLAYER RELATED - will be moved to "Multiplayer.gd"
+#-------------------------------------------------------------------------------
+# MULTIPLAYER RELATED
+#-------------------------------------------------------------------------------
 func connectSocketToServerAsync() -> int:
 	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
 	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
