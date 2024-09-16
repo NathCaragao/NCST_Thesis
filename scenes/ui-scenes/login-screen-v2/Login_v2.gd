@@ -1,19 +1,20 @@
 extends Control
 
 
-func _ready():
+
+func _ready() -> void:
 	pass
 	
-func resetLoginWindow():
+func resetLoginWindow() -> void:
 	%EmailInput.clear()
 	%PassInput.clear()
 
-func _on_signup_btn_pressed():
+func _on_signup_btn_pressed() -> void:
 	resetLoginWindow()
 	SceneManager.changeScene("res://scenes/ui-scenes/sign-up-screen/sign_up_screen.tscn")
 	
 
-func _on_login_btn_pressed():
+func _on_login_btn_pressed() -> void:
 	# Disable the button to prevent rapid-fire login press
 	%LoginBtn.disabled = true
 	# Show loading modal first
