@@ -34,7 +34,6 @@ func registerEmailAndPassword(username : String, email : String, password : Stri
 func logoutUser() -> void:
 	await nakamaClient.session_logout_async(nakamaSession)
 	nakamaSession = null
-	nakamaClient = null
 
 func isUserLoggedIn() -> bool:
 	if nakamaSession == null:
@@ -157,11 +156,17 @@ func addUserInDB() -> int:
 # MULTIPLAYER RELATED
 #-------------------------------------------------------------------------------
 func connectSocketToServerAsync() -> int:
+	# Socket is needed for multiplayer functions
+	# no socket should be grounds for halting of operations
 	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
 	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
 	
 	if not result.is_exception():
 		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
+		# Signal when socket connection is lost
+		nakamaSocket.closed.connect(_on_NakamaSocket_closed)
+		
+		# ** Just add more signals as needed
 		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
 		
 		return OK
@@ -176,6 +181,7 @@ func joinMatch(matchId):
 	# THIS ONLY WORKS IF THERE IS A CREATED ROOM, ELSE IT WONT WORK
 	# THE SERVER-SIDE MUST CREATE A MATCH OR IMPLEMENT A CLIENT-SIDE
 	# FUNCTION TO DO THIS
+	# NakamaSocket.create_match_async
 	var match_id = "matchId"
 	var joined_match = await nakamaSocket.join_match_async(match_id)
 
