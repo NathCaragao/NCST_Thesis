@@ -1,24 +1,24 @@
 extends Node
 
 
-func _ready():
+func _ready() -> void:
 	changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
 	hideLoadingScreen()
 	hideLoadingModal()
 
-func showLoadingScreen():
+func showLoadingScreen() -> void:
 	%LoadingScreen.show()
 
-func hideLoadingScreen():
+func hideLoadingScreen() -> void:
 	%LoadingScreen.hide()
 
-func showLoadingModal():
+func showLoadingModal() -> void:
 	%LoadingModal.show()
 	
-func hideLoadingModal():
+func hideLoadingModal() -> void:
 	%LoadingModal.hide()
 
-func changeScene(pathOfsceneToDisplay : String):
+func changeScene(pathOfsceneToDisplay : String) -> void:
 	# Load the scene to display first before iniating loading of resource, hide with loading screen
 	showLoadingScreen()
 	var loadedScene = await ResourceLoader.load(pathOfsceneToDisplay)

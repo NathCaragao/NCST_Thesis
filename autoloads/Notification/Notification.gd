@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var isShowing : bool = false
+@onready var isShowing : bool = false
 
 func _ready():
 	$".".hide()
