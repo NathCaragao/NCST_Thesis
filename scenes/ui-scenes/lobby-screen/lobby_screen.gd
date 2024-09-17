@@ -11,6 +11,7 @@ func _ready() -> void:
 		print_debug("ERROR connecting to the socket")
 	pass # Replace with function body.
 
+	await ServerManager.createMatch()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
