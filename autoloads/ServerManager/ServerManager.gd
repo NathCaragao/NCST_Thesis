@@ -168,7 +168,6 @@ func connectSocketToServerAsync() -> int:
 		
 		# ** Just add more signals as needed
 		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
-		
 		return OK
 		
 	return ERR_CANT_CONNECT
@@ -178,16 +177,23 @@ func _on_NakamaSocket_closed():
 
 # TEST
 func joinMatch(matchId):
-	# THIS ONLY WORKS IF THERE IS A CREATED ROOM, ELSE IT WONT WORK
-	# THE SERVER-SIDE MUST CREATE A MATCH OR IMPLEMENT A CLIENT-SIDE
-	# FUNCTION TO DO THIS
-	# NakamaSocket.create_match_async
-	var match_id = "matchId"
-	var joined_match = await nakamaSocket.join_match_async(match_id)
-
-	if joined_match.is_exception():
-		print("An error occurred: %s" % joined_match)
-		return
-
-	for presence in joined_match.presences:
-		print("User id %s name %s'." % [presence.user_id, presence.username])
+	# RPCs are accessible through the client
+	# Get id of world to join
+	var world: NakamaAPI.ApiRpc = await _client.rpc_async(_session, "get_world_id")
+	if not world.is_exception():
+		_world_id = world.payload
+		
+	# RTAPI is used for Real Time functionalities
+	# Try to join a match
+	var match_join_result: NakamaRTAPI.Match = await _socket.join_match_async(_world_id)
+	if match_join_result.is_exception():
+		var exception: NakamaException = match_join_result.get_exception()
+		printerr("Error joining match: %s - %s" % [exception.status_code, exception.message])
+		return {}
+		
+	# Once successfully joined, add this player to the list of players
+	for presence in match_join_result.presences:
+		_presences[presence.user_id] = presence
+		
+	# Return the updated list of players which includes this player
+	return _presences
