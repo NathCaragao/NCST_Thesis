@@ -1,8 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=11 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/user_info.gd" id="3_v0kmf"]
+[ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="5_4ori8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
+shader = ExtResource("2_ygjtw")
+shader_parameter/scroll_speed = 0.03
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6eq2g"]
+texture = ExtResource("5_4ori8")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yivg"]
+texture = ExtResource("5_4ori8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbgi4"]
+texture = ExtResource("5_4ori8")
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -21,6 +41,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="BgPattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_d75kd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kqhcj")
+
+[node name="Filter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47451)
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
@@ -70,21 +110,27 @@ theme_override_constants/separation = 30
 
 [node name="StartBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_6eq2g")
 text = "START"
 
 [node name="OptionBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_1yivg")
 text = "Options"
 
 [node name="ExitBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_nbgi4")
 text = "EXIt"
 
 [node name="SwitchAcc" type="Button" parent="."]
