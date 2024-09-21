@@ -48,7 +48,8 @@ folder_colors={
 "res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
-"res://scenes/": "teal"
+"res://scenes/": "teal",
+"res://shaders/": "yellow"
 }
 
 [input]
