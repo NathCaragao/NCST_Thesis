@@ -2,11 +2,11 @@
 
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_7r6xd"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/sign-up-screen/Signup.gd" id="1_85ft1"]
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="1_iqvho"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/Fonts/Metropolis-Regular.otf" id="2_4r0a3"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="1_iqvho"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_4r0a3"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_diwh6"]
-[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/Fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="3_fo5gn"]
+[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_fo5gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5r51"]
 shader = ExtResource("1_7r6xd")
@@ -130,9 +130,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 803.0
-offset_top = 859.0
+offset_top = 812.0
 offset_right = 1045.0
-offset_bottom = 924.0
+offset_bottom = 888.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_fo5gn")
@@ -146,10 +146,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 819.0
-offset_top = 937.0
-offset_right = 1061.0
-offset_bottom = 1002.0
+offset_left = 800.0
+offset_top = 927.0
+offset_right = 1042.0
+offset_bottom = 1003.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_fo5gn")
@@ -186,10 +186,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 731.5
-offset_top = 812.0
-offset_right = 1116.5
-offset_bottom = 844.0
+offset_left = 668.0
+offset_top = 742.0
+offset_right = 1180.0
+offset_bottom = 793.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_3vrp4")
@@ -247,9 +247,9 @@ offset_left = 240.0
 offset_top = 588.0
 offset_right = 669.0
 offset_bottom = 655.0
-theme_override_fonts/font = ExtResource("1_iqvho")
+theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 47
-text = "Confirm Password"
+text = "Confirm Pass"
 
 [connection signal="pressed" from="Buttons/LoginBtn" to="." method="_on_login_btn_pressed"]
 [connection signal="pressed" from="Buttons/SignupBtn" to="." method="_on_signup_btn_pressed"]
