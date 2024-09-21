@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cha4508ye1b32"]
+[gd_scene load_steps=6 format=3 uid="uid://cha4508ye1b32"]
 
 [ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="1_fosfx"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_tab.gd" id="1_x6hi8"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_yvoap"]
 [ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="2_ocaw8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khmdv"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 1)
 
 [node name="SettingsTab" type="Control"]
 layout_mode = 3
@@ -27,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fosfx")
 theme_override_font_sizes/font_size = 66
+theme_override_styles/panel = SubResource("StyleBoxFlat_khmdv")
 tab_alignment = 1
 current_tab = 0
 
@@ -61,6 +65,8 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "RESOLUTION"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ResOption" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
