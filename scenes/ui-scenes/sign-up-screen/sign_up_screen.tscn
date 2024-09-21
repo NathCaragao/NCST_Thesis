@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfmhlyleul8db"]
+[gd_scene load_steps=9 format=3 uid="uid://dfmhlyleul8db"]
 
-[ext_resource type="Script" path="res://scenes/ui-scenes/sign-up-screen/Signup.gd" id="1_85ft1"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_7r6xd"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/sign-up-screen/Signup.gd" id="1_85ft1"]
 [ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="1_iqvho"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_4r0a3"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/Fonts/Metropolis-Regular.otf" id="2_4r0a3"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_diwh6"]
-[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_fo5gn"]
+[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/Fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="3_fo5gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5r51"]
 shader = ExtResource("1_7r6xd")
@@ -223,20 +223,20 @@ text = "Username"
 
 [node name="UserLabel" type="Label" parent="Labels"]
 layout_mode = 0
-offset_left = 231.0
-offset_top = 230.0
-offset_right = 614.0
-offset_bottom = 297.0
+offset_left = 240.0
+offset_top = 340.0
+offset_right = 623.0
+offset_bottom = 407.0
 theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 47
 text = "Email"
 
 [node name="PassLabel" type="Label" parent="Labels"]
 layout_mode = 0
-offset_left = 233.0
-offset_top = 342.0
-offset_right = 633.0
-offset_bottom = 409.0
+offset_left = 242.0
+offset_top = 452.0
+offset_right = 642.0
+offset_bottom = 519.0
 theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 47
 text = "Password"
