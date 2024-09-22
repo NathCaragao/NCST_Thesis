@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=11 format=3 uid="uid://bew17a4cm663b"]
 
 [ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://nhwtw7bum50o" path="res://assets/icons/inv-icon.png" id="6_3110w"]
 [ext_resource type="Texture2D" uid="uid://ssgiaqk380dd" path="res://assets/icons/shop-icon.png" id="7_wvu18"]
 [ext_resource type="Texture2D" uid="uid://fr4evcq8gxc8" path="res://assets/icons/play-icon.png" id="8_psrj4"]
+[ext_resource type="Texture2D" uid="uid://dgin82a3d0l7r" path="res://assets/icons/gold-coins-icon.png" id="9_ee0k1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeemb"]
 bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
@@ -17,7 +18,7 @@ script = ExtResource("1_oyntd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="LobbyHUD" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -186,5 +187,13 @@ offset_bottom = 1002.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 icon = ExtResource("8_psrj4")
 icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1594.0
+offset_top = 38.0
+offset_right = 1670.0
+offset_bottom = 95.0
+texture = ExtResource("9_ee0k1")
+expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
