@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38ie7t4ijdms"
-path="res://.godot/imported/settings-icon.png-c461005d0d420edb60c2b010d14a0ae7.ctex"
+uid="uid://t3njmjdk8exw"
+path="res://.godot/imported/almanac-icon.png-612968a529b581c1726300ab5bf103cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/settings-icon.png"
-dest_files=["res://.godot/imported/settings-icon.png-c461005d0d420edb60c2b010d14a0ae7.ctex"]
+source_file="res://assets/icons/almanac-icon.png"
+dest_files=["res://.godot/imported/almanac-icon.png-612968a529b581c1726300ab5bf103cb.ctex"]
 
 [params]
 
