@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://do2iqe61jb5ok"]
+[gd_scene load_steps=8 format=3 uid="uid://do2iqe61jb5ok"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_screen.gd" id="1_haurn"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_jelrx"]
-[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/Fonts/kongtext.ttf" id="2_mqqoo"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_jelrx"]
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_4iitv"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="2_mqqoo"]
 [ext_resource type="PackedScene" uid="uid://cha4508ye1b32" path="res://scenes/ui-scenes/settings-screen/settings_tab.tscn" id="2_tggw8"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_o5qmm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t33y7"]
+shader = ExtResource("2_4iitv")
+shader_parameter/scroll_speed = 0.03
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -14,6 +20,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_haurn")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="BgPattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_t33y7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o5qmm")
+
+[node name="Filter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47451)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -21,7 +56,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.111197, 0.111197, 0.111197, 1)
+color = Color(0.109804, 0.109804, 0.109804, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

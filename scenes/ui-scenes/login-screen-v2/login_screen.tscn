@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b25xaiokehkja"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/login-screen-v2/Login_v2.gd" id="1_85fsi"]
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="1_q7s8n"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1wd8p"]
 [ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_vpic2"]
