@@ -2,7 +2,7 @@ extends Node
 
 
 func _ready():
-	changeScene("res://testFolder/testScenes/multi_test_lvl.tscn")
+	changeScene("res://Proto_level_design/level_1.tscn")
 
 func showLoadingScreen():
 	%LoadingScreen.show()

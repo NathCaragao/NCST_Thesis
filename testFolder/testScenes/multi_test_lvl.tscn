@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://dvxp1oct6k8n2"]
+[gd_scene load_steps=5 format=4 uid="uid://dnypyqbes642y"]
 
 [ext_resource type="Texture2D" uid="uid://bxglx3l1ftmvh" path="res://assets/tileset (world-building)/Basic Tilemap.png" id="1_cqn87"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="2_qqtlf"]
