@@ -8,8 +8,29 @@ const SERVER_KEY : String = "thesisServer"
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
 
+func createSocketAsync() -> int:
+	# Socket is needed for multiplayer functions
+	# no socket should be grounds for halting of operations
+	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
+	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
+	
+	if not result.is_exception():
+		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
+		# Signal when socket connection is lost
+		nakamaSocket.closed.connect(_on_NakamaSocket_closed)
+		
+		# ** Just add more signals as needed
+		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
+		return OK
+		
+	return ERR_CANT_CONNECT
+
+func _on_NakamaSocket_closed():
+	nakamaSocket = null
+
+
 #-------------------------------------------------------------------------------
-# Auth related ops
+# Auth related ops - related to session
 #-------------------------------------------------------------------------------
 func loginWithEmailAndPassword(email : String, password : String) -> int:
 	var session = await nakamaClient.authenticate_email_async(email, password, null, false)
@@ -155,25 +176,7 @@ func addUserInDB() -> int:
 #-------------------------------------------------------------------------------
 # MULTIPLAYER RELATED
 #-------------------------------------------------------------------------------
-func connectSocketToServerAsync() -> int:
-	# Socket is needed for multiplayer functions
-	# no socket should be grounds for halting of operations
-	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
-	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
-	
-	if not result.is_exception():
-		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
-		# Signal when socket connection is lost
-		nakamaSocket.closed.connect(_on_NakamaSocket_closed)
-		
-		# ** Just add more signals as needed
-		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
-		return OK
-		
-	return ERR_CANT_CONNECT
 
-func _on_NakamaSocket_closed():
-	nakamaSocket = null
 
 # Testing
 func createMatch(matchName:String = "") -> void:
