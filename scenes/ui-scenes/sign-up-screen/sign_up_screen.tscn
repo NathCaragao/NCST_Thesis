@@ -2,10 +2,10 @@
 
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_7r6xd"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/sign-up-screen/Signup.gd" id="1_85ft1"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/Fonts/Metropolis-Regular.otf" id="2_4r0a3"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_4r0a3"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_diwh6"]
-[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/Fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="3_fo5gn"]
+[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/fonts/PixelFJVerdana12pt.ttf" id="3_3vrp4"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_fo5gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5r51"]
 shader = ExtResource("1_7r6xd")
