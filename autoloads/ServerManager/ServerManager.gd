@@ -181,11 +181,11 @@ func addUserInDB() -> int:
 # Testing
 func createMatch(matchName:String = "") -> void:
 	if nakamaSocket == null:
-		return
-	
-	var result = await nakamaSocket.create_match_async(matchName)
+		await createSocketAsync()
+		#return
+
+	var result = await nakamaSocket.rpc_async("createMatchRPC")
 	print_debug(result)
-	# Looks like matchName isn't useful, can be removed
 
 #func joinMatch(matchId):
 	## RPCs are accessible through the client

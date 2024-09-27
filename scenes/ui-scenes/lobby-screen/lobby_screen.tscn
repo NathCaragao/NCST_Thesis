@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_22pfw"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_22pfw"]
 [ext_resource type="Texture2D" uid="uid://c4dy3glllh3oc" path="res://assets/icons/settings-icon3.png" id="4_bg4yb"]
 [ext_resource type="Texture2D" uid="uid://t3njmjdk8exw" path="res://assets/icons/almanac-icon.png" id="5_187xu"]
 [ext_resource type="Texture2D" uid="uid://nhwtw7bum50o" path="res://assets/icons/inv-icon.png" id="6_3110w"]
@@ -197,3 +197,5 @@ texture = ExtResource("9_ee0k1")
 expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/PlayBtn" to="." method="_on_play_btn_pressed"]
