@@ -517,8 +517,8 @@ height = 22.0
 script = ExtResource("1_mahge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l7iic")
-hframes = 7
+texture = ExtResource("2_rbi7i")
+hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
