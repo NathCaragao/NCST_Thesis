@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=18 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
@@ -7,13 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://32q6aig0m7cl" path="res://assets/character/sprites/Player Sword Stab2 96x48-Sheet.png" id="2_l7iic"]
 [ext_resource type="Texture2D" uid="uid://cwr3ierqfe3ij" path="res://assets/character/sprites/player sword atk 64x64.png" id="2_mc56m"]
 [ext_resource type="Texture2D" uid="uid://bvqapb2xuothr" path="res://assets/character/sprites/hercules_idle1.png" id="2_rbi7i"]
-[ext_resource type="Script" path="res://fsm/state-machine/stateMachine.gd" id="7_fbtfl"]
-[ext_resource type="Script" path="res://fsm/player-states/playerIdle.gd" id="8_ooayp"]
-[ext_resource type="Script" path="res://fsm/player-states/playerRun.gd" id="9_cv7wi"]
-[ext_resource type="Script" path="res://fsm/player-states/playerJump.gd" id="9_wwbd1"]
-[ext_resource type="Script" path="res://fsm/player-states/playerFall.gd" id="11_yjb73"]
-[ext_resource type="Script" path="res://fsm/player-states/playerSkill01.gd" id="13_v80o5"]
-[ext_resource type="Script" path="res://fsm/player-states/playerBasicAtk.gd" id="13_weqmk"]
 
 [sub_resource type="Animation" id="Animation_jmtr3"]
 length = 0.001
@@ -530,55 +523,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("7_fbtfl")
-starting_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "run_state", "jump_state", "attack_state", "skill_state")]
-script = ExtResource("8_ooayp")
-fall_state = NodePath("../Fall")
-run_state = NodePath("../Run")
-jump_state = NodePath("../Jump")
-attack_state = NodePath("../BasicAtk")
-skill_state = NodePath("../Skill")
-
-[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "attack_state", "skill_state")]
-script = ExtResource("9_cv7wi")
-fall_state = NodePath("../Fall")
-idle_state = NodePath("../Idle")
-jump_state = NodePath("../Jump")
-attack_state = NodePath("../BasicAtk")
-skill_state = NodePath("../Skill")
-
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "run_state", "idle_state", "attack_state", "skill_state")]
-script = ExtResource("9_wwbd1")
-fall_state = NodePath("../Fall")
-run_state = NodePath("../Run")
-idle_state = NodePath("../Idle")
-attack_state = NodePath("../BasicAtk")
-skill_state = NodePath("../Skill")
-jump_force = 400.0
-move_speed = 350.0
-
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "attack_state", "skill_state")]
-script = ExtResource("11_yjb73")
-idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
-attack_state = NodePath("../BasicAtk")
-skill_state = NodePath("../Skill")
-move_speed = 350.0
-
-[node name="BasicAtk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "skill_state")]
-script = ExtResource("13_weqmk")
-idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
-skill_state = NodePath("../Skill")
-
-[node name="Skill" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state")]
-script = ExtResource("13_v80o5")
-idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
 
 [node name="StateLabel" type="Label" parent="."]
 texture_filter = 1
