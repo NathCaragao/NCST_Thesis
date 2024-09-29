@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=24 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://32q6aig0m7cl" path="res://assets/character/sprites/Player Sword Stab2 96x48-Sheet.png" id="2_l7iic"]
 [ext_resource type="Texture2D" uid="uid://cwr3ierqfe3ij" path="res://assets/character/sprites/player sword atk 64x64.png" id="2_mc56m"]
 [ext_resource type="Texture2D" uid="uid://bvqapb2xuothr" path="res://assets/character/sprites/hercules_idle1.png" id="2_rbi7i"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="8_5v3r3"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-idle.gd" id="9_j7yls"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-run.gd" id="10_dnw0i"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-jump.gd" id="11_gxky6"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-attack.gd" id="12_3xnca"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-skill.gd" id="13_lkwed"]
 
 [sub_resource type="Animation" id="Animation_jmtr3"]
 length = 0.001
@@ -524,12 +530,26 @@ autoplay = "idle"
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
 
-[node name="StateLabel" type="Label" parent="."]
-texture_filter = 1
-offset_left = -192.0
-offset_top = 60.0
-offset_right = -50.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 21
-text = "Current: State"
-metadata/_edit_use_anchors_ = true
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_5v3r3")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_j7yls")
+actor = NodePath("../..")
+
+[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("10_dnw0i")
+actor = NodePath("../..")
+
+[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("11_gxky6")
+actor = NodePath("../..")
+
+[node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("12_3xnca")
+actor = NodePath("../..")
+
+[node name="PlayerSkill" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("13_lkwed")
+actor = NodePath("../..")
