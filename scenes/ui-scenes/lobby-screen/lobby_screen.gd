@@ -11,4 +11,5 @@ func _process(delta: float) -> void:
 
 
 func _on_play_btn_pressed() -> void:
-	ServerManager.createMatch()
+	var newMatchID = await ServerManager.createMatch()
+	ServerManager.joinMatch(newMatchID)

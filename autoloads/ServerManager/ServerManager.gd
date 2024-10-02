@@ -179,34 +179,26 @@ func addUserInDB() -> int:
 
 
 # Testing
-func createMatch(matchName:String = "") -> void:
+func createMatch(matchName:String = ""):
 	if nakamaSocket == null:
 		await createSocketAsync()
-		#return
 
 	var result = await nakamaSocket.rpc_async("createMatchRPC")
-	print_debug(result)
+	return JSON.parse_string(result.payload)["matchId"]
+	
 
-#func joinMatch(matchId):
-	## RPCs are accessible through the client
-	## Get id of world to join - this means a match should be created already.
-	## RPCs are server-side code.
-	#var world: NakamaAPI.ApiRpc = await _client.rpc_async(_session, "get_world_id")
-	#
-	#if not world.is_exception():
-		#_world_id = world.payload
-		#
-	## RTAPI is used for Real Time functionalities
-	## Try to join a match
-	#var match_join_result: NakamaRTAPI.Match = await _socket.join_match_async(_world_id)
-	#if match_join_result.is_exception():
-		#var exception: NakamaException = match_join_result.get_exception()
-		#printerr("Error joining match: %s - %s" % [exception.status_code, exception.message])
-		#return {}
-		#
-	## Once successfully joined, add this player to the list of players
-	#for presence in match_join_result.presences:
-		#_presences[presence.user_id] = presence
-		#
-	## Return the updated list of players which includes this player
-	#return _presences
+func joinMatch(matchId:String):
+	if nakamaSocket == null:
+		await createSocketAsync()
+	
+	# Try joining a match - this will trigger JoinMatchAttempt func in the server side
+	var match_join_result: NakamaRTAPI.Match = await nakamaSocket.join_match_async(matchId)
+	
+	# Error joining match
+	if match_join_result.is_exception():
+		var exception: NakamaException = match_join_result.get_exception()
+		printerr("Error joining match: %s - %s" % [exception.status_code, exception.message])
+		return {}
+		
+	# Successfully joined a match - JoinMatch in the server side triggered
+	print_debug(match_join_result)
