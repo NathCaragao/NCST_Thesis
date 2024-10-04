@@ -202,3 +202,13 @@ func joinMatch(matchId:String):
 		
 	# Successfully joined a match - JoinMatch in the server side triggered
 	print_debug(match_join_result)
+	
+func leaveMatch(matchId:String):
+	if nakamaSocket == null:
+		await createSocketAsync()
+	
+	var leaveResult : NakamaAsyncResult = await nakamaSocket.leave_match_async(matchId)
+	if leaveResult.is_exception():
+		print_debug("An error occurred: %s" % leaveResult)
+		return
+	print_debug("Match left")

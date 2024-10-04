@@ -3,8 +3,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func initMatch():
 	var newMatchID = await ServerManager.createMatch()
-	ServerManager.joinMatch(newMatchID)
+	await ServerManager.joinMatch(newMatchID)
+	await get_tree().create_timer(10.0).timeout
+	await ServerManager.leaveMatch(newMatchID)
+
+
+func _on_create_match_btn_pressed() -> void:
+	initMatch()

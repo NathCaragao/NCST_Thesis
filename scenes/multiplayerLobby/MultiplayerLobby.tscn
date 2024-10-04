@@ -21,7 +21,6 @@ grow_vertical = 2
 script = ExtResource("1_mgpl0")
 
 [node name="NoRoomGUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="NoRoomGUI"]
 anchors_preset = 15
@@ -33,6 +32,7 @@ scale = Vector2(1.00147, 1.00671)
 color = Color(0.158472, 0.158472, 0.158472, 1)
 
 [node name="CreateMatchBtn" type="Button" parent="NoRoomGUI"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 offset_left = 579.0
 offset_top = 274.0
@@ -67,6 +67,7 @@ alignment = 1
 clear_button_enabled = true
 
 [node name="RoomLobbyGUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="RoomLobbyGUI"]
 anchors_preset = 15
@@ -100,3 +101,5 @@ theme_override_fonts/font = ExtResource("2_3hdf4")
 theme_override_font_sizes/font_size = 66
 theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "LEAVE MATCH"
+
+[connection signal="pressed" from="NoRoomGUI/CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
