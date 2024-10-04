@@ -1,15 +1,17 @@
 extends Control
 
+@onready var userInfo = await ServerManager.getUserLoggedInInfo()
+@onready var joinedMatchId = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	%RoomLobbyGUI.hide()
 
 func initMatch():
-	var newMatchID = await ServerManager.createMatch()
-	await ServerManager.joinMatch(newMatchID)
-	await get_tree().create_timer(10.0).timeout
-	await ServerManager.leaveMatch(newMatchID)
+	var joinedMatchId = await ServerManager.createMatch()
+	await ServerManager.joinMatch(joinedMatchId)
+	%JoinedMatchID.text = joinedMatchId
+	%RoomLobbyGUI.show()
+	%NoRoomGUI.hide()
 
 
 func _on_create_match_btn_pressed() -> void:

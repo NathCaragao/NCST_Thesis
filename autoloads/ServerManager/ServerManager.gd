@@ -63,7 +63,8 @@ func isUserLoggedIn() -> bool:
 
 # Idk the return type
 func getUserLoggedInInfo():
-	return await nakamaClient.get_account_async(nakamaSession)
+	var userInfo = await nakamaClient.get_account_async(nakamaSession)
+	return userInfo.user
 
 
 
@@ -184,6 +185,7 @@ func createMatch(matchName:String = ""):
 		await createSocketAsync()
 
 	var result = await nakamaSocket.rpc_async("createMatchRPC")
+	print_debug("CREATED MATCH: %s", result)
 	return JSON.parse_string(result.payload)["matchId"]
 	
 

@@ -401,7 +401,7 @@ func event_async(p_session : NakamaSession, p_name : String, p_properties : Dict
 # Fetch the user account owned by the session.
 # @param p_session - The session of the user.
 # Returns a task which resolves to the account object.
-func get_account_async(p_session : NakamaSession): # -> NakamaAPI.ApiAccount:
+func get_account_async(p_session : NakamaSession) -> NakamaAPI.ApiAccount:
 	return await _api_client.get_account_async(p_session)
 
 # Get subscription by product id.
