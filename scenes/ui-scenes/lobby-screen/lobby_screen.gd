@@ -11,5 +11,4 @@ func _process(delta: float) -> void:
 
 
 func _on_play_btn_pressed() -> void:
-	var newMatchID = await ServerManager.createMatch()
-	ServerManager.joinMatch(newMatchID)
+	SceneManager.changeScene("res://scenes/multiplayerLobby/MultiplayerLobby.tscn")
