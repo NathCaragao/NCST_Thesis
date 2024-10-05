@@ -8,6 +8,8 @@ const SERVER_KEY : String = "thesisServer"
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
 
+
+
 func createSocketAsync() -> int:
 	# Socket is needed for multiplayer functions
 	# no socket should be grounds for halting of operations
@@ -18,9 +20,8 @@ func createSocketAsync() -> int:
 		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
 		# Signal when socket connection is lost
 		nakamaSocket.closed.connect(_on_NakamaSocket_closed)
-		
+		nakamaSocket.received_match_state.connect(_on_match_state_received)
 		# ** Just add more signals as needed
-		#nakamaSocket.connect("received_match_presence", Callable(self, "_on_NakamaSocket_received_match_presence"))
 		return OK
 		
 	return ERR_CANT_CONNECT
@@ -61,8 +62,7 @@ func isUserLoggedIn() -> bool:
 		return false
 	return true
 
-# Idk the return type
-func getUserLoggedInInfo():
+func getUserLoggedInInfo() -> NakamaAPI.ApiUser:
 	var userInfo = await nakamaClient.get_account_async(nakamaSession)
 	return userInfo.user
 
@@ -177,10 +177,7 @@ func addUserInDB() -> int:
 #-------------------------------------------------------------------------------
 # MULTIPLAYER RELATED
 #-------------------------------------------------------------------------------
-
-
-# Testing
-func createMatch(matchName:String = ""):
+func createMatch(matchName:String = "") -> String:
 	if nakamaSocket == null:
 		await createSocketAsync()
 
@@ -189,7 +186,7 @@ func createMatch(matchName:String = ""):
 	return JSON.parse_string(result.payload)["matchId"]
 	
 
-func joinMatch(matchId:String):
+func joinMatch(matchId:String) -> void:
 	if nakamaSocket == null:
 		await createSocketAsync()
 	
@@ -200,17 +197,17 @@ func joinMatch(matchId:String):
 	if match_join_result.is_exception():
 		var exception: NakamaException = match_join_result.get_exception()
 		printerr("Error joining match: %s - %s" % [exception.status_code, exception.message])
-		return {}
+		return
 		
 	# Successfully joined a match - JoinMatch in the server side triggered
-	print_debug(match_join_result)
+	print_debug("Match join result: %s", match_join_result)
 	
-func leaveMatch(matchId:String):
-	if nakamaSocket == null:
-		await createSocketAsync()
-	
+func leaveMatch(matchId:String) -> void:
 	var leaveResult : NakamaAsyncResult = await nakamaSocket.leave_match_async(matchId)
 	if leaveResult.is_exception():
 		print_debug("An error occurred: %s" % leaveResult)
 		return
 	print_debug("Match left")
+
+func _on_match_state_received(p_state : NakamaRTAPI.MatchData):
+	print_debug("Received match state with opcode %s, data %s" % [p_state.op_code, p_state.data])
