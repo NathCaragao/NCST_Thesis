@@ -3,11 +3,13 @@ extends Node
 
 # Global variables for server-wide operations
 const SERVER_KEY : String = "thesisServer"
-@onready var serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
+const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
 @onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
 
+# Subcomponents
+@onready var Auth = Authentication.new()
 
 
 func createSocketAsync() -> int:
