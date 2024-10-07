@@ -3,8 +3,14 @@ extends Control
 @onready var userInfo = await ServerManager.getUserLoggedInInfo()
 @onready var joinedMatchId = null
 
+@onready var timer: float = 0.0
+
 func _ready() -> void:
 	%RoomLobbyGUI.hide()
+
+func _process(delta: float) -> void:
+	timer += delta
+	print_debug(timer)
 
 func initMatch():
 	var joinedMatchId = await ServerManager.createMatch()
