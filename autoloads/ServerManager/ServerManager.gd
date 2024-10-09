@@ -12,6 +12,7 @@ const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gi
 @onready var Auth = Authentication.new()
 
 
+
 func createSocketAsync() -> int:
 	# Socket is needed for multiplayer functions
 	# no socket should be grounds for halting of operations
