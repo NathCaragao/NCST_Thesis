@@ -36,38 +36,43 @@ func _on_NakamaSocket_closed():
 #-------------------------------------------------------------------------------
 # Auth related ops - related to session
 #-------------------------------------------------------------------------------
-func loginWithEmailAndPassword(email : String, password : String) -> int:
-	var session = await nakamaClient.authenticate_email_async(email, password, null, false)
-	if not session.is_exception():
-		nakamaSession = session
+func loginWithEmailAndPassword(email: String, password: String) -> int:
+	var loginResult = await Auth.loginWithEmailAndPassword(self.nakamaClient, email, password)
+	if loginResult != null:
+		self.nakamaSession = loginResult
 		return OK
 	else: 
 		return FAILED
 
-func registerEmailAndPassword(username : String, email : String, password : String) -> int:
-	var session = await nakamaClient.authenticate_email_async(email, password, null, true)
-	if not session.is_exception():
-		# Change the displayname of user
-		var update : NakamaAsyncResult = await nakamaClient.update_account_async(session, username, username, null, null, null)
-		nakamaSession = session
+func registerEmailAndPassword(username: String, email: String, password: String) -> int:
+	var isEmailExisting = await Auth.isEmailAlreadyExisting(self.nakamaClient, email)
+	if isEmailExisting:
+		return FAILED
+		
+	var registerResult = await Auth.registerEmailAndPassword(self.nakamaClient, username, email, password)
+	if registerResult != null:
+		self.nakamaSession = registerResult
 		return OK
 	else:
-		if session.get_exception().grpc_status_code == 16:
-			return 1000 # Error for existing account
 		return FAILED
 
-func logoutUser() -> void:
-	await nakamaClient.session_logout_async(nakamaSession)
-	nakamaSession = null
+func logoutUser() -> int:
+	var logoutResult = await Auth.logoutUser(self.nakamaClient, self.nakamaSession)
+	if logoutResult:
+		nakamaSession = null
+		return OK
+	else:
+		return FAILED
 
 func isUserLoggedIn() -> bool:
-	if nakamaSession == null:
-		return false
-	return true
+	return await Auth.isUserLoggedIn(self.nakamaSession)
 
 func getUserLoggedInInfo() -> NakamaAPI.ApiUser:
-	var userInfo = await nakamaClient.get_account_async(nakamaSession)
-	return userInfo.user
+	var userInfoResult = await Auth.getUserLoggedInInfo(self.nakamaClient, self.nakamaSession)
+	if userInfoResult == null:
+		return null
+	else:
+		return userInfoResult
 
 
 
