@@ -26,7 +26,7 @@ func registerEmailAndPassword(nakamaClient: NakamaClient, username: String, emai
 func isEmailAlreadyExisting(nakamaClient: NakamaClient, emailToCheck: String) -> bool:
 	const testPassword: String = "9b143b5e-e79b-49d1-a3b0-5a89cae64594"
 	var checkResult = await nakamaClient.authenticate_email_async(emailToCheck, testPassword, null, true)
-	if not checkResult.is_exception():
+	if checkResult.is_exception():
 		# Means email is already in use
 		return true
 	else:
@@ -46,6 +46,6 @@ func isUserLoggedIn(nakamaSession: NakamaSession) -> bool:
 	return true
 
 # Return a currently logged in user's info, this is in JSON or Dictionary format
-func getUserLoggedInInfo(nakamaClient: NakamaClient, nakamaSession: NakamaSession) -> NakamaAPI.ApiUser:
+func getUserLoggedInInfo(nakamaClient: NakamaClient, nakamaSession: NakamaSession):
 	var userInfo = await nakamaClient.get_account_async(nakamaSession)
-	return userInfo.user
+	return userInfo

@@ -46,8 +46,8 @@ func loginWithEmailAndPassword(email: String, password: String) -> int:
 
 func registerEmailAndPassword(username: String, email: String, password: String) -> int:
 	var isEmailExisting = await Auth.isEmailAlreadyExisting(self.nakamaClient, email)
-	if isEmailExisting:
-		return FAILED
+	if isEmailExisting == true:
+		return 1000
 		
 	var registerResult = await Auth.registerEmailAndPassword(self.nakamaClient, username, email, password)
 	if registerResult != null:
@@ -58,7 +58,7 @@ func registerEmailAndPassword(username: String, email: String, password: String)
 
 func logoutUser() -> int:
 	var logoutResult = await Auth.logoutUser(self.nakamaClient, self.nakamaSession)
-	if logoutResult:
+	if logoutResult == OK:
 		nakamaSession = null
 		return OK
 	else:
@@ -67,7 +67,7 @@ func logoutUser() -> int:
 func isUserLoggedIn() -> bool:
 	return await Auth.isUserLoggedIn(self.nakamaSession)
 
-func getUserLoggedInInfo() -> NakamaAPI.ApiUser:
+func getUserLoggedInInfo():
 	var userInfoResult = await Auth.getUserLoggedInInfo(self.nakamaClient, self.nakamaSession)
 	if userInfoResult == null:
 		return null
