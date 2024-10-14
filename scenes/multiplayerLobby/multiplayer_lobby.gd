@@ -10,9 +10,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	timer += delta
-	print_debug(timer)
+	#print_debug(timer)
 
-func initMatch():
+func _initMatch():
 	var joinedMatchId = await ServerManager.createMatch()
 	await ServerManager.joinMatch(joinedMatchId)
 	%JoinedMatchID.text = joinedMatchId
@@ -21,4 +21,10 @@ func initMatch():
 
 
 func _on_create_match_btn_pressed() -> void:
-	initMatch()
+	_initMatch()
+
+
+func _on_join_match_btn_pressed() -> void:
+	if %MatchIdField.text != "":
+		await ServerManager.joinMatch(%MatchIdField.text)
+		

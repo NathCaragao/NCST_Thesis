@@ -47,6 +47,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "CREATE MATCH"
 
 [node name="JoinMatchBtn" type="Button" parent="NoRoomGUI"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 offset_left = 585.0
 offset_top = 719.0
@@ -58,6 +59,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "JOIN MATCH"
 
 [node name="MatchIdField" type="LineEdit" parent="NoRoomGUI"]
+unique_name_in_owner = true
 offset_left = 378.0
 offset_top = 589.0
 offset_right = 1408.0
@@ -106,3 +108,4 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "LEAVE MATCH"
 
 [connection signal="pressed" from="NoRoomGUI/CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
+[connection signal="pressed" from="NoRoomGUI/JoinMatchBtn" to="." method="_on_join_match_btn_pressed"]
