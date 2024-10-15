@@ -5,11 +5,11 @@ extends State
 @export var actor : EnemyWolf
 @export var move_speed : float = 20.0
 @onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
-var player : Hercules
+var player : PlayerHercules
 var direction
 
 # state machine ref
-@onready var state_machine : StateMachine = get_parent()
+#@onready var state_machine : StateMachine = get_parent()
 
 func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead2"))

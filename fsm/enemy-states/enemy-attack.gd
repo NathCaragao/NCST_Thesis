@@ -7,11 +7,11 @@ extends State
 
 @onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
 @onready var timer: Timer = $Timer
-var player : Hercules
+var player : PlayerHercules
 var direction
 
 # state machine ref
-@onready var state_machine : StateMachine = get_parent()
+#@onready var state_machine : StateMachine = get_parent()
 
 
 func _ready() -> void:

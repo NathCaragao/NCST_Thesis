@@ -2,7 +2,7 @@ class_name EnemyIdle
 extends State
 
 # references and variables
-@export var actor : Enemy
+@export var actor : EnemyWolf
 
 func enter() -> void:
 	pass

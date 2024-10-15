@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mdvqi3mnbb8e"]
+[gd_scene load_steps=26 format=3 uid="uid://mdvqi3mnbb8e"]
 
 [ext_resource type="Texture2D" uid="uid://cknxbxpr1oghf" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Attack.png" id="1_4rwo2"]
 [ext_resource type="Texture2D" uid="uid://v56o4ugwpksw" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Run.png" id="1_5yhd6"]
@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://c3hyi71kl5oqo" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Idle.png" id="1_phc7c"]
 [ext_resource type="Texture2D" uid="uid://gl08p3wo4mhe" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Death.png" id="1_r7fc1"]
 [ext_resource type="Texture2D" uid="uid://b5e0rohvmpvgv" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Hit.png" id="1_s5xks"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="6_jeg3f"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_7lvdy"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="9_f6837"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_ltghk"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_o6bh4"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="11_qkhtx"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_xl2cv"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_o74ag"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_f5cni"]
+[ext_resource type="Script" path="res://scenes/components/hurtbox/hurtbox.gd" id="15_pd5g7"]
 
 [sub_resource type="Animation" id="Animation_hsegx"]
 resource_name = "wolf-idle"
@@ -74,6 +84,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_4778m"]
@@ -235,6 +257,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_qippa"]
 resource_name = "wolf-dead"
@@ -302,6 +336,8 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkfx"]
 height = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_daf50"]
+
 [node name="Wolf" type="CharacterBody2D"]
 script = ExtResource("1_07ycu")
 
@@ -319,3 +355,54 @@ autoplay = "wolf-idle"
 position = Vector2(0, 6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bnkfx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_jeg3f")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_f6837")
+actor = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_7lvdy")
+actor = NodePath("../..")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("10_ltghk")
+actor = NodePath("../..")
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("12_xl2cv")
+actor = NodePath("../..")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("11_o6bh4")
+actor = NodePath("../..")
+
+[node name="EnemyHealthComp" parent="." instance=ExtResource("11_qkhtx")]
+
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("13_o74ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(-28, 3)
+shape = SubResource("CircleShape2D_daf50")
+debug_color = Color(0, 0.649211, 0.152944, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("15_pd5g7")
+
+[node name="HurtCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox"]
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnkfx")
+debug_color = Color(0.989338, 0, 0.291627, 0.42)
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("15_f5cni")
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]

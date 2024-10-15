@@ -4,11 +4,11 @@ extends State
 # references and variables
 @export var actor : EnemyWolf
 @export var move_speed : float = 10.0
-var player : Hercules
+var player : PlayerHercules
 var is_signal_connected : bool = false
 var direction
 # state machine ref
-@onready var state_machine : StateMachine = get_parent()
+#@onready var state_machine : StateMachine = get_parent()
 
 var move_direction : Vector2
 var wander_time : float
