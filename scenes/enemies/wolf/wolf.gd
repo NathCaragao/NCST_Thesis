@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var hurt_box_shape: CollisionShape2D = $EnemyHealthComp/Hurtbox/HurtBoxShape
 @onready var enemy_health_comp: EnemyHealthComp = $EnemyHealthComp
+@onready var hurt_box_shape: CollisionShape2D = $EnemyHealthComp/Hurtbox/CollisionShape2D
 
 signal QuestQuota
 

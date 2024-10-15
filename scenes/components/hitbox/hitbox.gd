@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _init() -> void:
 	collision_layer = 2 # set to hitbox layer
-	collision_mask = 0
+	collision_mask = 1

@@ -10,7 +10,7 @@ extends State
 func enter() -> void:
 	print("Enemy Entered Death State")
 	# plays the death animation
-	actor.animation_player.play("wolf-death")
+	actor.animation_player.play("wolf-dead")
 	
 	
 	# disable all phyics interactions

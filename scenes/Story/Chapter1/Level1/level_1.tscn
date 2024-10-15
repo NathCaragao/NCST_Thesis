@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=67 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="2_5kjul"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="6_1s0eo"]
 [ext_resource type="PackedScene" uid="uid://br88hqc63tygc" path="res://scenes/mechanisms/spinning-platform/sppining_platform.tscn" id="7_uhwtd"]
 [ext_resource type="Script" path="res://scenes/mechanisms/trap-platform/TrapPlatform.gd" id="8_rovq1"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_touq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eeq15"]
 texture = ExtResource("1_64lh2")
@@ -975,6 +976,9 @@ collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
+
+[node name="Wolf" parent="." instance=ExtResource("9_touq4")]
+position = Vector2(122, -114)
 
 [node name="LargeCrate2" parent="." instance=ExtResource("3_3p7nc")]
 position = Vector2(1429, 1045)

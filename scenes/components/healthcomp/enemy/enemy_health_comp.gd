@@ -4,8 +4,8 @@ extends Node2D
 # reference and variables
 @export var max_health : int = 100
 var current_health : int
-@onready var enemy_hp_bar: EnemyHealthBar = $EnemyHpBar
-@onready var effects_anim: AnimationPlayer = $"../EffectsAnim"
+@onready var enemy_hp_bar: EnemyHealthBar = $EnemyHPbar
+@onready var anim_effects: AnimationPlayer = $"../AnimEffects"
 @onready var dmg_num_pos: Node2D = $"../DmgNumPos"
 
 var is_dead : bool = false
@@ -21,7 +21,7 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	emit_signal("Hit")
-	effects_anim.play("hit-flash")
+	anim_effects.play("hit-flash")
 	#DamageNumbers.display_number(amount, dmg_num_pos.global_position)
 	
 	clamp_health()
