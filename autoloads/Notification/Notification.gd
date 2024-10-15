@@ -3,16 +3,16 @@ extends CanvasLayer
 var isShowing : bool = false
 
 func _ready():
-	$".".hide()
+	%PanelContainer.hide()
 
 func showMessage(message: String, timeToShow: float) -> void :
 	if not isShowing:
 		isShowing = true
 		%Message.text = message
-		$".".show()
+		%PanelContainer.show()
 		await get_tree().create_timer(timeToShow).timeout
 		%Message.text = ""
-		$".".hide()
+		%PanelContainer.hide()
 		isShowing = false
 	elif isShowing:
 		%Message.text = message

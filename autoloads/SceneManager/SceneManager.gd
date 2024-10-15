@@ -2,21 +2,13 @@ extends Node
 
 
 func _ready():
-	changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
-	hideLoadingScreen()
-	hideLoadingModal()
+	changeScene("res://scenes/ui-scenes/login-screen-v2/login_screen.tscn")
 
 func showLoadingScreen():
 	%LoadingScreen.show()
 
 func hideLoadingScreen():
 	%LoadingScreen.hide()
-
-func showLoadingModal():
-	%LoadingModal.show()
-	
-func hideLoadingModal():
-	%LoadingModal.hide()
 
 func changeScene(pathOfsceneToDisplay : String):
 	# Load the scene to display first before iniating loading of resource, hide with loading screen

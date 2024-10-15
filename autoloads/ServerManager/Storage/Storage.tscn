@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://desks74x0iil5"]
+
+[ext_resource type="Script" path="res://autoloads/ServerManager/Storage/Storage.gd" id="1_gm4oi"]
+
+[node name="Storage" type="Node"]
+script = ExtResource("1_gm4oi")

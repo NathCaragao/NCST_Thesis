@@ -1,15 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b25xaiokehkja"]
+[gd_scene load_steps=4 format=3 uid="uid://b25xaiokehkja"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/login-screen-v2/Login_v2.gd" id="1_85fsi"]
-[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1wd8p"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_vpic2"]
-[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_50j5j"]
-[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/fonts/PixelFJVerdana12pt.ttf" id="4_31jic"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wt87q"]
-shader = ExtResource("2_1wd8p")
-shader_parameter/scroll_speed = 0.03
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="1_q7s8n"]
+[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/Fonts/Metropolis-Regular.otf" id="2_n6qj4"]
 
 [node name="LoginScreen" type="Control"]
 layout_mode = 3
@@ -28,26 +21,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.118581, 0.118581, 0.118581, 1)
-
-[node name="BgPattern" type="TextureRect" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_wt87q")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_50j5j")
-
-[node name="Filter" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.47451)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -71,28 +44,28 @@ offset_top = 34.0
 offset_right = 21.0
 offset_bottom = 57.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_vpic2")
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("1_q7s8n")
+theme_override_font_sizes/font_size = 101
 text = "LOGIN"
 horizontal_alignment = 1
 
 [node name="UserLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 262.0
+offset_left = 296.0
 offset_top = 392.0
-offset_right = 645.0
-offset_bottom = 472.0
-theme_override_fonts/font = ExtResource("2_vpic2")
+offset_right = 679.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 66
 text = "EMAIL"
 
 [node name="PassLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 258.0
+offset_left = 296.0
 offset_top = 504.0
-offset_right = 695.0
-offset_bottom = 584.0
-theme_override_fonts/font = ExtResource("2_vpic2")
+offset_right = 696.0
+offset_bottom = 571.0
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 66
 text = "PASSWORD"
 
@@ -134,7 +107,7 @@ offset_right = 99.5
 offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 56
 text = "CLOSE"
 
@@ -152,7 +125,7 @@ offset_right = 616.0
 offset_bottom = -406.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 56
 text = "LOGIN"
 
@@ -170,7 +143,7 @@ offset_right = 121.0
 offset_bottom = -249.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_fonts/font = ExtResource("1_q7s8n")
 theme_override_font_sizes/font_size = 56
 text = "SIGN UP"
 
@@ -187,8 +160,8 @@ offset_right = 174.5
 offset_bottom = -329.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_31jic")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_n6qj4")
+theme_override_font_sizes/font_size = 31
 text = "Don't have an account?"
 
 [connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]
