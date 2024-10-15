@@ -1170,14 +1170,6 @@ collision_mask = 2
 position = Vector2(68.5, -62.5)
 shape = SubResource("RectangleShape2D_xy3c7")
 
-[node name="Firehazard" parent="." instance=ExtResource("5_2v5hh")]
-position = Vector2(2347, 544)
-rotation = 4.54833
-
-[node name="Firehazard2" parent="." instance=ExtResource("5_2v5hh")]
-position = Vector2(2542, 546)
-rotation = -1.09956
-
 [node name="Moving Platform" parent="." instance=ExtResource("6_1s0eo")]
 position = Vector2(1931, 886)
 
@@ -1197,6 +1189,14 @@ libraries = {
 autoplay = "vh"
 
 [node name="FireHazardCollection" type="Node2D" parent="."]
+
+[node name="Firehazard" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
+position = Vector2(2347, 544)
+rotation = -1.73486
+
+[node name="Firehazard2" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
+position = Vector2(2542, 546)
+rotation = -1.09956
 
 [node name="Firehazard3" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1840, 905)

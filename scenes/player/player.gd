@@ -21,12 +21,12 @@ func _physics_process(delta: float) -> void:
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
-		# hitbox here
-		# skill hitbox here
+		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
+		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
 	if velocity.x < 0:
 		sprite.flip_h = true
-		# hitbox here
-		# skill hitbox here
+		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
+		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
 
 # function for pushing objects such as boxes
 func push_objects() -> void:
