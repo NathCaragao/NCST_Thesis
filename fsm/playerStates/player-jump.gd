@@ -4,9 +4,15 @@ extends State
 @export var actor : PlayerHercules
 @export var jump_force : float = -500.0  # Negative for upwards
 @export var jump_force2 : float = -350.0 # for double jump
+#@onready var player_health_comp: PlayerHpComp = $"../../PlayerHealthComp"
 
 # double jump count variable
 var jump_count : int = 0
+
+
+func _ready() -> void:
+	#player_health_comp.connect("PlayerDead", Callable(self, "on_player_dead3"))
+	pass
 
 func enter() -> void:
 	print("Entered Jump State")
@@ -48,6 +54,9 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerrun")
 		else:
 			Transitioned.emit(self, "playeridle")
+
+func on_player_dead3() -> void:
+	Transitioned.emit(self, "playerdeath")
 
 # resets the jump count to 0
 func exit() -> void:
