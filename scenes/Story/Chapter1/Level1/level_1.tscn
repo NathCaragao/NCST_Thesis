@@ -974,7 +974,7 @@ collision_layer = 2
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="LargeCrate2" parent="." instance=ExtResource("3_3p7nc")]
 position = Vector2(1429, 1045)
@@ -1196,32 +1196,34 @@ libraries = {
 }
 autoplay = "vh"
 
-[node name="Firehazard3" parent="." instance=ExtResource("5_2v5hh")]
+[node name="FireHazardCollection" type="Node2D" parent="."]
+
+[node name="Firehazard3" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1840, 905)
 
-[node name="Firehazard4" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard4" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1838, 734)
 rotation = -1.55127
 
-[node name="Firehazard5" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard5" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(154, 2390)
 
-[node name="Firehazard6" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard6" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(2057, 2062)
 
-[node name="Firehazard7" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard7" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1850, 2111)
 
-[node name="Firehazard8" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard8" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1593, 2174)
 
-[node name="Firehazard9" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard9" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1289, 2238)
 
-[node name="Firehazard10" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard10" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1113, 2270)
 
-[node name="Firehazard11" parent="." instance=ExtResource("5_2v5hh")]
+[node name="Firehazard11" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(950, 2299)
 
 [node name="Moving Platform3" parent="." instance=ExtResource("6_1s0eo")]
