@@ -6,7 +6,7 @@ extends State
 
 # variables
 var attack_index : int = 0
-var attack_animations : Array = ["attack2", "attack1"]
+var attack_animations : Array = ["attack1", "attack2"]
 
 func enter() -> void:
 	print("Entered attack state")
@@ -38,8 +38,8 @@ func process_input(event: InputEvent) -> void:
 
 func play_next_attack_animation():
 	# Cycle between attack animations
-	attack_index = (attack_index + 1) % attack_animations.size()
 	actor.animation_player.play(attack_animations[attack_index])
+	attack_index = (attack_index + 1) % attack_animations.size()
 
 # Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
