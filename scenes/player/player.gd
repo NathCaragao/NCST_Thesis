@@ -4,18 +4,17 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var state_machine: Node = $StateMachine
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var move_speed : float = 400
 
-func _ready() -> void:
-	# Initialize the state machine, passing a reference of the player to the states,
-	# that way they can move and react accordingly
-	state_machine.init(self)
 
-func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
-
-func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
-
-func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+# flip sprite
+func flip_sprite() -> void:
+	if velocity.x > 0:
+		sprite.flip_h = false
+		# hitbox here
+		# skill hitbox here
+	if velocity.x < 0:
+		sprite.flip_h = true
+		# hitbox here
+		# skill hitbox here

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://br88hqc63tygc"]
 
-[ext_resource type="Texture2D" uid="uid://brrp88unagwru" path="res://assets/Objects/spinner2.png" id="1_442i6"]
+[ext_resource type="Texture2D" uid="uid://dydywrkx7mi2f" path="res://assets/in-game-objects/spinner2.png" id="1_442i6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wueol"]
 size = Vector2(26.282, 6)
