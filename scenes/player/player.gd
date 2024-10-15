@@ -1,4 +1,4 @@
-class_name Player
+class_name PlayerHercules
 extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
