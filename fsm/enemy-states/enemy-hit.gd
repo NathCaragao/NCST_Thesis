@@ -48,6 +48,7 @@ func knock_back() -> void:
 	
 	is_knocked_back = true
 
+# gets activated when the enemy gets hit
 func freeze_time(timescale, duration) -> void:
 	Engine.time_scale = timescale
 	await(get_tree().create_timer(duration * timescale).timeout)

@@ -22,7 +22,7 @@ func take_damage(amount: int) -> void:
 	current_health -= amount
 	emit_signal("Hit")
 	anim_effects.play("hit-flash")
-	#DamageNumbers.display_number(amount, dmg_num_pos.global_position)
+	DamageNumbers.display_number(amount, dmg_num_pos.global_position)
 	
 	clamp_health()
 	enemy_hp_bar.health = current_health # updates the hp bar UI
