@@ -968,7 +968,8 @@ tile_map_data = PackedByteArray("AAAAAPr/AAAEAAIAAAABAPr/AAACAAIAAAACAPr/AAADAAI
 tile_set = SubResource("TileSet_pif7w")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(4147, 2579)
+position = Vector2(-85, -132)
+scale = Vector2(1.3, 1.3)
 collision_layer = 2
 collision_mask = 35
 
