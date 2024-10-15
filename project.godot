@@ -24,6 +24,7 @@ Notification="*res://autoloads/Notification/Notification.tscn"
 SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DamageNumbers="*res://autoloads/DamageNumbers/damageNumbers.gd"
+GameUi="*res://quest-system/GameUI/GameUi.tscn"
 
 [display]
 
@@ -49,6 +50,7 @@ folder_colors={
 "res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
+"res://quest-system/": "orange",
 "res://scenes/": "teal",
 "res://shaders/": "yellow"
 }
