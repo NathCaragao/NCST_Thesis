@@ -1,12 +1,18 @@
 extends Control
 
-@onready var userInfo = await ServerManager.getUserLoggedInInfo()
-@onready var joinedMatchId = null
+enum MatchState {
+	NO_MATCH = 1,
+	LOBBY_MATCH,
+	ONGOING_MATCH
+}
+
+@onready var joinedMatchId:String = ""
+var currentMatchState: MatchState
 
 @onready var timer: float = 0.0
 
 func _ready() -> void:
-	%RoomLobbyGUI.hide()
+	currentMatchState = MatchState.NO_MATCH
 
 func _process(delta: float) -> void:
 	timer += delta
@@ -36,3 +42,6 @@ func _on_join_match_btn_pressed() -> void:
 func _on_leave_match_btn_pressed() -> void:
 	await ServerManager.leaveMatch(joinedMatchId)
 	joinedMatchId = null
+
+
+#-------------------------------- FSM TEST ---------------------------

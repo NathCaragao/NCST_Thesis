@@ -20,10 +20,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgpl0")
 
-[node name="NoRoomGUI" type="CanvasLayer" parent="."]
+[node name="NoMatchGUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
-[node name="ColorRect" type="ColorRect" parent="NoRoomGUI"]
+[node name="ColorRect" type="ColorRect" parent="NoMatchGUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,7 +33,7 @@ grow_vertical = 2
 scale = Vector2(1.00147, 1.00671)
 color = Color(0.158472, 0.158472, 0.158472, 1)
 
-[node name="CreateMatchBtn" type="Button" parent="NoRoomGUI"]
+[node name="CreateMatchBtn" type="Button" parent="NoMatchGUI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 offset_left = 579.0
@@ -46,7 +47,7 @@ theme_override_font_sizes/font_size = 66
 theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "CREATE MATCH"
 
-[node name="JoinMatchBtn" type="Button" parent="NoRoomGUI"]
+[node name="JoinMatchBtn" type="Button" parent="NoMatchGUI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 offset_left = 585.0
@@ -58,7 +59,7 @@ theme_override_font_sizes/font_size = 66
 theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "JOIN MATCH"
 
-[node name="MatchIdField" type="LineEdit" parent="NoRoomGUI"]
+[node name="MatchIdField" type="LineEdit" parent="NoMatchGUI"]
 unique_name_in_owner = true
 offset_left = 378.0
 offset_top = 589.0
@@ -69,11 +70,10 @@ placeholder_text = "Match ID"
 alignment = 1
 clear_button_enabled = true
 
-[node name="RoomLobbyGUI" type="CanvasLayer" parent="."]
+[node name="LobbyMatchGUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
-[node name="ColorRect" type="ColorRect" parent="RoomLobbyGUI"]
+[node name="ColorRect" type="ColorRect" parent="LobbyMatchGUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -82,7 +82,7 @@ grow_vertical = 2
 scale = Vector2(1.00147, 1.00671)
 color = Color(0.158472, 0.158472, 0.158472, 1)
 
-[node name="JoinedMatchID" type="LineEdit" parent="RoomLobbyGUI"]
+[node name="JoinedMatchID" type="LineEdit" parent="LobbyMatchGUI"]
 unique_name_in_owner = true
 offset_left = 434.0
 offset_top = 61.0
@@ -94,7 +94,7 @@ alignment = 1
 editable = false
 clear_button_enabled = true
 
-[node name="LeaveMatchBtn" type="Button" parent="RoomLobbyGUI"]
+[node name="LeaveMatchBtn" type="Button" parent="LobbyMatchGUI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 100)
 offset_left = 588.0
@@ -108,6 +108,64 @@ theme_override_font_sizes/font_size = 66
 theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "LEAVE MATCH"
 
-[connection signal="pressed" from="NoRoomGUI/CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
-[connection signal="pressed" from="NoRoomGUI/JoinMatchBtn" to="." method="_on_join_match_btn_pressed"]
-[connection signal="pressed" from="RoomLobbyGUI/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyMatchGUI"]
+offset_top = 192.0
+offset_right = 1920.0
+offset_bottom = 832.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Client" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "weffweffwweffewffwefwefefewfewfewffwef"
+visible_characters = 25
+visible_ratio = 0.657895
+
+[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "READY"
+
+[node name="Client2" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "weffweffwweffewffwefwefefewfewfewffwef"
+visible_characters = 25
+visible_ratio = 0.657895
+
+[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "READY"
+
+[node name="Client3" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "weffweffwweffewffwefwefefewfewfewffwef"
+visible_characters = 25
+visible_ratio = 0.657895
+
+[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "READY"
+
+[connection signal="pressed" from="NoMatchGUI/CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
+[connection signal="pressed" from="NoMatchGUI/JoinMatchBtn" to="." method="_on_join_match_btn_pressed"]
+[connection signal="pressed" from="LobbyMatchGUI/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]
