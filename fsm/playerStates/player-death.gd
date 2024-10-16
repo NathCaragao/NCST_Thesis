@@ -2,15 +2,14 @@ class_name PlayerDeath
 extends State
 
 # references
-@export var actor : Hercules
-@onready var player_health_comp: PlayerHpComp = $"../../PlayerHealthComp"
-
+@export var actor : PlayerHercules
 
 func enter() -> void:
 	print("PLAYER DIED")
-	actor.animation_player.play("player-death")
+	actor.animation_player.play("player-dead")
 	
 	# disable all phyics interactions
+	$"../../PlayerHealthComponent/Hurtbox/CollisionShape2D".disabled = true
 	
 	# disable other processes
 	actor.set_physics_process(false)

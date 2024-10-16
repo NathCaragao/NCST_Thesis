@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=34 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
+[ext_resource type="Texture2D" uid="uid://btqtrawp7r63n" path="res://assets/character/sprites/Player Death 64x64 Hercules.png" id="2_cp87k"]
 [ext_resource type="Texture2D" uid="uid://c8kriisj42381" path="res://assets/character/sprites/Skill-01.png" id="2_i45tp"]
 [ext_resource type="Texture2D" uid="uid://bhgn2mwgapyqp" path="res://assets/character/sprites/player jump 48x48.png" id="2_kjdrp"]
 [ext_resource type="Texture2D" uid="uid://dfageqlpnvvmc" path="res://assets/character/sprites/Player Sword Stab2 96x48-Sheet.png" id="2_l7iic"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://fsm/playerStates/player-attack.gd" id="12_btdkg"]
 [ext_resource type="Script" path="res://fsm/playerStates/player-skill.gd" id="13_6yucp"]
 [ext_resource type="PackedScene" uid="uid://r2t80cgmn41l" path="res://scenes/components/healthcomp/players/player_health_component.tscn" id="14_3d4tk"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-death.gd" id="14_oykdt"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="15_aah5w"]
 [ext_resource type="Script" path="res://scenes/components/skill-hitbox/skill_hit_box.gd" id="17_fp6gu"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="18_6e8ig"]
@@ -498,13 +500,83 @@ tracks/4/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_datht"]
+resource_name = "player-dead"
+length = 1.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cp87k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_tuqup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o4wys"]
 _data = {
+"RESET": SubResource("Animation_tuqup"),
 "attack1": SubResource("Animation_u3yia"),
 "attack2": SubResource("Animation_ahw0x"),
 "fall": SubResource("Animation_vb57h"),
 "idle": SubResource("Animation_u8yvb"),
 "jump": SubResource("Animation_x14vh"),
+"player-dead": SubResource("Animation_datht"),
 "run": SubResource("Animation_rdr15"),
 "skill01": SubResource("Animation_4dhf8")
 }
@@ -526,7 +598,7 @@ size = Vector2(32.5, 14.5)
 script = ExtResource("1_mahge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rbi7i")
+texture = ExtResource("2_cp87k")
 hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -561,6 +633,10 @@ actor = NodePath("../..")
 
 [node name="PlayerSkill" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("13_6yucp")
+actor = NodePath("../..")
+
+[node name="PlayerDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("14_oykdt")
 actor = NodePath("../..")
 
 [node name="PlayerHealthComponent" parent="." instance=ExtResource("14_3d4tk")]

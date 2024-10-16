@@ -3,6 +3,8 @@ extends State
 
 # references & variables
 @export var actor : PlayerHercules
+@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+
 
 func enter() -> void:
 	print("Entered Run State")
@@ -33,6 +35,8 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		Transitioned.emit(self, "playerattack")
 	
+	if player_health_component.current_health == 0:
+		Transitioned.emit(self, "playerdeath")
 	# flip sprite
 	actor.flip_sprite()
 	

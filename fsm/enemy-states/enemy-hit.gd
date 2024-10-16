@@ -5,7 +5,6 @@ extends State
 @export var actor : EnemyWolf
 @export var enemy_health : EnemyHealthComp
 @export var attack : AttackComponent
-#@export var dmg_num : Label
 @onready var player : PlayerHercules = get_tree().get_first_node_in_group("Player")
 
 

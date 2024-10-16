@@ -3,6 +3,7 @@ extends State
 
 # references
 @export var actor : PlayerHercules
+@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 # variables
 var attack_index : int = 0
@@ -34,6 +35,9 @@ func process_input(event: InputEvent) -> void:
 		# transitions to jump state
 		if Input.is_action_just_pressed("jump"):
 			Transitioned.emit(self, "playerjump")
+		
+		if player_health_component.current_health == 0:
+			Transitioned.emit(self, "playerdeath")
 
 
 func play_next_attack_animation():

@@ -3,6 +3,7 @@ extends State
 
 # references
 @export var actor : PlayerHercules
+@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 func enter() -> void:
 	actor.velocity = Vector2.ZERO
@@ -22,5 +23,7 @@ func physics_update(delta: float) -> void:
 		if Input.is_action_just_pressed("attack"):
 			Transitioned.emit(self, "playerattack")
 		
+		if player_health_component.current_health == 0:
+			Transitioned.emit(self, "playerdeath")
 		else:
 			Transitioned.emit(self, "playeridle")

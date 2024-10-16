@@ -376,9 +376,8 @@ script = ExtResource("1_07ycu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xlobw")
-texture = ExtResource("1_r7fc1")
+texture = ExtResource("1_phc7c")
 hframes = 4
-vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -436,6 +435,7 @@ script = ExtResource("13_o74ag")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(-28, 3)
 shape = SubResource("CircleShape2D_daf50")
+disabled = true
 debug_color = Color(0, 0.649211, 0.152944, 0.42)
 
 [node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("12_qo4xb")]
