@@ -764,8 +764,8 @@ debug_color = Color(0, 0.617883, 0.582327, 0.42)
 script = ExtResource("18_6e8ig")
 
 [node name="ArrowPos" type="Node2D" parent="."]
-position = Vector2(17, 0)
 
 [node name="ArrowSpawn" type="Marker2D" parent="ArrowPos"]
+position = Vector2(19, 0)
 
 [editable path="PlayerHealthComponent"]
