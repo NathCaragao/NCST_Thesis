@@ -33,3 +33,8 @@ func _on_switch_acc_pressed() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	get_tree().quit()
+
+
+# this button leads to level 1 prototype scene for testing purposes
+func _on_button_pressed() -> void:
+	SceneManager.changeScene("res://scenes/Story/Chapter1/Level1/level_1.tscn")
