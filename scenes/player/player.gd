@@ -10,10 +10,14 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var push = 40
 @export var SPEED: float = 200.0
 
+# variables for switching weapon class
+var weapon_mode : String = "Melee" # default weapon mode
+var direction
 
 func _physics_process(delta: float) -> void:
 	push_objects()
-
+	
+	direction = Input.get_axis("move_left", "move_right")
 
 
 
