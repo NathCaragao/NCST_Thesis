@@ -229,6 +229,15 @@ theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 40
 text = "Close"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 913.0
+offset_right = 355.0
+offset_bottom = 971.0
+theme_override_font_sizes/font_size = 36
+text = "Level 1 Start"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]
@@ -236,3 +245,4 @@ text = "Close"
 [connection signal="visibility_changed" from="UserInfo" to="UserInfo" method="_on_visibility_changed"]
 [connection signal="pressed" from="UserInfo/LogoutBtn" to="UserInfo" method="_on_logout_btn_pressed"]
 [connection signal="pressed" from="UserInfo/CloseUserInfoBtn" to="UserInfo" method="_on_close_user_info_btn_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -18,3 +18,4 @@ func on_activate() -> void:
 	
 	if is_activated:
 		anim_platform.play("gate1")
+		print_debug()
