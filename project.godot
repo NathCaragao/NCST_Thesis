@@ -25,7 +25,7 @@ SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DamageNumbers="*res://autoloads/DamageNumbers/damageNumbers.gd"
 GameUi="*res://quest-system/GameUI/GameUi.tscn"
-InteractionManager="*res://scenes/components/interaction-system/InteractionManager.tscn"
+InteractionManager="*res://autoloads/interaction-system/InteractionManager.tscn"
 
 [display]
 
@@ -48,6 +48,7 @@ folder_colors={
 "res://assets/": "blue",
 "res://autoload/": "yellow",
 "res://autoloads/": "red",
+"res://autoloads/interaction-system/": "red",
 "res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",

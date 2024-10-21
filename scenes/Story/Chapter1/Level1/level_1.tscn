@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://br88hqc63tygc" path="res://scenes/mechanisms/spinning-platform/sppining_platform.tscn" id="7_uhwtd"]
 [ext_resource type="Script" path="res://scenes/mechanisms/trap-platform/TrapPlatform.gd" id="8_rovq1"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_touq4"]
-[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://scenes/components/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
+[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eeq15"]
 texture = ExtResource("1_64lh2")
