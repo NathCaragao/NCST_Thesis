@@ -8,3 +8,6 @@ func _ready() -> void:
 
 func on_interact() -> void:
 	print("SEEEEEEEEEGGGGGGGGGSSSSSSSSSSSS")
+
+func _physics_process(delta: float) -> void:
+	pass

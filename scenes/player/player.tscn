@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=36 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
+[ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
 [ext_resource type="Texture2D" uid="uid://btqtrawp7r63n" path="res://assets/character/sprites/Player Death 64x64 Hercules.png" id="2_cp87k"]
 [ext_resource type="Texture2D" uid="uid://c8kriisj42381" path="res://assets/character/sprites/Skill-01.png" id="2_i45tp"]
@@ -33,6 +34,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_2ril3")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_u3yia"]
@@ -568,6 +605,58 @@ tracks/4/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_1y3yn"]
+resource_name = "player-shoot"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_2ril3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o4wys"]
 _data = {
 "RESET": SubResource("Animation_tuqup"),
@@ -577,6 +666,7 @@ _data = {
 "idle": SubResource("Animation_u8yvb"),
 "jump": SubResource("Animation_x14vh"),
 "player-dead": SubResource("Animation_datht"),
+"player-shoot": SubResource("Animation_1y3yn"),
 "run": SubResource("Animation_rdr15"),
 "skill01": SubResource("Animation_4dhf8")
 }
@@ -599,7 +689,7 @@ collision_layer = 8
 script = ExtResource("1_mahge")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cp87k")
+texture = ExtResource("2_2ril3")
 hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -674,8 +764,8 @@ debug_color = Color(0, 0.617883, 0.582327, 0.42)
 script = ExtResource("18_6e8ig")
 
 [node name="ArrowPos" type="Node2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(17, 0)
 
-[node name="Marker2D" type="Marker2D" parent="ArrowPos"]
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowPos"]
 
 [editable path="PlayerHealthComponent"]

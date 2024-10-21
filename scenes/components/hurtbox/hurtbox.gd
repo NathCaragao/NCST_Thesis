@@ -10,6 +10,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	connect("area_entered", Callable(self, "on_atk_entered"))
+	connect("area_entered", Callable(self, "on_skill_entered"))
+	connect("area_entered", Callable(self, "on_arrow_hit"))
 
 # BASIC ATK hitbox
 func on_atk_entered(area: Area2D) -> void:
@@ -24,12 +26,22 @@ func on_atk_entered(area: Area2D) -> void:
 	elif area == null:
 		return
 
+func on_skill_entered(skill_hitbox : Area2D) -> void:
+	if skill_hitbox == null:
+		return
+	
+	# to differentiate types of attacks
+	if skill_hitbox is SkillHitbox:
+		if owner.has_method("take_damage"):
+			owner.take_damage(skill_hitbox.skill_dmg)
 
-#func on_skill_entered(skill_hitbox : Area2D) -> void:
-	#if skill_hitbox == null:
-		#return
-	#
-	## to differentiate types of attacks
-	#if skill_hitbox is SkillHitbox:
-		#if owner.has_method("take_damage"):
-			#owner.take_damage(skill_hitbox.skill_dmg)
+func on_arrow_hit(projectile: Area2D) -> void:
+	if projectile == null:
+		return
+	
+	
+	if projectile is ProjectileHitbox:
+		if owner.has_method("take_damage"):
+			if projectile.already_hit == false:
+				owner.take_damage(projectile.projectile_dmg)
+				projectile.on_collide()

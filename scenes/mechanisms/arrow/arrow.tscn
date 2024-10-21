@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://e6b21lb6rwoj"]
+[gd_scene load_steps=6 format=3 uid="uid://e6b21lb6rwoj"]
 
 [ext_resource type="Script" path="res://scenes/mechanisms/arrow/arrow.gd" id="1_gqph8"]
 [ext_resource type="Texture2D" uid="uid://cna6jr47sw601" path="res://icon.svg" id="1_old8y"]
@@ -8,28 +8,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk1in"]
 radius = 1.0
 height = 36.0
-
-[sub_resource type="Animation" id="Animation_t3d2e"]
-resource_name = "projectile-disabled"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProjectileHitbox/ArrowCol:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lnyov"]
-_data = {
-"projectile-disabled": SubResource("Animation_t3d2e")
-}
 
 [node name="Arrow" type="Node2D" groups=["Projectiles"]]
 script = ExtResource("1_gqph8")
@@ -54,10 +32,5 @@ scale = Vector2(0.166667, 0.2)
 
 [node name="AttackComponent" type="Node2D" parent="."]
 script = ExtResource("3_k8kwe")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_lnyov")
-}
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
