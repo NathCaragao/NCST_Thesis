@@ -179,8 +179,6 @@ func addUserInDB() -> int:
 	#)
 
 
-#-------------------------------------------------
-
 
 #-------------------------------------------------------------------------------
 # MULTIPLAYER RELATED
@@ -194,7 +192,7 @@ func createMatch(matchName:String = "") -> String:
 	return JSON.parse_string(result.payload)["matchId"]
 	
 
-func joinMatch(matchId:String) -> void:
+func joinMatch(matchId:String) -> int:
 	if nakamaSocket == null:
 		await createSocketAsync()
 	
@@ -205,17 +203,25 @@ func joinMatch(matchId:String) -> void:
 	if match_join_result.is_exception():
 		var exception: NakamaException = match_join_result.get_exception()
 		printerr("Error joining match: %s - %s" % [exception.status_code, exception.message])
-		return
+		return FAILED
 		
 	# Successfully joined a match - JoinMatch in the server side triggered
 	print_debug("Match join result: %s", match_join_result)
+	return OK
 	
-func leaveMatch(matchId:String) -> void:
+func leaveMatch(matchId:String) -> int:
 	var leaveResult : NakamaAsyncResult = await nakamaSocket.leave_match_async(matchId)
 	if leaveResult.is_exception():
 		print_debug("An error occurred: %s" % leaveResult)
-		return
+		return FAILED
 	print_debug("Match left")
+	return OK
+
+func sendMatchState(matchId:String, message:Dictionary) -> void:
+	await nakamaSocket.send_match_state_async(matchId, 1, JSON.stringify(message))
+
+signal matchStateReceived(matchState: NakamaRTAPI.MatchData)
 
 func _on_match_state_received(p_state : NakamaRTAPI.MatchData):
-	print_debug("Received match state with opcode %s, data %s" % [p_state.op_code, p_state.data])
+	#print_debug("Received match state with opcode %s, data %s" % [p_state.op_code, p_state.data])
+	matchStateReceived.emit(p_state)

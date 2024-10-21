@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3jwatioelitb"]
 
-[ext_resource type="Script" path="res://scenes/multiplayerLobby/multiplayer_lobby.gd" id="1_mgpl0"]
+[ext_resource type="Script" path="res://scenes/multiplayerLevelManager/multiplayer_lobby.gd" id="1_mgpl0"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_3hdf4"]
 [ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="3_2gt8f"]
 
@@ -11,7 +11,7 @@ expand_margin_top = 20.0
 expand_margin_right = 20.0
 expand_margin_bottom = 20.0
 
-[node name="MultiplayerLobby" type="Control"]
+[node name="MultiplayerLevelManager" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,6 @@ script = ExtResource("1_mgpl0")
 
 [node name="NoMatchGUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="NoMatchGUI"]
 anchors_preset = 15
@@ -72,6 +71,7 @@ clear_button_enabled = true
 
 [node name="LobbyMatchGUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="LobbyMatchGUI"]
 anchors_preset = 15
@@ -166,6 +166,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "READY"
 
-[connection signal="pressed" from="NoMatchGUI/CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
-[connection signal="pressed" from="NoMatchGUI/JoinMatchBtn" to="." method="_on_join_match_btn_pressed"]
+[node name="OngoingMatchGUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="pressed" from="NoMatchGUI/CreateMatchBtn" to="." method="_createMatchBtn_pressed"]
+[connection signal="pressed" from="NoMatchGUI/JoinMatchBtn" to="." method="_joinMatchBtn_pressed"]
+[connection signal="visibility_changed" from="LobbyMatchGUI" to="." method="_LobbyMatchVisibilityChange"]
 [connection signal="pressed" from="LobbyMatchGUI/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]

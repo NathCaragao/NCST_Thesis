@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 
 
 func _on_play_btn_pressed() -> void:
-	SceneManager.changeScene("res://scenes/multiplayerLobby/MultiplayerLobby.tscn")
+	SceneManager.changeScene("res://scenes/multiplayerLevelManager/MultiplayerLevelManager.tscn")

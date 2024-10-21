@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwi4vuu3nymfs"]
-
-[ext_resource type="Script" path="res://autoloads/ServerManager/Multiplayer/Multiplayer.gd" id="1_igohg"]
-
-[node name="Multiplayer" type="Node"]
-script = ExtResource("1_igohg")
