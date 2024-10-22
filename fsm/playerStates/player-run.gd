@@ -35,6 +35,9 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		Transitioned.emit(self, "playerattack")
 	
+	if Input.is_action_just_pressed("skill"):
+		Transitioned.emit(self, "playerskill")
+	
 	if player_health_component.current_health == 0:
 		Transitioned.emit(self, "playerdeath")
 	# flip sprite

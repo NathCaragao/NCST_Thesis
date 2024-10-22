@@ -46,6 +46,9 @@ func process_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("jump"):
 			Transitioned.emit(self, "playerjump")
 		
+		if Input.is_action_just_pressed("skill"):
+			Transitioned.emit(self, "playerskill")
+		
 		if player_health_component.current_health == 0:
 			Transitioned.emit(self, "playerdeath")
 

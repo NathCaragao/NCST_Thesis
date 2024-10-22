@@ -7,7 +7,8 @@ extends State
 
 func enter() -> void:
 	actor.velocity = Vector2.ZERO
-	actor.animation_player.play("skill01")
+	skill_activate()
+	print_debug()
 
 func physics_update(delta: float) -> void:
 	actor.velocity.y += actor.gravity * delta
@@ -27,3 +28,6 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerdeath")
 		else:
 			Transitioned.emit(self, "playeridle")
+
+func skill_activate() -> void:
+	actor.animation_player.play("skill01")
