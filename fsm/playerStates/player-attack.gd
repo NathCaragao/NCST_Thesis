@@ -13,8 +13,11 @@ var is_attacking : bool = false
 # projectie references
 @onready var arrow = load("res://scenes/mechanisms/arrow/arrow.tscn") as PackedScene
 var bow_cooldown : bool = true
-@onready var level_1 = get_tree().get_root().get_node("Level1")
+@onready var level_1 = get_tree().get_first_node_in_group("Levels")
 
+
+func _ready() -> void:
+	pass
 
 func enter() -> void:
 	if actor.weapon_mode == "Melee":

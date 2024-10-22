@@ -1,7 +1,7 @@
 class_name Puzzle
 extends Node2D
 
-@onready var interaction_area: InteractionArea = $InteractionArea as InteractionArea
+@onready var interaction_area: InteractionArea = $InteractionArea
 @onready var anim_platform: AnimationPlayer = $"../AnimPlatform" as AnimationPlayer
 
 var is_activated : bool = false

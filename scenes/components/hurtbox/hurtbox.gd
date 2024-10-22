@@ -15,16 +15,14 @@ func _ready() -> void:
 
 # BASIC ATK hitbox
 func on_atk_entered(area: Area2D) -> void:
+	if area == null:
+		return
+	
+	
 	# to differentiate types of attacks
 	if area is Hitbox:
 		if owner.has_method("take_damage"):
 			owner.take_damage(area.total_dmg)
-	
-	elif area is SkillHitbox:
-		if owner.has_method("take_damage"):
-			owner.take_damage(area.skill_dmg)
-	elif area == null:
-		return
 
 func on_skill_entered(skill_hitbox : Area2D) -> void:
 	if skill_hitbox == null:
