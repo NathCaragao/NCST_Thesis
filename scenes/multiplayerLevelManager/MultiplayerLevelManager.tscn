@@ -1,15 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3jwatioelitb"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/multiplayer_lobby.gd" id="1_mgpl0"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_3hdf4"]
-[ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="3_2gt8f"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x15lx"]
-texture = ExtResource("3_2gt8f")
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
+[ext_resource type="PackedScene" uid="uid://dl44gyue63bn5" path="res://scenes/multiplayerLevelManager/no_match_gui.tscn" id="2_chv8a"]
+[ext_resource type="PackedScene" uid="uid://c0gc1dt37hpes" path="res://scenes/multiplayerLevelManager/lobby_match_gui.tscn" id="3_r8hbf"]
+[ext_resource type="PackedScene" uid="uid://cdp5lo7hga3qh" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.tscn" id="4_pw7wl"]
 
 [node name="MultiplayerLevelManager" type="Control"]
 layout_mode = 3
@@ -20,157 +14,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgpl0")
 
-[node name="NoMatchGUI" type="CanvasLayer" parent="."]
+[node name="NoMatchGUI" parent="." instance=ExtResource("2_chv8a")]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="NoMatchGUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.00147, 1.00671)
-color = Color(0.158472, 0.158472, 0.158472, 1)
-
-[node name="CreateMatchBtn" type="Button" parent="NoMatchGUI"]
+[node name="LobbyMatchGUI" parent="." instance=ExtResource("3_r8hbf")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 100)
-offset_left = 579.0
-offset_top = 274.0
-offset_right = 1236.0
-offset_bottom = 374.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_3hdf4")
-theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
-text = "CREATE MATCH"
 
-[node name="JoinMatchBtn" type="Button" parent="NoMatchGUI"]
+[node name="OngoingMatchGUI" parent="." instance=ExtResource("4_pw7wl")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 100)
-offset_left = 585.0
-offset_top = 719.0
-offset_right = 1242.0
-offset_bottom = 819.0
-theme_override_fonts/font = ExtResource("2_3hdf4")
-theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
-text = "JOIN MATCH"
-
-[node name="MatchIdField" type="LineEdit" parent="NoMatchGUI"]
-unique_name_in_owner = true
-offset_left = 378.0
-offset_top = 589.0
-offset_right = 1408.0
-offset_bottom = 697.0
-theme_override_font_sizes/font_size = 30
-placeholder_text = "Match ID"
-alignment = 1
-clear_button_enabled = true
-
-[node name="LobbyMatchGUI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="LobbyMatchGUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.00147, 1.00671)
-color = Color(0.158472, 0.158472, 0.158472, 1)
-
-[node name="JoinedMatchID" type="LineEdit" parent="LobbyMatchGUI"]
-unique_name_in_owner = true
-offset_left = 434.0
-offset_top = 61.0
-offset_right = 1464.0
-offset_bottom = 169.0
-theme_override_font_sizes/font_size = 30
-placeholder_text = "Joined Match ID"
-alignment = 1
-editable = false
-clear_button_enabled = true
-
-[node name="LeaveMatchBtn" type="Button" parent="LobbyMatchGUI"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 100)
-offset_left = 588.0
-offset_top = 854.0
-offset_right = 1245.0
-offset_bottom = 954.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_3hdf4")
-theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
-text = "LEAVE MATCH"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LobbyMatchGUI"]
-offset_top = 192.0
-offset_right = 1920.0
-offset_bottom = 832.0
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Client" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "weffweffwweffewffwefwefefewfewfewffwef"
-visible_characters = 25
-visible_ratio = 0.657895
-
-[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "READY"
-
-[node name="Client2" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "weffweffwweffewffwefwefefewfewfewffwef"
-visible_characters = 25
-visible_ratio = 0.657895
-
-[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "READY"
-
-[node name="Client3" type="HBoxContainer" parent="LobbyMatchGUI/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="Label" type="Label" parent="LobbyMatchGUI/VBoxContainer/Client3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "weffweffwweffewffwefwefefewfewfewffwef"
-visible_characters = 25
-visible_ratio = 0.657895
-
-[node name="Button" type="Button" parent="LobbyMatchGUI/VBoxContainer/Client3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "READY"
-
-[node name="OngoingMatchGUI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[connection signal="pressed" from="NoMatchGUI/CreateMatchBtn" to="." method="_createMatchBtn_pressed"]
-[connection signal="pressed" from="NoMatchGUI/JoinMatchBtn" to="." method="_joinMatchBtn_pressed"]
-[connection signal="visibility_changed" from="LobbyMatchGUI" to="." method="_LobbyMatchVisibilityChange"]
-[connection signal="pressed" from="LobbyMatchGUI/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]

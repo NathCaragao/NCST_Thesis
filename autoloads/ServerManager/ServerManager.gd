@@ -183,6 +183,12 @@ func addUserInDB() -> int:
 #-------------------------------------------------------------------------------
 # MULTIPLAYER RELATED
 #-------------------------------------------------------------------------------
+enum MessageOpCode {
+	LOBBY_READY_UPDATE = 1,
+}
+
+signal matchStateReceived(matchState: NakamaRTAPI.MatchData)
+
 func createMatch(matchName:String = "") -> String:
 	if nakamaSocket == null:
 		await createSocketAsync()
@@ -217,10 +223,9 @@ func leaveMatch(matchId:String) -> int:
 	print_debug("Match left")
 	return OK
 
-func sendMatchState(matchId:String, message:Dictionary) -> void:
-	await nakamaSocket.send_match_state_async(matchId, 1, JSON.stringify(message))
+func sendMatchState(matchId:String, messageOpCode:MessageOpCode, message:Dictionary) -> void:
+	await nakamaSocket.send_match_state_async(matchId, messageOpCode, JSON.stringify(message))
 
-signal matchStateReceived(matchState: NakamaRTAPI.MatchData)
 
 func _on_match_state_received(p_state : NakamaRTAPI.MatchData):
 	#print_debug("Received match state with opcode %s, data %s" % [p_state.op_code, p_state.data])

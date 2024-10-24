@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cdp5lo7hga3qh"]
+
+[node name="OngoingMatchGUI" type="CanvasLayer"]
+visible = false

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl44gyue63bn5"]
+
+[ext_resource type="Script" path="res://scenes/multiplayerLevelManager/no_match_gui.gd" id="1_cnsvk"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_y6t16"]
+[ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="3_unlgt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x15lx"]
+texture = ExtResource("3_unlgt")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[node name="NoMatchGUI" type="CanvasLayer"]
+script = ExtResource("1_cnsvk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00147, 1.00671)
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="CreateMatchBtn" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+offset_left = 579.0
+offset_top = 274.0
+offset_right = 1236.0
+offset_bottom = 374.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_y6t16")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
+text = "CREATE MATCH"
+
+[node name="JoinMatchBtn" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+offset_left = 585.0
+offset_top = 719.0
+offset_right = 1242.0
+offset_bottom = 819.0
+theme_override_fonts/font = ExtResource("2_y6t16")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
+text = "JOIN MATCH"
+
+[node name="MatchIdField" type="LineEdit" parent="."]
+unique_name_in_owner = true
+offset_left = 378.0
+offset_top = 589.0
+offset_right = 1408.0
+offset_bottom = 697.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Match ID"
+alignment = 1
+clear_button_enabled = true
+
+[connection signal="pressed" from="CreateMatchBtn" to="." method="_on_create_match_btn_pressed"]
+[connection signal="pressed" from="JoinMatchBtn" to="." method="_on_join_match_btn_pressed"]

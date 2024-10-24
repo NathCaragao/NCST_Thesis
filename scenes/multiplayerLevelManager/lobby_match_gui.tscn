@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0gc1dt37hpes"]
+
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_5n8be"]
+[ext_resource type="Script" path="res://scenes/multiplayerLevelManager/lobby_match_gui.gd" id="1_ug6ws"]
+[ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="2_cw44w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x15lx"]
+texture = ExtResource("2_cw44w")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[node name="LobbyMatchGUI" type="CanvasLayer"]
+script = ExtResource("1_ug6ws")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00147, 1.00671)
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1087.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="JoinedMatchID" type="MarginContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 400
+
+[node name="JoinedMatchID" type="LineEdit" parent="VBoxContainer2/JoinedMatchID"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Joined Match ID"
+alignment = 1
+editable = false
+clear_button_enabled = true
+
+[node name="LobbyPlayerList" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="CurrentPlayer" type="HBoxContainer" parent="VBoxContainer2/LobbyPlayerList"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="CurrentPlayerUsername" type="Label" parent="VBoxContainer2/LobbyPlayerList/CurrentPlayer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "weffweffwweffewffwefwefefewfewfewffwef"
+visible_characters = 25
+visible_ratio = 0.657895
+
+[node name="ReadyBtn" type="Button" parent="VBoxContainer2/LobbyPlayerList/CurrentPlayer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "READY"
+
+[node name="OtherPlayer1" type="HBoxContainer" parent="VBoxContainer2/LobbyPlayerList"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Username" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "-------------------------------------------------------------------------"
+visible_characters = 25
+visible_ratio = 0.342466
+
+[node name="ReadyStatus" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "NOT READY"
+
+[node name="OtherPlayer2" type="HBoxContainer" parent="VBoxContainer2/LobbyPlayerList"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Username" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "-------------------------------------------------------------------------------"
+visible_characters = 25
+visible_ratio = 0.316456
+
+[node name="ReadyStatus" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "NOT READY"
+
+[node name="LeaveMatchBtn" type="Button" parent="VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_5n8be")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
+text = "LEAVE MATCH"
+
+[connection signal="pressed" from="VBoxContainer2/LobbyPlayerList/CurrentPlayer/ReadyBtn" to="." method="_on_ready_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer2/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]
