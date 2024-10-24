@@ -1,6 +1,33 @@
 class_name LobbyMatchGUI
 extends CanvasLayer
 
+# PROCESS:
+# - JoinedMatchID Label will show the joined match's id
+# - whenever player clicks ready button, it will change to Cancel or Ready
+# - whenever player receives state updates, it should show other players and their ready status
+# - whenever all players are in ready state, a countdown should start and once it reaches 0
+#	this gui will send out a signal saying it is good 
+
+var joinedMatchID:String = ""
+
+signal playerReadyStatusChanged()
+
+func initialize(gameData:JSON):
+	updateGUI(gameData)
+	
+func updateGUI(gameData:JSON):
+	_updateJoinedMatchIDLabel(gameData.joinedMatchID)
+
+func cleanup():
+	pass
+
+func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
+	self.joinedMatchID = newJoinedMatchID
+	%JoinedMatchID.text = self.joinedMatchID
+
+func _on_ready_btn_pressed() -> void:
+	playerReadyStatusChanged.emit()
+	
 
 #var joinedMatchID:String = ""
 #
@@ -39,6 +66,3 @@ extends CanvasLayer
 #func updateOtherPlayers():
 	#pass
 #
-#func _on_ready_btn_pressed() -> void:
-	#isCurrentPlayerReady = !isCurrentPlayerReady
-	#await ServerManager.sendMatchState(joinedMatchID, ServerManager.MessageOpCode.LOBBY_READY_UPDATE, {"isReady": self.isCurrentPlayerReady})

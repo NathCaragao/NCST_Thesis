@@ -229,4 +229,5 @@ func sendMatchState(matchId:String, messageOpCode:MessageOpCode, message:Diction
 
 func _on_match_state_received(p_state : NakamaRTAPI.MatchData):
 	#print_debug("Received match state with opcode %s, data %s" % [p_state.op_code, p_state.data])
+	# p_state.data is type string.
 	matchStateReceived.emit(p_state)

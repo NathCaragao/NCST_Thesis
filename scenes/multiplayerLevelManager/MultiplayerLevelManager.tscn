@@ -16,6 +16,7 @@ script = ExtResource("1_mgpl0")
 
 [node name="NoMatchGUI" parent="." instance=ExtResource("2_chv8a")]
 unique_name_in_owner = true
+visible = false
 
 [node name="LobbyMatchGUI" parent="." instance=ExtResource("3_r8hbf")]
 unique_name_in_owner = true

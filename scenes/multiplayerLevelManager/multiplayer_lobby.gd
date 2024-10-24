@@ -24,8 +24,13 @@ enum MatchState {
 # Common Variables between subgui
 var currentGUI = null
 var currentMatchState:MatchState
-#var joinedMatchID = ""
-#var currentMatchState:MatchState
+@onready var currentPlayer = await ServerManager.getUserLoggedInInfo()
+
+var currentGameState:JSON = JSON.parse_string("{
+	\"presences\": [],
+	\"joinedMatchID\": \"\"
+}")
+
 
 
 func _switchGUI(currentGUI, newGUI) -> void:
@@ -41,6 +46,9 @@ func _ready() -> void:
 	# Signal connection for noMatchGUI
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
+	
+	# Signal connection for lobbyMatchGUI
+	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	
 	# Initial Match State initialization
 	_handleMatchStateChange(MatchState.NO_MATCH)
@@ -64,12 +72,9 @@ func _handleMatchStateChange(newMatchState:MatchState):
 		noMatchGUI.initialize(null)
 		
 	elif newMatchState == MatchState.LOBBY_MATCH:
-		pass
-		#noMatchGUI.hide()
-		#ongoingMatchGUI.hide()
-		#
-		#lobbyMatchGUI.updateJoinedMatchLabel(self.joinedMatchID)
-		#lobbyMatchGUI.show()
+		_switchGUI(currentGUI, lobbyMatchGUI)
+		currentGUI = lobbyMatchGUI
+		lobbyMatchGUI.initialize(currentGameState)
 		
 	elif newMatchState == MatchState.ONGOING_MATCH:
 		pass
@@ -81,11 +86,10 @@ func _handleMatchStateChange(newMatchState:MatchState):
 # NoMatchGUI related functions
 #------------------------------------------------------------------------------
 func _handleMatchCreated(createdMatchID:String):
-	self.joinedMatchID = createdMatchID
+	self.currentGameState.joinedMatchID = createdMatchID
 
 func _handleMatchJoined():
-	currentMatchState = MatchState.LOBBY_MATCH
-	_handleMatchStateChange(currentMatchState)
+	_handleMatchStateChange(MatchState.LOBBY_MATCH)
 #
 ##------------------------------------------------------------------------------
 ## LobbyMatchGUI related functions
@@ -94,3 +98,15 @@ func _handleMatchJoined():
 	#self.joinedMatchID = ""
 	#currentMatchState = MatchState.LOBBY_MATCH
 	#_handleMatchStateStatus(currentMatchState)
+	
+func _handlePlayerReadyStatusChanged() -> void:
+	# GET PLAYER USER ID
+	var currentPlayerID = currentPlayer.user.id
+	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
+	var matchID = currentGameState.joinedMatchID
+	var msgCode = ServerManager.MessageOpCode.LOBBY_READY_UPDATE
+	var payload = {
+		"userID" = currentPlayerID,
+		"isReady" = !currentGameState.presences.currentPlayerID.isReady
+	}
+	await ServerManager.sendMatchState(matchID, msgCode, payload)
