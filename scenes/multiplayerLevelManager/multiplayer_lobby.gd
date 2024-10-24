@@ -23,12 +23,12 @@ enum MatchState {
 
 # Common Variables between subgui
 var currentGUI = null
+var joinedMatchID:String = ""
 var currentMatchState:MatchState
 @onready var currentPlayer = await ServerManager.getUserLoggedInInfo()
 
-var currentGameState:JSON = JSON.parse_string("{
-	\"presences\": [],
-	\"joinedMatchID\": \"\"
+var currentGameState = JSON.parse_string("{
+	\"presences\": {},
 }")
 
 
@@ -50,12 +50,17 @@ func _ready() -> void:
 	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	
+	# Signal from ServerManager
+	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
 	# Initial Match State initialization
 	_handleMatchStateChange(MatchState.NO_MATCH)
 	
 
-
-
+func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
+	if gameState.op_code == 99:
+		currentGameState = JSON.parse_string(gameState.data)
+		print_debug("UPDATED GAME STATE")
+		
 # CHANGING SUBGUIS:
 # - Get the new match state and decide which GUI to show - done
 # - Clear the current showing GUI - done in _switchtGUI
@@ -74,7 +79,7 @@ func _handleMatchStateChange(newMatchState:MatchState):
 	elif newMatchState == MatchState.LOBBY_MATCH:
 		_switchGUI(currentGUI, lobbyMatchGUI)
 		currentGUI = lobbyMatchGUI
-		lobbyMatchGUI.initialize(currentGameState)
+		lobbyMatchGUI.initialize(joinedMatchID, currentGameState)
 		
 	elif newMatchState == MatchState.ONGOING_MATCH:
 		pass
@@ -86,7 +91,7 @@ func _handleMatchStateChange(newMatchState:MatchState):
 # NoMatchGUI related functions
 #------------------------------------------------------------------------------
 func _handleMatchCreated(createdMatchID:String):
-	self.currentGameState.joinedMatchID = createdMatchID
+	self.joinedMatchID = createdMatchID
 
 func _handleMatchJoined():
 	_handleMatchStateChange(MatchState.LOBBY_MATCH)
@@ -103,10 +108,10 @@ func _handlePlayerReadyStatusChanged() -> void:
 	# GET PLAYER USER ID
 	var currentPlayerID = currentPlayer.user.id
 	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
-	var matchID = currentGameState.joinedMatchID
+	var matchID = self.joinedMatchID
 	var msgCode = ServerManager.MessageOpCode.LOBBY_READY_UPDATE
 	var payload = {
 		"userID" = currentPlayerID,
-		"isReady" = !currentGameState.presences.currentPlayerID.isReady
+		"isReady" = !currentGameState.presences[currentPlayerID].isReady
 	}
 	await ServerManager.sendMatchState(matchID, msgCode, payload)

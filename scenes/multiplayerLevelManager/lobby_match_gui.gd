@@ -12,11 +12,12 @@ var joinedMatchID:String = ""
 
 signal playerReadyStatusChanged()
 
-func initialize(gameData:JSON):
+func initialize(matchID, gameData):
+	_updateJoinedMatchIDLabel(matchID)
 	updateGUI(gameData)
 	
-func updateGUI(gameData:JSON):
-	_updateJoinedMatchIDLabel(gameData.joinedMatchID)
+func updateGUI(gameData):
+	pass
 
 func cleanup():
 	pass
