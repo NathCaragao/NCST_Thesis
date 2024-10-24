@@ -5,6 +5,13 @@ signal matchCreated(matchCreatedID:String)
 signal matchJoined()
 
 
+func initialize(gameData):
+	# Doesn't need game data, defined just to avoid errors
+	pass
+
+func cleanup():
+	%MatchIdField.text = ""
+
 func _joinMatch(matchIdToJoin:String) -> void:
 	var joinResult = await ServerManager.joinMatch(matchIdToJoin)
 	if joinResult != OK:
