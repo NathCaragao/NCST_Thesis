@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=39 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://scenes/components/skill-hitbox/skill_hit_box.gd" id="17_fp6gu"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="18_6e8ig"]
 [ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="21_1ghhf"]
+[ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="23_q8sdd"]
 
 [sub_resource type="Animation" id="Animation_tuqup"]
 length = 0.001
@@ -739,6 +740,16 @@ actor = NodePath("../..")
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_vta2c")
 debug_color = Color(0.983351, 0, 0.353836, 0.42)
+
+[node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
+
+[node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("23_q8sdd")]
+custom_minimum_size = Vector2(240, 10)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 30.0
+scale = Vector2(2, 2)
 
 [node name="Hitbox" type="Area2D" parent="PlayerHealthComponent"]
 collision_layer = 0

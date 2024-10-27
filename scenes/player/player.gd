@@ -79,7 +79,10 @@ func apply_item_effect(item):
 	match item["effect"]:
 		"Health_Potion":
 			var heal_amount : int = 30
-			player_hp.current_health + heal_amount
+			player_hp.current_health += heal_amount
+			# update health bar UI
+			player_hp.phealth_bar.health = player_hp.current_health
+			# some debug text
 			print("Player Healed! ", str(player_hp.current_health))
 		"atk_boost":
 			var atk_amount : int = 20
