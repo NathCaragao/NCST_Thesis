@@ -68,3 +68,19 @@ func _input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("ranged-mode"):
 		switch_weapon_mode("Ranged")
+
+# collect items
+func collect(item):
+	inv.insert(item)
+
+# apply effect function
+func apply_item_effect(item):
+	match item["effect"]:
+		"Health_Potion":
+			var heal_amount : int = 30
+			#health += heal_amount
+			#print("Player Healed! ", str(health))
+		"atk_boost":
+			var atk_amount : int = 20
+			#atk += atk_amount
+			#print("Player attack boosted: ", str(atk))

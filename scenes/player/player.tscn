@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=37 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="15_aah5w"]
 [ext_resource type="Script" path="res://scenes/components/skill-hitbox/skill_hit_box.gd" id="17_fp6gu"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="18_6e8ig"]
+[ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="21_1ghhf"]
 
 [sub_resource type="Animation" id="Animation_tuqup"]
 length = 0.001
@@ -767,5 +768,19 @@ script = ExtResource("18_6e8ig")
 
 [node name="ArrowSpawn" type="Marker2D" parent="ArrowPos"]
 position = Vector2(19, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="HUD" instance=ExtResource("21_1ghhf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -302.0
+offset_top = -183.0
+offset_right = -114.0
+offset_bottom = -123.0
+grow_vertical = 0
+scale = Vector2(3, 3)
 
 [editable path="PlayerHealthComponent"]

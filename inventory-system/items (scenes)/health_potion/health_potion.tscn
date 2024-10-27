@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctc56wsd6rj13"]
+
+[ext_resource type="Script" path="res://scenes/item-scene/health_potion/health_potion.gd" id="1_j62ke"]
+[ext_resource type="Resource" uid="uid://5c66y1ix5spu" path="res://Inventory/items/health_potion.tres" id="2_lumeu"]
+[ext_resource type="Texture2D" uid="uid://da51b11bmprv5" path="res://assets/item-assets/tile099.png" id="3_2qcfn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cve8s"]
+radius = 4.0
+height = 14.0
+
+[node name="HealthPotion" type="Node2D"]
+script = ExtResource("1_j62ke")
+item = ExtResource("2_lumeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2qcfn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_cve8s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
