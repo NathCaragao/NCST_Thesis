@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctc56wsd6rj13"]
 
-[ext_resource type="Script" path="res://scenes/item-scene/health_potion/health_potion.gd" id="1_j62ke"]
-[ext_resource type="Resource" uid="uid://5c66y1ix5spu" path="res://Inventory/items/health_potion.tres" id="2_lumeu"]
-[ext_resource type="Texture2D" uid="uid://da51b11bmprv5" path="res://assets/item-assets/tile099.png" id="3_2qcfn"]
+[ext_resource type="Script" path="res://inventory-system/items (scenes)/health_potion/health_potion.gd" id="1_j62ke"]
+[ext_resource type="Resource" uid="uid://5c66y1ix5spu" path="res://inventory-system/items(res)/health_potion.tres" id="2_lumeu"]
+[ext_resource type="Texture2D" uid="uid://c0vhdwpj36sj8" path="res://assets/inv-items/tile099.png" id="3_2qcfn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cve8s"]
 radius = 4.0

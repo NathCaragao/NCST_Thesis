@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=77 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
 [ext_resource type="PackedScene" uid="uid://d1nc0ndbb6cl2" path="res://scenes/mechanisms/test-puzzle/test_puzzle.tscn" id="12_gavgn"]
 [ext_resource type="PackedScene" uid="uid://2740j354gfgd" path="res://scenes/mechanisms/gate/gate.tscn" id="13_gcvc1"]
+[ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="14_pkjb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eeq15"]
 texture = ExtResource("1_64lh2")
@@ -1310,6 +1311,9 @@ shape = SubResource("RectangleShape2D_6100q")
 [node name="Gate" parent="TestPuzzle" instance=ExtResource("13_gcvc1")]
 position = Vector2(-480, 2244)
 scale = Vector2(3, 3)
+
+[node name="HealthPotion" parent="." instance=ExtResource("14_pkjb1")]
+position = Vector2(-124, -104)
 
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]

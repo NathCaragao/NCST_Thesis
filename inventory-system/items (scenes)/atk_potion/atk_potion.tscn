@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccq12hrhaxv5r"]
 
-[ext_resource type="Script" path="res://scenes/item-scene/atk_potion/atk_potion.gd" id="1_aqpvy"]
-[ext_resource type="Texture2D" uid="uid://bdwhk63kd3xa4" path="res://assets/item-assets/tile093.png" id="1_lkcyp"]
-[ext_resource type="Resource" uid="uid://cfp8mc7ntkbqp" path="res://Inventory/items/atk_potion.tres" id="2_bcjnb"]
+[ext_resource type="Script" path="res://inventory-system/items (scenes)/atk_potion/atk_potion.gd" id="1_aqpvy"]
+[ext_resource type="Texture2D" uid="uid://njikxl288d5b" path="res://assets/inv-items/tile093.png" id="1_lkcyp"]
+[ext_resource type="Resource" uid="uid://cfp8mc7ntkbqp" path="res://inventory-system/items(res)/atk_potion.tres" id="2_bcjnb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nv8m7"]
 radius = 4.0
