@@ -2,11 +2,11 @@ class_name EnemyAttack
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
+@export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 
-@onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
-@onready var timer: Timer = $Timer
+@export var enemy_health_comp : Node2D
+@export var timer : Timer
 var player : PlayerHercules
 var direction
 
@@ -25,7 +25,7 @@ func enter() -> void:
 	direction = player.global_position - actor.global_position
 	
 	if direction.length() <= 25:
-		actor.animation_player.play("wolf-attack")
+		actor.animation_player.play("enemy-attack")
 		timer.start()
 
 func physics_update(delta: float) -> void:
@@ -55,7 +55,7 @@ func on_hit1() -> void:
 	Transitioned.emit(self, "enemyhit")
 
 func _on_timer_timeout() -> void:
-	actor.animation_player.play("wolf-attack")
+	actor.animation_player.play("enemy-attack")
 
 func exit() -> void:
 	pass

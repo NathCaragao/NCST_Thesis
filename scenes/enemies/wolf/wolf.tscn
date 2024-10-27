@@ -318,11 +318,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g6aqa"]
 _data = {
-"wolf-attack": SubResource("Animation_f5i7f"),
-"wolf-dead": SubResource("Animation_qippa"),
-"wolf-hit": SubResource("Animation_6dkcc"),
-"wolf-idle": SubResource("Animation_hsegx"),
-"wolf-run": SubResource("Animation_4778m")
+"enemy-attack": SubResource("Animation_f5i7f"),
+"enemy-dead": SubResource("Animation_qippa"),
+"enemy-hit": SubResource("Animation_6dkcc"),
+"enemy-idle": SubResource("Animation_hsegx"),
+"enemy-run": SubResource("Animation_4778m")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkfx"]
@@ -376,14 +376,15 @@ script = ExtResource("1_07ycu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xlobw")
-texture = ExtResource("1_phc7c")
+texture = ExtResource("1_4rwo2")
 hframes = 4
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_g6aqa")
 }
-autoplay = "wolf-idle"
+autoplay = "enemy-idle"
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -394,17 +395,21 @@ shape = SubResource("CapsuleShape2D_bnkfx")
 script = ExtResource("6_jeg3f")
 initial_state = NodePath("EnemyWander")
 
-[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_f6837")
 actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
 
-[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_7lvdy")
 actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
 
-[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("10_ltghk")
 actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0
@@ -415,11 +420,17 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
 script = ExtResource("11_o6bh4")
 actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+body_collision = NodePath("../../BodyCollision")
 
-[node name="EnemyHealthComp" parent="." instance=ExtResource("11_qkhtx")]
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_qkhtx")]
+max_health = 50
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
 position = Vector2(0, 6)

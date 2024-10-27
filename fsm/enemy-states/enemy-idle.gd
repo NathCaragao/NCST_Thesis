@@ -2,7 +2,7 @@ class_name EnemyIdle
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
+@export var actor : EnemyBandit
 
 func enter() -> void:
 	pass
@@ -16,7 +16,7 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	if actor.velocity.x == 0:
-		actor.animation_player.play("wolf-idle")
+		actor.animation_player.play("bandit-idle")
 	
 	# transitions to other states
 	

@@ -2,20 +2,20 @@ class_name EnemyDeath
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
-@onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
-@onready var body_collision: CollisionShape2D = $"../../BodyCollision"
+@export var actor : CharacterBody2D
+@export var enemy_health_comp : Node2D
+@export var body_collision : CollisionShape2D
 
 
 func enter() -> void:
 	print("Enemy Entered Death State")
 	# plays the death animation
-	actor.animation_player.play("wolf-dead")
+	actor.animation_player.play("enemy-dead")
 	
 	
 	# disable all phyics interactions
 	body_collision.set_deferred("disabled", true)
-	actor.hurt_box_shape.set_deferred("disabled", true)
+	actor.hurt_box_shape.set_deferred("disablded", true)
 	actor.hurt_box_shape.set_deferred("monitoring", false)
 	actor.hurt_box_shape.set_deferred("monitorable", false)
 	

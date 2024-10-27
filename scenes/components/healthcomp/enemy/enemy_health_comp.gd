@@ -4,9 +4,9 @@ extends Node2D
 # reference and variables
 @export var max_health : int = 100
 var current_health : int
-@onready var enemy_hp_bar: EnemyHealthBar = $EnemyHPbar
-@onready var anim_effects: AnimationPlayer = $"../AnimEffects"
-@onready var dmg_num_pos: Node2D = $"../DmgNumPos"
+@export var enemy_hp_bar : ProgressBar
+@export var anim_effects : AnimationPlayer
+@export var dmg_num_pos : Node2D
 
 var is_dead : bool = false
 # signals

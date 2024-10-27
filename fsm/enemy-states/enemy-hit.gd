@@ -2,7 +2,7 @@ class_name EnemyHit
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
+@export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
 @export var attack : AttackComponent
 @onready var player : PlayerHercules = get_tree().get_first_node_in_group("Player")
@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 			actor.velocity = Vector2.ZERO
 
 func on_hit() -> void:
-	actor.animation_player.play("wolf-hit")
+	actor.animation_player.play("enemy-hit")
 	print("Enemy got HIT")
 	freeze_time(0.4, 0.15)
 	knock_back()

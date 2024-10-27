@@ -2,7 +2,7 @@ class_name EnemyWander
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
+@export var actor : CharacterBody2D
 @export var move_speed : float = 10.0
 var player : PlayerHercules
 var is_signal_connected : bool = false
@@ -13,7 +13,7 @@ var direction
 var move_direction : Vector2
 var wander_time : float
 
-@onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
+@export var enemy_health_comp : Node2D
 
 func randomize_wander() -> void:
 	move_direction = Vector2(randf_range(-1, 1), 0).normalized()
@@ -45,7 +45,7 @@ func physics_update(delta: float) -> void:
 	
 	if actor:
 		actor.velocity = move_direction * move_speed
-		actor.animation_player.play("wolf-run")
+		actor.animation_player.play("enemy-run")
 	if actor.velocity.x < 0:
 		actor.sprite.flip_h = false
 	else:

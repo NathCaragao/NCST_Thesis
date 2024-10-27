@@ -2,9 +2,9 @@ class_name EnemyFollow
 extends State
 
 # references and variables
-@export var actor : EnemyWolf
+@export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
-@onready var enemy_health_comp: EnemyHealthComp = $"../../EnemyHealthComp"
+@export var enemy_health_comp : Node2D
 var player : PlayerHercules
 var direction
 
@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 	if direction.length() > 25:
 		actor.velocity = direction.normalized() * move_speed
 		actor.move_and_slide()
-		actor.animation_player.play("wolf-run")
+		actor.animation_player.play("enemy-run")
 	
 	# flip sprite
 	actor.flip_sprite()
