@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 			actor.velocity = Vector2.ZERO
 
 func on_hit() -> void:
-	actor.animation_player.play("enemy-hit")
+	actor.play_animation("enemy-hit")
 	print("Enemy got HIT")
 	freeze_time(0.4, 0.15)
 	knock_back()

@@ -31,7 +31,7 @@ func physics_update(delta: float) -> void:
 	if direction.length() > 25:
 		actor.velocity = direction.normalized() * move_speed
 		actor.move_and_slide()
-		actor.animation_player.play("enemy-run")
+		actor.play_animation("enemy-run")
 	
 	# flip sprite
 	actor.flip_sprite()

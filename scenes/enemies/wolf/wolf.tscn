@@ -318,11 +318,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g6aqa"]
 _data = {
-"enemy-attack": SubResource("Animation_f5i7f"),
-"enemy-dead": SubResource("Animation_qippa"),
-"enemy-hit": SubResource("Animation_6dkcc"),
-"enemy-idle": SubResource("Animation_hsegx"),
-"enemy-run": SubResource("Animation_4778m")
+"wolf-attack": SubResource("Animation_f5i7f"),
+"wolf-dead": SubResource("Animation_qippa"),
+"wolf-hit": SubResource("Animation_6dkcc"),
+"wolf-idle": SubResource("Animation_hsegx"),
+"wolf-run": SubResource("Animation_4778m")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkfx"]
@@ -384,7 +384,7 @@ vframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_g6aqa")
 }
-autoplay = "enemy-idle"
+autoplay = "wolf-idle"
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

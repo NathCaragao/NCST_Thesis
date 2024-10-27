@@ -25,7 +25,7 @@ func enter() -> void:
 	direction = player.global_position - actor.global_position
 	
 	if direction.length() <= 25:
-		actor.animation_player.play("enemy-attack")
+		actor.play_animation("enemy-attack")
 		timer.start()
 
 func physics_update(delta: float) -> void:
@@ -55,7 +55,7 @@ func on_hit1() -> void:
 	Transitioned.emit(self, "enemyhit")
 
 func _on_timer_timeout() -> void:
-	actor.animation_player.play("enemy-attack")
+	actor.play_animation("enemy-attack")
 
 func exit() -> void:
 	pass

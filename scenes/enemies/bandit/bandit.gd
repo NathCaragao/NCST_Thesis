@@ -13,6 +13,18 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready() -> void:
 	pass
 
+var animation_mapping = {
+	"enemy-run" : "bandit-run",
+	"enemy-attack" : "bandit-attack",
+	"enemy-idle" : "bandit-idle",
+	"enemy-hit" : "",
+	"enemy-dead" : ""
+}
+
+func play_animation(animation_name: String) -> void:
+	if animation_name in animation_mapping:
+		animation_player.play(animation_mapping[animation_name])
+
 
 # flip sprite
 func flip_sprite() -> void:
