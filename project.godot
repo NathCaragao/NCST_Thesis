@@ -52,6 +52,7 @@ folder_colors={
 "res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
+"res://inventory-system/": "pink",
 "res://quest-system/": "orange",
 "res://scenes/": "teal",
 "res://shaders/": "yellow"

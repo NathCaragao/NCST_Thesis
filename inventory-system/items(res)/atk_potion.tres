@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cfp8mc7ntkbqp"]
+
+[ext_resource type="Script" path="res://inventory-system/inventory_item.gd" id="1_7neoe"]
+[ext_resource type="Texture2D" uid="uid://cw2xbt2kpdehk" path="res://assets/inv-items/tile077.png" id="2_fjmvy"]
+
+[resource]
+script = ExtResource("1_7neoe")
+type = "consumable"
+name = "atk_potion"
+description = "+ 10 atk"
+effect = "atk_boost"
+texture = ExtResource("2_fjmvy")
