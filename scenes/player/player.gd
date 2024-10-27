@@ -15,6 +15,9 @@ var facing_right : bool = true
 var weapon_mode : String = "Melee" # default weapon mode
 var direction
 
+# player inventory reference
+@export var inv : Inventory
+
 func _physics_process(delta: float) -> void:
 	if velocity.x > 0:
 		facing_right = true
