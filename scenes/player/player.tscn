@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=38 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
+[ext_resource type="Resource" uid="uid://xpwbllut5klj" path="res://inventory-system/inventories/player_inv.tres" id="2_apivo"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
 [ext_resource type="Texture2D" uid="uid://btqtrawp7r63n" path="res://assets/character/sprites/Player Death 64x64 Hercules.png" id="2_cp87k"]
 [ext_resource type="Texture2D" uid="uid://c8kriisj42381" path="res://assets/character/sprites/Skill-01.png" id="2_i45tp"]
@@ -688,6 +689,7 @@ size = Vector2(32.5, 14.5)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 8
 script = ExtResource("1_mahge")
+inv = ExtResource("2_apivo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2ril3")

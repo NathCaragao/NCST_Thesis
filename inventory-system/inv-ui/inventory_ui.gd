@@ -3,7 +3,7 @@ extends Control
 var is_open : bool = false
 
 # player's inv
-@onready var inv : Inventory = preload("res://inventory-system/inventories/player_inventory.tres")
+@onready var inv : Inventory = preload("res://inventory-system/inventories/player_inv.tres")
 @onready var slots : Array = $NinePatchRect/GridContainer.get_children()
 
 func _ready():

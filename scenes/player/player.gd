@@ -17,6 +17,7 @@ var direction
 
 # player inventory reference
 @export var inv : Inventory
+@onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
 func _physics_process(delta: float) -> void:
 	if velocity.x > 0:
@@ -78,8 +79,8 @@ func apply_item_effect(item):
 	match item["effect"]:
 		"Health_Potion":
 			var heal_amount : int = 30
-			#health += heal_amount
-			#print("Player Healed! ", str(health))
+			player_hp.current_health + heal_amount
+			print("Player Healed! ", str(player_hp.current_health))
 		"atk_boost":
 			var atk_amount : int = 20
 			#atk += atk_amount
