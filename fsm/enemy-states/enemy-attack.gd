@@ -38,7 +38,6 @@ func physics_update(delta: float) -> void:
 	# Set the y-component to 0 to restrict movement to the x-axis (horizontal only)
 	direction.y = 0
 	
-	
 	if direction.length() > 25:
 		Transitioned.emit(self, "enemyfollow")
 	elif direction.length() > 110:
