@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2uxf3foy63r3"]
+
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_r2fg4"]
+[ext_resource type="Script" path="res://autoloads/ScoreManager/score_manager.gd" id="1_vvtte"]
+
+[node name="ScoreManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vvtte")
+
+[node name="CoinScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 132.0
+offset_right = 268.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("1_r2fg4")
+theme_override_font_sizes/font_size = 60
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GenScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1625.0
+offset_top = 20.0
+offset_right = 1873.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("1_r2fg4")
+theme_override_font_sizes/font_size = 75
+text = "0000"
