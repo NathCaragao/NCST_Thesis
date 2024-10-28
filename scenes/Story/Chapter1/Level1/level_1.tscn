@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=82 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
 [ext_resource type="PackedScene" uid="uid://2740j354gfgd" path="res://scenes/mechanisms/gate/gate.tscn" id="13_gcvc1"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="14_pkjb1"]
+[ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="15_exch3"]
 [ext_resource type="PackedScene" uid="uid://bigq66bcflhq2" path="res://scenes/mechanisms/key/key.tscn" id="15_ihcff"]
 [ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="15_rswnq"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="16_seudv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eeq15"]
 texture = ExtResource("1_64lh2")
@@ -1346,10 +1348,19 @@ action_name = "to open"
 position = Vector2(1, -0.25)
 shape = SubResource("RectangleShape2D_22byg")
 
+[node name="CoinsCollection" type="Node2D" parent="."]
+
+[node name="coin" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(221, -114)
+
 [node name="Key_1" parent="." instance=ExtResource("15_ihcff")]
 position = Vector2(2185, 23)
 collision_layer = 0
 collision_mask = 8
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("16_seudv")]
 
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]

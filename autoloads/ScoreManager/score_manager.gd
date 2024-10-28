@@ -2,9 +2,8 @@
 extends Control
 
 # labels UI references
-@onready var coin_score: Label = $CoinScore
-@onready var gen_score: Label = $GenScore
-
+@onready var coin_score : Label = ScoreUi.get_node('CanvasLayer').get_node('CoinScore')
+@onready var gen_score : Label = ScoreUi.get_node('CanvasLayer').get_node('GenScore')
 # Points per item type
 var points = {
 	"coin" : 30,
@@ -29,7 +28,8 @@ func add_points(item_type: String) -> void:
 	match item_type:
 		"coin":
 			total_score += points["coin"] # adds to the general score
-			gen_score.text = "Score: " + str(points) # updates the gen score UI
+			gen_score.text = "Score: " + str(total_score) # updates the gen score UI
+			print("total score: ", total_score)
 			
 			collected_items["coin"] += 1 # adds to the amount of coins collected
 			coin_score.text = str(collected_items["coin"]) # updates the coin collected UI

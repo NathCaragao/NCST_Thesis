@@ -26,6 +26,7 @@ Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DamageNumbers="*res://autoloads/DamageNumbers/damageNumbers.gd"
 GameUi="*res://quest-system/GameUI/GameUi.tscn"
 InteractionManager="*res://autoloads/interaction-system/InteractionManager.tscn"
+ScoreUi="*res://autoloads/ScoreManager/score_ui.tscn"
 ScoreManager="*res://autoloads/ScoreManager/score_manager.gd"
 
 [display]
