@@ -34,8 +34,10 @@ color = Color(0.156863, 0.156863, 0.156863, 1)
 
 [node name="Chapter1" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 696.0
+offset_top = 251.0
+offset_right = 736.0
+offset_bottom = 291.0
 
 [node name="Border" type="ColorRect" parent="Chapter1"]
 layout_mode = 1
@@ -44,10 +46,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 676.0
-offset_top = 165.0
-offset_right = 1204.0
-offset_bottom = 693.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 508.0
+offset_bottom = 508.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.257352, 0.533257, 0.504194, 1)
@@ -60,20 +62,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 676.0
-offset_top = 165.0
-offset_right = 1204.0
-offset_bottom = 693.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 508.0
+offset_bottom = 508.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bg8mm")
 
 [node name="Button" type="Button" parent="Chapter1"]
 layout_mode = 0
-offset_left = 696.0
-offset_top = 185.0
-offset_right = 1224.0
-offset_bottom = 713.0
+offset_right = 528.0
+offset_bottom = 528.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_bqajh")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_enci2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rl610")
@@ -87,12 +87,44 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 679.0
-offset_top = 706.0
-offset_right = 1201.0
-offset_bottom = 742.0
+offset_left = -17.0
+offset_top = 521.0
+offset_right = 505.0
+offset_bottom = 557.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_tkop5")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "12 Labors Of Hercules"
+
+[node name="ChapterNum" type="Label" parent="Chapter1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.5
+offset_top = -101.0
+offset_right = 430.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tkop5")
+theme_override_font_sizes/font_size = 50
+text = "Chapter 1"
+horizontal_alignment = 1
+
+[node name="BackBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -112.0
+offset_right = 233.0
+offset_bottom = -44.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_tkop5")
+theme_override_font_sizes/font_size = 50
+text = "Back"
