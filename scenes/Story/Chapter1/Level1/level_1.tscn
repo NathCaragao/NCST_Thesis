@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=75 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" path="res://scenes/mechanisms/trap-platform/TrapPlatform.gd" id="8_rovq1"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_touq4"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
-[ext_resource type="PackedScene" uid="uid://d1nc0ndbb6cl2" path="res://scenes/mechanisms/test-puzzle/test_puzzle.tscn" id="12_gavgn"]
-[ext_resource type="PackedScene" uid="uid://2740j354gfgd" path="res://scenes/mechanisms/gate/gate.tscn" id="13_gcvc1"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="14_pkjb1"]
 [ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="15_rswnq"]
 
@@ -1012,9 +1010,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydueu"]
 size = Vector2(44, 43)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6100q"]
-size = Vector2(126, 68)
-
 [node name="Level1" type="Node2D" groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -1303,19 +1298,6 @@ position = Vector2(-386, -129)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(12, 11.5)
 shape = SubResource("RectangleShape2D_ydueu")
-
-[node name="TestPuzzle" parent="." instance=ExtResource("12_gavgn")]
-position = Vector2(2173, 32)
-scale = Vector2(0.5, 0.5)
-
-[node name="InteractionArea" parent="TestPuzzle" instance=ExtResource("10_aj2yc")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPuzzle/InteractionArea"]
-shape = SubResource("RectangleShape2D_6100q")
-
-[node name="Gate" parent="TestPuzzle" instance=ExtResource("13_gcvc1")]
-position = Vector2(-480, 2244)
-scale = Vector2(3, 3)
 
 [node name="HealthPotion" parent="." instance=ExtResource("14_pkjb1")]
 position = Vector2(-124, -104)
