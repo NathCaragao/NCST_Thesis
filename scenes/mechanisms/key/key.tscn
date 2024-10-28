@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bigq66bcflhq2"]
+[gd_scene load_steps=4 format=3 uid="uid://bigq66bcflhq2"]
 
 [ext_resource type="Script" path="res://scenes/mechanisms/key/key.gd" id="1_ewnik"]
+[ext_resource type="Texture2D" uid="uid://bxqp6b1b8tk0e" path="res://assets/inv-items/tile012.png" id="2_fett7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jiq6b"]
+radius = 4.94975
+height = 43.8406
 
 [node name="Key" type="Area2D"]
 script = ExtResource("1_ewnik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fett7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_jiq6b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
