@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://eguqemm1jjw5"]
+
+[ext_resource type="PackedScene" uid="uid://bivnen5vnfr7h" path="res://scenes/ui-scenes/level-selection/level_scroll.tscn" id="1_8qw8x"]
+[ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_v56cq"]
+
+[node name="LevelSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_v56cq")
+metadata/_edit_lock_ = true
+
+[node name="LevelScroll" parent="." instance=ExtResource("1_8qw8x")]
+layout_mode = 1
