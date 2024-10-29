@@ -197,3 +197,5 @@ texture = ExtResource("9_ee0k1")
 expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/ShopBtn" to="." method="_on_shop_btn_pressed"]
