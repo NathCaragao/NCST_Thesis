@@ -24,10 +24,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="SKINS" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 metadata/_tab_index = 0
@@ -47,6 +46,7 @@ theme_override_font_sizes/font_size = 56
 text = "SKINS"
 
 [node name="UPGRADES" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 metadata/_tab_index = 1
