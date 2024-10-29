@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3pptygqbe2kp"]
+[gd_scene load_steps=8 format=3 uid="uid://c3pptygqbe2kp"]
 
 [ext_resource type="Texture2D" uid="uid://5ulo648e4li0" path="res://assets/tilesets(idk how to categorize files inside yet)/temple-campaign-no-outline.png" id="1_bg8mm"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/chapter-selection/chapter_selection.gd" id="1_tb02e"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_tkop5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqajh"]
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tb02e")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -70,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bg8mm")
 
-[node name="Button" type="Button" parent="Chapter1"]
+[node name="ChBtn" type="Button" parent="Chapter1"]
 layout_mode = 0
 offset_right = 528.0
 offset_bottom = 528.0
@@ -128,3 +130,5 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_tkop5")
 theme_override_font_sizes/font_size = 50
 text = "Back"
+
+[connection signal="pressed" from="Chapter1/ChBtn" to="." method="_on_ch_btn_pressed"]
