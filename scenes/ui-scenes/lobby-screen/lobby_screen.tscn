@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=12 format=3 uid="uid://bew17a4cm663b"]
 
 [ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
@@ -9,12 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://ssgiaqk380dd" path="res://assets/icons/shop-icon.png" id="7_wvu18"]
 [ext_resource type="Texture2D" uid="uid://fr4evcq8gxc8" path="res://assets/icons/play-icon.png" id="8_psrj4"]
 [ext_resource type="Texture2D" uid="uid://dgin82a3d0l7r" path="res://assets/icons/gold-coins-icon.png" id="9_ee0k1"]
+[ext_resource type="PackedScene" uid="uid://cha4508ye1b32" path="res://scenes/ui-scenes/settings-screen/settings_tab.tscn" id="10_ksrao"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeemb"]
 bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
 
-[node name="LobbyScreen" type="Node2D"]
+[node name="LobbyScreen" type="Node2D" node_paths=PackedStringArray("settings_window")]
 script = ExtResource("1_oyntd")
+settings_window = NodePath("CanvasLayer/SettingsTab")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -196,6 +198,12 @@ offset_bottom = 95.0
 texture = ExtResource("9_ee0k1")
 expand_mode = 1
 
+[node name="SettingsTab" parent="CanvasLayer" instance=ExtResource("10_ksrao")]
+visible = false
+offset_bottom = -139.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[connection signal="pressed" from="CanvasLayer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayBtn" to="." method="_on_play_btn_pressed"]
