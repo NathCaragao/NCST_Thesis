@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://pb6tfsv1pfve"]
+
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_efyvx"]
+
+[node name="ShopTab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 137.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_efyvx")
+theme_override_font_sizes/font_size = 48
+tab_alignment = 1
+current_tab = 1
+
+[node name="SKINS" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_efyvx")
+metadata/_tab_index = 0
+
+[node name="Header" type="Label" parent="TabContainer/SKINS"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = 52.0
+offset_right = 116.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_efyvx")
+theme_override_font_sizes/font_size = 56
+text = "SKINS"
+
+[node name="UPGRADES" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_efyvx")
+metadata/_tab_index = 1
+
+[node name="Header2" type="Label" parent="TabContainer/UPGRADES"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.5
+offset_top = 50.0
+offset_right = 185.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_efyvx")
+theme_override_font_sizes/font_size = 56
+text = "UPGRADES"
