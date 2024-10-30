@@ -745,11 +745,20 @@ debug_color = Color(0.983351, 0, 0.353836, 0.42)
 
 [node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("23_q8sdd")]
 custom_minimum_size = Vector2(240, 10)
-offset_left = 20.0
+offset_left = 240.0
 offset_top = 20.0
-offset_right = 260.0
-offset_bottom = 30.0
+offset_right = 520.0
+offset_bottom = 50.0
 scale = Vector2(2, 2)
+
+[node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
+offset_top = -7.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 32
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Hitbox" type="Area2D" parent="PlayerHealthComponent"]
 collision_layer = 0
@@ -797,3 +806,4 @@ grow_vertical = 0
 scale = Vector2(3, 3)
 
 [editable path="PlayerHealthComponent"]
+[editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
