@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=44 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -24,6 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="20_eusl1"]
 [ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="21_1ghhf"]
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="23_q8sdd"]
+[ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="25_7gieo"]
+[ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_nhbjn"]
+[ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ycbht"]
+[ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
 
 [sub_resource type="Animation" id="Animation_tuqup"]
 length = 0.001
@@ -807,6 +811,54 @@ offset_right = -114.0
 offset_bottom = -123.0
 grow_vertical = 0
 scale = Vector2(3, 3)
+
+[node name="Guide1" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1220.0
+offset_top = -126.0
+offset_right = 1284.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("25_7gieo")
+
+[node name="Guide2" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 450.0
+offset_top = -126.0
+offset_right = 514.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("26_nhbjn")
+
+[node name="Guide3" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1532.0
+offset_top = -126.0
+offset_right = 1596.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("27_ycbht")
+
+[node name="Guide4" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.00002
+offset_top = -126.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("28_fwbhh")
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
