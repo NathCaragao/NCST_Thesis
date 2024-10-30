@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://pb6tfsv1pfve"]
+[gd_scene load_steps=3 format=3 uid="uid://pb6tfsv1pfve"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_efyvx"]
+[ext_resource type="Texture2D" uid="uid://di0eruru67772" path="res://assets/ui/windows/shop_slot.png" id="2_5h1a6"]
 
 [node name="ShopTab" type="Control"]
 layout_mode = 3
@@ -44,6 +45,46 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 theme_override_font_sizes/font_size = 56
 text = "SKINS"
+
+[node name="ItemSlot" type="NinePatchRect" parent="TabContainer/SKINS"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 181.0
+offset_right = 348.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot2" type="NinePatchRect" parent="TabContainer/SKINS"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 181.0
+offset_right = 668.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot3" type="NinePatchRect" parent="TabContainer/SKINS"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 181.0
+offset_right = 988.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot4" type="NinePatchRect" parent="TabContainer/SKINS"]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 181.0
+offset_right = 1308.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot5" type="NinePatchRect" parent="TabContainer/SKINS"]
+layout_mode = 0
+offset_left = 1372.0
+offset_top = 181.0
+offset_right = 1628.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
 
 [node name="UPGRADES" type="TabBar" parent="TabContainer"]
 visible = false
