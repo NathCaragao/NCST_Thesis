@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4ewej7pv364i"]
+[gd_scene load_steps=6 format=3 uid="uid://c4ewej7pv364i"]
 
 [ext_resource type="PackedScene" uid="uid://pb6tfsv1pfve" path="res://scenes/ui-scenes/shop-screen/shop_tab.tscn" id="1_rif3c"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/shop-screen/shop.gd" id="1_u3bxn"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_c1stm"]
+[ext_resource type="Texture2D" uid="uid://dgin82a3d0l7r" path="res://assets/icons/gold-coins-icon.png" id="3_otiis"]
+[ext_resource type="Texture2D" uid="uid://ssgiaqk380dd" path="res://assets/icons/shop-icon.png" id="4_mmwi4"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u3bxn")
 
 [node name="Bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -21,3 +26,60 @@ color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="ShopTab" parent="." instance=ExtResource("1_rif3c")]
 layout_mode = 1
+
+[node name="Gold" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -344.0
+offset_top = 24.0
+offset_right = -65.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_c1stm")
+theme_override_font_sizes/font_size = 56
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Gold"]
+layout_mode = 0
+offset_left = -72.0
+offset_right = 56.0
+offset_bottom = 96.0
+texture = ExtResource("3_otiis")
+
+[node name="Premium" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -728.0
+offset_top = 24.0
+offset_right = -449.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_c1stm")
+theme_override_font_sizes/font_size = 56
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Premium"]
+layout_mode = 0
+offset_left = -72.0
+offset_right = 56.0
+offset_bottom = 96.0
+texture = ExtResource("4_mmwi4")
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1856.0
+offset_right = 1920.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("2_c1stm")
+theme_override_font_sizes/font_size = 48
+text = "x"
+
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]
