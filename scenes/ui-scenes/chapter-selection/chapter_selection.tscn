@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3pptygqbe2kp"]
+[gd_scene load_steps=11 format=3 uid="uid://c3pptygqbe2kp"]
 
 [ext_resource type="Texture2D" uid="uid://5ulo648e4li0" path="res://assets/tilesets(idk how to categorize files inside yet)/temple-campaign-no-outline.png" id="1_bg8mm"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/chapter-selection/chapter_selection.gd" id="1_tb02e"]
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1utwf"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_tkop5"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_i044p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1vn7"]
+shader = ExtResource("2_1utwf")
+shader_parameter/scroll_speed = 0.03
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqajh"]
 bg_color = Color(1, 1, 1, 0.168627)
@@ -33,6 +39,34 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
 color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="BgPattern" type="TextureRect" parent="."]
+self_modulate = Color(0.419813, 0.419813, 0.419813, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i1vn7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_i044p")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.5
+offset_top = 25.0
+offset_right = 273.5
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_tkop5")
+theme_override_font_sizes/font_size = 96
+text = "Stories"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Chapter1" type="Control" parent="."]
 anchors_preset = 0
@@ -132,3 +166,4 @@ theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [connection signal="pressed" from="Chapter1/ChBtn" to="." method="_on_ch_btn_pressed"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
