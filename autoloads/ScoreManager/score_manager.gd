@@ -35,9 +35,12 @@ func add_points(item_type: String) -> void:
 			coin_score.text = str(collected_items["coin"]) # updates the coin collected UI
 		"enemy":
 			total_score += points["enemy"]
+			gen_score.text = "Score: " + str(total_score)
 			collected_items["enemy"] += 1
 		"powerup":
 			total_score += points["powerup"]
+			gen_score.text = "Score: " + str(total_score)
 			collected_items["powerup"] += 1
 		"completion":
+			gen_score.text = "Score: " + str(total_score)
 			total_score += points["completion"]

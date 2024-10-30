@@ -32,6 +32,7 @@ func take_damage(amount: int) -> void:
 	
 	if current_health <= 0:
 		enemy_died()
+		ScoreManager.add_points("enemy")
 
 func enemy_died() -> void:
 	current_health = 0
