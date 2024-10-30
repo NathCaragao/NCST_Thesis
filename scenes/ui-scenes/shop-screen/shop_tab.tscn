@@ -25,9 +25,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 theme_override_font_sizes/font_size = 48
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="SKINS" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 metadata/_tab_index = 0
@@ -46,7 +47,7 @@ theme_override_fonts/font = ExtResource("1_efyvx")
 theme_override_font_sizes/font_size = 56
 text = "SKINS"
 
-[node name="ItemSlot" type="NinePatchRect" parent="TabContainer/SKINS"]
+[node name="SkinSlot1" type="NinePatchRect" parent="TabContainer/SKINS"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 181.0
@@ -54,7 +55,7 @@ offset_right = 348.0
 offset_bottom = 437.0
 texture = ExtResource("2_5h1a6")
 
-[node name="ItemSlot2" type="NinePatchRect" parent="TabContainer/SKINS"]
+[node name="SkinSlot2" type="NinePatchRect" parent="TabContainer/SKINS"]
 layout_mode = 0
 offset_left = 412.0
 offset_top = 181.0
@@ -62,7 +63,7 @@ offset_right = 668.0
 offset_bottom = 437.0
 texture = ExtResource("2_5h1a6")
 
-[node name="ItemSlot3" type="NinePatchRect" parent="TabContainer/SKINS"]
+[node name="SkinSlot3" type="NinePatchRect" parent="TabContainer/SKINS"]
 layout_mode = 0
 offset_left = 732.0
 offset_top = 181.0
@@ -70,7 +71,7 @@ offset_right = 988.0
 offset_bottom = 437.0
 texture = ExtResource("2_5h1a6")
 
-[node name="ItemSlot4" type="NinePatchRect" parent="TabContainer/SKINS"]
+[node name="SkinSlot4" type="NinePatchRect" parent="TabContainer/SKINS"]
 layout_mode = 0
 offset_left = 1052.0
 offset_top = 181.0
@@ -78,7 +79,7 @@ offset_right = 1308.0
 offset_bottom = 437.0
 texture = ExtResource("2_5h1a6")
 
-[node name="ItemSlot5" type="NinePatchRect" parent="TabContainer/SKINS"]
+[node name="SkinSlot5" type="NinePatchRect" parent="TabContainer/SKINS"]
 layout_mode = 0
 offset_left = 1372.0
 offset_top = 181.0
@@ -87,7 +88,6 @@ offset_bottom = 437.0
 texture = ExtResource("2_5h1a6")
 
 [node name="UPGRADES" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 metadata/_tab_index = 1
@@ -105,3 +105,43 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_efyvx")
 theme_override_font_sizes/font_size = 56
 text = "UPGRADES"
+
+[node name="ItemSlot1" type="NinePatchRect" parent="TabContainer/UPGRADES"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 181.0
+offset_right = 348.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot2" type="NinePatchRect" parent="TabContainer/UPGRADES"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 181.0
+offset_right = 668.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot3" type="NinePatchRect" parent="TabContainer/UPGRADES"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 181.0
+offset_right = 988.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot4" type="NinePatchRect" parent="TabContainer/UPGRADES"]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 181.0
+offset_right = 1308.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
+
+[node name="ItemSlot5" type="NinePatchRect" parent="TabContainer/UPGRADES"]
+layout_mode = 0
+offset_left = 1372.0
+offset_top = 181.0
+offset_right = 1628.0
+offset_bottom = 437.0
+texture = ExtResource("2_5h1a6")
