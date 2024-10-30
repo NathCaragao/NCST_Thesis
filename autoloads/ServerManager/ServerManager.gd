@@ -74,7 +74,13 @@ func getUserLoggedInInfo():
 	else:
 		return userInfoResult
 
-
+func getUserInfoFromID(userID:String):
+	var result: NakamaAPI.ApiUsers = await nakamaClient.get_users_async(nakamaSession, [userID])
+	var userInfo
+	for info in result.users:
+		userInfo = info
+		
+	return userInfo
 
 #-------------------------------------------------------------------------------
 # Storage related ops

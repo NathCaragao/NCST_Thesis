@@ -72,14 +72,14 @@ layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Username" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+[node name="Username1" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "-------------------------------------------------------------------------"
-visible_characters = 25
-visible_ratio = 0.342466
 
-[node name="ReadyStatus" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+[node name="ReadyStatus1" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "NOT READY"
@@ -89,14 +89,14 @@ layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Username" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+[node name="Username2" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "-------------------------------------------------------------------------------"
-visible_characters = 25
-visible_ratio = 0.316456
 
-[node name="ReadyStatus" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+[node name="ReadyStatus2" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "NOT READY"

@@ -8,14 +8,23 @@ extends CanvasLayer
 # - whenever all players are in ready state, a countdown should start and once it reaches 0
 #	this gui will send out a signal saying it is good 
 
-var joinedMatchID:String = ""
+# Other players info (might be used for current player):
+#{
+	#playerInfo: PlayerMultiplayerData
+	#username: String
+#}
+
+func _ready():
+	_updateJoinedMatchIDLabel("TTnaMalaki")
+	_updateCurrentPlayer({"username" = "NIGGER", "isReady" = false})
+	_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
 
 signal playerReadyStatusChanged()
 
 func initialize(matchID, gameData):
 	_updateJoinedMatchIDLabel(matchID)
 	updateGUI(gameData)
-	
+
 func updateGUI(gameData):
 	pass
 
@@ -23,12 +32,32 @@ func cleanup():
 	pass
 
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
-	self.joinedMatchID = newJoinedMatchID
-	%JoinedMatchID.text = self.joinedMatchID
+	%JoinedMatchID.text = newJoinedMatchID
 
-func _on_ready_btn_pressed() -> void:
-	playerReadyStatusChanged.emit()
-	
+func _updateCurrentPlayer(currentPlayer):
+	%CurrentPlayerUsername.text = currentPlayer.username
+	if currentPlayer.isReady:
+		%ReadyBtn.text = "Cancel"	
+	else:
+		%ReadyBtn.text = "Ready"
+
+func _updateOtherPlayer(otherPlayers: Array):
+	if otherPlayers.size() >= 0:
+		%Username1.text = "----------"
+		%ReadyStatus1.text = "----------"
+		%Username2.text = "----------"
+		%ReadyStatus2.text = "----------"
+	if otherPlayers.size() >= 1:
+		%Username1.text = otherPlayers[0].username
+		%ReadyStatus1.text = "READY" if otherPlayers[0].isReady else "NOT READY"
+	if otherPlayers.size() >= 2:
+		print_debug("I have come")
+		%Username2.text = otherPlayers[1].username
+		%ReadyStatus2.text = "READY" if otherPlayers[1].isReady else "NOT READY"
+
+#func _on_ready_btn_pressed() -> void:
+	#playerReadyStatusChanged.emit()
+	#
 
 #var joinedMatchID:String = ""
 #

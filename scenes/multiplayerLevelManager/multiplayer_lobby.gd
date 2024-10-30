@@ -59,7 +59,7 @@ func _ready() -> void:
 func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	if gameState.op_code == 99:
 		currentGameState = JSON.parse_string(gameState.data)
-		print_debug("UPDATED GAME STATE")
+		print_debug(currentGameState.presences)
 		
 # CHANGING SUBGUIS:
 # - Get the new match state and decide which GUI to show - done
