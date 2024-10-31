@@ -7,7 +7,7 @@ extends State
 
 @export var enemy_health_comp : Node2D
 @export var timer : Timer
-var player : PlayerHercules
+@onready var player = get_tree().get_first_node_in_group("Player")
 var direction
 
 # state machine ref
@@ -18,15 +18,18 @@ func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead3"))
 
 func enter() -> void:
-	print("Entered attack state")
-	player = get_tree().get_first_node_in_group("Player")
-	#enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead"))
-	
 	direction = player.global_position - actor.global_position
+	print("Entered attack state")
+	print("Player position:", player.global_position)
+	print("Actor position:", actor.global_position)
+	print("Direction length:", direction.length())
 	
-	if direction.length() <= 25:
+	if direction.length() <= 40:
+		print("Within attack range, playing attack animation")
 		actor.play_animation("enemy-attack")
 		timer.start()
+	else:
+		print("Not within attack range")
 
 func physics_update(delta: float) -> void:
 	if is_instance_valid(player) and is_instance_valid(actor):
@@ -38,7 +41,8 @@ func physics_update(delta: float) -> void:
 	# Set the y-component to 0 to restrict movement to the x-axis (horizontal only)
 	direction.y = 0
 	
-	if direction.length() > 25:
+	
+	if direction.length() > 41:
 		Transitioned.emit(self, "enemyfollow")
 	elif direction.length() > 110:
 		Transitioned.emit(self, "enemywander")
