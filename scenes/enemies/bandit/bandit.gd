@@ -18,7 +18,7 @@ var animation_mapping = {
 	"enemy-attack" : "bandit-attack",
 	"enemy-idle" : "bandit-idle",
 	"enemy-hit" : "",
-	"enemy-dead" : ""
+	"enemy-dead" : "bandit-death"
 }
 
 func play_animation(animation_name: String) -> void:
