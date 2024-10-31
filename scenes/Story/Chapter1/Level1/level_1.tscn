@@ -1634,6 +1634,14 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(-282, 437)
 scale = Vector2(2.5, 2.5)
 
+[node name="BanditLeader2" parent="." instance=ExtResource("19_hfrpi")]
+position = Vector2(-463, 1114)
+scale = Vector2(2.5, 2.5)
+
+[node name="BanditLeader3" parent="." instance=ExtResource("19_hfrpi")]
+position = Vector2(3615, 2267)
+scale = Vector2(2.5, 2.5)
+
 [node name="Wolf" parent="." instance=ExtResource("9_touq4")]
 position = Vector2(122, -114)
 
