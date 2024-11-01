@@ -16,10 +16,21 @@ extends CanvasLayer
 
 func _ready():
 	_updateJoinedMatchIDLabel("TTnaMalaki")
-	_updateCurrentPlayer({"username" = "NIGGER", "isReady" = false})
+	_updateCurrentPlayer({"username" = "NIGGER", "isReady" = true})
 	_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
+	await get_tree().create_timer(3).timeout
+	startTimer()
+	await get_tree().create_timer(2).timeout
+	stopTimer()
+	await get_tree().create_timer(2).timeout
+	startTimer()
 
 signal playerReadyStatusChanged()
+
+func _process(delta: float) -> void:
+	# Update Timer for starting match
+	if %Timer.is_stopped() == false:
+		%Label2.text = "Match is about to start in %s seconds." % floor(%Timer.time_left) 
 
 func initialize(matchID, gameData):
 	_updateJoinedMatchIDLabel(matchID)
@@ -37,9 +48,11 @@ func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 func _updateCurrentPlayer(currentPlayer):
 	%CurrentPlayerUsername.text = currentPlayer.username
 	if currentPlayer.isReady:
-		%ReadyBtn.text = "Cancel"	
+		%ReadyBtn.text = "Cancel"
+		%LeaveMatchBtn.disabled = true
 	else:
 		%ReadyBtn.text = "Ready"
+		%LeaveMatchBtn.disabled = false
 
 func _updateOtherPlayer(otherPlayers: Array):
 	if otherPlayers.size() >= 0:
@@ -54,6 +67,14 @@ func _updateOtherPlayer(otherPlayers: Array):
 		print_debug("I have come")
 		%Username2.text = otherPlayers[1].username
 		%ReadyStatus2.text = "READY" if otherPlayers[1].isReady else "NOT READY"
+
+func startTimer():
+	%Timer.start(5)
+	%MatchCountdown.show()
+	
+func stopTimer():
+	%Timer.stop()
+	%MatchCountdown.hide()
 
 #func _on_ready_btn_pressed() -> void:
 	#playerReadyStatusChanged.emit()

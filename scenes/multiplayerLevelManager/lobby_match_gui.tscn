@@ -57,9 +57,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "weffweffwweffewffwefwefefewfewfewffwef"
-visible_characters = 25
-visible_ratio = 0.657895
+text = "<Placeholder>"
 
 [node name="ReadyBtn" type="Button" parent="VBoxContainer2/LobbyPlayerList/CurrentPlayer"]
 unique_name_in_owner = true
@@ -76,7 +74,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
-text = "-------------------------------------------------------------------------"
+text = "------"
 
 [node name="ReadyStatus1" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer1"]
 unique_name_in_owner = true
@@ -93,7 +91,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
-text = "-------------------------------------------------------------------------------"
+text = "-----"
 
 [node name="ReadyStatus2" type="Label" parent="VBoxContainer2/LobbyPlayerList/OtherPlayer2"]
 unique_name_in_owner = true
@@ -111,6 +109,33 @@ theme_override_fonts/font = ExtResource("1_5n8be")
 theme_override_font_sizes/font_size = 66
 theme_override_styles/hover = SubResource("StyleBoxTexture_x15lx")
 text = "LEAVE MATCH"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 843.0
+offset_top = 50.0
+offset_right = 1073.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 50
+text = "Match ID:"
+
+[node name="MatchCountdown" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Timer" type="Timer" parent="MatchCountdown"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Label2" type="Label" parent="MatchCountdown"]
+unique_name_in_owner = true
+offset_left = 534.0
+offset_top = 973.0
+offset_right = 1399.0
+offset_bottom = 1042.0
+theme_override_font_sizes/font_size = 50
+text = "Match is about to start in ? seconds."
 
 [connection signal="pressed" from="VBoxContainer2/LobbyPlayerList/CurrentPlayer/ReadyBtn" to="." method="_on_ready_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer2/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]
