@@ -14,6 +14,9 @@ extends CanvasLayer
 	#username: String
 #}
 
+signal playerReadyStatusChanged()
+signal currentPlayerLeftMatch
+
 func _ready():
 	_updateJoinedMatchIDLabel("TTnaMalaki")
 	_updateCurrentPlayer({"username" = "NIGGER", "isReady" = true})
@@ -24,8 +27,6 @@ func _ready():
 	stopTimer()
 	await get_tree().create_timer(2).timeout
 	startTimer()
-
-signal playerReadyStatusChanged()
 
 func _process(delta: float) -> void:
 	# Update Timer for starting match
@@ -42,6 +43,8 @@ func updateGUI(gameData):
 func cleanup():
 	pass
 
+
+# DONE 
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 	%JoinedMatchID.text = newJoinedMatchID
 
@@ -76,44 +79,9 @@ func stopTimer():
 	%Timer.stop()
 	%MatchCountdown.hide()
 
-#func _on_ready_btn_pressed() -> void:
-	#playerReadyStatusChanged.emit()
-	#
-
-#var joinedMatchID:String = ""
-#
-#var currentUser
-#var currentUserDisplayName
-#var isCurrentPlayerReady:bool = false
-#
-#var otherPlayers = []
-#
-#signal leftMatch
-#
-#func _ready() -> void:
-	#currentUser = await ServerManager.getUserLoggedInInfo()
-	#currentUserDisplayName = currentUser.user.display_name
-	#
-	#updateCurrentPlayer(self.currentUserDisplayName, false)
-#
-#func _on_leave_match_btn_pressed() -> void:
-	#var leaveResult = await ServerManager.leaveMatch(joinedMatchID)
-	#if leaveResult != OK:
-		#Notification.showMessage("Failed to Leave Match", 3.0)
-		#return
-	#leftMatch.emit()
-		#
-#func updateJoinedMatchLabel(newMatchLabel:String) -> void:
-	#joinedMatchID = newMatchLabel
-	#%JoinedMatchID.text = joinedMatchID
-#
-#func updateCurrentPlayer(currentPlayerDisplayName:String, isReady:bool):
-	#%CurrentPlayerUsername.text = currentPlayerDisplayName
-	#if isReady:
-		#%ReadyBtn.text = "CANCEL"
-	#else:
-		#%ReadyBtn.text = "READY"
-#
-#func updateOtherPlayers():
-	#pass
-#
+func _on_ready_btn_pressed() -> void:
+	playerReadyStatusChanged.emit()
+	
+func _on_leave_match_btn_pressed() -> void:
+	currentPlayerLeftMatch.emit()
+		

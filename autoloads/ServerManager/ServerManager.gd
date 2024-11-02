@@ -3,8 +3,11 @@ extends Node
 
 # Global variables for server-wide operations
 const SERVER_KEY : String = "thesisServer"
-const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
-@onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
+# THIS IS THE CLOUD SERVER
+#const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
+# THIS IS THE LOCAL SERVER
+const serverURL : String = "127.0.0.1"
+@onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 7350, "http")
 @onready var nakamaSession : NakamaSession = null
 @onready var nakamaSocket : NakamaSocket = null
 

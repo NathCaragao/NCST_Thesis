@@ -6,10 +6,10 @@ extends Control
 # - Storing variables that contains data that subguis' ui elements will use
 # - Invoking subguis' funcs to update their UI
 # - Connecting to subguis' signals to listen for their events and act accordingly
+# TLDR: THIS FILE WILL BE BOTH THE MODEL AND CONTROLLER FOR ALL OF ITS GUIs
 
 
 
-# Will help in keeping track the status of multiplayer
 enum MatchState {
 	NO_MATCH,
 	LOBBY_MATCH,
@@ -49,9 +49,11 @@ func _ready() -> void:
 	
 	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
+	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
+	
 	# Initial Match State initialization
 	_handleMatchStateChange(MatchState.NO_MATCH)
 	
@@ -115,3 +117,9 @@ func _handlePlayerReadyStatusChanged() -> void:
 		"isReady" = !currentGameState.presences[currentPlayerID].isReady
 	}
 	await ServerManager.sendMatchState(matchID, msgCode, payload)
+
+func _handleCurrentPlayerLeftMatch():
+	var leaveResult = await ServerManager.leaveMatch(joinedMatchID)
+	if leaveResult != OK:
+		Notification.showMessage("Failed to Leave Match", 3.0)
+		return

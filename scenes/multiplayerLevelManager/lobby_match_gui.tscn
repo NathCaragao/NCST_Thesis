@@ -130,6 +130,7 @@ one_shot = true
 
 [node name="Label2" type="Label" parent="MatchCountdown"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 534.0
 offset_top = 973.0
 offset_right = 1399.0
