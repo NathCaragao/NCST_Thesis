@@ -1,0 +1,196 @@
+[gd_scene load_steps=16 format=3 uid="uid://hqqksf2d723b"]
+
+[ext_resource type="Texture2D" uid="uid://bplelcgrb1b2o" path="res://assets/Enemies/cyclops-boss/NightBorne_idle-Sheet.png" id="1_8rn36"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_pirbq"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="2_fwqij"]
+[ext_resource type="PackedScene" uid="uid://bk1ae7b12dgko" path="res://scenes/components/hitbox/hitbox.tscn" id="3_bgvjy"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="4_b6g3t"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="4_feuph"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="5_kn25o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2trn"]
+shader = ExtResource("1_pirbq")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_qaaao"]
+resource_name = "cyclop-idle"
+length = 0.9
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8rn36")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_gcjlp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7jvl"]
+_data = {
+"RESET": SubResource("Animation_gcjlp"),
+"cyclop-idle": SubResource("Animation_qaaao")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsdvp"]
+radius = 17.0
+height = 86.0
+
+[sub_resource type="Animation" id="Animation_6hcam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"RESET": SubResource("Animation_6hcam"),
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="Cyclop" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b2trn")
+texture = ExtResource("1_8rn36")
+hframes = 9
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w7jvl")
+}
+autoplay = "cyclop-idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 23)
+shape = SubResource("CapsuleShape2D_wsdvp")
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("2_fwqij")]
+enemy_hp_bar = NodePath("CanvasLayer/EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="Hitbox" parent="EnemyHealthComp" instance=ExtResource("3_bgvjy")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EnemyHealthComp"]
+
+[node name="Label" type="Label" parent="EnemyHealthComp/CanvasLayer"]
+offset_left = 383.0
+offset_top = 814.0
+offset_right = 594.0
+offset_bottom = 876.0
+theme_override_fonts/font = ExtResource("4_b6g3t")
+theme_override_font_sizes/font_size = 51
+text = "idk what to name"
+horizontal_alignment = 1
+
+[node name="EnemyHPbar" parent="EnemyHealthComp/CanvasLayer" instance=ExtResource("4_feuph")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -184.0
+offset_right = -334.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(5, 5)
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("5_kn25o")
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+
+[editable path="EnemyHealthComp"]
