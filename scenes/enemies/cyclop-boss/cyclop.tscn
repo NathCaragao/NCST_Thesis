@@ -1,32 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://hqqksf2d723b"]
+[gd_scene load_steps=33 format=3 uid="uid://hqqksf2d723b"]
 
 [ext_resource type="Texture2D" uid="uid://bplelcgrb1b2o" path="res://assets/Enemies/cyclops-boss/NightBorne_idle-Sheet.png" id="1_8rn36"]
+[ext_resource type="Script" path="res://scenes/enemies/cyclop-boss/cyclop.gd" id="1_ew4uc"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_pirbq"]
+[ext_resource type="Texture2D" uid="uid://diy015ke3lpnu" path="res://assets/Enemies/cyclops-boss/NightBorne_attack-Sheet.png" id="2_1q2fi"]
+[ext_resource type="Texture2D" uid="uid://bqervrpvmlut6" path="res://assets/Enemies/cyclops-boss/NightBorne_hurt-Sheet.png" id="2_4copj"]
+[ext_resource type="Texture2D" uid="uid://bp65nj444wthr" path="res://assets/Enemies/cyclops-boss/NightBorne_run-Sheet.png" id="2_6oen8"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="2_fwqij"]
+[ext_resource type="Texture2D" uid="uid://doffgkbnxoc8i" path="res://assets/Enemies/cyclops-boss/NightBorne_death.-Sheet.png" id="2_j4oem"]
 [ext_resource type="PackedScene" uid="uid://bk1ae7b12dgko" path="res://scenes/components/hitbox/hitbox.tscn" id="3_bgvjy"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="4_b6g3t"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="4_feuph"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="5_kn25o"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_vl70b"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="8_jnce6"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_3n8c0"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_v23jq"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="11_kcwcj"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="12_4avqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2trn"]
 shader = ExtResource("1_pirbq")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_gcjlp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
 
 [sub_resource type="Animation" id="Animation_qaaao"]
 resource_name = "cyclop-idle"
@@ -82,15 +78,292 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_ofj5u"]
+resource_name = "cyclop-run"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6oen8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_qke6w"]
+resource_name = "cyclop-attack"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1q2fi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_bm46v"]
+resource_name = "cyclop-hit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4copj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_t3b4n"]
+resource_name = "cyclop-death"
+length = 2.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_j4oem")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 22]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hurtbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_um7fl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7jvl"]
 _data = {
-"RESET": SubResource("Animation_gcjlp"),
-"cyclop-idle": SubResource("Animation_qaaao")
+"RESET": SubResource("Animation_um7fl"),
+"cyclop-attack": SubResource("Animation_qke6w"),
+"cyclop-death": SubResource("Animation_t3b4n"),
+"cyclop-hit": SubResource("Animation_bm46v"),
+"cyclop-idle": SubResource("Animation_qaaao"),
+"cyclop-run": SubResource("Animation_ofj5u")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsdvp"]
 radius = 17.0
 height = 86.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s52wg"]
+radius = 17.0
+height = 88.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llt1e"]
+size = Vector2(121, 118)
 
 [sub_resource type="Animation" id="Animation_6hcam"]
 length = 0.001
@@ -131,12 +404,12 @@ _data = {
 }
 
 [node name="Cyclop" type="CharacterBody2D"]
+script = ExtResource("1_ew4uc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_b2trn")
 texture = ExtResource("1_8rn36")
 hframes = 9
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -148,14 +421,58 @@ autoplay = "cyclop-idle"
 position = Vector2(9, 23)
 shape = SubResource("CapsuleShape2D_wsdvp")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_vl70b")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("8_jnce6")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_3n8c0")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("10_v23jq")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
+wait_time = 2.0
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("11_kcwcj")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+script = ExtResource("12_4avqt")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+body_collision = NodePath("../../CollisionShape2D")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("2_fwqij")]
 enemy_hp_bar = NodePath("CanvasLayer/EnemyHPbar")
 anim_effects = NodePath("../AnimEffects")
 dmg_num_pos = NodePath("../DmgNumPos")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(9, 22)
+shape = SubResource("CapsuleShape2D_s52wg")
+debug_color = Color(0.991652, 0, 0.262738, 0.42)
+
 [node name="Hitbox" parent="EnemyHealthComp" instance=ExtResource("3_bgvjy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(106, 10)
+shape = SubResource("RectangleShape2D_llt1e")
+disabled = true
+debug_color = Color(0.0770676, 0.649279, 1.92523e-07, 0.42)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="EnemyHealthComp"]
 
@@ -192,5 +509,7 @@ libraries = {
 }
 
 [node name="DmgNumPos" type="Node2D" parent="."]
+
+[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
 [editable path="EnemyHealthComp"]

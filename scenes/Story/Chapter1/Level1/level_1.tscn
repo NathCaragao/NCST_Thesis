@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=88 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="5_2v5hh"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="6_1s0eo"]
 [ext_resource type="PackedScene" uid="uid://br88hqc63tygc" path="res://scenes/mechanisms/spinning-platform/sppining_platform.tscn" id="7_uhwtd"]
+[ext_resource type="PackedScene" uid="uid://hqqksf2d723b" path="res://scenes/enemies/cyclop-boss/cyclop.tscn" id="8_huhis"]
 [ext_resource type="Script" path="res://scenes/mechanisms/trap-platform/TrapPlatform.gd" id="8_rovq1"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_touq4"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
@@ -1620,7 +1621,7 @@ tile_map_data = PackedByteArray("AAAAAPr/AAAEAAIAAAABAPr/AAACAAIAAAACAPr/AAADAAI
 tile_set = SubResource("TileSet_pif7w")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-180, -120)
+position = Vector2(-231, 2312)
 scale = Vector2(1.3, 1.3)
 collision_mask = 35
 
@@ -1645,6 +1646,10 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Wolf" parent="." instance=ExtResource("9_touq4")]
 position = Vector2(122, -114)
+
+[node name="Cyclop" parent="." instance=ExtResource("8_huhis")]
+position = Vector2(-388, 2285)
+scale = Vector2(0.7, 0.7)
 
 [node name="LargeCrate2" parent="." instance=ExtResource("3_3p7nc")]
 position = Vector2(1429, 1045)
