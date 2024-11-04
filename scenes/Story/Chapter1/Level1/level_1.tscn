@@ -1951,9 +1951,10 @@ collision_mask = 8
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("16_seudv")]
 
-[node name="Trapdoor" parent="." instance=ExtResource("20_n2v2w")]
+[node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
 scale = Vector2(1.9, 1.9)
+cyclops = NodePath("../Cyclop")
 
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]

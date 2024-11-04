@@ -5,9 +5,15 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var hurt_box_shape: CollisionShape2D = $CollisionShape2D as CollisionShape2D
 
+signal OpenTrapdoor
+
 # stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
+
+func _process(delta: float):
+	if animation_mapping["enemy-dead"]:
+		emit_signal("OpenTrapdoor")
 
 # flip sprite
 func flip_sprite() -> void:
