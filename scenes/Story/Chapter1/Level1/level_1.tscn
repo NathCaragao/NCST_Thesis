@@ -2000,32 +2000,32 @@ shape = SubResource("RectangleShape2D_ydueu")
 [node name="HealthPotion" parent="." instance=ExtResource("14_pkjb1")]
 position = Vector2(-124, -104)
 
-[node name="Gate" parent="." node_paths=PackedStringArray("key_1") instance=ExtResource("13_gcvc1")]
+[node name="Gate1" parent="." node_paths=PackedStringArray("key_1") instance=ExtResource("13_gcvc1")]
 position = Vector2(1977, 1136)
 scale = Vector2(2, 2)
 key_1 = NodePath("../Key_1")
 
-[node name="Sprite2D" parent="Gate" index="0"]
+[node name="Sprite2D" parent="Gate1" index="0"]
 position = Vector2(1.99997, 10.1656)
 scale = Vector2(0.739587, 0.923569)
 texture = ExtResource("18_8d2jb")
 hframes = 30
 
-[node name="GateAnim" type="AnimationPlayer" parent="Gate"]
+[node name="GateAnim" type="AnimationPlayer" parent="Gate1"]
 libraries = {
 "": SubResource("AnimationLibrary_6rn02")
 }
 
-[node name="InteractionArea" parent="Gate" instance=ExtResource("10_aj2yc")]
+[node name="InteractionArea" parent="Gate1" instance=ExtResource("10_aj2yc")]
 action_name = "to open"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate1/InteractionArea"]
 position = Vector2(1, -0.25)
 shape = SubResource("RectangleShape2D_22byg")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Gate"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Gate1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate1/StaticBody2D"]
 position = Vector2(2, -30.5)
 shape = SubResource("RectangleShape2D_f64vh")
 debug_color = Color(0.548295, 0.564482, 7.70092e-07, 0.42)
@@ -2052,8 +2052,8 @@ cyclops = NodePath("../Cyclop")
 
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]
-[connection signal="body_entered" from="Gate/InteractionArea" to="Gate" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="Gate/InteractionArea" to="Gate" method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="Gate1/InteractionArea" to="Gate1" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="Gate1/InteractionArea" to="Gate1" method="_on_interaction_area_body_exited"]
 
-[editable path="Gate"]
+[editable path="Gate1"]
 [editable path="Key_1"]
