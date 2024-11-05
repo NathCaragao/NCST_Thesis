@@ -376,7 +376,7 @@ script = ExtResource("1_07ycu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xlobw")
-texture = ExtResource("1_4rwo2")
+texture = ExtResource("1_r7fc1")
 hframes = 4
 vframes = 2
 

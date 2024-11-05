@@ -15,6 +15,7 @@ func on_use() -> void:
 	if key_1.key_taken == true:
 		if gate_zone == true:
 			gate_anim.play("gate-open")
+			$InteractionArea/CollisionShape2D.disabled = true
 			print("gate opened!")
 
 

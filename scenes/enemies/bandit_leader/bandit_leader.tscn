@@ -152,18 +152,6 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_bdw8l"]
 resource_name = "bandit-leader-idle"
@@ -417,6 +405,15 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_0bne2")
 debug_color = Color(0.994876, 0, 0.21488, 0.42)
 
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("14_rvfi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(17, 5)
+shape = SubResource("CircleShape2D_qy4tv")
+disabled = true
+debug_color = Color(0.31394, 0.626038, 0, 0.42)
+
 [node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("12_krhpq")]
 offset_left = -22.0
 offset_top = -20.0
@@ -427,21 +424,12 @@ offset_bottom = -17.0
 script = ExtResource("13_6sy3t")
 base_dmg = 15
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
-script = ExtResource("14_rvfi1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
-position = Vector2(17, 5)
-shape = SubResource("CircleShape2D_qy4tv")
-disabled = true
-debug_color = Color(0.31394, 0.626038, 0, 0.42)
+[node name="DmgNumPos" type="Node2D" parent="."]
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
 }
-
-[node name="DmgNumPos" type="Node2D" parent="."]
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
