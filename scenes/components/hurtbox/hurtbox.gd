@@ -12,6 +12,7 @@ func _ready() -> void:
 	connect("area_entered", Callable(self, "on_atk_entered"))
 	connect("area_entered", Callable(self, "on_skill_entered"))
 	connect("area_entered", Callable(self, "on_arrow_hit"))
+	connect("area_entered", Callable(self, "on_fire_hazard"))
 
 # BASIC ATK hitbox
 func on_atk_entered(area: Area2D) -> void:
@@ -43,3 +44,12 @@ func on_arrow_hit(projectile: Area2D) -> void:
 			if projectile.already_hit == false:
 				owner.take_damage(projectile.projectile_dmg)
 				projectile.on_collide()
+
+# fire hazard obstacle
+func on_fire_hazard(fire_hitbox : Area2D) -> void:
+	if fire_hitbox == null:
+		return
+	
+	if fire_hitbox is FireHazzardHitbox:
+		if owner.has_method("take_damage"):
+			owner.take_damage(fire_hitbox.fire_dmg)

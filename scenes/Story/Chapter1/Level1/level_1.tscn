@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=95 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -1651,24 +1651,8 @@ tracks/4/keys = {
 "values": [Vector2(21.5, -15.5), Vector2(21.5, -104)]
 }
 
-[sub_resource type="Animation" id="Animation_s3iwg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody2D/CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(21.5, -104)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6rn02"]
 _data = {
-"RESET": SubResource("Animation_s3iwg"),
 "gate-open": SubResource("Animation_obgoq")
 }
 
@@ -1700,7 +1684,7 @@ tile_map_data = PackedByteArray("AAAAAPr/AAAEAAIAAAABAPr/AAACAAIAAAACAPr/AAADAAI
 tile_set = SubResource("TileSet_pif7w")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(3361, -121)
+position = Vector2(2041, 686)
 scale = Vector2(1.3, 1.3)
 collision_mask = 35
 
@@ -1746,19 +1730,15 @@ position = Vector2(5513, 1130)
 
 [node name="Firehazard2" parent="Platforming" instance=ExtResource("5_2v5hh")]
 position = Vector2(6039, 1617)
-rotation = 0.606804
 
 [node name="Firehazard3" parent="Platforming" instance=ExtResource("5_2v5hh")]
 position = Vector2(5795, 1617)
-rotation = 1.02206
 
 [node name="Firehazard4" parent="Platforming" instance=ExtResource("5_2v5hh")]
 position = Vector2(5562, 1616)
-rotation = 2.36085
 
 [node name="Firehazard5" parent="Platforming" instance=ExtResource("5_2v5hh")]
 position = Vector2(5337, 1616)
-rotation = -1.71854
 
 [node name="Moving Platform5" parent="Platforming" instance=ExtResource("6_1s0eo")]
 position = Vector2(2311, 405)
@@ -1955,18 +1935,15 @@ autoplay = "mp3"
 
 [node name="Firehazard" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(2347, 544)
-rotation = -1.73486
 
 [node name="Firehazard2" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(2542, 546)
-rotation = -1.09956
 
 [node name="Firehazard3" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1840, 905)
 
 [node name="Firehazard4" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(1838, 734)
-rotation = -1.55127
 
 [node name="Firehazard5" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(154, 2390)
@@ -2027,7 +2004,7 @@ shape = SubResource("RectangleShape2D_22byg")
 [node name="StaticBody2D" type="StaticBody2D" parent="Gates Collection/Gate1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gates Collection/Gate1/StaticBody2D"]
-position = Vector2(21.5, -104)
+position = Vector2(2, 10)
 shape = SubResource("RectangleShape2D_f64vh")
 debug_color = Color(0.548295, 0.564482, 7.70092e-07, 0.42)
 
@@ -2041,7 +2018,6 @@ position = Vector2(21.625, -14.3414)
 scale = Vector2(1.5573, 1.9447)
 texture = ExtResource("18_8d2jb")
 hframes = 30
-frame = 29
 
 [node name="GateAnim" type="AnimationPlayer" parent="Gates Collection/Gate2"]
 libraries = {
@@ -2051,7 +2027,7 @@ libraries = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Gates Collection/Gate2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gates Collection/Gate2/StaticBody2D"]
-position = Vector2(21.5, -104)
+position = Vector2(21.5, -15.5)
 shape = SubResource("RectangleShape2D_xd2ak")
 debug_color = Color(0.594556, 0.545887, 0, 0.42)
 
@@ -2065,6 +2041,21 @@ shape = SubResource("RectangleShape2D_8736j")
 
 [node name="coin" parent="CoinsCollection" instance=ExtResource("15_exch3")]
 position = Vector2(221, -114)
+
+[node name="coin2" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(254, -114)
+
+[node name="coin3" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(288, -114)
+
+[node name="coin4" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(1872, -46)
+
+[node name="coin5" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(1984, 125)
+
+[node name="coin6" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+position = Vector2(1903, 364)
 
 [node name="Key_2" parent="." instance=ExtResource("15_ihcff")]
 position = Vector2(2789, 1149)
