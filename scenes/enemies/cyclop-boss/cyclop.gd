@@ -14,6 +14,8 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _process(delta: float):
 	if animation_mapping["enemy-dead"]:
 		emit_signal("OpenTrapdoor")
+	
+	
 
 # flip sprite
 func flip_sprite() -> void:
@@ -38,3 +40,13 @@ var animation_mapping = {
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
+
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	$EnemyHealthComp/CanvasLayer/EnemyHPbar.visible = true
+	$EnemyHealthComp/CanvasLayer/Label.visible = true
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	$EnemyHealthComp/CanvasLayer/EnemyHPbar.visible = false
+	$EnemyHealthComp/CanvasLayer/Label.visible = false
