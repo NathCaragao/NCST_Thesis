@@ -6,8 +6,9 @@ var current_health : int
 # reference player hurtbox here
 var is_dead : bool = false
 @onready var phealth_bar: PlayerHealthBar = $Hp_bar/PlayerHPbar
+@export var anim_effects: AnimationPlayer
 
-
+signal ObstacleHit
 signal PlayerDead
 
 func _ready() -> void:
@@ -24,6 +25,8 @@ func take_damage(amount: int) -> void:
 	
 	print("took damage ")
 	print("current health: ", current_health)
+	anim_effects.play("hit-flash")
+	emit_signal("ObstacleHit")
 	
 	if current_health <= 0:
 		on_player_died()

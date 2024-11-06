@@ -9,7 +9,7 @@ func enter() -> void:
 	actor.animation_player.play("player-dead")
 	
 	# disable all phyics interactions
-	$"../../PlayerHealthComponent/Hurtbox/CollisionShape2D".disabled = true
+	$"../../PlayerHealthComponent/Hurtbox/CollisionShape2D".set_deferred("disabled", true)
 	
 	# disable other processes
 	actor.set_physics_process(false)
