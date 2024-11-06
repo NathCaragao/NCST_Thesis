@@ -1,20 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://e6b21lb6rwoj"]
 
 [ext_resource type="Script" path="res://scenes/mechanisms/arrow/arrow.gd" id="1_gqph8"]
-[ext_resource type="Texture2D" uid="uid://cna6jr47sw601" path="res://icon.svg" id="1_old8y"]
+[ext_resource type="Texture2D" uid="uid://bnwyrd0wakd3k" path="res://assets/in-game-objects/projectile/arrow_projectile.png" id="2_7kbgb"]
 [ext_resource type="Script" path="res://scenes/components/projectile-hitbox/projectile_hitbox.gd" id="3_3d6cn"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="3_k8kwe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk1in"]
 radius = 1.0
-height = 36.0
+height = 40.0
 
 [node name="Arrow" type="Node2D" groups=["Projectiles"]]
 script = ExtResource("1_gqph8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.286458, 0.0239583)
-texture = ExtResource("1_old8y")
+texture = ExtResource("2_7kbgb")
 
 [node name="ProjectileHitbox" type="Area2D" parent="."]
 collision_layer = 0
