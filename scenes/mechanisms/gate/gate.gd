@@ -5,6 +5,7 @@ extends Node2D
 @onready var gate_anim: AnimationPlayer = $GateAnim
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export var key_1 : Area2D
+@export var totem_holder : Node2D
 var gate_zone : bool = false
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func on_use() -> void:
 		if gate_zone == true:
 			gate_anim.play("gate-open")
 			$InteractionArea/CollisionShape2D.disabled = true
+			totem_holder.activate_totem()
 			print("gate opened!")
 
 
