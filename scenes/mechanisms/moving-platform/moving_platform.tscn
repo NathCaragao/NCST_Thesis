@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4ainh8qfayhe"]
 
-[ext_resource type="Texture2D" uid="uid://bahyvwi64puj6" path="res://assets/in-game-objects/platform 3.png" id="1_etc0s"]
+[ext_resource type="Texture2D" uid="uid://bkxt60cg24jh3" path="res://assets/in-game-objects/moving_platform_grass.png" id="1_exivm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bat7j"]
 size = Vector2(64, 13)
@@ -8,7 +8,7 @@ size = Vector2(64, 13)
 [node name="Moving Platform" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_etc0s")
+texture = ExtResource("1_exivm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
