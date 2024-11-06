@@ -26,11 +26,8 @@ var currentGUI = null
 var joinedMatchID:String = ""
 var currentMatchState:MatchState
 @onready var currentPlayer = await ServerManager.getUserLoggedInInfo()
-
-var currentGameState = JSON.parse_string("{
-	\"presences\": {},
-}")
-
+var currentGameState = null
+var otherPlayers: Array = []
 
 
 func _switchGUI(currentGUI, newGUI) -> void:
@@ -59,9 +56,18 @@ func _ready() -> void:
 	
 
 func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
-	if gameState.op_code == 99:
-		currentGameState = JSON.parse_string(gameState.data)
-		print_debug(currentGameState.presences)
+	#if gameState.op_code == ServerManager.MessageOpCode.DATA_FROM_SERVER: might be unnecessary
+	self.currentGameState = JSON.parse_string(gameState.data)
+	
+	# Separate this player's data from other players
+	var otherPlayerData:Array = []
+	for presence in self.currentGameState.presences:
+		if presence != self.currentPlayer.user.id:
+			otherPlayerData.append(presence)
+	otherPlayerData.sort()
+	
+	if currentMatchState == MatchState.LOBBY_MATCH:
+		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
 # CHANGING SUBGUIS:
 # - Get the new match state and decide which GUI to show - done
@@ -76,12 +82,12 @@ func _handleMatchStateChange(newMatchState:MatchState):
 	if newMatchState == MatchState.NO_MATCH:
 		_switchGUI(currentGUI, noMatchGUI)
 		currentGUI = noMatchGUI
-		noMatchGUI.initialize(null)
+		noMatchGUI.update(null)
 		
 	elif newMatchState == MatchState.LOBBY_MATCH:
 		_switchGUI(currentGUI, lobbyMatchGUI)
 		currentGUI = lobbyMatchGUI
-		lobbyMatchGUI.initialize(joinedMatchID, currentGameState)
+		lobbyMatchGUI.update(joinedMatchID, {}, [])
 		
 	elif newMatchState == MatchState.ONGOING_MATCH:
 		pass
@@ -95,7 +101,20 @@ func _handleMatchStateChange(newMatchState:MatchState):
 func _handleMatchCreated(createdMatchID:String):
 	self.joinedMatchID = createdMatchID
 
-func _handleMatchJoined():
+func _handleMatchJoined(isPlayerHost:bool):
+	# If player is host, send a update to server
+	var isHostPayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {"isHost": true}
+	}
+	# Send the user's display_name to server
+	var displayNamePayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {"displayName": self.currentPlayer.user.display_name}
+	}
+	
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_HOST, isHostPayload)
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_DISPLAY_NAME, displayNamePayload)
 	_handleMatchStateChange(MatchState.LOBBY_MATCH)
 #
 ##------------------------------------------------------------------------------
@@ -107,16 +126,12 @@ func _handleMatchJoined():
 	#_handleMatchStateStatus(currentMatchState)
 	
 func _handlePlayerReadyStatusChanged() -> void:
-	# GET PLAYER USER ID
-	var currentPlayerID = currentPlayer.user.id
 	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
-	var matchID = self.joinedMatchID
-	var msgCode = ServerManager.MessageOpCode.LOBBY_READY_UPDATE
-	var payload = {
-		"userID" = currentPlayerID,
-		"isReady" = !currentGameState.presences[currentPlayerID].isReady
+	var readyStatusChangePayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {"isReady": !self.currentGameState.presences[currentPlayer.user.id].isReady}
 	}
-	await ServerManager.sendMatchState(matchID, msgCode, payload)
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.LOBBY_PLAYER_READY_CHANGED, readyStatusChangePayload)
 
 func _handleCurrentPlayerLeftMatch():
 	var leaveResult = await ServerManager.leaveMatch(joinedMatchID)

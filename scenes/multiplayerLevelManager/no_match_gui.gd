@@ -2,22 +2,22 @@ class_name NoMatchGUI
 extends CanvasLayer
 
 signal matchCreated(matchCreatedID:String)
-signal matchJoined()
+signal matchJoined(isPlayerHost:bool)
 
 
-func initialize(gameData):
+func update(gameData):
 	# Doesn't need game data, defined just to avoid errors
 	pass
 
 func cleanup():
 	%MatchIdField.text = ""
 
-func _joinMatch(matchIdToJoin:String) -> void:
+func _joinMatch(matchIdToJoin:String, isPlayerHost:bool) -> void:
 	var joinResult = await ServerManager.joinMatch(matchIdToJoin)
 	if joinResult != OK:
 		Notification.showMessage("Failed to Join Match", 3.0)
 		return
-	matchJoined.emit()
+	matchJoined.emit(isPlayerHost)
 
 func _on_create_match_btn_pressed() -> void:
 	var newMatchID = await ServerManager.createMatch()
@@ -26,10 +26,10 @@ func _on_create_match_btn_pressed() -> void:
 		return
 	matchCreated.emit(newMatchID)
 	
-	await _joinMatch(newMatchID)
+	await _joinMatch(newMatchID, true)
 
 func _on_join_match_btn_pressed() -> void:
 	if %MatchIdField.text == "":
 		return
-	matchCreated.emit(%MatchIdField.text)
-	await _joinMatch(%MatchIdField.text)
+	matchCreated.emit(%MatchIdField.text, false)
+	await _joinMatch(%MatchIdField.text, false)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5ulo648e4li0" path="res://assets/tilesets(idk how to categorize files inside yet)/temple-campaign-no-outline.png" id="1_bg8mm"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/chapter-selection/chapter_selection.gd" id="1_tb02e"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1utwf"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_tkop5"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_tkop5"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_i044p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1vn7"]
@@ -165,5 +165,21 @@ theme_override_fonts/font = ExtResource("2_tkop5")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
+[node name="MultiplayerBtn" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 736.0
+offset_top = -112.0
+offset_right = 1194.0
+offset_bottom = -44.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_tkop5")
+theme_override_font_sizes/font_size = 50
+text = "Multiplayer"
+
 [connection signal="pressed" from="Chapter1/ChBtn" to="." method="_on_ch_btn_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]

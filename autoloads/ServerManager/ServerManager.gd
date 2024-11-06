@@ -193,7 +193,11 @@ func addUserInDB() -> int:
 # MULTIPLAYER RELATED
 #-------------------------------------------------------------------------------
 enum MessageOpCode {
-	LOBBY_READY_UPDATE = 1,
+  DATA_FROM_SERVER = 1,
+  UPDATE_DISPLAY_NAME,
+  UPDATE_HOST,
+  LOBBY_PLAYER_READY_CHANGED,
+  ONGOING_PLAYER_STARTED_CHANGED,
 }
 
 signal matchStateReceived(matchState: NakamaRTAPI.MatchData)

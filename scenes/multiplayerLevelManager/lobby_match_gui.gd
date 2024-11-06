@@ -18,8 +18,7 @@ signal playerReadyStatusChanged()
 signal currentPlayerLeftMatch
 
 func _ready():
-	_updateJoinedMatchIDLabel("TTnaMalaki")
-	_updateCurrentPlayer({"username" = "NIGGER", "isReady" = true})
+	#_updateCurrentPlayer({"username" = "NIGGER", "isReady" = true})
 	_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
 	await get_tree().create_timer(3).timeout
 	startTimer()
@@ -33,23 +32,23 @@ func _process(delta: float) -> void:
 	if %Timer.is_stopped() == false:
 		%Label2.text = "Match is about to start in %s seconds." % floor(%Timer.time_left) 
 
-func initialize(matchID, gameData):
+func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 	_updateJoinedMatchIDLabel(matchID)
-	updateGUI(gameData)
+	_updateCurrentPlayer(currentPlayerData)
 
-func updateGUI(gameData):
-	pass
 
 func cleanup():
 	pass
 
 
-# DONE 
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 	%JoinedMatchID.text = newJoinedMatchID
 
 func _updateCurrentPlayer(currentPlayer):
-	%CurrentPlayerUsername.text = currentPlayer.username
+	if currentPlayer == {}:
+		return
+		
+	%CurrentPlayerUsername.text = currentPlayer.playerData.displayName
 	if currentPlayer.isReady:
 		%ReadyBtn.text = "Cancel"
 		%LeaveMatchBtn.disabled = true
