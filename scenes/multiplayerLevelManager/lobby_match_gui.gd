@@ -18,13 +18,13 @@ signal playerReadyStatusChanged()
 signal currentPlayerLeftMatch
 
 func _ready():
-	#_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
-	await get_tree().create_timer(3).timeout
-	startTimer()
-	await get_tree().create_timer(2).timeout
-	stopTimer()
-	await get_tree().create_timer(2).timeout
-	startTimer()
+	pass
+	#await get_tree().create_timer(3).timeout
+	#startTimer()
+	#await get_tree().create_timer(2).timeout
+	#stopTimer()
+	#await get_tree().create_timer(2).timeout
+	#startTimer()
 
 func _process(delta: float) -> void:
 	# Update Timer for starting match
@@ -35,6 +35,16 @@ func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 	_updateJoinedMatchIDLabel(matchID)
 	_updateCurrentPlayer(currentPlayerData)
 	_updateOtherPlayer(otherPlayersData)
+	if currentPlayerData != {} && currentPlayerData.isReady && otherPlayersData.size() >= 1:
+		# Loop thru otherPlayers and only set a flag to true if everyone is Ready.
+		var startTimer = true
+		for otherPlayer in otherPlayersData:
+			if otherPlayer.isReady == false:
+				startTimer = false
+		if startTimer && %Timer.is_stopped() == true:
+			startTimer()
+	else:
+		stopTimer()
 
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 	if %JoinedMatchID.text == newJoinedMatchID:

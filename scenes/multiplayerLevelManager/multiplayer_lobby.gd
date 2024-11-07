@@ -66,7 +66,6 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	otherPlayerData.sort()
 	
 	if currentMatchState == MatchState.LOBBY_MATCH:
-		pass
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
 # CHANGING SUBGUIS:
