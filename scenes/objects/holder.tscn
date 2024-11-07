@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://is8fgexj0fi7"]
+
+[ext_resource type="Texture2D" uid="uid://b5wnt3yakyu7x" path="res://assets/Objects/round_platform.png" id="1_v21ku"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5ne1"]
+radius = 1.0
+
+[node name="holder" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0703125, 0.0742188)
+texture = ExtResource("1_v21ku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q5ne1")

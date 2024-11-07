@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://j3xygltqdr5n"]
+
+[ext_resource type="Texture2D" uid="uid://bkjcalsx47elo" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="1_ha4p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adbpw"]
+size = Vector2(2, 71)
+
+[node name="rope" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 19.5)
+scale = Vector2(1, 4.92857)
+texture = ExtResource("1_ha4p5")
+region_enabled = true
+region_rect = Rect2(150.409, 144.676, 2.76888, 14.5828)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_adbpw")
