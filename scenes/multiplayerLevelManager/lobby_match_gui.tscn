@@ -41,7 +41,7 @@ theme_override_font_sizes/font_size = 30
 placeholder_text = "Joined Match ID"
 alignment = 1
 editable = false
-clear_button_enabled = true
+deselect_on_focus_loss_enabled = false
 
 [node name="LobbyPlayerList" type="VBoxContainer" parent="VBoxContainer2"]
 layout_mode = 2

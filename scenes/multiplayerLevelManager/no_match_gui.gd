@@ -25,11 +25,11 @@ func _on_create_match_btn_pressed() -> void:
 		Notification.showMessage("Failed To Create Match", 3.0)
 		return
 	matchCreated.emit(newMatchID)
-	
 	await _joinMatch(newMatchID, true)
 
 func _on_join_match_btn_pressed() -> void:
 	if %MatchIdField.text == "":
 		return
-	matchCreated.emit(%MatchIdField.text, false)
+	print_debug("MATCH ID TO JOIN: ", %MatchIdField.text)
+	matchCreated.emit(%MatchIdField.text)
 	await _joinMatch(%MatchIdField.text, false)

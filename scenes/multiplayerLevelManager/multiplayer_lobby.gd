@@ -61,12 +61,13 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	
 	# Separate this player's data from other players
 	var otherPlayerData:Array = []
-	for presence in self.currentGameState.presences:
-		if presence != self.currentPlayer.user.id:
-			otherPlayerData.append(presence)
+	for presenceId in self.currentGameState.presences:
+		if presenceId != self.currentPlayer.user.id:
+			otherPlayerData.append(self.currentGameState.presences[presenceId])
 	otherPlayerData.sort()
 	
 	if currentMatchState == MatchState.LOBBY_MATCH:
+		pass
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
 # CHANGING SUBGUIS:
@@ -105,7 +106,7 @@ func _handleMatchJoined(isPlayerHost:bool):
 	# If player is host, send a update to server
 	var isHostPayload = {
 		"userId" = self.currentPlayer.user.id,
-		"payload" = {"isHost": true}
+		"payload" = {"isHost": isPlayerHost}
 	}
 	# Send the user's display_name to server
 	var displayNamePayload = {

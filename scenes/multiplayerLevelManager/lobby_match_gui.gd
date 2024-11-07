@@ -18,8 +18,7 @@ signal playerReadyStatusChanged()
 signal currentPlayerLeftMatch
 
 func _ready():
-	#_updateCurrentPlayer({"username" = "NIGGER", "isReady" = true})
-	_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
+	#_updateOtherPlayer([{"username" = "TT", "isReady" = true}, {"username" = "Hard", "isReady" = false}])
 	await get_tree().create_timer(3).timeout
 	startTimer()
 	await get_tree().create_timer(2).timeout
@@ -35,13 +34,15 @@ func _process(delta: float) -> void:
 func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 	_updateJoinedMatchIDLabel(matchID)
 	_updateCurrentPlayer(currentPlayerData)
-
+	_updateOtherPlayer(otherPlayersData)
 
 func cleanup():
 	pass
 
 
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
+	if %JoinedMatchID.text == newJoinedMatchID:
+		return
 	%JoinedMatchID.text = newJoinedMatchID
 
 func _updateCurrentPlayer(currentPlayer):
@@ -63,11 +64,10 @@ func _updateOtherPlayer(otherPlayers: Array):
 		%Username2.text = "----------"
 		%ReadyStatus2.text = "----------"
 	if otherPlayers.size() >= 1:
-		%Username1.text = otherPlayers[0].username
+		%Username1.text = otherPlayers[0].playerData.displayName
 		%ReadyStatus1.text = "READY" if otherPlayers[0].isReady else "NOT READY"
 	if otherPlayers.size() >= 2:
-		print_debug("I have come")
-		%Username2.text = otherPlayers[1].username
+		%Username2.text = otherPlayers[1].playerData.displayName
 		%ReadyStatus2.text = "READY" if otherPlayers[1].isReady else "NOT READY"
 
 func startTimer():
