@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_udxpx"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_2vyix"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="9_rclnh"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="10_vuk4w"]
 [ext_resource type="Script" path="res://fsm/special states/boss_attack.gd" id="11_8sil7"]
+[ext_resource type="Script" path="res://fsm/special states/boss_follow.gd" id="11_vk35g"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_ffjvj"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="13_lw8uq"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="14_q4ryk"]
@@ -395,14 +395,13 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vppp"]
 radius = 13.0
-height = 52.0
+height = 36.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_816a8"]
-radius = 13.0
-height = 52.0
+radius = 11.0
+height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eqtdf"]
-radius = 17.0294
 
 [sub_resource type="Animation" id="Animation_6hcam"]
 length = 0.001
@@ -447,8 +446,8 @@ script = ExtResource("1_t5a22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2wsb8")
-texture = ExtResource("1_e7ryk")
-hframes = 6
+texture = ExtResource("1_w6wke")
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -470,8 +469,9 @@ actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("10_vuk4w")
+script = ExtResource("11_vk35g")
 actor = NodePath("../..")
+move_speed = 40.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
@@ -543,7 +543,7 @@ horizontal_alignment = 1
 script = ExtResource("17_4jqxf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
-position = Vector2(48, 11)
+position = Vector2(29, 17)
 shape = SubResource("CircleShape2D_eqtdf")
 disabled = true
 debug_color = Color(0, 0.648593, 0.175592, 0.42)

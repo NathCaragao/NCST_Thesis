@@ -1,3 +1,4 @@
+# special attack state
 class_name BossAttack
 extends State
 
@@ -24,12 +25,17 @@ func enter() -> void:
 	print("Actor position:", actor.global_position)
 	print("Direction length:", direction.length())
 	
-	if direction.length() <= 40:
-		print("Within attack range, playing attack animation")
-		actor.play_animation("enemy-attack")
-		timer.start()
-	else:
-		print("Not within attack range")
+	
+	print("Within attack range, playing attack animation")
+	actor.play_animation("enemy-attack1")
+	timer.start()
+	
+	#if direction.length() <= 80:
+		#print("Within attack range, playing attack animation")
+		#actor.play_animation("enemy-attack1")
+		#timer.start()
+	#else:
+		#print("Not within attack range")
 
 func physics_update(delta: float) -> void:
 	if is_instance_valid(player) and is_instance_valid(actor):
@@ -58,7 +64,7 @@ func on_hit1() -> void:
 	Transitioned.emit(self, "enemyhit")
 
 func _on_timer_timeout() -> void:
-	actor.play_animation("enemy-attack")
+	actor.play_animation("enemy-attack2")
 
 func exit() -> void:
 	pass

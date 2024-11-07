@@ -26,8 +26,7 @@ func enter() -> void:
 	
 	if direction.length() <= 40:
 		print("Within attack range, playing attack animation")
-		actor.play_animation("enemy-attack1")
-		actor.play_animation("enemy-attack2")
+		actor.play_animation("enemy-attack")
 		timer.start()
 	else:
 		print("Not within attack range")
@@ -59,7 +58,7 @@ func on_hit1() -> void:
 	Transitioned.emit(self, "enemyhit")
 
 func _on_timer_timeout() -> void:
-	actor.play_animation("enemy-attack1")
+	actor.play_animation("enemy-attack")
 
 func exit() -> void:
 	pass

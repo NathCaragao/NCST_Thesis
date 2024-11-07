@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=100 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://fcnyprgtbuq8" path="res://scenes/mechanisms/totem-holder/totem_holder.tscn" id="19_wbsl1"]
 [ext_resource type="PackedScene" uid="uid://388rf61vip3o" path="res://scenes/mechanisms/trapdoor(scene)/trapdoor.tscn" id="20_n2v2w"]
 [ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="24_konhc"]
+[ext_resource type="PackedScene" uid="uid://0uupk3tgidc2" path="res://scenes/enemies/nemean-lion/nemean_lion.tscn" id="27_0m45n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -1775,7 +1776,7 @@ tile_map_data = PackedByteArray("AAAAAPr/AAAEAAIAAAABAPr/AAACAAIAAAACAPr/AAADAAI
 tile_set = SubResource("TileSet_pif7w")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-297, -111)
+position = Vector2(5829, 2893)
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -1808,6 +1809,10 @@ position = Vector2(538, -114)
 [node name="Cyclop" parent="." instance=ExtResource("8_huhis")]
 position = Vector2(-388, 2285)
 scale = Vector2(0.7, 0.7)
+
+[node name="NemeanLion" parent="." instance=ExtResource("27_0m45n")]
+position = Vector2(6049, 2873)
+scale = Vector2(1.5, 1.5)
 
 [node name="LargeCrate2" parent="." instance=ExtResource("3_3p7nc")]
 position = Vector2(1429, 1045)

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D as Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var body_collision: CollisionShape2D = $BodyCollision
+@onready var hurt_box_shape: CollisionShape2D = $EnemyHealthComp/Hurtbox/CollisionShape2D
 
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,10 +14,10 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
-		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 48
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 29
 	if velocity.x < 0:
 		sprite.flip_h = true
-		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -48
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -32
 
 
 var animation_mapping = {
