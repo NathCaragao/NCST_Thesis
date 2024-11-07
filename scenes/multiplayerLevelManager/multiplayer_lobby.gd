@@ -35,7 +35,6 @@ func _switchGUI(currentGUI, newGUI) -> void:
 		newGUI.show()
 	else:
 		currentGUI.hide()
-		currentGUI.cleanup()
 		newGUI.show()
 
 # Do all subgui signals connections here and set the initial state
@@ -139,3 +138,4 @@ func _handleCurrentPlayerLeftMatch():
 	if leaveResult != OK:
 		Notification.showMessage("Failed to Leave Match", 3.0)
 		return
+	_handleMatchStateChange(MatchState.NO_MATCH)

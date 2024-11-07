@@ -36,10 +36,6 @@ func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 	_updateCurrentPlayer(currentPlayerData)
 	_updateOtherPlayer(otherPlayersData)
 
-func cleanup():
-	pass
-
-
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 	if %JoinedMatchID.text == newJoinedMatchID:
 		return
