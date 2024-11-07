@@ -42,6 +42,7 @@ func _ready() -> void:
 	# Signal connection for noMatchGUI
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
+	noMatchGUI.returnToLevelSelector.connect(_handleReturnToLevelSelector)
 	
 	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
@@ -93,7 +94,8 @@ func _handleMatchStateChange(newMatchState:MatchState):
 		
 	SceneManager.hideLoadingScreen()
 
-	
+func _handleReturnToLevelSelector():
+	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
 #------------------------------------------------------------------------------
 # NoMatchGUI related functions
 #------------------------------------------------------------------------------

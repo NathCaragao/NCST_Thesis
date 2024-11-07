@@ -3,6 +3,7 @@ extends CanvasLayer
 
 signal matchCreated(matchCreatedID:String)
 signal matchJoined(isPlayerHost:bool)
+signal returnToLevelSelector()
 
 
 func update(gameData):
@@ -33,3 +34,7 @@ func _on_join_match_btn_pressed() -> void:
 	print_debug("MATCH ID TO JOIN: ", %MatchIdField.text)
 	matchCreated.emit(%MatchIdField.text)
 	await _joinMatch(%MatchIdField.text, false)
+
+
+func _on_go_back_btn_pressed() -> void:
+	returnToLevelSelector.emit()
