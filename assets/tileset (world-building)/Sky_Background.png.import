@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn5bxlhtl2mm"
-path="res://.godot/imported/Background.png-31b782650cecbdeafa4aa73e73d6693f.ctex"
+uid="uid://3eluth4rd4w1"
+path="res://.godot/imported/Sky_Background.png-843413f6ba5db083f1f6a90c750b577a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Background.png"
-dest_files=["res://.godot/imported/Background.png-31b782650cecbdeafa4aa73e73d6693f.ctex"]
+source_file="res://assets/tileset (world-building)/Sky_Background.png"
+dest_files=["res://.godot/imported/Sky_Background.png-843413f6ba5db083f1f6a90c750b577a.ctex"]
 
 [params]
 
