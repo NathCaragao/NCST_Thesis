@@ -46,10 +46,8 @@ func physics_update(delta: float) -> void:
 	if actor:
 		actor.velocity = move_direction * move_speed
 		actor.play_animation("enemy-run")
-	if actor.velocity.x < 0:
-		actor.sprite.flip_h = false
-	else:
-		actor.sprite.flip_h = true
+	
+	actor.flip_sprite()
 	
 	actor.move_and_slide()
 	
