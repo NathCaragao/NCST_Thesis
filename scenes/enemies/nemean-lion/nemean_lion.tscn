@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0uupk3tgidc2"]
+[gd_scene load_steps=16 format=3 uid="uid://0uupk3tgidc2"]
 
 [ext_resource type="Texture2D" uid="uid://ml4pq2ldwr8a" path="res://assets/Enemies/nemean-lion-sprite/lion_attack_2.png" id="1_1txbo"]
 [ext_resource type="Texture2D" uid="uid://cq56ktcbava3f" path="res://assets/Enemies/nemean-lion-sprite/lion_run.png" id="1_a121c"]
@@ -379,13 +379,24 @@ _data = {
 "lion-run": SubResource("Animation_twnc8")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vppp"]
+radius = 13.0
+height = 52.0
+
 [node name="NemeanLion" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nwgcl")
+texture = ExtResource("1_e7ryk")
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7fn3d")
 }
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0vppp")
+
+[node name="StateMachine" type="Node" parent="."]
