@@ -6,9 +6,12 @@ extends CharacterBody2D
 @onready var body_collision: CollisionShape2D = $BodyCollision
 @onready var hurt_box_shape: CollisionShape2D = $EnemyHealthComp/Hurtbox/CollisionShape2D
 
+@export var lion_hp_comp : Node2D
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
+
+signal LionDefeated
 
 
 func flip_sprite() -> void:
@@ -32,3 +35,22 @@ var animation_mapping = {
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
+
+func lion_defeated() -> void:
+	emit_signal("LionDefeated")
+
+# when the lion is on the screen
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	hp_bar_open()
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	hp_bar_close()
+
+func hp_bar_open() -> void:
+	$EnemyHealthComp/HPUI/EnemyHPbar.visible = true
+	$EnemyHealthComp/HPUI/Label.visible = true
+
+func hp_bar_close() -> void:
+	$EnemyHealthComp/HPUI/EnemyHPbar.visible = false
+	$EnemyHealthComp/HPUI/Label.visible = false
