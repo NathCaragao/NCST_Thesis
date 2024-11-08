@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://qkpib13jg7qo"]
+[gd_scene load_steps=3 format=3 uid="uid://qkpib13jg7qo"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_hks1a"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/fail-screen/fail_screen.gd" id="1_mrmwq"]
 
 [node name="FailScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mrmwq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -62,6 +64,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_hks1a")
 theme_override_font_sizes/font_size = 51
+disabled = true
 text = "RESPAWN"
 
 [node name="RestartBtn" type="Button" parent="VBoxContainer"]
@@ -75,3 +78,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_hks1a")
 theme_override_font_sizes/font_size = 51
 text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]

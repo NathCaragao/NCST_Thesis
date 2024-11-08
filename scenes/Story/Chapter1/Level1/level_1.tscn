@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=107 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://388rf61vip3o" path="res://scenes/mechanisms/trapdoor(scene)/trapdoor.tscn" id="20_n2v2w"]
 [ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="24_konhc"]
 [ext_resource type="PackedScene" uid="uid://0uupk3tgidc2" path="res://scenes/enemies/nemean-lion/nemean_lion.tscn" id="27_0m45n"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="27_3di2u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4759,9 +4760,11 @@ size = Vector2(88, 95)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl0bv"]
 size = Vector2(53, 43)
 
-[node name="Level1" type="Node2D" groups=["Levels"]]
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
+player = NodePath("Player")
+fail_screen = NodePath("ScoreUI/FailScreen")
 
 [node name="TileCollection" type="Node2D" parent="."]
 
@@ -5243,6 +5246,9 @@ collision_mask = 8
 [node name="ScoreUI" type="CanvasLayer" parent="."]
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("16_seudv")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("27_3di2u")]
+visible = false
 
 [node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
