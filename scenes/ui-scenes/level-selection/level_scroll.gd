@@ -65,3 +65,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			scroll_tween.stop()
 		else:
 			scroll()
+
+
+func _on_card_btn_1_pressed() -> void:
+	SceneManager.changeScene("res://scenes/Story/Chapter1/Level1/level_1.tscn")

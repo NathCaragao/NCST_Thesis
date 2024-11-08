@@ -118,16 +118,16 @@ pause_game={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Hitbox"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Pickups"
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

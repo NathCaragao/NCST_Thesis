@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui-scenes/level-selection/level_selection.gd" id="1_4std7"]
 [ext_resource type="PackedScene" uid="uid://bivnen5vnfr7h" path="res://scenes/ui-scenes/level-selection/level_scroll.tscn" id="1_8qw8x"]
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_v56cq"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_cjll7"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="3_cjll7"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="3_om7d8"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="4_n5mf0"]
 
