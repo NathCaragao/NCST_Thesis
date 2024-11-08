@@ -4,8 +4,8 @@ extends Node2D
 @export var fail_screen: Control
 
 func _ready() -> void:
-	player.connect("PlayerDead", Callable(self, "on_player_dead"))
+	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 
 
-func on_player_dead() -> void:
-	fail_screen.visible = true
+func on_player_fail() -> void:
+	fail_screen.open()

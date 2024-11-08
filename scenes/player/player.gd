@@ -19,6 +19,10 @@ var direction
 @export var inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
+# signals
+signal PlayerFail
+
+
 func _physics_process(delta: float) -> void:
 	if velocity.x > 0:
 		facing_right = true
@@ -27,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	
 	push_objects()
 	direction = Input.get_axis("move_left", "move_right")
-
 
 
 # flip sprite
@@ -88,3 +91,7 @@ func apply_item_effect(item):
 			var atk_amount : int = 20
 			#atk += atk_amount
 			#print("Player attack boosted: ", str(atk))
+
+func player_fail() -> void:
+	if player_hp.current_health == 0:
+		emit_signal("PlayerFail")
