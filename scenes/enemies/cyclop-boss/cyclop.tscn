@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://hqqksf2d723b"]
+[gd_scene load_steps=32 format=3 uid="uid://hqqksf2d723b"]
 
 [ext_resource type="Texture2D" uid="uid://bplelcgrb1b2o" path="res://assets/Enemies/cyclops-boss/NightBorne_idle-Sheet.png" id="1_8rn36"]
 [ext_resource type="Script" path="res://scenes/enemies/cyclop-boss/cyclop.gd" id="1_ew4uc"]
@@ -23,21 +23,6 @@
 shader = ExtResource("1_pirbq")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_um7fl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_qke6w"]
 resource_name = "cyclop-attack"
@@ -346,7 +331,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7jvl"]
 _data = {
-"RESET": SubResource("Animation_um7fl"),
 "cyclop-attack": SubResource("Animation_qke6w"),
 "cyclop-death": SubResource("Animation_t3b4n"),
 "cyclop-hit": SubResource("Animation_bm46v"),
@@ -403,8 +387,9 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Cyclop" type="CharacterBody2D"]
+[node name="Cyclop" type="CharacterBody2D" node_paths=PackedStringArray("cyclop_hp_comp")]
 script = ExtResource("1_ew4uc")
+cyclop_hp_comp = NodePath("EnemyHealthComp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_b2trn")

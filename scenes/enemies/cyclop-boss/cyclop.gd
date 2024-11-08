@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D as Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var hurt_box_shape: CollisionShape2D = $CollisionShape2D as CollisionShape2D
+@export var cyclop_hp_comp: EnemyHealthComp
 
 signal OpenTrapdoor
 
@@ -11,11 +12,12 @@ signal OpenTrapdoor
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
-func _process(delta: float):
-	if animation_mapping["enemy-dead"]:
+func _process(delta: float) -> void:
+	on_cyclop_death()
+
+func on_cyclop_death() -> void:
+	if cyclop_hp_comp.current_health == 0:
 		emit_signal("OpenTrapdoor")
-	
-	
 
 # flip sprite
 func flip_sprite() -> void:
