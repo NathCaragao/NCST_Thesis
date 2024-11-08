@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://388rf61vip3o"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/trapdoor(scene)/trapdoor.gd" id="1_s3kdj"]
+[ext_resource type="Texture2D" uid="uid://du3emek80yybg" path="res://assets/in-game-objects/trapdoor/trapdoor_open.png" id="1_sg8ti"]
+[ext_resource type="Texture2D" uid="uid://chhmwtn5ajg2f" path="res://assets/in-game-objects/trapdoor/trapdoor_close.png" id="2_3meeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usymq"]
+size = Vector2(56, 8)
+
+[node name="Trapdoor" type="StaticBody2D"]
+script = ExtResource("1_s3kdj")
+
+[node name="Close" type="Sprite2D" parent="."]
+texture = ExtResource("2_3meeo")
+
+[node name="Open" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_sg8ti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_usymq")

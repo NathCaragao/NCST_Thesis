@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://r2t80cgmn41l"]
+
+[ext_resource type="Script" path="res://scenes/components/healthcomp/players/player_health_component.gd" id="1_teuju"]
+[ext_resource type="Script" path="res://scenes/components/hurtbox/hurtbox.gd" id="2_vejlf"]
+
+[node name="PlayerHealthComponent" type="Node2D"]
+script = ExtResource("1_teuju")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_vejlf")

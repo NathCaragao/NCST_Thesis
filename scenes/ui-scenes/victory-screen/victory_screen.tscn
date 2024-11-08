@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp34m8ecv7ea6"]
+
+[ext_resource type="Script" path="res://scenes/ui-scenes/victory-screen/victory_screen.gd" id="1_djr3i"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_pvrbw"]
+
+[node name="VictoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_djr3i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -419.0
+offset_right = 237.5
+offset_bottom = -303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 96
+text = "LEVEL COMPLETE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 1760.0
+offset_bottom = 990.0
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 450
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "SCORE"
+
+[node name="ScoreVal" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 450
+alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "Coins"
+
+[node name="CoinsVal" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="MenuBtn" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "MENU"
+
+[node name="RetryLevelBtn" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "RETRY"
+
+[node name="NextStageBtn" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pvrbw")
+theme_override_font_sizes/font_size = 48
+text = "NEXT LEVEL"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/RetryLevelBtn" to="." method="_on_retry_level_btn_pressed"]
