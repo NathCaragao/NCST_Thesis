@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ciusxtmv0pfs8" path="res://assets/Objects/box_crate_V2.png" id="1_swfkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3kt4"]
-size = Vector2(32, 32)
+size = Vector2(28, 28)
 
-[node name="LargeCrate" type="RigidBody2D"]
+[node name="LargeCrate" type="RigidBody2D" groups=["Destroyer"]]
 collision_layer = 32
 collision_mask = 35
 mass = 10.0
@@ -17,5 +17,5 @@ angular_damp = 5.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_swfkl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Destroyer", "destroyer"]]
 shape = SubResource("RectangleShape2D_k3kt4")

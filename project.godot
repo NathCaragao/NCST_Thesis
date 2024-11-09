@@ -51,6 +51,10 @@ folder_colors={
 "res://scenes/": "teal"
 }
 
+[global_group]
+
+Destroyer=""
+
 [input]
 
 move_left={

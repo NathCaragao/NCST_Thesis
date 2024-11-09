@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbedrr5x7dxm7"]
+
+[ext_resource type="Texture2D" uid="uid://ccehxxq661fjc" path="res://assets/Objects/platform 3.png" id="1_abo50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eop42"]
+size = Vector2(64, 13)
+
+[node name="Testcrate" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_abo50")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_eop42")
