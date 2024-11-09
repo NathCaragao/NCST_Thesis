@@ -30,8 +30,10 @@ var animation_mapping = {
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = false
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -28
 	else:
 		sprite.flip_h = true
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 28
 
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
