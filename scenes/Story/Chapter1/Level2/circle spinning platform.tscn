@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6f2olnf0alya"]
 
-[ext_resource type="Texture2D" uid="uid://ba70p5eqlus80" path="res://assets/Objects/spinning spike platform.png" id="1_8exrt"]
+[ext_resource type="Texture2D" uid="uid://djv2xh35edkp0" path="res://assets/in-game-objects/lvl2-items/spinning spike platform.png" id="1_8exrt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t30se"]
 radius = 28.0

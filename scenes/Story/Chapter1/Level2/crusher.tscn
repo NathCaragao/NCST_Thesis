@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b27oog3y0ws1r"]
 
-[ext_resource type="Texture2D" uid="uid://8ootefshbse0" path="res://assets/Objects/crusher tall.png" id="1_t04to"]
+[ext_resource type="Texture2D" uid="uid://gbvdkpd0tkek" path="res://assets/in-game-objects/lvl2-items/crusher tall.png" id="1_t04to"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo0gx"]
 size = Vector2(64, 118)

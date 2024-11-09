@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1xw27uhts1c6"]
 
-[ext_resource type="Texture2D" uid="uid://b3i0yl78021xq" path="res://assets/Objects/rasor.png" id="1_yixvs"]
+[ext_resource type="Texture2D" uid="uid://dvkqld6xlcc80" path="res://assets/in-game-objects/lvl2-items/rasor.png" id="1_yixvs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6svpd"]
 radius = 5.0

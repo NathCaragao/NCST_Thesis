@@ -1,14 +1,14 @@
 [gd_scene load_steps=42 format=4 uid="uid://nvxa50pldric"]
 
-[ext_resource type="Texture2D" uid="uid://b1eij7op2tvr4" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
-[ext_resource type="Texture2D" uid="uid://bkjcalsx47elo" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
-[ext_resource type="Texture2D" uid="uid://cskyvlprb7tmi" path="res://assets/tileset (world-building)/Game_Assets.png" id="3_g7iqu"]
+[ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
+[ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
+[ext_resource type="Texture2D" uid="uid://dswleb13idkb" path="res://assets/in-game-objects/lvl2-items/Game_Assets.png" id="3_g7iqu"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="3_pvpr2"]
-[ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/objects/firehazard.tscn" id="4_twdc1"]
-[ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/objects/moving_platform.tscn" id="5_3dvql"]
-[ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/objects/crusher.tscn" id="7_pqu14"]
-[ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/objects/circle spinning platform.tscn" id="8_dhsol"]
-[ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/objects/rasor.tscn" id="9_tq5kw"]
+[ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="4_twdc1"]
+[ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="5_3dvql"]
+[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_pqu14"]
+[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
+[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
