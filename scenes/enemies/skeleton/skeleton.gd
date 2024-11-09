@@ -14,7 +14,7 @@ var animation_mapping = {
 	"enemy-attack" : "skeleton-attack",
 	"enemy-idle" : "skeleton-idle",
 	"enemy-hit" : "skeleton-hit",
-	"enemy-dead" : "skeleton-dead"
+	"enemy-dead" : "skeleton-death"
 }
 
 func flip_sprite() -> void:

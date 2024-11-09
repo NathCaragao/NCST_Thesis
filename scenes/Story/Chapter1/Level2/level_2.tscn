@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=43 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_pqu14"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
 [ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
+[ext_resource type="PackedScene" uid="uid://jyppr62simqr" path="res://scenes/enemies/skeleton/skeleton.tscn" id="10_ddvwp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
@@ -4747,7 +4748,8 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(0, -33)
+position = Vector2(-59, -46)
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -4755,110 +4757,117 @@ zoom = Vector2(2, 2)
 [node name="Firehazard" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(5250, 190)
 
-[node name="Moving Platform_h1" parent="." instance=ExtResource("5_3dvql")]
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Moving Platform_h1" parent="Obstacles" instance=ExtResource("5_3dvql")]
 position = Vector2(6194, 167)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform_h1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform_h1"]
 libraries = {
 "": SubResource("AnimationLibrary_1xg48")
 }
 autoplay = "v"
 
-[node name="Moving Platform_h2" parent="." instance=ExtResource("5_3dvql")]
+[node name="Moving Platform_h2" parent="Obstacles" instance=ExtResource("5_3dvql")]
 position = Vector2(5900, 228)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform_h2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform_h2"]
 libraries = {
 "": SubResource("AnimationLibrary_6mnal")
 }
 autoplay = "v"
 
-[node name="Firehazard2" parent="." instance=ExtResource("4_twdc1")]
+[node name="Firehazard2" parent="Obstacles" instance=ExtResource("4_twdc1")]
 position = Vector2(6461, 189)
 
-[node name="Firehazard3" parent="." instance=ExtResource("4_twdc1")]
+[node name="Firehazard3" parent="Obstacles" instance=ExtResource("4_twdc1")]
 position = Vector2(2825, 3240)
 
-[node name="Firehazard4" parent="." instance=ExtResource("4_twdc1")]
+[node name="Firehazard4" parent="Obstacles" instance=ExtResource("4_twdc1")]
 position = Vector2(2641, 3242)
 
-[node name="Firehazard5" parent="." instance=ExtResource("4_twdc1")]
+[node name="Firehazard5" parent="Obstacles" instance=ExtResource("4_twdc1")]
 position = Vector2(2442, 3241)
 
-[node name="Crusher2" parent="." instance=ExtResource("7_pqu14")]
+[node name="Crusher2" parent="Obstacles" instance=ExtResource("7_pqu14")]
 position = Vector2(6720, 3194.04)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crusher2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Crusher2"]
 libraries = {
 "": SubResource("AnimationLibrary_vqfh7")
 }
 autoplay = "crusher"
 
-[node name="spike wheel2" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel2" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(5799, 3237)
 
-[node name="spike wheel" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(5490, 3236)
 
-[node name="rasor" parent="." instance=ExtResource("9_tq5kw")]
+[node name="rasor" parent="Obstacles" instance=ExtResource("9_tq5kw")]
 position = Vector2(2200, 3224)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="rasor"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Obstacles/rasor"]
 libraries = {
 "": SubResource("AnimationLibrary_e6cnv")
 }
 autoplay = "h"
 
-[node name="rasor2" parent="." instance=ExtResource("9_tq5kw")]
+[node name="rasor2" parent="Obstacles" instance=ExtResource("9_tq5kw")]
 position = Vector2(2217, 3128)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="rasor2"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Obstacles/rasor2"]
 libraries = {
 "": SubResource("AnimationLibrary_ddute")
 }
 autoplay = "h"
 
-[node name="rasor3" parent="." instance=ExtResource("9_tq5kw")]
+[node name="rasor3" parent="Obstacles" instance=ExtResource("9_tq5kw")]
 position = Vector2(2200, 3032)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="rasor3"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Obstacles/rasor3"]
 libraries = {
 "": SubResource("AnimationLibrary_swmuk")
 }
 autoplay = "h"
 
-[node name="rasor4" parent="." instance=ExtResource("9_tq5kw")]
+[node name="rasor4" parent="Obstacles" instance=ExtResource("9_tq5kw")]
 position = Vector2(2216, 2936)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="rasor4"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Obstacles/rasor4"]
 libraries = {
 "": SubResource("AnimationLibrary_5ut3h")
 }
 autoplay = "h"
 
-[node name="spike wheel3" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel3" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(1388, 3434)
 
-[node name="spike wheel4" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel4" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(4855, 239)
 
-[node name="spike wheel5" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel5" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(4568, 3308)
 
-[node name="spike wheel6" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel6" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(4424, 3306)
 
-[node name="spike wheel7" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel7" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(4107, 3296)
 
-[node name="spike wheel8" parent="." instance=ExtResource("8_dhsol")]
+[node name="spike wheel8" parent="Obstacles" instance=ExtResource("8_dhsol")]
 position = Vector2(4228, 3293)
 
-[node name="Crusher" parent="." instance=ExtResource("7_pqu14")]
+[node name="Crusher" parent="Obstacles" instance=ExtResource("7_pqu14")]
 position = Vector2(2032, 3178)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crusher"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Crusher"]
 libraries = {
 "": SubResource("AnimationLibrary_ad2a0")
 }
 autoplay = "crusher"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Skeleton" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(-240, -44)

@@ -45,7 +45,7 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, "enemywander")
 	
 	# transition to attack state
-	if direction.length() <= 25:
+	if direction.length() <= 40:
 		Transitioned.emit(self, "enemyattack")
 
 

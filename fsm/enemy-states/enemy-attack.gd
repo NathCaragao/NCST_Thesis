@@ -34,7 +34,6 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	# apply gravity
 	actor.velocity.y += actor.gravity * delta
-	actor.move_and_slide()
 	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position

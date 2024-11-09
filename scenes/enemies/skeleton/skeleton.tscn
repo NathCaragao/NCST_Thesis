@@ -440,7 +440,10 @@ actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 body_collision = NodePath("../../BodyCollision")
 
-[node name="EnemyHealthComp" parent="." instance=ExtResource("6_81nok")]
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("6_81nok")]
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
 position = Vector2(4, 0)
