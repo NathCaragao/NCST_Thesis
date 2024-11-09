@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="3_pvpr2"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="4_twdc1"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="5_3dvql"]
-[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_pqu14"]
-[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
-[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
+[ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_pqu14"]
+[ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
+[ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
@@ -4747,14 +4747,13 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(6858, 3324)
+position = Vector2(0, -33)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 2)
+zoom = Vector2(2, 2)
 
 [node name="Firehazard" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(5250, 190)
-rotation = 1.53818
 
 [node name="Moving Platform_h1" parent="." instance=ExtResource("5_3dvql")]
 position = Vector2(6194, 167)
@@ -4776,19 +4775,15 @@ autoplay = "v"
 
 [node name="Firehazard2" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(6461, 189)
-rotation = 0.846644
 
 [node name="Firehazard3" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(2825, 3240)
-rotation = 0.50751
 
 [node name="Firehazard4" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(2641, 3242)
-rotation = 2.11262
 
 [node name="Firehazard5" parent="." instance=ExtResource("4_twdc1")]
 position = Vector2(2442, 3241)
-rotation = -0.902405
 
 [node name="Crusher2" parent="." instance=ExtResource("7_pqu14")]
 position = Vector2(6720, 3194.04)
