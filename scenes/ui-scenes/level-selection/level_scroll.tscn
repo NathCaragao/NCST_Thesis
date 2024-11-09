@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csjo0nohph3rb" path="res://assets/Images/GameObjectImages/chests/chest2-closed.png" id="1_nybu4"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/level-selection/level_scroll.gd" id="1_u1vcx"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_3akd2"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="3_3akd2"]
 
 [node name="LevelScroll" type="ScrollContainer"]
 clip_contents = false
@@ -126,3 +126,4 @@ text = "Level 4"
 horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/HBoxContainer/CardMenu1/CardBtn1" to="." method="_on_card_btn_1_pressed"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bigq66bcflhq2"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/key/key.gd" id="1_ewnik"]
+[ext_resource type="Texture2D" uid="uid://c1i1oasl3l3m3" path="res://assets/in-game-objects/totems/totem_key.png" id="2_h8xpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iquv7"]
+size = Vector2(12, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwin0"]
+size = Vector2(40, 8)
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_ewnik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_h8xpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_iquv7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rwin0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

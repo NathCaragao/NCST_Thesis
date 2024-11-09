@@ -34,7 +34,6 @@ func _on_switch_acc_pressed() -> void:
 func _on_exit_btn_pressed() -> void:
 	get_tree().quit()
 
-# dev button for testing
-# will remove after debugging
-func _on_dev_lobby_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
+# Dev btn
+func _on_button_pressed() -> void:
+	SceneManager.changeScene("res://scenes/Story/Chapter1/Level1/level_1.tscn")

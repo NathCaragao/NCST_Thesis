@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://fcnyprgtbuq8"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/totem-holder/totem_holder.gd" id="1_8cqtd"]
+[ext_resource type="Texture2D" uid="uid://wlvhuge1dcn4" path="res://assets/in-game-objects/totems/totem_holder.png" id="1_tshni"]
+[ext_resource type="Texture2D" uid="uid://c1i1oasl3l3m3" path="res://assets/in-game-objects/totems/totem_key.png" id="2_euo5l"]
+
+[node name="TotemHolder" type="Node2D"]
+script = ExtResource("1_8cqtd")
+
+[node name="Holder" type="Sprite2D" parent="."]
+texture = ExtResource("1_tshni")
+
+[node name="TotemItem" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("2_euo5l")

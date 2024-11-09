@@ -1,0 +1,437 @@
+[gd_scene load_steps=29 format=3 uid="uid://cjipc3su2mys0"]
+
+[ext_resource type="Texture2D" uid="uid://ce4qb3m5hwhkn" path="res://assets/Enemies/bandit-leader/bandit_leader_attack.png" id="1_767ho"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_fpyh7"]
+[ext_resource type="Script" path="res://scenes/enemies/bandit_leader/bandit_leader.gd" id="1_u70od"]
+[ext_resource type="Texture2D" uid="uid://dfjs80hq0i0hu" path="res://assets/Enemies/bandit-leader/bandit_leader_death.png" id="1_v52w0"]
+[ext_resource type="Texture2D" uid="uid://bj5hbo6mj2os8" path="res://assets/Enemies/bandit-leader/bandit_leader_run.png" id="1_vlc2s"]
+[ext_resource type="Texture2D" uid="uid://csksfmn07xqao" path="res://assets/Enemies/bandit-leader/bandit_leader_idle.png" id="1_xs0hh"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="5_cwk8y"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="6_3kfb4"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="7_jm8ku"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="8_etpip"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="9_upx43"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="10_tauj0"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="11_w2de6"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="12_krhpq"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="13_6sy3t"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_rvfi1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ck52r"]
+resource_local_to_scene = true
+shader = ExtResource("1_fpyh7")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_mlc8r"]
+resource_name = "bandit-leader-attack"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_767ho")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_eyupo"]
+resource_name = "bandit-leader-death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v52w0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bdw8l"]
+resource_name = "bandit-leader-idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xs0hh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3bivy"]
+resource_name = "bandit-leader-run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vlc2s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3lrxh"]
+_data = {
+"bandit-leader-attack": SubResource("Animation_mlc8r"),
+"bandit-leader-death": SubResource("Animation_eyupo"),
+"bandit-leader-idle": SubResource("Animation_bdw8l"),
+"bandit-leader-run": SubResource("Animation_3bivy")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lv8wt"]
+radius = 5.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bne2"]
+radius = 5.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qy4tv"]
+
+[sub_resource type="Animation" id="Animation_6hcam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"RESET": SubResource("Animation_6hcam"),
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="BanditLeader" type="CharacterBody2D"]
+script = ExtResource("1_u70od")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ck52r")
+texture = ExtResource("1_v52w0")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3lrxh")
+}
+autoplay = "bandit-leader-idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_lv8wt")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_cwk8y")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("6_3kfb4")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("7_jm8ku")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("8_etpip")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
+wait_time = 2.0
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("9_upx43")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+script = ExtResource("10_tauj0")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+body_collision = NodePath("../../CollisionShape2D")
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_w2de6")]
+max_health = 70
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_0bne2")
+debug_color = Color(0.994876, 0, 0.21488, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("14_rvfi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(17, 5)
+shape = SubResource("CircleShape2D_qy4tv")
+disabled = true
+debug_color = Color(0.31394, 0.626038, 0, 0.42)
+
+[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("12_krhpq")]
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = -17.0
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("13_6sy3t")
+base_dmg = 15
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
+
+[editable path="EnemyHealthComp"]

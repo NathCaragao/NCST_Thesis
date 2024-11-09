@@ -1,0 +1,483 @@
+[gd_scene load_steps=31 format=3 uid="uid://mdvqi3mnbb8e"]
+
+[ext_resource type="Texture2D" uid="uid://cknxbxpr1oghf" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Attack.png" id="1_4rwo2"]
+[ext_resource type="Texture2D" uid="uid://v56o4ugwpksw" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Run.png" id="1_5yhd6"]
+[ext_resource type="Script" path="res://scenes/enemies/wolf/wolf.gd" id="1_07ycu"]
+[ext_resource type="Texture2D" uid="uid://c3hyi71kl5oqo" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Idle.png" id="1_phc7c"]
+[ext_resource type="Texture2D" uid="uid://gl08p3wo4mhe" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Death.png" id="1_r7fc1"]
+[ext_resource type="Texture2D" uid="uid://b5e0rohvmpvgv" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Hit.png" id="1_s5xks"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_xpo64"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="6_jeg3f"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_7lvdy"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="9_f6837"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_ltghk"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_o6bh4"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="11_qkhtx"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="12_qo4xb"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_xl2cv"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_o74ag"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_f5cni"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlobw"]
+resource_local_to_scene = true
+shader = ExtResource("2_xpo64")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_f5i7f"]
+resource_name = "wolf-attack"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4rwo2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_qippa"]
+resource_name = "wolf-dead"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_r7fc1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyHealthComp/Hurtbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6dkcc"]
+resource_name = "wolf-hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_s5xks")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_hsegx"]
+resource_name = "wolf-idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_phc7c")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4778m"]
+resource_name = "wolf-run"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_5yhd6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6aqa"]
+_data = {
+"wolf-attack": SubResource("Animation_f5i7f"),
+"wolf-dead": SubResource("Animation_qippa"),
+"wolf-hit": SubResource("Animation_6dkcc"),
+"wolf-idle": SubResource("Animation_hsegx"),
+"wolf-run": SubResource("Animation_4778m")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkfx"]
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bddyk"]
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daf50"]
+
+[sub_resource type="Animation" id="Animation_6hcam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"RESET": SubResource("Animation_6hcam"),
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="Wolf" type="CharacterBody2D"]
+script = ExtResource("1_07ycu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xlobw")
+texture = ExtResource("1_phc7c")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g6aqa")
+}
+autoplay = "wolf-idle"
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnkfx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_jeg3f")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_f6837")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_7lvdy")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("10_ltghk")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
+wait_time = 2.0
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("12_xl2cv")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+script = ExtResource("11_o6bh4")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+body_collision = NodePath("../../BodyCollision")
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_qkhtx")]
+max_health = 50
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bddyk")
+debug_color = Color(0.993046, 0, 0.243369, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("13_o74ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(-28, 3)
+shape = SubResource("CircleShape2D_daf50")
+disabled = true
+debug_color = Color(0, 0.649211, 0.152944, 0.42)
+
+[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("12_qo4xb")]
+offset_left = -18.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = -9.0
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("15_f5cni")
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
+
+[editable path="EnemyHealthComp"]

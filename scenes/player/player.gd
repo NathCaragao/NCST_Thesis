@@ -1,21 +1,97 @@
-class_name Player
+class_name PlayerHercules
 extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var state_machine: Node = $StateMachine
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var move_speed : float = 400
 
-func _ready() -> void:
-	# Initialize the state machine, passing a reference of the player to the states,
-	# that way they can move and react accordingly
-	state_machine.init(self)
+@export var push = 40
+@export var SPEED: float = 200.0
+var facing_right : bool = true
 
-func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+# variables for switching weapon class
+var weapon_mode : String = "Melee" # default weapon mode
+var direction
+
+# player inventory reference
+@export var inv : Inventory
+@onready var player_hp: PlayerHpComp = $PlayerHealthComponent
+
+# signals
+signal PlayerFail
+
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
+	if velocity.x > 0:
+		facing_right = true
+	elif velocity.x < 0:
+		facing_right = false
+	
+	push_objects()
+	direction = Input.get_axis("move_left", "move_right")
 
-func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+
+# flip sprite
+func flip_sprite() -> void:
+	if velocity.x > 0:
+		sprite.flip_h = false
+		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
+		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
+	if velocity.x < 0:
+		sprite.flip_h = true
+		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
+		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
+	
+	if direction == 1:
+		$ArrowPos.scale.x = 1
+	elif direction == -1:
+		$ArrowPos.scale.x = -1
+
+# function for pushing objects such as boxes
+func push_objects() -> void:
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * (push + SPEED))
+
+# weapon switching
+func switch_weapon_mode(mode) -> void:
+	if mode == "Melee":
+		weapon_mode = "Melee"
+		print("Mode: ", weapon_mode) # replace with fancy UI
+	elif mode == "Ranged":
+		weapon_mode = "Ranged"
+		print("Mode: ", weapon_mode) # replace with fancy UI
+
+# weapon input switching
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("melee-mode"):
+		switch_weapon_mode("Melee")
+	
+	elif event.is_action_pressed("ranged-mode"):
+		switch_weapon_mode("Ranged")
+
+# collect items
+func collect(item):
+	inv.insert(item)
+
+# apply effect function
+func apply_item_effect(item):
+	match item["effect"]:
+		"Health_Potion":
+			var heal_amount : int = 30
+			player_hp.current_health += heal_amount
+			# update health bar UI
+			player_hp.phealth_bar.health = player_hp.current_health
+			# some debug text
+			print("Player Healed! ", str(player_hp.current_health))
+		"atk_boost":
+			var atk_amount : int = 20
+			#atk += atk_amount
+			#print("Player attack boosted: ", str(atk))
+
+func player_fail() -> void:
+	if player_hp.current_health == 0:
+		emit_signal("PlayerFail")
