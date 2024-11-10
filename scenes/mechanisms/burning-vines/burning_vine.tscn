@@ -87,14 +87,14 @@ position = Vector2(-11, -5)
 scale = Vector2(4.9375, 4)
 texture = ExtResource("2_cjhps")
 hframes = 26
-frame = 25
+frame = 1
 
 [node name="Fire2" type="Sprite2D" parent="."]
 position = Vector2(13, -5)
 scale = Vector2(4.9375, 4)
 texture = ExtResource("2_cjhps")
 hframes = 26
-frame = 25
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
