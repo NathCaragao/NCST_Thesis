@@ -47,6 +47,7 @@ func _ready() -> void:
 	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
+	lobbyMatchGUI.matchCountdownTimeout.connect(_handleMatchCountdownTimeout)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -68,6 +69,8 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	
 	if currentMatchState == MatchState.LOBBY_MATCH:
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
+	elif currentMatchState == MatchState.ONGOING_MATCH:
+		ongoingMatchGUI.update(currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
 # CHANGING SUBGUIS:
 # - Get the new match state and decide which GUI to show - done
@@ -90,7 +93,9 @@ func _handleMatchStateChange(newMatchState:MatchState):
 		lobbyMatchGUI.update(joinedMatchID, {}, [])
 		
 	elif newMatchState == MatchState.ONGOING_MATCH:
-		pass
+		_switchGUI(currentGUI, ongoingMatchGUI)
+		currentGUI = ongoingMatchGUI
+		ongoingMatchGUI.update({}, [])
 		
 	SceneManager.hideLoadingScreen()
 
@@ -121,11 +126,6 @@ func _handleMatchJoined(isPlayerHost:bool):
 ##------------------------------------------------------------------------------
 ## LobbyMatchGUI related functions
 ##------------------------------------------------------------------------------
-#func _handleMatchLeft() -> void:
-	#self.joinedMatchID = ""
-	#currentMatchState = MatchState.LOBBY_MATCH
-	#_handleMatchStateStatus(currentMatchState)
-	
 func _handlePlayerReadyStatusChanged() -> void:
 	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
 	var readyStatusChangePayload = {
@@ -140,3 +140,7 @@ func _handleCurrentPlayerLeftMatch():
 		Notification.showMessage("Failed to Leave Match", 3.0)
 		return
 	_handleMatchStateChange(MatchState.NO_MATCH)
+
+func _handleMatchCountdownTimeout():
+	_handleMatchStateChange(MatchState.ONGOING_MATCH)
+	# 

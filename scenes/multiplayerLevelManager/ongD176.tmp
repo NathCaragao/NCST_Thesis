@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="3_ifxrv"]
 
 [node name="OngoingMatchGUI" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_bh0op")
 
 [node name="LevelWorld" type="Node" parent="."]
@@ -15,7 +16,5 @@ unique_name_in_owner = true
 [node name="Players" type="Node" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("3_ifxrv")]
-position = Vector2(-40, -20)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-40, -20)
+[node name="Camera2D" type="Camera2D" parent="Players/Player"]

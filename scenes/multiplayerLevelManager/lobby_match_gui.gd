@@ -16,15 +16,10 @@ extends CanvasLayer
 
 signal playerReadyStatusChanged()
 signal currentPlayerLeftMatch
+signal matchCountdownTimeout
 
 func _ready():
 	pass
-	#await get_tree().create_timer(3).timeout
-	#startTimer()
-	#await get_tree().create_timer(2).timeout
-	#stopTimer()
-	#await get_tree().create_timer(2).timeout
-	#startTimer()
 
 func _process(delta: float) -> void:
 	# Update Timer for starting match
@@ -88,5 +83,7 @@ func _on_ready_btn_pressed() -> void:
 	playerReadyStatusChanged.emit()
 	
 func _on_leave_match_btn_pressed() -> void:
-	currentPlayerLeftMatch.emit()
-		
+	currentPlayerLeftMatch.emit()	
+
+func _on_timer_timeout() -> void:
+	matchCountdownTimeout.emit()
