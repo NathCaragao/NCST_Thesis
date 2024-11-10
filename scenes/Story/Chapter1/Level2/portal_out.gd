@@ -8,5 +8,10 @@ func _ready() -> void:
 
 
 func on_portal_exit() -> void:
+	# in-game screen fade out transition
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	# teleport the player to the specified position
 	actor.position.x = 2150
 	actor.position.y = 211

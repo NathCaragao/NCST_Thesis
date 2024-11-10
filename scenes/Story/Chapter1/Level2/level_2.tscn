@@ -4912,4 +4912,4 @@ debug_color = Color(0, 0.644024, 0.289006, 0.42)
 [node name="KeysCollection" type="Node2D" parent="."]
 
 [node name="SilverKey1" parent="KeysCollection" instance=ExtResource("14_7tmw0")]
-position = Vector2(3703, 198)
+position = Vector2(8273, 151)
