@@ -4758,7 +4758,7 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(3828, 205)
+position = Vector2(2983, 3259)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -4791,13 +4791,13 @@ autoplay = "v"
 position = Vector2(6461, 189)
 
 [node name="Firehazard3" parent="Obstacles" instance=ExtResource("4_twdc1")]
-position = Vector2(2825, 3240)
+position = Vector2(2825, 3217)
 
 [node name="Firehazard4" parent="Obstacles" instance=ExtResource("4_twdc1")]
-position = Vector2(2641, 3242)
+position = Vector2(2641, 3219)
 
 [node name="Firehazard5" parent="Obstacles" instance=ExtResource("4_twdc1")]
-position = Vector2(2442, 3241)
+position = Vector2(2442, 3218)
 
 [node name="Crusher2" parent="Obstacles" instance=ExtResource("7_pqu14")]
 position = Vector2(6720, 3194.04)
