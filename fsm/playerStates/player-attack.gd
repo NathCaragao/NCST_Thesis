@@ -13,11 +13,10 @@ var is_attacking : bool = false
 # projectie references
 @onready var arrow = load("res://scenes/mechanisms/arrow/arrow.tscn") as PackedScene
 var bow_cooldown : bool = true
-@onready var level_1 = get_tree().get_first_node_in_group("Levels")
-
 
 func _ready() -> void:
 	pass
+
 
 func enter() -> void:
 	if actor.weapon_mode == "Melee":
@@ -104,7 +103,7 @@ func arrow_fire() -> void:
 	var arrow_instance = arrow.instantiate()
 	arrow_instance.global_position = $"../../ArrowPos/ArrowSpawn".global_position
 	arrow_instance.vel = $"../../ArrowPos".scale.x
-	level_1.get_parent().add_child(arrow_instance)
+	get_parent().add_child(arrow_instance)
 
 
 func exit() -> void:
