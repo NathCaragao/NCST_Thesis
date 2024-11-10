@@ -1,10 +1,10 @@
-extends CanvasLayer
+extends Node2D
 
 
 
 
 func _ready() -> void:
-	$Camera2D.make_current()
+	%Camera2D.make_current()
 	pass
 
 func update(currentPlayerData, otherPlayersData):
