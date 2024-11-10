@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=48 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
 [ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
 [ext_resource type="PackedScene" uid="uid://jyppr62simqr" path="res://scenes/enemies/skeleton/skeleton.tscn" id="10_ddvwp"]
+[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="11_hlp1g"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal.gd" id="11_masno"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
@@ -4736,6 +4739,12 @@ _data = {
 "crusher": SubResource("Animation_bia4y")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gm8"]
+size = Vector2(85, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evsmi"]
+size = Vector2(60, 59)
+
 [node name="Level2" type="Node2D"]
 
 [node name="bg2" type="TileMapLayer" parent="."]
@@ -4748,7 +4757,7 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(-59, -46)
+position = Vector2(3828, 205)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -4871,3 +4880,29 @@ autoplay = "crusher"
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("10_ddvwp")]
 position = Vector2(-240, -44)
+
+[node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+position = Vector2(3922, 202)
+script = ExtResource("11_masno")
+actor = NodePath("../Player")
+
+[node name="InteractionArea" parent="PortalIn" instance=ExtResource("11_hlp1g")]
+action_name = "to enter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalIn/InteractionArea"]
+position = Vector2(6, -37)
+shape = SubResource("RectangleShape2D_s7gm8")
+debug_color = Color(0.334014, 0.622518, 1.73271e-06, 0.42)
+
+[node name="Portal Out" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+position = Vector2(3144, 3026)
+script = ExtResource("13_nnao2")
+actor = NodePath("../Player")
+
+[node name="InteractionArea" parent="Portal Out" instance=ExtResource("11_hlp1g")]
+action_name = "to exit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal Out/InteractionArea"]
+position = Vector2(-5, 0.5)
+shape = SubResource("RectangleShape2D_evsmi")
+debug_color = Color(0, 0.644024, 0.289006, 0.42)
