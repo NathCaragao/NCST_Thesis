@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=49 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="11_hlp1g"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal.gd" id="11_masno"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
+[ext_resource type="PackedScene" uid="uid://x0fbi0rvgu46" path="res://scenes/objects/Silverkey/silver_keys.tscn" id="14_7tmw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
@@ -4881,10 +4882,11 @@ autoplay = "crusher"
 [node name="Skeleton" parent="Enemies" instance=ExtResource("10_ddvwp")]
 position = Vector2(-240, -44)
 
-[node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+[node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor", "silver_key1")]
 position = Vector2(3922, 202)
 script = ExtResource("11_masno")
 actor = NodePath("../Player")
+silver_key1 = NodePath("../KeysCollection/SilverKey1")
 
 [node name="InteractionArea" parent="PortalIn" instance=ExtResource("11_hlp1g")]
 action_name = "to enter"
@@ -4906,3 +4908,8 @@ action_name = "to exit"
 position = Vector2(-5, 0.5)
 shape = SubResource("RectangleShape2D_evsmi")
 debug_color = Color(0, 0.644024, 0.289006, 0.42)
+
+[node name="KeysCollection" type="Node2D" parent="."]
+
+[node name="SilverKey1" parent="KeysCollection" instance=ExtResource("14_7tmw0")]
+position = Vector2(3703, 198)
