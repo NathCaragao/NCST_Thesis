@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=55 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
 [ext_resource type="PackedScene" uid="uid://x0fbi0rvgu46" path="res://scenes/objects/Silverkey/silver_keys.tscn" id="14_7tmw0"]
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="15_qkksp"]
+[ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6godt"]
 texture = ExtResource("1_afnon")
@@ -4772,6 +4773,9 @@ _data = {
 "stone-gate-open": SubResource("Animation_f60km")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8bta"]
+size = Vector2(48, 65)
+
 [node name="Level2" type="Node2D"]
 
 [node name="bg2" type="TileMapLayer" parent="."]
@@ -4784,7 +4788,7 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(2983, 3259)
+position = Vector2(2141, 3258)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -4940,10 +4944,11 @@ debug_color = Color(0, 0.644024, 0.289006, 0.42)
 [node name="SilverKey1" parent="KeysCollection" instance=ExtResource("14_7tmw0")]
 position = Vector2(8273, 151)
 
-[node name="StoneDoor" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("15_qkksp")]
+[node name="StoneDoor" parent="." node_paths=PackedStringArray("animation_player", "lever") instance=ExtResource("15_qkksp")]
 position = Vector2(1840, 3253)
 scale = Vector2(1.8, 1.8)
 animation_player = NodePath("AnimationPlayer")
+lever = NodePath("../Lever")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="StoneDoor"]
 
@@ -4955,3 +4960,14 @@ shape = SubResource("RectangleShape2D_bfc2h")
 libraries = {
 "": SubResource("AnimationLibrary_alih5")
 }
+
+[node name="Lever" parent="." node_paths=PackedStringArray("interaction_area") instance=ExtResource("16_s0gsb")]
+position = Vector2(2135, 2862)
+interaction_area = NodePath("InteractionArea")
+
+[node name="InteractionArea" parent="Lever" instance=ExtResource("11_hlp1g")]
+action_name = "to activate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever/InteractionArea"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_m8bta")
