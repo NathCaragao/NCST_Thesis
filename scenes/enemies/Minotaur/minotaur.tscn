@@ -1,0 +1,474 @@
+[gd_scene load_steps=32 format=3 uid="uid://cx174dldry8ge"]
+
+[ext_resource type="Script" path="res://scenes/enemies/Minotaur/minotaur.gd" id="1_3w61j"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_213qh"]
+[ext_resource type="Texture2D" uid="uid://ij38ntf3enlw" path="res://assets/Enemies/minotaur/minotaur_death.png" id="1_hh5j6"]
+[ext_resource type="Texture2D" uid="uid://bvujr5kcniprw" path="res://assets/Enemies/minotaur/minotaur_idle.png" id="1_ppe37"]
+[ext_resource type="Texture2D" uid="uid://cqifsiu3m41lf" path="res://assets/Enemies/minotaur/minotaur_attack.png" id="1_py70m"]
+[ext_resource type="Texture2D" uid="uid://bag8kpt0dxu5h" path="res://assets/Enemies/minotaur/minotaur_hit.png" id="1_rhcg7"]
+[ext_resource type="Texture2D" uid="uid://cpn232s5j3gwn" path="res://assets/Enemies/minotaur/minotaur_run.png" id="1_ycef3"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="6_wrh1o"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_klbxg"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="7_lh8ig"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="8_cjy1o"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="8_kpwoh"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_0vr1f"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="9_ql5ky"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_g0rvw"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="11_875qm"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="12_lu11m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n028h"]
+shader = ExtResource("1_213qh")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_dimu8"]
+resource_name = "minotaur-idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ppe37")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_it0n3"]
+resource_name = "minotaur-run"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ycef3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ea7b7"]
+resource_name = "minotaur-attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_py70m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_m4fnn"]
+resource_name = "minotaur-hit"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_rhcg7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_501h6"]
+resource_name = "minotaur-death"
+length = 1.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hh5j6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hurtbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k35jj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rwk1"]
+_data = {
+"RESET": SubResource("Animation_k35jj"),
+"minotaur-attack": SubResource("Animation_ea7b7"),
+"minotaur-death": SubResource("Animation_501h6"),
+"minotaur-hit": SubResource("Animation_m4fnn"),
+"minotaur-idle": SubResource("Animation_dimu8"),
+"minotaur-run": SubResource("Animation_it0n3")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wloe6"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_so3ko"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5kcu"]
+size = Vector2(21, 28)
+
+[sub_resource type="Animation" id="Animation_6hcam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"RESET": SubResource("Animation_6hcam"),
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="Minotaur" type="CharacterBody2D"]
+script = ExtResource("1_3w61j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n028h")
+texture = ExtResource("1_ppe37")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3rwk1")
+}
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 9)
+shape = SubResource("CapsuleShape2D_wloe6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_klbxg")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("8_cjy1o")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_0vr1f")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("10_g0rvw")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("11_875qm")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+script = ExtResource("12_lu11m")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+body_collision = NodePath("../../BodyCollision")
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("6_wrh1o")]
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(2, 9)
+shape = SubResource("CapsuleShape2D_so3ko")
+debug_color = Color(0.987138, 0, 0.316235, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("7_lh8ig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(-19.5, 10)
+shape = SubResource("RectangleShape2D_y5kcu")
+disabled = true
+debug_color = Color(0, 0.650312, 0.100361, 0.42)
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("8_kpwoh")
+
+[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("9_ql5ky")]
+offset_left = -19.0
+offset_top = -14.0
+offset_right = 29.0
+offset_bottom = -13.0
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+position = Vector2(0, -6)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
+
+[editable path="EnemyHealthComp"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=56 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dbltesjjyfs44" path="res://assets/tileset (world-building)/Terrain_and_Props.png" id="2_y7rjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="8_dhsol"]
 [ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
 [ext_resource type="PackedScene" uid="uid://jyppr62simqr" path="res://scenes/enemies/skeleton/skeleton.tscn" id="10_ddvwp"]
+[ext_resource type="PackedScene" uid="uid://cx174dldry8ge" path="res://scenes/enemies/Minotaur/minotaur.tscn" id="11_032d3"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="11_hlp1g"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal.gd" id="11_masno"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
@@ -4788,8 +4789,7 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-visible = false
-position = Vector2(341, 210)
+position = Vector2(475, 210)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -4912,6 +4912,10 @@ autoplay = "crusher"
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("10_ddvwp")]
 position = Vector2(-240, -44)
+
+[node name="Minotaur" parent="Enemies" instance=ExtResource("11_032d3")]
+position = Vector2(344, 187)
+scale = Vector2(2, 2)
 
 [node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor", "silver_key1")]
 position = Vector2(3922, 202)
