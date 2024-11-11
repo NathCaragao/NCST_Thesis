@@ -17,5 +17,6 @@ unique_name_in_owner = true
 [node name="MultiplayerPlayer" parent="Players" instance=ExtResource("3_jlj0l")]
 position = Vector2(-48, -24)
 
-[node name="Camera2D2" type="Camera2D" parent="Players/MultiplayerPlayer"]
+[node name="Camera2D2" type="Camera2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-48, -24)

@@ -14,17 +14,15 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	print_debug(Input.get_axis("move_left", "move_right"))
-	
+	_movePlayer(Vector2(1,0), 100.0, delta)
+
+func _movePlayer(moveDirection: Vector2, moveSpeed: float, delta):
 	# Set gravity to affect the body
-	self.velocity.y += gravity * delta
-	
-	# Get the direction velocity
-	var randomDirection = Vector2(randf_range(-1, 1), 0).normalized()
+	$".".velocity.y += gravity * delta
 	
 	# Set the speed velocity
-	var movement = randomDirection * move_speed
+	var movementVector = moveDirection.normalized() * moveSpeed
 	
 	# Set and execute movement
-	self.velocity.x = movement.x
+	$".".velocity.x = movementVector.x
 	$".".move_and_slide()

@@ -2,9 +2,11 @@ extends Node2D
 
 
 
+signal LevelLoaded()
+
+var isLoaded = false
 
 func _ready() -> void:
-	
 	pass
 
 func update(currentPlayerData, otherPlayersData):
@@ -24,8 +26,9 @@ func update(currentPlayerData, otherPlayersData):
 	_loadOtherPlayers()
 	
 func _loadLevel():
-	if %LevelWorld.get_child_count() == 0:
-		%LevelWorld.add_child(preload("res://testFolder/testScenes/multi_test_lvl.tscn").instantiate())
+	if isLoaded == false:
+		isLoaded = true
+		LevelLoaded.emit()
 	else:
 		return
 		

@@ -49,6 +49,9 @@ func _ready() -> void:
 	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
 	lobbyMatchGUI.matchCountdownTimeout.connect(_handleMatchCountdownTimeout)
 	
+	# Signal connection for ongoingMatchGUI
+	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
+	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
 	
@@ -65,7 +68,9 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	for presenceId in self.currentGameState.presences:
 		if presenceId != self.currentPlayer.user.id:
 			otherPlayerData.append(self.currentGameState.presences[presenceId])
-	otherPlayerData.sort()
+	otherPlayerData.sort_custom(func (firstPlayer, secondPlayer):
+		return firstPlayer.playerData.displayName < secondPlayer.playerData.displayName
+	)
 	
 	if currentMatchState == MatchState.LOBBY_MATCH:
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
@@ -144,3 +149,13 @@ func _handleCurrentPlayerLeftMatch():
 func _handleMatchCountdownTimeout():
 	_handleMatchStateChange(MatchState.ONGOING_MATCH)
 	# 
+
+##------------------------------------------------------------------------------
+## OngoingMatchGUI related functions
+##------------------------------------------------------------------------------
+func _handleLevelLoaded():
+	var startedStatusChangePayload = {
+	"userId" = self.currentPlayer.user.id,
+	"payload" = {"isStarted": true}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_STARTED_CHANGED, startedStatusChangePayload)
