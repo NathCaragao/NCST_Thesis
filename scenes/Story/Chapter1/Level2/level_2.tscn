@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=63 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dmky3ukondjdf" path="res://assets/tileset (world-building)/Swamp Kingdom - Backdrop.png" id="1_pluxy"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://x0fbi0rvgu46" path="res://scenes/objects/Silverkey/silver_keys.tscn" id="14_7tmw0"]
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="15_qkksp"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
+[ext_resource type="PackedScene" uid="uid://mrkhn0xb3trn" path="res://scenes/mechanisms/burning-vines/burning_vine.tscn" id="19_hvskf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9188,3 +9189,6 @@ action_name = "to activate"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lever/InteractionArea"]
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_m8bta")
+
+[node name="BurningVines" parent="." instance=ExtResource("19_hvskf")]
+position = Vector2(1493, 183)
