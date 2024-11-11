@@ -9367,7 +9367,7 @@ shape = SubResource("RectangleShape2D_7ydj8")
 debug_color = Color(0.365008, 0.479229, 1, 0.42)
 
 [node name="DivineTorch" parent="." node_paths=PackedStringArray("torch_item", "player") instance=ExtResource("21_dqb16")]
-position = Vector2(1255, 216)
+position = Vector2(498, 3222)
 scale = Vector2(2, 2)
 torch_item = NodePath("../Player/TorchItem")
 player = NodePath("../Player")
