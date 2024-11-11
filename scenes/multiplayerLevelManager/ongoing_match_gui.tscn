@@ -17,6 +17,8 @@ unique_name_in_owner = true
 [node name="Player" parent="Players" instance=ExtResource("3_ifxrv")]
 position = Vector2(-40, -20)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Players/Player"]
 unique_name_in_owner = true
-position = Vector2(-40, -20)
+
+[node name="Player2" parent="Players" instance=ExtResource("3_ifxrv")]
+position = Vector2(88, -20)
