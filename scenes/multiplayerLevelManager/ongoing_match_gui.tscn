@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdp5lo7hga3qh"]
+[gd_scene load_steps=3 format=3 uid="uid://cdp5lo7hga3qh"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://dvxp1oct6k8n2" path="res://testFolder/testScenes/multi_test_lvl.tscn" id="2_rrulh"]
-[ext_resource type="PackedScene" uid="uid://dxgx0v63f8evy" path="res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn" id="3_jlj0l"]
 
 [node name="OngoingMatchGUI" type="Node2D"]
 script = ExtResource("1_bh0op")
@@ -13,10 +12,7 @@ unique_name_in_owner = true
 [node name="MultiTestLvl" parent="LevelWorld" instance=ExtResource("2_rrulh")]
 
 [node name="Players" type="Node" parent="."]
-
-[node name="MultiplayerPlayer" parent="Players" instance=ExtResource("3_jlj0l")]
-position = Vector2(-48, -24)
-
-[node name="Camera2D2" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-48, -24)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(-32, -20)

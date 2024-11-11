@@ -6,6 +6,9 @@ signal LevelLoaded()
 
 var isLoaded = false
 
+var currentPlayerCharacter = null
+var otherPlayersCharacter: Array = []
+
 func _ready() -> void:
 	pass
 
@@ -22,8 +25,8 @@ func update(currentPlayerData, otherPlayersData):
 		SceneManager.showLoadingScreen()
 		
 	_loadLevel()
-	_loadCurrentPlayer()
-	_loadOtherPlayers()
+	_loadCurrentPlayer(currentPlayerData)
+	_loadOtherPlayers(otherPlayersData)
 	
 func _loadLevel():
 	if isLoaded == false:
@@ -32,8 +35,23 @@ func _loadLevel():
 	else:
 		return
 		
-func _loadCurrentPlayer():
-	pass
+func _loadCurrentPlayer(currentPlayerData):
+	if currentPlayerCharacter != null:
+		return
+		
+	var playerCharacter = load("res://scenes/player/player.tscn").instantiate()
+	playerCharacter.add_child(Camera2D.new())
+	playerCharacter.position = $SpawnPoint.position
+	%Players.add_child(playerCharacter)
+	currentPlayerCharacter = playerCharacter
 	
-func _loadOtherPlayers():
-	pass
+func _loadOtherPlayers(otherPlayersData: Array):
+	for i in range(0, otherPlayersData.size()):
+		# Instantiate characters
+		if otherPlayersCharacter.is_empty():
+			var otherPlayerNewCharacter = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
+			otherPlayersCharacter.append(otherPlayerNewCharacter)
+			%Players.add_child(otherPlayerNewCharacter)
+		else:
+			# Update things
+			pass

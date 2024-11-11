@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
-	_movePlayer(Vector2(1,0), 100.0, delta)
+	_movePlayer(Vector2(0,0), 100.0, delta)
 
 func _movePlayer(moveDirection: Vector2, moveSpeed: float, delta):
 	# Set gravity to affect the body
