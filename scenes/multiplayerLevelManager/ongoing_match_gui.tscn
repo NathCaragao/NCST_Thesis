@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://dvxp1oct6k8n2" path="res://testFolder/testScenes/multi_test_lvl.tscn" id="2_rrulh"]
-[ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="3_ifxrv"]
+[ext_resource type="PackedScene" uid="uid://dxgx0v63f8evy" path="res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn" id="3_jlj0l"]
 
 [node name="OngoingMatchGUI" type="Node2D"]
 script = ExtResource("1_bh0op")
@@ -14,11 +14,8 @@ unique_name_in_owner = true
 
 [node name="Players" type="Node" parent="."]
 
-[node name="Player" parent="Players" instance=ExtResource("3_ifxrv")]
-position = Vector2(-40, -20)
+[node name="MultiplayerPlayer" parent="Players" instance=ExtResource("3_jlj0l")]
+position = Vector2(-48, -24)
 
-[node name="Camera2D" type="Camera2D" parent="Players/Player"]
+[node name="Camera2D2" type="Camera2D" parent="Players/MultiplayerPlayer"]
 unique_name_in_owner = true
-
-[node name="Player2" parent="Players" instance=ExtResource("3_ifxrv")]
-position = Vector2(88, -20)
