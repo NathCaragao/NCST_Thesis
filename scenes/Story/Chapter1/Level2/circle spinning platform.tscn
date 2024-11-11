@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6f2olnf0alya"]
+[gd_scene load_steps=9 format=3 uid="uid://c6f2olnf0alya"]
 
-[ext_resource type="Texture2D" uid="uid://djv2xh35edkp0" path="res://assets/in-game-objects/lvl2-items/spinning spike platform.png" id="1_8exrt"]
+[ext_resource type="Texture2D" uid="uid://djv2xh35edkp0" path="res://assets/in-game-objects/lvl2-items/SpikeWheel.png" id="1_8exrt"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/spike_hitbox.gd" id="2_pajto"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t30se"]
 radius = 28.0
@@ -58,32 +59,38 @@ texture = ExtResource("1_8exrt")
 position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_t30se")
 
-[node name="death area" type="Area2D" parent="."]
+[node name="SpikeHitbox" type="Area2D" parent="."]
+script = ExtResource("2_pajto")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeHitbox"]
 position = Vector2(-24.546, -7.85551)
 rotation = -1.26269
 shape = SubResource("RectangleShape2D_3d06g")
+debug_color = Color(0, 0.646575, 0.233679, 0.42)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="death area"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeHitbox"]
 position = Vector2(-15, -21)
 rotation = -0.592515
 shape = SubResource("RectangleShape2D_3d06g")
+debug_color = Color(0, 0.646575, 0.233679, 0.42)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="death area"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SpikeHitbox"]
 position = Vector2(1, -26)
 rotation = -0.00840591
 shape = SubResource("RectangleShape2D_3d06g")
+debug_color = Color(0, 0.646575, 0.233679, 0.42)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="death area"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SpikeHitbox"]
 position = Vector2(17, -22)
 rotation = 0.54416
 shape = SubResource("RectangleShape2D_3d06g")
+debug_color = Color(0, 0.646575, 0.233679, 0.42)
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="death area"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="SpikeHitbox"]
 position = Vector2(26, -14)
 rotation = 1.15369
 shape = SubResource("RectangleShape2D_d27hw")
+debug_color = Color(0, 0.646575, 0.233679, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
