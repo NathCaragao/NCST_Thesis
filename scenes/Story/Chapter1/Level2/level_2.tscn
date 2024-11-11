@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=73 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dmky3ukondjdf" path="res://assets/tileset (world-building)/Swamp Kingdom - Backdrop.png" id="1_pluxy"]
@@ -8992,6 +8992,9 @@ _data = {
 "crusher": SubResource("Animation_bia4y")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4shn"]
+size = Vector2(9, 24)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gm8"]
 size = Vector2(85, 142)
 
@@ -9049,7 +9052,7 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(1187, 210)
+position = Vector2(6607, 3336)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -9179,11 +9182,25 @@ autoplay = "crusher"
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("10_ddvwp")]
-position = Vector2(-240, -44)
+position = Vector2(6326, 3333)
+
+[node name="Skeleton2" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(6457, 3332)
 
 [node name="Minotaur" parent="Enemies" instance=ExtResource("11_032d3")]
-position = Vector2(344, 187)
-scale = Vector2(2, 2)
+position = Vector2(611, 3221)
+scale = Vector2(2.5, 2.5)
+
+[node name="Minotaur2" parent="Enemies" instance=ExtResource("11_032d3")]
+position = Vector2(8045, 164)
+scale = Vector2(2.5, 2.5)
+
+[node name="boundary" type="StaticBody2D" parent="Enemies"]
+position = Vector2(-9, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(6642.5, 3348)
+shape = SubResource("RectangleShape2D_w4shn")
 
 [node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor", "silver_key1")]
 position = Vector2(3922, 202)

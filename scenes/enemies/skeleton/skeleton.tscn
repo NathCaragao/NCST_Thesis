@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="16_dqc5l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8kwy"]
+resource_local_to_scene = true
 shader = ExtResource("1_0u4lc")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
