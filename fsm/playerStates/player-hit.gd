@@ -2,7 +2,7 @@ class_name PlayerHit
 extends State
 
 # references and variables
-@export var actor : PlayerHercules
+@export var actor : CharacterBody2D
 @export var health_comp : PlayerHpComp
 
 func _ready() -> void:

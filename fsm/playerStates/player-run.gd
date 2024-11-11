@@ -2,7 +2,7 @@ class_name PlayerRun
 extends State
 
 # references & variables
-@export var actor : PlayerHercules
+@export var actor : CharacterBody2D
 @onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 

@@ -2,7 +2,7 @@ class_name PlayerDeath
 extends State
 
 # references
-@export var actor : PlayerHercules
+@export var actor : CharacterBody2D
 
 func enter() -> void:
 	print("PLAYER DIED")

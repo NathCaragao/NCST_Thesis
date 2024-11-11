@@ -1,7 +1,7 @@
 class_name PlayerJump
 extends State
 
-@export var actor : PlayerHercules
+@export var actor : CharacterBody2D
 @export var jump_force : float = -450.0  # Negative for upwards
 @export var jump_force2 : float = -350.0 # for double jump
 @onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
