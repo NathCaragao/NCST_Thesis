@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=74 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
 [ext_resource type="Texture2D" uid="uid://dmky3ukondjdf" path="res://assets/tileset (world-building)/Swamp Kingdom - Backdrop.png" id="1_pluxy"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal.gd" id="11_masno"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
 [ext_resource type="PackedScene" uid="uid://x0fbi0rvgu46" path="res://scenes/objects/Silverkey/silver_keys.tscn" id="14_7tmw0"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="14_177i6"]
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="15_qkksp"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
 [ext_resource type="PackedScene" uid="uid://mrkhn0xb3trn" path="res://scenes/mechanisms/burning-vines/burning_vine.tscn" id="19_hvskf"]
@@ -8993,7 +8994,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4shn"]
-size = Vector2(9, 24)
+size = Vector2(9, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gm8"]
 size = Vector2(85, 142)
@@ -9187,6 +9188,33 @@ position = Vector2(6326, 3333)
 [node name="Skeleton2" parent="Enemies" instance=ExtResource("10_ddvwp")]
 position = Vector2(6457, 3332)
 
+[node name="Skeleton3" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(6940, 3332)
+
+[node name="Skeleton4" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(4902, 3267)
+
+[node name="Skeleton5" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(3002, 3109)
+
+[node name="Skeleton6" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(3117, 3189)
+
+[node name="Skeleton7" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(1220, 3509)
+
+[node name="Skeleton8" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(1503, 3509)
+
+[node name="Skeleton9" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(7510, 193)
+
+[node name="Skeleton10" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(7630, 193)
+
+[node name="Skeleton11" parent="Enemies" instance=ExtResource("10_ddvwp")]
+position = Vector2(7769, 193)
+
 [node name="Minotaur" parent="Enemies" instance=ExtResource("11_032d3")]
 position = Vector2(611, 3221)
 scale = Vector2(2.5, 2.5)
@@ -9195,11 +9223,51 @@ scale = Vector2(2.5, 2.5)
 position = Vector2(8045, 164)
 scale = Vector2(2.5, 2.5)
 
+[node name="Wolf" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(1095, 222)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(1163, 222)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(3662, 220)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(1932, 842)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(2069, 843)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("14_177i6")]
+position = Vector2(4356, 211)
+scale = Vector2(1.5, 1.5)
+
 [node name="boundary" type="StaticBody2D" parent="Enemies"]
 position = Vector2(-9, 22)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/boundary"]
-position = Vector2(6642.5, 3348)
+[node name="col1" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(6642, 3342)
+shape = SubResource("RectangleShape2D_w4shn")
+
+[node name="col2" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(6814, 3342)
+shape = SubResource("RectangleShape2D_w4shn")
+
+[node name="col3" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(4705, 3278)
+shape = SubResource("RectangleShape2D_w4shn")
+
+[node name="col4" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(3039, 3198)
+shape = SubResource("RectangleShape2D_w4shn")
+
+[node name="col5" type="CollisionShape2D" parent="Enemies/boundary"]
+position = Vector2(3090, 3118)
 shape = SubResource("RectangleShape2D_w4shn")
 
 [node name="PortalIn" type="Node2D" parent="." node_paths=PackedStringArray("actor", "silver_key1")]
