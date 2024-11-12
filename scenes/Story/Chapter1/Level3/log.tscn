@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7aucmrptov3l"]
+
+[ext_resource type="Texture2D" uid="uid://blr8d7nbvf1r2" path="res://assets/in-game-objects/log.png" id="1_1p3yl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7shd"]
+size = Vector2(231.308, 39)
+
+[node name="Log" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999998, 0)
+scale = Vector2(0.83871, 1)
+texture = ExtResource("1_1p3yl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.5)
+scale = Vector2(0.83871, 1)
+shape = SubResource("RectangleShape2D_v7shd")
