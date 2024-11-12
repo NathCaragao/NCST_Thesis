@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=24 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_lsvum"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_ru524"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="8_r2o3i"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="9_q76j5"]
-[ext_resource type="Script" path="res://scenes/components/ropebreak-scripts/log.gd" id="10_kkbss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -3766,9 +3765,6 @@ _data = {
 "h2": SubResource("Animation_swy8f")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldpct"]
-size = Vector2(194, 51)
-
 [node name="Level3" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -3802,7 +3798,7 @@ zoom = Vector2(3, 3)
 position = Vector2(2247, -151)
 large_crate = NodePath("../LargeCrate")
 
-[node name="LargeCrate" parent="." groups=["destroyer"] instance=ExtResource("4_b1ad7")]
+[node name="LargeCrate" parent="." groups=["Debris"] instance=ExtResource("4_b1ad7")]
 position = Vector2(2247, -81)
 collision_layer = 33
 
@@ -3841,14 +3837,3 @@ autoplay = "h2"
 
 [node name="Log" parent="." instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 91)
-script = ExtResource("10_kkbss")
-
-[node name="destroyed" type="Area2D" parent="Log"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Log/destroyed"]
-position = Vector2(2, -15.5)
-shape = SubResource("RectangleShape2D_ldpct")
-
-[connection signal="destroy_the_destroyer" from="Log" to="LargeCrate" method="_on_log_destroy_the_destroyer"]
-[connection signal="body_entered" from="Log/destroyed" to="Log" method="_on_destroyed_body_entered"]
-[connection signal="body_shape_entered" from="Log/destroyed" to="Log" method="_on_destroyed_body_shape_entered"]

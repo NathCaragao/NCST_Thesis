@@ -1,18 +1,14 @@
-extends StaticBody2D
+extends Area2D
 @onready var sprite_2d = $Sprite2D
-@onready var rigidcrate = $"../LargeCrate"
 
-signal destroy_the_destroyer
 
-func destroy_obj():
+func destroy_log() -> void:
+	# put destory log animation here
+	# disable collision in the animation track
+	# queue free the whole log scene in the animation track
 	sprite_2d.queue_free()
 	$CollisionShape2D.queue_free()
-	emit_signal("destroy_the_destroyer")
 
-
-
-
-func _on_destroyed_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("destroyer"):
-		print("sabog")
-		destroy_obj()
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Debris"):
+		destroy_log()
