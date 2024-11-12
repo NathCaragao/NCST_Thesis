@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=30 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_lsvum"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="4_b1ad7"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_ru524"]
 [ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="6_um4t2"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="7_885c3"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="8_r2o3i"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="9_q76j5"]
+[ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="13_dmkbq"]
+[ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="14_p3tjk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -3768,6 +3771,8 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw85u"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0nnkk"]
+
 [node name="Level3" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -3817,6 +3822,62 @@ scale = Vector2(0.352113, 0.694444)
 position = Vector2(1870.07, 1218.75)
 scale = Vector2(0.352113, 0.694444)
 
+[node name="Boar5" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(2600, 1177.08)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar6" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(2748.59, 1145.83)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar7" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(2830.28, 1265.97)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar8" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(4527.46, 1133.33)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar9" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(4580.99, 1133.33)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("7_885c3")]
+position = Vector2(2425.35, 1218.06)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("7_885c3")]
+position = Vector2(2282.75, 1218.06)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("7_885c3")]
+position = Vector2(5266.2, 1397.92)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("7_885c3")]
+position = Vector2(5323.94, 1531.25)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("7_885c3")]
+position = Vector2(5357.75, 1631.94)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Bandit" parent="Enemies" instance=ExtResource("13_dmkbq")]
+position = Vector2(3016.2, 1081.25)
+scale = Vector2(0.528169, 1.04167)
+
+[node name="Bandit2" parent="Enemies" instance=ExtResource("13_dmkbq")]
+position = Vector2(3047.89, 1081.25)
+scale = Vector2(0.528169, 1.04167)
+
+[node name="Bandit3" parent="Enemies" instance=ExtResource("13_dmkbq")]
+position = Vector2(3590.84, 1081.25)
+scale = Vector2(0.528169, 1.04167)
+
+[node name="Bandit4" parent="Enemies" instance=ExtResource("13_dmkbq")]
+position = Vector2(3632.75, 1081.25)
+scale = Vector2(0.528169, 1.04167)
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="rope" parent="Obstacles" node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
@@ -3863,6 +3924,15 @@ autoplay = "h2"
 [node name="Log" parent="." instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 91)
 
+[node name="Chest" parent="." instance=ExtResource("14_p3tjk")]
+position = Vector2(5610, 129)
+
+[node name="Chest2" parent="." instance=ExtResource("14_p3tjk")]
+position = Vector2(10970, -124)
+
+[node name="Chest3" parent="." instance=ExtResource("14_p3tjk")]
+position = Vector2(14714, 119)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 64
 collision_mask = 0
@@ -3870,3 +3940,35 @@ collision_mask = 0
 [node name="Col1" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3280, 74)
 shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4281, 74)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(6404, -123)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10632, -58)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12740, 322)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12912, 322)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+
+[node name="Start" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(-717, -39)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_0nnkk")
+
+[node name="End" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(16348, -232)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_0nnkk")
