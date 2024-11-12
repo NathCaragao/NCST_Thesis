@@ -1,18 +1,16 @@
-[gd_scene load_steps=29 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=26 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_lsvum"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="2_6dud6"]
 [ext_resource type="Texture2D" uid="uid://buos3jn2yduhu" path="res://assets/tileset (world-building)/treesbg.png" id="2_bconh"]
 [ext_resource type="Texture2D" uid="uid://otg01w7opu0d" path="res://assets/tileset (world-building)/Yellow-Tree.png" id="2_fbo0u"]
-[ext_resource type="PackedScene" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="3_unkcp"]
+[ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="3_unkcp"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="4_b1ad7"]
-[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/ropebreak.gd" id="5_1rhob"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_ru524"]
-[ext_resource type="Script" path="res://scenes/components/ropebreak-scripts/objectdestroyer.gd" id="7_6k6cj"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="8_r2o3i"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="9_q76j5"]
-[ext_resource type="Script" path="res://scenes/components/ropebreak-scripts/objectdestroyed.gd" id="10_kkbss"]
+[ext_resource type="Script" path="res://scenes/components/ropebreak-scripts/log.gd" id="10_kkbss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -3692,9 +3690,6 @@ texture = ExtResource("1_lsvum")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_afy3x")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lt0d"]
-size = Vector2(192, 68)
-
 [sub_resource type="Animation" id="Animation_irv3y"]
 length = 0.001
 tracks/0/type = "value"
@@ -3801,44 +3796,30 @@ position = Vector2(2039, -86)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
+zoom = Vector2(3, 3)
 
-[node name="rope" parent="." instance=ExtResource("3_unkcp")]
+[node name="rope" parent="." node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
 position = Vector2(2247, -151)
-script = ExtResource("5_1rhob")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="rope"]
-node_a = NodePath("..")
-node_b = NodePath("../../LargeCrate")
-
-[node name="Area2D" type="Area2D" parent="rope" groups=["Player"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rope/Area2D"]
-position = Vector2(-85, 17)
-shape = SubResource("RectangleShape2D_0lt0d")
+large_crate = NodePath("../LargeCrate")
 
 [node name="LargeCrate" parent="." groups=["destroyer"] instance=ExtResource("4_b1ad7")]
 position = Vector2(2247, -81)
 collision_layer = 33
-script = ExtResource("7_6k6cj")
 
 [node name="Firehazard" parent="." instance=ExtResource("6_ru524")]
 position = Vector2(2052, 741)
 
 [node name="Firehazard2" parent="." instance=ExtResource("6_ru524")]
 position = Vector2(7030, -100)
-rotation = -0.960946
 
 [node name="Firehazard3" parent="." instance=ExtResource("6_ru524")]
 position = Vector2(7196, -98.0002)
-rotation = 2.16227
 
 [node name="Firehazard4" parent="." instance=ExtResource("6_ru524")]
 position = Vector2(7673, -98)
-rotation = 1.00074
 
 [node name="Firehazard5" parent="." instance=ExtResource("6_ru524")]
 position = Vector2(7828, -100)
-rotation = -2.2607
 
 [node name="Moving Platform" parent="." instance=ExtResource("8_r2o3i")]
 position = Vector2(12257, 23)
@@ -3868,8 +3849,6 @@ script = ExtResource("10_kkbss")
 position = Vector2(2, -15.5)
 shape = SubResource("RectangleShape2D_ldpct")
 
-[connection signal="body_entered" from="rope/Area2D" to="rope" method="_on_area_2d_body_entered"]
-[connection signal="gumanaba" from="LargeCrate" to="Log/destroyed" method="_on_large_crate_gumanaba"]
 [connection signal="destroy_the_destroyer" from="Log" to="LargeCrate" method="_on_log_destroy_the_destroyer"]
 [connection signal="body_entered" from="Log/destroyed" to="Log" method="_on_destroyed_body_entered"]
 [connection signal="body_shape_entered" from="Log/destroyed" to="Log" method="_on_destroyed_body_shape_entered"]

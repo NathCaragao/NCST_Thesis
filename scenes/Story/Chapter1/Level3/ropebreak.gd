@@ -7,15 +7,24 @@ func  break_rope():
 	sprite_2d.queue_free()
 	$Area2D.queue_free()
 	$CollisionShape2D.queue_free()
+
+
+func _init() -> void:
+	collision_layer = 0
+	collision_mask = 2 # allows the hurtbox to detect hitbox
+
+func _ready() -> void:
+	connect("area_entered", Callable(self, "on_rope_hit"))
+
+
+func on_rope_hit(arrow_hitbox: Area2D) -> void:
+	if arrow_hitbox == null:
+		return
 	
+	
+	if arrow_hitbox is ProjectileHitbox:
+		_on_hit()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_hit():
 	break_rope()
-
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("Player"):
-		print("putol")
-		_on_hit()
