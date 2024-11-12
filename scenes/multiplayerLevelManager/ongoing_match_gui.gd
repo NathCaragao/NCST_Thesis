@@ -49,7 +49,10 @@ func _loadCurrentPlayer(currentPlayerData):
 		return
 		
 	var playerCharacter = load("res://scenes/player/player.tscn").instantiate()
-	playerCharacter.add_child(Camera2D.new())
+	var playerCamera = Camera2D.new()
+	playerCamera.zoom.x = 1.5
+	playerCamera.zoom.y = 1.5
+	playerCharacter.add_child(playerCamera)
 	playerCharacter.position = $SpawnPoint.position
 	%Players.add_child(playerCharacter)
 	currentPlayerCharacter = playerCharacter
@@ -59,6 +62,7 @@ func _loadOtherPlayers(otherPlayersData: Array):
 		# Instantiate characters
 		if otherPlayersCharacter.is_empty():
 			var otherPlayerNewCharacter = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
+			otherPlayerNewCharacter.position = $SpawnPoint.position
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:
