@@ -147,6 +147,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Pickups"
 2d_physics/layer_6="Enemies"
+2d_physics/layer_7="Boundary"
 
 [rendering]
 

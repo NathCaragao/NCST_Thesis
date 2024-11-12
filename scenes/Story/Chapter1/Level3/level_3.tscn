@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=26 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_lsvum"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="3_unkcp"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="4_b1ad7"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_ru524"]
+[ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="6_um4t2"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="8_r2o3i"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="9_q76j5"]
 
@@ -3765,6 +3766,8 @@ _data = {
 "h2": SubResource("Animation_swy8f")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw85u"]
+
 [node name="Level3" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -3788,48 +3791,70 @@ tile_map_data = PackedByteArray("AAD4//7/AAACAAAAAAD4////AAACAAEAAAD5//7/AAABAAA
 tile_set = SubResource("TileSet_mu2t4")
 
 [node name="Player" parent="." instance=ExtResource("2_6dud6")]
-position = Vector2(2039, -86)
+position = Vector2(2721, 41)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
 zoom = Vector2(3, 3)
 
-[node name="rope" parent="." node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(-2129, -1697)
+scale = Vector2(2.84, 1.44)
+
+[node name="Boar" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(1763.03, 1220.14)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(1671.48, 1187.5)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar3" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(1815.85, 1218.75)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Boar4" parent="Enemies" instance=ExtResource("6_um4t2")]
+position = Vector2(1870.07, 1218.75)
+scale = Vector2(0.352113, 0.694444)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="rope" parent="Obstacles" node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
 position = Vector2(2247, -151)
 large_crate = NodePath("../LargeCrate")
 
-[node name="LargeCrate" parent="." groups=["Debris"] instance=ExtResource("4_b1ad7")]
+[node name="LargeCrate" parent="Obstacles" groups=["Debris"] instance=ExtResource("4_b1ad7")]
 position = Vector2(2247, -81)
 collision_layer = 33
 
-[node name="Firehazard" parent="." instance=ExtResource("6_ru524")]
+[node name="Firehazard" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(2052, 741)
 
-[node name="Firehazard2" parent="." instance=ExtResource("6_ru524")]
+[node name="Firehazard2" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(7030, -100)
 
-[node name="Firehazard3" parent="." instance=ExtResource("6_ru524")]
+[node name="Firehazard3" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(7196, -98.0002)
 
-[node name="Firehazard4" parent="." instance=ExtResource("6_ru524")]
+[node name="Firehazard4" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(7673, -98)
 
-[node name="Firehazard5" parent="." instance=ExtResource("6_ru524")]
+[node name="Firehazard5" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(7828, -100)
 
-[node name="Moving Platform" parent="." instance=ExtResource("8_r2o3i")]
+[node name="Moving Platform" parent="Obstacles" instance=ExtResource("8_r2o3i")]
 position = Vector2(12257, 23)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform"]
 libraries = {
 "": SubResource("AnimationLibrary_iu38k")
 }
 autoplay = "h"
 
-[node name="Moving Platform2" parent="." instance=ExtResource("8_r2o3i")]
+[node name="Moving Platform2" parent="Obstacles" instance=ExtResource("8_r2o3i")]
 position = Vector2(12797, 131)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform2"]
 libraries = {
 "": SubResource("AnimationLibrary_ksgey")
 }
@@ -3837,3 +3862,11 @@ autoplay = "h2"
 
 [node name="Log" parent="." instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 91)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Col1" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3280, 74)
+shape = SubResource("RectangleShape2D_gw85u")
