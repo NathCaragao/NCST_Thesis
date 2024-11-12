@@ -4769,7 +4769,7 @@ player = NodePath("Player")
 fail_screen = NodePath("ScoreUI/FailScreen")
 pause_screen = NodePath("ScoreUI/PauseScreen")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
-nemean_lion = NodePath("NemeanLion")
+nemean_lion = NodePath("Enemies/NemeanLion")
 
 [node name="TileCollection" type="Node2D" parent="."]
 
@@ -4803,65 +4803,67 @@ collision_mask = 35
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 
-[node name="Bandit" parent="." instance=ExtResource("15_rswnq")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Bandit" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(826, -113)
 
-[node name="Bandit2" parent="." instance=ExtResource("15_rswnq")]
+[node name="Bandit2" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(899, -113)
 
-[node name="Bandit3" parent="." instance=ExtResource("15_rswnq")]
+[node name="Bandit3" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(3270, -113)
 
-[node name="Bandit4" parent="." instance=ExtResource("15_rswnq")]
+[node name="Bandit4" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(1640, 459)
 
-[node name="Bandit5" parent="." instance=ExtResource("15_rswnq")]
+[node name="Bandit5" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(1586, 459)
 
-[node name="Bandit6" parent="." instance=ExtResource("15_rswnq")]
+[node name="Bandit6" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(3557, 2831)
 
-[node name="BanditLeader" parent="." instance=ExtResource("19_hfrpi")]
+[node name="BanditLeader" parent="Enemies" instance=ExtResource("19_hfrpi")]
 position = Vector2(-282, 437)
 scale = Vector2(2.5, 2.5)
 
-[node name="BanditLeader2" parent="." instance=ExtResource("19_hfrpi")]
+[node name="BanditLeader2" parent="Enemies" instance=ExtResource("19_hfrpi")]
 position = Vector2(-467, 1145)
 scale = Vector2(2.5, 2.5)
 
-[node name="BanditLeader3" parent="." instance=ExtResource("19_hfrpi")]
+[node name="BanditLeader3" parent="Enemies" instance=ExtResource("19_hfrpi")]
 position = Vector2(3615, 2267)
 scale = Vector2(2.5, 2.5)
 
-[node name="Wolf" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(122, -114)
 
-[node name="Wolf2" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf2" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(386, -114)
 
-[node name="Wolf3" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf3" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(538, -114)
 
-[node name="Wolf4" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf4" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(3388, -114)
 
-[node name="Wolf5" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf5" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(528, 453)
 
-[node name="Wolf6" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf6" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(269, 453)
 
-[node name="Wolf7" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf7" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(406, 453)
 
-[node name="Wolf8" parent="." instance=ExtResource("9_touq4")]
+[node name="Wolf8" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(4265, 2800)
 
-[node name="Cyclop" parent="." instance=ExtResource("8_huhis")]
+[node name="Cyclop" parent="Enemies" instance=ExtResource("8_huhis")]
 position = Vector2(-356, 2284)
 scale = Vector2(0.7, 0.7)
 
-[node name="NemeanLion" parent="." instance=ExtResource("27_0m45n")]
+[node name="NemeanLion" parent="Enemies" instance=ExtResource("27_0m45n")]
 position = Vector2(6049, 2873)
 scale = Vector2(1.5, 1.5)
 
@@ -5304,7 +5306,7 @@ visible = false
 [node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
 scale = Vector2(1.9, 1.9)
-cyclops = NodePath("../Cyclop")
+cyclops = NodePath("../Enemies/Cyclop")
 
 [node name="Chest" parent="." instance=ExtResource("24_konhc")]
 position = Vector2(3485, -108)
