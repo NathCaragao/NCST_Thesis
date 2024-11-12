@@ -199,6 +199,7 @@ enum MessageOpCode {
   UPDATE_HOST,
   LOBBY_PLAYER_READY_CHANGED,
   ONGOING_PLAYER_STARTED_CHANGED,
+  ONGOING_PLAYER_DATA_UPDATE,
 }
 
 signal matchStateReceived(matchState: NakamaRTAPI.MatchData)

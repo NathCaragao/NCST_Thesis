@@ -19,6 +19,9 @@ var direction
 @export var inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
+# multiplayer stuff
+var isMultiplayer = false
+
 # signals
 signal PlayerFail
 
@@ -31,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	
 	push_objects()
 	direction = Input.get_axis("move_left", "move_right")
+	
 
 
 # flip sprite

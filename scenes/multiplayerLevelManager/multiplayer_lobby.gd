@@ -35,10 +35,22 @@ func _switchGUI(currentGUI, newGUI) -> void:
 		newGUI.show()
 	else:
 		currentGUI.hide()
+		currentGUI.set_process(false)
+		currentGUI.set_physics_process(false)
+		newGUI.set_process(true)
+		newGUI.set_physics_process(true)
 		newGUI.show()
 
 # Do all subgui signals connections here and set the initial state
 func _ready() -> void:
+	# Set processes off for all GUI
+	noMatchGUI.set_process(false)
+	noMatchGUI.set_physics_process(false)
+	lobbyMatchGUI.set_process(false)
+	lobbyMatchGUI.set_physics_process(false)
+	ongoingMatchGUI.set_process(false)
+	ongoingMatchGUI.set_physics_process(false)
+	
 	# Signal connection for noMatchGUI
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
@@ -51,6 +63,7 @@ func _ready() -> void:
 	
 	# Signal connection for ongoingMatchGUI
 	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
+	ongoingMatchGUI.CurrentPlayerDirectionChanged.connect(_handleCurrentPlayerDirectionChanged)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -159,3 +172,10 @@ func _handleLevelLoaded():
 	"payload" = {"isStarted": true}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_STARTED_CHANGED, startedStatusChangePayload)
+	
+func _handleCurrentPlayerDirectionChanged(currentPlayerNewDiretion):
+	var currentPlayerDirectionPayload = {
+	"userId" = self.currentPlayer.user.id,
+	"payload" = {"ongoingMatchData": {"direction": currentPlayerNewDiretion}}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerDirectionPayload)

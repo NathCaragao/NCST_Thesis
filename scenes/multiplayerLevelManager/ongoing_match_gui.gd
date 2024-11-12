@@ -3,14 +3,23 @@ extends Node2D
 
 
 signal LevelLoaded()
+signal CurrentPlayerDirectionChanged(newDirection: Vector2)
 
 var isLoaded = false
 
-var currentPlayerCharacter = null
+var currentPlayerCharacter: PlayerHercules = null
 var otherPlayersCharacter: Array = []
+
+var timer: float = 0
 
 func _ready() -> void:
 	pass
+
+func _physics_process(delta: float) -> void:
+	timer += delta
+	if timer >= 0.1:
+		CurrentPlayerDirectionChanged.emit(currentPlayerCharacter.direction)
+		timer = 0
 
 func update(currentPlayerData, otherPlayersData):
 	if currentPlayerData != {} && currentPlayerData.isStarted && otherPlayersData.size() >= 1:
