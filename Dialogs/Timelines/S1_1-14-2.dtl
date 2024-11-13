@@ -1,0 +1,4 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: see hera, not even you can stop me from completing this tasked, I shall\
+vanquished this beast, and atone for my sins!
+leave Hercules [animation="Fade Out Up" wait="true"]

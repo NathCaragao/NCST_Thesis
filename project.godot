@@ -34,11 +34,30 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Hercules": "res://Dialogs/Characters/Hercules.dch"
+"Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
+"Hercules": "res://Dialogs/Characters/Hercules.dch",
+"Megalus": "res://Dialogs/Characters/Megalus.dch"
 }
 directories/dtl_directory={
 "S1_1-1": "res://Dialogs/Timelines/S1_1-1.dtl",
-"S1_1-2": "res://Dialogs/Timelines/S1_1-2.dtl"
+"S1_1-10": "res://Dialogs/Timelines/S1_1-10.dtl",
+"S1_1-11-1": "res://Dialogs/Timelines/S1_1-11-1.dtl",
+"S1_1-11-2": "res://Dialogs/Timelines/S1_1-11-2.dtl",
+"S1_1-12": "res://Dialogs/Timelines/S1_1-12.dtl",
+"S1_1-13": "res://Dialogs/Timelines/S1_1-13.dtl",
+"S1_1-14": "res://Dialogs/Timelines/S1_1-14.dtl",
+"S1_1-14-2": "res://Dialogs/Timelines/S1_1-14-2.dtl",
+"S1_1-15": "res://Dialogs/Timelines/S1_1-15.dtl",
+"S1_1-15-2": "res://Dialogs/Timelines/S1_1-15-2.dtl",
+"S1_1-2": "res://Dialogs/Timelines/S1_1-2.dtl",
+"S1_1-3": "res://Dialogs/Timelines/S1_1-3.dtl",
+"S1_1-4": "res://Dialogs/Timelines/S1_1-4.dtl",
+"S1_1-5": "res://Dialogs/Timelines/S1_1-5.dtl",
+"S1_1-6": "res://Dialogs/Timelines/S1_1-6.dtl",
+"S1_1-6-2": "res://Dialogs/Timelines/S1_1-6-2.dtl",
+"S1_1-7": "res://Dialogs/Timelines/S1_1-7.dtl",
+"S1_1-8": "res://Dialogs/Timelines/S1_1-8.dtl",
+"S1_1-9": "res://Dialogs/Timelines/S1_1-9.dtl"
 }
 layout/style_list=["res://Dialogs/Styles/Custom_VN_style.tres"]
 layout/default_style="res://Dialogs/Styles/Custom_VN_style.tres"

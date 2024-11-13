@@ -1,4 +1,3 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
-Hercules: An underground path? Could be a shortcut... or just trouble. Do I really want\
-to go down there?
+Hercules: "I’m close... I can feel it. The lion’s here, hiding somewhere in these shadows.
 leave Hercules [animation="Fade Out Up" wait="true"]

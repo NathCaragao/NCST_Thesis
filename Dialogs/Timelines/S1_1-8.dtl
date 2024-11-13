@@ -1,0 +1,8 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+join Bandit_leader center
+Bandit_leader: So, you think you can capture the Nemean Lion? You’re wasting your time,\
+mortal
+Hercules: "You’re just another barrier in my way. Move, or I’ll show you the strength of a\
+son of Zeus!
+leave Hercules [animation="Fade Out Up" wait="true"]
+leave Bandit_leader
