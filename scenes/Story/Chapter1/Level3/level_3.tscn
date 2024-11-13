@@ -4210,7 +4210,7 @@ position = Vector2(-5.5, -27.5)
 shape = SubResource("RectangleShape2D_jxdio")
 
 [node name="RabbitP2" type="Path2D" parent="."]
-position = Vector2(-1, -9)
+position = Vector2(-7, -1)
 curve = SubResource("Curve2D_h8kj1")
 
 [node name="P2" type="PathFollow2D" parent="RabbitP2"]
