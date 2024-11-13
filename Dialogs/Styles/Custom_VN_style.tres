@@ -30,7 +30,11 @@ overrides = {}
 script = ExtResource("1_34j8s")
 scene = ExtResource("5_vj37i")
 overrides = {
+"bold_font": "\"res://assets/fonts/PixelFJVerdana12pt.ttf\"",
+"bold_italics_font": "\"res://assets/fonts/PixelFJVerdana12pt.ttf\"",
 "box_size": "Vector2(950, 250)",
+"italics_font": "\"res://assets/fonts/PixelFJVerdana12pt.ttf\"",
+"name_label_font": "\"res://assets/fonts/PixelFJVerdana12pt.ttf\"",
 "normal_font": "\"res://assets/fonts/PixelFJVerdana12pt.ttf\"",
 "text_alignment": "1",
 "text_size": "32.0"
