@@ -240,6 +240,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHealthComponent/Hurtbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 4)]
+}
 
 [sub_resource type="Animation" id="Animation_vb57h"]
 resource_name = "fall"
@@ -768,7 +780,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-11, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -808,7 +820,7 @@ health_comp = NodePath("../../PlayerHealthComponent")
 anim_effects = NodePath("../AnimEffects")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
-position = Vector2(0, 4)
+position = Vector2(-11, 4)
 shape = SubResource("CapsuleShape2D_vta2c")
 debug_color = Color(0.983351, 0, 0.353836, 0.42)
 
