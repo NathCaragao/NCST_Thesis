@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://d10sx4f6uxrk6"]
+[gd_scene load_steps=13 format=3 uid="uid://d10sx4f6uxrk6"]
 
+[ext_resource type="Script" path="res://scenes/rabbit/rabbit.gd" id="1_2qroa"]
 [ext_resource type="Texture2D" uid="uid://bthtvcn7o7frq" path="res://assets/npcs/rabbit/bunny-Sheet.png" id="1_x5cqp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ichn8"]
@@ -75,12 +76,13 @@ animations = [{
 radius = 12.0416
 
 [node name="Rabbit" type="CharacterBody2D"]
+collision_layer = 129
+script = ExtResource("1_2qroa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_451gr")
-animation = &"rabbit-jump"
-frame = 3
-frame_progress = 1.0
+animation = &"rabbit-run"
+autoplay = "rabbit-run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 24)
