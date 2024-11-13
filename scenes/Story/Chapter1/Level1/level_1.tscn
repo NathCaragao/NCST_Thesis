@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=112 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -3953,6 +3953,9 @@ sources/0 = SubResource("TileSetAtlasSource_eeq15")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sibr"]
 size = Vector2(4, 242)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj72h"]
+size = Vector2(13, 140)
+
 [sub_resource type="Animation" id="Animation_vkkf2"]
 length = 0.001
 tracks/0/type = "value"
@@ -4813,6 +4816,17 @@ dialog_file = "S1_1-1"
 position = Vector2(-8, -120)
 shape = SubResource("RectangleShape2D_7sibr")
 
+[node name="DialogActivator2" type="Area2D" parent="DialogsCollection"]
+position = Vector2(1824, -105)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("6_850xk")
+dialog_file = "S1_1-2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator2"]
+position = Vector2(3.5, -60)
+shape = SubResource("RectangleShape2D_fj72h")
+
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
 position = Vector2(-493, -112)
 collision_mask = 35
@@ -5356,6 +5370,7 @@ position = Vector2(1.5, -13)
 shape = SubResource("RectangleShape2D_gl0bv")
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]
 [connection signal="body_entered" from="Gates Collection/Gate1/InteractionArea" to="Gates Collection/Gate1" method="_on_interaction_area_body_entered"]
