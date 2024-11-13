@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=50 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="22_b5bxq"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="23_vi2sa"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="24_qdow2"]
+[ext_resource type="PackedScene" uid="uid://d10sx4f6uxrk6" path="res://scenes/rabbit/rabbit.tscn" id="25_juhaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -3871,6 +3872,12 @@ size = Vector2(42, 65)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0nnkk"]
 
+[sub_resource type="Curve2D" id="Curve2D_14jnh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1427, 64, 0, 0, 0, 0, 1571, 65, 0, 0, 0, 0, 1761, 66, 0, 0, 0, 0, 1938, 66)
+}
+point_count = 4
+
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_btpqh")
 player = NodePath("Player")
@@ -4025,7 +4032,7 @@ libraries = {
 autoplay = "h2"
 
 [node name="Log" parent="." node_paths=PackedStringArray("static_collision") instance=ExtResource("9_q76j5")]
-position = Vector2(2250, 89)
+position = Vector2(2250, 105)
 static_collision = NodePath("StaticBody2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Log"]
@@ -4149,5 +4156,14 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("24_qdow2")]
 visible = false
+
+[node name="RabbitP1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_14jnh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="RabbitP1"]
+position = Vector2(1427, 64)
+rotation = 0.00694433
+
+[node name="Rabbit" parent="RabbitP1/PathFollow2D" instance=ExtResource("25_juhaj")]
 
 [editable path="Lever"]
