@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=117 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -3956,6 +3956,18 @@ size = Vector2(4, 242)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj72h"]
 size = Vector2(13, 140)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjmi0"]
+size = Vector2(20, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk386"]
+size = Vector2(7, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr5m2"]
+size = Vector2(133, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jchoc"]
+size = Vector2(20, 210)
+
 [sub_resource type="Animation" id="Animation_vkkf2"]
 length = 0.001
 tracks/0/type = "value"
@@ -4746,11 +4758,27 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(21.5, -15.5), Vector2(21.5, -104)]
+"values": [Vector2(2, 10.5), Vector2(1.5, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_078kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 10.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6rn02"]
 _data = {
+"RESET": SubResource("Animation_078kd"),
 "gate-open": SubResource("Animation_obgoq")
 }
 
@@ -4758,7 +4786,7 @@ _data = {
 size = Vector2(45, 64.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f64vh"]
-size = Vector2(5, 40)
+size = Vector2(5, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd2ak"]
 size = Vector2(9, 89)
@@ -4808,7 +4836,7 @@ tile_set = SubResource("TileSet_pif7w")
 [node name="DialogActivator" type="Area2D" parent="DialogsCollection"]
 position = Vector2(-372, -96)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("6_850xk")
 dialog_file = "S1_1-1"
 
@@ -4826,6 +4854,44 @@ dialog_file = "S1_1-2"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator2"]
 position = Vector2(3.5, -60)
 shape = SubResource("RectangleShape2D_fj72h")
+
+[node name="DialogActivator3" type="Area2D" parent="DialogsCollection"]
+position = Vector2(2950, -117)
+script = ExtResource("6_850xk")
+dialog_file = "S1_1-3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator3"]
+position = Vector2(0, -73)
+shape = SubResource("RectangleShape2D_bjmi0")
+
+[node name="DialogActivator4" type="Area2D" parent="DialogsCollection"]
+position = Vector2(1844, 403)
+script = ExtResource("6_850xk")
+dialog_file = "S1_1-4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator4"]
+position = Vector2(1.5, -53)
+shape = SubResource("RectangleShape2D_yk386")
+
+[node name="DialogActivator5" type="Area2D" parent="DialogsCollection"]
+position = Vector2(3033, 1138)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("6_850xk")
+dialog_file = "S1_1-5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator5"]
+position = Vector2(21.5, -25.5)
+shape = SubResource("RectangleShape2D_kr5m2")
+
+[node name="DialogActivator6" type="Area2D" parent="DialogsCollection"]
+position = Vector2(2102, 1161)
+script = ExtResource("6_850xk")
+dialog_file = "S1_1-6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogsCollection/DialogActivator6"]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_jchoc")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
 position = Vector2(-493, -112)
@@ -5182,7 +5248,7 @@ shape = SubResource("RectangleShape2D_22byg")
 [node name="StaticBody2D" type="StaticBody2D" parent="Gates Collection/Gate1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gates Collection/Gate1/StaticBody2D"]
-position = Vector2(21.5, -15.5)
+position = Vector2(2, 10.5)
 shape = SubResource("RectangleShape2D_f64vh")
 debug_color = Color(0.548295, 0.564482, 7.70092e-07, 0.42)
 
@@ -5216,7 +5282,7 @@ scale = Vector2(0.6, 0.6)
 [node name="StaticBody2D" type="StaticBody2D" parent="Gates Collection/Gate2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gates Collection/Gate2/StaticBody2D"]
-position = Vector2(21.5, -15.5)
+position = Vector2(2, 10.5)
 shape = SubResource("RectangleShape2D_xd2ak")
 debug_color = Color(0.594556, 0.545887, 0, 0.42)
 
@@ -5246,7 +5312,7 @@ libraries = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Gates Collection/Gate3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gates Collection/Gate3/StaticBody2D"]
-position = Vector2(21.5, -15.5)
+position = Vector2(2, 10.5)
 shape = SubResource("RectangleShape2D_xd2ak")
 debug_color = Color(0.594556, 0.545887, 0, 0.42)
 
@@ -5371,6 +5437,10 @@ shape = SubResource("RectangleShape2D_gl0bv")
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogsCollection/DialogActivator3" to="DialogsCollection/DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogsCollection/DialogActivator4" to="DialogsCollection/DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogsCollection/DialogActivator5" to="DialogsCollection/DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogsCollection/DialogActivator6" to="DialogsCollection/DialogActivator6" method="_on_body_entered"]
 [connection signal="body_entered" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_entered"]
 [connection signal="body_exited" from="Platforming/Placeholder_trapdoor/trap" to="Platforming/Placeholder_trapdoor" method="_on_trap_body_exited"]
 [connection signal="body_entered" from="Gates Collection/Gate1/InteractionArea" to="Gates Collection/Gate1" method="_on_interaction_area_body_entered"]
