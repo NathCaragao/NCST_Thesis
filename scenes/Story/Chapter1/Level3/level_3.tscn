@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=48 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -3779,6 +3779,9 @@ _data = {
 "h2": SubResource("Animation_swy8f")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4p1c"]
+size = Vector2(194, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lta4"]
 size = Vector2(53, 47)
 
@@ -3896,7 +3899,7 @@ tile_map_data = PackedByteArray("AAD4//7/AAACAAAAAAD4////AAACAAEAAAD5//7/AAABAAA
 tile_set = SubResource("TileSet_mu2t4")
 
 [node name="Player" parent="." instance=ExtResource("2_6dud6")]
-position = Vector2(1160, 44)
+position = Vector2(2371, -10)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
@@ -4021,8 +4024,16 @@ libraries = {
 }
 autoplay = "h2"
 
-[node name="Log" parent="." instance=ExtResource("9_q76j5")]
+[node name="Log" parent="." node_paths=PackedStringArray("static_collision") instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 89)
+static_collision = NodePath("StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Log"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Log/StaticBody2D"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_o4p1c")
+debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="Chest" parent="." instance=ExtResource("14_p3tjk")]
 position = Vector2(5610, 129)
