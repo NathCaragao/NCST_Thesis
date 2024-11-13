@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2fn4dlp4nln"]
+
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="1_5qq05"]
+
+[node name="DialogActivator" type="Area2D"]
+script = ExtResource("1_5qq05")
