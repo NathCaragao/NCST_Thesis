@@ -38,6 +38,7 @@ func play_animation(animation_name: String) -> void:
 
 func lion_defeated() -> void:
 	emit_signal("LionDefeated")
+	lion_dialog()
 
 # when the lion is on the screen
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
@@ -54,3 +55,7 @@ func hp_bar_open() -> void:
 func hp_bar_close() -> void:
 	$EnemyHealthComp/HPUI/EnemyHPbar.visible = false
 	$EnemyHealthComp/HPUI/Label.visible = false
+
+func lion_dialog() -> void:
+	Dialogic.start("S1_1-15-2")
+	print("Current dialog playing: S1_1-15-2")
