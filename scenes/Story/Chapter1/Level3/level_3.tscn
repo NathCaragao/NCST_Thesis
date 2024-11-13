@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=57 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="24_qdow2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/p1.gd" id="25_j67sa"]
 [ext_resource type="PackedScene" uid="uid://d10sx4f6uxrk6" path="res://scenes/rabbit/rabbit.tscn" id="25_juhaj"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/p_2.gd" id="27_dxja3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -3885,6 +3886,18 @@ size = Vector2(26, 116)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxdio"]
 size = Vector2(39, 75)
 
+[sub_resource type="Curve2D" id="Curve2D_h8kj1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 15095, 95, 0, 0, 0, 0, 15531, 95)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82cm1"]
+size = Vector2(20, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjh5u"]
+size = Vector2(65, 92)
+
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_btpqh")
 player = NodePath("Player")
@@ -3913,7 +3926,7 @@ tile_map_data = PackedByteArray("AAD4//7/AAACAAAAAAD4////AAACAAEAAAD5//7/AAABAAA
 tile_set = SubResource("TileSet_mu2t4")
 
 [node name="Player" parent="." instance=ExtResource("2_6dud6")]
-position = Vector2(1066, 56)
+position = Vector2(14946, 27)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
@@ -4167,16 +4180,16 @@ visible = false
 [node name="RabbitP1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_14jnh")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="RabbitP1"]
+[node name="P1" type="PathFollow2D" parent="RabbitP1"]
 position = Vector2(1440, 41)
 rotation = -0.00401604
 rotates = false
 script = ExtResource("25_j67sa")
 
-[node name="Rabbit" parent="RabbitP1/PathFollow2D" instance=ExtResource("25_juhaj")]
+[node name="Rabbit" parent="RabbitP1/P1" instance=ExtResource("25_juhaj")]
 collision_layer = 128
 collision_mask = 0
-speed = 0.2
+speed = 0.3
 
 [node name="P1Area" type="Area2D" parent="."]
 position = Vector2(1318, 68)
@@ -4196,7 +4209,40 @@ collision_mask = 136
 position = Vector2(-5.5, -27.5)
 shape = SubResource("RectangleShape2D_jxdio")
 
-[connection signal="body_entered" from="P1Area" to="RabbitP1/PathFollow2D" method="_on_p_1_area_body_entered"]
-[connection signal="body_entered" from="P1Exit" to="RabbitP1/PathFollow2D" method="_on_p_1_exit_body_entered"]
+[node name="RabbitP2" type="Path2D" parent="."]
+position = Vector2(-1, -9)
+curve = SubResource("Curve2D_h8kj1")
+
+[node name="P2" type="PathFollow2D" parent="RabbitP2"]
+position = Vector2(15095, 95)
+rotates = false
+script = ExtResource("27_dxja3")
+
+[node name="Rabbit" parent="RabbitP2/P2" instance=ExtResource("25_juhaj")]
+collision_layer = 128
+speed = 0.2
+
+[node name="P2Area" type="Area2D" parent="."]
+position = Vector2(15001, 32)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P2Area"]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_82cm1")
+
+[node name="P2Exit" type="Area2D" parent="."]
+position = Vector2(15527, 93)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P2Exit"]
+position = Vector2(-3.5, -14)
+shape = SubResource("RectangleShape2D_yjh5u")
+
+[connection signal="body_entered" from="P1Area" to="RabbitP1/P1" method="_on_p_1_area_body_entered"]
+[connection signal="body_entered" from="P1Exit" to="RabbitP1/P1" method="_on_p_1_exit_body_entered"]
+[connection signal="body_entered" from="P2Area" to="RabbitP2/P2" method="_on_p_2_area_body_entered"]
+[connection signal="body_entered" from="P2Exit" to="RabbitP2/P2" method="_on_p_2_exit_body_entered"]
 
 [editable path="Lever"]
