@@ -3706,6 +3706,9 @@ texture = ExtResource("1_lsvum")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_afy3x")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4p1c"]
+size = Vector2(194, 20)
+
 [sub_resource type="Animation" id="Animation_irv3y"]
 length = 0.001
 tracks/0/type = "value"
@@ -3781,9 +3784,6 @@ _data = {
 "RESET": SubResource("Animation_gc8xe"),
 "h2": SubResource("Animation_swy8f")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4p1c"]
-size = Vector2(194, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lta4"]
 size = Vector2(53, 47)
@@ -4008,15 +4008,26 @@ scale = Vector2(0.528169, 1.04167)
 position = Vector2(3632.75, 1081.25)
 scale = Vector2(0.528169, 1.04167)
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Log" parent="." node_paths=PackedStringArray("static_collision") instance=ExtResource("9_q76j5")]
+position = Vector2(2250, 105)
+static_collision = NodePath("StaticBody2D")
 
-[node name="rope" parent="Obstacles" node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
+[node name="StaticBody2D" type="StaticBody2D" parent="Log"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Log/StaticBody2D"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_o4p1c")
+debug_color = Color(0.416552, 0.462797, 1, 0.42)
+
+[node name="rope" parent="." node_paths=PackedStringArray("large_crate") instance=ExtResource("3_unkcp")]
 position = Vector2(2247, -151)
 large_crate = NodePath("../LargeCrate")
 
-[node name="LargeCrate" parent="Obstacles" groups=["Debris"] instance=ExtResource("4_b1ad7")]
+[node name="LargeCrate" parent="." groups=["Debris"] instance=ExtResource("4_b1ad7")]
 position = Vector2(2247, -81)
 collision_layer = 33
+
+[node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Firehazard" parent="Obstacles" instance=ExtResource("6_ru524")]
 position = Vector2(2052, 741)
@@ -4050,17 +4061,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ksgey")
 }
 autoplay = "h2"
-
-[node name="Log" parent="." node_paths=PackedStringArray("static_collision") instance=ExtResource("9_q76j5")]
-position = Vector2(2250, 105)
-static_collision = NodePath("StaticBody2D")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Log"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Log/StaticBody2D"]
-position = Vector2(2, 0)
-shape = SubResource("RectangleShape2D_o4p1c")
-debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="Chest" parent="." instance=ExtResource("14_p3tjk")]
 position = Vector2(5610, 129)
