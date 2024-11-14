@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3045wa4smo6k"]
+
+[ext_resource type="Script" path="res://scenes/objects/testcrate/crushtodeathreset.gd" id="1_q0k4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da2vs"]
+size = Vector2(78, 32)
+
+[node name="Deathsone" type="Node2D"]
+script = ExtResource("1_q0k4w")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_da2vs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
