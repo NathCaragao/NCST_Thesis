@@ -6060,7 +6060,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlvvn"]
-size = Vector2(194, 20)
+size = Vector2(194, 23)
 
 [node name="Level4" type="Node2D"]
 
@@ -6108,7 +6108,7 @@ tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAAAAAAAEAAAABAP//AAABAAA
 tile_set = SubResource("TileSet_iicjh")
 
 [node name="Player" parent="." instance=ExtResource("3_5jl48")]
-position = Vector2(12063, -1001)
+position = Vector2(13834, -61)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -6120,7 +6120,6 @@ position = Vector2(8159, -667)
 
 [node name="Firehazard2" parent="Obstacles" instance=ExtResource("8_qvuq6")]
 position = Vector2(8477, -668)
-scale = Vector2(1, 1)
 
 [node name="Firehazard3" parent="Obstacles" instance=ExtResource("8_qvuq6")]
 position = Vector2(8310, -731)
@@ -6150,10 +6149,10 @@ position = Vector2(11719, -546)
 position = Vector2(11645, -768)
 
 [node name="Firehazard6" parent="Obstacles" instance=ExtResource("8_qvuq6")]
-position = Vector2(14003, -76)
+position = Vector2(14003, -69)
 
 [node name="Firehazard7" parent="Obstacles" instance=ExtResource("8_qvuq6")]
-position = Vector2(14177, -74)
+position = Vector2(14177, -66)
 
 [node name="spike wheel6" parent="Obstacles" instance=ExtResource("9_dxi3r")]
 position = Vector2(14440, -72)
@@ -6193,9 +6192,9 @@ autoplay = "vertical"
 
 [node name="rope" parent="." node_paths=PackedStringArray("large_crate") instance=ExtResource("11_s0bw1")]
 position = Vector2(12346, -1074)
-large_crate = NodePath("")
+large_crate = NodePath("../LargeCrate")
 
-[node name="LargeCrate" parent="." groups=["destroyer"] instance=ExtResource("13_cd25s")]
+[node name="LargeCrate" parent="." groups=["Debris"] instance=ExtResource("13_cd25s")]
 position = Vector2(12347, -1008)
 collision_layer = 33
 
@@ -6206,6 +6205,6 @@ static_collision = NodePath("StaticBody2D")
 [node name="StaticBody2D" type="StaticBody2D" parent="Log"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Log/StaticBody2D"]
-position = Vector2(2, 0)
+position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_qlvvn")
 debug_color = Color(0.416552, 0.462797, 1, 0.42)
