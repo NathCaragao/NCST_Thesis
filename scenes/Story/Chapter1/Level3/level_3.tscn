@@ -3943,6 +3943,7 @@ scale = Vector2(0.352113, 0.694444)
 [node name="Boar2" parent="Enemies" instance=ExtResource("6_um4t2")]
 position = Vector2(1671.48, 1187.5)
 scale = Vector2(0.352113, 0.694444)
+collision_layer = 0
 
 [node name="Boar3" parent="Enemies" instance=ExtResource("6_um4t2")]
 position = Vector2(1815.85, 1218.75)

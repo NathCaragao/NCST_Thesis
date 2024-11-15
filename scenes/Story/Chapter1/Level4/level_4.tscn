@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=45 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cwf8bd5tjuenx" path="res://assets/Images/BackgroundImages/snow1.png" id="3_sarkh"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="8_qvuq6"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="9_dxi3r"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_i2s6c"]
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="10_0x5py"]
+[ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="10_j5r30"]
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="11_s0bw1"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="13_cd25s"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="15_wg4ok"]
@@ -6067,6 +6069,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlvvn"]
 size = Vector2(194, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgapi"]
+
 [node name="Level4" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_0sjf7")
 player = NodePath("Player")
@@ -6118,10 +6122,138 @@ tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAAAAAAAEAAAABAP//AAABAAA
 tile_set = SubResource("TileSet_iicjh")
 
 [node name="Player" parent="." instance=ExtResource("3_5jl48")]
-position = Vector2(13834, -61)
+position = Vector2(8002, -706)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Wolf" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(1780, -146)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(1460, -82)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(1782, -978)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(2195, -963)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(2389, -963)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(2707, -963)
+
+[node name="Wolf7" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(5394, -1138)
+
+[node name="Wolf8" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(7029, -692)
+
+[node name="Wolf9" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(7275, -692)
+
+[node name="Wolf10" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(8700, -692)
+
+[node name="Wolf11" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(9041, -692)
+
+[node name="Wolf12" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(11067, -20)
+scale = Vector2(1.2, 1.2)
+
+[node name="Wolf13" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(11912, -455)
+scale = Vector2(1.2, 1.2)
+
+[node name="Wolf14" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(11755, -632)
+scale = Vector2(1.2, 1.2)
+
+[node name="Wolf15" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(12044, -757)
+scale = Vector2(1.2, 1.2)
+
+[node name="Wolf16" parent="Enemies" instance=ExtResource("9_i2s6c")]
+position = Vector2(11115, -934)
+scale = Vector2(1.2, 1.2)
+
+[node name="Bandit" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(3845, -1014)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit2" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(4605, -1086)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit3" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(5005, -1153)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit4" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(5927, -1153)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit5" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(9819, -34)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit6" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(10216, -33)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit7" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(10756, -33)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit8" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(11236, -413)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit9" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(12029, -991)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit10" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(11397, -1118)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit11" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(14167, -1055)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
+
+[node name="Bandit12" parent="Enemies" instance=ExtResource("10_j5r30")]
+position = Vector2(14055, -1567)
+scale = Vector2(1.7, 1.7)
+collision_layer = 0
+collision_mask = 65
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -6232,3 +6364,103 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("20_ldpk8")]
 visible = false
+
+[node name="EnemyBoundary" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Col1" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(1365, -74)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col2" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(1593, -140)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col3" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(1686, -972)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col4" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(1901, -973)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col5" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(2020, -957)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col6" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(3787, -1003)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col7" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(3908, -1003)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col8" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(4555, -1064)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col9" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(4783, -1132)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col10" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(6357, -1132)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col11" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(9445, -686)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col12" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11168, -395)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col13" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11629, -443)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col14" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(12021, -617)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col15" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11771, -748)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col16" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(12309, -748)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col17" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11787, -971)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col18" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(12292, -971)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col19" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11352, -924)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col20" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(10870, -924)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col21" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11212, -1098)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col22" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(11603, -1098)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col23" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(14533, -1034)
+shape = SubResource("RectangleShape2D_xgapi")
+
+[node name="Col24" type="CollisionShape2D" parent="EnemyBoundary"]
+position = Vector2(13753, -1549)
+shape = SubResource("RectangleShape2D_xgapi")
