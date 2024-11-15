@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://q551jhmymwnr"]
+[gd_scene load_steps=28 format=3 uid="uid://q551jhmymwnr"]
 
 [ext_resource type="Script" path="res://scenes/enemies/bandit/bandit.gd" id="1_2hdkl"]
 [ext_resource type="Texture2D" uid="uid://cwgg46w0rf7aw" path="res://assets/Enemies/bandit/Axe Bandit.png" id="1_ihgtc"]
@@ -20,7 +20,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0eyc"]
 resource_local_to_scene = true
 shader = ExtResource("2_jyqcg")
-shader_parameter/enabled = false
+shader_parameter/enabled = true
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_50o6a"]
@@ -294,21 +294,6 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_qds6q"]
 radius = 7.0
 
-[sub_resource type="Animation" id="Animation_ggcmr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_1s36y"]
 resource_name = "hit-flash"
 length = 0.2
@@ -327,7 +312,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jhimr"]
 _data = {
-"RESET": SubResource("Animation_ggcmr"),
 "hit-flash": SubResource("Animation_1s36y")
 }
 
@@ -336,8 +320,8 @@ script = ExtResource("1_2hdkl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_c0eyc")
-texture = ExtResource("1_ihgtc")
-hframes = 6
+texture = ExtResource("4_4edty")
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
