@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=46 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_i2s6c"]
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="10_0x5py"]
 [ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="10_j5r30"]
+[ext_resource type="PackedScene" uid="uid://cbo6bdevatf1v" path="res://scenes/enemies/boss-boar/boss_boar.tscn" id="11_higmf"]
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="11_s0bw1"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="13_cd25s"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="15_wg4ok"]
@@ -6253,6 +6254,10 @@ position = Vector2(14055, -1567)
 scale = Vector2(1.7, 1.7)
 collision_layer = 0
 collision_mask = 65
+
+[node name="BossBoar" parent="Enemies" instance=ExtResource("11_higmf")]
+position = Vector2(15382, -2160)
+scale = Vector2(2, 2)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
