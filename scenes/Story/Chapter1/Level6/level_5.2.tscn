@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=72 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level6/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="21_j20b4"]
 [ext_resource type="PackedScene" uid="uid://cw8olamrv5c0u" path="res://scenes/enemies/stymphalian-bird/stymphalian_bird.tscn" id="22_v6orp"]
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="24_0umqr"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="24_3o52e"]
+[ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="25_8yrc1"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="25_sd7m3"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="26_mp6j1"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="27_57xek"]
@@ -8100,6 +8102,84 @@ debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="StymphalianBird" parent="Enemies" instance=ExtResource("22_v6orp")]
 position = Vector2(-3147, -347)
+
+[node name="Wolf" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-28891, -18)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-27310, -194)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-26643, -3)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-23488, -2)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-23031, -2)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-22428, -2)
+
+[node name="Wolf7" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-21812, -2)
+
+[node name="Wolf8" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-19968, -50)
+
+[node name="Wolf9" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-16515, -4)
+
+[node name="Wolf10" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-14835, -4)
+
+[node name="Wolf11" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-13614, -119)
+
+[node name="Wolf12" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-13479, -119)
+
+[node name="Wolf13" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-13299, -119)
+
+[node name="Wolf14" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-10936, -305)
+
+[node name="Wolf15" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-10204, -21)
+
+[node name="Wolf16" parent="Enemies" instance=ExtResource("24_3o52e")]
+position = Vector2(-9930, -21)
+
+[node name="Boar" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-26009, 0)
+
+[node name="Boar4" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-22834, -4)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-26009, -388)
+
+[node name="Boar3" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-25674, -529)
+
+[node name="Boar5" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-19576, -434)
+
+[node name="Boar6" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-17562, 607)
+
+[node name="Boar7" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-17562, 126)
+
+[node name="Boar8" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-12822, -2)
+
+[node name="Boar9" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-12598, -2)
+
+[node name="Boar10" parent="Enemies" instance=ExtResource("25_8yrc1")]
+position = Vector2(-12013, -2)
 
 [node name="ScoreUI" type="CanvasLayer" parent="."]
 
