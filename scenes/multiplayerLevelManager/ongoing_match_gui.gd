@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if timer >= 0.1:
+	if timer >= 0.05:
 		CurrentPlayerDirectionChanged.emit(currentPlayerCharacter.direction)
 		timer = 0
 
