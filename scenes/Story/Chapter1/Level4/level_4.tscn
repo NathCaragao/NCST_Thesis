@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=42 format=4 uid="uid://celssdpyqabr4"]
 
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_csbfn"]
 [ext_resource type="Texture2D" uid="uid://dnw474v602184" path="res://assets/Images/BackgroundImages/snow3.png" id="1_xlm85"]
@@ -14,7 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="13_cd25s"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="15_wg4ok"]
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="17_67i6k"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="17_er8eb"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="18_011mj"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="18_iieoh"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="19_a5uen"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="20_ldpk8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l8pk"]
 texture = ExtResource("1_aqg7f")
@@ -6062,7 +6067,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlvvn"]
 size = Vector2(194, 23)
 
-[node name="Level4" type="Node2D"]
+[node name="Level4" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
+script = ExtResource("1_0sjf7")
+player = NodePath("Player")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 repeat_size = Vector2(2560, 0)
@@ -6208,3 +6218,17 @@ static_collision = NodePath("StaticBody2D")
 position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_qlvvn")
 debug_color = Color(0.416552, 0.462797, 1, 0.42)
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("17_er8eb")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("18_iieoh")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("19_a5uen")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("20_ldpk8")]
+visible = false
