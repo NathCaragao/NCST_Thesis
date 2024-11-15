@@ -1,5 +1,6 @@
-[gd_scene load_steps=65 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=70 format=4 uid="uid://cobuxhq2t2b43"]
 
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level6/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
 [ext_resource type="Texture2D" uid="uid://xqactn14bjwp" path="res://assets/Images/BackgroundImages/parallax/MorningLayer5.png" id="2_4fice"]
 [ext_resource type="Texture2D" uid="uid://bm851w8k7ov2q" path="res://assets/Images/BackgroundImages/parallax/MorningLayer4.png" id="3_owhwq"]
@@ -22,6 +23,10 @@
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="20_lck4o"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="21_j20b4"]
 [ext_resource type="PackedScene" uid="uid://cw8olamrv5c0u" path="res://scenes/enemies/stymphalian-bird/stymphalian_bird.tscn" id="22_v6orp"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="24_0umqr"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="25_sd7m3"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="26_mp6j1"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="27_57xek"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -7862,7 +7867,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrbgr"]
 size = Vector2(194, 23)
 
-[node name="Level6" type="Node2D"]
+[node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
+script = ExtResource("1_skfof")
+player = NodePath("Player")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="BgAndParallax" type="Node2D" parent="."]
 
@@ -8090,3 +8100,17 @@ debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="StymphalianBird" parent="Enemies" instance=ExtResource("22_v6orp")]
 position = Vector2(-3147, -347)
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("24_0umqr")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("25_sd7m3")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("26_mp6j1")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("27_57xek")]
+visible = false
