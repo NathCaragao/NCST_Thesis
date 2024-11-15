@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3nhqr8jx3mh3"]
+
+[ext_resource type="Script" path="res://scenes/objects/poop/poop.gd" id="1_kdbuw"]
+[ext_resource type="Texture2D" uid="uid://dj841pmvd04yd" path="res://assets/in-game-objects/poop/poop1.png" id="1_p8hw5"]
+[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="2_bfqii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga7f7"]
+atlas = ExtResource("1_p8hw5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2chr"]
+atlas = ExtResource("1_p8hw5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4uoy"]
+atlas = ExtResource("1_p8hw5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3g3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga7f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2chr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4uoy")
+}],
+"loop": true,
+"name": &"poop-idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8urla"]
+size = Vector2(79, 53)
+
+[node name="Poop" type="Node2D"]
+script = ExtResource("1_kdbuw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h3g3s")
+animation = &"poop-idle"
+autoplay = "poop-idle"
+frame_progress = 0.0460103
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_bfqii")]
+action_name = "clean"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_8urla")

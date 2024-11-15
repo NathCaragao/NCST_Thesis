@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=17 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_y6l5g"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://blbqjhgjq2w74" path="res://assets/Images/BackgroundImages/parallax/MorningLayer3.png" id="4_4mg3e"]
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="4_kk0sn"]
 [ext_resource type="Texture2D" uid="uid://gl516oxlyya6" path="res://assets/Images/BackgroundImages/parallax/MorningLayer2.png" id="5_d7j4h"]
+[ext_resource type="PackedScene" uid="uid://d3nhqr8jx3mh3" path="res://scenes/objects/poop/poop.tscn" id="10_tmo4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1144,6 +1145,54 @@ tile_set = SubResource("TileSet_tgk4m")
 position = Vector2(648, -24)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
 
 [node name="RotatingPlatform1" parent="." instance=ExtResource("4_kk0sn")]
 position = Vector2(2660, -124)
+
+[node name="Poops" type="Node2D" parent="."]
+
+[node name="Poop" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(-780, -9)
+
+[node name="Poop2" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(-556, -9)
+
+[node name="Poop3" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(-392, -9)
+
+[node name="Poop4" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(-71, -9)
+
+[node name="Poop5" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(199, -9)
+
+[node name="Poop6" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(498, -9)
+
+[node name="Poop7" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(780, -9)
+
+[node name="Poop8" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(1058, -9)
+
+[node name="Poop9" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(1293, -9)
+
+[node name="Poop10" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(1583, -9)
+
+[node name="Poop11" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(2130, -137)
+
+[node name="Poop12" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(3038, -137)
+
+[node name="Poop13" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(3319, -137)
+
+[node name="Poop14" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(3688, -137)
+
+[node name="Poop15" parent="Poops" instance=ExtResource("10_tmo4j")]
+position = Vector2(3511, -137)
