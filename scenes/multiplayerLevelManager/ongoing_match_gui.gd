@@ -46,8 +46,10 @@ func _loadLevel():
 		
 func _loadCurrentPlayer(currentPlayerData):
 	if currentPlayerCharacter != null:
+		# Update user
 		return
-		
+	
+	# Else create new user
 	var playerCharacter = load("res://scenes/player/player.tscn").instantiate()
 	var playerCamera = Camera2D.new()
 	playerCamera.zoom.x = 1.5
@@ -58,13 +60,17 @@ func _loadCurrentPlayer(currentPlayerData):
 	currentPlayerCharacter = playerCharacter
 	
 func _loadOtherPlayers(otherPlayersData: Array):
-	for i in range(0, otherPlayersData.size()):
+	for otherPlayerFromServer in range(0, otherPlayersData.size()):
 		# Instantiate characters
 		if otherPlayersCharacter.is_empty():
-			var otherPlayerNewCharacter = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
+			var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
 			otherPlayerNewCharacter.position = $SpawnPoint.position
+			otherPlayerNewCharacter.playerId = otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:
-			# Update things
+			# Find the user in the array then update them
+			for localOtherPlayer in range(0, otherPlayersCharacter.size()):
+				if otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId == otherPlayersCharacter[localOtherPlayer].playerId:
+					otherPlayersCharacter[localOtherPlayer].direction = otherPlayersData[otherPlayerFromServer].ongoingMatchData.direction
 			pass
