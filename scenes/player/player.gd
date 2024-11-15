@@ -39,16 +39,18 @@ func flip_sprite() -> void:
 		sprite.flip_h = false
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
-		$PlayerHealthComponent/Hurtbox/CollisionShape2D.position.x = 11
 	if velocity.x < 0:
 		sprite.flip_h = true
-		$PlayerHealthComponent/Hurtbox/CollisionShape2D.position.x = 11
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
 	
 	if direction == 1:
 		$ArrowPos.scale.x = 1
+		$PlayerHealthComponent/Hurtbox.scale.x = 1
+		$BodyCollision.scale.x = 1
 	elif direction == -1:
+		$BodyCollision.scale.x = -1
+		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
 
 # function for pushing objects such as boxes

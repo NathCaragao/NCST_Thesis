@@ -21,7 +21,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2trn"]
 shader = ExtResource("1_pirbq")
-shader_parameter/enabled = false
+shader_parameter/enabled = true
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_qke6w"]
