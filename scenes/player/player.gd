@@ -47,9 +47,7 @@ func flip_sprite() -> void:
 	if direction == 1:
 		$ArrowPos.scale.x = 1
 		$PlayerHealthComponent/Hurtbox.scale.x = 1
-		$BodyCollision.scale.x = 1
 	elif direction == -1:
-		$BodyCollision.scale.x = -1
 		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
 
