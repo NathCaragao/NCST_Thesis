@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=60 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
 [ext_resource type="Texture2D" uid="uid://xqactn14bjwp" path="res://assets/Images/BackgroundImages/parallax/MorningLayer5.png" id="2_4fice"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="16_lcvy3"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="17_0sm6r"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="18_ulusw"]
-[ext_resource type="PackedScene" path="res://scenes/objects/testcrate/deathsone.tscn" id="25_swb0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -7995,26 +7994,21 @@ autoplay = "moving_h"
 
 [node name="Firehazard4" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-21231, -49)
-rotation = -2.05289
 
 [node name="Firehazard5" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-21132, -148)
-rotation = 0.990268
 
 [node name="spike wheel3" parent="." instance=ExtResource("16_lcvy3")]
 position = Vector2(-17932, 666)
 
 [node name="Firehazard6" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-18754, 627)
-rotation = -2.2961
 
 [node name="Firehazard7" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-18610, 509)
-rotation = 0.825562
 
 [node name="Firehazard8" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-18457, 624)
-rotation = -2.34231
 
 [node name="Firehazard9" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-17299, 486)
@@ -8057,45 +8051,6 @@ position = Vector2(-14029, -49)
 
 [node name="Firehazard15" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-15308, -229)
-rotation = 4.03437
 
 [node name="Firehazard16" parent="." instance=ExtResource("17_0sm6r")]
 position = Vector2(-15388, -142)
-rotation = -2.21606
-
-[node name="Deathsone" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-15176, 2)
-
-[node name="Deathsone2" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-15518, -137)
-
-[node name="Deathsone3" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-18643, -107)
-
-[node name="Deathsone4" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-7895, 388)
-scale = Vector2(84.175, 17.12)
-
-[node name="Deathsone5" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-14029.2, 236)
-scale = Vector2(5.83, 1)
-
-[node name="Deathsone6" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-17945.3, 832)
-scale = Vector2(7.01, 1)
-
-[node name="Deathsone7" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-18362, -583)
-scale = Vector2(4.645, 1)
-
-[node name="Deathsone8" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-20635, 293)
-scale = Vector2(12.785, 1)
-
-[node name="Deathsone9" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-24546, 162)
-scale = Vector2(15.7, 1)
-
-[node name="Deathsone10" parent="." instance=ExtResource("25_swb0e")]
-position = Vector2(-28102, 99)
-scale = Vector2(13.8, 1)
