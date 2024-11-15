@@ -39,8 +39,10 @@ func flip_sprite() -> void:
 		sprite.flip_h = false
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
+		$PlayerHealthComponent/Hurtbox/CollisionShape2D.position.x = 11
 	if velocity.x < 0:
 		sprite.flip_h = true
+		$PlayerHealthComponent/Hurtbox/CollisionShape2D.position.x = 11
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
 	

@@ -42,7 +42,7 @@ func physics_update(delta: float) -> void:
 		# direction.y = 0
 		
 		# Check if player is within range
-		if direction.length() < 90:
+		if direction.length() < 120:
 			print("ENEMY is following the player")
 			Transitioned.emit(self, "enemyfollow")
 	

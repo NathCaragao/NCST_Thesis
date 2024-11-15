@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=65 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
 [ext_resource type="Texture2D" uid="uid://xqactn14bjwp" path="res://assets/Images/BackgroundImages/parallax/MorningLayer5.png" id="2_4fice"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="19_y8eac"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="20_lck4o"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="21_j20b4"]
+[ext_resource type="PackedScene" uid="uid://cw8olamrv5c0u" path="res://scenes/enemies/stymphalian-bird/stymphalian_bird.tscn" id="22_v6orp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -7948,7 +7949,7 @@ tile_map_data = PackedByteArray("AAD9/Pn/AAANAAAAAAAI/fX/AAANAAAAAAAI/e7/AAANAAA
 tile_set = SubResource("TileSet_cu22k")
 
 [node name="Player" parent="." instance=ExtResource("14_ejtwu")]
-position = Vector2(-18743, -816)
+position = Vector2(-3219, -325)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -8084,3 +8085,8 @@ static_collision = NodePath("StaticBody2D")
 position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_yrbgr")
 debug_color = Color(0.416552, 0.462797, 1, 0.42)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="StymphalianBird" parent="Enemies" instance=ExtResource("22_v6orp")]
+position = Vector2(-3147, -347)
