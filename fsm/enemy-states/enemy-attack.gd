@@ -24,7 +24,7 @@ func enter() -> void:
 	print("Actor position:", actor.global_position)
 	print("Direction length:", direction.length())
 	
-	if direction.length() <= 40:
+	if direction.length() < 40:
 		print("Within attack range, playing attack animation")
 		actor.play_animation("enemy-attack")
 		timer.start()
@@ -45,7 +45,7 @@ func physics_update(delta: float) -> void:
 	direction.y = 0
 	
 	
-	if direction.length() > 41:
+	if direction.length() > 40:
 		Transitioned.emit(self, "enemyfollow")
 	elif direction.length() > 110:
 		Transitioned.emit(self, "enemywander")
