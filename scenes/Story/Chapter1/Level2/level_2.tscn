@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=78 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -9007,9 +9007,6 @@ size = Vector2(85, 142)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evsmi"]
 size = Vector2(60, 59)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfc2h"]
-size = Vector2(10, 47.7779)
-
 [sub_resource type="Animation" id="Animation_f60km"]
 resource_name = "stone-gate-open"
 length = 3.0
@@ -9332,11 +9329,7 @@ scale = Vector2(1.8, 1.8)
 animation_player = NodePath("AnimationPlayer")
 lever = NodePath("../Lever")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="StoneDoor"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StoneDoor/StaticBody2D"]
-position = Vector2(0, -0.00012207)
-shape = SubResource("RectangleShape2D_bfc2h")
+[node name="StaticBody2D2" type="StaticBody2D" parent="StoneDoor"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StoneDoor"]
 libraries = {

@@ -36,6 +36,9 @@ func spawn_enemy(index : int, spawn_point_index: int) -> void:
 
 func _on_spawn_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		# in-game screen fade out transition
+		LevelScreenTransition.transition()
+		await LevelScreenTransition.on_transition_finished
 		spawn_enemy(0, 0)
 		spawn_enemy(1, 1)
 		spawn_enemy(2, 2)
