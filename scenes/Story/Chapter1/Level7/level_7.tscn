@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=46 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_vxvtd"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="16_0u3pn"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="18_5kwfr"]
 [ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="19_llmbi"]
+[ext_resource type="PackedScene" uid="uid://nggtuo375nmp" path="res://scenes/enemies/spartan/spartan.tscn" id="20_p44ar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfyj"]
 texture = ExtResource("3_n25p7")
@@ -2796,7 +2797,7 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(-3046, -199)
+position = Vector2(7886, -320)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2921,3 +2922,12 @@ position = Vector2(2345, -65)
 
 [node name="Boar7" parent="Enemies" instance=ExtResource("19_llmbi")]
 position = Vector2(7468, -272)
+
+[node name="Spartan" parent="Enemies" instance=ExtResource("20_p44ar")]
+position = Vector2(8212, -284)
+
+[node name="Spartan2" parent="Enemies" instance=ExtResource("20_p44ar")]
+position = Vector2(9890, -295)
+
+[node name="Spartan3" parent="Enemies" instance=ExtResource("20_p44ar")]
+position = Vector2(9390, -696)
