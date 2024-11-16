@@ -2645,6 +2645,21 @@ sources/0 = SubResource("TileSetAtlasSource_g2nmj")
 sources/1 = SubResource("TileSetAtlasSource_3k0uw")
 sources/2 = SubResource("TileSetAtlasSource_krsau")
 
+[sub_resource type="Animation" id="Animation_2jp8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10017, -407)]
+}
+
 [sub_resource type="Animation" id="Animation_w18q7"]
 resource_name = "crash"
 length = 6.0
@@ -2660,21 +2675,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(10016, -407), Vector2(10016, -326.24), Vector2(10016, -326.24), Vector2(10016, -407), Vector2(10016, -407)]
-}
-
-[sub_resource type="Animation" id="Animation_2jp8j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10017, -407)]
 }
 
 [sub_resource type="Animation" id="Animation_6ycal"]
@@ -2719,6 +2719,21 @@ _data = {
 "crash3": SubResource("Animation_elnw5")
 }
 
+[sub_resource type="Animation" id="Animation_k5kkc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8461, -671)]
+}
+
 [sub_resource type="Animation" id="Animation_a61tr"]
 resource_name = "v"
 length = 5.0
@@ -2734,21 +2749,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(8461, -671), Vector2(8461, -1097.33), Vector2(8461, -671)]
-}
-
-[sub_resource type="Animation" id="Animation_k5kkc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8461, -671)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkhx6"]

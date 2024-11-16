@@ -1,40 +1,44 @@
 extends Node
 
-@export
-var starting_state: State
+@export var initial_state : State
 
-var current_state: State
+var current_state : State
 
-# Initialize the state machine by giving each child state a reference to the
-# parent object it belongs to and enter the default starting_state.
-func init(parent: Player) -> void:
+# dictionary for states
+var states : Dictionary = {}
+
+func _ready() -> void:
+	# Gather all child states and connect their Transitioned signals
 	for child in get_children():
-		child.parent = parent
-
-	# Initialize to the default state
-	change_state(starting_state)
-
-# Change to the new state by first calling any exit logic on the current state.
-func change_state(new_state: State) -> void:
-	if current_state:
-		current_state.exit()
-
-	current_state = new_state
-	current_state.enter()
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
 	
-# Pass through functions for the Player to call,
-# handling state changes as needed.
-func process_physics(delta: float) -> void:
-	var new_state = current_state.process_physics(delta)
-	if new_state:
-		change_state(new_state)
+	# Set the initial state
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
 
-func process_input(event: InputEvent) -> void:
-	var new_state = current_state.process_input(event)
-	if new_state:
-		change_state(new_state)
+func _process(delta: float) -> void:
+	if current_state:
+		current_state.update(delta)
 
-func process_frame(delta: float) -> void:
-	var new_state = current_state.process_frame(delta)
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.physics_update(delta)
+
+# Handles state transition
+func on_child_transition(state, new_state_name):
+	# Only proceed if the transition is from the current state
+	if state != current_state:
+		return
+	
+	# Look up the new state from the dictionary
+	var new_state = states.get(new_state_name.to_lower())
 	if new_state:
-		change_state(new_state)
+		# Properly transition to the new state
+		if current_state:
+			current_state.exit()
+		
+		new_state.enter()
+		current_state = new_state

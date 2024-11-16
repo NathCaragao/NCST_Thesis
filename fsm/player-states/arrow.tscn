@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://e6b21lb6rwoj"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/arrow/arrow.gd" id="1_gqph8"]
+[ext_resource type="Texture2D" uid="uid://bnwyrd0wakd3k" path="res://assets/in-game-objects/projectile/arrow_projectile.png" id="2_7kbgb"]
+[ext_resource type="Script" path="res://scenes/components/projectile-hitbox/projectile_hitbox.gd" id="3_3d6cn"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="3_k8kwe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk1in"]
+radius = 1.0
+height = 40.0
+
+[node name="Arrow" type="Node2D" groups=["Projectiles"]]
+script = ExtResource("1_gqph8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7kbgb")
+
+[node name="ProjectileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_3d6cn")
+
+[node name="ArrowCol" type="CollisionShape2D" parent="ProjectileHitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uk1in")
+debug_color = Color(0, 0.647325, 0.214177, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.166667, 0.2)
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("3_k8kwe")
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
