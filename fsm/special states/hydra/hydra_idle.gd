@@ -1,4 +1,4 @@
-class_name EnemyIdle
+class_name HydraIdle
 extends State
 
 # references and variables
