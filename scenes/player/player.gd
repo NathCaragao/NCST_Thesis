@@ -1,19 +1,29 @@
 class_name PlayerHercules
 extends CharacterBody2D
 
+
+# New variables
+var playerId: String = ""
+var state
+
+# Movement related
+@export var move_speed: float = 200.0
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var direction = 1  # 1 being facing right
+var facing_right : bool = true
+
+# Combat related
+var weapon_mode : String = "Melee" # default weapon mode
+
+# Apperance related
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var move_speed : float = 400
+#-----------------------------------------
 
 @export var push = 40
 @export var SPEED: float = 200.0
-var facing_right : bool = true
 
-# variables for switching weapon class
-var weapon_mode : String = "Melee" # default weapon mode
-var direction
+
 
 # player inventory reference
 @export var inv : Inventory
@@ -33,7 +43,8 @@ func _physics_process(delta: float) -> void:
 		facing_right = false
 	
 	push_objects()
-	direction = Input.get_axis("move_left", "move_right")
+	var newDirection = Input.get_axis("move_left", "move_right")
+	direction = newDirection if newDirection != 0 else direction
 	
 
 
