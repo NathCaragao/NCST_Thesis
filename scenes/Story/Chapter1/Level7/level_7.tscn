@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=45 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_vxvtd"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="8_ovgkg"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="10_w0uwp"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="16_0u3pn"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="18_5kwfr"]
+[ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="19_llmbi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfyj"]
 texture = ExtResource("3_n25p7")
@@ -2794,78 +2796,128 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(7048, -288)
+position = Vector2(-3046, -199)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
 
-[node name="RotatingPlatform1" parent="." instance=ExtResource("5_oeqh7")]
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="RotatingPlatform1" parent="Obstacles" instance=ExtResource("5_oeqh7")]
 position = Vector2(3944, -204)
 
-[node name="RotatingPlatform2" parent="." instance=ExtResource("5_oeqh7")]
+[node name="RotatingPlatform2" parent="Obstacles" instance=ExtResource("5_oeqh7")]
 position = Vector2(4273, -204)
 
-[node name="spike wheel" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(8919, -248)
 
-[node name="spike wheel2" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel2" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(9158, -248)
 
-[node name="Crusher" parent="." instance=ExtResource("7_0x5pf")]
+[node name="Crusher" parent="Obstacles" instance=ExtResource("7_0x5pf")]
 position = Vector2(10017, -407)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crusher"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Crusher"]
 libraries = {
 "": SubResource("AnimationLibrary_eca74")
 }
 autoplay = "crash"
 
-[node name="Crusher2" parent="." instance=ExtResource("7_0x5pf")]
+[node name="Crusher2" parent="Obstacles" instance=ExtResource("7_0x5pf")]
 position = Vector2(10017, -407)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crusher2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Crusher2"]
 libraries = {
 "": SubResource("AnimationLibrary_eca74")
 }
 autoplay = "crash2"
 
-[node name="Crusher3" parent="." instance=ExtResource("7_0x5pf")]
+[node name="Crusher3" parent="Obstacles" instance=ExtResource("7_0x5pf")]
 position = Vector2(10017, -407)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crusher3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Crusher3"]
 libraries = {
 "": SubResource("AnimationLibrary_eca74")
 }
 autoplay = "crash3"
 
-[node name="Firehazard" parent="." instance=ExtResource("8_ovgkg")]
+[node name="Firehazard" parent="Obstacles" instance=ExtResource("8_ovgkg")]
 position = Vector2(10494, -663)
 
-[node name="Firehazard2" parent="." instance=ExtResource("8_ovgkg")]
+[node name="Firehazard2" parent="Obstacles" instance=ExtResource("8_ovgkg")]
 position = Vector2(10284, -778)
 
-[node name="Firehazard3" parent="." instance=ExtResource("8_ovgkg")]
+[node name="Firehazard3" parent="Obstacles" instance=ExtResource("8_ovgkg")]
 position = Vector2(10094, -666)
 
-[node name="Firehazard4" parent="." instance=ExtResource("8_ovgkg")]
+[node name="Firehazard4" parent="Obstacles" instance=ExtResource("8_ovgkg")]
 position = Vector2(9901, -776)
 
-[node name="spike wheel3" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel3" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(9182, -867)
 
-[node name="Moving Platform" parent="." instance=ExtResource("10_w0uwp")]
+[node name="Moving Platform" parent="Obstacles" instance=ExtResource("10_w0uwp")]
 position = Vector2(8461, -671)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform"]
 libraries = {
 "": SubResource("AnimationLibrary_vkhx6")
 }
 autoplay = "v"
 
-[node name="spike wheel4" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel4" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(9695, -1195)
 
-[node name="spike wheel5" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel5" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(10029, -1310)
 
-[node name="spike wheel6" parent="." instance=ExtResource("6_dlh3g")]
+[node name="spike wheel6" parent="Obstacles" instance=ExtResource("6_dlh3g")]
 position = Vector2(11342, -1279)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Wolf" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(-1842, -193)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(-1611, -193)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(-18, -68)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(881, -68)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(1208, -68)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(2733, -68)
+
+[node name="Wolf7" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(2863, -68)
+
+[node name="Wolf8" parent="Enemies" instance=ExtResource("18_5kwfr")]
+position = Vector2(2957, -68)
+
+[node name="Boar" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(-1320, -193)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(-363, -65)
+
+[node name="Boar3" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(313, -65)
+
+[node name="Boar4" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(2095, -65)
+
+[node name="Boar5" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(2217, -65)
+
+[node name="Boar6" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(2345, -65)
+
+[node name="Boar7" parent="Enemies" instance=ExtResource("19_llmbi")]
+position = Vector2(7468, -272)

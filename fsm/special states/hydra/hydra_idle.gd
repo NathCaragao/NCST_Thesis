@@ -18,5 +18,7 @@ func physics_update(delta: float) -> void:
 		actor.play_animation("enemy-idle")
 	
 	# transitions to other states
-	
-	# transitions to enemy-follow
+
+func _on_danger_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		Transitioned.emit(self, "hydraattack")

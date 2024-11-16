@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxw6ovxhv2u2t"]
+[gd_scene load_steps=20 format=3 uid="uid://dxw6ovxhv2u2t"]
 
 [ext_resource type="Texture2D" uid="uid://bq5yivvjnribb" path="res://assets/Enemies/Hydra/HydraHyrdra_hit_sheett.png" id="1_28k3s"]
 [ext_resource type="Script" path="res://scenes/enemies/hydra/hydra.gd" id="1_ix77a"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://brmlisxfgqs2e" path="res://assets/Enemies/Hydra/Hydra_idle_sheet.png" id="2_p6xl7"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="5_b20pb"]
 [ext_resource type="Script" path="res://fsm/special states/hydra/hydra_idle.gd" id="7_60uef"]
+[ext_resource type="Script" path="res://fsm/special states/hydra/hydra_attack.gd" id="8_6m2u1"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="9_1fy3l"]
 
 [sub_resource type="Animation" id="Animation_cihg7"]
 resource_name = "hydra-attack"
@@ -232,6 +234,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bef4f"]
 size = Vector2(44, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csu66"]
+size = Vector2(130, 73)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fw0t6"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35glv"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpmca"]
+radius = 3.0
+height = 10.0
+
 [node name="Hydra" type="CharacterBody2D"]
 script = ExtResource("1_ix77a")
 
@@ -255,3 +272,38 @@ initial_state = NodePath("HydraIdle")
 
 [node name="HydraIdle" type="Node" parent="StateMachine"]
 script = ExtResource("7_60uef")
+
+[node name="HydraAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_6m2u1")
+actor = NodePath("../..")
+
+[node name="DangerArea" type="Area2D" parent="."]
+
+[node name="DangerCollision" type="CollisionShape2D" parent="DangerArea"]
+position = Vector2(-52, -3)
+shape = SubResource("RectangleShape2D_csu66")
+debug_color = Color(0.761081, 0.451666, 9.62615e-07, 0.42)
+
+[node name="EnemyHealthComp" parent="." instance=ExtResource("9_1fy3l")]
+
+[node name="Col1" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(2, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fw0t6")
+debug_color = Color(0.695784, 0.116192, 0.248292, 0.42)
+
+[node name="Col2" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="1"]
+position = Vector2(-12, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_35glv")
+debug_color = Color(0.5704, 0, 0.0750052, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="2"]
+position = Vector2(-25, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bpmca")
+debug_color = Color(0.608081, 0.074031, 0.189646, 0.42)
+
+[connection signal="body_entered" from="DangerArea" to="StateMachine/HydraIdle" method="_on_danger_area_body_entered"]
+
+[editable path="EnemyHealthComp"]
