@@ -5,7 +5,7 @@ extends Node2D
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
-@onready var marker_2d: Marker2D = $SpawnArea/Marker2D
+@onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3]
 
 var paused : bool = false
 
@@ -23,12 +23,12 @@ func _process(delta: float) -> void:
 		get_tree().paused = true
 
 
-func spawn_enemy(index : int) -> void:
+func spawn_enemy(index : int, spawn_point_index: int) -> void:
 	if enemy_scenes.is_empty():
 		return
 	
 	var enemy = enemy_scenes[index].instantiate()
-	enemy.global_position = marker_2d.global_position
+	enemy.global_position = spawn_points[spawn_point_index].global_position
 	#get_parent().add_child(enemy)
 	call_deferred("add_child", enemy)
 	print("Enemy spawned")
@@ -36,4 +36,6 @@ func spawn_enemy(index : int) -> void:
 
 func _on_spawn_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		spawn_enemy(0)
+		spawn_enemy(0, 0)
+		spawn_enemy(1, 1)
+		spawn_enemy(2, 2)
