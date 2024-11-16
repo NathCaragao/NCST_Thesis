@@ -4,7 +4,7 @@ extends State
 @export var actor : PlayerHercules
 @export var jump_force : float = -450.0  # Negative for upwards
 @export var jump_force2 : float = -350.0 # for double jump
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+#@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 
 # double jump count variable
@@ -12,7 +12,7 @@ var jump_count : int = 0
 
 
 func _ready() -> void:
-	player_health_component.connect("PlayerDead", Callable(self, "on_player_dead3"))
+	#player_health_component.connect("PlayerDead", Callable(self, "on_player_dead3"))
 	pass
 
 func enter() -> void:

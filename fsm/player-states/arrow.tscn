@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://e6b21lb6rwoj"]
 
-[ext_resource type="Script" path="res://scenes/mechanisms/arrow/arrow.gd" id="1_gqph8"]
-[ext_resource type="Texture2D" uid="uid://bnwyrd0wakd3k" path="res://assets/in-game-objects/projectile/arrow_projectile.png" id="2_7kbgb"]
+[ext_resource type="Script" path="res://fsm/player-states/arrow.gd" id="1_gqph8"]
+[ext_resource type="Texture2D" uid="uid://1ged4l3m65lo" path="res://assets/arrow_projectile.png" id="2_7kbgb"]
 [ext_resource type="Script" path="res://scenes/components/projectile-hitbox/projectile_hitbox.gd" id="3_3d6cn"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="3_k8kwe"]
 

@@ -3,7 +3,7 @@ extends State
 
 # references
 @export var actor : PlayerHercules
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+#@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 func enter() -> void:
 	print("Entered Idle State")
@@ -31,9 +31,9 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		Transitioned.emit(self, "playerattack")
 	
-	# transitions to skill state
-	if Input.is_action_just_pressed("skill"):
-		Transitioned.emit(self, "playerskill")
+	## transitions to skill state
+	#if Input.is_action_just_pressed("skill"):
+		#Transitioned.emit(self, "playerskill")
 	
-	if player_health_component.current_health == 0:
-		Transitioned.emit(self, "playerdeath")
+	#if player_health_component.current_health == 0:
+		#Transitioned.emit(self, "playerdeath")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5dff83ak55i3"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://1ged4l3m65lo"
+path="res://.godot/imported/arrow_projectile.png-a85c914f0b01ca2f24b359dff641612f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/arrow_projectile.png"
+dest_files=["res://.godot/imported/arrow_projectile.png-a85c914f0b01ca2f24b359dff641612f.ctex"]
 
 [params]
 

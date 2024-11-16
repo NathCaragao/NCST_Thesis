@@ -3,7 +3,7 @@ extends State
 
 # references
 @export var actor : PlayerHercules
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+#@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 
 # variables
 var attack_index : int = 0
@@ -51,8 +51,8 @@ func process_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("skill"):
 			Transitioned.emit(self, "playerskill")
 		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")
+		#if player_health_component.current_health == 0:
+			#Transitioned.emit(self, "playerdeath")
 
 
 func play_next_attack_animation():
