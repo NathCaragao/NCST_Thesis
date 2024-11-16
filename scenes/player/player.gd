@@ -18,19 +18,15 @@ var weapon_mode : String = "Melee" # default weapon mode
 # Apperance related
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-#-----------------------------------------
 
-@export var push = 40
-@export var SPEED: float = 200.0
-
-
-
-# player inventory reference
+# Other module variables
 @export var inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
+#-----------------------------------------
 
-# multiplayer stuff
-var isMultiplayer = false
+#@export var push = 40
+#@export var SPEED: float = 200.0
+
 
 # signals
 signal PlayerFail
@@ -42,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	elif velocity.x < 0:
 		facing_right = false
 	
-	push_objects()
+	#push_objects()
 	var newDirection = Input.get_axis("move_left", "move_right")
 	direction = newDirection if newDirection != 0 else direction
 	
@@ -50,11 +46,11 @@ func _physics_process(delta: float) -> void:
 
 # flip sprite
 func flip_sprite() -> void:
-	if velocity.x > 0:
+	if direction > 0:
 		sprite.flip_h = false
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
-	if velocity.x < 0:
+	if direction < 0:
 		sprite.flip_h = true
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
@@ -65,11 +61,11 @@ func flip_sprite() -> void:
 		$ArrowPos.scale.x = -1
 
 # function for pushing objects such as boxes
-func push_objects() -> void:
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * (push + SPEED))
+#func push_objects() -> void:
+	#for i in get_slide_collision_count():
+		#var c = get_slide_collision(i)
+		#if c.get_collider() is RigidBody2D:
+			#c.get_collider().apply_central_impulse(-c.get_normal() * (push + SPEED))
 
 # weapon switching
 func switch_weapon_mode(mode) -> void:

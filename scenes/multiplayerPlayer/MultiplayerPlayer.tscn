@@ -1,49 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxgx0v63f8evy"]
+[gd_scene load_steps=7 format=3 uid="uid://dxgx0v63f8evy"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerPlayer/multiplayer_player.gd" id="1_hevc7"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_dikur"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="3_c3ld2"]
 [ext_resource type="AnimationLibrary" uid="uid://dvkr1rxw24ckx" path="res://HerculesAnimations.res" id="4_vudu6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8asdm"]
-shader = ExtResource("2_dikur")
-shader_parameter/enabled = false
-shader_parameter/tint = Color(1, 1, 1, 1)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hl3o"]
 radius = 4.0
 height = 22.0
 
-[sub_resource type="Animation" id="Animation_jx87l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hntir"]
-_data = {
-"RESET": SubResource("Animation_jx87l")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vj2sj"]
+shader = ExtResource("2_dikur")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="MultiplayerPlayer" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_hevc7")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_8asdm")
-texture = ExtResource("3_c3ld2")
-hframes = 10
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -51,8 +24,13 @@ shape = SubResource("CapsuleShape2D_4hl3o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vj2sj")
+texture = ExtResource("3_c3ld2")
+hframes = 10
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hntir"),
-"HerculesAnimations": ExtResource("4_vudu6")
+"": ExtResource("4_vudu6")
 }
+autoplay = "idle"
