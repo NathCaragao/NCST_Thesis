@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://pbp3yfpo4lji"]
+[gd_scene load_steps=33 format=4 uid="uid://pbp3yfpo4lji"]
 
 [ext_resource type="Texture2D" uid="uid://dhbcf3kciq2wb" path="res://assets/Images/BackgroundImages/Background-1.png" id="1_cgawb"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_sq06d"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_o0050"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="14_54tts"]
 [ext_resource type="PackedScene" uid="uid://bortg7l8i4f7y" path="res://scenes/enemies/orthrus/orthrus.tscn" id="15_8my54"]
+[ext_resource type="PackedScene" uid="uid://blwm8a7yoy4ft" path="res://scenes/enemies/crab/crab.tscn" id="16_k6pmh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyp04"]
 texture = ExtResource("1_sq06d")
@@ -2433,3 +2434,6 @@ zoom = Vector2(3, 3)
 
 [node name="Orthrus" parent="Enemies" instance=ExtResource("15_8my54")]
 position = Vector2(765, -130)
+
+[node name="Crab" parent="Enemies" instance=ExtResource("16_k6pmh")]
+position = Vector2(617, -118)
