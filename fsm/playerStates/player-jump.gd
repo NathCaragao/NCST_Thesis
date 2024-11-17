@@ -39,7 +39,7 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	#updates sprite
-	actor.flip_sprite()
+	actor._flip_sprite()
 	
 	# Transition to fall if the player is falling down
 	if actor.velocity.y > 0:

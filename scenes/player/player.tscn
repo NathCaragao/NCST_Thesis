@@ -102,9 +102,10 @@ autoplay = "idle"
 position = Vector2(-11, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_q5yvf")
 initial_state = NodePath("PlayerIdle")
+actor = NodePath("..")
 
 [node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("9_rwas3")
@@ -261,6 +262,9 @@ texture = ExtResource("28_fwbhh")
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]

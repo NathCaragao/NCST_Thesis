@@ -63,9 +63,22 @@ func _loadOtherPlayers(otherPlayersData: Array):
 	for otherPlayerFromServer in range(0, otherPlayersData.size()):
 		# Instantiate characters
 		if otherPlayersCharacter.is_empty():
-			var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
-			otherPlayerNewCharacter.position = $SpawnPoint.position
-			otherPlayerNewCharacter.playerId = otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId
+			#var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
+			var otherPlayerNewCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
+			var initDictionary = {
+				"playerId" = otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId,
+				"isControlled" = false,
+				"position" = $SpawnPoint.position
+				
+				var playerId: String = ""
+				var isControlled: bool = false
+				var isJumping: bool = false
+				var isAttacking: bool = false
+				var isSkill: bool = false
+				var direction = 1  # 1 being facing right
+				var weaponMode = "Melee"
+			}
+			otherPlayerNewCharacter.initialize(initDictionary)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:

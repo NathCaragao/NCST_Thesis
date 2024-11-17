@@ -2,50 +2,69 @@ class_name PlayerHercules
 extends CharacterBody2D
 
 
-# New variables
+# FINAL VARIABLES
+# -- Updated and used for server-client comm
 var playerId: String = ""
-var state
-
-# Movement related
-@export var move_speed: float = 200.0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var isControlled: bool = false
+var isJumping: bool = false
+var isAttacking: bool = false
+var isSkill: bool = false
 var direction = 1  # 1 being facing right
-var facing_right : bool = true
+var weaponMode = "Melee"
 
-# Combat related
-var weapon_mode : String = "Melee" # default weapon mode
-
-# Apperance related
+# -- One time setup
+@export var move_speed: float = 200.0
+var weapon_mode : String = "Melee" # Will be USED FOR S-C COMM
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-# Other module variables
 @export var inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
-#-----------------------------------------
 
-#@export var push = 40
-#@export var SPEED: float = 200.0
-
-
-# signals
+# Signals
 signal PlayerFail
 
+func _ready() -> void:
+	initialize("", true)
+
+
+func initialize(initPlayerId: String, initIsControlled: bool):
+	self.playerId = initPlayerId
+	self.isControlled = initIsControlled
+	%Camera2D.enabled = self.isControlled
+
+# ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
+func updatePlayer(updateDictionary):
+	self.isJumping = updateDictionary["isJumping"]
+	self.isAttacking = updateDictionary["isAttacking"]
+	self.direction = updateDictionary["direction"]
+	self.isSkill = updateDictionary["isSkill"]
+
+
+# SHOULD HANDLE INPUTS TO CHANGE VARIABLES GOING TO BE SENT TO SERVER
+func _input(event: InputEvent) -> void:
+	if !self.isControlled:
+		return
+	
+	# Horizontal Movement
+	self.direction = Input.get_axis("move_left", "move_right")
+	# Capture jumping
+	self.isJumping = Input.is_action_just_pressed("jump")
+	# Capture skill usage
+	self.isSkill = Input.is_action_just_pressed("skill")
+	# Weapon Mode switching
+	if event.is_action_pressed("melee-mode"):
+		self.weaponMode = "Melee"
+		switch_weapon_mode("Melee")
+	elif event.is_action_pressed("ranged-mode"):
+		self.weaponMode = "Ranged"
+		switch_weapon_mode("Ranged")
+	
 
 func _physics_process(delta: float) -> void:
-	if velocity.x > 0:
-		facing_right = true
-	elif velocity.x < 0:
-		facing_right = false
-	
-	#push_objects()
-	var newDirection = Input.get_axis("move_left", "move_right")
-	direction = newDirection if newDirection != 0 else direction
-	
+	_flip_sprite()
 
-
-# flip sprite
-func flip_sprite() -> void:
+func _flip_sprite() -> void:
 	if direction > 0:
 		sprite.flip_h = false
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
@@ -67,7 +86,6 @@ func flip_sprite() -> void:
 		#if c.get_collider() is RigidBody2D:
 			#c.get_collider().apply_central_impulse(-c.get_normal() * (push + SPEED))
 
-# weapon switching
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		weapon_mode = "Melee"
@@ -76,19 +94,9 @@ func switch_weapon_mode(mode) -> void:
 		weapon_mode = "Ranged"
 		print("Mode: ", weapon_mode) # replace with fancy UI
 
-# weapon input switching
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("melee-mode"):
-		switch_weapon_mode("Melee")
-	
-	elif event.is_action_pressed("ranged-mode"):
-		switch_weapon_mode("Ranged")
-
-# collect items
 func collect(item):
 	inv.insert(item)
 
-# apply effect function
 func apply_item_effect(item):
 	match item["effect"]:
 		"Health_Potion":

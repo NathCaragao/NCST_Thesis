@@ -1,11 +1,13 @@
 extends Node
 
 @export var initial_state : State
+@export var actor: CharacterBody2D
 
 var current_state : State
 
 # dictionary for states
 var states : Dictionary = {}
+
 
 func _ready() -> void:
 	# Gather all child states and connect their Transitioned signals
