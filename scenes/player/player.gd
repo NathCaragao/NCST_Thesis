@@ -4,13 +4,16 @@ extends CharacterBody2D
 
 # FINAL VARIABLES
 # -- Updated and used for server-client comm
-var playerId: String = ""
-var isControlled: bool = false
-var isJumping: bool = false
-var isAttacking: bool = false
-var isSkill: bool = false
-var direction = 1  # 1 being facing right
-var weaponMode = "Melee"
+var playerGameData = {
+	"playerId" = "",
+	"isControlled" = false,
+	"isJumping" = false,
+	"isAttacking" = false,
+	"isSkill" = false,
+	"direction" = 1,
+	"weaponMode" = "Melee",
+	"velocity" = Vector2(300, 0)
+}
 
 # -- One time setup
 @export var move_speed: float = 200.0
@@ -25,58 +28,65 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	initialize("", true)
+	initialize("", false)
 
 
 func initialize(initPlayerId: String, initIsControlled: bool):
-	self.playerId = initPlayerId
-	self.isControlled = initIsControlled
-	%Camera2D.enabled = self.isControlled
+	self.playerGameData.playerId = initPlayerId
+	self.playerGameData.isControlled = initIsControlled
+	#%Camera2D.enabled = self.playerGameData.isControlled
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
 func updatePlayer(updateDictionary):
-	self.isJumping = updateDictionary["isJumping"]
-	self.isAttacking = updateDictionary["isAttacking"]
-	self.direction = updateDictionary["direction"]
-	self.isSkill = updateDictionary["isSkill"]
+	self.playerGameData.isJumping = updateDictionary["isJumping"]
+	self.playerGameData.isAttacking = updateDictionary["isAttacking"]
+	self.playerGameData.direction = updateDictionary["direction"]
+	self.playerGameData.isSkill = updateDictionary["isSkill"]
+	self.playerGameData.velocity = updateDictionary["velocity"]
 
 
 # SHOULD HANDLE INPUTS TO CHANGE VARIABLES GOING TO BE SENT TO SERVER
 func _input(event: InputEvent) -> void:
-	if !self.isControlled:
+	if !self.playerGameData.isControlled:
 		return
 	
 	# Horizontal Movement
-	self.direction = Input.get_axis("move_left", "move_right")
+	self.playerGameData.direction = Input.get_axis("move_left", "move_right")
 	# Capture jumping
-	self.isJumping = Input.is_action_just_pressed("jump")
+	self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
 	# Capture skill usage
-	self.isSkill = Input.is_action_just_pressed("skill")
+	self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
 	# Weapon Mode switching
 	if event.is_action_pressed("melee-mode"):
-		self.weaponMode = "Melee"
+		self.playerGameData.weaponMode = "Melee"
 		switch_weapon_mode("Melee")
 	elif event.is_action_pressed("ranged-mode"):
-		self.weaponMode = "Ranged"
+		self.playerGameData.weaponMode = "Ranged"
 		switch_weapon_mode("Ranged")
 	
 
 func _physics_process(delta: float) -> void:
 	_flip_sprite()
+	print_debug(self.playerGameData.direction)
+	self.playerGameData.velocity = self.velocity
+	
+	# How to decode velocity
+	#print_debug(Vector2(self.playerGameData.velocity))
+	
 
 func _flip_sprite() -> void:
-	if direction > 0:
+	if self.playerGameData.direction > 0:
 		sprite.flip_h = false
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
-	if direction < 0:
+	if self.playerGameData.direction < 0:
 		sprite.flip_h = true
 		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
 	
-	if direction == 1:
+	if self.playerGameData.direction == 1:
 		$ArrowPos.scale.x = 1
-	elif direction == -1:
+	elif self.playerGameData.direction == -1:
 		$ArrowPos.scale.x = -1
 
 # function for pushing objects such as boxes
@@ -88,10 +98,10 @@ func _flip_sprite() -> void:
 
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
-		weapon_mode = "Melee"
+		self.playerGameData.weaponMode = "Melee"
 		print("Mode: ", weapon_mode) # replace with fancy UI
 	elif mode == "Ranged":
-		weapon_mode = "Ranged"
+		self.playerGameData.weaponMode = "Ranged"
 		print("Mode: ", weapon_mode) # replace with fancy UI
 
 func collect(item):

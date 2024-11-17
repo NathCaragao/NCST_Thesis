@@ -17,10 +17,10 @@ func physics_update(delta: float) -> void:
 	# character movement
 	actor.velocity.y += actor.gravity * delta
 	
-	var movement = Input.get_axis("move_left", "move_right") * actor.move_speed
+	var movement = actor.playerGameData.direction * actor.move_speed
 	
 	
-	actor.velocity.x = movement
+	actor.velocity.x = movement.x
 	actor.move_and_slide()
 	
 	# transitions to idle state
