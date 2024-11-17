@@ -1,10 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxkrqe1p6v8tj"]
+[gd_scene load_steps=30 format=3 uid="uid://dxkrqe1p6v8tj"]
 
 [ext_resource type="Texture2D" uid="uid://uhjnjawvlc33" path="res://assets/Enemies/amason/IDLE_MODIFIED.png" id="1_7glcw"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_fmwco"]
+[ext_resource type="Script" path="res://scenes/enemies/amason-soldiers/amason_soldiers.gd" id="1_hmkve"]
 [ext_resource type="Texture2D" uid="uid://v7u1y80iq7e8" path="res://assets/Enemies/amason/RUN_MODIFIED.png" id="2_6ck61"]
 [ext_resource type="Texture2D" uid="uid://doclw1msrfwot" path="res://assets/Enemies/amason/ATTACK_MODIFIED.png" id="3_be2fx"]
 [ext_resource type="Texture2D" uid="uid://dioi8a4t8o46q" path="res://assets/Enemies/amason/HURT_MODIFIED.png" id="4_eofb8"]
 [ext_resource type="Texture2D" uid="uid://usy62pfboykq" path="res://assets/Enemies/amason/DEATH_MODIFIED.png" id="5_x7rnt"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="6_8k2ce"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="7_k07sp"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="8_sxydg"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="9_kke81"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="10_gucm4"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_ovhpy"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="12_b0tra"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_05ftb"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="14_rnoh7"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_cdw70"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1178"]
+resource_local_to_scene = true
+shader = ExtResource("1_fmwco")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_gf6xs"]
 resource_name = "amason-idle"
@@ -58,57 +76,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_mklrp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_7glcw")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_damdd"]
@@ -217,6 +184,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hitbox/HitboxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_x1lel"]
 resource_name = "amason-hit"
@@ -323,10 +302,35 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hurtbox/HurtboxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bfwkl"]
 _data = {
-"RESET": SubResource("Animation_mklrp"),
 "amason-attack": SubResource("Animation_gos5w"),
 "amason-death": SubResource("Animation_vtfm5"),
 "amason-hit": SubResource("Animation_x1lel"),
@@ -334,9 +338,41 @@ _data = {
 "amason-run": SubResource("Animation_damdd")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqmgi"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5dlv5"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfayi"]
+size = Vector2(16, 27)
+
+[sub_resource type="Animation" id="Animation_1s36y"]
+resource_name = "hit-flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhimr"]
+_data = {
+"hit-flash": SubResource("Animation_1s36y")
+}
+
 [node name="AmasonSoldiers" type="CharacterBody2D"]
+script = ExtResource("1_hmkve")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y1178")
 texture = ExtResource("1_7glcw")
 hframes = 4
 
@@ -344,3 +380,81 @@ hframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_bfwkl")
 }
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_gqmgi")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_8k2ce")
+initial_state = NodePath("EnemyWander")
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("7_k07sp")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("8_sxydg")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("9_kke81")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
+wait_time = 1.5
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("10_gucm4")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("11_ovhpy")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("12_b0tra")]
+enemy_hp_bar = NodePath("EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_5dlv5")
+debug_color = Color(0.991557, 0, 0.263989, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+script = ExtResource("13_05ftb")
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(27, 1)
+shape = SubResource("RectangleShape2D_sfayi")
+disabled = true
+debug_color = Color(0, 0.641894, 0.326884, 0.42)
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("14_rnoh7")
+
+[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("15_cdw70")]
+offset_left = -13.0
+offset_top = -26.0
+offset_right = 11.0
+offset_bottom = -25.0
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+position = Vector2(0, -25)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jhimr")
+}
+
+[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
+
+[editable path="EnemyHealthComp"]

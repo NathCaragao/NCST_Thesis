@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=26 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="9_4wu6i"]
 [ext_resource type="Texture2D" uid="uid://k1nhconx1lny" path="res://assets/tileset (world-building)/house.png" id="9_hogxx"]
 [ext_resource type="PackedScene" uid="uid://v8sumji3t8xt" path="res://scenes/enemy-npc/amason-npc/amason_npc.tscn" id="10_jb4vn"]
+[ext_resource type="PackedScene" uid="uid://dxkrqe1p6v8tj" path="res://scenes/enemies/amason-soldiers/amason_soldiers.tscn" id="11_ge0fq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lri4"]
 texture = ExtResource("5_j1480")
@@ -2496,7 +2497,7 @@ tile_map_data = PackedByteArray("AAAAAP//AAABAAAAAAAAAAAAAAABAAEAAAABAP//AAACAAA
 tile_set = SubResource("TileSet_aci37")
 
 [node name="Player" parent="." instance=ExtResource("9_4wu6i")]
-position = Vector2(0, -25)
+position = Vector2(1293, 143)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2511,3 +2512,8 @@ position = Vector2(206, -21)
 
 [node name="AmasonNPC3" parent="NPCs" instance=ExtResource("10_jb4vn")]
 position = Vector2(155, -21)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="AmasonSoldiers" parent="Enemies" instance=ExtResource("11_ge0fq")]
+position = Vector2(1484, 142)

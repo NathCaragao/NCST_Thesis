@@ -20,7 +20,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0eyc"]
 resource_local_to_scene = true
 shader = ExtResource("2_jyqcg")
-shader_parameter/enabled = false
+shader_parameter/enabled = true
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_50o6a"]
