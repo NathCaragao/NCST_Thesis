@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=32 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level8/level_8.gd" id="1_ut154"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_wrm2w"]
 [ext_resource type="Texture2D" uid="uid://cquirvhx6wj0i" path="res://assets/tileset (world-building)/Game_Assets.png" id="2_1qmba"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="2_ukkio"]
@@ -11,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://k1nhconx1lny" path="res://assets/tileset (world-building)/house.png" id="9_hogxx"]
 [ext_resource type="PackedScene" uid="uid://v8sumji3t8xt" path="res://scenes/enemy-npc/amason-npc/amason_npc.tscn" id="10_jb4vn"]
 [ext_resource type="PackedScene" uid="uid://dxkrqe1p6v8tj" path="res://scenes/enemies/amason-soldiers/amason_soldiers.tscn" id="11_ge0fq"]
+[ext_resource type="PackedScene" uid="uid://bo0rodn0hslio" path="res://scenes/enemies/hypolita/hypolita.tscn" id="12_12plr"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="14_sk147"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="15_bb8r2"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="16_1exm2"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="17_53f2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lri4"]
 texture = ExtResource("5_j1480")
@@ -2472,7 +2478,11 @@ sources/2 = SubResource("TileSetAtlasSource_741t4")
 sources/3 = SubResource("TileSetAtlasSource_1ojvw")
 sources/4 = SubResource("TileSetAtlasSource_3mnpn")
 
-[node name="Level8" type="Node2D"]
+[node name="Level8" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
+script = ExtResource("1_ut154")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(1289.5, -514)
@@ -2497,7 +2507,7 @@ tile_map_data = PackedByteArray("AAAAAP//AAABAAAAAAAAAAAAAAABAAEAAAABAP//AAACAAA
 tile_set = SubResource("TileSet_aci37")
 
 [node name="Player" parent="." instance=ExtResource("9_4wu6i")]
-position = Vector2(1293, 143)
+position = Vector2(604, -58)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2517,3 +2527,20 @@ position = Vector2(155, -21)
 
 [node name="AmasonSoldiers" parent="Enemies" instance=ExtResource("11_ge0fq")]
 position = Vector2(1484, 142)
+
+[node name="Hypolita" parent="Enemies" instance=ExtResource("12_12plr")]
+position = Vector2(1125, 138)
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("14_sk147")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("15_bb8r2")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("16_1exm2")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("17_53f2o")]
+visible = false
