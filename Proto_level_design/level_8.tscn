@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bmil2m22pf5yq" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_wrm2w"]
 [ext_resource type="Texture2D" uid="uid://cskyvlprb7tmi" path="res://assets/tileset (world-building)/Game_Assets.png" id="2_1qmba"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="2_ukkio"]
-[ext_resource type="Texture2D" uid="uid://5dff83ak55i3" path="res://assets/tileset (world-building)/Tiles.png" id="4_038f2"]
+[ext_resource type="Texture2D" uid="uid://5dff83ak55i3" path="res://assets/tileset (world-building)/tiles.png" id="4_038f2"]
 [ext_resource type="Texture2D" uid="uid://bryry0wmp2h0a" path="res://assets/tileset (world-building)/Yellow-Tree.png" id="5_j1480"]
 [ext_resource type="Texture2D" uid="uid://cxbuf6qcw7mon" path="res://assets/tileset (world-building)/Green-Tree.png" id="6_g4q5m"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="7_mq6n6"]
@@ -2611,4 +2611,3 @@ tile_set = SubResource("TileSet_aci37")
 position = Vector2(-123, -66)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)

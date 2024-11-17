@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=24 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bsghue0lmir60" path="res://assets/character/sprites/player run1 48x48.png" id="2_couul"]
@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dfageqlpnvvmc" path="res://assets/character/sprites/Player Sword Stab2 96x48-Sheet.png" id="2_l7iic"]
 [ext_resource type="Texture2D" uid="uid://cwr3ierqfe3ij" path="res://assets/character/sprites/player sword atk 64x64.png" id="2_mc56m"]
 [ext_resource type="Texture2D" uid="uid://bvqapb2xuothr" path="res://assets/character/sprites/hercules_idle1.png" id="2_rbi7i"]
-[ext_resource type="Script" path="res://fsm/state-machine/stateMachine.gd" id="8_5u3sq"]
-[ext_resource type="Script" path="res://fsm/player-states/player-idle.gd" id="9_b571c"]
-[ext_resource type="Script" path="res://fsm/player-states/player-run.gd" id="10_whqsy"]
-[ext_resource type="Script" path="res://fsm/player-states/player-jump.gd" id="11_irqw4"]
-[ext_resource type="Script" path="res://fsm/player-states/player-death.gd" id="12_yhrr7"]
+[ext_resource type="Script" path="res://fsm/state-machine/stateMachine.gd" id="7_fbtfl"]
+[ext_resource type="Script" path="res://fsm/player-states/player-idle.gd" id="9_h44w5"]
+[ext_resource type="Script" path="res://fsm/player-states/player-run.gd" id="10_yaib3"]
+[ext_resource type="Script" path="res://fsm/player-states/player-death.gd" id="11_2rr1y"]
+[ext_resource type="Script" path="res://fsm/player-states/player-attack.gd" id="12_sw3fu"]
+[ext_resource type="Script" path="res://fsm/player-states/player-jump.gd" id="13_86oeo"]
 
 [sub_resource type="Animation" id="Animation_jmtr3"]
 length = 0.001
@@ -531,21 +532,34 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("8_5u3sq")
+script = ExtResource("7_fbtfl")
 initial_state = NodePath("PlayerIdle")
 
 [node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("9_b571c")
+script = ExtResource("9_h44w5")
 actor = NodePath("../..")
 
 [node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("10_whqsy")
-actor = NodePath("../..")
-
-[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("11_irqw4")
+script = ExtResource("10_yaib3")
 actor = NodePath("../..")
 
 [node name="PlayerDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("12_yhrr7")
+script = ExtResource("11_2rr1y")
 actor = NodePath("../..")
+
+[node name="PlayerAtk" type="Node" parent="StateMachine"]
+script = ExtResource("12_sw3fu")
+
+[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("13_86oeo")
+actor = NodePath("../..")
+
+[node name="StateLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = -192.0
+offset_top = 60.0
+offset_right = -50.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 21
+text = "Current: State"
+metadata/_edit_use_anchors_ = true
