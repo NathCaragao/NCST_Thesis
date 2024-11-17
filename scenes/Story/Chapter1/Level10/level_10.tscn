@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d0l5vs3eae28c"]
+[gd_scene load_steps=29 format=4 uid="uid://d0l5vs3eae28c"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1y6gh"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_a7gcu"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="4_bgg0t"]
 [ext_resource type="Texture2D" uid="uid://b0lir7wy5lkq2" path="res://assets/tileset (world-building)/Props-Rocks.png" id="5_yr724"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_vincd"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="10_oadof"]
+[ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="11_1y42g"]
+[ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="12_kkt82"]
+[ext_resource type="PackedScene" uid="uid://tsp5761857y8" path="res://scenes/enemies/eurytheon/eurytheon.tscn" id="13_2qbov"]
+[ext_resource type="PackedScene" uid="uid://cx174dldry8ge" path="res://scenes/enemies/Minotaur/minotaur.tscn" id="14_8egxi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57u3g"]
 texture = ExtResource("1_a7gcu")
@@ -1611,3 +1616,50 @@ position = Vector2(5894, -1036)
 
 [node name="Firehazard3" parent="Obstacles" instance=ExtResource("6_vincd")]
 position = Vector2(5724, -895)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Wolf" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(310, -17)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(635, -17)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(905, -17)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(4996, -1249)
+
+[node name="Wolf5" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(5283, -1249)
+
+[node name="Wolf6" parent="Enemies" instance=ExtResource("10_oadof")]
+position = Vector2(5494, -1249)
+
+[node name="Bandit" parent="Enemies" instance=ExtResource("11_1y42g")]
+position = Vector2(4171, -370)
+
+[node name="Bandit2" parent="Enemies" instance=ExtResource("11_1y42g")]
+position = Vector2(4258, -370)
+
+[node name="Bandit3" parent="Enemies" instance=ExtResource("11_1y42g")]
+position = Vector2(4377, -370)
+
+[node name="Bandit4" parent="Enemies" instance=ExtResource("11_1y42g")]
+position = Vector2(4526, -370)
+
+[node name="Bandit5" parent="Enemies" instance=ExtResource("11_1y42g")]
+position = Vector2(4930, -791)
+
+[node name="Boar" parent="Enemies" instance=ExtResource("12_kkt82")]
+position = Vector2(6044, -383)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("12_kkt82")]
+position = Vector2(6281, -383)
+
+[node name="Eurytheon" parent="Enemies" instance=ExtResource("13_2qbov")]
+position = Vector2(5725, -4372)
+
+[node name="Minotaur" parent="Enemies" instance=ExtResource("14_8egxi")]
+position = Vector2(5907, -4363)
