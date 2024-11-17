@@ -9,12 +9,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	look_at_player()
 
-# npc flips sprite based on player's direction
 func look_at_player() -> void:
 	if player == null:
 		return
 	
-	if player.direction > 0:
-		animated_sprite.flip_h = false
-	elif player.direction < 0:
+	# Get the direction vector from NPC to player
+	var direction_to_player = player.global_position - global_position
+	
+ 	# Flip sprite based on whether player is to the left or right of NPC
+	if direction_to_player.x > 0:
+		animated_sprite.flip_h = false  # Player is to the right, face right
+	elif direction_to_player.x < 0:
 		animated_sprite.flip_h = true
