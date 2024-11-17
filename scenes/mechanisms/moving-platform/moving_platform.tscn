@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bkxt60cg24jh3" path="res://assets/in-game-objects/moving_platform_grass.png" id="1_exivm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bat7j"]
+resource_local_to_scene = true
 size = Vector2(64, 13)
 
 [node name="Moving Platform" type="AnimatableBody2D"]
@@ -11,6 +12,6 @@ size = Vector2(64, 13)
 texture = ExtResource("1_exivm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_bat7j")
 one_way_collision = true
+one_way_collision_margin = 12.0

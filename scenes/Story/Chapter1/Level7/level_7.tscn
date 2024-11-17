@@ -2745,13 +2745,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8461, -671)]
+"values": [Vector2(8461, -713)]
 }
 
 [sub_resource type="Animation" id="Animation_a61tr"]
 resource_name = "v"
 length = 5.0
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2759,10 +2759,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(8461, -671), Vector2(8461, -1097.33), Vector2(8461, -671)]
+"values": [Vector2(8461, -713), Vector2(8461, -1104)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkhx6"]
@@ -2896,7 +2896,7 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(9749, -292)
+position = Vector2(8567, -715)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2958,7 +2958,7 @@ position = Vector2(9901, -776)
 position = Vector2(9182, -867)
 
 [node name="Moving Platform" parent="Obstacles" instance=ExtResource("10_w0uwp")]
-position = Vector2(8461, -671)
+position = Vector2(8461, -713)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Moving Platform"]
 libraries = {
