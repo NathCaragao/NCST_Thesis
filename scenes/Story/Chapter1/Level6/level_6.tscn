@@ -1,11 +1,18 @@
-[gd_scene load_steps=17 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=24 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level6/level_6.gd" id="1_e6w11"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_lvo10"]
 [ext_resource type="Texture2D" uid="uid://otg01w7opu0d" path="res://assets/tileset (world-building)/Yellow-Tree.png" id="2_mmtnv"]
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="3_r63lf"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="6_753ii"]
+[ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="7_074ad"]
+[ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="8_jf51f"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="10_0kh4l"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="11_q27lk"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="12_u0y86"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="13_y51gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esms4"]
 texture = ExtResource("1_blpod")
@@ -1527,7 +1534,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_d6omq")
 sources/1 = SubResource("TileSetAtlasSource_2snly")
 
-[node name="Level6" type="Node2D"]
+[node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
+script = ExtResource("1_e6w11")
+player = NodePath("Player")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(5935, -696.795)
@@ -1561,3 +1573,40 @@ position = Vector2(1479, -28)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Wolf" parent="Enemies" instance=ExtResource("7_074ad")]
+position = Vector2(1661, -16)
+
+[node name="Wolf2" parent="Enemies" instance=ExtResource("7_074ad")]
+position = Vector2(1323, -16)
+
+[node name="Wolf3" parent="Enemies" instance=ExtResource("7_074ad")]
+position = Vector2(3203, -16)
+
+[node name="Wolf4" parent="Enemies" instance=ExtResource("7_074ad")]
+position = Vector2(9612, -495)
+
+[node name="Boar" parent="Enemies" instance=ExtResource("8_jf51f")]
+position = Vector2(6865, -321)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("8_jf51f")]
+position = Vector2(7383, -321)
+
+[node name="Boar3" parent="Enemies" instance=ExtResource("8_jf51f")]
+position = Vector2(8009, -321)
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("10_0kh4l")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("11_q27lk")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("12_u0y86")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("13_y51gj")]
+visible = false
