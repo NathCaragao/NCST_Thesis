@@ -10,6 +10,8 @@ extends State
 @onready var player = get_tree().get_first_node_in_group("Player")
 var direction
 
+@export var player_length : int = 40
+
 # state machine ref
 #@onready var state_machine : StateMachine = get_parent()
 
@@ -24,7 +26,7 @@ func enter() -> void:
 	print("Actor position:", actor.global_position)
 	print("Direction length:", direction.length())
 	
-	if direction.length() < 40:
+	if direction.length() < player_length:
 		print("Within attack range, playing attack animation")
 		actor.play_animation("enemy-attack")
 		timer.start()

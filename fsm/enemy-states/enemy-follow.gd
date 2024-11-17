@@ -8,6 +8,8 @@ extends State
 var player : PlayerHercules
 var direction
 
+@export var direction_val : int = 35
+
 # state machine ref
 #@onready var state_machine : StateMachine = get_parent()
 
@@ -45,7 +47,7 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, "enemywander")
 	
 	# transition to attack state
-	if direction.length() <= 35:
+	if direction.length() <= direction_val:
 		Transitioned.emit(self, "enemyattack")
 
 
