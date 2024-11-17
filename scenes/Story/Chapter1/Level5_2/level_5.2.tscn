@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=4 uid="uid://cobuxhq2t2b43"]
 
-[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level6/level_5_2.gd" id="1_skfof"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
 [ext_resource type="Texture2D" uid="uid://xqactn14bjwp" path="res://assets/Images/BackgroundImages/parallax/MorningLayer5.png" id="2_4fice"]
 [ext_resource type="Texture2D" uid="uid://bm851w8k7ov2q" path="res://assets/Images/BackgroundImages/parallax/MorningLayer4.png" id="3_owhwq"]
