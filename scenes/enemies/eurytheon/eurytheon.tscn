@@ -1,32 +1,33 @@
-[gd_scene load_steps=30 format=3 uid="uid://mdvqi3mnbb8e"]
+[gd_scene load_steps=30 format=3 uid="uid://tsp5761857y8"]
 
-[ext_resource type="Texture2D" uid="uid://cknxbxpr1oghf" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Attack.png" id="1_4rwo2"]
-[ext_resource type="Texture2D" uid="uid://v56o4ugwpksw" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Run.png" id="1_5yhd6"]
-[ext_resource type="Script" path="res://scenes/enemies/wolf/wolf.gd" id="1_07ycu"]
-[ext_resource type="Texture2D" uid="uid://c3hyi71kl5oqo" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Idle.png" id="1_phc7c"]
-[ext_resource type="Texture2D" uid="uid://gl08p3wo4mhe" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Death.png" id="1_r7fc1"]
-[ext_resource type="Texture2D" uid="uid://b5e0rohvmpvgv" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Hit.png" id="1_s5xks"]
-[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_xpo64"]
-[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="6_jeg3f"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_7lvdy"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="9_f6837"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_ltghk"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_o6bh4"]
-[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="11_qkhtx"]
-[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="12_qo4xb"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_xl2cv"]
-[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_o74ag"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_f5cni"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_0rpar"]
+[ext_resource type="Texture2D" uid="uid://f652rucudfih" path="res://assets/Enemies/eurytheon-miniboss/Eurytheon_Idle.png" id="1_4oa8p"]
+[ext_resource type="Script" path="res://scenes/enemies/eurytheon/eurytheon.gd" id="1_uvskq"]
+[ext_resource type="Texture2D" uid="uid://gjvrnef8xni7" path="res://assets/Enemies/eurytheon-miniboss/Eurytheon_run.png" id="2_cmlqk"]
+[ext_resource type="Texture2D" uid="uid://bprvxivq0vylv" path="res://assets/Enemies/eurytheon-miniboss/Eurytheon_attack.png" id="3_sxvw7"]
+[ext_resource type="Texture2D" uid="uid://1v23aq8gwi2r" path="res://assets/Enemies/eurytheon-miniboss/Eurytheon_hit.png" id="4_ih1pw"]
+[ext_resource type="Texture2D" uid="uid://ddrqaobmiooxv" path="res://assets/Enemies/eurytheon-miniboss/Eurytheon_death.png" id="5_ui6xw"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="6_y3rlt"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="7_mfuuj"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="8_n02h4"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="9_b4smt"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="10_yxh5y"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_kusce"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="12_lbvqw"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_fhh5o"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="14_kd4b8"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_u6lut"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlobw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0l4h"]
 resource_local_to_scene = true
-shader = ExtResource("2_xpo64")
+shader = ExtResource("1_0rpar")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_f5i7f"]
-resource_name = "wolf-attack"
-length = 0.7
+[sub_resource type="Animation" id="Animation_li8d4"]
+resource_name = "eurytheon-idle"
+length = 0.8
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -38,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4rwo2")]
+"values": [ExtResource("1_4oa8p")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -50,7 +51,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -62,72 +63,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyHealthComp/Hitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_qippa"]
-resource_name = "wolf-dead"
-length = 1.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_r7fc1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -141,210 +77,336 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/4/type = "method"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".")
+tracks/4/path = NodePath("Sprite2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lyjpn"]
+resource_name = "eurytheon-run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cmlqk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_56oxn"]
+resource_name = "eurytheon-attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_sxvw7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-36, -15)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyHealthComp/Hitbox/HitboxCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ra50t"]
+resource_name = "eurytheon-hit"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ih1pw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-36, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_oqlc3"]
+resource_name = "eurytheon-death"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ui6xw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-36, -15)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyHealthComp/Hurtbox/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemyHealthComp/Hurtbox/HurtboxCollision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6dkcc"]
-resource_name = "wolf-hit"
-length = 0.4
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_s5xks")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_hsegx"]
-resource_name = "wolf-idle"
-length = 0.4
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_phc7c")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_4778m"]
-resource_name = "wolf-run"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_5yhd6")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6aqa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7t12h"]
 _data = {
-"wolf-attack": SubResource("Animation_f5i7f"),
-"wolf-dead": SubResource("Animation_qippa"),
-"wolf-hit": SubResource("Animation_6dkcc"),
-"wolf-idle": SubResource("Animation_hsegx"),
-"wolf-run": SubResource("Animation_4778m")
+"eurytheon-attack": SubResource("Animation_56oxn"),
+"eurytheon-death": SubResource("Animation_oqlc3"),
+"eurytheon-hit": SubResource("Animation_ra50t"),
+"eurytheon-idle": SubResource("Animation_li8d4"),
+"eurytheon-run": SubResource("Animation_lyjpn")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkfx"]
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1jmw"]
+radius = 5.0
+height = 52.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bddyk"]
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u22fq"]
+radius = 5.0
+height = 52.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_daf50"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lyeb"]
+size = Vector2(78, 39)
 
 [sub_resource type="Animation" id="Animation_86xlx"]
 resource_name = "hit-flash"
@@ -368,95 +430,87 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Wolf" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 65
-script = ExtResource("1_07ycu")
+[node name="Eurytheon" type="CharacterBody2D"]
+script = ExtResource("1_uvskq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_xlobw")
-texture = ExtResource("1_phc7c")
-hframes = 4
+material = SubResource("ShaderMaterial_i0l4h")
+texture = ExtResource("1_4oa8p")
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_g6aqa")
+"": SubResource("AnimationLibrary_7t12h")
 }
-autoplay = "wolf-idle"
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bnkfx")
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_e1jmw")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_jeg3f")
+script = ExtResource("6_y3rlt")
 initial_state = NodePath("EnemyWander")
 
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("9_f6837")
+script = ExtResource("7_mfuuj")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("9_7lvdy")
+script = ExtResource("8_n02h4")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
-script = ExtResource("10_ltghk")
+script = ExtResource("9_b4smt")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
-script = ExtResource("12_xl2cv")
+script = ExtResource("10_yxh5y")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("11_o6bh4")
+script = ExtResource("11_kusce")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
-[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_qkhtx")]
-max_health = 50
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("12_lbvqw")]
 enemy_hp_bar = NodePath("EnemyHPbar")
 anim_effects = NodePath("../AnimEffects")
 dmg_num_pos = NodePath("../DmgNumPos")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
-position = Vector2(0, 6)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bddyk")
-debug_color = Color(0.993046, 0, 0.243369, 0.42)
+[node name="HurtboxCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_u22fq")
+debug_color = Color(0.991557, 0, 0.263989, 0.42)
 
 [node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("13_o74ag")
+script = ExtResource("13_fhh5o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
-position = Vector2(-28, 3)
-shape = SubResource("CircleShape2D_daf50")
+[node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
+position = Vector2(-63, 10.5)
+shape = SubResource("RectangleShape2D_0lyeb")
 disabled = true
-debug_color = Color(0, 0.649211, 0.152944, 0.42)
-
-[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("12_qo4xb")]
-offset_left = -18.0
-offset_top = -11.0
-offset_right = 21.0
-offset_bottom = -9.0
+debug_color = Color(0, 0.646819, 0.227542, 0.42)
 
 [node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("15_f5cni")
+script = ExtResource("14_kd4b8")
+
+[node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("15_u6lut")]
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 26.0
+offset_bottom = -23.0
 
 [node name="DmgNumPos" type="Node2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -23)
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {
