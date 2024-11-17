@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=60 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level7/level_7.gd" id="1_irepw"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="21_7boa8"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="22_ke8sb"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="23_hmecq"]
+[ext_resource type="PackedScene" uid="uid://c2t65sskdxxw3" path="res://scenes/enemies/boss-spartan/boss_spartan.tscn" id="23_ur5kh"]
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="25_wvwd4"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="26_fs02o"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="27_32pje"]
@@ -2840,7 +2841,7 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(11374, -133)
+position = Vector2(10124, -913)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2974,6 +2975,9 @@ position = Vector2(9890, -295)
 
 [node name="Spartan3" parent="Enemies" instance=ExtResource("20_p44ar")]
 position = Vector2(9390, -696)
+
+[node name="BossSpartan" parent="Enemies" instance=ExtResource("23_ur5kh")]
+position = Vector2(10265, -918)
 
 [node name="Lever" parent="." node_paths=PackedStringArray("interaction_area") instance=ExtResource("22_ke8sb")]
 position = Vector2(10436, -968)
