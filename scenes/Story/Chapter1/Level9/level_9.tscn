@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_yova1"]
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_o0050"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="14_54tts"]
-[ext_resource type="PackedScene" uid="uid://tsp5761857y8" path="res://scenes/enemies/eurytheon/eurytheon.tscn" id="15_pobgx"]
+[ext_resource type="PackedScene" uid="uid://bortg7l8i4f7y" path="res://scenes/enemies/orthrus/orthrus.tscn" id="15_8my54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyp04"]
 texture = ExtResource("1_sq06d")
@@ -2424,12 +2424,12 @@ tile_map_data = PackedByteArray("AAAZAqb/AAAAAAcAAAAZAqf/AAAAAAgAAAAZAqj/AAAAAAc
 tile_set = SubResource("TileSet_s4lav")
 
 [node name="Player" parent="." instance=ExtResource("14_54tts")]
-position = Vector2(640, -122)
+position = Vector2(543, -122)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Eurytheon" parent="Enemies" instance=ExtResource("15_pobgx")]
-position = Vector2(884, -132)
+[node name="Orthrus" parent="Enemies" instance=ExtResource("15_8my54")]
+position = Vector2(765, -130)
