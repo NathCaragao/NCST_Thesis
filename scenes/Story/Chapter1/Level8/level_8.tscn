@@ -2505,3 +2505,9 @@ zoom = Vector2(3, 3)
 
 [node name="AmasonNPC" parent="NPCs" instance=ExtResource("10_jb4vn")]
 position = Vector2(180, -21)
+
+[node name="AmasonNPC2" parent="NPCs" instance=ExtResource("10_jb4vn")]
+position = Vector2(206, -21)
+
+[node name="AmasonNPC3" parent="NPCs" instance=ExtResource("10_jb4vn")]
+position = Vector2(155, -21)
