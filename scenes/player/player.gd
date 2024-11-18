@@ -31,22 +31,26 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	initialize("", false)
+	#initialize("", self.position, false)
+	pass
 
 
-func initialize(initPlayerId: String, initIsControlled: bool):
+func initialize(initPlayerId: String, initSpawnPosition, initIsControlled: bool):
 	self.playerGameData.playerId = initPlayerId
 	self.playerGameData.isControlled = initIsControlled
-	#%Camera2D.enabled = self.playerGameData.isControlled
+	self.position = initSpawnPosition
+	%Camera2D.enabled = self.playerGameData.isControlled
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
 func updatePlayer(updateDictionary):
-	self.playerGameData.isJumping = updateDictionary["isJumping"]
-	self.playerGameData.isAttacking = updateDictionary["isAttacking"]
-	self.playerGameData.direction = updateDictionary["direction"]
-	self.playerGameData.isSkill = updateDictionary["isSkill"]
-	self.playerGameData.velocity = updateDictionary["velocity"]
-	self.playerGameData.weaponMode = updateDictionary["weaponMode"]
+	self.playerGameData.isJumping = updateDictionary["ongoingMatchData"]["isJumping"]
+	self.playerGameData.isAttacking = updateDictionary["ongoingMatchData"]["isAttacking"]
+	self.playerGameData.direction = updateDictionary["ongoingMatchData"]["direction"]
+	self.playerGameData.isSkill = updateDictionary["ongoingMatchData"]["isSkill"]
+	self.playerGameData.weaponMode = updateDictionary["ongoingMatchData"]["weaponMode"]
+	
+	var velocityProperties = updateDictionary["ongoingMatchData"]["velocity"].split("")
+	self.playerGameData.velocity = Vector2(float(velocityProperties[2]), float(velocityProperties[5]))
 
 
 

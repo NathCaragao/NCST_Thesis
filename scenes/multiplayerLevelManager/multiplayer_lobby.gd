@@ -63,7 +63,7 @@ func _ready() -> void:
 	
 	# Signal connection for ongoingMatchGUI
 	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
-	ongoingMatchGUI.CurrentPlayerDirectionChanged.connect(_handleCurrentPlayerDirectionChanged)
+	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -173,9 +173,18 @@ func _handleLevelLoaded():
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_STARTED_CHANGED, startedStatusChangePayload)
 	
-func _handleCurrentPlayerDirectionChanged(currentPlayerNewDiretion):
-	var currentPlayerDirectionPayload = {
-	"userId" = self.currentPlayer.user.id,
-	"payload" = {"ongoingMatchData": {"direction": currentPlayerNewDiretion}}
+func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
+	var currentPlayerGameDataPayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {
+			"ongoingMatchData": {
+				"direction": currentPlayerNewGameData.direction,
+				"isJumping": currentPlayerNewGameData.isJumping,
+				"isAttacking": currentPlayerNewGameData.isAttacking,
+				"isSkill": currentPlayerNewGameData.isSkill,
+				"velocity": currentPlayerNewGameData.velocity,
+				"weaponMode": currentPlayerNewGameData.weaponMode,
+			}
+		}
 	}
-	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerDirectionPayload)
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)

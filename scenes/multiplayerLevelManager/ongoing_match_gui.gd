@@ -3,7 +3,7 @@ extends Node2D
 
 
 signal LevelLoaded()
-signal CurrentPlayerDirectionChanged(newDirection: Vector2)
+signal CurrentPlayerGameDataUpdate(newCurrentPlayerGameData)
 
 var isLoaded = false
 
@@ -17,8 +17,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if timer >= 0.05:
-		CurrentPlayerDirectionChanged.emit(currentPlayerCharacter.direction)
+	if timer >= 0.1 and currentPlayerCharacter != null:
+		CurrentPlayerGameDataUpdate.emit(currentPlayerCharacter.playerGameData)
 		timer = 0
 
 func update(currentPlayerData, otherPlayersData):
@@ -45,17 +45,12 @@ func _loadLevel():
 		return
 		
 func _loadCurrentPlayer(currentPlayerData):
-	if currentPlayerCharacter != null:
-		# Update user
+	if currentPlayerCharacter != null or currentPlayerData == {}:
+		# Update user (since this is done using the Player node itself, there is nothing else needed)
 		return
-	
-	# Else create new user
-	var playerCharacter = load("res://scenes/player/player.tscn").instantiate()
-	var playerCamera = Camera2D.new()
-	playerCamera.zoom.x = 1.5
-	playerCamera.zoom.y = 1.5
-	playerCharacter.add_child(playerCamera)
-	playerCharacter.position = $SpawnPoint.position
+	# Else create new player for this user
+	var playerCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
+	playerCharacter.initialize(currentPlayerData.playerData.nakamaData.userId, $SpawnPoint.position, true)
 	%Players.add_child(playerCharacter)
 	currentPlayerCharacter = playerCharacter
 	
@@ -65,25 +60,19 @@ func _loadOtherPlayers(otherPlayersData: Array):
 		if otherPlayersCharacter.is_empty():
 			#var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
 			var otherPlayerNewCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
-			var initDictionary = {
-				"playerId" = otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId,
-				"isControlled" = false,
-				"position" = $SpawnPoint.position
-				
-				#var playerId: String = ""
-				#var isControlled: bool = false
-				#var isJumping: bool = false
-				#var isAttacking: bool = false
-				#var isSkill: bool = false
-				#var direction = 1  # 1 being facing right
-				#var weaponMode = "Melee"
-			}
-			otherPlayerNewCharacter.initialize(otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, false)
+			otherPlayerNewCharacter.initialize(otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, $SpawnPoint.position, false)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:
 			# Find the user in the array then update them
 			for localOtherPlayer in range(0, otherPlayersCharacter.size()):
-				if otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId == otherPlayersCharacter[localOtherPlayer].playerId:
-					otherPlayersCharacter[localOtherPlayer].direction = otherPlayersData[otherPlayerFromServer].ongoingMatchData.direction
-			pass
+				if otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId == otherPlayersCharacter[localOtherPlayer].playerGameData.playerId:
+					#Update Player's playerGameData
+					otherPlayersCharacter[localOtherPlayer].updatePlayer(otherPlayersData[otherPlayerFromServer])
+			
+					#otherPlayersCharacter[localOtherPlayer].playerGameData.direction = otherPlayersData[otherPlayerFromServer].ongoingMatchData.direction
+					#otherPlayersCharacter[localOtherPlayer].playerGameData.isJumping = otherPlayersData[otherPlayerFromServer].ongoingMatchData.isJumping
+					#otherPlayersData[otherPlayerFromServer].ongoingMatchData.isAttacking = otherPlayersData[otherPlayerFromServer].ongoingMatchData.isAttacking
+					#self.playerGameData.isSkill = updateDictionary["isSkill"]
+					#self.playerGameData.velocity = updateDictionary["velocity"]
+					#self.playerGameData.weaponMode = updateDictionary["weaponMode"]
