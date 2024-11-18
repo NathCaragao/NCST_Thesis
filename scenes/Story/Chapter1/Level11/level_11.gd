@@ -6,8 +6,14 @@ extends Node2D
 @export var actor : PlayerHercules
 var paused : bool = false
 
+# ferryman area reference
+@onready var interaction_area: InteractionArea = $Ferryman/InteractionArea
+@onready var interaction_area_2: InteractionArea = $Ferryman/InteractionArea2
+
+
 func _ready() -> void:
-	pass
+	interaction_area.interact = Callable(self, "on_ferryman")
+	interaction_area_2.interact = Callable(self, "on_ferryman_2")
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:
@@ -31,3 +37,25 @@ func player_teleport() -> void:
 	# teleport the player to the specified position
 	actor.position.x = 2635
 	actor.position.y = 4685
+
+func on_ferryman() -> void:
+	boat_teleport()
+
+func on_ferryman_2() -> void:
+	boat_teleport2()
+
+func boat_teleport() -> void:
+	# in-game screen fade out transition
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	actor.position.x = 9881
+	actor.position.y = 4460
+
+func boat_teleport2() -> void:
+	# in-game screen fade out transition
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	actor.position.x = 7462
+	actor.position.y = 4460
