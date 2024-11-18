@@ -184,6 +184,7 @@ func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
 				"isSkill": currentPlayerNewGameData.isSkill,
 				"velocity": currentPlayerNewGameData.velocity,
 				"weaponMode": currentPlayerNewGameData.weaponMode,
+				"position": currentPlayerNewGameData.position,
 			}
 		}
 	}

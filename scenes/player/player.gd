@@ -17,6 +17,7 @@ var playerGameData = {
 	"direction" = 0,
 	"weaponMode" = "Melee",
 	"velocity" = Vector2(0, 0),
+	"position" = Vector2(0, 0),
 }
 
 # -- One time setup
@@ -39,6 +40,7 @@ func initialize(initPlayerId: String, initSpawnPosition, initIsControlled: bool)
 	self.playerGameData.playerId = initPlayerId
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
+	self.playerGameData.position = initSpawnPosition
 	%Camera2D.enabled = self.playerGameData.isControlled
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
@@ -49,10 +51,20 @@ func updatePlayer(updateDictionary):
 	self.playerGameData.isSkill = updateDictionary["ongoingMatchData"]["isSkill"]
 	self.playerGameData.weaponMode = updateDictionary["ongoingMatchData"]["weaponMode"]
 	
-	var velocityProperties = updateDictionary["ongoingMatchData"]["velocity"].split("")
-	self.playerGameData.velocity = Vector2(float(velocityProperties[2]), float(velocityProperties[5]))
+	self.playerGameData.velocity = _string_to_vector2(updateDictionary["ongoingMatchData"]["velocity"])
+	self.playerGameData.position = _string_to_vector2(updateDictionary["ongoingMatchData"]["position"])
+	self.position = self.playerGameData.position
+	
 
+func _string_to_vector2(string := "") -> Vector2:
+	if string:
+		var new_string: String = string
+		new_string = new_string.erase(0, 1)
+		new_string = new_string.erase(new_string.length() - 1, 1)
+		var array: Array = new_string.split(", ")
 
+		return Vector2(int(array[0]), int(array[1]))
+	return Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
 	pass
@@ -100,6 +112,7 @@ func _physics_process(delta: float) -> void:
 			switch_weapon_mode("Ranged")
 		# Velocity update even if there is no input directly affecting this
 		self.playerGameData.velocity = self.velocity
+		self.playerGameData.position = self.position
 	
 	_flip_sprite()
 

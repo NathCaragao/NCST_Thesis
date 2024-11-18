@@ -27,12 +27,11 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	# Switch to other states if suitable
+	# transitions to idle state
+	if actor.velocity.x == 0:
+		Transitioned.emit(self, "playeridle")
 	# -- Switch using Input if controlled
-	if actor.playerGameData.isControlled:
-		# transitions to idle state
-		if actor.velocity.x == 0:
-			Transitioned.emit(self, "playeridle")
-		
+	if actor.playerGameData.isControlled:		
 		# transitions to jump state
 		if Input.is_action_just_pressed("jump"):
 			Transitioned.emit(self, "playerjump")
