@@ -1,0 +1,21 @@
+narrator: "Hercules, his shoulders weighed down by both labor and triumph, returned to the palace of King Augeas. The stench of the now-purged stables clung faintly to his skin, a stark reminder of the task he had undertaken. He had diverted mighty rivers to cleanse the filth of decades in a single day—a feat so grand it bordered on divine. Yet here he was, a hero still bound by mortal honor, seeking justice for his efforts."
+<Empty Text Event>
+join Hercules leftmost [animation="Fade In Down"]
+Hercules: "King Augeas, I have returned, as promised, to claim what was agreed upon. The stables of your realm are cleansed, and the burden of their filth is no more. Honor your word\: the tenth of your herds is mine by oath."
+join augeas center
+(Augeas sits up, his eyes narrowing as a murmur of amusement spreads across the room.)
+augeas: "Hercules, Hercules… You speak as though I were a debtor to you. Did I not hear that this task was one of your famous labors, set upon you by King Eurystheus? Why, then, should I reward you for something done not out of loyalty to me, but to satisfy your own obligations?"
+(Hercules steps forward, his towering frame casting a shadow over the king. His voice deepens, brimming with righteous anger.)
+Hercules: "Do not play the fool, Augeas. You agreed before the gods themselves that should I cleanse the stables in a single day, I would be rewarded. Do not let greed or pride blind you to the weight of your oath. Break it, and you invite the wrath of Olympus itself."
+(The courtiers exchange nervous glances. Augeas’s expression hardens, yet there’s a flicker of unease.)
+augeas: "Do you threaten me, Hercules? My kingdom is my own, and no wandering strongman will dictate terms to me. I shall not be cowed by your strength or your reputation."
+Hercules: "A king’s worth is measured by his word, Augeas. You bring shame to your throne with your deceit. I do not seek vengeance, but know this\: a man who dishonors his oaths dishonors the gods who witness them."
+(Augeas rises, his voice growing louder in defiance, though his hands grip the edges of his throne tightly.)
+augeas: "Enough! I owe you nothing, son of Zeus! Be gone from my halls before I call my guards to escort you!"
+(The tension in the room becomes palpable. Hercules’s gaze remains steady, his composure a stark contrast to the king’s growing fury.)
+Hercules: "You are fortunate, Augeas, that my labor does not demand I punish those who betray their word. I leave not for fear of you, but because my task here is done. Remember this day, for the gods are not blind to broken oaths."
+(With that, Hercules turns and strides from the hall, his steps echoing through the vast chamber. Augeas slumps back into his throne, visibly shaken despite his outward bravado. The courtiers fall silent, unsure of whether to celebrate the king’s defiance or fear its consequences.)
+<Empty Text Event>
+leave Hercules [animation="Fade Out Up"]
+leave augeas
+narrator: "And so, Hercules departed the kingdom of Augeas, his heart heavy with the sting of betrayal. Though he had proven his might time and again, this labor taught him the fragility of mortal honor and the price of trust. In the end, Hercules’s legacy would be shaped not only by his strength, but by the wisdom he gained in the face of mortal folly."

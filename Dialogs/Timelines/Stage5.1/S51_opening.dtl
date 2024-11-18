@@ -1,0 +1,17 @@
+*(The throne room of Eurystheus is dimly lit. Hercules stands before the king, his lion-skin cloak draped over his shoulders, his expression a mix of weariness and frustration. Eurystheus smirks from his ornate throne, clearly relishing the moment.)*
+join  center
+Eurystheus: *(mockingly)* "Ah, Herakles. You return victorious yet again, parading that boar as if it were a grand trophy. But tell me, how does the son of Zeus feel about... filth?"  
+<Empty Text Event>
+join Hercules leftmost [animation="Fade In Down"]
+Hercules: *(glaring)* "Spare me your games, Eurystheus. What is my next task?"  
+Eurystheus: *(leaning forward with a cruel grin)* "The Augean Stables. King Augeas of Elis keeps thousands of cattle, yet his stables have not been cleaned in decades. Disease festers, the stench poisons the air, and the waste piles higher than a man."  
+*(He pauses for effect, his voice dripping with mockery.)*  
+Eurystheus: "Your task, mighty Hercules, is to clean those stables... in a single day."  
+*(Hercules clenches his fists, his jaw tightening as his face darkens with anger.)*
+Hercules: *(gritting his teeth)* "You mock me. I am a warrior, not a servant."  
+Eurystheus: *(chuckling)* "Oh, but you are whatever I command you to be, son of Zeus. Or have you grown weary of proving yourself?"  
+*(Hercules glares at Eurystheus but says nothing, his pride forcing him to accept the humiliation.)*  
+Hercules: *(calmly, but coldly)* "Very well. I will do as you ask. But know this, Eurystheus\: no matter how low you try to bring me, I will rise again."  
+*(He turns and storms out of the throne room, the echoes of Eurystheus’ laughter following him.)*  
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus
