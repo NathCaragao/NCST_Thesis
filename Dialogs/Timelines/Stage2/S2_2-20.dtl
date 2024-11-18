@@ -1,0 +1,6 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: It’s done. Another beast defeated. Another labor finished.
+Hercules: *(Cuts off one of the Hydra’s heads)*
+Hercules: The king will have proof of my victory. 
+Hercules: Thank you, gods, for guiding me through. The second labor is complete.
+leave Hercules [animation="Fade Out Up" wait="true"]

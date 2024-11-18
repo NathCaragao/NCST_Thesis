@@ -1,0 +1,5 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Not much of a challenge, were you? Still, you fought well, wolf. I’ll remember that.
+Hercules notices movement above.
+Hercules: "Looks like I wasn’t the only one keeping an eye on this cave. Who’s that up there?
+leave Hercules [animation="Fade Out Up" wait="true"]

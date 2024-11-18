@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: There we go. Thank you, brother Apollo. Now, Hydra, it’s just you and me.
+leave Hercules [animation="Fade Out Up" wait="true"]

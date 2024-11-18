@@ -1,0 +1,21 @@
+join scholar center
+scholar: You there! Brave warrior! Thank you for ridding me of that wretched wolf.
+scholar: I’ve been trapped here for days.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Days, you say? You must have had some rotten luck.
+Hercules: I’m Herakles, by the way. And you?
+scholar: Just a humble scholar, my friend. The wolf had been blocking my only escape.
+Hercules: Fair enough. Well, I’m here hunting a Hydra.
+Hercules: You wouldn’t happen to know anything about this house over there, would you? The wood is stronger than iron.
+scholar: Ah, that hut... it’s no ordinary structure. It’s crafted from the branches of a blessed tree in Lake Lerna. I actually hold the key to it.
+- Threaten the Scholar
+	Hercules: Hand over the key, or you’ll be wishing that wolf had kept you company longer.
+	scholar: W-wait! Please, no need for threats! Here, take it. I have no need for the hut. Just spare me!
+- Negotiate with the Scholar
+	Hercules: If I saved you from the wolf, it’s only fair you help me with the key. Don’t you agree?"
+	scholar: You’re right, Herakles. You’ve done me a service, and I’d be a fool not to repay it. Here’s the key.
+Hercules: One more question, friend. The vines blocking the Hydra’s lair – they’re tougher than steel. Any idea how to get past them?
+scholar: Those vines are also from the blessed tree. Only the divine flame of Apollo can burn them away. You’ll find it inside the hut.
+Hercules: Apollo’s flame, you say? Interesting. I’ll find it, then. Thanks for the information.
+scholar: Good luck, Herakles. I don’t envy your task.
+leave Hercules [animation="Fade Out Up" wait="true"]

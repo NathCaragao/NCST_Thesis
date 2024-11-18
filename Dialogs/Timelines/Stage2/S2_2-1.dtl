@@ -1,0 +1,7 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Lake Lerna... I’ve heard tales of this place since I was a boy.
+Hercules: They say it’s cursed, haunted by dark beasts and spirits. Seems fitting that I’d find the Hydra here.
+Hercules: Alright, Herakles, focus. One more beast to add to the list. No beast will stand in my way!
+Hercules: Let’s hope this Hydra is as terrifying as they say.
+Hercules: The greater the foe, the sweeter the victory!
+leave Hercules [animation="Fade Out Up" wait="true"]

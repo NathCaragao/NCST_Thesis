@@ -1,0 +1,5 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: "Nothing! These vines might as well be forged from iron. Even the sharpest sword would just bounce back!
+Hercules: "Think, Herakles. There must be another way to break through.
+Hercules: If I can’t burn or cut them... maybe there’s a tool or some sort of power nearby.
+leave Hercules [animation="Fade Out Up" wait="true"]
