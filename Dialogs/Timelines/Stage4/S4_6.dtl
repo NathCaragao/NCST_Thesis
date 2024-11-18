@@ -1,0 +1,4 @@
+*(Herakles carefully navigates a narrow ledge, wind howling around him.)* 
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: So high up... One misstep, and I’ll join the clouds below. Focus, Herakles. Focus.
+leave Hercules [animation="Fade Out Up" wait="true"]

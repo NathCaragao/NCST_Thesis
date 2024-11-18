@@ -1,0 +1,6 @@
+*(The centaur leader blocks Herakles’ path.)* 
+Centaur_Leader: Another fool who thinks they can conquer these mountains. Turn back, or face my wrath!
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: I’ve faced beasts and gods alike. You’re just another obstacle on my path!
+Centaur_Leader: "You meddle in the affairs of centaurs, mortal. Prepare to meet your end!"
+leave Hercules [animation="Fade Out Up" wait="true"]

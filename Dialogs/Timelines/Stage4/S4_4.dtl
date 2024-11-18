@@ -1,13 +1,13 @@
 *(Herakles climbs the rugged hill, his breath misting in the cold air. The faint singing grows louder as he crests the ridge.
 Nestled against the mountainside, a warm glow emanates from a secluded cave.
-Curious, Herakles approaches and peeks inside. A centaur with a weathered face and kind eyes sits by the fire, humming softly to himself as he stirs a pot.)* 
-Pholos: *(looking up, startled at first but quickly smiling)* 
+Curious, Herakles approaches and peeks inside. A centaur with a weathered face and kind eyes sits by the fire, humming softly to himself as he stirs a pot.)*
+Pholos: *(looking up, startled at first but quickly smiling)*
 Pholos: Ah, a traveler! By the gods, you gave me a fright! Come in, come in.
-Pholos:  The cold is no place for a man alone." 
+Pholos: The cold is no place for a man alone."
 Pholos: *(Pholos gestures toward the fire, setting aside the pot.)*
-Herakles steps cautiously into the cave, taking in its rustic yet cozy interior. 
+Herakles steps cautiously into the cave, taking in its rustic yet cozy interior.
 Animal skins line the floor, and bundles of herbs hang from the walls.
- A large jar sits in the corner, glinting faintly in the firelight.
+A large jar sits in the corner, glinting faintly in the firelight.
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: *(nodding respectfully)*
 Hercules: "I am Herakles. The gods have sent me to hunt the Erymanthian Boar. Your fire is a welcome sight after the climb.
@@ -19,39 +19,40 @@ Pholos pours a thick stew into a wooden bowl and hands it to him.
 Pholos: "Eat, eat. You'll need your strength. The mountains are treacherous, and the boar you seek is no ordinary beast.
 Hercules: *(taking a bite and nodding approvingly)*
 Hercules: The gods never make things easy. Tell me, Pholos, what do you know of this boar?"
-Pholos: *(settling down on his haunches)* 
-Pholos: "It is a creature of fury and cunning. Its tusks are sharp enough to cleave stone, and its speed... 
-Pholos: well, even the swiftest centaur would struggle to match it. 
+Pholos: *(settling down on his haunches)*
+Pholos: "It is a creature of fury and cunning. Its tusks are sharp enough to cleave stone, and its speed...
+Pholos: well, even the swiftest centaur would struggle to match it.
 Pholos: It haunts the forests further up the mountain, where the air grows thin and the ground treacherous.
 Hercules: *(smirking)* Sounds like a challenge worthy of my name.
 Pholos: *(chuckling)* "That it is. But beware, Herakles, for the dangers here are not limited to the boar.
 Pholos: These hills are home to my kin, and not all are as welcoming as I.
 Pholos: They are quick to anger and even quicker to act. Tread carefully.
-*(Pholos rises and moves to the back of the cave, rummaging through a pile of supplies.)* 
+*(Pholos rises and moves to the back of the cave, rummaging through a pile of supplies.)*
 Pholos: Rest here tonight, Herakles. The fire will keep you warm, and the shadows will hide you from prying eyes.
-*(Herakles watches as Pholos busies himself. His eyes drift to the large jar in the corner. Intrigued, he gets up and approaches it. The faint smell of wine wafts from the sealed lid.)* 
-Hercules: *(muttering to himself)* "Wine... Sacred, perhaps? Or just a well-aged vintage?" 
-*(He places a hand on the jar, hesitating as the firelight dances on its surface.)* 
+*(Herakles watches as Pholos busies himself. His eyes drift to the large jar in the corner. Intrigued, he gets up and approaches it. The faint smell of wine wafts from the sealed lid.)*
+Hercules: *(muttering to himself)* "Wine... Sacred, perhaps? Or just a well-aged vintage?"
+*(He places a hand on the jar, hesitating as the firelight dances on its surface.)*
 - Open the Jar
-	*(Herakles lifts the lid, and a sweet, intoxicating aroma fills the cave. He takes a deep breath, savoring the scent. Suddenly, distant hoofbeats echo through the hills, growing louder by the second.)* 
-	Pholos: *(returning to the fire, alarmed)* "Herakles! What have you done? That is sacred wine! The aroma—" 
-	*(Before he can finish, a thunderous roar of hooves erupts outside the cave. Furious centaurs charge in, their eyes blazing with rage.)* 
-	Centaur_Leader: "Pholos! You dare desecrate our sacred drink with this mortal?" 
-	Pholos: *(holding up his hands)* "Wait! This was a mistake. He didn't—" 
-	*(The centaur leader ignores him, raising a spear. Chaos ensues as Herakles grabs his club and defends himself. The battle is fierce and brutal. When the dust settles, the cave is in ruins. Pholos lies gravely wounded on the ground.)* 
-	Hercules: *(kneeling beside him)* "Pholos... Forgive me. I let my curiosity get the better of me." 
+	*(Herakles lifts the lid, and a sweet, intoxicating aroma fills the cave. He takes a deep breath, savoring the scent. Suddenly, distant hoofbeats echo through the hills, growing louder by the second.)*
+	Pholos: *(returning to the fire, alarmed)* "Herakles! What have you done? That is sacred wine! The aroma—"
+	*(Before he can finish, a thunderous roar of hooves erupts outside the cave. Furious centaurs charge in, their eyes blazing with rage.)*
+	Centaur_Leader: "Pholos! You dare desecrate our sacred drink with this mortal?"
+	Pholos: *(holding up his hands)* "Wait! This was a mistake. He didn't—"
+	*(The centaur leader ignores him, raising a spear. Chaos ensues as Herakles grabs his club and defends himself. The battle is fierce and brutal. When the dust settles, the cave is in ruins. Pholos lies gravely wounded on the ground.)*
+	Hercules: *(kneeling beside him)* "Pholos... Forgive me. I let my curiosity get the better of me."
 	Pholos: *(weakly)* "It is... not your fault, Herakles. Protect these hills... for me.
-	*(Pholos breathes his last, and Herakles bows his head in mourning. He looks up, his face hardening with resolve.)* 
-	Hercules: "This is not over. I will see those who did this brought to justice." 
-	Hercules: *(He follows the trail left by the centaurs, his grip tightening on his club.)* 
+	*(Pholos breathes his last, and Herakles bows his head in mourning. He looks up, his face hardening with resolve.)*
+	Hercules: "This is not over. I will see those who did this brought to justice."
+	Hercules: *(He follows the trail left by the centaurs, his grip tightening on his club.)*
 - Resist
 	*(Herakles steps back, shaking his head.)*
-	Hercules: "No. The fire and the food are enough. I will not repay Pholos’ kindness with betrayal." 
-	Hercules: *(He returns to the fire, letting the warmth wash over him. Pholos soon returns with blankets and a knowing smile.)* 
-	Pholos: "Wise of you to leave that jar be, Herakles. Its contents are sacred to my kind, and the consequences of opening it would have been dire." 
-	Hercules: *(smiling faintly)* "I have faced many trials, but I would not repay kindness with folly." 
-	Pholos: *(nodding)* "Then you are truly wise, son of Zeus. Rest now. The boar awaits you on the morrow." 
+	Hercules: "No. The fire and the food are enough. I will not repay Pholos’ kindness with betrayal."
+	Hercules: *(He returns to the fire, letting the warmth wash over him. Pholos soon returns with blankets and a knowing smile.)*
+	Pholos: "Wise of you to leave that jar be, Herakles. Its contents are sacred to my kind, and the consequences of opening it would have been dire."
+	Hercules: *(smiling faintly)* "I have faced many trials, but I would not repay kindness with folly."
+	Pholos: *(nodding)* "Then you are truly wise, son of Zeus. Rest now. The boar awaits you on the morrow."
 	*(The night passes peacefully, and at dawn, Herakles prepares to leave. Pholos stands at the cave entrance, watching him go.)*
 	Pholos: "May the gods guide your path, Herakles. Remember, strength alone will not see you through. Use your wits as well as your might."
 	Hercules: *(nodding)* "Thank you, Pholos. I will not forget your wisdom."
-	*(He strides off into the mountains, his heart lightened by the centaur’s kindness.)* 
+	*(He strides off into the mountains, his heart lightened by the centaur’s kindness.)*
+leave Hercules [animation="Fade Out Up" wait="true"]
