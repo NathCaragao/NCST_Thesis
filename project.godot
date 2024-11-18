@@ -34,6 +34,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Amazon_Guard": "res://Dialogs/Characters/Amazon_Guard.dch",
 "Athena": "res://Dialogs/Characters/Athena.dch",
 "Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
 "Centaur": "res://Dialogs/Characters/Centaur.dch",
@@ -41,6 +42,7 @@ directories/dch_directory={
 "Elite_Guard": "res://Dialogs/Characters/Elite_Guard.dch",
 "Eurystheus": "res://Dialogs/Characters/Eurystheus.dch",
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
+"Hypolita": "res://Dialogs/Characters/Hypolita.dch",
 "King_Diomedes": "res://Dialogs/Characters/King_Diomedes.dch",
 "Megalus": "res://Dialogs/Characters/Megalus.dch",
 "Pholos": "res://Dialogs/Characters/Pholos.dch",
@@ -138,6 +140,10 @@ directories/dtl_directory={
 "S8_4": "res://Dialogs/Timelines/stage 8/S8_4.dtl",
 "S8_5": "res://Dialogs/Timelines/stage 8/S8_5.dtl",
 "S8_6": "res://Dialogs/Timelines/stage 8/S8_6.dtl",
+"S9_1": "res://Dialogs/Timelines/Stage 9/S9_1.dtl",
+"S9_2": "res://Dialogs/Timelines/Stage 9/S9_2.dtl",
+"S9_3": "res://Dialogs/Timelines/Stage 9/S9_3.dtl",
+"S9_4": "res://Dialogs/Timelines/Stage 9/S9_4.dtl",
 "burn_vines_false": "res://Dialogs/Timelines/Stage2/burn_vines_false.dtl",
 "cave_spotted": "res://Dialogs/Timelines/Stage2/cave_spotted.dtl",
 "timeline": "res://Dialogs/Timelines/Stage3/timeline.dtl",
