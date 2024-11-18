@@ -70,15 +70,15 @@ func _loadOtherPlayers(otherPlayersData: Array):
 				"isControlled" = false,
 				"position" = $SpawnPoint.position
 				
-				var playerId: String = ""
-				var isControlled: bool = false
-				var isJumping: bool = false
-				var isAttacking: bool = false
-				var isSkill: bool = false
-				var direction = 1  # 1 being facing right
-				var weaponMode = "Melee"
+				#var playerId: String = ""
+				#var isControlled: bool = false
+				#var isJumping: bool = false
+				#var isAttacking: bool = false
+				#var isSkill: bool = false
+				#var direction = 1  # 1 being facing right
+				#var weaponMode = "Melee"
 			}
-			otherPlayerNewCharacter.initialize(initDictionary)
+			otherPlayerNewCharacter.initialize(otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, false)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:

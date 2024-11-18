@@ -10,14 +10,13 @@ var playerGameData = {
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
-	"direction" = 1,
+	"direction" = 0,
 	"weaponMode" = "Melee",
-	"velocity" = Vector2(300, 0)
+	"velocity" = Vector2(0, 0),
 }
 
 # -- One time setup
 @export var move_speed: float = 200.0
-var weapon_mode : String = "Melee" # Will be USED FOR S-C COMM
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	initialize("", false)
+	initialize("", true)
 
 
 func initialize(initPlayerId: String, initIsControlled: bool):
@@ -43,9 +42,11 @@ func updatePlayer(updateDictionary):
 	self.playerGameData.direction = updateDictionary["direction"]
 	self.playerGameData.isSkill = updateDictionary["isSkill"]
 	self.playerGameData.velocity = updateDictionary["velocity"]
+	self.playerGameData.weaponMode = updateDictionary["weaponMode"]
 
 
-# SHOULD HANDLE INPUTS TO CHANGE VARIABLES GOING TO BE SENT TO SERVER
+# STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
+# STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS
 func _input(event: InputEvent) -> void:
 	if !self.playerGameData.isControlled:
 		return
@@ -54,6 +55,8 @@ func _input(event: InputEvent) -> void:
 	self.playerGameData.direction = Input.get_axis("move_left", "move_right")
 	# Capture jumping
 	self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
+	# Capture attack usage
+	self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
 	# Capture skill usage
 	self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
 	# Weapon Mode switching
@@ -64,11 +67,12 @@ func _input(event: InputEvent) -> void:
 		self.playerGameData.weaponMode = "Ranged"
 		switch_weapon_mode("Ranged")
 	
-
+# STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
+# STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
 	_flip_sprite()
-	print_debug(self.playerGameData.direction)
-	self.playerGameData.velocity = self.velocity
+	if self.playerGameData.isControlled:
+		self.playerGameData.velocity = self.velocity
 	
 	# How to decode velocity
 	#print_debug(Vector2(self.playerGameData.velocity))
@@ -99,10 +103,10 @@ func _flip_sprite() -> void:
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		self.playerGameData.weaponMode = "Melee"
-		print("Mode: ", weapon_mode) # replace with fancy UI
+		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
 	elif mode == "Ranged":
 		self.playerGameData.weaponMode = "Ranged"
-		print("Mode: ", weapon_mode) # replace with fancy UI
+		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
 
 func collect(item):
 	inv.insert(item)
