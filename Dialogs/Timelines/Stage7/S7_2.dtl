@@ -1,0 +1,5 @@
+join Hercules center [animation="Fade In Down"]
+(Hercules reaches the base of a towering cliff, its jagged edges seeming to scrape the sky. He looks up, determination gleaming in his eyes.)
+Hercules: "The path ahead won’t be easy, but no labor ever is. I’ll climb these cliffs and press forward. I’ve come too far to stop now."
+(He begins his ascent, his muscles straining as he pulls himself up the sheer rock face.)
+leave Hercules [animation="Fade Out Up"]

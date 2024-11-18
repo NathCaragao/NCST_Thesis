@@ -1,0 +1,5 @@
+join Hercules center [animation="Fade In Down"]
+(As Hercules nears the summit, a deep growl rumbles through the air. A massive wolf steps out from behind a rock, its eyes gleaming with menace. Hercules narrows his gaze and readies his club.)
+Hercules: "You’d do well to step aside, beast. But if it’s a fight you want, I’ll give you one."
+(The wolf charges, and Hercules prepares for battle.)
+leave Hercules [animation="Fade Out Up"]

@@ -1,0 +1,4 @@
+join Hercules center [animation="Fade In Down"]
+Hercules: (Hercules pauses, scanning the wild terrain of Crete. The distant sound of thundering hooves echoes through the air, and his instincts tell him the beast is near.)
+Hercules: (clenches his fists and breathes deeply)"The bull is close—I can feel its power in the air. Time to prove myself again. No beast will break me."
+leave Hercules [animation="Fade Out Up"]

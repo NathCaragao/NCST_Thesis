@@ -1,0 +1,6 @@
+(After a fierce struggle, Hercules finally manages to grab hold of the bull’s horns. The beast thrashes violently, but Hercules holds firm, his strength unmatched.)
+join Hercules center [animation="Fade In Down"]
+Hercules: (grunting as he holds the bull steady)"Enough! You’ve fought well, but your rampage ends here."
+(The bull slowly begins to calm, its movements less frantic as it senses Hercules’ dominance. Hercules binds the creature with a rope, his touch firm but respectful.)
+Hercules: "You’re a proud beast, and I’ll honor that pride. Let’s go—our journey isn’t over yet."
+leave Hercules [animation="Fade Out Up"]
