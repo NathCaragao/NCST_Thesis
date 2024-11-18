@@ -1,0 +1,20 @@
+join Hercules leftmost [animation="Fade In Down"]
+(Hercules finally corners the Hind in a serene clearing surrounded by golden light. The creature, exhausted, slows down as Hercules approaches cautiously. Just as he gently grabs it by its golden antlers, a radiant light floods the scene, and Artemis appears before him, her silver bow slung across her back.)
+join artemis center
+artemis: "Hold, son of Zeus! What do you think you are doing with my sacred Hind?"
+(Hercules immediately kneels, bowing his head in respect.)
+Hercules: "Goddess Artemis, forgive my boldness. This task was not born of my own will. Eurystheus, my taskmaster, has demanded I capture this magnificent creature as one of my labors."
+artemis: "You speak of Eurystheus, that pitiful king cowering behind Hera’s schemes. And so, you think his commands grant you the right to seize what is mine?"
+Hercules: "I meant no disrespect to you, great goddess. If it were my choice, I would never have dared to pursue this Hind. But this labor is meant to atone for my sins, and I cannot defy it. Yet, I swear upon my life and honor that no harm will come to your sacred creature."
+(Artemis circles him slowly, her eyes narrowing as she studies him. The Hind, sensing no ill intent from Hercules, remains calm in his grasp.)
+artemis: "Your words carry the weight of sincerity, Hercules. But promises are easily made and often broken. Why should I trust you?"
+Hercules: "I have faced beasts, bandits, and gods in this journey, yet I have not wavered in my commitment to complete these labors. I may be a son of Zeus, but I have always honored the gods above my own pride. Trust me not as a mortal, but as one who reveres you and all that you protect."
+(Artemis pauses, her expression softening ever so slightly.)
+artemis: "You are bold, mortal, to appeal to a goddess’ trust. Very well, Hercules. I shall grant you leave to take the Hind, but know this—should you break your vow, not even your father Zeus will shield you from my wrath."
+Hercules: "Thank you, goddess. Your mercy will not be in vain. The Hind will be returned to you, unharmed, once my labor is complete."
+(Artemis places her hand on the Hind, whispering a blessing. The creature glows faintly, its golden sheen even more radiant than before. The goddess steps back, her presence fading like moonlight.)
+artemis: "Go now, Hercules. But tread carefully—your trials are far from over."
+leave artemis
+(Hercules stands, lifting the Hind gently onto his shoulders.)
+Hercules: "Three labors completed, and I live to see another day. Thank you, great Artemis. May the gods guide my path back to Eurystheus."
+leave Hercules [animation="Fade Out Up"]

@@ -1,0 +1,3 @@
+join Hercules center [animation="Fade In Down"]
+Hercules: "Another locked door? Olympus save me! That cave from earlier must hold some answers."
+leave Hercules [animation="Fade Out Up"]

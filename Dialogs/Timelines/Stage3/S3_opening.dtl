@@ -1,0 +1,18 @@
+join Eurystheus center
+(In the throne room of King Eurystheus. The king sits smugly on his high throne, flanked by advisors whispering conspiratorially. Hercules enters, his towering presence silencing the murmurs. Eurystheus greets him with a mocking smirk.)
+narrator: "After returning victorious from slaying the Lernaean Hydra, Hercules was met not with praise, but with another challenge. King Eurystheus, ever scheming to see his downfall, devised a labor both cunning and cruel—a test of patience and cunning, rather than sheer strength."
+join Hercules leftmost [animation="Fade In Down"]
+Eurystheus: "Ah, Hercules, my favorite champion returns! Though I must admit, your… stubborn survival continues to astound me. Tell me, does your pride still swell after conquering such meager foes?"
+Hercules: (crossing his arms) "Say what you will, Eurystheus, but I see through your insults. Speak plainly. What is the next labor you’ve devised to test me?"
+(Eurystheus feigns deep thought, stroking his beard.)
+Eurystheus: "Very well. Your third labor, Hercules, shall not require bloodshed—though it may cost you your spirit. You are to capture the Ceryneian Hind."
+Hercules: (frowning)"The Hind? The sacred beast of Artemis, swift of foot and untouchable to mortal hands?"
+Eurystheus: (leaning forward with a sly grin) "The very same. Its golden antlers and bronze hooves shine like the sun, a divine creature worthy of legend. But beware, Hercules—laying harm upon the beast would anger the goddess herself. And we both know even your strength cannot defy Olympus."
+(Hercules takes a step forward, his voice firm and unwavering.)
+Hercules: "You send me to catch a creature that no man has ever laid hands upon, yet I will not harm it. Do you test my resolve or seek to invoke the wrath of Artemis upon me?"
+Eurystheus:  (laughing lightly)"Consider it a lesson in humility, Hercules. Surely a son of Zeus can manage a task of such... delicacy. Or perhaps your famed might is nothing without your club and bow?"
+(Hercules glares but says nothing, his jaw tightening in determination. Eurystheus waves a dismissive hand.)
+Eurystheus: "Go now, hero, and return only when the Hind stands before me, alive and unscathed. Or do not return at all. Either outcome suits me."
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus
+narrator: "And so, Hercules departed Mycenae, setting forth on a journey that would test not only his strength, but his endurance, cunning, and respect for the gods. To capture the Ceryneian Hind was no mere labor—it was a test of his very humanity."

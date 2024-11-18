@@ -1,0 +1,4 @@
+join Hercules center [animation="Fade In Down"]
+(The Hind appears again, darting through the scene.)
+Hercules: "There you are again! By the gods, how are you this fast? No mortal could match your pace. This is going to be tougher than I thought."
+leave Hercules [animation="Fade In Down"]

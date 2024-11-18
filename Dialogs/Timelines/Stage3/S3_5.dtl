@@ -1,0 +1,4 @@
+join Hercules center [animation="Fade In Down"]
+(Hercules arrives at a section of towering trees with narrow branches stretching out.)
+Hercules: "These trees... Looks like I’ll have to climb. One wrong step, and I’m a goner. Steady, Hercules. Just pretend you're climbing Mount Olympus!"
+leave Hercules [animation="Fade Out Up"]
