@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=80 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
 [ext_resource type="PackedScene" uid="uid://mrkhn0xb3trn" path="res://scenes/mechanisms/burning-vines/burning_vine.tscn" id="19_hvskf"]
 [ext_resource type="PackedScene" uid="uid://voynlee26e1k" path="res://scenes/mechanisms/divine-torch/divine_torch.tscn" id="21_dqb16"]
+[ext_resource type="PackedScene" uid="uid://chmmu5rx8pg0w" path="res://scenes/objects/cage-key/cage_key.tscn" id="24_s3cve"]
+[ext_resource type="PackedScene" uid="uid://cmaaqi0hqotrk" path="res://scenes/objects/Cage/cage.tscn" id="28_iii3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9060,7 +9062,8 @@ tile_map_data = PackedByteArray("AAD5//7/AAAIAAAAAAD5////AAAIAAEAAAD6//7/AAAHAAA
 tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
-position = Vector2(2253, 3175)
+z_index = 1
+position = Vector2(3575, 3259)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -9323,6 +9326,10 @@ debug_color = Color(0, 0.644024, 0.289006, 0.42)
 [node name="SilverKey1" parent="KeysCollection" instance=ExtResource("14_7tmw0")]
 position = Vector2(8273, 151)
 
+[node name="CageKey" parent="KeysCollection" node_paths=PackedStringArray("divine_torch") instance=ExtResource("24_s3cve")]
+position = Vector2(3528, 3265)
+divine_torch = NodePath("../../DivineTorch")
+
 [node name="StoneDoor" parent="." node_paths=PackedStringArray("animation_player", "lever") instance=ExtResource("15_qkksp")]
 position = Vector2(1840, 3253)
 scale = Vector2(1.8, 1.8)
@@ -9359,8 +9366,15 @@ position = Vector2(-2, 1.5)
 shape = SubResource("RectangleShape2D_7ydj8")
 debug_color = Color(0.365008, 0.479229, 1, 0.42)
 
-[node name="DivineTorch" parent="." node_paths=PackedStringArray("torch_item", "player") instance=ExtResource("21_dqb16")]
-position = Vector2(498, 3222)
+[node name="DivineTorch" parent="." node_paths=PackedStringArray("torch_item", "player", "cage") instance=ExtResource("21_dqb16")]
+position = Vector2(3735, 3237)
 scale = Vector2(2, 2)
 torch_item = NodePath("../Player/TorchItem")
 player = NodePath("../Player")
+cage = NodePath("../Cage")
+
+[node name="Cage" parent="." node_paths=PackedStringArray("cage_key", "divine_torch") instance=ExtResource("28_iii3j")]
+position = Vector2(3734, 3214)
+scale = Vector2(1.5, 1.5)
+cage_key = NodePath("../KeysCollection/CageKey")
+divine_torch = NodePath("../DivineTorch")

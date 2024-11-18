@@ -5,18 +5,23 @@ extends Area2D
 
 @export var torch_item : AnimatedSprite2D
 @export var player : CharacterBody2D
+@export var cage: Node2D
 
+
+var unlocked : bool = false
 var torch_taken : bool = false
+var cage_key_taken: bool = false
 
 func _process(delta: float) -> void:
 	flip_torch_sprite()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		visible = false
-		print("You got Divine Torch!")
-		torch_taken = true
-		torch_equipped()
+			if unlocked:
+				visible = false
+				print("You got Divine Torch!")
+				torch_taken = true
+				torch_equipped()
 
 func torch_equipped() -> void:
 	torch_item.visible = true

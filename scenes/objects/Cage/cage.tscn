@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmaaqi0hqotrk"]
+
+[ext_resource type="Script" path="res://scenes/objects/Cage/cage.gd" id="1_c35av"]
+[ext_resource type="Texture2D" uid="uid://cnli5j5a3t45i" path="res://assets/in-game-objects/cage/cage_closed.png" id="1_g4a0s"]
+[ext_resource type="Texture2D" uid="uid://cqcivtadr6cnj" path="res://assets/in-game-objects/cage/cage_open.png" id="2_rlw7t"]
+[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="4_dle4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ouir"]
+size = Vector2(41, 67)
+
+[node name="Cage" type="Node2D"]
+script = ExtResource("1_c35av")
+
+[node name="Closed" type="Sprite2D" parent="."]
+texture = ExtResource("1_g4a0s")
+
+[node name="Open" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_rlw7t")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_dle4v")]
+action_name = "to open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, 26.5)
+shape = SubResource("RectangleShape2D_2ouir")
