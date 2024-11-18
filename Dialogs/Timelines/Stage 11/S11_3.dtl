@@ -1,0 +1,11 @@
+(Hercules reaches the summit. There, Prometheus is bound to a massive boulder, his body scarred and his expression weary. The eagle swoops down, talons extended, but Hercules intercepts it, slaying the beast with a single swing of his club.)
+join Hercules center [animation="Fade In Down"]
+Prometheus: (weakly, but with gratitude)"Who… Who dares to defy the gods on my behalf?"
+Hercules:  (kneeling beside him)"I am Hercules, son of Zeus. I seek the golden apples of the Hesperides and was told you hold the secret to their location."
+Prometheus:  (chuckling faintly)"To defy Zeus by freeing me… you are bold, Hercules. The apples lie in the Garden of the Hesperides, hidden beyond mortal reach. But beware, for even the gods tread carefully there."
+Hercules: (determined)"How do I reach this garden?"
+Prometheus: (smiling faintly)"You’ll need the Titan Atlas. He alone can retrieve the apples, but he bears the weight of the heavens. Offer to hold his burden, and he may assist you. I will open a portal to his domain."
+(A shimmering portal materializes before Hercules.)
+Hercules: (nodding)"Thank you, Prometheus. Your wisdom will guide me."
+Hercules steps through the portal.
+leave Hercules [animation="Fade Out Up"]

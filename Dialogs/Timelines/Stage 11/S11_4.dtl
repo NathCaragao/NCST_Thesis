@@ -1,0 +1,5 @@
+(Hercules steps through the shimmering portal and emerges into a strange, golden-lit land. The air is thick with an unnatural stillness, and he feels the weight of unseen eyes upon him.)
+join Hercules center [animation="Fade In Down"]
+Hercules: (narrowing his eyes, gripping his club)"This place… It feels alive. Danger lurks here, I can sense it. Whatever guards the way to Atlas will not make this easy."
+(He steps forward cautiously, the silence amplifying the sound of his footsteps. The faint rustling of leaves grows louder, and a low, guttural growl breaks the stillness.)
+leave Hercules

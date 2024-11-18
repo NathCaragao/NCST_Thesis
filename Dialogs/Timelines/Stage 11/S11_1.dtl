@@ -1,0 +1,5 @@
+Hercules takes his first steps into the enchanted forest. The atmosphere is heavy, the trees seem alive, and an unnatural silence fills the air. As he presses forward, he pauses, feeling a strange presence in his mind.
+join Hercules center [animation="Fade In Down"]
+Athena: (gentle but firm)"Hercules, your strength will not guide you to the golden apples. You must seek Prometheus, the Titan who defied Zeus. He holds the key to the apples' location."
+Hercules: (nodding to himself)"Prometheus… The one who brought fire to mortals. If he holds the answer, then I will find him."
+leave Hercules [animation="Fade Out Up"]
