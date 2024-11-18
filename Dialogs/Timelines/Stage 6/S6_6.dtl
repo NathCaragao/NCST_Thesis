@@ -1,0 +1,19 @@
+*As Herakles ascends the mountain, a radiant light envelops him. Out of the shimmering glow steps Athena, her spear and shield gleaming with divine light. Herakles kneels in reverence.* 
+Athena: Rise, Herakles. I have come to aid you in your sixth labor.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Goddess Athena, your presence alone brings me strength. Tell me, how may I overcome the trials ahead?
+Athena: Your path will take you to the Stymphalian Marsh, a cursed place teeming with deadly birds,
+Athena: their feathers sharper than swords and their cries capable of piercing the strongest minds.
+Hercules: Stymphalian birds? It seems Eurystheus never runs out of wicked ideas. 
+Athena: Indeed, but even the strongest warrior cannot face such a threat without wisdom and preparation.
+Athena: Take this."* *(She holds out a pair of bronze clappers—krotala—crafted with divine precision.)
+Hercules: What are these, my lady?
+Athena: "Krotala. Their sound will drive the birds from their hiding places, forcing them to the skies where your strength can strike true.
+Athena: But beware, Herakles, for their numbers are great, and their fury, unrelenting.
+Hercules: With your gift, I will make swift work of them. Thank you, Athena. 
+Hercules: Your wisdom and aid are blessings I can never repay.
+Athena: "Your deeds will speak louder than any thanks, Herakles. Go now and cleanse the marsh. Bring order to the chaos, and remember\:
+Athena:  even the smallest tool, in the right hands, can change the tide of a battle.
+Athena: *(She fades into the light, leaving Herakles with the krotala in hand.)* 
+Hercules: The gods favor me this day. Let’s finish this.
+leave Hercules [animation="Fade Out Up" wait="true"]

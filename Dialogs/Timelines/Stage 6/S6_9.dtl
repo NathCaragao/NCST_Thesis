@@ -1,0 +1,4 @@
+He finally reaches the island and sees the massive Stymphalian bird waiting for him
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: There you are, beast. Let’s see how loud you can screech when I’m done with you.
+leave Hercules [animation="Fade Out Up" wait="true"]

@@ -1,0 +1,4 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: A dead end… Or is it? These tracks—they must lead somewhere. 
+Hercules: If someone passed through here, there’s a way forward. Time to scale the mountain once again.
+leave Hercules [animation="Fade Out Up" wait="true"]
