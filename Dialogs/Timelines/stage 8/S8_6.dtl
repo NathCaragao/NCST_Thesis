@@ -1,0 +1,15 @@
+Herakles stands over the defeated King Diomedes, his chest heaving with exhaustion. Diomedes, bloodied and battered, crawls backward, pleading for his life.
+join King_Diomedes center
+King_Diomedes: Mercy, Herakles! Spare me, and I’ll give you riches, power— anything you want! Just don’t kill me!
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(crosses his arms and glares)* *"Mercy? Did your victims beg for their lives, Diomedes? Did you listen as they pleaded, as they cried for their\
+families?
+Hercules: No. You laughed at their suffering, fed them to your cursed beasts, and watched without remorse.
+King_Diomedes: Please! I can change! I can—
+Hercules: *(interrupts)*
+Hercules: Enough! Your fate is sealed. Hades will pass judgment on you in the underworld.
+Herakles turns his back as the mares, wild with hunger, descend on Diomedes, ending his reign of terror.
+*Once it is done, Herakles kneels and bows his head.* 
+Hercules: May the souls of the innocents you killed find peace at last. I pray that their suffering is avenged.
+*He takes the mares by their bridles, their savage eyes now tamed by his strength.* 
+Hercules: It’s over. Time to return to Eurystheus and put this labor behind me.
