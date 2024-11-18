@@ -1,0 +1,11 @@
+Inside the palace, Hades sits on his obsidian throne, his presence commanding yet eerily calm.
+join Hades center
+Hades: *(in a deep, resonant voice)* Heracles. What brings you to my domain? Few mortals dare to enter, and even fewer leave.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(bowing respectfully)* Lord Hades, I seek Cerberus. Grant me permission to take him to the surface,\
+and I swear to return him unharmed.
+Hades: *(raising an eyebrow, intrigued)* You ask much, nephew. Very well, I permit it—but only if you can subdue Cerberus without weapons. Show me the strength of a demigod.
+Cerberus emerges, its three heads snarling, venom dripping from its fangs. Hades watches in amusement as Heracles prepares for the fight.
+Hercules: Cerberus, guardian of the dead... Let’s see if you can match my strength. This shall be my final labor!
+leave Hades
+leave Hercules [animation="Fade Out Up" wait="true"]

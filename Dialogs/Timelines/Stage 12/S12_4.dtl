@@ -1,0 +1,9 @@
+As Heracles walks deeper into the Underworld, the ghostly form of Geryon appears, his three heads twisted in rage.
+join Geryon center
+Geryon: Heracles! You dare tread here after taking my life? Have you come to finish what you started?
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(calmly, with a smirk)* I took your cattle, Geryon, and now I take your pride. Stay in my path, and I’ll send your spirit to a deeper torment.
+Geryon: *(growling, readying himself)* Bold words for a mortal in the land of the dead. Let’s see if your strength holds true here!
+*A fierce battle ensues, with Heracles defeating the vengeful spirit once again.* 
+leave Geryon
+leave Hercules [animation="Fade Out Up" wait="true"]
