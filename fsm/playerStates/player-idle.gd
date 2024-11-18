@@ -12,16 +12,21 @@ func update(delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	# putting the gravity to the actor
+	# Adjust velocity y(gravity)
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
 	actor.move_and_slide()
 	
+	# Play the idle animation
 	if actor.playerGameData.velocity.x == 0:
 		actor.animation_player.play("idle")
 	
+	# Switch to other states if suitable
+	if player_health_component.current_health == 0:
+		Transitioned.emit(self, "playerdeath")
+	# -- Switch using Input if controlled
 	if actor.playerGameData.isControlled:
 		if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
 			Transitioned.emit(self, "playerrun")
@@ -37,24 +42,20 @@ func physics_update(delta: float) -> void:
 		# transitions to skill state
 		if Input.is_action_just_pressed("skill"):
 			Transitioned.emit(self, "playerskill")
-		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")
+	# -- Switch using variables if not controlled
 	else:
 		if actor.playerGameData.velocity.x != 0:
 			Transitioned.emit(self, "playerrun")
 		
 		# transitions to jump state
-		if Input.is_action_just_pressed("jump"):
+		if actor.playerGameData.isJumping:
 			Transitioned.emit(self, "playerjump")
 		
 		# transitions to attack state
-		if Input.is_action_just_pressed("attack"):
+		if actor.playerGameData.isAttacking:
 			Transitioned.emit(self, "playerattack")
 		
 		# transitions to skill state
-		if Input.is_action_just_pressed("skill"):
+		if actor.playerGameData.isSkill:
 			Transitioned.emit(self, "playerskill")
 		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")

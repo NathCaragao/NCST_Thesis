@@ -2,6 +2,10 @@ class_name PlayerHercules
 extends CharacterBody2D
 
 
+
+	# How to decode velocity
+	#print_debug(Vector2(self.playerGameData.velocity))
+	
 # FINAL VARIABLES
 # -- Updated and used for server-client comm
 var playerGameData = {
@@ -10,9 +14,9 @@ var playerGameData = {
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
-	"direction" = 1,
+	"direction" = 0,
 	"weaponMode" = "Melee",
-	"velocity" = Vector2(0, -1000),
+	"velocity" = Vector2(0, 0),
 }
 
 # -- One time setup
@@ -45,39 +49,55 @@ func updatePlayer(updateDictionary):
 	self.playerGameData.weaponMode = updateDictionary["weaponMode"]
 
 
+
+func _input(event: InputEvent) -> void:
+	pass
+	#if !self.playerGameData.isControlled:
+		#return
+	#
+	## Horizontal Movement
+	#self.playerGameData.direction = Input.get_axis("move_left", "move_right")
+	## Capture jumping
+	#self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
+	## Capture attack usage
+	#self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
+	## Capture skill usage
+	#self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
+	## Weapon Mode switching
+	#if event.is_action_pressed("melee-mode"):
+		#self.playerGameData.weaponMode = "Melee"
+		#switch_weapon_mode("Melee")
+	#elif event.is_action_pressed("ranged-mode"):
+		#self.playerGameData.weaponMode = "Ranged"
+		#switch_weapon_mode("Ranged")
+	## Velocity update even if there is no input directly affecting this
+	#self.playerGameData.velocity = self.velocity
+
 # STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
 # STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS
-func _input(event: InputEvent) -> void:
-	if !self.playerGameData.isControlled:
-		return
-	
-	# Horizontal Movement
-	self.playerGameData.direction = Input.get_axis("move_left", "move_right")
-	# Capture jumping
-	self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
-	# Capture attack usage
-	self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
-	# Capture skill usage
-	self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
-	# Weapon Mode switching
-	if event.is_action_pressed("melee-mode"):
-		self.playerGameData.weaponMode = "Melee"
-		switch_weapon_mode("Melee")
-	elif event.is_action_pressed("ranged-mode"):
-		self.playerGameData.weaponMode = "Ranged"
-		switch_weapon_mode("Ranged")
-	# Velocity update even if there is no input directly affecting this
-	self.playerGameData.velocity = self.velocity
-	
 # STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
 # STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
+	if self.playerGameData.isControlled:
+		# Horizontal Movement
+		self.playerGameData.direction = Input.get_axis("move_left", "move_right")
+		# Capture jumping
+		self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
+		# Capture attack usage
+		self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
+		# Capture skill usage
+		self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
+		# Weapon Mode switching
+		if Input.is_action_just_pressed("melee-mode"):
+			self.playerGameData.weaponMode = "Melee"
+			switch_weapon_mode("Melee")
+		elif Input.is_action_just_pressed("ranged-mode"):
+			self.playerGameData.weaponMode = "Ranged"
+			switch_weapon_mode("Ranged")
+		# Velocity update even if there is no input directly affecting this
+		self.playerGameData.velocity = self.velocity
+	
 	_flip_sprite()
-
-	
-	# How to decode velocity
-	#print_debug(Vector2(self.playerGameData.velocity))
-	
 
 func _flip_sprite() -> void:
 	if self.playerGameData.direction > 0:
