@@ -10,9 +10,9 @@ var playerGameData = {
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
-	"direction" = 0,
+	"direction" = 1,
 	"weaponMode" = "Melee",
-	"velocity" = Vector2(0, 0),
+	"velocity" = Vector2(0, -1000),
 }
 
 # -- One time setup
@@ -27,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	initialize("", true)
+	initialize("", false)
 
 
 func initialize(initPlayerId: String, initIsControlled: bool):
@@ -66,13 +66,14 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ranged-mode"):
 		self.playerGameData.weaponMode = "Ranged"
 		switch_weapon_mode("Ranged")
+	# Velocity update even if there is no input directly affecting this
+	self.playerGameData.velocity = self.velocity
 	
 # STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
 # STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
 	_flip_sprite()
-	if self.playerGameData.isControlled:
-		self.playerGameData.velocity = self.velocity
+
 	
 	# How to decode velocity
 	#print_debug(Vector2(self.playerGameData.velocity))

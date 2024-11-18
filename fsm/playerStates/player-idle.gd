@@ -13,7 +13,10 @@ func update(delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	# putting the gravity to the actor
-	actor.velocity.y += actor.gravity * delta
+	if actor.playerGameData.isControlled:
+		actor.velocity.y += actor.gravity * delta
+	else:
+		actor.velocity.y = actor.playerGameData.velocity.y
 	actor.move_and_slide()
 	
 	if actor.playerGameData.velocity.x == 0:
