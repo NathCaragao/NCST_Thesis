@@ -38,8 +38,11 @@ directories/dch_directory={
 "Athena": "res://Dialogs/Characters/Athena.dch",
 "Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
 "Centaur_Leader": "res://Dialogs/Characters/Centaur_Leader.dch",
-"Eurystheus": "res://Dialogs/Characters/Eurystheus.dch",
 "Elite_Guard": "res://Dialogs/Characters/Elite_Guard.dch",
+"Eurystheus": "res://Dialogs/Characters/Eurystheus.dch",
+"Eurytheon": "res://Dialogs/Characters/Eurytheon.dch",
+"Geryon": "res://Dialogs/Characters/Geryon.dch",
+"Helios": "res://Dialogs/Characters/Helios.dch",
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
 "Hypolita": "res://Dialogs/Characters/Hypolita.dch",
 "King_Diomedes": "res://Dialogs/Characters/King_Diomedes.dch",
@@ -53,6 +56,14 @@ directories/dch_directory={
 "scholar": "res://Dialogs/Characters/scholar.dch"
 }
 directories/dtl_directory={
+"S10_1": "res://Dialogs/Timelines/Stage 10/S10_1.dtl",
+"S10_1-1": "res://Dialogs/Timelines/Stage 10/S10_1-1.dtl",
+"S10_1-2": "res://Dialogs/Timelines/Stage 10/S10_1-2.dtl",
+"S10_1-3": "res://Dialogs/Timelines/Stage 10/S10_1-3.dtl",
+"S10_1-4": "res://Dialogs/Timelines/Stage 10/S10_1-4.dtl",
+"S10_1-5": "res://Dialogs/Timelines/Stage 10/S10_1-5.dtl",
+"S10_1-6": "res://Dialogs/Timelines/Stage 10/S10_1-6.dtl",
+"S10_1_2": "res://Dialogs/Timelines/Stage 10/S10_1_2.dtl",
 "S1_1-1": "res://Dialogs/Timelines/Stage1/S1_1-1.dtl",
 "S1_1-10": "res://Dialogs/Timelines/Stage1/S1_1-10.dtl",
 "S1_1-11-1": "res://Dialogs/Timelines/Stage1/S1_1-11-1.dtl",

@@ -1,0 +1,8 @@
+After defeating Eurytion, Herakles hears a heavy rumbling. The ground trembles as Geryon emerges from his fortress, towering above him with three bodies fused at the waist.
+A monstrous sight, Geryon loomed over the battlefield, each of his three heads snarling with rage. His voice boomed like thunder as he beheld the intruder.
+join Geryon center
+Geryon: *(enraged)* You dare spill the blood of my guardians, Herakles?! You’ll pay for your insolence with your life!
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Your tyranny ends here, Geryon. I’ve come for the cattle, and I’ll take them, whether you stand or fall.
+leave Geryon
+leave Hercules [animation="Fade Out Up" wait="true"]

@@ -1,0 +1,5 @@
+*Herakles reaches the base of a steep cliff, its jagged edges rising high above him. He grips the rock firmly, testing its stability.*
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(gritting his teeth)* No path is too steep for me. The cattle await, and nothing will stop me.
+*He begins to climb, his muscles straining as he pulls himself upward.* 
+leave Hercules [animation="Fade Out Up" wait="true"]

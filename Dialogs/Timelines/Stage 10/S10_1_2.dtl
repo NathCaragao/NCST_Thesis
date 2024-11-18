@@ -1,0 +1,15 @@
+Herakles’ path was grueling, the scorching heat of the desert sapping his strength with each step. The sun, unrelenting, seemed determined to bring him to his knees.
+*Herakles collapses to his knees in frustration, raising his bow to the sky.* 
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(yelling to the heavens)* *"Curse you, Helios! Will you strike me down with your infernal heat, or will you face me yourself?!"*
+*He fires an arrow into the sky. Moments later, the sky glows with divine light as Helios descends in his golden chariot.* 
+join Helios center
+Helios: *(amused)* Herakles, your boldness knows no bounds. You would challenge the very sun?!
+Hercules: *(still kneeling, panting from exhaustion)* I challenge only the cruelty of this heat! If you are as great as they say, then show mercy to a\
+warrior on a righteous quest!
+*Helios smiles, impressed by Herakles’ audacity. He gestures, and a golden cup appears, floating toward Herakles.* 
+Helios: Take this, Herakles. This golden cup will carry you across the sea to Erytheia. But remember, courage and wit will serve you more than strength alone in the trials ahead. 
+*Herakles accepts the cup, bowing his head in gratitude.* 
+Hercules: Thank you, Helios. I will not forget your aid.
+leave Helios
+leave Hercules [animation="Fade Out Up" wait="true"]

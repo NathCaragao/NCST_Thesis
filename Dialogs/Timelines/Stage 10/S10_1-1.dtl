@@ -1,0 +1,4 @@
+Herakles steps onto the shores of Erytheia, the landscape eerie and alien. He surveys his surroundings, his expression resolute.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(to himself)* A strange land… hostile and silent. Whatever dangers lie ahead, I’ll face them head-on. Time to get moving.
+leave Hercules [animation="Fade Out Up" wait="true"]
