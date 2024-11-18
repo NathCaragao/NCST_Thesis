@@ -1,0 +1,14 @@
+Herakles steps forward as a group of Amazon warriors approach him, their\
+weapons drawn and eyes sharp with suspicion.
+join Amazon_Guard center
+Amazon_Guard: Halt, stranger! You tread on Amazon lands. State your purpose, or prepare to face the wrath of our queen.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(raises his hands in peace)* 
+Hercules: I come in peace. My name is Herakles, and I am here to speak with your queen, Hippolyta.
+Amazon_Guard: And why would the mighty Herakles need such a thing? Speak carefully, for your words may be your last.
+Hercules: I undertake this labor not of my own desire but as penance. I wish only to speak with your queen, to explain my purpose. 
+Hercules: If she wills it, I will leave without raising a hand against your people.
+*The Amazons exchange glances, then lower their weapons slightly.* 
+Amazon_Guard:  Very well. If you come in peace, we shall take you to Queen Hippolyta. But tread carefully—our trust is not easily earned. 
+leave Amazon_Guard
+leave Hercules [animation="Fade Out Up" wait="true"]

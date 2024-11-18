@@ -1,0 +1,15 @@
+*Herakles defeats several Amazon warriors and finally comes face to face with Hippolyta, her weapon drawn but her eyes conflicted.* 
+join Hypolita center
+Hypolita: 	Herakles, why? I trusted you, and yet you bring bloodshed to my people. Did you plan this betrayal all along?
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(breathing heavily, lowering his weapon)* *"No, Hippolyta. I swear it! This is Hera’s doing—she disguised herself as one of your own and\
+spread lies to pit us against each other.
+Hercules:  Look into my eyes and see the truth. I never wanted this.
+*Hippolyta hesitates, her gaze softening as she sees the sorrow in Herakles’ expression.* 
+Hypolita: Hera… That wretched goddess. I see now that you speak the truth, Herakles. But my honor demands I defend my people, even against lies. I\
+cannot let this pass without a fight.
+Hercules:  *(nods solemnly)* *"Then we fight—not as enemies, but as warriors who respect each other’s strength. 
+Hercules: I will not hold back, but know that I do not wish to harm you."*
+*A tense and respectful duel ensues.* 
+leave Hercules [animation="Fade Out Up" wait="true"]
+leave Hypolita
