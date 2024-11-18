@@ -1,0 +1,9 @@
+The battle is fierce, with the bird diving and screeching, feathers flying like arrows. Herakles finally strikes the killing blow, and the massive bird collapses to the ground. Herakles catches his breath, surveying the battlefield.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Another monster falls. Eurystheus will have no choice but to acknowledge my strength now.
+*As he prepares to leave, he reflects on Athena’s aid.* 
+Hercules: Your gift turned the tide of this battle. Without you, this labor might have ended differently.
+Hercules: I owe this victory to your wisdom.
+*He glances back at the marsh, now silent and still.* 
+Hercules: The marsh is cleansed. Time to return to Eurystheus and face whatever madness he dreams up next.
+leave Hercules [animation="Fade Out Up" wait="true"]

@@ -1,0 +1,4 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: "This river’s too treacherous to cross… 
+Hercules: If I try, I might not make it to the other side. The cliffs, though dangerous, seem like my only option. Up I go.
+leave Hercules [animation="Fade Out Up" wait="true"]

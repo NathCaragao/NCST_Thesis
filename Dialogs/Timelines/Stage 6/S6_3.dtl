@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: A cave... There’s no telling what lies ahead, but I’ve faced worse. Stay sharp, Herakles. Keep your wits about you.
+leave Hercules [animation="Fade Out Up" wait="true"]
