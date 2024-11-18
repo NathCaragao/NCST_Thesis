@@ -36,10 +36,15 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={
 "Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
 "Centaur_Leader": "res://Dialogs/Characters/Centaur_Leader.dch",
+"Eurystheus": "res://Dialogs/Characters/Eurystheus.dch",
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
 "Megalus": "res://Dialogs/Characters/Megalus.dch",
 "Pholos": "res://Dialogs/Characters/Pholos.dch",
+"Villager 1": "res://Dialogs/Characters/Villager 1.dch",
+"Villager 2": "res://Dialogs/Characters/Villager 2.dch",
 "artemis": "res://Dialogs/Characters/artemis.dch",
+"augeas": "res://Dialogs/Characters/augeas.dch",
+"narrator": "res://Dialogs/Characters/narrator.dch",
 "scholar": "res://Dialogs/Characters/scholar.dch"
 }
 directories/dtl_directory={
@@ -94,6 +99,12 @@ directories/dtl_directory={
 "S4_7": "res://Dialogs/Timelines/Stage4/S4_7.dtl",
 "S4_8": "res://Dialogs/Timelines/Stage4/S4_8.dtl",
 "S4_9": "res://Dialogs/Timelines/Stage4/S4_9.dtl",
+"S51_1": "res://Dialogs/Timelines/Stage5.1/S51_1.dtl",
+"S51_2": "res://Dialogs/Timelines/Stage5.1/S51_2.dtl",
+"S51_3": "res://Dialogs/Timelines/Stage5.1/S51_3.dtl",
+"S51_ending": "res://Dialogs/Timelines/Stage5.1/S51_ending.dtl",
+"S51_opening": "res://Dialogs/Timelines/Stage5.1/S51_opening.dtl",
+"S51_opening_2": "res://Dialogs/Timelines/Stage5.1/S51_opening_2.dtl",
 "burn_vines_false": "res://Dialogs/Timelines/Stage2/burn_vines_false.dtl",
 "cave_spotted": "res://Dialogs/Timelines/Stage2/cave_spotted.dtl",
 "use_apollo_flame": "res://Dialogs/Timelines/Stage2/use_apollo_flame.dtl",

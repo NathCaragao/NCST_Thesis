@@ -1,0 +1,5 @@
+<Empty Text Event>
+join Hercules center [animation="Fade In Down"]
+Hercules: "okay then lets do this"
+*(Hercules picks up primitive tools and begins to clear the manure. The work is slow, dirty, and exhausting. Sweat pours down his face, and his movements grow sluggish as the sun rises higher in the sky. Flies buzz relentlessly around him, and the stench grows unbearable.)*
+leave Hercules [animation="Fade Out Up"]

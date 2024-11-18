@@ -1,0 +1,7 @@
+join Hercules center [animation="Fade In Down"]
+*(Hercules stands amid the filth, surveying the endless sea of manure. He grits his teeth, throwing down the shovel in frustration.)*
+Hercules: *(growling to himself)* "This is folly. Even with my strength, this is a task for fools. There must be another way..."  
+*(He looks around, his sharp eyes catching sight of a nearby water channel running beside the stables. His face brightens as a plan begins to form.)*  
+Hercules: *(smirking)* "Of course. If my hands cannot clean this filth, the rivers will."  
+*(Hercules  strides toward the water channel, his confidence renewed.)*
+leave Hercules [animation="Fade Out Up"]
