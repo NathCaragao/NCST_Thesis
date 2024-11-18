@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=99 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -9083,6 +9083,9 @@ size = Vector2(20, 296)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36yfp"]
 size = Vector2(661, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8gx"]
+size = Vector2(10, 28)
+
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_4x2vf")
 player = NodePath("Player")
@@ -9556,6 +9559,13 @@ script = ExtResource("33_va0sa")
 position = Vector2(3.5, 41.5)
 shape = SubResource("RectangleShape2D_36yfp")
 debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2w8gx")
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

@@ -35,8 +35,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
+"Centaur_Leader": "res://Dialogs/Characters/Centaur_Leader.dch",
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
 "Megalus": "res://Dialogs/Characters/Megalus.dch",
+"Pholos": "res://Dialogs/Characters/Pholos.dch",
+"artemis": "res://Dialogs/Characters/artemis.dch",
 "scholar": "res://Dialogs/Characters/scholar.dch"
 }
 directories/dtl_directory={
@@ -79,6 +82,10 @@ directories/dtl_directory={
 "S2_2-7": "res://Dialogs/Timelines/Stage2/S2_2-7.dtl",
 "S2_2-8": "res://Dialogs/Timelines/Stage2/S2_2-8.dtl",
 "S2_2-9": "res://Dialogs/Timelines/Stage2/S2_2-9.dtl",
+"S4_1": "res://Dialogs/Timelines/Stage4/S4_1.dtl",
+"S4_2": "res://Dialogs/Timelines/Stage4/S4_2.dtl",
+"S4_3": "res://Dialogs/Timelines/Stage4/S4_3.dtl",
+"S4_4": "res://Dialogs/Timelines/Stage4/S4_4.dtl",
 "burn_vines_false": "res://Dialogs/Timelines/Stage2/burn_vines_false.dtl",
 "cave_spotted": "res://Dialogs/Timelines/Stage2/cave_spotted.dtl",
 "use_apollo_flame": "res://Dialogs/Timelines/Stage2/use_apollo_flame.dtl",
