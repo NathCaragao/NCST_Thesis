@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0n3e5suvwep"]
 
-[ext_resource type="Texture2D" uid="uid://iwuvi7h4m132" path="res://assets/tileset (world-building)/vecteezy_an-8-bit-retro-styled-pixel-art-illustration-of-a-canoe_19527063.png" id="1_8nkoc"]
+[ext_resource type="Texture2D" uid="uid://c4gqkovhspm60" path="res://assets/tileset (world-building)/boat.png" id="1_8nkoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu26i"]
 size = Vector2(115, 12)
 
 [node name="Boat" type="StaticBody2D"]
 
-[node name="VecteezyAn-8-bit-retro-styled-pixel-art-illustration-of-a-canoe19527063" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(112, -41)
 scale = Vector2(0.034, 0.0295)
 texture = ExtResource("1_8nkoc")
