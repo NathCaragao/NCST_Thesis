@@ -1,0 +1,3 @@
+join Hercules center [animation="Fade In Down"]
+Hercules: "Alright, Hercules, focus! Artemis’ sacred hind or no, it’s just another beast. Swift legs and golden hooves won’t stop me. I’m the son of Zeus, after all!"
+leave Hercules [animation="Fade Out Up"]
