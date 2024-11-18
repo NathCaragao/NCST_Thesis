@@ -1,0 +1,9 @@
+Heracles approaches the edge of the River Styx, where Charon waits in his spectral boat. The ferryman's glowing eyes narrow as he notices Heracles.
+join Charon center
+Charon: *(in a hollow, echoing voice)* 
+Charon: No living soul may cross the Styx. Turn back, mortal, or risk my wrath. 
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(stepping closer, his tone firm)* 
+Hercules: I am Heracles, son of Zeus, and I have business in the Underworld. You will let me pass.
+Charon: *(hesitating, unnerved by Heracles' presence)*  Your strength is… unnatural. Very well, Heracles. I shall ferry you, but tread carefully—the dead do not take kindly to the living.
+*Heracles steps onto the boat, and they cross the dark waters in silence.* 
