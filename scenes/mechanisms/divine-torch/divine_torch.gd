@@ -22,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 				print("You got Divine Torch!")
 				torch_taken = true
 				torch_equipped()
+				Dialogic.start("S2_2-14_2")
 
 func torch_equipped() -> void:
 	torch_item.visible = true

@@ -7,3 +7,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		key_taken = true
 		visible = false
 		print("Got silver key!")
+		Dialogic.start("S2_2-6")

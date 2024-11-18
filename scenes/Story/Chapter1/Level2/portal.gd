@@ -18,5 +18,6 @@ func on_portal_enter() -> void:
 		actor.position.x = 7079
 		actor.position.y = 3099
 		print("teleported")
+		Dialogic.start("S2_2-7")
 	else:
 		print("Key is required")

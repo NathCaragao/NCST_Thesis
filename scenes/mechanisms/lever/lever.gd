@@ -18,3 +18,4 @@ func activate() -> void:
 
 func on_activate() -> void:
 	activate()
+	Dialogic.start("S2_2-13")
