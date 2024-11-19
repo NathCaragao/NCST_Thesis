@@ -8,6 +8,7 @@ Hercules: Herakles\: *(steps forward with a glare)* *"You’ve spilled enough in
 Hercules: It’s not I who will be fed to yourbeasts but you. And they will feast on you as vengeance for the countless lives you’ve stolen.
 King_Diomedes: Big words for a dead man. Let’s see how well you fight when\
 your life’s on the line.
-*The battle begins.* 
+*The battle begins.*
 leave King_Diomedes
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="BattleStart"]

@@ -9,6 +9,8 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
+signal LevelCompleted
+
 # mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "diomedes-run",
@@ -37,3 +39,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	$EnemyHealthComp/CanvasLayer.visible = false
+
+func post_dialog() -> void:
+	Dialogic.start("S8_6")
+	await Dialogic.timeline_ended

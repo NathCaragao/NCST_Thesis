@@ -5,12 +5,15 @@ extends Node2D
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
-@onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3]
+@onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3, $SpawnArea/Spawn4]
+
 
 var paused : bool = false
 
 func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
+	Dialogic.signal_event.connect(on_dialog_done)
+	Dialogic.signal_event.connect(on_8complete)
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:
@@ -33,12 +36,24 @@ func spawn_enemy(index : int, spawn_point_index: int) -> void:
 	call_deferred("add_child", enemy)
 	print("Enemy spawned")
 
+func spawn_activate():
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	spawn_enemy(0, 0)
+	spawn_enemy(1, 1)
+	spawn_enemy(1, 2)
+	spawn_enemy(1, 3)
 
-func _on_spawn_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		# in-game screen fade out transition
-		LevelScreenTransition.transition()
-		await LevelScreenTransition.on_transition_finished
-		spawn_enemy(0, 0)
-		spawn_enemy(1, 1)
-		spawn_enemy(2, 2)
+func on_dialog_done(argument: String) -> void:
+	if argument == "BattleStart":
+		spawn_activate()
+
+func on_8complete(argument: String) -> void:
+	if argument == "8LaborComplete":
+		on_finish()
+
+
+func on_finish() -> void:
+	victory_screen.visible = true
+	victory_screen.update_scores()
