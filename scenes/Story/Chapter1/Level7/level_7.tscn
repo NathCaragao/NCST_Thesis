@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=83 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level7/level_7.gd" id="1_irepw"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="28_cqgju"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="31_61ji8"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/spike_hitbox.gd" id="32_ntyp6"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="34_erom1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfyj"]
 texture = ExtResource("3_n25p7")
@@ -2853,6 +2854,9 @@ size = Vector2(5, 543)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evddf"]
 size = Vector2(7, 896)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qd3g"]
+size = Vector2(20, 444)
+
 [node name="Level7" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_irepw")
 enemy_scenes = Array[PackedScene]([ExtResource("2_6vrgn"), ExtResource("19_llmbi"), ExtResource("18_5kwfr")])
@@ -3245,4 +3249,58 @@ position = Vector2(2653.5, -854)
 shape = SubResource("RectangleShape2D_evddf")
 debug_color = Color(0.211765, 0.639216, 0, 0.419608)
 
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(-2175, -387)
+shape = SubResource("RectangleShape2D_3qd3g")
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(4751, -488)
+shape = SubResource("RectangleShape2D_3qd3g")
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(8860, -884)
+shape = SubResource("RectangleShape2D_3qd3g")
+
+[node name="DialogActivator4" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator4"]
+position = Vector2(10132, -1091)
+shape = SubResource("RectangleShape2D_3qd3g")
+
+[node name="DialogActivator5" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator5"]
+position = Vector2(12014, -297)
+shape = SubResource("RectangleShape2D_3qd3g")
+
+[node name="DialogActivator6" type="Area2D" parent="."]
+script = ExtResource("34_erom1")
+dialog_file = "S8_6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator6"]
+position = Vector2(12099, -300)
+shape = SubResource("RectangleShape2D_3qd3g")
+
 [connection signal="body_entered" from="SpawnArea" to="." method="_on_spawn_area_body_entered"]
+[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator4" to="DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator5" to="DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator6" to="DialogActivator6" method="_on_body_entered"]
