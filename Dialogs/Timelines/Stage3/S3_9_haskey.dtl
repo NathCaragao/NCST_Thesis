@@ -1,4 +1,3 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
-"Ah, so this is where that key fits. Finally, something goes my way."
+Hercules: "This lever might be the key to opening the gate"
 leave Hercules [animation="Fade Out Up" wait="true"]
-(He unlocks the door.)
