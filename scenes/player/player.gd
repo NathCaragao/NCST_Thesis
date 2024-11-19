@@ -15,7 +15,7 @@ var playerGameData = {
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
-	"direction" = 1,
+	"direction" = 0,
 	"weaponMode" = "Melee",
 	"velocity" = Vector2(0, 0),
 	"position" = Vector2(0, 0),
@@ -33,7 +33,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
+	#initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 
 
@@ -45,10 +45,9 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 	self.playerGameData.position = initSpawnPosition
 	%Camera2D.enabled = self.playerGameData.isControlled
 	if self.playerGameData.isControlled:
-		%NameTag.hide()
+		%NameTag.text = "\"YOU\""
 	else:
 		%NameTag.text = self.playerGameData.displayName
-		%NameTag.show()
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
 func updatePlayer(updateDictionary):

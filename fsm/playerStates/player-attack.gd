@@ -20,9 +20,9 @@ func _ready() -> void:
 	pass
 
 func enter() -> void:
-	if actor.weapon_mode == "Melee":
+	if actor.playeGameData.weaponMode == "Melee":
 		sword_attack()
-	elif actor.weapon_mode == "Ranged":
+	elif actor.playeGameData.weaponMode == "Ranged":
 		bow_attack()
 
 func update(delta: float) -> void:
