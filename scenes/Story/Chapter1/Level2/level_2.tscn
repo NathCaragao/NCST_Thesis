@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=100 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="15_qkksp"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
 [ext_resource type="PackedScene" uid="uid://mrkhn0xb3trn" path="res://scenes/mechanisms/burning-vines/burning_vine.tscn" id="19_hvskf"]
+[ext_resource type="PackedScene" uid="uid://dxw6ovxhv2u2t" path="res://scenes/enemies/hydra/hydra.tscn" id="20_u5h8x"]
 [ext_resource type="PackedScene" uid="uid://voynlee26e1k" path="res://scenes/mechanisms/divine-torch/divine_torch.tscn" id="21_dqb16"]
 [ext_resource type="PackedScene" uid="uid://bsoinqjqgtn55" path="res://scenes/friendly-npcs/Merchant/merchant.tscn" id="23_ihlie"]
 [ext_resource type="Script" path="res://scenes/friendly-npcs/Merchant/merchant.gd" id="24_jbt4r"]
@@ -9112,7 +9113,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(8270, -150)
+position = Vector2(3246, 984)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -9333,6 +9334,10 @@ shape = SubResource("RectangleShape2D_w4shn")
 [node name="col5" type="CollisionShape2D" parent="Enemies/boundary"]
 position = Vector2(3090, 3118)
 shape = SubResource("RectangleShape2D_w4shn")
+
+[node name="Hydra" parent="Enemies" instance=ExtResource("20_u5h8x")]
+position = Vector2(3803, 940)
+scale = Vector2(4, 4)
 
 [node name="Mechanism" type="Node2D" parent="."]
 
