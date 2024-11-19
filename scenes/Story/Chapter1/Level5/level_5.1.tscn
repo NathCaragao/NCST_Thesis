@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=19 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_y6l5g"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wlwj353p7vg3" path="res://scenes/mechanisms/rotating platform/Rotating_platform1.tscn" id="4_kk0sn"]
 [ext_resource type="Texture2D" uid="uid://gl516oxlyya6" path="res://assets/Images/BackgroundImages/parallax/MorningLayer2.png" id="5_d7j4h"]
 [ext_resource type="PackedScene" uid="uid://d3nhqr8jx3mh3" path="res://scenes/objects/poop/poop.tscn" id="10_tmo4j"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_sgld1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1082,6 +1083,9 @@ texture = ExtResource("1_7fy37")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ayca0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8u17"]
+size = Vector2(20, 444)
+
 [node name="Level5_1" type="Node2D"]
 
 [node name="sky" type="Parallax2D" parent="."]
@@ -1196,3 +1200,31 @@ position = Vector2(3688, -137)
 
 [node name="Poop15" parent="Poops" instance=ExtResource("10_tmo4j")]
 position = Vector2(3511, -137)
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("11_sgld1")
+dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_1.dtl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(-2063, -228)
+shape = SubResource("RectangleShape2D_f8u17")
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("11_sgld1")
+dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_2.dtl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(-991, -221)
+shape = SubResource("RectangleShape2D_f8u17")
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("11_sgld1")
+dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_3.dtl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(3207, -349)
+shape = SubResource("RectangleShape2D_f8u17")
+
+[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
