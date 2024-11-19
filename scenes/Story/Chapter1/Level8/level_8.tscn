@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=34 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="15_bb8r2"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="16_1exm2"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="17_53f2o"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="18_kohvx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lri4"]
 texture = ExtResource("5_j1480")
@@ -2478,6 +2479,9 @@ sources/2 = SubResource("TileSetAtlasSource_741t4")
 sources/3 = SubResource("TileSetAtlasSource_1ojvw")
 sources/4 = SubResource("TileSetAtlasSource_3mnpn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uywfp"]
+size = Vector2(20, 308)
+
 [node name="Level8" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_ut154")
 fail_screen = NodePath("ScoreUI/FailScreen")
@@ -2544,3 +2548,40 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("17_53f2o")]
 visible = false
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("18_kohvx")
+dialog_file = "S9_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(0, -144)
+shape = SubResource("RectangleShape2D_uywfp")
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("18_kohvx")
+dialog_file = "S9_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(2537, 10)
+shape = SubResource("RectangleShape2D_uywfp")
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("18_kohvx")
+dialog_file = "S9_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(2558, 14)
+shape = SubResource("RectangleShape2D_uywfp")
+
+[node name="DialogActivator4" type="Area2D" parent="."]
+script = ExtResource("18_kohvx")
+dialog_file = "S9_4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator4"]
+position = Vector2(2579, 10)
+shape = SubResource("RectangleShape2D_uywfp")
+
+[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator4" to="DialogActivator4" method="_on_body_entered"]
