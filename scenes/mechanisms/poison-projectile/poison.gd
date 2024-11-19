@@ -6,13 +6,16 @@ extends Node2D
 
 @export var tracking_time: float = 1.5  # How long the projectile tracks the player
 @export var tracking_speed: float = 3.0  # How fast it turns toward player
+@export var gravity: float = 400.0  # Controls how fast it falls
 @onready var player = get_tree().get_first_node_in_group("Player")
+@export var drag: float = 0.98 
 
 var vel : float
 var total_dmg : int
 var has_hit : bool = false
 var tracking: bool = true
 var initial_direction: Vector2
+var velocity: Vector2
 
 func _ready() -> void:
 	# Start a timer to stop tracking after tracking_time seconds
@@ -36,6 +39,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		# After tracking time, continue in last direction
 		move_local_x(vel * speed * delta)
+		## After tracking ends:
+		## 1. Apply gravity
+		#velocity.y += gravity * delta
+		#
+		## 2. Apply drag/air resistance
+		#velocity *= drag
+		#
+		## 3. Move with current velocity
+		#position += velocity * delta
+		#
+		## 4. Optional: Rotate the projectile to face its movement direction
+		#rotation = velocity.angle()
 
 func _on_tracking_timer_timeout() -> void:
 	tracking = false
