@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=112 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="7_885c3"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="8_r2o3i"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="9_q76j5"]
+[ext_resource type="PackedScene" uid="uid://b4b5v5gh6gekm" path="res://scenes/enemies/centaur/centaur.tscn" id="10_ahso4"]
 [ext_resource type="PackedScene" uid="uid://q551jhmymwnr" path="res://scenes/enemies/bandit/bandit.tscn" id="13_dmkbq"]
 [ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="14_p3tjk"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/lvl_3_gate.gd" id="15_282q2"]
@@ -4292,6 +4293,10 @@ scale = Vector2(0.528169, 1.04167)
 [node name="Bandit4" parent="Enemies" instance=ExtResource("13_dmkbq")]
 position = Vector2(3632.75, 1081.25)
 scale = Vector2(0.528169, 1.04167)
+
+[node name="Centaur" parent="Enemies" instance=ExtResource("10_ahso4")]
+position = Vector2(3301.76, 878.472)
+scale = Vector2(0.352113, 0.694444)
 
 [node name="Log" parent="." node_paths=PackedStringArray("static_collision", "large_crate") instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 105)
