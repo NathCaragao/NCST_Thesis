@@ -191,6 +191,7 @@ directories/dtl_directory={
 "S9_4": "res://Dialogs/Timelines/Stage 9/S9_4.dtl",
 "burn_vines_false": "res://Dialogs/Timelines/Stage2/burn_vines_false.dtl",
 "cave_spotted": "res://Dialogs/Timelines/Stage2/cave_spotted.dtl",
+"pholos_intro": "res://Dialogs/Timelines/Stage4/pholos_intro.dtl",
 "post_cutscene": "res://Dialogs/Timelines/Stage 12/post_cutscene.dtl",
 "timeline": "res://Dialogs/Timelines/Stage3/timeline.dtl",
 "use_apollo_flame": "res://Dialogs/Timelines/Stage2/use_apollo_flame.dtl",

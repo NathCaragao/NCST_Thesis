@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://caxpvmw3y1bwl"]
+
+[ext_resource type="Texture2D" uid="uid://d2mlvw3yticct" path="res://assets/npcs/pholos/NPC_pholos_idle.png" id="1_1ljsl"]
+[ext_resource type="Script" path="res://scenes/friendly-npcs/pholos/pholos_npc.gd" id="1_ks56q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mef4e"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i6sg"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7ocp"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk6t"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipu8k"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viemq"]
+atlas = ExtResource("1_1ljsl")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bscr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mef4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i6sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7ocp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipu8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viemq")
+}],
+"loop": true,
+"name": &"pholos-idle",
+"speed": 5.0
+}]
+
+[node name="Pholos_NPC" type="Node2D"]
+script = ExtResource("1_ks56q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bscr0")
+animation = &"pholos-idle"
+autoplay = "pholos-idle"
+frame_progress = 0.00891334

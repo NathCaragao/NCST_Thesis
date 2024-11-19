@@ -1,0 +1,7 @@
+*(Herakles climbs the rugged hill, his breath misting in the cold air. The faint singing grows louder as he crests the ridge.
+Nestled against the mountainside, a warm glow emanates from a secluded cave.
+Curious, Herakles approaches and peeks inside. A centaur with a weathered face and kind eyes sits by the fire, humming softly to himself as he stirs a pot.)*
+Pholos: *(looking up, startled at first but quickly smiling)*
+join Pholos rightmost [animation="Fade In Down" wait="true"]
+Pholos: Ah, a traveler! By the gods, you gave me a fright! Come in, come in.
+leave Pholos [animation="Fade Out Up" wait="true"]
