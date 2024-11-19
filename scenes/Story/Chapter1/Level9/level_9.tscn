@@ -1,9 +1,9 @@
-[gd_scene load_steps=33 format=4 uid="uid://pbp3yfpo4lji"]
+[gd_scene load_steps=35 format=4 uid="uid://pbp3yfpo4lji"]
 
 [ext_resource type="Texture2D" uid="uid://dhbcf3kciq2wb" path="res://assets/Images/BackgroundImages/Background-1.png" id="1_cgawb"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_sq06d"]
 [ext_resource type="Texture2D" uid="uid://bf6e61vn8acqp" path="res://assets/Images/BackgroundImages/Background-4.png" id="2_2i1dw"]
-[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/Tiles.png" id="2_ihg21"]
+[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/tiles.png" id="2_ihg21"]
 [ext_resource type="Texture2D" uid="uid://b12a3dcg5ljso" path="res://assets/Images/BackgroundImages/Background-3.png" id="2_k4xn7"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="3_3ch0d"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="3_kc06w"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="14_54tts"]
 [ext_resource type="PackedScene" uid="uid://bortg7l8i4f7y" path="res://scenes/enemies/orthrus/orthrus.tscn" id="15_8my54"]
 [ext_resource type="PackedScene" uid="uid://blwm8a7yoy4ft" path="res://scenes/enemies/crab/crab.tscn" id="16_k6pmh"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="17_6m0us"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyp04"]
 texture = ExtResource("1_sq06d")
@@ -2363,6 +2364,9 @@ texture = ExtResource("4_r4wd7")
 sources/0 = SubResource("TileSetAtlasSource_csfga")
 sources/1 = SubResource("TileSetAtlasSource_iavd3")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4v2v"]
+size = Vector2(10, 237)
+
 [node name="Level9" type="Node2D"]
 
 [node name="Decors" type="Node2D" parent="."]
@@ -2437,3 +2441,60 @@ position = Vector2(765, -130)
 
 [node name="Crab" parent="Enemies" instance=ExtResource("16_k6pmh")]
 position = Vector2(617, -118)
+
+[node name="Dialogs" type="Node2D" parent="."]
+
+[node name="DialogActivator" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator"]
+position = Vector2(194, -150.5)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="DialogActivator2" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator2"]
+position = Vector2(3251, -336)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="DialogActivator3" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator3"]
+position = Vector2(3958, -947)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="DialogActivator4" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator4"]
+position = Vector2(9695, -1648)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="DialogActivator5" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator5"]
+position = Vector2(11650, -1668)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="DialogActivator6" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator6"]
+position = Vector2(11700, -1663)
+shape = SubResource("RectangleShape2D_q4v2v")
+
+[connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator6" to="Dialogs/DialogActivator6" method="_on_body_entered"]
