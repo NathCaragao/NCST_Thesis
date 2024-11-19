@@ -1,4 +1,4 @@
 (Hercules sees the Ceryneian Hind dashing across the screen in the distance.)
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "There you are, little one! By Olympus, you’re fast! Too fast... I need a better plan to catch you."
-leave Hercules [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up" wait="true"]

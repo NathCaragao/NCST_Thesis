@@ -1,4 +1,4 @@
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 "Ah, so this is where that key fits. Finally, something goes my way."
-leave Hercules
+leave Hercules [animation="Fade Out Up" wait="true"]
 (He unlocks the door.)

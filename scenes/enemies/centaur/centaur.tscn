@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4b5v5gh6gekm"]
+
+[ext_resource type="Script" path="res://scenes/enemies/centaur/centaur.gd" id="1_7ya5j"]
+
+[node name="Centaur" type="CharacterBody2D"]
+script = ExtResource("1_7ya5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

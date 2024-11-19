@@ -1,6 +1,6 @@
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 (Hercules approaches a door that’s locked and pounds his fist against it in frustration.)
 Hercules: "A locked door? Just my luck! No matter—Hercules never gives up."
 (He glances around and notices a log blocking a hidden underground path.)
 Hercules: "Hmm... this log. If I could just clear it, I’d have another way forward. But how? Guess I’ll keep my eyes open."
-leave Hercules [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up" wait="true"]
