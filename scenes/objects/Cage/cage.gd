@@ -14,6 +14,7 @@ func _ready() -> void:
 func open_cage() -> void:
 	closed.visible = false
 	open.visible = true
+	print("The cage is open")
 
 func close_cage() -> void:
 	closed.visible = true
