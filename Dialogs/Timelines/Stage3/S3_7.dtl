@@ -1,4 +1,4 @@
 (Hercules reaches a series of perilous cliffs with deep chasms below.)
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "One slip here, and it’s a long way down. Keep your wits, Hercules. You’ve made it through worse!"
-leave Hercules [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up" wait="true"]

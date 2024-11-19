@@ -1,4 +1,4 @@
-join Hercules leftmost [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 (Hercules finally corners the Hind in a serene clearing surrounded by golden light. The creature, exhausted, slows down as Hercules approaches cautiously. Just as he gently grabs it by its golden antlers, a radiant light floods the scene, and Artemis appears before him, her silver bow slung across her back.)
 join artemis center
 artemis: "Hold, son of Zeus! What do you think you are doing with my sacred Hind?"
@@ -17,4 +17,5 @@ artemis: "Go now, Hercules. But tread carefully—your trials are far from over.
 leave artemis
 (Hercules stands, lifting the Hind gently onto his shoulders.)
 Hercules: "Three labors completed, and I live to see another day. Thank you, great Artemis. May the gods guide my path back to Eurystheus."
-leave Hercules [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="lvl3Complete"]

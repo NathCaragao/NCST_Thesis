@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjvvpyymm2qj1"]
+
+[ext_resource type="Script" path="res://scenes/objects/modular-lever/modular_lever.gd" id="1_bqeux"]
+[ext_resource type="Texture2D" uid="uid://dtypk7abt3fym" path="res://assets/in-game-objects/lever/lever_off.png" id="1_kqvyt"]
+[ext_resource type="Texture2D" uid="uid://2luor6p7hfxg" path="res://assets/in-game-objects/lever/lever_on.png" id="2_1edls"]
+[ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="3_2b4vp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o4d4"]
+size = Vector2(59, 68)
+
+[node name="ModularLever" type="Node2D"]
+script = ExtResource("1_bqeux")
+
+[node name="LeverOff" type="Sprite2D" parent="."]
+texture = ExtResource("1_kqvyt")
+
+[node name="LeverOn" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_1edls")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_2b4vp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_5o4d4")

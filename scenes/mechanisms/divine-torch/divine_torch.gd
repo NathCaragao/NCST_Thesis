@@ -19,9 +19,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 			if unlocked:
 				visible = false
-				print("You got Divine Torch!")
 				torch_taken = true
 				torch_equipped()
+				print("You got Divine Torch!")
 				Dialogic.start("S2_2-14_2")
 
 func torch_equipped() -> void:

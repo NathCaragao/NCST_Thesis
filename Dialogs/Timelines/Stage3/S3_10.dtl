@@ -1,4 +1,4 @@
 (Hercules finds the key in a hidden area, holding it triumphantly.)
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "Aha! A key. This should get me through that door. Let’s see if it’s the answer to catching that blasted hind."
-leave Hercules [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up" wait="true"]
