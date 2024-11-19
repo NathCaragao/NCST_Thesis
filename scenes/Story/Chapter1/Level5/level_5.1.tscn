@@ -1156,13 +1156,13 @@ position = Vector2(2660, -124)
 
 [node name="Poops" type="Node2D" parent="."]
 
-[node name="Poop" parent="Poops" instance=ExtResource("10_tmo4j")]
+[node name="Poop" parent="Poops" groups=["poop"] instance=ExtResource("10_tmo4j")]
 position = Vector2(-780, -9)
 
-[node name="Poop2" parent="Poops" instance=ExtResource("10_tmo4j")]
+[node name="Poop2" parent="Poops" groups=["poop"] instance=ExtResource("10_tmo4j")]
 position = Vector2(-556, -9)
 
-[node name="Poop3" parent="Poops" instance=ExtResource("10_tmo4j")]
+[node name="Poop3" parent="Poops" groups=["poop"] instance=ExtResource("10_tmo4j")]
 position = Vector2(-392, -9)
 
 [node name="Poop4" parent="Poops" instance=ExtResource("10_tmo4j")]

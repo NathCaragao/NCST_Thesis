@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=74 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="25_sd7m3"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="26_mp6j1"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="27_57xek"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="30_hc3s4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -7869,6 +7870,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrbgr"]
 size = Vector2(194, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdiaq"]
+size = Vector2(30.5, 614.5)
+
 [node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_skfof")
 player = NodePath("Player")
@@ -7961,7 +7965,7 @@ tile_map_data = PackedByteArray("AAD9/Pn/AAANAAAAAAAI/fX/AAANAAAAAAAI/e7/AAANAAA
 tile_set = SubResource("TileSet_cu22k")
 
 [node name="Player" parent="." instance=ExtResource("14_ejtwu")]
-position = Vector2(-3219, -325)
+position = Vector2(-29478, -50)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -8104,7 +8108,7 @@ debug_color = Color(0.416552, 0.462797, 1, 0.42)
 position = Vector2(-3147, -347)
 
 [node name="Wolf" parent="Enemies" instance=ExtResource("24_3o52e")]
-position = Vector2(-28891, -18)
+position = Vector2(-29288, -19)
 
 [node name="Wolf2" parent="Enemies" instance=ExtResource("24_3o52e")]
 position = Vector2(-27310, -194)
@@ -8194,3 +8198,94 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("27_57xek")]
 visible = false
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(-29344, -308)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(-25219, -282)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(-22411, -279)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator4" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator4"]
+position = Vector2(-18894, -434)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator5" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator5"]
+position = Vector2(-15664, -268)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator6" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator6"]
+position = Vector2(-13316, -378)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator7" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator7"]
+position = Vector2(-12489, -257)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator8" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator8"]
+position = Vector2(-9712, -707)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator9" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_9"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator9"]
+position = Vector2(-4732, -602)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[node name="DialogActivator10" type="Area2D" parent="."]
+script = ExtResource("30_hc3s4")
+dialog_file = "S6_10"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator10"]
+position = Vector2(-2710, -600)
+shape = SubResource("RectangleShape2D_sdiaq")
+
+[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator4" to="DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator5" to="DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator6" to="DialogActivator6" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator7" to="DialogActivator7" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator8" to="DialogActivator8" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator9" to="DialogActivator9" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator10" to="DialogActivator10" method="_on_body_entered"]
