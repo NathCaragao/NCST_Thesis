@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=26 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="11_q27lk"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="12_u0y86"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="13_y51gj"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="14_25saf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esms4"]
 texture = ExtResource("1_blpod")
@@ -1534,6 +1535,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_d6omq")
 sources/1 = SubResource("TileSetAtlasSource_2snly")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saacn"]
+size = Vector2(18, 358)
+
 [node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_e6w11")
 player = NodePath("Player")
@@ -1542,7 +1546,7 @@ pause_screen = NodePath("ScoreUI/PauseScreen")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(5935, -696.795)
+position = Vector2(5995, -687)
 scale = Vector2(35.6042, 9.52413)
 texture = ExtResource("1_1rn5h")
 
@@ -1610,3 +1614,58 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("13_y51gj")]
 visible = false
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(1907, -175)
+shape = SubResource("RectangleShape2D_saacn")
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(3542, -251)
+shape = SubResource("RectangleShape2D_saacn")
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(7689, -523)
+shape = SubResource("RectangleShape2D_saacn")
+
+[node name="DialogActivator4" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator4"]
+position = Vector2(9479, -657)
+shape = SubResource("RectangleShape2D_saacn")
+
+[node name="DialogActivator5" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator5"]
+position = Vector2(10007, -729)
+shape = SubResource("RectangleShape2D_saacn")
+
+[node name="DialogActivator6" type="Area2D" parent="."]
+script = ExtResource("14_25saf")
+dialog_file = "S7_6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator6"]
+position = Vector2(12765, -737)
+shape = SubResource("RectangleShape2D_saacn")
+
+[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator4" to="DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator5" to="DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="DialogActivator6" to="DialogActivator6" method="_on_body_entered"]
