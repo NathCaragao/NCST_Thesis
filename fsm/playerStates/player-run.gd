@@ -18,7 +18,7 @@ func physics_update(delta: float) -> void:
 	var movement
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
-		movement = actor.playerGameData.direction * actor.move_speed
+		movement = Input.get_axis("move_left", "move_right") * actor.move_speed
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
 		movement = actor.playerGameData.velocity.x
@@ -41,6 +41,20 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerattack")
 		
 		if Input.is_action_just_pressed("skill"):
+			Transitioned.emit(self, "playerskill")
+		
+		if player_health_component.current_health == 0:
+			Transitioned.emit(self, "playerdeath")
+	else:
+		# -- Switch if not controlled
+		if actor.playerGameData.isJumping:
+			Transitioned.emit(self, "playerjump")
+		
+		# transitions to attack state
+		if actor.playerGameData.isAttacking:
+			Transitioned.emit(self, "playerattack")
+		
+		if actor.playerGameData.isSkill:
 			Transitioned.emit(self, "playerskill")
 		
 		if player_health_component.current_health == 0:

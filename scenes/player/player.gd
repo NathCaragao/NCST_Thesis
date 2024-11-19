@@ -11,7 +11,7 @@ extends CharacterBody2D
 var playerGameData = {
 	"playerId" = "",
 	"displayName" = "",
-	"isControlled" = false,
+	"isControlled" = true,
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
@@ -33,7 +33,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	#initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
+	#initialize(self.position, true, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 
 
@@ -43,7 +43,7 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
 	self.playerGameData.position = initSpawnPosition
-	%Camera2D.enabled = self.playerGameData.isControlled
+	#%Camera2D.enabled = self.playerGameData.isControlled
 	if self.playerGameData.isControlled:
 		%NameTag.text = "\"YOU\""
 	else:
@@ -74,32 +74,15 @@ func _string_to_vector2(string := "") -> Vector2:
 
 func _input(event: InputEvent) -> void:
 	pass
-	#if !self.playerGameData.isControlled:
-		#return
-	#
-	## Horizontal Movement
-	#self.playerGameData.direction = Input.get_axis("move_left", "move_right")
-	## Capture jumping
-	#self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
-	## Capture attack usage
-	#self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
-	## Capture skill usage
-	#self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
-	## Weapon Mode switching
-	#if event.is_action_pressed("melee-mode"):
-		#self.playerGameData.weaponMode = "Melee"
-		#switch_weapon_mode("Melee")
-	#elif event.is_action_pressed("ranged-mode"):
-		#self.playerGameData.weaponMode = "Ranged"
-		#switch_weapon_mode("Ranged")
-	## Velocity update even if there is no input directly affecting this
-	#self.playerGameData.velocity = self.velocity
 
 # STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
 # STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS
 # STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
 # STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
+	%State.text = "isAttacking: %s" % self.playerGameData.isAttacking
+	%State2.text = "currentState: %s" % $StateMachine.current_state
+	
 	if self.playerGameData.isControlled:
 		# Horizontal Movement
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")

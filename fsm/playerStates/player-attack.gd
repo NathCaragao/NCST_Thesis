@@ -20,19 +20,25 @@ func _ready() -> void:
 	pass
 
 func enter() -> void:
-	if actor.playeGameData.weaponMode == "Melee":
+	if actor.playerGameData.weaponMode == "Melee":
 		sword_attack()
-	elif actor.playeGameData.weaponMode == "Ranged":
+	elif actor.playerGameData.weaponMode == "Ranged":
 		bow_attack()
 
 func update(delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	# Apply gravity to keep the actor grounded
-	actor.velocity.y += actor.gravity * delta
-	var movement = Input.get_axis("move_left", "move_right") * actor.move_speed
-	
+	# Keep the player as isAttacking true during the animation
+	var movement
+	if actor.playerGameData.isControlled:
+		actor.velocity.y += actor.gravity * delta
+		movement = Input.get_axis("move_left", "move_right") * actor.move_speed
+	else:
+		actor.velocity.y = actor.playerGameData.velocity.y
+		movement = actor.playerGameData.velocity.x
+		
+	actor.velocity.x = movement
 	actor.move_and_slide()
 	
 
@@ -42,15 +48,24 @@ func _physics_process(delta: float) -> void:
 func process_input(event: InputEvent) -> void:
 	# Prevent transitioning out of the attack state while attacking
 		# transitions to run state
-		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-			Transitioned.emit(self, "playerrun")
-
-		# transitions to jump state
-		if Input.is_action_just_pressed("jump"):
-			Transitioned.emit(self, "playerjump")
-		
-		if Input.is_action_just_pressed("skill"):
-			Transitioned.emit(self, "playerskill")
+		if actor.playerGameData.isControlled:
+			if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+				Transitioned.emit(self, "playerrun")
+			# transitions to jump state
+			if Input.is_action_just_pressed("jump"):
+				Transitioned.emit(self, "playerjump")
+			
+			if Input.is_action_just_pressed("skill"):
+				Transitioned.emit(self, "playerskill")
+		else:
+			if actor.playerGameData.velocity.x != 0:
+				Transitioned.emit(self, "playerrun")
+			# transitions to jump state
+			if actor.playerGameData.isJumping:
+				Transitioned.emit(self, "playerjump")
+			
+			if actor.playerGameData.isSkill:
+				Transitioned.emit(self, "playerskill")
 		
 		if player_health_component.current_health == 0:
 			Transitioned.emit(self, "playerdeath")
@@ -66,21 +81,21 @@ func _on_animation_finished(animation_name: String) -> void:
 	# Check if the finished animation is an attack animation
 	if animation_name in attack_animations or animation_name == "player-shoot":
 		 # Continue attacking if the attack button is held
-		if Input.is_action_just_pressed("attack"):
-			if actor.weapon_mode == "Melee":
+		if (Input.is_action_just_pressed("attack") and actor.playerGameData.isControlled) or (actor.playerGameData.isAttacking and !actor.playerGameData.isControlled):
+			if actor.playerGameData.weaponMode == "Melee":
 				play_next_attack_animation()
-		
-		elif Input.is_action_just_pressed("attack"):
-			if actor.weapon_mode == "Ranged":
+			elif actor.playerGameData.weaponMode == "Ranged":
 				bow_attack()
 		else:
 			# If no attack input, stop the attack and transition to idle or other states
-			is_attacking = false
+			#if actor.playerGameData.isControlled:
+			#actor.playerGameData.isAttacking = false
 			Transitioned.emit(self, "playeridle")  # Transition to idle state after attack
 # Melee mode attack
 func sword_attack() -> void:
 	print("Entered sword_attack state")
-	is_attacking = true
+	#if actor.playerGameData.isControlled:
+		#actor.playerGameData.isAttacking = false
 	play_next_attack_animation()
 	# Connect the signal for when the attack animation finishes
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
@@ -90,7 +105,8 @@ func sword_attack() -> void:
 func bow_attack() -> void:
 	print("Entered bow_attack state")
 	actor.animation_player.play("player-shoot")
-	is_attacking = true
+	#if actor.playerGameData.isControlled:
+		#actor.playerGameData.isAttacking = true
 	# Connect the signal for when the attack animation finishes
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
 		actor.animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
@@ -117,4 +133,5 @@ func update_animation(movement):
 		if not actor.animation_player.is_playing():
 			actor.animation_player.stop()
 		else:
+			actor.playerGameData.isAttacking = true
 			return
