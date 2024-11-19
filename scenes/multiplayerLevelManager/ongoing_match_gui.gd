@@ -50,7 +50,7 @@ func _loadCurrentPlayer(currentPlayerData):
 		return
 	# Else create new player for this user
 	var playerCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
-	playerCharacter.initialize(currentPlayerData.playerData.nakamaData.userId, $SpawnPoint.position, true)
+	playerCharacter.initialize($SpawnPoint.position, true, currentPlayerData.playerData.nakamaData.userId, currentPlayerData.playerData.displayName)
 	%Players.add_child(playerCharacter)
 	currentPlayerCharacter = playerCharacter
 	
@@ -60,7 +60,7 @@ func _loadOtherPlayers(otherPlayersData: Array):
 		if otherPlayersCharacter.is_empty():
 			#var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
 			var otherPlayerNewCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
-			otherPlayerNewCharacter.initialize(otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, $SpawnPoint.position, false)
+			otherPlayerNewCharacter.initialize($SpawnPoint.position, false, otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, otherPlayersData[otherPlayerFromServer].playerData.displayName)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:

@@ -87,6 +87,17 @@ script = ExtResource("1_mahge")
 move_speed = 300.0
 inv = ExtResource("2_apivo")
 
+[node name="NameTag" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -42.0
+offset_top = -36.0
+offset_right = 45.0
+offset_bottom = -18.0
+theme_override_font_sizes/font_size = 13
+text = "test1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_lxf63")
 texture = ExtResource("2_2ril3")

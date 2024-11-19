@@ -10,11 +10,12 @@ extends CharacterBody2D
 # -- Updated and used for server-client comm
 var playerGameData = {
 	"playerId" = "",
+	"displayName" = "",
 	"isControlled" = false,
 	"isJumping" = false,
 	"isAttacking" = false,
 	"isSkill" = false,
-	"direction" = 0,
+	"direction" = 1,
 	"weaponMode" = "Melee",
 	"velocity" = Vector2(0, 0),
 	"position" = Vector2(0, 0),
@@ -32,16 +33,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	#initialize("", self.position, false)
+	initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 
 
-func initialize(initPlayerId: String, initSpawnPosition, initIsControlled: bool):
+func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String = "", initDisplayName: String = ""):
 	self.playerGameData.playerId = initPlayerId
+	self.playerGameData.displayName = initDisplayName
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
 	self.playerGameData.position = initSpawnPosition
 	%Camera2D.enabled = self.playerGameData.isControlled
+	if self.playerGameData.isControlled:
+		%NameTag.hide()
+	else:
+		%NameTag.text = self.playerGameData.displayName
+		%NameTag.show()
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
 func updatePlayer(updateDictionary):
