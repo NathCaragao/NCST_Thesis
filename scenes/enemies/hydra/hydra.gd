@@ -1,8 +1,10 @@
+class_name EnemyHydra
 extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+signal HydraDefeated
 
 func _ready() -> void:
 	pass
@@ -38,3 +40,12 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	$EnemyHealthComp/CanvasLayer.visible = false
+
+func post_dialog() -> void:
+	Dialogic.start("S2_2-20")
+	print("Current dialog playing: S2_2-20")
+	await Dialogic.timeline_ended
+	# Then wait 1.5 seconds
+	await get_tree().create_timer(1.5).timeout
+	emit_signal("HydraDefeated")
+	print("signal emited")

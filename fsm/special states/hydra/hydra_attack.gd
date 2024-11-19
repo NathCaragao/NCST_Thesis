@@ -12,6 +12,7 @@ var poison = load("res://scenes/mechanisms/poison-projectile/poison.tscn") as Pa
 @export var time_between_shots: float = 1.5  # Time between each poison in a burst
 @export var vulnerability_time: float = 2.5  # How long the boss is vulnerable after shooting
 @export var burst_delay: float = 0.1  # Small delay between animation and shooting
+var is_active : bool = true
 
 var shots_fired: int = 0
 var is_vulnerable: bool = false
@@ -21,14 +22,17 @@ func _ready() -> void:
 
 func enter() -> void:
 	print("Entered Hydra attack state")
-	start_attack_sequence()
+	is_active = true
+	if is_active:
+		start_attack_sequence()
 
 func start_attack_sequence() -> void:
 	shots_fired = 0
 	actor.play_animation("enemy-attack")
 	await actor.animation_player.animation_finished
 	await get_tree().create_timer(burst_delay).timeout
-	shoot_burst()
+	if is_active:
+		shoot_burst()
 
 func shoot_burst() -> void:
 	while shots_fired < shots_per_burst:
@@ -85,6 +89,5 @@ func take_damage(amount: int) -> void:
 
 
 func on_enemy_dead3() -> void:
+	is_active = false  # Stop further logic
 	Transitioned.emit(self, "enemydeath")
-	#actor.animation_player.stop()
-	#state_machine.force_death_state()
