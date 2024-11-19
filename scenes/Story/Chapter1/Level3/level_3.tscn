@@ -4210,7 +4210,7 @@ tile_map_data = PackedByteArray("AAD4//7/AAACAAAAAAD4////AAACAAEAAAD5//7/AAABAAA
 tile_set = SubResource("TileSet_mu2t4")
 
 [node name="Player" parent="." instance=ExtResource("2_6dud6")]
-position = Vector2(7089, -410)
+position = Vector2(670, -36)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
@@ -4295,7 +4295,7 @@ position = Vector2(3632.75, 1081.25)
 scale = Vector2(0.528169, 1.04167)
 
 [node name="Centaur" parent="Enemies" instance=ExtResource("10_ahso4")]
-position = Vector2(3301.76, 878.472)
+position = Vector2(3407.04, 1068.06)
 scale = Vector2(0.352113, 0.694444)
 
 [node name="Log" parent="." node_paths=PackedStringArray("static_collision", "large_crate") instance=ExtResource("9_q76j5")]
@@ -4636,7 +4636,7 @@ position = Vector2(-6, -136)
 shape = SubResource("RectangleShape2D_2lfl1")
 
 [node name="DialogActivator6" type="Area2D" parent="Dialogs"]
-position = Vector2(6527, -123)
+position = Vector2(6408, -123)
 script = ExtResource("28_b58g7")
 dialog_file = "S3_6"
 
