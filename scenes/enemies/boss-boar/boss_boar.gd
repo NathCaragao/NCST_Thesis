@@ -8,6 +8,8 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
+signal BossBoarDefeated
+
 func _ready() -> void:
 	pass
 
@@ -31,3 +33,6 @@ func flip_sprite() -> void:
 	else:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 33
+
+func boss_boar_defeated() -> void:
+	emit_signal("BossBoarDefeated")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://bfgyw6lovutuy"
+path="res://.godot/imported/pholos_ portrait.png-255b4a113b99c4f2fa370323d185b9c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/npcs/pholos/pholos_ portrait.png"
+dest_files=["res://.godot/imported/pholos_ portrait.png-255b4a113b99c4f2fa370323d185b9c4.ctex"]
 
 [params]
 

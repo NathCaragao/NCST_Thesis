@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://d2mlvw3yticct"
+path="res://.godot/imported/NPC_pholos_idle.png-2690068879053646552a9f714872c1fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/npcs/pholos/NPC_pholos_idle.png"
+dest_files=["res://.godot/imported/NPC_pholos_idle.png-2690068879053646552a9f714872c1fb.ctex"]
 
 [params]
 
