@@ -6201,9 +6201,9 @@ position = Vector2(-8.46161, -234.615)
 scale = Vector2(1.53846, 1.53846)
 amount = 2000
 process_material = SubResource("ParticleProcessMaterial_sux4w")
-lifetime = 60.0
+lifetime = 30.0
 preprocess = 30.0
-speed_scale = 2.0
+speed_scale = 1.5
 visibility_rect = Rect2(-200, -100, 400, 300)
 
 [node name="Enemies" type="Node2D" parent="."]
