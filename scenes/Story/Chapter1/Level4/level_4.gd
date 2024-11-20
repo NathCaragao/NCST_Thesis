@@ -11,6 +11,9 @@ var paused : bool = false
 func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	boss_boar.connect("BossBoarDefeated", Callable(self, "on_defeat"))
+	
+	# snow particle
+	$Player/Camera2D/Snow.local_coords = false
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:

@@ -802,8 +802,8 @@ inv = ExtResource("2_apivo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_lxf63")
-texture = ExtResource("2_i45tp")
-hframes = 11
+texture = ExtResource("2_rbi7i")
+hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
