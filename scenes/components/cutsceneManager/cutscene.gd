@@ -8,21 +8,31 @@ var dialog_instance  # To keep track of the Dialogic instance
 
 func _ready():
 	# Start the Dialogic dialog
-	target_node.visible = true
+	if target_node:
+		target_node.visible = true
+	
 	if dialog_file != "":
 		dialog_instance = Dialogic.start(dialog_file)
-		add_child(dialog_instance)
-		dialog_instance.connect("dialogic_signal", Callable(self, "_on_dialogic_signal"))
+		# Connect the dialog end event
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	else:
 		print("Error: Empty Dialog file!")
 
 func _on_dialogic_signal(event: String):
-	print("event")
 	if event == "end":
+		print("Dialog ended. Transitioning scene...")
 		change_scene()
 
 func change_scene():
+	# Cleanup Dialogic instance
+	if dialog_instance:
+		dialog_instance.queue_free()  # Explicitly remove the dialog instance
+		dialog_instance = null
+
+	# Disconnect the Dialogic signal to prevent loops
+	Dialogic.signal_event.disconnect(_on_dialogic_signal)
+
+	
 
 	# Change to the scene specified in 'playlevel'
 	if playlevel != "":
@@ -31,13 +41,8 @@ func change_scene():
 		await LevelScreenTransition.on_transition_finished  # Wait for the transition to end
 		
 		
-		# Cleanup Dialogic instance
-		if dialog_instance:
-			print("cleanup")
-			dialog_instance = null
-			
-			
-		# Make the target node invisible	
+		
+		# Make the target node invisible
 		if target_node:
 			if target_node.has_method("set_visible"):
 				target_node.visible = false
@@ -46,7 +51,8 @@ func change_scene():
 				print("Error: Target node does not support visibility!")
 		else:
 			print("Error: 'target_node' is not set!")
-		SceneManager.changeScene(playlevel)
 		
+		
+		SceneManager.changeScene(playlevel)
 	else:
 		print("Error: 'playlevel' is not set!")
