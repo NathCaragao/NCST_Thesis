@@ -7990,6 +7990,7 @@ tile_set = SubResource("TileSet_cu22k")
 position = Vector2(-3361, -327)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

@@ -26,7 +26,7 @@ func play_animation(animation_name: String) -> void:
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
-		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 22
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 27
 	if velocity.x < 0:
 		sprite.flip_h = true
-		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -22
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -27

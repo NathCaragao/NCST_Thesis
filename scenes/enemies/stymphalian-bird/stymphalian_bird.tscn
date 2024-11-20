@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cw8olamrv5c0u"]
+[gd_scene load_steps=33 format=3 uid="uid://cw8olamrv5c0u"]
 
 [ext_resource type="Texture2D" uid="uid://dmrh20moqgdju" path="res://assets/Enemies/Bird/Little Bird Heavy Attack.png" id="1_65j3b"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_76jkb"]
@@ -11,8 +11,11 @@
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_3nnbe"]
 [ext_resource type="Script" path="res://fsm/special states/bird/bird_wander.gd" id="8_402rw"]
 [ext_resource type="Script" path="res://fsm/special states/bird/bird_follow.gd" id="9_d1a2q"]
+[ext_resource type="Script" path="res://fsm/special states/bird/bird_attack.gd" id="12_cpgjr"]
+[ext_resource type="Script" path="res://fsm/special states/bird/bird_hit.gd" id="13_04jlf"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="13_vwbug"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_elup6"]
+[ext_resource type="Script" path="res://fsm/special states/bird/bird_death.gd" id="14_x6l45"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_auuxh"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="16_2odl7"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="17_03l1g"]
@@ -204,6 +207,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fbtnj"]
 resource_name = "bird-hit"
@@ -383,7 +400,7 @@ radius = 7.07107
 radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6lq3"]
-size = Vector2(32, 13)
+size = Vector2(32, 16)
 
 [sub_resource type="Animation" id="Animation_86xlx"]
 resource_name = "hit-flash"
@@ -430,17 +447,33 @@ shape = SubResource("CircleShape2D_xwdqc")
 script = ExtResource("7_3nnbe")
 initial_state = NodePath("BirdWander")
 
-[node name="BirdWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+[node name="BirdWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("8_402rw")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="BirdFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_d1a2q")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="BirdAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
+script = ExtResource("12_cpgjr")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="StateMachine/BirdWander"]
-autostart = true
+[node name="Timer" type="Timer" parent="StateMachine/BirdAttack"]
+wait_time = 1.5
 
-[node name="BirdFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("9_d1a2q")
+[node name="BirdHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("13_04jlf")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="BirdDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("14_x6l45")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
@@ -458,7 +491,7 @@ debug_color = Color(0.982589, 0, 0.360821, 0.42)
 script = ExtResource("14_elup6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
-position = Vector2(22, 7.5)
+position = Vector2(27, 6)
 shape = SubResource("RectangleShape2D_v6lq3")
 disabled = true
 debug_color = Color(0, 0.648864, 0.166065, 0.42)
@@ -502,6 +535,6 @@ libraries = {
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -8)
 
-[connection signal="timeout" from="StateMachine/BirdWander/Timer" to="StateMachine/BirdWander" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/BirdAttack/Timer" to="StateMachine/BirdAttack" method="_on_timer_timeout"]
 
 [editable path="EnemyHealthComp"]
