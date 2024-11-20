@@ -8,3 +8,4 @@ leave Hercules [animation="Fade Out Up"]
 (He turns to leave, the murmurs of the townsfolk growing louder as they marvel at his feat.)
 leave Eurystheus
 narrator: "With the Cretan Bull captured and delivered, Hercules once again proved his strength and resolve. But as always, the shadow of Hera’s interference loomed over him, and he knew that greater challenges still lay ahead."
+[signal arg="end"]

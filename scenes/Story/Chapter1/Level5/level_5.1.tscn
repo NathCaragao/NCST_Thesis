@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=21 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_y6l5g"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://gl516oxlyya6" path="res://assets/Images/BackgroundImages/parallax/MorningLayer2.png" id="5_d7j4h"]
 [ext_resource type="PackedScene" uid="uid://d3nhqr8jx3mh3" path="res://scenes/objects/poop/poop.tscn" id="10_tmo4j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_sgld1"]
+[ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="12_migfl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1086,6 +1087,9 @@ sources/0 = SubResource("TileSetAtlasSource_ayca0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8u17"]
 size = Vector2(20, 444)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w74qi"]
+size = Vector2(582, 20)
+
 [node name="Level5_1" type="Node2D"]
 
 [node name="sky" type="Parallax2D" parent="."]
@@ -1224,6 +1228,13 @@ dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_3.dtl"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
 position = Vector2(3207, -349)
 shape = SubResource("RectangleShape2D_f8u17")
+
+[node name="DeathZone" parent="." instance=ExtResource("12_migfl")]
+position = Vector2(2565, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(99, 122)
+shape = SubResource("RectangleShape2D_w74qi")
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
