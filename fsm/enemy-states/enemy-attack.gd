@@ -54,8 +54,8 @@ func physics_update(delta: float) -> void:
 
 # transitions to enemy death
 func on_enemy_dead3() -> void:
+	timer.stop()
 	Transitioned.emit(self, "enemydeath")
-	#actor.animation_player.stop()
 	#state_machine.force_death_state()
 
 func on_hit1() -> void:
