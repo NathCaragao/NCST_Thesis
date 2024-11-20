@@ -4,26 +4,27 @@ Hypolita: So, this is Herakles—the man whose name echoes through the lands. Wh
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: Queen Hippolyta, I come not as a conqueror but as a supplicant. My task is to retrieve your girdle, not through theft or violence, but with your permission.
 Hercules: It is a symbol of your strength, I know, but its significance in my labors is paramount.
-Hypolita:  *(leans forward, intrigued)*
+Hypolita: *(leans forward, intrigued)*
 Hypolita: You speak plainly and with respect. Few men would dare to approach us without a sword drawn.
-Hypolita:  Tell me, why should I part with such a treasured gift?
+Hypolita: Tell me, why should I part with such a treasured gift?
 Hercules: Because it is not just about me—it is about proving my worth, fulfilling a penance forced upon me by the gods.
-Hercules: I mean no disrespect to you or your people, Queen Hippolyta. You have my word. 
+Hercules: I mean no disrespect to you or your people, Queen Hippolyta. You have my word.
 Hippolyta studies him for a moment, her gaze piercing but not unkind.
 Hypolita: You are unlike the others who have crossed our borders. I see honor in your eyes, Herakles, and I respect your courage to come here without malice.
-Hypolita: Very well, I shall give you the girdle willingly—not as a sign of submission, but as a mark of respect between warriors."* 
-*Herakles smiles, bowing deeply.* 
+Hypolita: Very well, I shall give you the girdle willingly—not as a sign of submission, but as a mark of respect between warriors."*
+*Herakles smiles, bowing deeply.*
 Hercules: Thank you, Queen Hippolyta. Your wisdom and strength are as great as the tales say.
 Hercules: Perhaps this will mark the beginning of understanding between our peoples.
 As Hippolyta stands to remove the girdle, a sudden commotion arises outside the tent. The Amazons rush in, shouting accusations.
 Amazon_Guard: Queen! This man has deceived us! He means to abduct you and steal the girdle!
 Hippolyta’s warriors draw their weapons, and murmurs of anger fill the tent. Herakles raises his hands in confusion.
 Hercules: What is this madness? I have done no such thing!
-*Unbeknownst to them, Hera, disguised as an Amazon warrior, smirks from the shadows, her whispers sowing chaos.* 
+*Unbeknownst to them, Hera, disguised as an Amazon warrior, smirks from the shadows, her whispers sowing chaos.*
 Hypolita: \:*(frowning)* I sense treachery, but I do not believe it is your doing. Still, my people will not stand down. Prepare yourself, Herakles—this\
 peace may be over before it began.
-*Herakles clenches his fists, realizing Hera’s meddling.* 
+*Herakles clenches his fists, realizing Hera’s meddling.*
 Hercules: Hera… I should have known. Very well, I will defend myself— but know that I fight only because I must.
 leave Hercules [animation="Fade Out Up" wait="true"]
 leave Hypolita
 leave Amazon_Guard
+[signal arg="1Wave"]
