@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 # stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var move_speed : float = 400
+@export var move_speed : int = 30
 
 func _ready() -> void:
 	pass
