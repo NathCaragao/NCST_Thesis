@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cw8olamrv5c0u"]
+[gd_scene load_steps=30 format=3 uid="uid://cw8olamrv5c0u"]
 
 [ext_resource type="Texture2D" uid="uid://dmrh20moqgdju" path="res://assets/Enemies/Bird/Little Bird Heavy Attack.png" id="1_65j3b"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_76jkb"]
@@ -11,9 +11,6 @@
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_3nnbe"]
 [ext_resource type="Script" path="res://fsm/special states/bird/bird_wander.gd" id="8_402rw"]
 [ext_resource type="Script" path="res://fsm/special states/bird/bird_follow.gd" id="9_d1a2q"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_4axki"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="11_k8kbn"]
-[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="12_08bml"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="13_vwbug"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_elup6"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_auuxh"]
@@ -433,37 +430,19 @@ shape = SubResource("CircleShape2D_xwdqc")
 script = ExtResource("7_3nnbe")
 initial_state = NodePath("BirdWander")
 
-[node name="BirdWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+[node name="BirdWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("8_402rw")
-actor = NodePath("../..")
-enemy_health_comp = NodePath("../../EnemyHealthComp")
-
-[node name="BirdFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
-script = ExtResource("9_d1a2q")
-actor = NodePath("../..")
-move_speed = 300.0
-enemy_health_comp = NodePath("../../EnemyHealthComp")
-
-[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
-script = ExtResource("10_4axki")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
-wait_time = 2.0
+[node name="Timer" type="Timer" parent="StateMachine/BirdWander"]
+autostart = true
 
-[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
-script = ExtResource("11_k8kbn")
-actor = NodePath("../..")
-enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
-
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
-script = ExtResource("12_08bml")
+[node name="BirdFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("9_d1a2q")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../BodyCollision")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("13_vwbug")]
 enemy_hp_bar = NodePath("CanvasLayer/EnemyHPbar")
@@ -523,6 +502,6 @@ libraries = {
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -8)
 
-[connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/BirdWander/Timer" to="StateMachine/BirdWander" method="_on_timer_timeout"]
 
 [editable path="EnemyHealthComp"]
