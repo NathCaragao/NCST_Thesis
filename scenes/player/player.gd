@@ -3,11 +3,9 @@ extends CharacterBody2D
 
 
 
-	# How to decode velocity
-	#print_debug(Vector2(self.playerGameData.velocity))
-	
 # FINAL VARIABLES
 # -- Updated and used for server-client comm
+# THIS IS ALREADY SETUP FOR DEFAULT VALUES
 var playerGameData = {
 	"playerId" = "",
 	"displayName" = "",
@@ -82,7 +80,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	%State.text = "isAttacking: %s" % self.playerGameData.isAttacking
 	%State2.text = "currentState: %s" % $StateMachine.current_state
-	
+	%State3.text = "isAttackAnimPlaying: %s" % str(self.animation_player.is_playing() and self.animation_player.current_animation.begins_with("attack"))
 	if self.playerGameData.isControlled:
 		# Horizontal Movement
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")

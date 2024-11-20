@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
 [ext_resource type="Resource" uid="uid://xpwbllut5klj" path="res://inventory-system/inventories/player_inv.tres" id="2_apivo"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="3_cxdj6"]
-[ext_resource type="AnimationLibrary" uid="uid://dvkr1rxw24ckx" path="res://HerculesAnimations.res" id="5_blrcp"]
+[ext_resource type="AnimationLibrary" path="res://HerculesAnimations.res" id="5_blrcp"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="8_q5yvf"]
 [ext_resource type="Script" path="res://fsm/playerStates/player-idle.gd" id="9_rwas3"]
 [ext_resource type="Script" path="res://fsm/playerStates/player-run.gd" id="10_om8j4"]
@@ -100,6 +100,7 @@ vertical_alignment = 1
 
 [node name="State" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 60.0
 offset_top = -63.0
 offset_right = 147.0
@@ -111,10 +112,23 @@ vertical_alignment = 1
 
 [node name="State2" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 60.0
 offset_top = -38.0
 offset_right = 147.0
 offset_bottom = -15.0
+theme_override_font_sizes/font_size = 16
+text = "\"YOU\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State3" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 60.0
+offset_top = -15.0
+offset_right = 147.0
+offset_bottom = 8.0
 theme_override_font_sizes/font_size = 16
 text = "\"YOU\""
 horizontal_alignment = 1
@@ -132,7 +146,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, 4)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5c1ox")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]

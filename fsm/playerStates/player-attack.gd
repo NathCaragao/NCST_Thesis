@@ -41,34 +41,65 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = movement
 	actor.move_and_slide()
 	
+	
+	if actor.animation_player.is_playing() and actor.animation_player.current_animation.begins_with("attack"):
+		actor.playerGameData.isAttacking = true
+		return
+	
+	# NOT BEING REACHED, IDK WHY
+	print_debug("%s: %s and %s" % [delta, actor.playerGameData.isAttacking, (actor.animation_player.is_playing() and actor.animation_player.current_animation.begins_with("attack"))])
+	
+	if actor.playerGameData.isControlled:
+		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+			Transitioned.emit(self, "playerrun")
+		# transitions to jump state
+		if Input.is_action_just_pressed("jump"):
+			Transitioned.emit(self, "playerjump")
+		
+		if Input.is_action_just_pressed("skill"):
+			Transitioned.emit(self, "playerskill")
+	else:
+		if actor.playerGameData.velocity.x != 0:
+			Transitioned.emit(self, "playerrun")
+		# transitions to jump state
+		if actor.playerGameData.isJumping:
+			Transitioned.emit(self, "playerjump")
+		
+		if actor.playerGameData.isSkill:
+			Transitioned.emit(self, "playerskill")
+	
+	if player_health_component.current_health == 0:
+		Transitioned.emit(self, "playerdeath")
+	
 
 func _physics_process(delta: float) -> void:
 	pass
 
 func process_input(event: InputEvent) -> void:
+	pass
 	# Prevent transitioning out of the attack state while attacking
 		# transitions to run state
-		if actor.playerGameData.isControlled:
-			if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-				Transitioned.emit(self, "playerrun")
-			# transitions to jump state
-			if Input.is_action_just_pressed("jump"):
-				Transitioned.emit(self, "playerjump")
-			
-			if Input.is_action_just_pressed("skill"):
-				Transitioned.emit(self, "playerskill")
-		else:
-			if actor.playerGameData.velocity.x != 0:
-				Transitioned.emit(self, "playerrun")
-			# transitions to jump state
-			if actor.playerGameData.isJumping:
-				Transitioned.emit(self, "playerjump")
-			
-			if actor.playerGameData.isSkill:
-				Transitioned.emit(self, "playerskill")
-		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")
+		#if actor.playerGameData.isControlled:
+			#if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+				#Transitioned.emit(self, "playerrun")
+			## transitions to jump state
+			#if Input.is_action_just_pressed("jump"):
+				#Transitioned.emit(self, "playerjump")
+			#
+			#if Input.is_action_just_pressed("skill"):
+				#Transitioned.emit(self, "playerskill")
+		#else:
+			#if actor.playerGameData.velocity.x != 0:
+				#Transitioned.emit(self, "playerrun")
+			## transitions to jump state
+			#if actor.playerGameData.isJumping:
+				#Transitioned.emit(self, "playerjump")
+			#
+			#if actor.playerGameData.isSkill:
+				#Transitioned.emit(self, "playerskill")
+		#
+		#if player_health_component.current_health == 0:
+			#Transitioned.emit(self, "playerdeath")
 
 
 func play_next_attack_animation():
@@ -133,5 +164,4 @@ func update_animation(movement):
 		if not actor.animation_player.is_playing():
 			actor.animation_player.stop()
 		else:
-			actor.playerGameData.isAttacking = true
 			return
