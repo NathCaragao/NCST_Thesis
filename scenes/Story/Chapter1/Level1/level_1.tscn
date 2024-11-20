@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=135 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -12,14 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="6_1s0eo"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="6_850xk"]
 [ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="6_u2iim"]
-[ext_resource type="Texture2D" uid="uid://crrhe4f6mj35t" path="res://assets/dynamic assets/tree_sample.png" id="7_t6vne"]
+[ext_resource type="Texture2D" uid="uid://crrhe4f6mj35t" path="res://assets/dynamic assets/tree_4.png" id="7_t6vne"]
 [ext_resource type="PackedScene" uid="uid://br88hqc63tygc" path="res://scenes/mechanisms/spinning-platform/sppining_platform.tscn" id="7_uhwtd"]
 [ext_resource type="Script" path="res://scenes/DynamicDesigns/trees/dynamic_tree.gd" id="8_fff1x"]
 [ext_resource type="PackedScene" uid="uid://hqqksf2d723b" path="res://scenes/enemies/cyclop-boss/cyclop.tscn" id="8_huhis"]
 [ext_resource type="Script" path="res://scenes/mechanisms/trap-platform/TrapPlatform.gd" id="8_rovq1"]
 [ext_resource type="Texture2D" uid="uid://cvwp8uax557dd" path="res://assets/dynamic assets/tree_1.png" id="9_efysh"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="9_touq4"]
+[ext_resource type="Texture2D" uid="uid://5ye1x5rn22tc" path="res://assets/dynamic assets/tree_3.png" id="10_6f47i"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
+[ext_resource type="Texture2D" uid="uid://04pewidoonsj" path="res://assets/dynamic assets/tree_2.png" id="11_8dbpn"]
 [ext_resource type="PackedScene" uid="uid://2740j354gfgd" path="res://scenes/mechanisms/gate/gate.tscn" id="13_gcvc1"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="14_pkjb1"]
 [ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="15_exch3"]
@@ -4904,6 +4906,24 @@ texture = ExtResource("9_efysh")
 z_index = -1
 material = SubResource("ShaderMaterial_vrmd0")
 position = Vector2(389, -253)
+texture = ExtResource("7_t6vne")
+
+[node name="Tree4" type="Sprite2D" parent="TileCollection"]
+z_index = -1
+material = SubResource("ShaderMaterial_vrmd0")
+position = Vector2(499, -151)
+texture = ExtResource("10_6f47i")
+
+[node name="Tree5" type="Sprite2D" parent="TileCollection"]
+z_index = -1
+material = SubResource("ShaderMaterial_vrmd0")
+position = Vector2(557, -164)
+texture = ExtResource("11_8dbpn")
+
+[node name="Tree6" type="Sprite2D" parent="TileCollection"]
+z_index = -1
+material = SubResource("ShaderMaterial_vrmd0")
+position = Vector2(602, -246)
 texture = ExtResource("7_t6vne")
 
 [node name="DialogsCollection" type="Node2D" parent="."]
