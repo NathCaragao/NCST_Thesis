@@ -16,3 +16,4 @@ Eurystheus: "Go now, hero, and return only when the Hind stands before me, alive
 leave Hercules [animation="Fade Out Up" wait="true"]
 leave Eurystheus
 narrator: "And so, Hercules departed Mycenae, setting forth on a journey that would test not only his strength, but his endurance, cunning, and respect for the gods. To capture the Ceryneian Hind was no mere labor—it was a test of his very humanity."
+[signal arg="end"]

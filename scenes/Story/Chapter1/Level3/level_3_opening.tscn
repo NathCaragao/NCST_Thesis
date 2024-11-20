@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdt3urfdbpu1"]
+
+[ext_resource type="Script" path="res://scenes/components/cutsceneManager/cutscene.gd" id="1_fhm7s"]
+[ext_resource type="Texture2D" uid="uid://dyyfqqyua1p6a" path="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" id="2_np484"]
+
+[node name="Level3Opening" type="Node2D"]
+script = ExtResource("1_fhm7s")
+dialog_file = "S3_opening"
+playlevel = "res://scenes/Story/Chapter1/Level3/level_3.tscn"
+
+[node name="Throneroom" type="Sprite2D" parent="."]
+position = Vector2(20, 6.00006)
+scale = Vector2(1.09152, 1.06641)
+texture = ExtResource("2_np484")
+
+[node name="Camera2D" type="Camera2D" parent="."]
