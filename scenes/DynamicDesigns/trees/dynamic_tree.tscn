@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://b84bqlkphwtbh"]
+
+[ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="1_rukps"]
+[ext_resource type="Texture2D" uid="uid://crrhe4f6mj35t" path="res://assets/dynamic assets/tree_4.png" id="2_46m0x"]
+[ext_resource type="Script" path="res://scenes/DynamicDesigns/trees/dynamic_tree.gd" id="3_7hmfl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqx6w"]
+shader = ExtResource("1_rukps")
+shader_parameter/wind_strength = 10.0
+
+[node name="DynamicTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_dqx6w")
+texture = ExtResource("2_46m0x")
+script = ExtResource("3_7hmfl")
