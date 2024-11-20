@@ -9,6 +9,7 @@ var paused : bool = false
 
 func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
+	Dialogic.signal_event.connect(on_level_complete)
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:
@@ -19,3 +20,11 @@ func _process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true
+
+func on_level_complete(argument: String) -> void:
+	if argument == "6LaborDone":
+		level_complete()
+
+func level_complete() -> void:
+	victory_screen.visible = true
+	victory_screen.update_scores()

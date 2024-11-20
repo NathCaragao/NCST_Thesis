@@ -30,3 +30,6 @@ func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -27
+
+func post_dialog() -> void:
+	Dialogic.start("S6_10")
