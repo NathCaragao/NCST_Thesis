@@ -2,7 +2,8 @@
 extends Node2D
 
 @export var enemy_scenes : Array[PackedScene] = []
-@onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3]
+@onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3,
+$SpawnArea/Spawn4]
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
@@ -12,12 +13,20 @@ var paused : bool = false
 # npc interaction reference
 @onready var interaction_area: InteractionArea = $NPCs/InteractionArea
 @onready var interaction_area_2: InteractionArea = $NPCs/InteractionArea2
+@onready var interaction_area_3: InteractionArea = $NPCs/InteractionArea3
 
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "on_interact")
 	interaction_area_2.interact = Callable(self, "on_interact2")
+	interaction_area_3.interact = Callable(self, "on_interact3")
+	
+	# dialogic signals
 	Dialogic.signal_event.connect(on_wave1)
+	Dialogic.signal_event.connect(on_level_complete)
+	
+	# disable the 3rd dialog
+	$NPCs/InteractionArea3/CollisionShape2D.disabled = true
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:
@@ -60,7 +69,25 @@ func on_interact() -> void:
 
 func on_interact2() -> void:
 	Dialogic.start("S9_2")
+	$NPCs/InteractionArea2/CollisionShape2D.disabled = true
+	$NPCs/InteractionArea3/CollisionShape2D.disabled = false
+
+func on_interact3() -> void:
+	Dialogic.start("S9_3")
+	await Dialogic.timeline_ended
+	
+	# remove npc and spawn in the enemy version
+	$NPCs/Hypolita_npc.queue_free()
+	spawn_enemy(0, 3)
 
 func on_wave1(argument: String) -> void:
 	if argument == "1Wave":
 		spawn_activate()
+
+func on_level_complete(argument: String) -> void:
+	if argument == "9labordone":
+		level_finish()
+
+func level_finish() -> void:
+	victory_screen.visible = true
+	victory_screen.update_scores()
