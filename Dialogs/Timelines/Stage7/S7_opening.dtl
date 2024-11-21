@@ -1,7 +1,7 @@
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 (Hercules stands in the throne room of Mycenae. King Eurystheus sits on his throne, a sneer of frustration plastered across his face as he addresses Hercules.)
-join Hercules center [animation="Fade In Down"]
-join Eurystheus center
+join Hercules leftmost [animation="Fade In Down"]
+join Eurystheus rightmost [animation="Fade In Down"]
 Eurystheus: (sarcastically clapping)"Once again, Hercules, you’ve returned victorious. You’ve bested the Stymphalian Birds, a feat I thought beyond even your capabilities. But mark my words, this time I will see you fail."
 Hercules: (crosses his arms, his voice calm but firm)"You can send me to the ends of the earth, Eurystheus. I will complete every labor you set before me. My resolve is unshaken."
 Eurystheus: (leans forward, narrowing his eyes)"Is that so? Then hear your next task, oh mighty son of Zeus. You are to journey to the island of Crete and capture the Cretan Bull—the very beast that terrorizes their lands. This is no ordinary creature, Hercules. It is a monster of legend, said to breathe fire and destroy all in its path. Surely, this task will humble even you."
@@ -11,6 +11,6 @@ Eurystheus: (laughs cruelly)"Bold words, as always. But remember this, Hercules�
 (Hercules glares at Eurystheus but says nothing, his fists clenching briefly before he relaxes, his focus shifting to the task ahead.)
 Eurystheus: (with a dismissive wave)"Go, Hercules. Go to Crete, and let the mighty bull teach you humility."
 leave Hercules
-leave Eurystheus
+leave Eurystheus [animation="Fade Out Up"]
 narrator: "And so, Hercules set sail for Crete, guided by his unyielding determination. The journey was long and arduous, but Hercules was no stranger to hardship. Upon arriving on the island, he wasted no time in tracking the beast, following the destruction left in its wake. Trees torn asunder, fields burned, and the earth itself scarred by its rage. Each step brought him closer to the confrontation that would test his strength and cunning once more."
 [signal arg="end"]

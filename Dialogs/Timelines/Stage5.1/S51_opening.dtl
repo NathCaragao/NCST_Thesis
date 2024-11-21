@@ -1,6 +1,6 @@
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 *(The throne room of Eurystheus is dimly lit. Hercules stands before the king, his lion-skin cloak draped over his shoulders, his expression a mix of weariness and frustration. Eurystheus smirks from his ornate throne, clearly relishing the moment.)*
-join  center
+join Eurystheus rightmost [animation="Fade In Down"]
 Eurystheus: *(mockingly)* "Ah, Herakles. You return victorious yet again, parading that boar as if it were a grand trophy. But tell me, how does the son of Zeus feel about... filth?"
 <Empty Text Event>
 join Hercules leftmost [animation="Fade In Down"]
@@ -15,5 +15,5 @@ Eurystheus: *(chuckling)* "Oh, but you are whatever I command you to be, son of 
 Hercules: *(calmly, but coldly)* "Very well. I will do as you ask. But know this, Eurystheus\: no matter how low you try to bring me, I will rise again."
 *(He turns and storms out of the throne room, the echoes of Eurystheus’ laughter following him.)*
 leave Hercules [animation="Fade Out Up"]
-leave Eurystheus
+leave Eurystheus [animation="Fade Out Up"]
 [signal arg="nextScene"]

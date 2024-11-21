@@ -1679,66 +1679,68 @@ position = Vector2(17250, 142)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
-[node name="DialogActivator" type="Area2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="DialogActivator" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator"]
 position = Vector2(-1665, -397)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator2" type="Area2D" parent="."]
+[node name="DialogActivator2" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator2"]
 position = Vector2(4033, -536)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator3" type="Area2D" parent="."]
+[node name="DialogActivator3" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_3"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator3"]
 position = Vector2(6036, -4516)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator4" type="Area2D" parent="."]
+[node name="DialogActivator4" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_4"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator4"]
 position = Vector2(13184, -17)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator5" type="Area2D" parent="."]
+[node name="DialogActivator5" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_5"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator5"]
 position = Vector2(16113, -29)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator6" type="Area2D" parent="."]
+[node name="DialogActivator6" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_5_postbattle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator6"]
 position = Vector2(17681, -21)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[node name="DialogActivator7" type="Area2D" parent="."]
+[node name="DialogActivator7" type="Area2D" parent="Node2D"]
 script = ExtResource("17_lj7xi")
 dialog_file = "S11_6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator7"]
 position = Vector2(19304, -369)
 shape = SubResource("RectangleShape2D_njgwh")
 
-[connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator3" to="DialogActivator3" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator4" to="DialogActivator4" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator5" to="DialogActivator5" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator6" to="DialogActivator6" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogActivator7" to="DialogActivator7" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator" to="Node2D/DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator2" to="Node2D/DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator3" to="Node2D/DialogActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator4" to="Node2D/DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator5" to="Node2D/DialogActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator6" to="Node2D/DialogActivator6" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/DialogActivator7" to="Node2D/DialogActivator7" method="_on_body_entered"]

@@ -1,12 +1,12 @@
-join Eurystheus center
+join Eurystheus rightmost [animation="Fade In Down"]
 (In the grand hall of Mycenae. King Eurystheus sits on his gilded throne, surrounded by his advisors and courtiers. The atmosphere is tense, with hushed whispers among the onlookers. The heavy doors to the hall creak open, revealing Hercules striding in, the golden apples of the Hesperides held aloft in his hands.)
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down"]
 Eurystheus: (leaning forward, his smug demeanor replaced with astonishment)"Impossible… You’ve returned? And with the apples?!"
 Hercules: (his voice steady, echoing through the hall)"The golden apples, as you commanded. Taken from the Garden of the Hesperides, guarded by Ladon, fetched with the aid of Atlas himself."
 (Hercules approaches the throne, his imposing figure drawing murmurs of awe and fear from the courtiers. He places the golden apples on a pedestal before the king. Their ethereal glow bathes the room in a warm, golden light.)
-Eurystheus:  (recovering his composure, smirking once more)"So, even the gods’ treasures are not beyond your reach. I must admit, Hercules, you have exceeded my expectations. But do not mistake this for the end of your penance. One labor yet remains."
-Hercules:  (fixing Eurystheus with a steely gaze)"I have endured your every demand, faced dangers no mortal could imagine. Speak your final labor, Eurystheus, and know that I will see it done."
-Eurystheus:  (with a sly grin)"Patience, Hercules. Rest while you can. Your final task will be the greatest of them all."
+Eurystheus: (recovering his composure, smirking once more)"So, even the gods’ treasures are not beyond your reach. I must admit, Hercules, you have exceeded my expectations. But do not mistake this for the end of your penance. One labor yet remains."
+Hercules: (fixing Eurystheus with a steely gaze)"I have endured your every demand, faced dangers no mortal could imagine. Speak your final labor, Eurystheus, and know that I will see it done."
+Eurystheus: (with a sly grin)"Patience, Hercules. Rest while you can. Your final task will be the greatest of them all."
 leave Eurystheus
 narrator: "Hercules had completed his eleventh labor, retrieving the golden apples of the Hesperides, a feat thought impossible even for the gods. Yet, the shadow of his final labor loomed large, promising trials that would surpass all he had faced before."
 (Hercules, stands tall and resolute, as Eurystheus gazes at him with thinly veiled malice. The golden apples shimmer brightly, their light a stark contrast to the dark plotting of the Mycenaean king.)
