@@ -12,7 +12,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 3/level_3_ope
 var paused : bool = false
 
 func _ready() -> void:
-	CutsceneManager.set_canvas_layer(cutscene_layer)
+	CutsceneManager.set_canvas_layer(cutscene_layer) # sets where the cutscene.tscn will go
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_complete)
 	
@@ -36,7 +36,7 @@ func level_complete() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
 	
-
+# function for the opening scene
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening1")
 	CutsceneManager.play_cutscene("opening1")
