@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var cutscene_layer: CanvasLayer = $CutsceneLayer
-var scene_path : String = "res://scenes/Story/Chapter1/Level6/level_6.tscn"
+var scene_path : String = "res://scenes/cutscenes-collection/level 6/level_6_opening.tscn"
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
