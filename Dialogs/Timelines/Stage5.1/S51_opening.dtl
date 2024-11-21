@@ -1,3 +1,4 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 *(The throne room of Eurystheus is dimly lit. Hercules stands before the king, his lion-skin cloak draped over his shoulders, his expression a mix of weariness and frustration. Eurystheus smirks from his ornate throne, clearly relishing the moment.)*
 join  center
 Eurystheus: *(mockingly)* "Ah, Herakles. You return victorious yet again, parading that boar as if it were a grand trophy. But tell me, how does the son of Zeus feel about... filth?"

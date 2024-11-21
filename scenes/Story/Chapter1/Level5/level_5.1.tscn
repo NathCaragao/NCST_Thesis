@@ -1383,7 +1383,7 @@ position = Vector2(-44.5, 11.5)
 shape = SubResource("RectangleShape2D_h6yqy")
 debug_color = Color(0.590164, 0.376227, 1, 0.42)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CutsceneLayer" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]

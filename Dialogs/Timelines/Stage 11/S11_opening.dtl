@@ -1,3 +1,4 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 (In King Eurystheus' throne room. Hercules stands before Eurystheus, who smirks with malice, clearly enjoying his role as the bearer of Herculean burdens.)
 join Hercules center [animation="Fade In Down"]
 join Eurystheus center
@@ -7,4 +8,4 @@ Eurystheus: (grinning smugly)"Oh, I don’t doubt your strength, Hercules. But s
 Hercules: (with determination)"Then I’ll match my cunning with their vigilance. The golden apples will be yours."
 leave Hercules
 leave Eurystheus
-narrator:  (ominously)"Thus, Hercules set out on his eleventh labor, a task that would test not only his might but his wisdom and resolve. To find the sacred apples, he would have to venture into lands unknown and overcome obstacles no mortal had ever faced."
+narrator: (ominously)"Thus, Hercules set out on his eleventh labor, a task that would test not only his might but his wisdom and resolve. To find the sacred apples, he would have to venture into lands unknown and overcome obstacles no mortal had ever faced."
