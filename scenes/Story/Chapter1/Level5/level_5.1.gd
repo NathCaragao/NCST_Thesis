@@ -22,4 +22,5 @@ func opening_2() -> void:
 
 func on_op1(argument : String) -> void:
 	if argument == "nextScene":
+		CutsceneManager.stop_cutscene("opening_1")
 		opening_2()
