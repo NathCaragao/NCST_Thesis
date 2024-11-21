@@ -18,7 +18,7 @@ var shots_fired: int = 0
 var is_vulnerable: bool = false
 
 func _ready() -> void:
-	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead3"))
+	enemy_health_comp.connect("EnemyDead", Callable(self, "hydra_dead2"))
 
 func enter() -> void:
 	print("Entered Hydra attack state")
@@ -88,6 +88,8 @@ func take_damage(amount: int) -> void:
 		print("Boss is not vulnerable!")
 
 
-func on_enemy_dead3() -> void:
+func hydra_dead2() -> void:
+	timer.stop()
+	is_vulnerable = false
 	is_active = false  # Stop further logic
 	Transitioned.emit(self, "enemydeath")

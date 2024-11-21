@@ -7,6 +7,9 @@ extends State
 var player : PlayerHercules
 var is_signal_connected : bool = false
 var direction
+
+@export var player_distance : int = 110
+
 # state machine ref
 #@onready var state_machine : StateMachine = get_parent()
 
@@ -56,7 +59,7 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	# transitions to enemy follow
-	if direction.length() < 90:
+	if direction.length() < player_distance:
 		print("ENEMY is following the player")
 		Transitioned.emit(self, "enemyfollow")
 

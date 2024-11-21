@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://jyppr62simqr"]
+[gd_scene load_steps=31 format=3 uid="uid://jyppr62simqr"]
 
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_0u4lc"]
 [ext_resource type="Texture2D" uid="uid://boytg0ax0nyx6" path="res://assets/Enemies/skeleton/Attack.png" id="1_6loms"]
@@ -23,21 +23,6 @@ resource_local_to_scene = true
 shader = ExtResource("1_0u4lc")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_d4c4w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyHealthComp/Hitbox/HitboxShape:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_pkpoq"]
 resource_name = "skeleton-attack"
@@ -167,6 +152,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_r0jmx"]
@@ -332,7 +331,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_443jk"]
 _data = {
-"RESET": SubResource("Animation_d4c4w"),
 "skeleton-attack": SubResource("Animation_pkpoq"),
 "skeleton-death": SubResource("Animation_polku"),
 "skeleton-hit": SubResource("Animation_r0jmx"),
@@ -390,6 +388,8 @@ _data = {
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 65
 script = ExtResource("1_xmn1x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -435,11 +435,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("12_gtotr")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../BodyCollision")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("6_81nok")]
 enemy_hp_bar = NodePath("EnemyHPbar")
