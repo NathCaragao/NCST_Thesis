@@ -5618,6 +5618,8 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(1.5, -13)
 shape = SubResource("RectangleShape2D_gl0bv")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator3" to="DialogsCollection/DialogActivator3" method="_on_body_entered"]

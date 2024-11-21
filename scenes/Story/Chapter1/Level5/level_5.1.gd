@@ -7,7 +7,7 @@ var scene_path_2 : String = "res://scenes/cutscenes-collection/level 5-1/level_5
 func _ready() -> void:
 	# set canvas layer for cutscenes to be added
 	CutsceneManager.set_canvas_layer(canvas_layer)
-	Dialogic.signal_event.connect(on_op1)
+	Dialogic.signal_event.connect(on_op1) # opening 1 dialog signal ending
 	
 	opening_1()
 
