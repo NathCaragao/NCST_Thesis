@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=136 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -1135,6 +1135,10 @@ texture = SubResource("CompressedTexture2D_bjgfs")
 
 [sub_resource type="TileSet" id="TileSet_m12t2"]
 sources/0 = SubResource("TileSetAtlasSource_87hox")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umj7p"]
+shader = ExtResource("6_u2iim")
+shader_parameter/wind_strength = 10.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulk1i"]
 texture = ExtResource("3_4tnt5")
@@ -4863,6 +4867,7 @@ tile_set = SubResource("TileSet_m12t2")
 
 [node name="Decor" type="TileMapLayer" parent="TileCollection"]
 z_index = -3
+material = SubResource("ShaderMaterial_umj7p")
 tile_map_data = PackedByteArray("AADf//P/AAAAAAAAAADj//D/AAAAABgAAADs//P/AAAAAC0AAAD0//b/AAAAAEQAAAD///X/AAAAADsAAAANAPP/AAAAAC0AAAAcAPP/AAAAAC0AAAAsAO7/AAAAAAAAAAA5APD/AAAAABgAAAADAPb/AAAAAEQAAAAGAPj/AAAAAEQAAAAJAPb/AAAAAEQAAABaAPL/AAAWAAAAAADbAPP/AAAAAC0AAADXAPb/AAAAADsAAADUAPj/AAAAAEQAAADRAPf/AAAAADsAAADJAPX/AAAAAC0AAADNAPf/AAAAAC0AAABRAPX/AAAaAD4AAABRAPb/AAAaAD8AAABRAPf/AAAaAEAAAABRAPj/AAAaAEEAAABRAPn/AAAaAEIAAABRAPr/AAAaAEMAAABSAPL/AAAbADsAAABSAPP/AAAbADwAAABSAPT/AAAbAD0AAABSAPX/AAAbAD4AAABSAPb/AAAbAD8AAABSAPf/AAAbAEAAAABSAPj/AAAbAEEAAABSAPn/AAAbAEIAAABSAPr/AAAbAEMAAABSAPv/AAAbAEQAAABIAPb/AAAAADsAAABMAPf/AAAAAEQAAABQAPT/AAAAAC0AAABkAPT/AAAAABgAAACIAPP/AAAAABgAAACNAPT/AAAAAC0AAACQAPb/AAAAADsAAACUAPX/AAAAADsAAACYAPb/AAAAAEQAAACbAPD/AAAAABgAAACmAPX/AAAAADsAAACqAPb/AAAAAEQAAACyAO7/AAAAAAAAAAC3APX/AAATADsAAABrAPr/AAAQAEQAAADtAEEAAAAAABgAAAAbAT8AAAAAAAAAAAAXAUEAAAAAABgAAAD3AEQAAAAAAC0AAAAEAUYAAAAAADsAAAAPAUQAAAAAAC0AAAAvAUYAAAAAAC0AAAAyAUgAAAAAADsAAABCAUEAAAAAAAAAAAA5AUMAAAAAABgAAABPAUMAAAAAABgAAABcAUEAAAAAAAAAAABrAUIAAAAAAEQAAAB1AUIAAAAAAEQAAABwAT8AAAAAAC0AAAA=")
 tile_set = SubResource("TileSet_66skv")
 
