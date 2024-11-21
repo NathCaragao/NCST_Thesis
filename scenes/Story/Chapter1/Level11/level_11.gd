@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var cutscene_layer: CanvasLayer = $cutscenelvl11
+var scene_path : String = "res://scenes/cutscenes-collection/level_11/level_11_opening.tscn"
+
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
@@ -12,9 +15,12 @@ var paused : bool = false
 
 
 func _ready() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer)
+	
 	interaction_area.interact = Callable(self, "on_ferryman")
 	interaction_area_2.interact = Callable(self, "on_ferryman_2")
-
+	
+	opening_cutscene_lvl11()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
@@ -59,3 +65,6 @@ func boat_teleport2() -> void:
 	
 	actor.position.x = 7462
 	actor.position.y = 4460
+func opening_cutscene_lvl11() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening12")
+	CutsceneManager.play_cutscene("opening12")
