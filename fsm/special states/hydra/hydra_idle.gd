@@ -6,7 +6,7 @@ extends State
 @export var enemy_health_comp : Node2D
 
 func _ready() -> void:
-	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead4"))
+	enemy_health_comp.connect("EnemyDead", Callable(self, "hydra_dead1"))
 
 func enter() -> void:
 	pass
@@ -28,7 +28,7 @@ func _on_danger_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		Transitioned.emit(self, "hydraattack")
 
-func on_enemy_dead4() -> void:
+func hydra_dead1() -> void:
 	Transitioned.emit(self, "enemydeath")
 	#actor.animation_player.stop()
 	#state_machine.force_death_state()

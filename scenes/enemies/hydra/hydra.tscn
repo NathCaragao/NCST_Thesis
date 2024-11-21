@@ -308,7 +308,7 @@ _data = {
 size = Vector2(44, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csu66"]
-size = Vector2(130, 73)
+size = Vector2(149, 73)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fw0t6"]
 radius = 4.0
@@ -401,7 +401,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="DangerCollision" type="CollisionShape2D" parent="DangerArea"]
-position = Vector2(-52, -3)
+position = Vector2(-61.5, -3)
 shape = SubResource("RectangleShape2D_csu66")
 debug_color = Color(0.761081, 0.451666, 9.62615e-07, 0.42)
 

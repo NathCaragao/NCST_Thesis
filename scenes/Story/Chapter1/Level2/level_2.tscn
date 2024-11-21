@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=102 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -9006,7 +9006,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4shn"]
-size = Vector2(9, 11)
+size = Vector2(9, 117.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gm8"]
 size = Vector2(85, 142)
@@ -9087,6 +9087,10 @@ size = Vector2(661, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8gx"]
 size = Vector2(10, 28)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m6hlh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4obsk"]
+
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "hydra")]
 script = ExtResource("1_4x2vf")
 player = NodePath("Player")
@@ -9114,7 +9118,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(-219, -84)
+position = Vector2(-271, -75)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -9315,9 +9319,11 @@ scale = Vector2(1.5, 1.5)
 
 [node name="boundary" type="StaticBody2D" parent="Enemies"]
 position = Vector2(-9, 22)
+collision_layer = 64
+collision_mask = 0
 
 [node name="col1" type="CollisionShape2D" parent="Enemies/boundary"]
-position = Vector2(6642, 3342)
+position = Vector2(6642, 3288.75)
 shape = SubResource("RectangleShape2D_w4shn")
 
 [node name="col2" type="CollisionShape2D" parent="Enemies/boundary"]
@@ -9578,6 +9584,18 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Area2D"]
 shape = SubResource("RectangleShape2D_2w8gx")
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+
+[node name="Start" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(-587, -26)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_m6hlh")
+
+[node name="End" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(8552, -714)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_4obsk")
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
