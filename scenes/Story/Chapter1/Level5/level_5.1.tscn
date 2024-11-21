@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=24 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5/level_5.1.gd" id="1_qmr8m"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_y6l5g"]
 [ext_resource type="Texture2D" uid="uid://b0lir7wy5lkq2" path="res://assets/tileset (world-building)/Props-Rocks.png" id="2_3bwed"]
 [ext_resource type="Texture2D" uid="uid://xqactn14bjwp" path="res://assets/Images/BackgroundImages/parallax/MorningLayer5.png" id="2_qhp2m"]
@@ -1234,6 +1235,7 @@ size = Vector2(20, 444)
 size = Vector2(537, 13)
 
 [node name="Level5_1" type="Node2D"]
+script = ExtResource("1_qmr8m")
 
 [node name="sky" type="Parallax2D" parent="."]
 repeat_size = Vector2(3205, 0)
@@ -1380,6 +1382,8 @@ script = ExtResource("13_gynuv")
 position = Vector2(-44.5, 11.5)
 shape = SubResource("RectangleShape2D_h6yqy")
 debug_color = Color(0.590164, 0.376227, 1, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]

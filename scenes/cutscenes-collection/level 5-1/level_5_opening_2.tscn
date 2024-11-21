@@ -1,15 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3qsev5sx2xhq"]
 
-[ext_resource type="Script" path="res://scenes/components/cutsceneManager/cutscene.gd" id="1_hor8i"]
+[ext_resource type="Script" path="res://scenes/cutscenes-collection/level 5-1/level_5_opening_2.gd" id="1_as1x3"]
 [ext_resource type="Texture2D" uid="uid://br4ujpsj3poko" path="res://assets/Images/BackgroundImages/Cutscene/elis.webp" id="2_id2w3"]
 
-[node name="Level5Opening_2" type="Control" node_paths=PackedStringArray("target_node")]
+[node name="Level5Opening_2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_hor8i")
-dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_opening_2.dtl"
-playlevel = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
-target_node = NodePath("Throneroom")
+script = ExtResource("1_as1x3")
 
 [node name="Throneroom" type="TextureRect" parent="."]
 layout_mode = 0

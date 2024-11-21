@@ -15,4 +15,4 @@ Hercules: *(calmly, but coldly)* "Very well. I will do as you ask. But know this
 *(He turns and storms out of the throne room, the echoes of Eurystheus’ laughter following him.)*
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus
-[signal arg="end"]
+[signal arg="nextScene"]

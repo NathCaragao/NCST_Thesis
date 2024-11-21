@@ -1,15 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://jeyukgdqh45b"]
+[gd_scene load_steps=2 format=3 uid="uid://jeyukgdqh45b"]
 
-[ext_resource type="Script" path="res://scenes/components/cutsceneManager/cutscene.gd" id="1_5j4od"]
 [ext_resource type="Texture2D" uid="uid://dyyfqqyua1p6a" path="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" id="2_b0rd7"]
 
-[node name="Level5Opening_2" type="Control" node_paths=PackedStringArray("target_node")]
+[node name="Level5Opening_2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_5j4od")
-dialog_file = "res://Dialogs/Timelines/Stage7/S7_opening.dtl"
-playlevel = "res://scenes/Story/Chapter1/Level6/level_6.tscn"
-target_node = NodePath("Throneroom")
 
 [node name="Throneroom" type="TextureRect" parent="."]
 layout_mode = 0

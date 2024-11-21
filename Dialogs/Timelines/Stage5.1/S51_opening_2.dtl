@@ -2,7 +2,7 @@
 *(Hercules is led into the opulent palace of King Augeas, who reclines lazily on a gilded chair. Augeas is a rotund and disheveled man, clearly unbothered by the condition of his stables.)*
 join augeas center
 augeas: *(laughing as Hercules bows slightly)* "So, you're the son of Zeus? And you've come to clean my stables? The mighty Herakles, reduced to a dung-sweeper? How the gods must be laughing!"
-join Hercules center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: *(straightening, his voice even but firm)* "I am here to fulfill my task. But I am no fool, Augeas. I will not clean your filth for nothing. If I succeed in one day, you will grant me a tenth of your herd."
 augeas: *(stroking his beard, intrigued)* "A tenth of my herd? Bold, aren’t you? But why not? It’s an impossible task, after all. You’ve struck a deal, Herakles."
 *(He waves his hand dismissively.)*
@@ -12,5 +12,4 @@ leave augeas
 Hercules: *(grimacing)* "By the gods... Eurystheus truly knows how to humiliate a man."
 *(He exhales deeply, steadying himself.)*
 Hercules: *(to himself)* "But I am Herakles. This will not break me."
-join Hercules center [animation="Fade In Down"]
-[signal arg="end"]
+join Hercules leftmost [animation="Fade In Up" wait="true"]
