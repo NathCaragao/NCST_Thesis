@@ -3329,6 +3329,8 @@ position = Vector2(210.5, -127.5)
 shape = SubResource("RectangleShape2D_a1l0u")
 debug_color = Color(0.610444, 0.361603, 1, 0.42)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]

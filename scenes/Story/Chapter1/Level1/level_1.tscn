@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=147 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="28_ga2uk"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="29_1h0nh"]
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
+[ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="40_wihnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4932,6 +4933,33 @@ anim_offset_max = 1.0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bvhy0"]
 load_path = "res://.godot/imported/ELR_SpringlLeaf.png-6cf3ce2ad7d480cbd30b0f13b90ba6c6.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtytn"]
+size = Vector2(218, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnjw8"]
+size = Vector2(273, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pj61"]
+size = Vector2(97, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wd0h"]
+size = Vector2(384, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r6e7"]
+size = Vector2(788, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ralyt"]
+size = Vector2(118, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fvou"]
+size = Vector2(904, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iklp"]
+size = Vector2(819, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_palsl"]
+size = Vector2(996, 69)
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -5170,7 +5198,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-470, -114)
+position = Vector2(-458, -132)
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -5729,6 +5757,76 @@ amount = 350
 process_material = SubResource("ParticleProcessMaterial_pe8lb")
 texture = SubResource("CompressedTexture2D_bvhy0")
 visibility_rect = Rect2(-500, -200, 1000, 400)
+
+[node name="DeathZone" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(1439, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(9, 0)
+shape = SubResource("RectangleShape2D_mtytn")
+
+[node name="DeathZone2" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(1823, 926)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone2"]
+position = Vector2(20.5, 0)
+shape = SubResource("RectangleShape2D_dnjw8")
+
+[node name="DeathZone4" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(2181, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone4"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_8pj61")
+
+[node name="DeathZone3" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(2422, 762)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone3"]
+position = Vector2(26, 0)
+shape = SubResource("RectangleShape2D_8wd0h")
+
+[node name="DeathZone5" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(394, 1317)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone5"]
+position = Vector2(69, 19)
+shape = SubResource("RectangleShape2D_1r6e7")
+
+[node name="DeathZone6" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(2424, 1288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone6"]
+position = Vector2(10, 15)
+shape = SubResource("RectangleShape2D_ralyt")
+
+[node name="DeathZone8" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(4019, 2038)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone8"]
+position = Vector2(15, 8)
+shape = SubResource("RectangleShape2D_8fvou")
+
+[node name="DeathZone9" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(4019, 2038)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone9"]
+position = Vector2(-1396, 234)
+shape = SubResource("RectangleShape2D_8fvou")
+
+[node name="DeathZone7" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(5125, 1222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone7"]
+position = Vector2(73.5, 0)
+shape = SubResource("RectangleShape2D_1iklp")
+
+[node name="DeathZone10" parent="." instance=ExtResource("40_wihnk")]
+position = Vector2(184, 2533)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone10"]
+position = Vector2(67, -24.5)
+shape = SubResource("RectangleShape2D_palsl")
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
