@@ -17,7 +17,7 @@ var animation_mapping = {
 	"enemy-run" : "boss-boar-run",
 	"enemy-attack" : "boss-boar-attack",
 	"enemy-idle" : "boss-boar-idle",
-	"enemy-hit" : "",
+	"enemy-hit" : "boss-boar-hit",
 	"enemy-dead" : "boss-boar-death"
 }
 

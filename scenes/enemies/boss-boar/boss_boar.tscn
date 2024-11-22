@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cbo6bdevatf1v"]
+[gd_scene load_steps=29 format=3 uid="uid://cbo6bdevatf1v"]
 
 [ext_resource type="Texture2D" uid="uid://dcgmcy7imuh4r" path="res://assets/Enemies/boss-boar/boss_boar_attack-spritesheet.png" id="1_0cpnx"]
 [ext_resource type="Texture2D" uid="uid://br5f4wrqtwbg7" path="res://assets/Enemies/boss-boar/boss_boar_death-spritesheet.png" id="1_5aupq"]
@@ -275,10 +275,64 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_n3iyw"]
+resource_name = "boss-boar-hit"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_5aupq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_afm8k"]
 _data = {
 "boss-boar-attack": SubResource("Animation_ouj7o"),
 "boss-boar-death": SubResource("Animation_j24dp"),
+"boss-boar-hit": SubResource("Animation_n3iyw"),
 "boss-boar-idle": SubResource("Animation_0bnjr"),
 "boss-boar-run": SubResource("Animation_htx14")
 }
@@ -344,12 +398,14 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 script = ExtResource("8_dxe8x")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
+direction_val = 90
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("9_4pi1w")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
+player_length = 65
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0
