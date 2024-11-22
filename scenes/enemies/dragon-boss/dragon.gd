@@ -38,3 +38,6 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	$EnemyHealthComp/CanvasLayer.visible = false
+
+func post_dialog() -> void:
+	Dialogic.start("S11_5_postbattle")

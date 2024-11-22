@@ -29,3 +29,6 @@ func flip_sprite() -> void:
 	elif velocity.x > 0:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox.scale.x = -1
+
+func post_dialog() -> void:
+	Dialogic.start("S10_1-5")
