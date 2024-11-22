@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=148 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -4856,6 +4856,20 @@ func _on_interaction_area_body_exited(body: Node2D) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qepph"]
 size = Vector2(9, 89)
 
+[sub_resource type="GDScript" id="GDScript_ktb04"]
+script/source = "# key.gd
+extends Area2D
+
+var key_taken : bool = false
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"Player\"):
+		if key_taken == false:
+			print(\"got a key!\")
+			key_taken = true
+			visible = false
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl0bv"]
 size = Vector2(53, 43)
 
@@ -5156,7 +5170,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-458, -132)
+position = Vector2(-470, -114)
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -5554,9 +5568,11 @@ debug_color = Color(0.594556, 0.545887, 0, 0.42)
 position = Vector2(21, -15)
 shape = SubResource("RectangleShape2D_8736j")
 
-[node name="Gate3" type="Node2D" parent="Gates Collection"]
+[node name="Gate3" type="Node2D" parent="Gates Collection" node_paths=PackedStringArray("key", "totem_holder")]
 position = Vector2(4449, 2787)
 script = SubResource("GDScript_yism2")
+key = NodePath("../../Key_3")
+totem_holder = NodePath("TotemHolder3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gates Collection/Gate3"]
 position = Vector2(21.625, -14.3414)
@@ -5645,6 +5661,7 @@ position = Vector2(3562, 2295)
 scale = Vector2(0.8, 0.8)
 collision_layer = 0
 collision_mask = 8
+script = SubResource("GDScript_ktb04")
 
 [node name="ScoreUI" type="CanvasLayer" parent="."]
 
