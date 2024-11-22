@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=90 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level7/level_7.gd" id="1_irepw"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
@@ -14,11 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="6_dlh3g"]
 [ext_resource type="Texture2D" uid="uid://b5meydxd08djm" path="res://assets/tileset (world-building)/Green-Tree.png" id="6_ssfmt"]
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="7_0x5pf"]
+[ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="7_tbw0d"]
 [ext_resource type="Texture2D" uid="uid://cureosvxn34gk" path="res://assets/tileset (world-building)/Red-Tree.png" id="7_y3vwp"]
 [ext_resource type="Texture2D" uid="uid://b0lir7wy5lkq2" path="res://assets/tileset (world-building)/Props-Rocks.png" id="8_bfj6l"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="8_ovgkg"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="10_w0uwp"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="16_0u3pn"]
+[ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="17_b8vi1"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="18_5kwfr"]
 [ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="19_llmbi"]
 [ext_resource type="PackedScene" uid="uid://nggtuo375nmp" path="res://scenes/enemies/spartan/spartan.tscn" id="20_p44ar"]
@@ -34,6 +36,10 @@
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="31_61ji8"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/spike_hitbox.gd" id="32_ntyp6"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="34_erom1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrhne"]
+shader = ExtResource("7_tbw0d")
+shader_parameter/wind_strength = 5.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xfyj"]
 texture = ExtResource("3_n25p7")
@@ -2661,6 +2667,34 @@ sources/0 = SubResource("TileSetAtlasSource_g2nmj")
 sources/1 = SubResource("TileSetAtlasSource_3k0uw")
 sources/2 = SubResource("TileSetAtlasSource_krsau")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjw67"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_00k24"]
+offsets = PackedFloat32Array(0, 0.289941, 0.739645, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7gwfp"]
+gradient = SubResource("Gradient_00k24")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jgsss"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2000, 200, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.5
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_7gwfp")
+anim_offset_max = 1.0
+
 [sub_resource type="Animation" id="Animation_2jp8j"]
 length = 0.001
 tracks/0/type = "value"
@@ -2889,6 +2923,7 @@ scale = Vector2(2.31541, 4.18919)
 texture = ExtResource("16_0u3pn")
 
 [node name="bg1" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_nrhne")
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_3my3u")
 
@@ -2901,10 +2936,18 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(11072, -156)
+position = Vector2(-2434, -232)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="LeavesEffect" type="GPUParticles2D" parent="Player/Camera2D"]
+material = SubResource("CanvasItemMaterial_fjw67")
+position = Vector2(-34, -166)
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_jgsss")
+texture = ExtResource("17_b8vi1")
+visibility_rect = Rect2(-10000, -100, 20000, 400)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

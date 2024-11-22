@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://cgmw4h4krcbev"
+path="res://.godot/imported/ELR_SpringlLeaf.png-6cf3ce2ad7d480cbd30b0f13b90ba6c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/dynamic assets/ELR_SpringlLeaf.png"
+dest_files=["res://.godot/imported/ELR_SpringlLeaf.png-6cf3ce2ad7d480cbd30b0f13b90ba6c6.ctex"]
 
 [params]
 

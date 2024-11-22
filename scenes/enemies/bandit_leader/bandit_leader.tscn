@@ -440,12 +440,14 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 script = ExtResource("7_jm8ku")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
+direction_val = 45
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("8_etpip")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
+player_length = 45
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0

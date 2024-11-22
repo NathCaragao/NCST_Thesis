@@ -6,6 +6,8 @@ extends State
 @export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 @export var enemy_health_comp : Node2D
+@export var direction_val : int = 60
+
 var player : PlayerHercules
 var direction
 
@@ -42,7 +44,7 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, "enemywander")
 	
 	# transition to attack state
-	if direction.length() <= 60:
+	if direction.length() <= direction_val:
 		Transitioned.emit(self, "enemyattack")
 
 
