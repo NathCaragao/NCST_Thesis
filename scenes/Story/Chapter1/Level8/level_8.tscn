@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=39 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cquirvhx6wj0i" path="res://assets/tileset (world-building)/Game_Assets.png" id="2_1qmba"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="2_ukkio"]
 [ext_resource type="Texture2D" uid="uid://otg01w7opu0d" path="res://assets/tileset (world-building)/Yellow-Tree.png" id="5_j1480"]
+[ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="6_ae62n"]
 [ext_resource type="Texture2D" uid="uid://b5meydxd08djm" path="res://assets/tileset (world-building)/Green-Tree.png" id="6_g4q5m"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="9_4wu6i"]
 [ext_resource type="Texture2D" uid="uid://k1nhconx1lny" path="res://assets/tileset (world-building)/house.png" id="9_hogxx"]
@@ -19,6 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="15_bb8r2"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="16_1exm2"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="17_53f2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
+shader = ExtResource("6_ae62n")
+shader_parameter/wind_strength = 10.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lri4"]
 texture = ExtResource("5_j1480")
@@ -2507,6 +2512,7 @@ scale = Vector2(7.78634, 3.88514)
 texture = ExtResource("2_ukkio")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_1saxt")
 tile_map_data = PackedByteArray("AAA+AAYAAgAAAEQAAABBAAYAAgAAAEQAAABEAAUAAgAAADsAAABRAAUAAgAAADsAAABfAAUAAgAAADsAAABjAAUAAAAAADsAAABnAAUAAAAAADsAAABrAAYAAAAAAEQAAAB4AAcAAgAAAEQAAAB7AAUAAgAAADsAAAB/AAUAAgAAADsAAACVAAYAAgAAAEQAAACYAAYAAgAAAEQAAACbAAUAAgAAADsAAACfAAUAAAAAADsAAACjAAUAAAAAADsAAACnAAUAAAAAADsAAAAHAPb/AAAAABkAAAAEAPb/AAAAABkAAAD///b/AgAAABgAAAD7//b/AgAAABgAAAD2//n/AgAAAC0AAADy//b/AAAAABkAAADu//b/AAAAABkAAADq//n/AAAAAC0AAADn//T/AgAAAAAAAADk//b/AgAAABgAAADg//b/AgAAABgAAADb//b/AgAAABgAAADY//T/AgAAAAAAAADU//b/AAAAABkAAADQ//b/AAAAABkAAADL//b/AAAAABkAAADI//b/AAAAABkAAADE//X/AAAAAAAAAADA//b/AgAAABgAAAC8//b/AgAAABgAAAC4//b/AgAAABgAAAC0//X/AAAAAAAAAACx//f/AAAAABkAAACt//b/AAAAABkAAAA=")
 tile_set = SubResource("TileSet_uhfsm")
 
