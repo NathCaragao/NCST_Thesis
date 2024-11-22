@@ -1371,7 +1371,7 @@ script = ExtResource("11_sgld1")
 dialog_file = "res://Dialogs/Timelines/Stage5.1/S51_3.dtl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
-position = Vector2(3207, -349)
+position = Vector2(3959, -409)
 shape = SubResource("RectangleShape2D_f8u17")
 
 [node name="DeathZone" type="Area2D" parent="."]

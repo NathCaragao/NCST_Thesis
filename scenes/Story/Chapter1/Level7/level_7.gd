@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var cutscene_layer: CanvasLayer = $CanvasLayer
+var scene_path : String = "res://scenes/cutscenes-collection/level 7/level_7_opening.tscn"
+
 @export var enemy_scenes : Array[PackedScene] = []
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -11,10 +14,12 @@ extends Node2D
 var paused : bool = false
 
 func _ready() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_dialog_done)
 	Dialogic.signal_event.connect(on_8complete)
-
+	
+	opening_cutscene()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
@@ -24,7 +29,8 @@ func _process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true
-
+	
+	
 
 func spawn_enemy(index : int, spawn_point_index: int) -> void:
 	if enemy_scenes.is_empty():
@@ -57,3 +63,7 @@ func on_8complete(argument: String) -> void:
 func on_finish() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+	
+func opening_cutscene() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening6")
+	CutsceneManager.play_cutscene("opening6")

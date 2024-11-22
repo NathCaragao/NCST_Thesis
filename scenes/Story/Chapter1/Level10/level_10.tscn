@@ -1674,7 +1674,7 @@ position = Vector2(5907, -4363)
 position = Vector2(17542, 129)
 
 [node name="Player" parent="." instance=ExtResource("16_406ug")]
-position = Vector2(17250, 142)
+position = Vector2(10110, -226)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -1718,7 +1718,7 @@ script = ExtResource("17_lj7xi")
 dialog_file = "S11_5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DialogActivator5"]
-position = Vector2(16113, -29)
+position = Vector2(16824, -21)
 shape = SubResource("RectangleShape2D_njgwh")
 
 [node name="DialogActivator6" type="Area2D" parent="Node2D"]

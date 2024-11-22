@@ -6602,7 +6602,7 @@ script = ExtResource("24_tir2g")
 dialog_file = "pholos_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator4"]
-position = Vector2(0.5, -122.5)
+position = Vector2(1043, -160)
 shape = SubResource("RectangleShape2D_ffjki")
 debug_color = Color(0.507691, 0.424542, 1, 0.42)
 
