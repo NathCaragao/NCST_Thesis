@@ -1,0 +1,15 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
+In the court of King Eurystheus. The air is tense, as Eurystheus paces near his throne, clearly unnerved by Hercules’ past victories. Hercules stands silently, his presence imposing, his lion pelt draped over his shoulders like a cloak of defiance. The king finally turns, his expression both annoyed and apprehensive.
+join Eurystheus center [animation="Fade In Down"]
+Eurystheus:  (with forced confidence)"It seems no matter the challenge I set, you return triumphant. But this time, Hercules, I have a task that will test your endurance and cunning beyond brute strength."
+join Eurystheus rightmost [animation="Fade In Down"]
+join Hercules center [animation="Fade In Down"]
+Hercules:  (stoic)"Speak, Eurystheus. What labor do you cower from this time?"
+Eurystheus: (ignoring the taunt, smirking)"Far to the northern forests roams a magnificent beast\: the Erymanthian Boar. It is a terror to all who dwell near Mount Erymanthos. Bring it to me—alive."
+Hercules:  (arching a brow)"Alive? That is no small feat. Why not let me slay the beast and end its terror once and for all?"
+Eurystheus: (mockingly)"Because I command otherwise, son of Zeus! Prove to me that you are more than a butcher of monsters. Subdue it without killing it, if you are truly as clever as you are strong."
+Hercules:  (with a faint smirk)"Very well. I will drag your beast here for all to see. Try not to hide in your jar when I return."
+Eurystheus’ face flushes with anger at the jab, but Hercules turns and strides out before the king can reply.
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus [animation="Fade Out Up"]
+narrator: "Thus began the fourth labor of Hercules, a task to capture the fearsome Erymanthian Boar. Its tusks gleamed like swords, its roar shook the forest, and no mortal had ever dared approach it and lived. But Hercules was no mere mortal."

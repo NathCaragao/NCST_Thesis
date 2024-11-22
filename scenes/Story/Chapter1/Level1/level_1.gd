@@ -1,5 +1,7 @@
 # level 1.gd
 extends Node2D
+var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_opening.tscn"
+@onready var cutscene_layer: CanvasLayer = $CanvasLayer
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -10,9 +12,11 @@ extends Node2D
 var paused : bool = false
 
 func _ready() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	nemean_lion.connect("LionDefeated", Callable(self, "on_lion_defeated"))
-
+	
+	opening_cutscene()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
@@ -26,3 +30,8 @@ func _process(delta: float) -> void:
 func on_lion_defeated() -> void:
 	victory_screen.visible = true # shows the victory screen
 	victory_screen.update_scores() # updates the scores
+	
+# function for the opening scene
+func opening_cutscene() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening1")
+	CutsceneManager.play_cutscene("opening1")

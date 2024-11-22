@@ -1,5 +1,8 @@
 extends Node2D
 
+var scene_path : String = "res://scenes/cutscenes-collection/level 4/level_4_opening.tscn"
+@onready var cutscene_layer: CanvasLayer = $CanvasLayer
+
 @export var player : PlayerHercules
 @export var fail_screen: Control
 @export var pause_screen : Control
@@ -9,9 +12,12 @@ extends Node2D
 var paused : bool = false
 
 func _ready() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer) # sets where the cutscene.tscn will go
+	
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	boss_boar.connect("BossBoarDefeated", Callable(self, "on_defeat"))
 	
+	opening_cutscene()
 	# snow particle
 	$Player/Camera2D/Snow.local_coords = false
 
@@ -37,3 +43,7 @@ func after_battle_dialog() -> void:
 func level_complete() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+	
+func opening_cutscene() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening1")
+	CutsceneManager.play_cutscene("opening1")
