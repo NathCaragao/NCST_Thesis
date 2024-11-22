@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=144 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="27_3di2u"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="28_ga2uk"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="29_1h0nh"]
+[ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4844,6 +4845,58 @@ size = Vector2(88, 95)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl0bv"]
 size = Vector2(53, 43)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ihr68"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_al8wg"]
+offsets = PackedFloat32Array(0, 0.289941, 0.739645, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tu47"]
+gradient = SubResource("Gradient_al8wg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hf12k"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2000, 200, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.5
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_3tu47")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y6a7w"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pe8lb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1200, 200, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.5
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_3tu47")
+anim_offset_max = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bvhy0"]
+load_path = "res://.godot/imported/ELR_SpringlLeaf.png-6cf3ce2ad7d480cbd30b0f13b90ba6c6.ctex"
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -5624,6 +5677,22 @@ position = Vector2(1.5, -13)
 shape = SubResource("RectangleShape2D_gl0bv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LeavesEffect" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ihr68")
+position = Vector2(1575, -276)
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_hf12k")
+texture = ExtResource("39_imt48")
+visibility_rect = Rect2(-500, -200, 1000, 400)
+
+[node name="LeavesEffect2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_y6a7w")
+position = Vector2(4963, 960)
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_pe8lb")
+texture = SubResource("CompressedTexture2D_bvhy0")
+visibility_rect = Rect2(-500, -200, 1000, 400)
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
