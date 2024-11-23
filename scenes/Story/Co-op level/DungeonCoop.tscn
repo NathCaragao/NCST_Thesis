@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=4 uid="uid://ra4by1tl7ybs"]
+[gd_scene load_steps=29 format=4 uid="uid://ra4by1tl7ybs"]
 
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_4fov8"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="2_7oxps"]
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="3_6ckvs"]
 [ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="4_xmj0y"]
 [ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="5_ftod6"]
+[ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_vf0cc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcptn"]
 texture = ExtResource("1_4fov8")
@@ -757,3 +758,15 @@ debug_color = Color(0.632582, 0.344036, 1, 0.42)
 position = Vector2(6900, 234)
 shape = SubResource("RectangleShape2D_ly4h3")
 debug_color = Color(0.632582, 0.344036, 1, 0.42)
+
+[node name="Firehazard" parent="." instance=ExtResource("6_vf0cc")]
+position = Vector2(7270, 251)
+
+[node name="Firehazard2" parent="." instance=ExtResource("6_vf0cc")]
+position = Vector2(7271, 358)
+
+[node name="Firehazard3" parent="." instance=ExtResource("6_vf0cc")]
+position = Vector2(7466, 252)
+
+[node name="Firehazard4" parent="." instance=ExtResource("6_vf0cc")]
+position = Vector2(7467, 357)
