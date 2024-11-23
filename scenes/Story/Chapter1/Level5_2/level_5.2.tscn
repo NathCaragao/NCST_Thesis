@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=86 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -7896,6 +7896,9 @@ size = Vector2(452, 16)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cssye"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0u76"]
+size = Vector2(7148, 172)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lfvhs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xheww"]
@@ -8343,6 +8346,11 @@ debug_color = Color(0.482353, 0.00392157, 0.803922, 0.419608)
 position = Vector2(20210, 1309)
 shape = SubResource("WorldBoundaryShape2D_cssye")
 debug_color = Color(0.482353, 0.00392157, 0.803922, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(20245, 32)
+shape = SubResource("RectangleShape2D_h0u76")
+debug_color = Color(0.530916, 0.412489, 1, 0.42)
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 position = Vector2(-30062, 0)

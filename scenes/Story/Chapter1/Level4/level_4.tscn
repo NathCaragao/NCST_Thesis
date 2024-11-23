@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=75 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://caxpvmw3y1bwl" path="res://scenes/friendly-npcs/pholos/pholos_npc.tscn" id="25_v7skj"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="26_t0sp2"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="28_bp1u5"]
+[ext_resource type="PackedScene" uid="uid://b4b5v5gh6gekm" path="res://scenes/enemies/centaur/centaur.tscn" id="30_bwgsj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l8pk"]
 texture = ExtResource("1_aqg7f")
@@ -6391,12 +6392,6 @@ position = Vector2(2707, -963)
 [node name="Wolf7" parent="Enemies" instance=ExtResource("9_i2s6c")]
 position = Vector2(5394, -1138)
 
-[node name="Wolf8" parent="Enemies" instance=ExtResource("9_i2s6c")]
-position = Vector2(7029, -692)
-
-[node name="Wolf9" parent="Enemies" instance=ExtResource("9_i2s6c")]
-position = Vector2(7275, -692)
-
 [node name="Wolf10" parent="Enemies" instance=ExtResource("9_i2s6c")]
 position = Vector2(8700, -692)
 
@@ -6491,10 +6486,10 @@ scale = Vector2(1.5, 1.5)
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Firehazard" parent="Obstacles" instance=ExtResource("8_qvuq6")]
-position = Vector2(8159, -667)
+position = Vector2(8136, -667)
 
 [node name="Firehazard2" parent="Obstacles" instance=ExtResource("8_qvuq6")]
-position = Vector2(8477, -668)
+position = Vector2(8492, -668)
 
 [node name="Firehazard3" parent="Obstacles" instance=ExtResource("8_qvuq6")]
 position = Vector2(8310, -731)
@@ -6574,13 +6569,13 @@ position = Vector2(12347, -1008)
 collision_layer = 33
 
 [node name="Log" parent="." node_paths=PackedStringArray("static_collision") instance=ExtResource("15_wg4ok")]
-position = Vector2(12349, -812)
+position = Vector2(12362, -720)
 static_collision = NodePath("StaticBody2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Log"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Log/StaticBody2D"]
-position = Vector2(2, 1.5)
+position = Vector2(7, 2)
 shape = SubResource("RectangleShape2D_qlvvn")
 debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
@@ -6847,6 +6842,18 @@ debug_color = Color(0.591559, 0.375261, 1, 0.42)
 position = Vector2(10982, 596)
 shape = SubResource("RectangleShape2D_jioni")
 debug_color = Color(0.591559, 0.375261, 1, 0.42)
+
+[node name="Centaur" parent="." instance=ExtResource("30_bwgsj")]
+position = Vector2(7545, -721)
+
+[node name="Centaur2" parent="." instance=ExtResource("30_bwgsj")]
+position = Vector2(7724, -723)
+
+[node name="Centaur3" parent="." instance=ExtResource("30_bwgsj")]
+position = Vector2(7315, -721)
+
+[node name="Centaur4" parent="." instance=ExtResource("30_bwgsj")]
+position = Vector2(10642, -49)
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

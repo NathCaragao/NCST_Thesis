@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=162 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://5ye1x5rn22tc" path="res://assets/dynamic assets/tree_3.png" id="10_6f47i"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="10_aj2yc"]
 [ext_resource type="Texture2D" uid="uid://04pewidoonsj" path="res://assets/dynamic assets/tree_2.png" id="11_8dbpn"]
+[ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="12_pgfsr"]
 [ext_resource type="PackedScene" uid="uid://2740j354gfgd" path="res://scenes/mechanisms/gate/gate.tscn" id="13_gcvc1"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="14_pkjb1"]
 [ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="15_exch3"]
@@ -3970,6 +3971,16 @@ shader_parameter/wind_strength = 10.0
 shader = ExtResource("6_u2iim")
 shader_parameter/wind_strength = 10.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oncla"]
+texture = ExtResource("12_pgfsr")
+5:9/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+5:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xitn2"]
+sources/0 = SubResource("TileSetAtlasSource_oncla")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sibr"]
 size = Vector2(4, 242)
 
@@ -4942,6 +4953,27 @@ size = Vector2(954.5, 49)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3koe"]
 size = Vector2(294.125, 29.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqm47"]
+size = Vector2(282, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btqg8"]
+size = Vector2(914, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_853s6"]
+size = Vector2(252, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b17ci"]
+size = Vector2(415, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmh0l"]
+size = Vector2(136, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h1sa"]
+size = Vector2(829, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g7wc"]
+size = Vector2(824, 21.5)
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -5028,6 +5060,10 @@ z_index = -1
 material = SubResource("ShaderMaterial_vrmd0")
 position = Vector2(602, -246)
 texture = ExtResource("7_t6vne")
+
+[node name="spikefordeathsone" type="TileMapLayer" parent="TileCollection"]
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_xitn2")
 
 [node name="DialogsCollection" type="Node2D" parent="."]
 
@@ -5180,7 +5216,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-458, -132)
+position = Vector2(-490, -114)
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -5745,7 +5781,7 @@ position = Vector2(953, 695)
 script = ExtResource("40_8q11v")
 
 [node name="Area1" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(143.5, 16)
+position = Vector2(157, 31)
 shape = SubResource("RectangleShape2D_7lbl2")
 debug_color = Color(0.501514, 0.427571, 1, 0.42)
 
@@ -5758,6 +5794,46 @@ debug_color = Color(0.501514, 0.427571, 1, 0.42)
 position = Vector2(-185, 1795)
 shape = SubResource("RectangleShape2D_h3koe")
 debug_color = Color(0.501514, 0.427571, 1, 0.42)
+
+[node name="area4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1935, 1574)
+shape = SubResource("RectangleShape2D_nqm47")
+debug_color = Color(0.509838, 0.423472, 1, 0.42)
+
+[node name="Area5" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(3082, 1358)
+shape = SubResource("RectangleShape2D_btqg8")
+debug_color = Color(0.535074, 0.410215, 1, 0.42)
+
+[node name="Area6" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(890, 233)
+shape = SubResource("RectangleShape2D_853s6")
+debug_color = Color(0.537386, 0.408934, 1, 0.42)
+
+[node name="Area7" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(491, -726)
+shape = SubResource("RectangleShape2D_853s6")
+debug_color = Color(0.537386, 0.408934, 1, 0.42)
+
+[node name="Area8" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1485, 79)
+shape = SubResource("RectangleShape2D_b17ci")
+debug_color = Color(0.530634, 0.412642, 1, 0.42)
+
+[node name="Area9" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1490, 632)
+shape = SubResource("RectangleShape2D_bmh0l")
+debug_color = Color(0.585835, 0.379185, 1, 0.42)
+
+[node name="Area10" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-481.5, 653)
+shape = SubResource("RectangleShape2D_8h1sa")
+debug_color = Color(0.582285, 0.381571, 1, 0.42)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(4244, 543)
+shape = SubResource("RectangleShape2D_2g7wc")
+debug_color = Color(0.546857, 0.403565, 1, 0.42)
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]

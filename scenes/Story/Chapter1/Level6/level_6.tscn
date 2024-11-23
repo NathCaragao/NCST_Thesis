@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=42 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="13_y51gj"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="14_25saf"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="16_5uncq"]
+[ext_resource type="PackedScene" uid="uid://cidx4nvd0xwr2" path="res://scenes/enemies/Bull(placeholder)/boss_bull.tscn" id="18_2afav"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1mti"]
 shader = ExtResource("3_1u3dt")
@@ -1899,6 +1900,9 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_hq7st")
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="BossBoar" parent="." instance=ExtResource("18_2afav")]
+position = Vector2(11255, -561)
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
