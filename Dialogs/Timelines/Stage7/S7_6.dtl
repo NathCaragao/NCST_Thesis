@@ -4,3 +4,4 @@ Hercules: (grunting as he holds the bull steady)"Enough! You’ve fought well, b
 (The bull slowly begins to calm, its movements less frantic as it senses Hercules’ dominance. Hercules binds the creature with a rope, his touch firm but respectful.)
 Hercules: "You’re a proud beast, and I’ll honor that pride. Let’s go—our journey isn’t over yet."
 leave Hercules [animation="Fade Out Up"]
+[signal arg="7labordone"]
