@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhbcf3kciq2wb" path="res://assets/Images/BackgroundImages/Background-1.png" id="1_cgawb"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_sq06d"]
 [ext_resource type="Texture2D" uid="uid://bf6e61vn8acqp" path="res://assets/Images/BackgroundImages/Background-4.png" id="2_2i1dw"]
-[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/Tiles.png" id="2_ihg21"]
+[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/tiles.png" id="2_ihg21"]
 [ext_resource type="Texture2D" uid="uid://b12a3dcg5ljso" path="res://assets/Images/BackgroundImages/Background-3.png" id="2_k4xn7"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="3_3ch0d"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="3_kc06w"]
@@ -2486,7 +2486,7 @@ position = Vector2(4260, -820)
 position = Vector2(5209, -819)
 
 [node name="Geryon" parent="." instance=ExtResource("18_4nbtt")]
-position = Vector2(10435, -1500)
+position = Vector2(11873, -1597)
 
 [node name="Dialogs" type="Node2D" parent="."]
 
@@ -2521,6 +2521,9 @@ dialog_file = "S10_1-4"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator4"]
 position = Vector2(9695, -1648)
 shape = SubResource("RectangleShape2D_q4v2v")
+
+[node name="Eurytheon" parent="Dialogs" instance=ExtResource("17_j35sv")]
+position = Vector2(10364, -1522)
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 
