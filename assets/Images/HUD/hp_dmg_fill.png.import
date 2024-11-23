@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://d2i4ifqsnqw34"
+path="res://.godot/imported/hp_dmg_fill.png-43883f4ac2e717ed8a3cc06fc509919e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/Images/HUD/hp_dmg_fill.png"
+dest_files=["res://.godot/imported/hp_dmg_fill.png-43883f4ac2e717ed8a3cc06fc509919e.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=50 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://fsm/playerStates/player-hit.gd" id="18_ej16c"]
 [ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="20_eusl1"]
 [ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="21_1ghhf"]
+[ext_resource type="Texture2D" uid="uid://wwrtvciepxxf" path="res://assets/Images/HUD/hp_frame.png" id="22_wv4js"]
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="23_q8sdd"]
 [ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="25_7gieo"]
 [ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_nhbjn"]
@@ -859,21 +860,31 @@ debug_color = Color(0.983351, 0, 0.353836, 0.42)
 [node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
 
 [node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("23_q8sdd")]
-custom_minimum_size = Vector2(240, 10)
-offset_left = 240.0
-offset_top = 20.0
-offset_right = 520.0
-offset_bottom = 50.0
-scale = Vector2(2, 2)
+offset_left = 132.0
+offset_top = 100.0
+offset_right = 324.0
+offset_bottom = 116.0
+scale = Vector2(3, 3)
 
 [node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
 offset_top = -7.0
 offset_bottom = 8.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 20
+
+[node name="Frame" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+custom_minimum_size = Vector2(229, 34)
+offset_left = 27.0
+offset_top = 73.0
+offset_right = 256.0
+offset_bottom = 107.0
+scale = Vector2(3, 3)
+texture = ExtResource("22_wv4js")
 
 [node name="PlayerIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
-offset_right = 23515.0
-offset_bottom = 23500.0
+offset_left = 36.0
+offset_top = 82.0
+offset_right = 8436.0
+offset_bottom = 8776.0
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("20_eusl1")
 
