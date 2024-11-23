@@ -15,6 +15,8 @@ var is_attacking : bool = false
 var bow_cooldown : bool = true
 @onready var level_1 = get_tree().get_first_node_in_group("Levels")
 
+var attackCooldown = 0.5
+
 
 func _ready() -> void:
 	pass
@@ -46,9 +48,12 @@ func physics_update(delta: float) -> void:
 		actor.playerGameData.isAttacking = true
 		return
 	
-	# NOT BEING REACHED, IDK WHY
-	print_debug("%s: %s and %s" % [delta, actor.playerGameData.isAttacking, (actor.animation_player.is_playing() and actor.animation_player.current_animation.begins_with("attack"))])
+	if attackCooldown > 0:
+		actor.playerGameData.isAttacking = true
+		attackCooldown -= delta
+		return
 	
+	actor.playerGameData.isAttacking = false
 	if actor.playerGameData.isControlled:
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			Transitioned.emit(self, "playerrun")
@@ -70,6 +75,8 @@ func physics_update(delta: float) -> void:
 	
 	if player_health_component.current_health == 0:
 		Transitioned.emit(self, "playerdeath")
+		
+	Transitioned.emit(self, "playeridle")
 	
 
 func _physics_process(delta: float) -> void:
@@ -109,19 +116,24 @@ func play_next_attack_animation():
 
 # Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
+	actor.animation_player.play("idle")
+	attackCooldown = float(10.0/60.0)
 	# Check if the finished animation is an attack animation
-	if animation_name in attack_animations or animation_name == "player-shoot":
-		 # Continue attacking if the attack button is held
-		if (Input.is_action_just_pressed("attack") and actor.playerGameData.isControlled) or (actor.playerGameData.isAttacking and !actor.playerGameData.isControlled):
-			if actor.playerGameData.weaponMode == "Melee":
-				play_next_attack_animation()
-			elif actor.playerGameData.weaponMode == "Ranged":
-				bow_attack()
-		else:
-			# If no attack input, stop the attack and transition to idle or other states
-			#if actor.playerGameData.isControlled:
-			#actor.playerGameData.isAttacking = false
-			Transitioned.emit(self, "playeridle")  # Transition to idle state after attack
+	
+	#if animation_name in attack_animations or animation_name == "player-shoot":
+		#print_debug("I AM THE REASON THAT SHET ISNT BEING REACHED!")
+		 ## Continue attacking if the attack button is held
+		#if (Input.is_action_just_pressed("attack") and actor.playerGameData.isControlled) or (actor.playerGameData.isAttacking and !actor.playerGameData.isControlled):
+			#if actor.playerGameData.weaponMode == "Melee":
+				#play_next_attack_animation()
+			#elif actor.playerGameData.weaponMode == "Ranged":
+				#bow_attack()
+		#else:
+			## If no attack input, stop the attack and transition to idle or other states
+			##if actor.playerGameData.isControlled:
+			##actor.playerGameData.isAttacking = false
+			#Transitioned.emit(self, "playeridle")  # Transition to idle state after attack
+
 # Melee mode attack
 func sword_attack() -> void:
 	print("Entered sword_attack state")

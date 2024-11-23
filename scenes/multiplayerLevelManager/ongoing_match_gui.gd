@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if timer >= 0.1 and currentPlayerCharacter != null:
+	if timer >= float(1.0/30.0) and currentPlayerCharacter != null:
 		CurrentPlayerGameDataUpdate.emit(currentPlayerCharacter.playerGameData)
 		timer = 0
 
