@@ -36,11 +36,14 @@ func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 		for otherPlayer in otherPlayersData:
 			if otherPlayer.isReady == false:
 				startTimer = false
+		
 		if startTimer && %Timer.is_stopped() == true:
 			startTimer()
+		elif !startTimer && %Timer.is_stopped() == false:
+			stopTimer()
 	else:
 		stopTimer()
-
+		
 func _updateJoinedMatchIDLabel(newJoinedMatchID:String):
 	if %JoinedMatchID.text == newJoinedMatchID:
 		return

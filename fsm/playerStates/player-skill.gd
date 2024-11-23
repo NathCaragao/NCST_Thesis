@@ -12,6 +12,7 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	actor.velocity.y += actor.gravity * delta
+	actor._flip_sprite()
 	
 	if not actor.animation_player.is_playing():
 		# Animation ended, decide what to do next
