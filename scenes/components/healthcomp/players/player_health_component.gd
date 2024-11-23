@@ -5,7 +5,7 @@ extends Node2D
 var current_health : int
 # reference player hurtbox here
 var is_dead : bool = false
-@onready var phealth_bar: PlayerHealthBar = $Hp_bar/PlayerHPbar
+@onready var phealth_bar: ProgressBar = $Hp_bar/PlayerHPbar
 @export var anim_effects: AnimationPlayer
 
 signal ObstacleHit
