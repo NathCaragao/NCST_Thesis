@@ -2522,6 +2522,14 @@ dialog_file = "S10_1-4"
 position = Vector2(9695, -1648)
 shape = SubResource("RectangleShape2D_q4v2v")
 
+[node name="DialogActivator5" type="Area2D" parent="Dialogs"]
+script = ExtResource("17_6m0us")
+dialog_file = "S10_1-5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator5"]
+position = Vector2(11001, -1668)
+shape = SubResource("RectangleShape2D_q4v2v")
+
 [node name="Eurytheon" parent="Dialogs" instance=ExtResource("17_j35sv")]
 position = Vector2(10364, -1522)
 
@@ -2569,3 +2577,4 @@ visible = false
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
