@@ -41,6 +41,7 @@ func physics_update(delta: float) -> void:
 		movement = actor.playerGameData.velocity.x
 		
 	actor.velocity.x = movement
+	actor._flip_sprite()
 	actor.move_and_slide()
 	
 	
@@ -49,7 +50,7 @@ func physics_update(delta: float) -> void:
 		return
 	
 	if attackCooldown > 0:
-		actor.playerGameData.isAttacking = true
+		actor.playerGameData.isAttacking = false
 		attackCooldown -= delta
 		return
 	

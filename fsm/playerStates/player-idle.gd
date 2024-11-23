@@ -17,6 +17,7 @@ func physics_update(delta: float) -> void:
 		actor.velocity.y += actor.gravity * delta
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
+	actor._flip_sprite()
 	actor.move_and_slide()
 	
 	# Play the idle animation

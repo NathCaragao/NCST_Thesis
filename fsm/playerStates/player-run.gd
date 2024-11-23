@@ -24,6 +24,7 @@ func physics_update(delta: float) -> void:
 		movement = actor.playerGameData.velocity.x
 	
 	actor.velocity.x = movement
+	actor._flip_sprite()
 	actor.move_and_slide()
 	
 	# Switch to other states if suitable
