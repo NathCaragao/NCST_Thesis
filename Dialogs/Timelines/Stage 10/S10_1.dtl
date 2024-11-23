@@ -1,12 +1,14 @@
-join Eurystheus center
+join Eurystheus rightmost
 Eurystheus: *(with a sly smile)* *"Herakles, you’ve done well so far, but don’t think for a moment that you’ve bested me. Your next labor will take you\
 to the very edges of the world, beyond any land you’ve ever known.
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: *(calm but firm)* *"Name it, Eurystheus. No matter how far, no matter how dangerous, I will see it done.
 Eurystheus: *(leaning forward)* *"Journey to the distant island of Erytheia and bring me the prized cattle of Geryon.
-Eurystheus: These beasts are sacred to Helios, their hides gleaming like gold. But beware—Geryon is no ordinary foe. 
+Eurystheus: These beasts are sacred to Helios, their hides gleaming like gold. But beware—Geryon is no ordinary foe.
 Eurystheus: A giant with three bodies, he guards his cattle with the help of his herdsman Eurytion and a monstrous two-headed dog, Orthrus.
 Eurystheus: If the beasts’ beauty doesn’t blind you, their protectors surely will end you.
 Hercules: *(narrowing his eyes)* Your schemes grow more desperate, Eurystheus. But I will face these dangers, just as I have faced all the others.\
 Your fear will never be my master.
 Eurystheus: *(laughing)* *"We shall see. Off with you, son of Zeus. Perhaps this time, the gods themselves will abandon you.
+leave Eurystheus
+leave Hercules [animation="Fade Out Up" wait="true"]

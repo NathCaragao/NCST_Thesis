@@ -1,9 +1,10 @@
-[gd_scene load_steps=42 format=4 uid="uid://pbp3yfpo4lji"]
+[gd_scene load_steps=47 format=4 uid="uid://pbp3yfpo4lji"]
 
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level9/level_9.gd" id="1_abivw"]
 [ext_resource type="Texture2D" uid="uid://dhbcf3kciq2wb" path="res://assets/Images/BackgroundImages/Background-1.png" id="1_cgawb"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_sq06d"]
 [ext_resource type="Texture2D" uid="uid://bf6e61vn8acqp" path="res://assets/Images/BackgroundImages/Background-4.png" id="2_2i1dw"]
-[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/tiles.png" id="2_ihg21"]
+[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/Tiles.png" id="2_ihg21"]
 [ext_resource type="Texture2D" uid="uid://b12a3dcg5ljso" path="res://assets/Images/BackgroundImages/Background-3.png" id="2_k4xn7"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="3_3ch0d"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="3_kc06w"]
@@ -20,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://tsp5761857y8" path="res://scenes/enemies/eurytheon/eurytheon.tscn" id="17_j35sv"]
 [ext_resource type="PackedScene" uid="uid://sdwnpsucubvg" path="res://scenes/enemies/geryon/geryon.tscn" id="18_4nbtt"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="20_t0uyu"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="22_mhuyf"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="23_6wiy7"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="24_yceyx"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="25_30xpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyp04"]
 texture = ExtResource("1_sq06d")
@@ -2380,7 +2385,11 @@ size = Vector2(873, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slhcm"]
 size = Vector2(1572.88, 13)
 
-[node name="Level9" type="Node2D"]
+[node name="Level9" type="Node2D" node_paths=PackedStringArray("victory_screen", "fail_screen", "pause_screen")]
+script = ExtResource("1_abivw")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
 
 [node name="Decors" type="Node2D" parent="."]
 
@@ -2442,7 +2451,7 @@ tile_map_data = PackedByteArray("AAAZAqb/AAAAAAcAAAAZAqf/AAAAAAgAAAAZAqj/AAAAAAc
 tile_set = SubResource("TileSet_s4lav")
 
 [node name="Player" parent="." instance=ExtResource("14_54tts")]
-position = Vector2(559, -121)
+position = Vector2(133, -58)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -2513,22 +2522,6 @@ dialog_file = "S10_1-4"
 position = Vector2(9695, -1648)
 shape = SubResource("RectangleShape2D_q4v2v")
 
-[node name="DialogActivator5" type="Area2D" parent="Dialogs"]
-script = ExtResource("17_6m0us")
-dialog_file = "S10_1-5"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator5"]
-position = Vector2(11650, -1668)
-shape = SubResource("RectangleShape2D_q4v2v")
-
-[node name="DialogActivator6" type="Area2D" parent="Dialogs"]
-script = ExtResource("17_6m0us")
-dialog_file = "S10_1-6"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator6"]
-position = Vector2(11700, -1663)
-shape = SubResource("RectangleShape2D_q4v2v")
-
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 
 [node name="Start" type="CollisionShape2D" parent="WorldBoundary"]
@@ -2555,9 +2548,21 @@ position = Vector2(4220.56, -512.5)
 shape = SubResource("RectangleShape2D_slhcm")
 debug_color = Color(0.55319, 0.399861, 1, 0.42)
 
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("22_mhuyf")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("23_6wiy7")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("24_yceyx")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("25_30xpn")]
+visible = false
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
-[connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
-[connection signal="body_entered" from="Dialogs/DialogActivator6" to="Dialogs/DialogActivator6" method="_on_body_entered"]
