@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=42 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="8_jf51f"]
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="10_0kh4l"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="11_q27lk"]
+[ext_resource type="PackedScene" uid="uid://dxk4se1c4o3qw" path="res://scenes/enemies/cretan-bull/cretan_bull.tscn" id="12_ksrjs"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="12_u0y86"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="13_y51gj"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="14_25saf"]
@@ -1767,7 +1768,8 @@ position = Vector2(2590, 6)
 position = Vector2(9113, -478)
 
 [node name="Player" parent="." instance=ExtResource("6_753ii")]
-position = Vector2(393, -28)
+z_index = 5
+position = Vector2(838, -28)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -1802,6 +1804,10 @@ position = Vector2(7383, -321)
 
 [node name="Boar3" parent="Enemies" instance=ExtResource("8_jf51f")]
 position = Vector2(8009, -321)
+
+[node name="CretanBull" parent="Enemies" instance=ExtResource("12_ksrjs")]
+position = Vector2(11563, -595)
+scale = Vector2(0.7, 0.7)
 
 [node name="ScoreUI" type="CanvasLayer" parent="."]
 
@@ -1856,15 +1862,7 @@ script = ExtResource("14_25saf")
 dialog_file = "S7_5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator5"]
-position = Vector2(10007, -729)
-shape = SubResource("RectangleShape2D_saacn")
-
-[node name="DialogActivator6" type="Area2D" parent="Dialogs"]
-script = ExtResource("14_25saf")
-dialog_file = "S7_6"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator6"]
-position = Vector2(12765, -737)
+position = Vector2(11113, -729)
 shape = SubResource("RectangleShape2D_saacn")
 
 [node name="DeathZone" type="Area2D" parent="."]
@@ -1905,4 +1903,3 @@ shape = SubResource("WorldBoundaryShape2D_hq7st")
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
-[connection signal="body_entered" from="Dialogs/DialogActivator6" to="Dialogs/DialogActivator6" method="_on_body_entered"]
