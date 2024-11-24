@@ -9642,6 +9642,8 @@ position = Vector2(8552, -714)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_4obsk")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
