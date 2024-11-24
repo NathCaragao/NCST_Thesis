@@ -3,6 +3,9 @@ extends Node2D
 @onready var cutscene_layer: CanvasLayer = $cutscenelvl11
 var scene_path : String = "res://scenes/cutscenes-collection/level_11/level_11_opening.tscn"
 
+@export var enemy_scenes : Array[PackedScene] = []
+@onready var spawn_points : Array = [$CeberusSpawn]
+
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
@@ -16,7 +19,7 @@ var paused : bool = false
 
 func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
-	
+	Dialogic.signal_event.connect(on_ceberus_fight)
 	interaction_area.interact = Callable(self, "on_ferryman")
 	interaction_area_2.interact = Callable(self, "on_ferryman_2")
 	
@@ -68,3 +71,24 @@ func boat_teleport2() -> void:
 func opening_cutscene_lvl11() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening12")
 	CutsceneManager.play_cutscene("opening12")
+
+func spawn_enemy(index : int, spawn_point_index: int) -> void:
+	if enemy_scenes.is_empty():
+		return
+	
+	var enemy = enemy_scenes[index].instantiate()
+	enemy.global_position = spawn_points[spawn_point_index].global_position
+	#get_parent().add_child(enemy)
+	call_deferred("add_child", enemy)
+	print("Enemy spawned")
+
+func spawn_activate():
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	# spawn enemy here
+	spawn_enemy(0, 0)
+
+func on_ceberus_fight(argument: String) -> void:
+	if argument == "ceberusfight":
+		spawn_activate()

@@ -9,3 +9,4 @@ Cerberus emerges, its three heads snarling, venom dripping from its fangs. Hades
 Hercules: Cerberus, guardian of the dead... Let’s see if you can match my strength. This shall be my final labor!
 leave Hades
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="ceberusfight"]
