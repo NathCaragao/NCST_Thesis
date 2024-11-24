@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/cutscenes-collection/level 2/level_2_opening.gd" id="1_pnas5"]
 
-[node name="Level1Opening" type="Control"]
+[node name="Level2Opening" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
