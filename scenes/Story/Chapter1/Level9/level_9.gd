@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
 var scene_path : String = "res://scenes/cutscenes-collection/level 9/level_9_opening.tscn"
+var scene_path_ed : String = "res://scenes/cutscenes-collection/level 9/level_9_ending.tscn"
 
 @export var victory_screen : Control
 @export var fail_screen : Control
@@ -29,11 +30,17 @@ func on_level_complete(argument : String) -> void:
 		level_completed_screen()
 
 func level_completed_screen() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer)
+	ending_cutscene()
 	await get_tree().create_timer(2).timeout
 	
 	victory_screen.visible = true
 	victory_screen.update_scores()
 	
 func opening_cutscene() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening6")
+	CutsceneManager.play_cutscene("opening6")
+
+func ending_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening6")
 	CutsceneManager.play_cutscene("opening6")

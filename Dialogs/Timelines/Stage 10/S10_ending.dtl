@@ -1,0 +1,14 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/greek_street.webp" fade="0.0"]
+After returning from his journey, Hercules leads the majestic cattle of Geryon across a rugged path. The red-tinted horizon glows behind him, marking the end of a long and arduous journey. Each step is heavy with exhaustion, but his determination remains unbroken. As he approaches the gates of Mycenae, a crowd gathers in awe.
+narrator: "After braving countless perils, slaying the monstrous Geryon, and outwitting the guardians of Erytheia, Hercules returned triumphant. The cattle of Geryon, sacred and prized, were his proof of conquest."
+Hercules stops at the palace gates as the cattle settle behind him. King Eurystheus appears on the balcony, his expression a mixture of shock and reluctant admiration.
+[background arg="res://assets/Images/BackgroundImages/Cutscene/greek castle.webp" fade="0.0"]
+join Hercules center [animation="Fade In Down"]
+Hercules: (calmly but firmly)"Eurystheus, the cattle of Geryon, as you commanded. Let it be known that no task is beyond the son of Zeus."
+join Hercules leftmost [animation="Fade In Down"]
+join Eurystheus rightmost [animation="Fade In Down"]
+Eurystheus: (concealing his unease)"You continue to surprise me, Hercules. Yet your strength does not intimidate me. Remember, this is but one labor among many."
+Hercules:  (with quiet defiance)"And I will see each one through, no matter the cost."
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus [animation="Fade Out Up"]
+narrator: "Hercules had once again achieved the impossible, but his journey was far from over. Each labor brought new trials, and each victory carried the weight of the gods' scrutiny. Yet, with every step, Hercules proved that mortal resolve could rival divine might."
