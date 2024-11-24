@@ -71,6 +71,7 @@ directories/dtl_directory={
 "S10_1-5": "res://Dialogs/Timelines/Stage 10/S10_1-5.dtl",
 "S10_1-6": "res://Dialogs/Timelines/Stage 10/S10_1-6.dtl",
 "S10_1_2": "res://Dialogs/Timelines/Stage 10/S10_1_2.dtl",
+"S10_ending": "res://Dialogs/Timelines/Stage 10/S10_ending.dtl",
 "S10_opening": "res://Dialogs/Timelines/Stage 10/S10_opening.dtl",
 "S11_1": "res://Dialogs/Timelines/Stage 11/S11_1.dtl",
 "S11_2": "res://Dialogs/Timelines/Stage 11/S11_2.dtl",
