@@ -1,0 +1,5 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: "There it is – Apollo’s divine flame! But of course, it’s locked behind bars. Nothing’s ever easy, is it?"
+Hercules: This iron... feels divine. It’s like it’s blessed. Only a special key would unlock something like this.
+Hercules: Alright. If there’s a key, I’ll find it. I just hope it’s not buried in some cursed tomb.
+leave Hercules [animation="Fade Out Up" wait="true"]

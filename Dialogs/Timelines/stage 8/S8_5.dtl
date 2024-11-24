@@ -1,0 +1,14 @@
+*Herakles finally reaches the mares, their wild eyes gleaming with unnatural hunger. As he approaches, the room fills with malicious laughter. King Diomedes steps into view, his cruel smile mocking Herakles.
+join King_Diomedes center
+King_Diomedes: So, the mighty Herakles graces my halls. You must be as stupid as you are strong to think you could take my prized mares.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: These aren’t prizes—they’re abominations. You’ve fed innocents to these beasts, turning them into monsters. That ends today.
+King_Diomedes: Ends? Ha! The only thing ending today is you. You’ll make a fine meal for my mares, and I’ll enjoy watching them tear you apart.
+Hercules: Herakles\: *(steps forward with a glare)* *"You’ve spilled enough innocent blood, Diomedes. Today, justice is served.
+Hercules: It’s not I who will be fed to yourbeasts but you. And they will feast on you as vengeance for the countless lives you’ve stolen.
+King_Diomedes: Big words for a dead man. Let’s see how well you fight when\
+your life’s on the line.
+*The battle begins.*
+leave King_Diomedes
+leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="BattleStart"]

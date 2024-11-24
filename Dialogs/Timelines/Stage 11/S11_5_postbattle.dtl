@@ -1,0 +1,5 @@
+join Hercules center [animation="Fade In Down"]
+Hercules: (panting, standing over the fallen dragon)"Your wrath was great, Ladon, but my resolve was greater. Now, to find Atlas."
+(Hercules steps through the now-unobstructed entrance, leaving the slain dragon behind.)
+leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="11labordone"]

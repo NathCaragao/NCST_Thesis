@@ -1,0 +1,20 @@
+(Hercules enters a vast, open space where the Titan Atlas stands, his massive form straining under the weight of the heavens. The ground trembles with each slight shift of his burden.)
+join Hercules center [animation="Fade In Down"]
+Atlas: (noticing Hercules)"Another mortal? What brings you to this cursed place?"
+join Atlas center
+Hercules:  (respectfully)"Atlas, I seek the golden apples of the Hesperides. Prometheus told me you are the only one who can retrieve them. I offer to bear your burden if you will fetch them for me."
+Atlas: (laughing deeply)"You would take on the weight of the heavens? Few mortals would even dare to offer such a thing. Very well, Hercules, I accept your bargain."
+(Atlas carefully shifts the heavens onto Hercules' shoulders. Hercules braces himself, his immense strength barely enough to bear the crushing weight. Atlas departs, disappearing into the distance.)
+leave Atlas
+(Time passes, and Atlas returns, holding the golden apples in his massive hands. A mischievous grin spreads across his face.)
+join Atlas center
+Atlas: (casually)"You know, Hercules, this isn’t so bad. I think I’ll let you keep the heavens while I enjoy my freedom."
+Hercules: (calmly, hiding his frustration)"If that is your choice, at least allow me to adjust my grip. Take the weight for a moment."
+(Atlas, unsuspecting, shifts the heavens back onto his shoulders. Quick as lightning, Hercules grabs the apples and steps back.)
+Hercules:  (smiling)"Thank you, Atlas. The heavens are yours once more."
+Atlas:  (realizing the trick, roaring with frustration)"Clever mortal! Go, before I change my mind!"
+leave Atlas
+leave Hercules [animation="Fade Out Up"]
+(Hercules departs, the golden apples in hand.)
+(As Hercules steps away from the Titan’s domain, he looks at the shimmering apples in his hands. Their glow illuminates his path as he prepares for the journey back to Mycenae.)
+narrator: "With the golden apples of the Hesperides secured, Hercules had completed yet another impossible task. Yet, he knew the gods’ challenges were far from over. The weight of the heavens might have been lifted from his shoulders, but the weight of his labors still pressed heavily upon his soul."

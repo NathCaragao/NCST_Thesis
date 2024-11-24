@@ -1,0 +1,9 @@
+After defeating Orthrus, Herakles steps into a field. Eurytion, the herdsman, approaches, holding a spear and glaring at Herakles.
+join Eurytheon center
+Eurytheon: You shouldn’t have come here, son of Zeus. These cattle are not for you, and neither is your life. Prepare to meet your end.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Leave now, Eurytion, and I’ll spare you. My quarrel isn’t with you.
+Eurytheon:  *(laughing mockingly)* Spare me? You’re a fool, Herakles. I’ll feed your corpse to Orthrus when I’m done with you.
+Hercules: You had your chance. Now, you’ll regret your arrogance.
+leave Eurytheon
+leave Hercules [animation="Fade Out Up" wait="true"]

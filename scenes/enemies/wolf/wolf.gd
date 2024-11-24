@@ -10,7 +10,7 @@ signal QuestQuota
 
 # wolf stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var move_speed : float = 400
+@export var move_speed : float = 1000
 
 
 func _ready() -> void:
@@ -30,8 +30,10 @@ var animation_mapping = {
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = false
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -28
 	else:
 		sprite.flip_h = true
+		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 28
 
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:

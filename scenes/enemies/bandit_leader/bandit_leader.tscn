@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cjipc3su2mys0"]
+[gd_scene load_steps=31 format=3 uid="uid://cjipc3su2mys0"]
 
 [ext_resource type="Texture2D" uid="uid://ce4qb3m5hwhkn" path="res://assets/Enemies/bandit-leader/bandit_leader_attack.png" id="1_767ho"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_fpyh7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfjs80hq0i0hu" path="res://assets/Enemies/bandit-leader/bandit_leader_death.png" id="1_v52w0"]
 [ext_resource type="Texture2D" uid="uid://bj5hbo6mj2os8" path="res://assets/Enemies/bandit-leader/bandit_leader_run.png" id="1_vlc2s"]
 [ext_resource type="Texture2D" uid="uid://csksfmn07xqao" path="res://assets/Enemies/bandit-leader/bandit_leader_idle.png" id="1_xs0hh"]
+[ext_resource type="Texture2D" uid="uid://d2471eg5ug7uq" path="res://assets/Enemies/bandit-leader/bandit_leader_hit.png" id="3_e5f63"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="5_cwk8y"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="6_3kfb4"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="7_jm8ku"]
@@ -153,6 +154,71 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyHealthComp/Hurtbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_4cjcs"]
+resource_name = "bandit-leader-hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_e5f63")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="Animation" id="Animation_bdw8l"]
 resource_name = "bandit-leader-idle"
@@ -290,6 +356,7 @@ tracks/4/keys = {
 _data = {
 "bandit-leader-attack": SubResource("Animation_mlc8r"),
 "bandit-leader-death": SubResource("Animation_eyupo"),
+"bandit-leader-hit": SubResource("Animation_4cjcs"),
 "bandit-leader-idle": SubResource("Animation_bdw8l"),
 "bandit-leader-run": SubResource("Animation_3bivy")
 }
@@ -347,7 +414,7 @@ script = ExtResource("1_u70od")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ck52r")
-texture = ExtResource("1_v52w0")
+texture = ExtResource("1_xs0hh")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -373,12 +440,14 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 script = ExtResource("7_jm8ku")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
+direction_val = 45
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("8_etpip")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
+player_length = 45
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0
@@ -389,11 +458,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("10_tauj0")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../CollisionShape2D")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_w2de6")]
 max_health = 70

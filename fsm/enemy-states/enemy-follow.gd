@@ -8,6 +8,8 @@ extends State
 var player : PlayerHercules
 var direction
 
+@export var direction_val : int = 35
+
 # state machine ref
 #@onready var state_machine : StateMachine = get_parent()
 
@@ -19,6 +21,10 @@ func enter() -> void:
 	#enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead"))
 
 func physics_update(delta: float) -> void:
+	# apply gravity
+	actor.velocity.y += actor.gravity * delta
+	actor.move_and_slide()
+	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
 		
@@ -41,7 +47,7 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, "enemywander")
 	
 	# transition to attack state
-	if direction.length() <= 25:
+	if direction.length() <= direction_val:
 		Transitioned.emit(self, "enemyattack")
 
 

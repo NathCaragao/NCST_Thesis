@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://t5utnxu2jatq"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/lever/lever.gd" id="1_3xscw"]
+[ext_resource type="Texture2D" uid="uid://dtypk7abt3fym" path="res://assets/in-game-objects/lever/lever_off.png" id="1_e7yxw"]
+[ext_resource type="Texture2D" uid="uid://2luor6p7hfxg" path="res://assets/in-game-objects/lever/lever_on.png" id="2_ep3tw"]
+
+[node name="Lever" type="Node2D"]
+script = ExtResource("1_3xscw")
+
+[node name="LeverOff" type="Sprite2D" parent="."]
+texture = ExtResource("1_e7yxw")
+
+[node name="LeverOn" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ep3tw")

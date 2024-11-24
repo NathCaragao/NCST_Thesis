@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://v8sumji3t8xt"]
+
+[ext_resource type="Script" path="res://scenes/enemy-npc/amason-npc/amason_npc.gd" id="1_1tixy"]
+[ext_resource type="Texture2D" uid="uid://uhjnjawvlc33" path="res://assets/Enemies/amason/IDLE_MODIFIED.png" id="1_l8lci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3jgv"]
+atlas = ExtResource("1_l8lci")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4sr7"]
+atlas = ExtResource("1_l8lci")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ffx4"]
+atlas = ExtResource("1_l8lci")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei7x1"]
+atlas = ExtResource("1_l8lci")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qxqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3jgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4sr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ffx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei7x1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbd81"]
+radius = 4.0
+height = 36.0
+
+[node name="AmasonNPC" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_1tixy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1qxqj")
+animation = &"idle"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.390179
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_qbd81")

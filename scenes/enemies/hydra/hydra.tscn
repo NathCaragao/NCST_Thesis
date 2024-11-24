@@ -1,0 +1,488 @@
+[gd_scene load_steps=30 format=3 uid="uid://dxw6ovxhv2u2t"]
+
+[ext_resource type="Texture2D" uid="uid://bq5yivvjnribb" path="res://assets/Enemies/Hydra/HydraHyrdra_hit_sheett.png" id="1_28k3s"]
+[ext_resource type="Script" path="res://scenes/enemies/hydra/hydra.gd" id="1_ix77a"]
+[ext_resource type="Texture2D" uid="uid://ba24jmrjlbgdy" path="res://assets/Enemies/Hydra/Hydra_attack_sheett.png" id="1_mnvwr"]
+[ext_resource type="Texture2D" uid="uid://tkewyjvqmpij" path="res://assets/Enemies/Hydra/Hydra_death_sheett.png" id="1_wp0wv"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_0ubxl"]
+[ext_resource type="Texture2D" uid="uid://brmlisxfgqs2e" path="res://assets/Enemies/Hydra/Hydra_idle_sheet.png" id="2_p6xl7"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="5_b20pb"]
+[ext_resource type="Script" path="res://fsm/special states/hydra/hydra_idle.gd" id="7_60uef"]
+[ext_resource type="Script" path="res://fsm/special states/hydra/hydra_attack.gd" id="8_6m2u1"]
+[ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="9_1fy3l"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="10_5sdga"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="10_v83g4"]
+[ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_3h406"]
+[ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="11_k2172"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_avx37"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hyd"]
+shader = ExtResource("2_0ubxl")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_cihg7"]
+resource_name = "hydra-attack"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_mnvwr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_76u75"]
+resource_name = "hydra-death"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_wp0wv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHealthComp/Hurtbox/Col1:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyHealthComp/Hurtbox/Col2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemyHealthComp/Hurtbox/Col3:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EnemyHealthComp/Hurtbox/Col4:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"post_dialog"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ocmhn"]
+resource_name = "hydra-hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_28k3s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_y1jk8"]
+resource_name = "hyra-idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_p6xl7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bpmg"]
+_data = {
+"hydra-attack": SubResource("Animation_cihg7"),
+"hydra-death": SubResource("Animation_76u75"),
+"hydra-hit": SubResource("Animation_ocmhn"),
+"hydra-idle": SubResource("Animation_y1jk8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bef4f"]
+size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csu66"]
+size = Vector2(149, 73)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fw0t6"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35glv"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpmca"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgf3g"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="Hydra" type="CharacterBody2D"]
+script = ExtResource("1_ix77a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f1hyd")
+texture = ExtResource("2_p6xl7")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5bpmg")
+}
+autoplay = "hydra-idle"
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(5, 23)
+shape = SubResource("RectangleShape2D_bef4f")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_b20pb")
+initial_state = NodePath("HydraIdle")
+
+[node name="HydraIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("7_60uef")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="HydraAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "timer", "enemy_health_comp")]
+script = ExtResource("8_6m2u1")
+actor = NodePath("../..")
+timer = NodePath("Timer")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+vulnerability_time = 3.0
+
+[node name="Timer" type="Timer" parent="StateMachine/HydraAttack"]
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+script = ExtResource("10_5sdga")
+actor = NodePath("../..")
+enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/AttackComponent")
+
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
+script = ExtResource("11_3h406")
+actor = NodePath("../..")
+enemy_health_comp = NodePath("../../EnemyHealthComp")
+
+[node name="DangerArea" type="Area2D" parent="."]
+position = Vector2(-31, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="DangerCollision" type="CollisionShape2D" parent="DangerArea"]
+position = Vector2(-61.5, -3)
+shape = SubResource("RectangleShape2D_csu66")
+debug_color = Color(0.761081, 0.451666, 9.62615e-07, 0.42)
+
+[node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("9_1fy3l")]
+enemy_hp_bar = NodePath("CanvasLayer/EnemyHPbar")
+anim_effects = NodePath("../AnimEffects")
+dmg_num_pos = NodePath("../DmgNumPos")
+
+[node name="Col1" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="0"]
+position = Vector2(2, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fw0t6")
+debug_color = Color(0.695784, 0.116192, 0.248292, 0.42)
+
+[node name="Col2" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="1"]
+position = Vector2(-12, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_35glv")
+debug_color = Color(0.5704, 0, 0.0750052, 0.42)
+
+[node name="Col3" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="2"]
+position = Vector2(-25, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bpmca")
+debug_color = Color(0.608081, 0.074031, 0.189646, 0.42)
+
+[node name="Col4" type="CollisionShape2D" parent="EnemyHealthComp/Hurtbox" index="3"]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_vgf3g")
+debug_color = Color(0.607843, 0.0745098, 0.188235, 0.419608)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EnemyHealthComp"]
+visible = false
+
+[node name="Label" type="Label" parent="EnemyHealthComp/CanvasLayer"]
+offset_left = 383.0
+offset_top = 814.0
+offset_right = 594.0
+offset_bottom = 876.0
+theme_override_fonts/font = ExtResource("10_v83g4")
+theme_override_font_sizes/font_size = 51
+text = "Hydra"
+horizontal_alignment = 1
+
+[node name="EnemyHPbar" parent="EnemyHealthComp/CanvasLayer" instance=ExtResource("11_k2172")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -184.0
+offset_right = -334.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(5, 5)
+
+[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("15_avx37")
+base_dmg = 0
+
+[node name="DmgNumPos" type="Node2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PoisonPos" type="Node2D" parent="."]
+position = Vector2(-31, 8)
+
+[node name="PoisonSpawn" type="Marker2D" parent="PoisonPos"]
+
+[connection signal="timeout" from="StateMachine/HydraAttack/Timer" to="StateMachine/HydraAttack" method="_on_timer_timeout"]
+[connection signal="body_entered" from="DangerArea" to="StateMachine/HydraIdle" method="_on_danger_area_body_entered"]
+[connection signal="body_exited" from="DangerArea" to="StateMachine/HydraAttack" method="_on_danger_area_body_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="EnemyHealthComp"]

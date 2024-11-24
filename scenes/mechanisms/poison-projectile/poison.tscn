@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwah8gbh8suwc"]
+
+[ext_resource type="Script" path="res://scenes/mechanisms/poison-projectile/poison.gd" id="1_p2xbo"]
+[ext_resource type="Texture2D" uid="uid://dqskyovqnqdvu" path="res://assets/in-game-objects/projectile/poison_projectile.png" id="2_pixxf"]
+[ext_resource type="Script" path="res://scenes/components/projectile-hitbox/projectile_hitbox.gd" id="2_qrq7y"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="4_p4etx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrami"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gpeo"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krqwo"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toy3n"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62isa"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t78ka"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhx5p"]
+atlas = ExtResource("2_pixxf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjgmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrami")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gpeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krqwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toy3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62isa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t78ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhx5p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udwjo"]
+radius = 5.5
+height = 46.0
+
+[node name="Poison" type="Node2D"]
+script = ExtResource("1_p2xbo")
+tracking_time = 0.7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sjgmf")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.899526
+
+[node name="ProjectileHitbox" type="Area2D" parent="."]
+script = ExtResource("2_qrq7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox"]
+position = Vector2(0, 0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_udwjo")
+debug_color = Color(0, 0.648807, 0.168099, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.3, 0.55)
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("4_p4etx")
+base_dmg = 20
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

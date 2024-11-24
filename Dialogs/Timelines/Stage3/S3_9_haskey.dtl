@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: "This lever might be the key to opening the gate"
+leave Hercules [animation="Fade Out Up" wait="true"]

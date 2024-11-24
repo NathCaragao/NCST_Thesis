@@ -1,0 +1,6 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+(A centaur appears, blocking Hercules’ path with a spear in hand.)
+Centaur: "Turn back, mortal! The Hind belongs to the goddess, not a brute like you."
+Hercules: "You think your spear frightens me? I’ve wrestled lions and strangled serpents. You’re just another obstacle in my way!"
+leave Hercules [animation="Fade Out Up" wait="true"]
+(The fight begins.)

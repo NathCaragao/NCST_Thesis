@@ -1,0 +1,7 @@
+(The Hind briefly appears, dashing ahead once more. Hercules sighs in frustration.)
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: "Again? Blast it, why won’t you slow down?!"
+(Suddenly, a bandit steps into view, armed and grinning menacingly.)
+Bandit_leader: "Lost, are you? You’ll find no golden hind here, only your doom!"
+Hercules: "I don’t have time for this. Stand aside, or I’ll send you flying faster than the Hind!"
+leave Hercules [animation="Fade Out Up" wait="true"]

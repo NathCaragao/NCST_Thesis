@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://hqqksf2d723b"]
+[gd_scene load_steps=31 format=3 uid="uid://hqqksf2d723b"]
 
 [ext_resource type="Texture2D" uid="uid://bplelcgrb1b2o" path="res://assets/Enemies/cyclops-boss/NightBorne_idle-Sheet.png" id="1_8rn36"]
 [ext_resource type="Script" path="res://scenes/enemies/cyclop-boss/cyclop.gd" id="1_ew4uc"]
@@ -349,21 +349,6 @@ height = 88.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llt1e"]
 size = Vector2(121, 118)
 
-[sub_resource type="Animation" id="Animation_6hcam"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_86xlx"]
 resource_name = "hit-flash"
 length = 0.15
@@ -383,7 +368,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
 _data = {
-"RESET": SubResource("Animation_6hcam"),
 "hit-flash": SubResource("Animation_86xlx")
 }
 
@@ -435,11 +419,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("12_4avqt")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../CollisionShape2D")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("2_fwqij")]
 enemy_hp_bar = NodePath("CanvasLayer/EnemyHPbar")

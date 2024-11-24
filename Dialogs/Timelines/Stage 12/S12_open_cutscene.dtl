@@ -1,0 +1,17 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
+The throne room of Mycenae is bathed in tense silence. King Eurystheus rises, his expression a mixture of fear and triumph, as he declares Heracles' final labor.
+join Eurystheus rightmost [animation="Fade In Down"]
+Eurystheus: *(leaning forward, a sly grin on his face)*
+Eurystheus: Hercules, your feats have been extraordinary, but do not think yourself invincible. For your final labor, I command you to descend into the very depths of the Underworld and bring back Cerberus—the monstrous guardian of Hades' domain.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(calm but firm)*
+Hercules: The Underworld? No mortal has returned from such a place. Yet I am no ordinary mortal. If this is the will of the gods, so be it.
+Eurystheus: *(mockingly)*  Oh, and Heracles—there’s one condition. You must not harm Cerberus. He is a creature of the gods, and his capture must be done without shedding his blood."
+Hercules: *(smirking slightly)* Without weapons, then. A fitting challenge for my final labor.
+Eurystheus: *(nervously, but masking it with bravado)*
+Eurystheus: Let us see if even you, son of Zeus, can return from the land of the dead. Or perhaps the Underworld will claim you as its own.
+As Eurystheus dismisses him, Heracles prepares for the journey. His face is resolute, his heart ready for the most perilous task yet.
+Thus began Heracles' final labor, one that would take him to the very edge of mortality and beyond. To face Cerberus was to face death itself.
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus [animation="Fade Out Up"]
+[signal arg="nextScene"]

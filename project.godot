@@ -28,6 +28,203 @@ GameUi="*res://quest-system/GameUI/GameUi.tscn"
 InteractionManager="*res://autoloads/interaction-system/InteractionManager.tscn"
 ScoreUi="*res://autoloads/ScoreManager/score_ui.tscn"
 ScoreManager="*res://autoloads/ScoreManager/score_manager.gd"
+LevelScreenTransition="*res://scenes/components/in-game-screen-transition/level_screen_transition.tscn"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+CutsceneManager="*res://autoloads/CutsceneManager/cutscene_manager.gd"
+
+[dialogic]
+
+directories/dch_directory={
+"Amazon_Guard": "res://Dialogs/Characters/Amazon_Guard.dch",
+"Athena": "res://Dialogs/Characters/Athena.dch",
+"Atlas": "res://Dialogs/Characters/Atlas.dch",
+"Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
+"Centaur": "res://Dialogs/Characters/Centaur.dch",
+"Centaur_Leader": "res://Dialogs/Characters/Centaur_Leader.dch",
+"Charon": "res://Dialogs/Characters/Charon.dch",
+"Elite_Guard": "res://Dialogs/Characters/Elite_Guard.dch",
+"Eurystheus": "res://Dialogs/Characters/Eurystheus.dch",
+"Eurytheon": "res://Dialogs/Characters/Eurytheon.dch",
+"Geryon": "res://Dialogs/Characters/Geryon.dch",
+"Hades": "res://Dialogs/Characters/Hades.dch",
+"Helios": "res://Dialogs/Characters/Helios.dch",
+"Hercules": "res://Dialogs/Characters/Hercules.dch",
+"Hypolita": "res://Dialogs/Characters/Hypolita.dch",
+"King_Diomedes": "res://Dialogs/Characters/King_Diomedes.dch",
+"Ladon": "res://Dialogs/Characters/Ladon.dch",
+"Megalus": "res://Dialogs/Characters/Megalus.dch",
+"Pholos": "res://Dialogs/Characters/Pholos.dch",
+"Prometheus": "res://Dialogs/Characters/Prometheus.dch",
+"Villager 1": "res://Dialogs/Characters/Villager 1.dch",
+"Villager 2": "res://Dialogs/Characters/Villager 2.dch",
+"artemis": "res://Dialogs/Characters/artemis.dch",
+"augeas": "res://Dialogs/Characters/augeas.dch",
+"narrator": "res://Dialogs/Characters/narrator.dch",
+"scholar": "res://Dialogs/Characters/scholar.dch"
+}
+directories/dtl_directory={
+"S10_1": "res://Dialogs/Timelines/Stage 10/S10_1.dtl",
+"S10_1-1": "res://Dialogs/Timelines/Stage 10/S10_1-1.dtl",
+"S10_1-2": "res://Dialogs/Timelines/Stage 10/S10_1-2.dtl",
+"S10_1-3": "res://Dialogs/Timelines/Stage 10/S10_1-3.dtl",
+"S10_1-4": "res://Dialogs/Timelines/Stage 10/S10_1-4.dtl",
+"S10_1-5": "res://Dialogs/Timelines/Stage 10/S10_1-5.dtl",
+"S10_1-6": "res://Dialogs/Timelines/Stage 10/S10_1-6.dtl",
+"S10_1_2": "res://Dialogs/Timelines/Stage 10/S10_1_2.dtl",
+"S11_1": "res://Dialogs/Timelines/Stage 11/S11_1.dtl",
+"S11_2": "res://Dialogs/Timelines/Stage 11/S11_2.dtl",
+"S11_3": "res://Dialogs/Timelines/Stage 11/S11_3.dtl",
+"S11_4": "res://Dialogs/Timelines/Stage 11/S11_4.dtl",
+"S11_5": "res://Dialogs/Timelines/Stage 11/S11_5.dtl",
+"S11_5_postbattle": "res://Dialogs/Timelines/Stage 11/S11_5_postbattle.dtl",
+"S11_6": "res://Dialogs/Timelines/Stage 11/S11_6.dtl",
+"S11_ending": "res://Dialogs/Timelines/Stage 11/S11_ending.dtl",
+"S11_opening": "res://Dialogs/Timelines/Stage 11/S11_opening.dtl",
+"S12_1": "res://Dialogs/Timelines/Stage 12/S12_1.dtl",
+"S12_2": "res://Dialogs/Timelines/Stage 12/S12_2.dtl",
+"S12_3": "res://Dialogs/Timelines/Stage 12/S12_3.dtl",
+"S12_3_2": "res://Dialogs/Timelines/Stage 12/S12_3_2.dtl",
+"S12_3_3": "res://Dialogs/Timelines/Stage 12/S12_3_3.dtl",
+"S12_4": "res://Dialogs/Timelines/Stage 12/S12_4.dtl",
+"S12_5": "res://Dialogs/Timelines/Stage 12/S12_5.dtl",
+"S12_6": "res://Dialogs/Timelines/Stage 12/S12_6.dtl",
+"S12_7": "res://Dialogs/Timelines/Stage 12/S12_7.dtl",
+"S12_8": "res://Dialogs/Timelines/Stage 12/S12_8.dtl",
+"S12_open_cutscene": "res://Dialogs/Timelines/Stage 12/S12_open_cutscene.dtl",
+"S1_1-1": "res://Dialogs/Timelines/Stage1/S1_1-1.dtl",
+"S1_1-10": "res://Dialogs/Timelines/Stage1/S1_1-10.dtl",
+"S1_1-11-1": "res://Dialogs/Timelines/Stage1/S1_1-11-1.dtl",
+"S1_1-11-2": "res://Dialogs/Timelines/Stage1/S1_1-11-2.dtl",
+"S1_1-12": "res://Dialogs/Timelines/Stage1/S1_1-12.dtl",
+"S1_1-13": "res://Dialogs/Timelines/Stage1/S1_1-13.dtl",
+"S1_1-14": "res://Dialogs/Timelines/Stage1/S1_1-14.dtl",
+"S1_1-14-2": "res://Dialogs/Timelines/Stage1/S1_1-14-2.dtl",
+"S1_1-15": "res://Dialogs/Timelines/Stage1/S1_1-15.dtl",
+"S1_1-15-2": "res://Dialogs/Timelines/Stage1/S1_1-15-2.dtl",
+"S1_1-2": "res://Dialogs/Timelines/Stage1/S1_1-2.dtl",
+"S1_1-3": "res://Dialogs/Timelines/Stage1/S1_1-3.dtl",
+"S1_1-4": "res://Dialogs/Timelines/Stage1/S1_1-4.dtl",
+"S1_1-5": "res://Dialogs/Timelines/Stage1/S1_1-5.dtl",
+"S1_1-6": "res://Dialogs/Timelines/Stage1/S1_1-6.dtl",
+"S1_1-6-2": "res://Dialogs/Timelines/Stage1/S1_1-6-2.dtl",
+"S1_1-7": "res://Dialogs/Timelines/Stage1/S1_1-7.dtl",
+"S1_1-8": "res://Dialogs/Timelines/Stage1/S1_1-8.dtl",
+"S1_1-9": "res://Dialogs/Timelines/Stage1/S1_1-9.dtl",
+"S1_opening": "res://Dialogs/Timelines/Stage1/S1_opening.dtl",
+"S2_2-1": "res://Dialogs/Timelines/Stage2/S2_2-1.dtl",
+"S2_2-10": "res://Dialogs/Timelines/Stage2/S2_2-10.dtl",
+"S2_2-11": "res://Dialogs/Timelines/Stage2/S2_2-11.dtl",
+"S2_2-12": "res://Dialogs/Timelines/Stage2/S2_2-12.dtl",
+"S2_2-13": "res://Dialogs/Timelines/Stage2/S2_2-13.dtl",
+"S2_2-14": "res://Dialogs/Timelines/Stage2/S2_2-14.dtl",
+"S2_2-14_2": "res://Dialogs/Timelines/Stage2/S2_2-14_2.dtl",
+"S2_2-16": "res://Dialogs/Timelines/Stage2/S2_2-16.dtl",
+"S2_2-18": "res://Dialogs/Timelines/Stage2/S2_2-18.dtl",
+"S2_2-19": "res://Dialogs/Timelines/Stage2/S2_2-19.dtl",
+"S2_2-2": "res://Dialogs/Timelines/Stage2/S2_2-2.dtl",
+"S2_2-20": "res://Dialogs/Timelines/Stage2/S2_2-20.dtl",
+"S2_2-3": "res://Dialogs/Timelines/Stage2/S2_2-3.dtl",
+"S2_2-4": "res://Dialogs/Timelines/Stage2/S2_2-4.dtl",
+"S2_2-4_2": "res://Dialogs/Timelines/Stage2/S2_2-4_2.dtl",
+"S2_2-5": "res://Dialogs/Timelines/Stage2/S2_2-5.dtl",
+"S2_2-6": "res://Dialogs/Timelines/Stage2/S2_2-6.dtl",
+"S2_2-7": "res://Dialogs/Timelines/Stage2/S2_2-7.dtl",
+"S2_2-8": "res://Dialogs/Timelines/Stage2/S2_2-8.dtl",
+"S2_2-9": "res://Dialogs/Timelines/Stage2/S2_2-9.dtl",
+"S2_opening": "res://Dialogs/Timelines/Stage2/S2_opening.dtl",
+"S3_1": "res://Dialogs/Timelines/Stage3/S3_1.dtl",
+"S3_10": "res://Dialogs/Timelines/Stage3/S3_10.dtl",
+"S3_11": "res://Dialogs/Timelines/Stage3/S3_11.dtl",
+"S3_2": "res://Dialogs/Timelines/Stage3/S3_2.dtl",
+"S3_3": "res://Dialogs/Timelines/Stage3/S3_3.dtl",
+"S3_4": "res://Dialogs/Timelines/Stage3/S3_4.dtl",
+"S3_5": "res://Dialogs/Timelines/Stage3/S3_5.dtl",
+"S3_6": "res://Dialogs/Timelines/Stage3/S3_6.dtl",
+"S3_7": "res://Dialogs/Timelines/Stage3/S3_7.dtl",
+"S3_8": "res://Dialogs/Timelines/Stage3/S3_8.dtl",
+"S3_9_haskey": "res://Dialogs/Timelines/Stage3/S3_9_haskey.dtl",
+"S3_9_nokey": "res://Dialogs/Timelines/Stage3/S3_9_nokey.dtl",
+"S3_opening": "res://Dialogs/Timelines/Stage3/S3_opening.dtl",
+"S4_1": "res://Dialogs/Timelines/Stage4/S4_1.dtl",
+"S4_10": "res://Dialogs/Timelines/Stage4/S4_10.dtl",
+"S4_11": "res://Dialogs/Timelines/Stage4/S4_11.dtl",
+"S4_2": "res://Dialogs/Timelines/Stage4/S4_2.dtl",
+"S4_3": "res://Dialogs/Timelines/Stage4/S4_3.dtl",
+"S4_4": "res://Dialogs/Timelines/Stage4/S4_4.dtl",
+"S4_5": "res://Dialogs/Timelines/Stage4/S4_5.dtl",
+"S4_5_2": "res://Dialogs/Timelines/Stage4/S4_5_2.dtl",
+"S4_6": "res://Dialogs/Timelines/Stage4/S4_6.dtl",
+"S4_7": "res://Dialogs/Timelines/Stage4/S4_7.dtl",
+"S4_8": "res://Dialogs/Timelines/Stage4/S4_8.dtl",
+"S4_9": "res://Dialogs/Timelines/Stage4/S4_9.dtl",
+"S4_opening": "res://Dialogs/Timelines/Stage4/S4_opening.dtl",
+"S51_1": "res://Dialogs/Timelines/Stage5.1/S51_1.dtl",
+"S51_2": "res://Dialogs/Timelines/Stage5.1/S51_2.dtl",
+"S51_3": "res://Dialogs/Timelines/Stage5.1/S51_3.dtl",
+"S51_ending": "res://Dialogs/Timelines/Stage5.1/S51_ending.dtl",
+"S51_opening": "res://Dialogs/Timelines/Stage5.1/S51_opening.dtl",
+"S51_opening_2": "res://Dialogs/Timelines/Stage5.1/S51_opening_2.dtl",
+"S6_1": "res://Dialogs/Timelines/Stage 6/S6_1.dtl",
+"S6_10": "res://Dialogs/Timelines/Stage 6/S6_10.dtl",
+"S6_2": "res://Dialogs/Timelines/Stage 6/S6_2.dtl",
+"S6_3": "res://Dialogs/Timelines/Stage 6/S6_3.dtl",
+"S6_4": "res://Dialogs/Timelines/Stage 6/S6_4.dtl",
+"S6_5": "res://Dialogs/Timelines/Stage 6/S6_5.dtl",
+"S6_6": "res://Dialogs/Timelines/Stage 6/S6_6.dtl",
+"S6_7": "res://Dialogs/Timelines/Stage 6/S6_7.dtl",
+"S6_8": "res://Dialogs/Timelines/Stage 6/S6_8.dtl",
+"S6_9": "res://Dialogs/Timelines/Stage 6/S6_9.dtl",
+"S6_opening": "res://Dialogs/Timelines/Stage 6/S6_opening.dtl",
+"S7_1": "res://Dialogs/Timelines/Stage7/S7_1.dtl",
+"S7_2": "res://Dialogs/Timelines/Stage7/S7_2.dtl",
+"S7_3": "res://Dialogs/Timelines/Stage7/S7_3.dtl",
+"S7_4": "res://Dialogs/Timelines/Stage7/S7_4.dtl",
+"S7_5": "res://Dialogs/Timelines/Stage7/S7_5.dtl",
+"S7_6": "res://Dialogs/Timelines/Stage7/S7_6.dtl",
+"S7_7": "res://Dialogs/Timelines/Stage7/S7_ending.dtl",
+"S7_ending": "res://Dialogs/Timelines/Stage7/S7_ending.dtl",
+"S7_opening": "res://Dialogs/Timelines/Stage7/S7_opening.dtl",
+"S8_1": "res://Dialogs/Timelines/stage 8/S8_1.dtl",
+"S8_2": "res://Dialogs/Timelines/stage 8/S8_2.dtl",
+"S8_3": "res://Dialogs/Timelines/stage 8/S8_3.dtl",
+"S8_4": "res://Dialogs/Timelines/stage 8/S8_4.dtl",
+"S8_5": "res://Dialogs/Timelines/stage 8/S8_5.dtl",
+"S8_6": "res://Dialogs/Timelines/stage 8/S8_6.dtl",
+"S8_opening": "res://Dialogs/Timelines/stage 8/S8_opening.dtl",
+"S9_1": "res://Dialogs/Timelines/Stage 9/S9_1.dtl",
+"S9_2": "res://Dialogs/Timelines/Stage 9/S9_2.dtl",
+"S9_3": "res://Dialogs/Timelines/Stage 9/S9_3.dtl",
+"S9_4": "res://Dialogs/Timelines/Stage 9/S9_4.dtl",
+"burn_vines_false": "res://Dialogs/Timelines/Stage2/burn_vines_false.dtl",
+"cave_spotted": "res://Dialogs/Timelines/Stage2/cave_spotted.dtl",
+"pholos_intro": "res://Dialogs/Timelines/Stage4/pholos_intro.dtl",
+"post_cutscene": "res://Dialogs/Timelines/Stage 12/post_cutscene.dtl",
+"timeline": "res://Dialogs/Timelines/Stage3/timeline.dtl",
+"use_apollo_flame": "res://Dialogs/Timelines/Stage2/use_apollo_flame.dtl",
+"use_apollo_flame_2": "res://Dialogs/Timelines/Stage2/use_apollo_flame_2.dtl"
+}
+layout/style_list=["res://Dialogs/Styles/Custom_VN_style.tres"]
+layout/default_style="res://Dialogs/Styles/Custom_VN_style.tres"
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+portraits/default_portrait=""
 
 [display]
 
@@ -42,11 +239,12 @@ project/assembly_name="System"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/dialogic/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
+"res://Dialogs/": "yellow",
 "res://assets/": "blue",
 "res://autoload/": "yellow",
 "res://autoloads/": "red",
@@ -64,6 +262,8 @@ folder_colors={
 
 Player=""
 Levels=""
+ArrowSpawn=""
+Debris=""
 
 [input]
 
@@ -117,6 +317,15 @@ pause_game={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -128,6 +337,8 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_2="Hitbox"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Pickups"
+2d_physics/layer_6="Enemies"
+2d_physics/layer_7="Boundary"
 
 [rendering]
 

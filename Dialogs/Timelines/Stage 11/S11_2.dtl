@@ -1,0 +1,5 @@
+(Hercules arrives at the base of a colossal mountain, its peak hidden in the clouds. The faint sound of eagle cries echoes down the cliffs.)
+join Hercules center [animation="Fade In Down"]
+Hercules:  (gazing upward)"The gods’ punishment runs deep… Prometheus, I’ll climb to you. No chain, no cliff will keep me from completing this labor."
+(Hercules begins the climb, facing harsh winds, crumbling ledges, and vicious creatures that attempt to thwart his ascent.)
+leave Hercules [animation="Fade Out Up"]

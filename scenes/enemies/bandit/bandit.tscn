@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://q551jhmymwnr"]
+[gd_scene load_steps=30 format=3 uid="uid://q551jhmymwnr"]
 
 [ext_resource type="Script" path="res://scenes/enemies/bandit/bandit.gd" id="1_2hdkl"]
 [ext_resource type="Texture2D" uid="uid://cwgg46w0rf7aw" path="res://assets/Enemies/bandit/Axe Bandit.png" id="1_ihgtc"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_jyqcg"]
 [ext_resource type="Texture2D" uid="uid://0n87gygmd6fb" path="res://assets/Enemies/bandit/axe bandit run.png" id="2_yswu4"]
+[ext_resource type="Texture2D" uid="uid://dxcqlggpmdokv" path="res://assets/Enemies/bandit/bandit_hit.png" id="3_d3pow"]
 [ext_resource type="Texture2D" uid="uid://d37xib842asck" path="res://assets/Enemies/bandit/Axe Bandit Attack.png" id="4_4edty"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="4_kktag"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="5_0o7nn"]
@@ -275,10 +276,64 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_esdcq"]
+resource_name = "bandit-hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_d3pow")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8g3lg"]
 _data = {
 "bandit-attack": SubResource("Animation_50o6a"),
 "bandit-death": SubResource("Animation_5myad"),
+"bandit-hit": SubResource("Animation_esdcq"),
 "bandit-idle": SubResource("Animation_kaufq"),
 "bandit-run": SubResource("Animation_oyl8d")
 }
@@ -293,21 +348,6 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qds6q"]
 radius = 7.0
-
-[sub_resource type="Animation" id="Animation_ggcmr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_1s36y"]
 resource_name = "hit-flash"
@@ -327,7 +367,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jhimr"]
 _data = {
-"RESET": SubResource("Animation_ggcmr"),
 "hit-flash": SubResource("Animation_1s36y")
 }
 
@@ -378,11 +417,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("10_qtsaa")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../CollisionShape2D")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_d1tqh")]
 max_health = 60

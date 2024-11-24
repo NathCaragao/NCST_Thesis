@@ -21,6 +21,7 @@ var attackCooldown = 0.5
 func _ready() -> void:
 	pass
 
+
 func enter() -> void:
 	if actor.playerGameData.weaponMode == "Melee":
 		sword_attack()
@@ -164,7 +165,7 @@ func arrow_fire() -> void:
 	var arrow_instance = arrow.instantiate()
 	arrow_instance.global_position = $"../../ArrowPos/ArrowSpawn".global_position
 	arrow_instance.vel = $"../../ArrowPos".scale.x
-	level_1.get_parent().add_child(arrow_instance)
+	get_parent().add_child(arrow_instance)
 
 
 func exit() -> void:

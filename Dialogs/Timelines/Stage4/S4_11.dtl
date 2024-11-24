@@ -1,0 +1,4 @@
+*(After an intense battle, Herakles stands over the subdued boar, catching his breath.)* 
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: A mighty beast... But no match for Herakles! Now, to bring this trophy back to that coward Eurystheus. The fourth labor is done!"
+leave Hercules [animation="Fade Out Up" wait="true"]

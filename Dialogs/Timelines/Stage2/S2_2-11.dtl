@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Another locked door? What is it with this place and doors? I’m starting to feel like a thief instead of a hero.
+leave Hercules [animation="Fade Out Up" wait="true"]

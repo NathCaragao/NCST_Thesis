@@ -1,0 +1,4 @@
+join Hercules center [animation="Fade In Down"]
+(Hercules stands at the edge of a field, the air heavy with the scent of charred wood. The earth is churned and broken, and in the distance, he hears the unmistakable sound of snorting and hooves striking the ground.)
+Hercules: (tightens his grip on his club)"It’s here. The Cretan Bull. Time to finish what I’ve started."
+leave Hercules [animation="Fade Out Up"]

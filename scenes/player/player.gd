@@ -115,7 +115,9 @@ func _flip_sprite() -> void:
 	
 	if self.playerGameData.direction == 1:
 		$ArrowPos.scale.x = 1
+		$PlayerHealthComponent/Hurtbox.scale.x = 1
 	elif self.playerGameData.direction == -1:
+		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
 
 # function for pushing objects such as boxes

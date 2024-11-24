@@ -1,0 +1,6 @@
+(The Cretan Bull comes into view, its massive frame illuminated by the sun. It snorts, pawing the ground as it locks eyes with Hercules.)
+join Hercules center [animation="Fade In Down"]
+Hercules: "You’re even more fearsome than I imagined. But I’ve faced monsters before, and you’ll be no different."
+(The bull charges, its hooves thundering like a storm. Hercules sidesteps just in time, the ground shaking beneath him as the bull barrels past.)
+Hercules: (gritting his teeth)"Strength alone won’t bring you down. I’ll need to outthink you."
+leave Hercules [animation="Fade Out Up"]

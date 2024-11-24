@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c03il47od01w5"]
+[gd_scene load_steps=8 format=3 uid="uid://c03il47od01w5"]
 
 [ext_resource type="Script" path="res://scenes/components/HP-bar/player/player_hp_bar.gd" id="1_6jv7n"]
+[ext_resource type="Texture2D" uid="uid://bfx32k87tfvkw" path="res://assets/Images/HUD/hp_fill.png" id="1_wfw5l"]
+[ext_resource type="Texture2D" uid="uid://d2i4ifqsnqw34" path="res://assets/Images/HUD/hp_dmg_fill.png" id="3_o6ioj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmn26"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05xtp"]
-bg_color = Color(0.114477, 0.697324, 0.573231, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ohdhl"]
+texture = ExtResource("1_wfw5l")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqjia"]
 bg_color = Color(0.122252, 0.122252, 0.122252, 1)
@@ -16,21 +18,23 @@ expand_margin_bottom = 1.0
 shadow_color = Color(0, 0, 0, 0.27451)
 shadow_offset = Vector2(0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15kim"]
-bg_color = Color(0.955963, 0.955963, 0.955963, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo2am"]
+texture = ExtResource("3_o6ioj")
 
 [node name="PlayerHPbar" type="ProgressBar"]
 z_index = 1
-offset_right = 240.0
-offset_bottom = 10.0
+custom_minimum_size = Vector2(192, 16)
+offset_right = 192.0
+offset_bottom = 16.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_pmn26")
-theme_override_styles/fill = SubResource("StyleBoxFlat_05xtp")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ohdhl")
 value = 60.0
 show_percentage = false
 script = ExtResource("1_6jv7n")
 
 [node name="DmgBar" type="ProgressBar" parent="."]
 z_index = -1
+custom_minimum_size = Vector2(192, 16)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_xqjia")
-theme_override_styles/fill = SubResource("StyleBoxFlat_15kim")
+theme_override_styles/fill = SubResource("StyleBoxTexture_yo2am")
 value = 80.0
 show_percentage = false
 

@@ -1,0 +1,2 @@
+class_name DynamicTree
+extends Sprite2D

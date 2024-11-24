@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Ha! Finally, some good luck. The path forward is open.
+leave Hercules [animation="Fade Out Up" wait="true"]

@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_udxpx"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_2vyix"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="9_rclnh"]
-[ext_resource type="Script" path="res://fsm/special states/boss_attack.gd" id="11_8sil7"]
-[ext_resource type="Script" path="res://fsm/special states/boss_follow.gd" id="11_vk35g"]
+[ext_resource type="Script" path="res://fsm/special states/bird/boss_attack.gd" id="11_8sil7"]
+[ext_resource type="Script" path="res://fsm/special states/bird/boss_follow.gd" id="11_vk35g"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_ffjvj"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="13_lw8uq"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="14_q4ryk"]
@@ -501,11 +501,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("13_lw8uq")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../BodyCollision")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("14_q4ryk")]
 enemy_hp_bar = NodePath("HPUI/EnemyHPbar")

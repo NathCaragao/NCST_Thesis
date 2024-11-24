@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3qsev5sx2xhq"]
+
+[ext_resource type="Script" path="res://scenes/cutscenes-collection/level 5-1/level_5_opening_2.gd" id="1_as1x3"]
+[ext_resource type="Texture2D" uid="uid://br4ujpsj3poko" path="res://assets/Images/BackgroundImages/Cutscene/elis.webp" id="2_id2w3"]
+
+[node name="Level5Opening_2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_as1x3")
+
+[node name="Throneroom" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -27.0002
+offset_top = 0.999878
+offset_right = 1765.0
+offset_bottom = 1025.0
+scale = Vector2(1.09152, 1.06641)
+texture = ExtResource("2_id2w3")
+expand_mode = 3

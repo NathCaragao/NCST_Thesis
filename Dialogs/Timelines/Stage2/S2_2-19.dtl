@@ -1,0 +1,5 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: So, Hydra, we finally meet. I’ve heard stories about you – now let’s see if you live up to them!"
+*(Hydra roars)*
+Hercules: Roar all you like. It’ll take more than that to scare me. Come on, beast! Let’s see who’s stronger!
+leave Hercules [animation="Fade Out Up" wait="true"]

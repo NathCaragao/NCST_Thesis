@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://mdvqi3mnbb8e"]
+[gd_scene load_steps=30 format=3 uid="uid://mdvqi3mnbb8e"]
 
 [ext_resource type="Texture2D" uid="uid://cknxbxpr1oghf" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Attack.png" id="1_4rwo2"]
 [ext_resource type="Texture2D" uid="uid://v56o4ugwpksw" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Run.png" id="1_5yhd6"]
@@ -346,21 +346,6 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_daf50"]
 
-[sub_resource type="Animation" id="Animation_6hcam"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_86xlx"]
 resource_name = "hit-flash"
 length = 0.15
@@ -380,11 +365,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
 _data = {
-"RESET": SubResource("Animation_6hcam"),
 "hit-flash": SubResource("Animation_86xlx")
 }
 
 [node name="Wolf" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 65
 script = ExtResource("1_07ycu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -432,11 +418,10 @@ actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
 attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
-[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "body_collision")]
+[node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("11_o6bh4")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-body_collision = NodePath("../../BodyCollision")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_qkhtx")]
 max_health = 50

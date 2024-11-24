@@ -1,0 +1,9 @@
+join Elite_Guard center
+Elite_Guard: Halt, stranger! Do you not know where you stand? The sacred domain of King Diomedes is no place for fools or trespassers."*
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Sacred domain? Do you call feeding innocents to those monstrous mares sacred? 
+Hercules: Step aside. I’ve no time for lapdogs of a tyrant.
+Elite_Guard: Tread carefully, wanderer. Coveting King Diomedes’ mares is a death sentence. You’ll end up as nothing more than feed for their insatiable\
+hunger.
+Hercules: We’ll see who ends up feeding whom. Now, out of my way!
+leave Hercules [animation="Fade Out Up" wait="true"]

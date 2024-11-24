@@ -1,0 +1,10 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
+join Eurystheus rightmost [animation="Fade In Down"]
+Eurystheus:  (mockingly, gesturing dramatically)"Hercules! You’ve slain lions, captured boars, and wrestled serpents, but let us see how you fare against the skies themselves. The Stymphalian Marsh is plagued by monstrous birds with beaks of bronze and feathers sharper than spears. These vile creatures feast on the flesh of men and destroy all they touch."
+join Hercules leftmost [animation="Fade In Down"]
+Hercules: (unfazed)"And you wish me to rid the marsh of these creatures? Shall I slay them all, or does your cowardice require something more elaborate?"
+Eurystheus: (narrowing his eyes)"Mock me all you like, Hercules, but this labor will test more than your brawn. The birds roost in a swamp no man can traverse. Their numbers are legion, and their feathers rain death from above. Use your wits—if you have any—and solve this problem without becoming their next meal."
+Hercules: (nodding thoughtfully)"The marsh may be treacherous, but I will find a way. Soon the skies over Stymphalia will be silent once more."
+leave Hercules [animation="Fade Out Up"]
+leave Eurystheus [animation="Fade Out Up"]
+narrator: "The sixth labor of Hercules would take him into the heart of danger. The Stymphalian Birds, creations of Ares, were no mere beasts but instruments of divine wrath. To face them, Hercules would need more than strength—he would need cunning and resolve."

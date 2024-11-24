@@ -1,0 +1,5 @@
+Heracles approaches a towering structure, its gates adorned with the symbols of death. He pauses, staring at the vast palace.
+join Hercules leftmost [animation="Fade In Down"]
+Hercules: *(to himself)* The palace of Hades… So this is the seat of the Underworld. Strange to think that Hades is my uncle. Family ties won’t help me here.
+*He gathers his courage and steps forward.* 
+leave Hercules [animation="Fade Out Up" wait="true"]

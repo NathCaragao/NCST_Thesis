@@ -1,0 +1,4 @@
+As Herakles reaches the top, a deep, guttural growl echoes through the air.Orthrus, the two-headed guard dog, emerges from the shadows, its fangs bared.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(readying his club)* A fearsome beast, but you’re not the first monster to challenge me. Let’s end this quickly.
+leave Hercules [animation="Fade Out Up" wait="true"]

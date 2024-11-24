@@ -1,0 +1,16 @@
+Herakles finally disarms Hippolyta, but instead of striking her down, he steps back and lowers his weapon. Hippolyta, breathing heavily, looks up at him in awe.
+join Hypolita center
+Hypolita: You had the chance to kill me, but you didn’t. Why?
+join Hercules center [animation="Fade In Down" wait="true"]
+Hercules: Because this fight was never about killing. It was about truth and honor. I have no desire to harm you, Queen Hippolyta.
+Hercules: You are a warrior of great strength and wisdom, and I respect you.
+Hypolita: *(slowly stands, placing her weapon aside)*
+Hypolita: You’ve proven your worth, Herakles. Take the girdle—it is yours. Not because you defeated me, but because you showed me the strength of your character.
+*She removes the girdle and hands it to Herakles.*
+Hypolita: But remember this\: honor is a double-edged sword. You’ve won this day, but not all battles are fought with force alone. Choose your path\
+wisely.
+Hercules: *(bows his head)* *"Thank you, Queen Hippolyta. I will remember your words, and I hope one day our peoples can find true peace.
+*As Herakles departs, the Amazons watch him in silence, some still wary, others beginning to question the truth behind Hera’s lies. Herakles returns to Mycenae, the girdle in hand, reflecting on the wisdom and strength of the warrior queen he left behind.*
+leave Hypolita
+leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="9labordone"]

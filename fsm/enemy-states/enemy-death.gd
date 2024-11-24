@@ -4,7 +4,6 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var enemy_health_comp : Node2D
-@export var body_collision : CollisionShape2D
 
 
 func enter() -> void:
@@ -14,10 +13,9 @@ func enter() -> void:
 	
 	
 	# disable all phyics interactions
-	body_collision.set_deferred("disabled", true)
-	actor.hurt_box_shape.set_deferred("disablded", true)
-	actor.hurt_box_shape.set_deferred("monitoring", false)
-	actor.hurt_box_shape.set_deferred("monitorable", false)
+	#actor.hurt_box_shape.set_deferred("disablded", true)
+	#actor.hurt_box_shape.set_deferred("monitoring", false)
+	#actor.hurt_box_shape.set_deferred("monitorable", false)
 	
 	# disable other processes
 	actor.set_physics_process(false)

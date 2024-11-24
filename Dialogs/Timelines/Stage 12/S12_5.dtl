@@ -1,0 +1,7 @@
+Further into the Underworld, Heracles comes upon the tormented spirit of King Diomedes. The once-mighty ruler mutters incoherently, his eyes wild with madness.
+join King_Diomedes center
+King_Diomedes: *(in a crazed voice)* You… you came for my horses. Now you’ve come for me! Foolish son of Zeus! The Underworld will consume you!
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: *(raising his fists)* Diomedes, your madness is as pitiful as your rule. Come, let us end this.
+leave Hercules [animation="Fade Out Up" wait="true"]
+leave King_Diomedes

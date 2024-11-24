@@ -1,0 +1,4 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Blocked again? Alright, let’s see where that platform takes me. One of these\
+paths has to lead somewhere useful.
+leave Hercules [animation="Fade Out Up" wait="true"]

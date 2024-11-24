@@ -1,0 +1,4 @@
+He stands at the edge of a dense forest, realizing he must leap across towering trees to reach an island in the distance.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Looks like the only way forward is through the treetops. One misstep, and I’ll be joining those bones in the marsh. Keep your footing, Herakles.
+leave Hercules [animation="Fade Out Up" wait="true"]

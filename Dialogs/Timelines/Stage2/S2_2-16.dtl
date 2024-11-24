@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Ah, fresh air at last. That dungeon was beginning to feel like a tomb. Now, to face the Hydra."
+leave Hercules [animation="Fade Out Up" wait="true"]

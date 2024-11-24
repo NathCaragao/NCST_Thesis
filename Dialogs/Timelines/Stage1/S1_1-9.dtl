@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Finally! One less door between me and that beast.
+leave Hercules [animation="Fade Out Up" wait="true"]

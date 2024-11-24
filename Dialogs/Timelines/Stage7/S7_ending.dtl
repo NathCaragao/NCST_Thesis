@@ -1,0 +1,11 @@
+Hercules strides into Mycenae, the massive bull in tow. Townsfolk gasp and murmur in awe, their eyes wide at the sight of the beast. In the throne room, King Eurystheus watches from his seat, his expression shifting from shock to terror.
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+join Eurystheus rightmost
+Eurystheus: "Y-You… You brought it back?!"
+(As Hercules approaches, the king scrambles from his throne and dives into a large bronze jar, slamming the lid shut. Hercules stops, raising an eyebrow at the ridiculous display.)
+Hercules: (smirking slightly)"Your labor is complete, Eurystheus. The Cretan Bull is yours to deal with. I’ve done my part."
+leave Hercules [animation="Fade Out Up" wait="true"]
+(He turns to leave, the murmurs of the townsfolk growing louder as they marvel at his feat.)
+leave Eurystheus
+narrator: "With the Cretan Bull captured and delivered, Hercules once again proved his strength and resolve. But as always, the shadow of Hera’s interference loomed over him, and he knew that greater challenges still lay ahead."
+[signal arg="level7complete"]

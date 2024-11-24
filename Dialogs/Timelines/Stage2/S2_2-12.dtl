@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: A lever... Could this be the answer? Zeus, if you’re listening, let this open the right door.
+leave Hercules [animation="Fade Out Up" wait="true"]

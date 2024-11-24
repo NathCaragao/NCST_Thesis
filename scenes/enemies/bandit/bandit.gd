@@ -17,7 +17,7 @@ var animation_mapping = {
 	"enemy-run" : "bandit-run",
 	"enemy-attack" : "bandit-attack",
 	"enemy-idle" : "bandit-idle",
-	"enemy-hit" : "",
+	"enemy-hit" : "bandit-hit",
 	"enemy-dead" : "bandit-death"
 }
 

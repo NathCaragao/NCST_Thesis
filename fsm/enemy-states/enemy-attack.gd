@@ -10,6 +10,8 @@ extends State
 @onready var player = get_tree().get_first_node_in_group("Player")
 var direction
 
+@export var player_length : int = 40
+
 # state machine ref
 #@onready var state_machine : StateMachine = get_parent()
 
@@ -24,7 +26,7 @@ func enter() -> void:
 	print("Actor position:", actor.global_position)
 	print("Direction length:", direction.length())
 	
-	if direction.length() <= 40:
+	if direction.length() < player_length:
 		print("Within attack range, playing attack animation")
 		actor.play_animation("enemy-attack")
 		timer.start()
@@ -32,6 +34,9 @@ func enter() -> void:
 		print("Not within attack range")
 
 func physics_update(delta: float) -> void:
+	# apply gravity
+	actor.velocity.y += actor.gravity * delta
+	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
 		
@@ -42,7 +47,7 @@ func physics_update(delta: float) -> void:
 	direction.y = 0
 	
 	
-	if direction.length() > 41:
+	if direction.length() > 40:
 		Transitioned.emit(self, "enemyfollow")
 	elif direction.length() > 110:
 		Transitioned.emit(self, "enemywander")
@@ -51,7 +56,6 @@ func physics_update(delta: float) -> void:
 func on_enemy_dead3() -> void:
 	timer.stop()
 	Transitioned.emit(self, "enemydeath")
-	#actor.animation_player.stop()
 	#state_machine.force_death_state()
 
 func on_hit1() -> void:

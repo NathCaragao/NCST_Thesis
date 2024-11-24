@@ -18,6 +18,11 @@ func enter() -> void:
 	pass
 
 func physics_update(delta: float) -> void:
+	# apply gravity
+	actor.velocity.y += actor.gravity * delta
+	actor.move_and_slide()
+	
+	
 	if is_knocked_back:
 		# Decelerate the velocity
 		actor.velocity.x = move_toward(actor.velocity.x, 0, deceleration * delta)

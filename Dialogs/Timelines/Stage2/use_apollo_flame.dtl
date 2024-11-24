@@ -1,0 +1,3 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+Hercules: Let’s see if Apollo’s flame lives up to its name. Time to burn, you cursed vines!
+leave Hercules [animation="Fade Out Up" wait="true"]

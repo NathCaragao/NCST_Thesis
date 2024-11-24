@@ -1,0 +1,4 @@
+join Hercules leftmost [animation="Fade In Down" wait="true"]
+*(Looking down at the sheer drop)* 
+Hercules: These cliffs... One wrong step and I'll be feeding the vultures. Steady now, Herakles. Steady.
+leave Hercules [animation="Fade Out Up" wait="true"]
