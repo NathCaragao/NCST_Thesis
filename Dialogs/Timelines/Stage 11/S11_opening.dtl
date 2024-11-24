@@ -1,7 +1,7 @@
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 (In King Eurystheus' throne room. Hercules stands before Eurystheus, who smirks with malice, clearly enjoying his role as the bearer of Herculean burdens.)
-join Hercules center [animation="Fade In Down"]
-join Eurystheus center [animation="Fade In Down"]
+join Hercules leftmost [animation="Fade In Down"]
+join Eurystheus rightmost [animation="Fade In Down"]
 Eurystheus: (mocking)"Hercules, your labors have yet to humble you, but this one… this one will bring even the great son of Zeus to his knees. Retrieve the golden apples of the Hesperides for me."
 Hercules: (sternly)"The Hesperides? Even the gods keep their distance from the sacred fruit. Do you truly believe I cannot accomplish this?"
 Eurystheus: (grinning smugly)"Oh, I don’t doubt your strength, Hercules. But strength alone won’t guide you to their hidden garden, nor protect you from its guardians. These apples were a gift from Gaia to Hera herself, a symbol of immortality. The gods guard them jealously."
