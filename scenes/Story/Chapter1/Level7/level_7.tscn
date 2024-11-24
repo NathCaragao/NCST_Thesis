@@ -2936,7 +2936,7 @@ tile_map_data = PackedByteArray("AADe//z/AAABAAAAAADe//3/AAABAAEAAADf//z/AAACAAA
 tile_set = SubResource("TileSet_8koma")
 
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
-position = Vector2(-2434, -232)
+position = Vector2(-2530.5, -232)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -3122,7 +3122,7 @@ visible = false
 position = Vector2(11461, -157)
 
 [node name="Spawn1" type="Marker2D" parent="SpawnArea"]
-position = Vector2(196, 27)
+position = Vector2(194, -36)
 
 [node name="Spawn2" type="Marker2D" parent="SpawnArea"]
 position = Vector2(-397, 27)
@@ -3325,7 +3325,7 @@ script = ExtResource("34_erom1")
 dialog_file = "S8_5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator5"]
-position = Vector2(210.5, -127.5)
+position = Vector2(993, -125)
 shape = SubResource("RectangleShape2D_a1l0u")
 debug_color = Color(0.610444, 0.361603, 1, 0.42)
 

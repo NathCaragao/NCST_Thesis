@@ -9163,7 +9163,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(1738, 816)
+position = Vector2(-297, -86)
 scale = Vector2(1.5, 1.5)
 
 [node name="TorchItem" type="AnimatedSprite2D" parent="Player"]
@@ -9638,6 +9638,8 @@ shape = SubResource("WorldBoundaryShape2D_m6hlh")
 position = Vector2(8552, -714)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_4obsk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
