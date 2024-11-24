@@ -14,9 +14,12 @@ func update(delta: float) -> void:
 func physics_update(delta: float) -> void:
 	# Adjust velocity y(gravity)
 	if actor.playerGameData.isControlled:
+		# playerGameData.velocity should be updated by gravity if it is controlled by player
 		actor.velocity.y += actor.gravity * delta
 	else:
+		# playerGameData.velocity should be updated by server info if not controlled by player
 		actor.velocity.y = actor.playerGameData.velocity.y
+	
 	actor._flip_sprite()
 	actor.move_and_slide()
 	

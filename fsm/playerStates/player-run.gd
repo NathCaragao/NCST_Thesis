@@ -60,6 +60,4 @@ func physics_update(delta: float) -> void:
 		
 		if player_health_component.current_health == 0:
 			Transitioned.emit(self, "playerdeath")
-	# flip sprite
-	#actor._flip_sprite()
 	

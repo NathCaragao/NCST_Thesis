@@ -33,6 +33,7 @@ func update(delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	# Keep the player as isAttacking true during the animation
+	
 	var movement
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
@@ -40,16 +41,18 @@ func physics_update(delta: float) -> void:
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
 		movement = actor.playerGameData.velocity.x
-		
-	actor.velocity.x = movement
+	
+	if !actor.animation_player.current_animation.begins_with("player-shoot"):
+		actor.velocity.x = movement
 	actor._flip_sprite()
 	actor.move_and_slide()
 	
-	
-	if actor.animation_player.is_playing() and actor.animation_player.current_animation.begins_with("attack"):
+	# While animation is playing, set isAttacking of Player to true and keep player from switching to other states
+	if actor.animation_player.is_playing() and (actor.animation_player.current_animation.begins_with("attack") or actor.animation_player.current_animation.begins_with("player-shoot")):
 		actor.playerGameData.isAttacking = true
 		return
 	
+	# When attack anim finishes, lock the player in attack state to prevent atk anim spam
 	if attackCooldown > 0:
 		actor.playerGameData.isAttacking = false
 		attackCooldown -= delta
@@ -118,8 +121,12 @@ func play_next_attack_animation():
 
 # Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
+	print_debug(animation_name)
 	actor.animation_player.play("idle")
-	attackCooldown = float(10.0/60.0)
+	if animation_name == "attack1" or animation_name == "attack2":
+		attackCooldown = float(10.0/60.0)
+	elif animation_name == "player-shoot":
+		attackCooldown = float(10.0/60.0)
 	# Check if the finished animation is an attack animation
 	
 	#if animation_name in attack_animations or animation_name == "player-shoot":
@@ -163,7 +170,8 @@ func arrow_fire() -> void:
 	#bow_cooldown = false
 	
 	var arrow_instance = arrow.instantiate()
-	arrow_instance.global_position = $"../../ArrowPos/ArrowSpawn".global_position
+	arrow_instance.global_position.x = $"../../ArrowPos/ArrowSpawn".global_position.x + (40 * actor.playerGameData.direction)
+	arrow_instance.global_position.y = $"../../ArrowPos/ArrowSpawn".global_position.y
 	arrow_instance.vel = $"../../ArrowPos".scale.x
 	get_parent().add_child(arrow_instance)
 
@@ -174,7 +182,7 @@ func exit() -> void:
 	actor.animation_player.animation_finished.disconnect(_on_animation_finished)
 
 func update_animation(movement):
-	if actor.animation_player.current_animation.begins_with("attack"):
+	if actor.animation_player.current_animation.begins_with("attack") or actor.animation_player.current_animation.begins_with("player-shoot"):
 		if not actor.animation_player.is_playing():
 			actor.animation_player.stop()
 		else:
