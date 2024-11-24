@@ -13,7 +13,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # mapping animations for fsm
 var animation_mapping = {
-	"enemy-run" : "",
+	"enemy-run" : "hydra-run",
 	"enemy-attack" : "hydra-attack",
 	"enemy-idle" : "hydra-idle",
 	"enemy-hit" : "hydra-hit",

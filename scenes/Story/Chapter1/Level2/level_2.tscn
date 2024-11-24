@@ -9163,7 +9163,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(1738, 816)
+position = Vector2(-297, -86)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
