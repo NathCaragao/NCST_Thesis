@@ -10,4 +10,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if player:
 		print("collided")
 		player.collect(item)
+		EventNotifier.add_notif("You got Health Potion")
 		queue_free()

@@ -31,6 +31,7 @@ ScoreManager="*res://autoloads/ScoreManager/score_manager.gd"
 LevelScreenTransition="*res://scenes/components/in-game-screen-transition/level_screen_transition.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 CutsceneManager="*res://autoloads/CutsceneManager/cutscene_manager.gd"
+EventNotifier="*res://autoloads/in-game-notifier/event_notifier.tscn"
 
 [dialogic]
 
