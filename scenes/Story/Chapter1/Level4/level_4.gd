@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	opening_cutscene()
 	# snow particle
-	$Player/Camera2D/Snow.local_coords = false
+	%Snow.local_coords = false
 
 # when player dies: fail screen opens
 func on_player_fail() -> void:
