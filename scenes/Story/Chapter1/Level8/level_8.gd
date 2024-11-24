@@ -1,6 +1,9 @@
 # level 8.gd
 extends Node2D
 
+@onready var cutscene_layer: CanvasLayer = $CanvasLayer
+var scene_path : String = "res://scenes/cutscenes-collection/level 8/level_8_opening.tscn"
+
 @export var enemy_scenes : Array[PackedScene] = []
 @onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3,
 $SpawnArea/Spawn4]
@@ -17,6 +20,7 @@ var paused : bool = false
 
 
 func _ready() -> void:
+	CutsceneManager.set_canvas_layer(cutscene_layer)
 	interaction_area.interact = Callable(self, "on_interact")
 	interaction_area_2.interact = Callable(self, "on_interact2")
 	interaction_area_3.interact = Callable(self, "on_interact3")
@@ -27,7 +31,7 @@ func _ready() -> void:
 	
 	# disable the 3rd dialog
 	$NPCs/InteractionArea3/CollisionShape2D.disabled = true
-
+	opening_cutscene()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
@@ -91,3 +95,7 @@ func on_level_complete(argument: String) -> void:
 func level_finish() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+	
+func opening_cutscene() -> void:
+	CutsceneManager.add_cutscene(scene_path, "opening6")
+	CutsceneManager.play_cutscene("opening6")

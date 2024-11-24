@@ -1,0 +1,13 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
+In King Eurystheus’ throne room, where Hercules stands tall and resolute. Eurystheus leans forward on his throne, holding a goblet in one hand, his expression a mixture of mockery and malice. A map of Thrace lies unfurled on a table before him, depicting the kingdom of the warrior women—the Amazons.
+join Eurystheus rightmost [animation="Fade In Down"]
+Eurystheus: (with a sly grin)"Hercules, your next labor will take you to the land of the Amazons. These warrior women are unmatched in battle, their strength rivaling even the mightiest of men. Your task is to retrieve a most prized possession—the girdle of their queen, Hippolyta."
+join Hercules leftmost [animation="Fade In Down"]
+Hercules: (raising an eyebrow)"A girdle? That hardly seems worthy of a labor. What use have you for such a trinket?"
+Eurystheus: (with mock innocence)"The girdle is no mere trinket, Hercules. It is a gift from Ares, the god of war, a symbol of Hippolyta's power and divine favor. My daughter Admete desires it, and I am determined to grant her wish. The girdle will be brought to Mycenae, no matter the cost."
+Hercules: (crossing his arms)"So, you send me to wage war against the Amazons for the whim of a child? Very well. But know this—I will try diplomacy before force. Bloodshed will not be my first course of action."
+Eurystheus: (sneering)"Do as you wish, but you’ll soon find that words are wasted on warriors. Go, Hercules, and bring me the girdle!"
+leave Eurystheus [animation="Fade Out Up"]
+leave Hercules [animation="Fade Out Up"]
+after walking out of the throne room, Hercules imediately prepares for his journey. He gathers his weapons and armor, boarding a ship that will take him to the shores of the Amazon kingdom. The sea is turbulent, foreshadowing the challenges to come.
+narrator: "The ninth labor of Hercules would lead him to the land of the Amazons, where courage and cunning would be tested in equal measure. To retrieve the girdle of Hippolyta, he would face a kingdom of warriors and a queen whose strength was matched only by her wisdom. Would he succeed through diplomacy or be forced to fight for his prize? Only time would tell."
