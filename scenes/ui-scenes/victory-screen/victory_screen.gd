@@ -4,7 +4,6 @@ extends Control
 @onready var coins_val: Label = $VBoxContainer/HBoxContainer2/CoinsVal
 @onready var score_val: Label = $VBoxContainer/HBoxContainer/ScoreVal
 
-
 func _ready() -> void:
 	pass
 

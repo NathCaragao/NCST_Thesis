@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=76 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="18_011mj"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="18_iieoh"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="19_a5uen"]
+[ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="19_pwp6p"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="20_ldpk8"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="24_tir2g"]
 [ext_resource type="PackedScene" uid="uid://caxpvmw3y1bwl" path="res://scenes/friendly-npcs/pholos/pholos_npc.tscn" id="25_v7skj"]
@@ -6524,6 +6525,36 @@ libraries = {
 "": SubResource("AnimationLibrary_3nho5")
 }
 autoplay = "vertical"
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="HealthPotion" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(1628, -649)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion2" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(3871, -1213)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion3" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(6051, -1469)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion4" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(8310, -688)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion5" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(11649, -204)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion6" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(15024, -1758)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion7" parent="Powerups" instance=ExtResource("19_pwp6p")]
+position = Vector2(15851, -2170)
+scale = Vector2(1.3, 1.3)
 
 [node name="rope" parent="." node_paths=PackedStringArray("large_crate") instance=ExtResource("11_s0bw1")]
 position = Vector2(12346, -1074)

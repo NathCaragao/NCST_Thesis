@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://d0l5vs3eae28c"]
+[gd_scene load_steps=50 format=4 uid="uid://d0l5vs3eae28c"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1y6gh"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level10/level_10.gd" id="1_8qe6w"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="22_gvwtt"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="23_3tc0c"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="24_nmnq5"]
+[ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="26_ix0n1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57u3g"]
 texture = ExtResource("1_a7gcu")
@@ -1712,6 +1713,9 @@ size = Vector2(964, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxdy8"]
 size = Vector2(6156, 31.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp5o3"]
+size = Vector2(20, 185)
+
 [node name="Level10" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_8qe6w")
 fail_screen = NodePath("ScoreUI/FailScreen")
@@ -1758,10 +1762,10 @@ tile_set = SubResource("TileSet_j1j0j")
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="spike wheel" parent="Obstacles" instance=ExtResource("2_p3puy")]
-position = Vector2(5188, -333)
+position = Vector2(5196, -286)
 
 [node name="spike wheel2" parent="Obstacles" instance=ExtResource("2_p3puy")]
-position = Vector2(5750, -337)
+position = Vector2(5752, -288)
 
 [node name="Crusher4" parent="Obstacles" instance=ExtResource("3_nuc1x")]
 position = Vector2(5123, -825)
@@ -1846,7 +1850,7 @@ position = Vector2(5907, -4363)
 position = Vector2(17542, 129)
 
 [node name="Player" parent="." instance=ExtResource("16_406ug")]
-position = Vector2(-2135, -226)
+position = Vector2(-2213, -229)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -1952,9 +1956,45 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(5488, -4388)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(0, -44.5)
+shape = SubResource("RectangleShape2D_yp5o3")
+debug_color = Color(0.543482, 0.405502, 1, 0.42)
+
+[node name="PortalOut" type="Marker2D" parent="Portal"]
+position = Vector2(7812.31, 4486)
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="HealthPotion" parent="Powerups" instance=ExtResource("26_ix0n1")]
+position = Vector2(2432, -138)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion2" parent="Powerups" instance=ExtResource("26_ix0n1")]
+position = Vector2(5963, -1365)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion3" parent="Powerups" instance=ExtResource("26_ix0n1")]
+position = Vector2(6080, -3364)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion4" parent="Powerups" instance=ExtResource("26_ix0n1")]
+position = Vector2(14653, 137)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion5" parent="Powerups" instance=ExtResource("26_ix0n1")]
+position = Vector2(14873, 137)
+scale = Vector2(1.3, 1.3)
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator7" to="Dialogs/DialogActivator7" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_teleport"]

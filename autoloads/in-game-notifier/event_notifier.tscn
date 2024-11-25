@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv2c1ksc5ywcu"]
+
+[ext_resource type="Script" path="res://autoloads/in-game-notifier/event_notifier.gd" id="1_calg4"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_02uoa"]
+
+[node name="EventNotifier" type="CanvasLayer"]
+script = ExtResource("1_calg4")
+
+[node name="Desc" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -11.5
+offset_right = 60.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_02uoa")
+theme_override_font_sizes/font_size = 24
