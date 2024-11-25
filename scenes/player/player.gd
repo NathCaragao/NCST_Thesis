@@ -31,7 +31,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 signal PlayerFail
 
 func _ready() -> void:
-	#initialize(self.position, true, "", "NOTTTTTTTTTTTTTTTT")
+	#initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 
 

@@ -27,9 +27,14 @@ func physics_update(delta: float) -> void:
 	actor._flip_sprite()
 	
 	if skillCooldown > 0:
+		actor.playerGameData.isSkill = false
 		Transitioned.emit(self, "playeridle")
 	
+	if actor.animation_player.is_playing() and actor.animation_player.current_animation.begins_with("player-shoot"):
+		actor.playerGameData.isSkill = true
+	
 	if not actor.animation_player.is_playing():
+		actor.playerGameData.isSkill = false
 		# Animation ended, decide what to do next
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			Transitioned.emit(self, "playerrun")
