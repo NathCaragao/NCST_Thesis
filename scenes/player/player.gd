@@ -88,6 +88,7 @@ func apply_item_effect(item):
 			player_hp.phealth_bar.health = player_hp.current_health
 			# some debug text
 			print("Player Healed! ", str(player_hp.current_health))
+			EventNotifier.add_notif("Healed +30 HP")
 		"atk_boost":
 			var atk_amount : int = 20
 			#atk += atk_amount

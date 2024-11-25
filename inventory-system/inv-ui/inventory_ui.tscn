@@ -56,3 +56,58 @@ layout_mode = 2
 
 [node name="Inv_UI_Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_qa0nq")]
 layout_mode = 2
+
+[node name="Guide1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 25.0
+offset_right = 18.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 25.0
+offset_right = 54.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 25.0
+offset_right = 91.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 16
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 25.0
+offset_right = 127.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 16
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 25.0
+offset_right = 163.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 16
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
