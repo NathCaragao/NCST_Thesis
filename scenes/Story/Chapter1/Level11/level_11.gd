@@ -6,6 +6,8 @@ var scene_path : String = "res://scenes/cutscenes-collection/level_11/level_11_o
 @export var enemy_scenes : Array[PackedScene] = []
 @onready var spawn_points : Array = [$CeberusSpawn]
 
+@onready var player = get_tree().get_first_node_in_group("Player")
+
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
@@ -20,6 +22,8 @@ var paused : bool = false
 func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	Dialogic.signal_event.connect(on_ceberus_fight)
+	Dialogic.signal_event.connect(on_level_complete)
+	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	interaction_area.interact = Callable(self, "on_ferryman")
 	interaction_area_2.interact = Callable(self, "on_ferryman_2")
 	
@@ -92,3 +96,11 @@ func spawn_activate():
 func on_ceberus_fight(argument: String) -> void:
 	if argument == "ceberusfight":
 		spawn_activate()
+
+func on_level_complete(argument : String) -> void:
+	if argument == "12laborcomplete":
+		finish_screen()
+
+func finish_screen() -> void:
+	victory_screen.visible = true
+	victory_screen.update_scores()

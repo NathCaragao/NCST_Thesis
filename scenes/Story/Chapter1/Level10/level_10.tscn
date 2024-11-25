@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://d0l5vs3eae28c"]
+[gd_scene load_steps=49 format=4 uid="uid://d0l5vs3eae28c"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1y6gh"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level10/level_10.gd" id="1_8qe6w"]
@@ -1712,6 +1712,9 @@ size = Vector2(964, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxdy8"]
 size = Vector2(6156, 31.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp5o3"]
+size = Vector2(20, 185)
+
 [node name="Level10" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_8qe6w")
 fail_screen = NodePath("ScoreUI/FailScreen")
@@ -1846,7 +1849,7 @@ position = Vector2(5907, -4363)
 position = Vector2(17542, 129)
 
 [node name="Player" parent="." instance=ExtResource("16_406ug")]
-position = Vector2(-2135, -226)
+position = Vector2(-2213, -229)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -1952,9 +1955,23 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(5488, -4388)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(0, -44.5)
+shape = SubResource("RectangleShape2D_yp5o3")
+debug_color = Color(0.543482, 0.405502, 1, 0.42)
+
+[node name="PortalOut" type="Marker2D" parent="Portal"]
+position = Vector2(7812.31, 4486)
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator7" to="Dialogs/DialogActivator7" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_teleport"]
