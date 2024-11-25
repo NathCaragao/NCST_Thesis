@@ -8,7 +8,6 @@ extends State
 func enter() -> void:
 	actor.velocity = Vector2.ZERO
 	skill_activate()
-	print_debug()
 
 func physics_update(delta: float) -> void:
 	actor.velocity.y += actor.gravity * delta

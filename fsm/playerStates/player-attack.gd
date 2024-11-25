@@ -156,6 +156,7 @@ func sword_attack() -> void:
 # Ranged mode attack
 func bow_attack() -> void:
 	print("Entered bow_attack state")
+	actor.velocity.x = 0
 	actor.animation_player.play("player-shoot")
 	#if actor.playerGameData.isControlled:
 		#actor.playerGameData.isAttacking = true
