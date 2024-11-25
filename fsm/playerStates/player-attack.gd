@@ -121,7 +121,6 @@ func play_next_attack_animation():
 
 # Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
-	print_debug(animation_name)
 	actor.animation_player.play("idle")
 	if animation_name == "attack1" or animation_name == "attack2":
 		attackCooldown = float(10.0/60.0)

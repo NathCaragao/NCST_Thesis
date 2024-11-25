@@ -100,35 +100,10 @@ vertical_alignment = 1
 
 [node name="State" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 60.0
 offset_top = -63.0
 offset_right = 147.0
 offset_bottom = -40.0
-theme_override_font_sizes/font_size = 16
-text = "\"YOU\""
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="State2" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = 60.0
-offset_top = -38.0
-offset_right = 147.0
-offset_bottom = -15.0
-theme_override_font_sizes/font_size = 16
-text = "\"YOU\""
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="State3" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = 60.0
-offset_top = -15.0
-offset_right = 147.0
-offset_bottom = 8.0
 theme_override_font_sizes/font_size = 16
 text = "\"YOU\""
 horizontal_alignment = 1

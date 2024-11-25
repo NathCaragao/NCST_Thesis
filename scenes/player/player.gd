@@ -78,9 +78,8 @@ func _input(event: InputEvent) -> void:
 # STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
 # STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
-	%State.text = "isAttacking: %s" % self.playerGameData.isAttacking
-	%State2.text = "currentState: %s" % $StateMachine.current_state
-	%State3.text = "isAttackAnimPlaying: %s" % str(self.animation_player.is_playing() and self.animation_player.current_animation.begins_with("attack"))
+	%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
+	
 	if self.playerGameData.isControlled:
 		# Horizontal Movement
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")
@@ -94,9 +93,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("melee-mode"):
 			self.playerGameData.weaponMode = "Melee"
 			switch_weapon_mode("Melee")
-		elif Input.is_action_just_pressed("ranged-mode"):
-			self.playerGameData.weaponMode = "Ranged"
-			switch_weapon_mode("Ranged")
+		#elif Input.is_action_just_pressed("ranged-mode"):
+			#self.playerGameData.weaponMode = "Ranged"
+			#switch_weapon_mode("Ranged")
 		# Velocity update even if there is no input directly affecting this
 		self.playerGameData.velocity = self.velocity
 		self.playerGameData.position = self.position
