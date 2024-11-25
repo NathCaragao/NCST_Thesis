@@ -1758,10 +1758,10 @@ tile_set = SubResource("TileSet_j1j0j")
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="spike wheel" parent="Obstacles" instance=ExtResource("2_p3puy")]
-position = Vector2(5188, -333)
+position = Vector2(5196, -286)
 
 [node name="spike wheel2" parent="Obstacles" instance=ExtResource("2_p3puy")]
-position = Vector2(5750, -337)
+position = Vector2(5752, -288)
 
 [node name="Crusher4" parent="Obstacles" instance=ExtResource("3_nuc1x")]
 position = Vector2(5123, -825)
