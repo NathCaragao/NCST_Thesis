@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://5c66y1ix5spu"]
 
 [ext_resource type="Script" path="res://inventory-system/inventory_item.gd" id="1_h5lxt"]
-[ext_resource type="Texture2D" uid="uid://c0vhdwpj36sj8" path="res://assets/inv-items/tile099.png" id="2_8y2fs"]
+[ext_resource type="Texture2D" uid="uid://bp3ue1vrd8vvm" path="res://assets/inv-items/apple_item.png" id="2_85vfd"]
 
 [resource]
 script = ExtResource("1_h5lxt")
@@ -9,4 +9,4 @@ type = "consumable"
 name = "health_potion"
 description = "+ 10 HP"
 effect = "Health_Potion"
-texture = ExtResource("2_8y2fs")
+texture = ExtResource("2_85vfd")

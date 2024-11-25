@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=114 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="14_p3tjk"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/lvl_3_gate.gd" id="15_282q2"]
 [ext_resource type="Texture2D" uid="uid://hnpondp0jfaa" path="res://assets/in-game-objects/gate/wooden_gate-Sheet.png" id="15_dte76"]
+[ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="16_7knlh"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/gate_1.gd" id="17_60v71"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="17_ixdoc"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="18_ktbha"]
@@ -4821,6 +4822,24 @@ libraries = {
 }
 autoplay = "h2"
 
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="HealthPotion" parent="Powerups" instance=ExtResource("16_7knlh")]
+position = Vector2(2030, -124)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion2" parent="Powerups" instance=ExtResource("16_7knlh")]
+position = Vector2(6025, -380)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion3" parent="Powerups" instance=ExtResource("16_7knlh")]
+position = Vector2(11664, -136)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion4" parent="Powerups" instance=ExtResource("16_7knlh")]
+position = Vector2(13126, 561)
+scale = Vector2(1.3, 1.3)
+
 [node name="Chest" parent="." instance=ExtResource("14_p3tjk")]
 position = Vector2(5610, 129)
 
@@ -4874,6 +4893,10 @@ shape = SubResource("RectangleShape2D_gw85u")
 
 [node name="Col6" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(12912, 322)
+shape = SubResource("RectangleShape2D_gw85u")
+
+[node name="Col9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(13107, 497)
 shape = SubResource("RectangleShape2D_gw85u")
 
 [node name="Col7" type="CollisionShape2D" parent="StaticBody2D"]

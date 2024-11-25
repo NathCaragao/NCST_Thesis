@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=43 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="15_bb8r2"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="16_1exm2"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="17_53f2o"]
+[ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="21_nebkk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
 shader = ExtResource("6_ae62n")
@@ -3549,3 +3550,11 @@ visible = false
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="HealthPotion" parent="Powerups" instance=ExtResource("21_nebkk")]
+position = Vector2(1733, 112)
+
+[node name="HealthPotion2" parent="Powerups" instance=ExtResource("21_nebkk")]
+position = Vector2(2161, 148)

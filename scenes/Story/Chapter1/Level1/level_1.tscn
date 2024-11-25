@@ -5216,7 +5216,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-490, -114)
+position = Vector2(-445, -117)
 collision_mask = 35
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -5538,8 +5538,35 @@ position = Vector2(1113, 2270)
 [node name="Firehazard11" parent="FireHazardCollection" instance=ExtResource("5_2v5hh")]
 position = Vector2(950, 2299)
 
-[node name="HealthPotion" parent="." instance=ExtResource("14_pkjb1")]
-position = Vector2(-124, -104)
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="HealthPotion" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(711, -164)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion2" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(1875, 194)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion3" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(2919, -120)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion4" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(1992, 865)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion5" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(-456, 2316)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion6" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(3992, 1382)
+scale = Vector2(1.3, 1.3)
+
+[node name="HealthPotion7" parent="Powerups" instance=ExtResource("14_pkjb1")]
+position = Vector2(5143, 2791)
+scale = Vector2(1.3, 1.3)
 
 [node name="Gates Collection" type="Node2D" parent="."]
 
