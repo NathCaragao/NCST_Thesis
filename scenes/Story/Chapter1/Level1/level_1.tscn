@@ -4977,7 +4977,7 @@ size = Vector2(829, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g7wc"]
 size = Vector2(824, 21.5)
 
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion", "melee_sprite", "ranged_sprite") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
 player = NodePath("Player")
@@ -4985,6 +4985,8 @@ fail_screen = NodePath("ScoreUI/FailScreen")
 pause_screen = NodePath("ScoreUI/PauseScreen")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
 nemean_lion = NodePath("Enemies/NemeanLion")
+melee_sprite = NodePath("ScoreUI/Melee")
+ranged_sprite = NodePath("ScoreUI/Ranged")
 
 [node name="TileCollection" type="Node2D" parent="."]
 
