@@ -2,7 +2,8 @@ extends Node2D
 
 var scene_path_1 : String = "res://scenes/cutscenes-collection/level 5-1/level_5_opening.tscn"
 var scene_path_2 : String = "res://scenes/cutscenes-collection/level 5-1/level_5_opening_2.tscn"
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $CutsceneLayer
+
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -23,6 +24,8 @@ func on_dialog_done(argument: String) -> void:
 		on_finish()
 
 func on_finish() -> void:
+	await get_tree().create_timer(1.5).timeout
+	
 	victory_screen.visible = true
 	victory_screen.update_scores()
 
