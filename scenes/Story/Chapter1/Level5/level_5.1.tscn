@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=31 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5/level_5.1.gd" id="1_qmr8m"]
@@ -14,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://d3nhqr8jx3mh3" path="res://scenes/objects/poop/poop.tscn" id="10_tmo4j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_sgld1"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="13_gynuv"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="15_ikprm"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="15_soeot"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="16_rpow0"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="17_n0u32"]
+[ext_resource type="Texture2D" uid="uid://e5loj8o5eudd" path="res://assets/ui/labels/melee_mode.png" id="19_1f2g8"]
+[ext_resource type="Texture2D" uid="uid://btiyw5lst4y1d" path="res://assets/ui/labels/ranged_mode.png" id="20_m763n"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="21_sudq2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1234,8 +1241,12 @@ size = Vector2(20, 444)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6yqy"]
 size = Vector2(537, 13)
 
-[node name="Level5_1" type="Node2D"]
+[node name="Level5_1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_qmr8m")
+player = NodePath("Player")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
 
 [node name="sky" type="Parallax2D" parent="."]
 repeat_size = Vector2(3205, 0)
@@ -1295,7 +1306,7 @@ tile_map_data = PackedByteArray("AAAAAP//AAABAAAAAAAAAAAAAAABAAEAAAABAP//AAABAAA
 tile_set = SubResource("TileSet_tgk4m")
 
 [node name="Player" parent="." instance=ExtResource("3_a0cjq")]
-position = Vector2(-2870, -24)
+position = Vector2(3844, -296)
 
 [node name="RotatingPlatform1" parent="." instance=ExtResource("4_kk0sn")]
 position = Vector2(2660, -124)
@@ -1381,6 +1392,45 @@ shape = SubResource("RectangleShape2D_h6yqy")
 debug_color = Color(0.590164, 0.376227, 1, 0.42)
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("15_soeot")]
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("16_rpow0")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("17_n0u32")]
+process_mode = 2
+visible = false
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("15_ikprm")]
+visible = false
+
+[node name="Melee" type="TextureRect" parent="ScoreUI"]
+offset_left = 566.0
+offset_top = 990.0
+offset_right = 646.0
+offset_bottom = 1070.0
+texture = ExtResource("19_1f2g8")
+
+[node name="Ranged" type="TextureRect" parent="ScoreUI"]
+visible = false
+offset_left = 273.0
+offset_top = 954.0
+offset_right = 353.0
+offset_bottom = 1034.0
+texture = ExtResource("20_m763n")
+
+[node name="WeaponMode" type="Label" parent="ScoreUI"]
+offset_left = 546.0
+offset_top = 942.0
+offset_right = 672.0
+offset_bottom = 973.0
+theme_override_fonts/font = ExtResource("21_sudq2")
+theme_override_font_sizes/font_size = 24
+text = "WEAPON"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]

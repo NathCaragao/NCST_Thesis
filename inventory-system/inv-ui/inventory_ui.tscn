@@ -19,7 +19,7 @@ script = ExtResource("1_y2yyb")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 188.0
-offset_bottom = 60.0
+offset_bottom = 42.0
 texture = ExtResource("2_cindx")
 patch_margin_left = 8
 patch_margin_top = 8
@@ -56,3 +56,63 @@ layout_mode = 2
 
 [node name="Inv_UI_Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_qa0nq")]
 layout_mode = 2
+
+[node name="Guide1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 18.0
+offset_right = 17.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 18.0
+offset_right = 53.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 18.0
+offset_right = 90.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 18.0
+offset_right = 126.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guide5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 18.0
+offset_right = 162.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,12 +1,15 @@
 extends Control
 
 var is_open : bool = false
-
 # player's inv
 @onready var inv : Inventory = preload("res://inventory-system/inventories/player_inv.tres")
 @onready var slots : Array = $NinePatchRect/GridContainer.get_children()
 
 func _ready():
+	# Initialize each slot with its index
+	for i in range(slots.size()):
+		slots[i].initialize(i)
+	
 	inv.update.connect(update_slots)
 	update_slots()
 
