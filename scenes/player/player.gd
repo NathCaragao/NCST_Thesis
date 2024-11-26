@@ -93,9 +93,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("melee-mode"):
 			self.playerGameData.weaponMode = "Melee"
 			switch_weapon_mode("Melee")
-		#elif Input.is_action_just_pressed("ranged-mode"):
-			#self.playerGameData.weaponMode = "Ranged"
-			#switch_weapon_mode("Ranged")
+		elif Input.is_action_just_pressed("ranged-mode"):
+			self.playerGameData.weaponMode = "Ranged"
+			switch_weapon_mode("Ranged")
 		# Velocity update even if there is no input directly affecting this
 		self.playerGameData.velocity = self.velocity
 		self.playerGameData.position = self.position
