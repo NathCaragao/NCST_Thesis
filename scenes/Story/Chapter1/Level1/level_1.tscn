@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://e5loj8o5eudd" path="res://assets/ui/labels/melee_mode.png" id="38_slubc"]
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
 [ext_resource type="Texture2D" uid="uid://btiyw5lst4y1d" path="res://assets/ui/labels/ranged_mode.png" id="39_tni5l"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="39_v120m"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="39_v120m"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="40_8q11v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
