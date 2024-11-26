@@ -1,9 +1,10 @@
 join Hercules center [animation="Fade In Down"]
 *(Hercules uses his immense strength to break the barrier blocking the channel. Water rushes through with a deafening roar, flooding the stables and sweeping away the filth, leaving the stables sparkling clean.)*
 *(Hercules stands at the edge of the water, drenched but triumphant. The sunlight glints off the now-clean stables. Villagers gather in awe, whispering among themselves as they watch.)*
-"Villager 1": "Look at what he’s done! The stables... they’re clean!"  
-"Villager 2": "Is there anything this man cannot do?"  
+"Villager 1": "Look at what he’s done! The stables... they’re clean!"
+"Villager 2": "Is there anything this man cannot do?"
 *(Hercules takes a deep breath, wiping the sweat from his brow. He looks toward the palace of King Augeas, his expression firm.)*
-Hercules: *(to himself)* "The labor is complete. Now, to claim what was promised."  
+Hercules: *(to himself)* "The labor is complete. Now, to claim what was promised."
 leave Hercules
 *(he begins the journey back to the palace, his silhouette framed against the golden sunset.)*
+[signal arg="level5complete"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=27 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5/level_5.1.gd" id="1_qmr8m"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://d3nhqr8jx3mh3" path="res://scenes/objects/poop/poop.tscn" id="10_tmo4j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_sgld1"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="13_gynuv"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="15_ikprm"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="16_rpow0"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="17_n0u32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1384,6 +1387,19 @@ shape = SubResource("RectangleShape2D_h6yqy")
 debug_color = Color(0.590164, 0.376227, 1, 0.42)
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" type="Node" parent="ScoreUI"]
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("15_ikprm")]
+visible = false
+
+[node name="FailScreen" parent="ScoreUI" instance=ExtResource("16_rpow0")]
+visible = false
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("17_n0u32")]
+visible = false
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
