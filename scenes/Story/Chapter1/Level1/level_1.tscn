@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=165 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -39,7 +39,10 @@
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="27_3di2u"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="28_ga2uk"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="29_1h0nh"]
+[ext_resource type="Texture2D" uid="uid://e5loj8o5eudd" path="res://assets/ui/labels/melee_mode.png" id="38_slubc"]
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
+[ext_resource type="Texture2D" uid="uid://btiyw5lst4y1d" path="res://assets/ui/labels/ranged_mode.png" id="39_tni5l"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="39_v120m"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="40_8q11v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
@@ -5749,6 +5752,31 @@ visible = false
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("29_1h0nh")]
 visible = false
+
+[node name="Melee" type="TextureRect" parent="ScoreUI"]
+offset_left = 273.0
+offset_top = 954.0
+offset_right = 377.0
+offset_bottom = 1058.0
+texture = ExtResource("38_slubc")
+
+[node name="Ranged" type="TextureRect" parent="ScoreUI"]
+visible = false
+offset_left = 273.0
+offset_top = 954.0
+offset_right = 377.0
+offset_bottom = 1058.0
+texture = ExtResource("39_tni5l")
+
+[node name="WeaponMode" type="Label" parent="ScoreUI"]
+offset_left = 248.0
+offset_top = 894.0
+offset_right = 407.0
+offset_bottom = 933.0
+theme_override_fonts/font = ExtResource("39_v120m")
+theme_override_font_sizes/font_size = 32
+text = "WEAPON"
+horizontal_alignment = 1
 
 [node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
