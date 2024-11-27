@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_22pfw"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_22pfw"]
 [ext_resource type="Texture2D" uid="uid://2piwp0dft3w6" path="res://assets/tileset (world-building)/World-Tileset_1.0.0.png" id="2_h4bue"]
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="2_jhfan"]
 [ext_resource type="Texture2D" uid="uid://c4dy3glllh3oc" path="res://assets/icons/settings-icon3.png" id="4_bg4yb"]
