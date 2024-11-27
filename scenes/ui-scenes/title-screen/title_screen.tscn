@@ -1,29 +1,66 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=31 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/user_info.gd" id="3_v0kmf"]
-[ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="5_4ori8"]
-[ext_resource type="Texture2D" uid="uid://culfxc31fbkd0" path="res://assets/icons/account_icon.png" id="6_8daj5"]
+[ext_resource type="Texture2D" uid="uid://c4qvwcb26nxfy" path="res://assets/icons/buttons/start_btn_pressed.png" id="6_0kp8p"]
+[ext_resource type="Texture2D" uid="uid://o02372uwmudi" path="res://assets/icons/buttons/start_btn.png" id="6_btmyv"]
+[ext_resource type="Texture2D" uid="uid://c0sdm6w6s0ubk" path="res://assets/icons/buttons/options_btn.png" id="7_olya7"]
+[ext_resource type="Texture2D" uid="uid://bl3p7vkd1fu7g" path="res://assets/icons/buttons/options_btn_pressed.png" id="8_0bpdf"]
+[ext_resource type="Texture2D" uid="uid://c2t41lwymbxcj" path="res://assets/icons/buttons/exit_btn_pressed.png" id="9_3iit5"]
+[ext_resource type="Texture2D" uid="uid://b7ylj8dqlqo50" path="res://assets/icons/buttons/exit_btn.png" id="10_u8w35"]
+[ext_resource type="Texture2D" uid="uid://dv41y8x1anf1a" path="res://assets/icons/buttons/account_icon.png" id="11_x7pf5"]
+[ext_resource type="Texture2D" uid="uid://dhya5qaxhxkmm" path="res://assets/icons/buttons/account_icon_pressed.png" id="12_ltmra"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
 shader = ExtResource("2_ygjtw")
 shader_parameter/scroll_speed = 0.03
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6eq2g"]
-texture = ExtResource("5_4ori8")
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4rj2"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yivg"]
-texture = ExtResource("5_4ori8")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fr76x"]
+texture = ExtResource("6_btmyv")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbgi4"]
-texture = ExtResource("5_4ori8")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tdqbt"]
+texture = ExtResource("6_0kp8p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xqqan"]
+texture = ExtResource("6_btmyv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2wwy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uv85s"]
+texture = ExtResource("7_olya7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvqes"]
+texture = ExtResource("8_0bpdf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6d0m4"]
+texture = ExtResource("7_olya7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvuur"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8i8q7"]
+texture = ExtResource("10_u8w35")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1tc5"]
+texture = ExtResource("9_3iit5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klfsc"]
+texture = ExtResource("10_u8w35")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muqt7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5kdm"]
+texture = ExtResource("11_x7pf5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8yxg"]
+texture = ExtResource("12_ltmra")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7d3c"]
+texture = ExtResource("11_x7pf5")
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -115,24 +152,31 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_6eq2g")
-text = "START"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x4rj2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fr76x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tdqbt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xqqan")
+icon_alignment = 1
 
 [node name="OptionBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_1yivg")
-text = "Options"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s2wwy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uv85s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hvqes")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6d0m4")
 
 [node name="ExitBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 66
-theme_override_styles/hover = SubResource("StyleBoxTexture_nbgi4")
-text = "EXIt"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hvuur")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8i8q7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y1tc5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_klfsc")
 
 [node name="SwitchAcc" type="Button" parent="."]
 layout_mode = 1
@@ -149,7 +193,10 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 31
-icon = ExtResource("6_8daj5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_muqt7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h5kdm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p8yxg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_d7d3c")
 icon_alignment = 1
 expand_icon = true
 
