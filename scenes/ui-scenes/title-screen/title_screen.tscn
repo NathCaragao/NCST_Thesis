@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=12 format=3 uid="uid://d3l4b7il2xwqv"]
 
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_l5igl"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/user_info.gd" id="3_v0kmf"]
 [ext_resource type="Texture2D" uid="uid://djdwd1duewl72" path="res://scenes/ui-scenes/background-pattern/button-hover.png" id="5_4ori8"]
+[ext_resource type="Texture2D" uid="uid://culfxc31fbkd0" path="res://assets/icons/account_icon.png" id="6_8daj5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
 shader = ExtResource("2_ygjtw")
@@ -140,15 +141,17 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -261.0
+offset_left = -118.0
 offset_top = -23.0
-offset_right = -29.0
-offset_bottom = 40.0
+offset_right = -22.0
+offset_bottom = 73.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
 theme_override_font_sizes/font_size = 31
-text = "Account"
+icon = ExtResource("6_8daj5")
+icon_alignment = 1
+expand_icon = true
 
 [node name="UserInfo" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
