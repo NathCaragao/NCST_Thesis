@@ -7,7 +7,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	ScoreUi.get_node('CanvasLayer').hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,7 +24,10 @@ func _on_play_btn_pressed() -> void:
 # settings button
 func _on_settings_btn_pressed() -> void:
 	# press to open and close
-	settings_window.visible = !settings_window.visible
+	settings_open()
+
+func _on_alamanac_btn_pressed() -> void:
+	almanac_open()
 
 func almanac_open() -> void:
 	almanac_window.visible = true
@@ -40,6 +43,15 @@ func almanac_open() -> void:
 		.set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 
-
-func _on_alamanac_btn_pressed() -> void:
-	almanac_open()
+func settings_open() -> void:
+	settings_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	settings_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(settings_window, "position:y", screen_size.y / 2 - settings_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK)
