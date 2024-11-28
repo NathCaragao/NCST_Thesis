@@ -3,6 +3,7 @@ extends Node2D
 
 # references
 @export var settings_window : Control
+@export var almanac_window : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,3 +25,21 @@ func _on_play_btn_pressed() -> void:
 func _on_settings_btn_pressed() -> void:
 	# press to open and close
 	settings_window.visible = !settings_window.visible
+
+func almanac_open() -> void:
+	almanac_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	almanac_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(almanac_window, "position:y", screen_size.y / 2 - almanac_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
+
+
+func _on_alamanac_btn_pressed() -> void:
+	almanac_open()
