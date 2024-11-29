@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=55 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -31,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_nhbjn"]
 [ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ycbht"]
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
+[ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_64w5q"]
+[ext_resource type="AudioStream" uid="uid://dpnfdbh34a320" path="res://assets/Audios/SFXs/sword-swing.mp3" id="33_ytchi"]
+[ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="34_qxywh"]
+[ext_resource type="AudioStream" uid="uid://cohv5wu1hx3xb" path="res://assets/Audios/SFXs/on_hit.mp3" id="35_wemq0"]
+[ext_resource type="AudioStream" uid="uid://dsmaxqe8l5tck" path="res://assets/Audios/SFXs/death.mp3" id="36_n8yop"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lxf63"]
 shader = ExtResource("3_cxdj6")
@@ -989,6 +994,23 @@ texture = ExtResource("28_fwbhh")
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
 }
+
+[node name="player_sound" type="Node2D" parent="."]
+
+[node name="run" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("32_64w5q")
+
+[node name="SwordSwing" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("33_ytchi")
+
+[node name="bow" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("34_qxywh")
+
+[node name="on_hit" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("35_wemq0")
+
+[node name="death" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("36_n8yop")
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]

@@ -4,7 +4,8 @@ extends State
 # references
 @export var actor : PlayerHercules
 @onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
-
+@onready var Sword_swing :  AudioStreamPlayer2D = $"../../player_sound/SwordSwing"
+@onready var bow_sound : AudioStreamPlayer2D = $"../../player_sound/bow"
 # variables
 var attack_index : int = 0
 var attack_animations : Array = ["attack1", "attack2"]
@@ -21,8 +22,10 @@ func _ready() -> void:
 func enter() -> void:
 	if actor.weapon_mode == "Melee":
 		sword_attack()
+		Sword_swing.play()
 	elif actor.weapon_mode == "Ranged":
 		bow_attack()
+		bow_sound.play()
 
 func update(delta: float) -> void:
 	pass
