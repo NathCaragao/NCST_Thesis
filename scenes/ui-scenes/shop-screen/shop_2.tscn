@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnqfaklbpw0yv"]
+[gd_scene load_steps=4 format=3 uid="uid://cnqfaklbpw0yv"]
 
 [ext_resource type="PackedScene" uid="uid://bo45al2ctvxlt" path="res://scenes/ui-scenes/shop-screen/item-card/item_card.tscn" id="1_378r7"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/shop-screen/shop_2.gd" id="1_i4gmn"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_fdd80"]
 
 [node name="Shop2" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i4gmn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,3 +77,36 @@ layout_mode = 2
 
 [node name="Item_card4" parent="HBoxContainer2" instance=ExtResource("1_378r7")]
 layout_mode = 2
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -466.0
+offset_right = 106.0
+offset_bottom = -389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fdd80")
+theme_override_font_sizes/font_size = 64
+text = "SHOP"
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = 23.0
+offset_right = -28.0
+offset_bottom = 89.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_fdd80")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[connection signal="pressed" from="CloseBtn" to="." method="shop2_close"]

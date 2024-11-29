@@ -4,6 +4,7 @@ extends Node2D
 # references
 @export var settings_window : Control
 @export var almanac_window : Control
+@export var shop_window : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _process(delta: float) -> void:
 
 # shop button
 func _on_shop_btn_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/shop-screen/shop.tscn")
+	shop_open()
 
 # play button
 func _on_play_btn_pressed() -> void:
@@ -54,4 +55,17 @@ func settings_open() -> void:
 	settings_window.position.y = screen_size.y
 	# Animate the window moving from bottom to center
 	tween.tween_property(settings_window, "position:y", screen_size.y / 2 - settings_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK)
+
+func shop_open() -> void:
+	shop_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	shop_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(shop_window, "position:y", screen_size.y / 2 - shop_window.size.y / 2, 0.3) \
 		.set_trans(Tween.TRANS_BACK)
