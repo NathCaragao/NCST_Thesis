@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3pptygqbe2kp"]
+[gd_scene load_steps=12 format=3 uid="uid://c3pptygqbe2kp"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/chapter-selection/chapter_selection.gd" id="1_tb02e"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1utwf"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_tkop5"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_i044p"]
 [ext_resource type="Texture2D" uid="uid://b3o08vcaxlf1x" path="res://assets/ui/windows/chapter-book.png" id="5_5vb80"]
+[ext_resource type="PackedScene" uid="uid://c4w8sfhjdxqw5" path="res://scenes/ui-scenes/level-selection/level_selection_2.tscn" id="6_3oih1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1vn7"]
 shader = ExtResource("2_1utwf")
@@ -19,7 +20,7 @@ bg_color = Color(1, 1, 1, 0.168627)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xi5a"]
 
-[node name="ChapterSelection" type="Control"]
+[node name="ChapterSelection" type="Control" node_paths=PackedStringArray("level_selection_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tb02e")
+level_selection_window = NodePath("LevelSelection2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -185,6 +187,10 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_tkop5")
 theme_override_font_sizes/font_size = 50
 text = "Multiplayer"
+
+[node name="LevelSelection2" parent="." instance=ExtResource("6_3oih1")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Chapter1/ChBtn" to="." method="_on_ch_btn_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

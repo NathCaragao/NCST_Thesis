@@ -344,6 +344,7 @@ offset_top = 887.0
 offset_right = 810.0
 offset_bottom = 1002.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
+text = "																																																																																																																																																																																																																																																																															"
 icon = ExtResource("5_187xu")
 icon_alignment = 1
 

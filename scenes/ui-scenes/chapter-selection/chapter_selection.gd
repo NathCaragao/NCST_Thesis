@@ -1,9 +1,11 @@
 # chapter_selection.gd
 extends Control
 
+@export var level_selection_window : Control
+
 # chapter 1 button
 func _on_ch_btn_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/level-selection/level_selection.tscn")
+	level_selection_open()
 
 # back button
 func _on_back_btn_pressed() -> void:
@@ -12,3 +14,17 @@ func _on_back_btn_pressed() -> void:
 
 func _on_multiplayer_btn_pressed() -> void:
 	SceneManager.changeScene("res://scenes/multiplayerLevelManager/MultiplayerLevelManager.tscn")
+
+func level_selection_open() -> void:
+	level_selection_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	level_selection_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(level_selection_window, "position:y", screen_size.y / 2 - level_selection_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)

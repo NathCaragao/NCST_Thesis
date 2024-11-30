@@ -1,0 +1,182 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4w8sfhjdxqw5"]
+
+[ext_resource type="Script" path="res://scenes/ui-scenes/level-selection/level_selection_2.gd" id="1_hsmt3"]
+[ext_resource type="Texture2D" uid="uid://c2wypejo7t4hg" path="res://assets/ui/windows/open_book.png" id="1_l4d4n"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_nffp6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1ct1"]
+
+[node name="LevelSelection2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hsmt3")
+level_1_path = "res://scenes/Story/Chapter1/Level1/level_1.tscn"
+level_2_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
+level_3_path = "res://scenes/Story/Chapter1/Level3/level_3.tscn"
+level_4_path = "res://scenes/Story/Chapter1/Level4/level_4.tscn"
+level_5_path = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
+level_6_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
+level_7_path = "res://scenes/Story/Chapter1/Level6/level_6.tscn"
+level_8_path = "res://scenes/Story/Chapter1/Level7/level_7.tscn"
+level_9_path = "res://scenes/Story/Chapter1/Level8/level_8.tscn"
+level_10_path = "res://scenes/Story/Chapter1/Level9/level_9.tscn"
+level_11_path = "res://scenes/Story/Chapter1/Level10/level_10.tscn"
+level_12_path = "res://scenes/Story/Chapter1/Level11/level_11.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l4d4n")
+
+[node name="Column1" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 176.0
+offset_right = 859.0
+offset_bottom = 879.0
+theme_override_constants/separation = 60
+
+[node name="S1" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "1st LABOR"
+
+[node name="S2" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "2nd LABOR"
+
+[node name="S3" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "3RD LABOR
+"
+
+[node name="S4" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "4TH LABOR
+"
+
+[node name="S5" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "5TH LABOR
+"
+
+[node name="S6" type="Button" parent="Column1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "6TH LABOR
+"
+
+[node name="Column2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 176.0
+offset_right = 1606.0
+offset_bottom = 879.0
+theme_override_constants/separation = 60
+
+[node name="S7" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "7TH LABOR"
+
+[node name="S8" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "8TH LABOR"
+
+[node name="S9" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "9TH LABOR
+"
+
+[node name="S10" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "10TH LABOR
+"
+
+[node name="S11" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "11TH LABOR
+"
+
+[node name="S12" type="Button" parent="Column2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j1ct1")
+text = "12TH LABOR
+"
+
+[node name="HeaderTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 44.0
+offset_right = 798.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 72
+text = "LABORS"
+horizontal_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1592.0
+offset_top = 62.0
+offset_right = 1640.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("2_nffp6")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[connection signal="pressed" from="Column1/S1" to="." method="level_1"]
+[connection signal="pressed" from="CloseBtn" to="." method="close_window"]
