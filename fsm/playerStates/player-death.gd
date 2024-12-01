@@ -3,10 +3,12 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
+@onready var death : AudioStreamPlayer2D = $"../../player_sound/death"
 
 func enter() -> void:
 	print("PLAYER DIED")
 	actor.animation_player.play("player-dead")
+	death.play()
 	
 	# disable all phyics interactions
 	$"../../PlayerHealthComponent/Hurtbox/CollisionShape2D".set_deferred("disabled", true)
