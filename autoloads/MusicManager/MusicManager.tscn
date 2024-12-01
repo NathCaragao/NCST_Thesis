@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://dkhrjx61mti5p"]
+[gd_scene load_steps=3 format=3 uid="uid://dkhrjx61mti5p"]
+
+[ext_resource type="Script" path="res://autoloads/MusicManager/music_manager.gd" id="1_drwg0"]
+[ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="2_bke0y"]
 
 [node name="MusicManager" type="Node"]
+script = ExtResource("1_drwg0")
+
+[node name="bgm" type="Node2D" parent="."]
+
+[node name="time_for_adventure" type="AudioStreamPlayer2D" parent="bgm"]
+stream = ExtResource("2_bke0y")

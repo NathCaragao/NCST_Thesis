@@ -2,6 +2,9 @@
 extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
+@onready var combat = $bgm/combat
+@onready var lively = $bgm/lively
+
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -20,6 +23,7 @@ func _ready() -> void:
 	nemean_lion.connect("LionDefeated", Callable(self, "on_lion_defeated"))
 	
 	opening_cutscene()
+	lively.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
