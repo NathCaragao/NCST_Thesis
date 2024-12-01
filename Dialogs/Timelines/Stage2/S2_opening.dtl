@@ -4,12 +4,13 @@ join Eurystheus center [animation="Fade In Down"]
 Eurystheus: (with a nervous edge)"You’ve returned victorious from the Nemean forest, but don’t let your pride swell too much, Hercules. There is another labor awaiting you, one far more perilous than the last."
 join Eurystheus rightmost [animation="Fade In Down"]
 join Hercules leftmost [animation="Fade In Down"]
-Hercules:  (calmly, but with an undercurrent of defiance)"What is it this time, Eurystheus? Another beast you’re too afraid to face yourself?"
+Hercules: (calmly, but with an undercurrent of defiance)"What is it this time, Eurystheus? Another beast you’re too afraid to face yourself?"
 Eurystheus: (his tone hardening as he tries to assert authority)"Silence, son of Zeus! Your next labor will take you to the swamps of Lerna. There, you must slay the Hydra, a monstrous serpent with many heads. Be warned\: for every head you cut off, two will grow in its place. It is a creature of Hera’s making, born to destroy you."
 Hercules: (with a smirk)"If one head falls, I’ll strike down ten more. Tell me, where do I find this Hydra?"
 Eurystheus: (gesturing dismissively)"It dwells in the murky waters of Lerna, deep in a swamp that even the bravest mortals avoid. But heed my warning, Hercules\: brute strength will not be enough. The Hydra’s venom can kill with a single touch, and its lair is surrounded by countless other dangers."
-Hercules:  (gripping his club tightly)"The Hydra’s venom won’t save it. I’ll return with its severed heads as proof of its defeat."
+Hercules: (gripping his club tightly)"The Hydra’s venom won’t save it. I’ll return with its severed heads as proof of its defeat."
 Hercules strides out of the throne room, his shadow stretching long behind him. The doors close with a resounding thud.
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus, Hercules set forth on his second labor, a task that would test his cunning as much as his might. The Hydra of Lerna awaited him, a creature born of divine malice, lurking in the shadows of a swamp where no mortal dared to tread."
+[signal arg="end"]

@@ -342,5 +342,7 @@ stream = ExtResource("35_wemq0")
 [node name="death" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("36_n8yop")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]

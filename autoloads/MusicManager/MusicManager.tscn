@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkhrjx61mti5p"]
+[gd_scene load_steps=15 format=3 uid="uid://dkhrjx61mti5p"]
 
 [ext_resource type="Script" path="res://autoloads/MusicManager/music_manager.gd" id="1_drwg0"]
 [ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="2_bke0y"]
+[ext_resource type="AudioStream" uid="uid://b6bjihov3ktu7" path="res://assets/Audios/bgm/CursedVillage.mp3" id="2_gnlhk"]
+[ext_resource type="AudioStream" uid="uid://1fa3nk2wh0dr" path="res://assets/Audios/bgm/Dark_dungeon.mp3" id="3_x6emj"]
+[ext_resource type="AudioStream" uid="uid://r0iipxnhaa8x" path="res://assets/Audios/bgm/swamp.mp3" id="4_lcw72"]
+[ext_resource type="AudioStream" uid="uid://c1oswlaggi8wo" path="res://assets/Audios/bgm/ghost_castle.mp3" id="6_85di4"]
+[ext_resource type="AudioStream" uid="uid://da4maagwddfj2" path="res://assets/Audios/bgm/hall_of_the_king.mp3" id="7_fvinh"]
+[ext_resource type="AudioStream" uid="uid://b5qaqha8dgxny" path="res://assets/Audios/bgm/inthecastle.mp3" id="8_fm7gj"]
+[ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="9_qwiwe"]
+[ext_resource type="AudioStream" uid="uid://pv7ggcd6hyoc" path="res://assets/Audios/bgm/magical_forrest.mp3" id="10_bsjk8"]
+[ext_resource type="AudioStream" uid="uid://c2hh7o51pwf2a" path="res://assets/Audios/bgm/magickal_river.mp3" id="11_8yt7g"]
+[ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="12_tf2kr"]
+[ext_resource type="AudioStream" uid="uid://ic06u5dmjg08" path="res://assets/Audios/bgm/strange_farm.mp3" id="13_5hxu6"]
 
-[node name="MusicManager" type="Node"]
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_skkho"]
+stream_count = 12
+stream_0 = ExtResource("2_gnlhk")
+stream_1 = ExtResource("3_x6emj")
+stream_2 = ExtResource("6_85di4")
+stream_3 = ExtResource("7_fvinh")
+stream_4 = ExtResource("8_fm7gj")
+stream_5 = ExtResource("9_qwiwe")
+stream_6 = ExtResource("10_bsjk8")
+stream_7 = ExtResource("11_8yt7g")
+stream_8 = ExtResource("12_tf2kr")
+stream_9 = ExtResource("13_5hxu6")
+stream_10 = ExtResource("4_lcw72")
+stream_11 = ExtResource("2_bke0y")
+
+[node name="MusicManager" type="Node2D"]
 script = ExtResource("1_drwg0")
 
-[node name="bgm" type="Node2D" parent="."]
-
-[node name="time_for_adventure" type="AudioStreamPlayer2D" parent="bgm"]
-stream = ExtResource("2_bke0y")
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_skkho")

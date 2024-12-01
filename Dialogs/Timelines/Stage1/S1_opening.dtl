@@ -1,7 +1,6 @@
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 In the throne room of Mycenae. King Eurystheus sits arrogantly on his throne, a cruel smile playing on his lips as Hercules, clad in a simple tunic, kneels before him. The air is thick with tension, the flickering torchlight casting long shadows across the hall.\
 \
-
 join Eurystheus center [animation="Fade In Down"]
 Eurystheus: "Hercules, son of Zeus, the mighty hero who seeks redemption. Do you truly believe your strength can absolve you of your crimes?"
 join Eurystheus rightmost [animation="Fade In Down"]
@@ -9,7 +8,8 @@ join Hercules leftmost [animation="Fade In Down"]
 Hercules: "I seek nothing but atonement. Name your task, Eurystheus, and I will see it done."
 Eurystheus: "Then hear me, Hercules. Your first labor shall be to slay the Nemean Lion. A beast of such ferocity that its hide cannot be pierced by mortal weapons. Many have tried to rid the land of its terror, and all have perished."
 Hercules: "If the lion’s hide cannot be pierced, then I shall find another way. The Nemean Lion will fall."
- (smirking)"We shall see if the son of Zeus is as mighty as the legends claim. Go, Hercules. Your path to redemption begins now."
+(smirking)"We shall see if the son of Zeus is as mighty as the legends claim. Go, Hercules. Your path to redemption begins now."
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus, Hercules set out on his first labor, a task that would test not only his strength but his cunning and resolve. The Nemean Lion awaited him, a beast born of the gods' wrath, prowling the hills of Nemea and spreading fear across the land. Little did Hercules know, this was only the beginning of the trials that lay ahead."
+[signal arg="end"]

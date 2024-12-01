@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=167 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="39_v120m"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="40_8q11v"]
+[ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/combatareabgm.gd" id="45_4hd1r"]
 [ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="45_pk4ft"]
 [ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="46_kiukr"]
 
@@ -5877,13 +5878,11 @@ debug_color = Color(0.546857, 0.403565, 1, 0.42)
 
 [node name="bgm" type="Node2D" parent="."]
 
-[node name="lively" type="AudioStreamPlayer2D" parent="bgm"]
+[node name="lively" type="AudioStreamPlayer" parent="bgm"]
 stream = ExtResource("45_pk4ft")
 
-[node name="combat" type="AudioStreamPlayer2D" parent="bgm"]
-stream = ExtResource("46_kiukr")
-
 [node name="bgm_area2d" type="Node2D" parent="."]
+script = ExtResource("45_4hd1r")
 
 [node name="combat" type="Area2D" parent="bgm_area2d"]
 position = Vector2(280, -112)
@@ -5893,6 +5892,9 @@ collision_mask = 35
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bgm_area2d/combat"]
 position = Vector2(75, -117.5)
 shape = SubResource("RectangleShape2D_crgxe")
+
+[node name="combat" type="AudioStreamPlayer" parent="bgm_area2d/combat/CollisionShape2D"]
+stream = ExtResource("46_kiukr")
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
@@ -5918,8 +5920,6 @@ shape = SubResource("RectangleShape2D_crgxe")
 [connection signal="body_exited" from="Gates Collection/Gate2/InteractionArea" to="Gates Collection/Gate2" method="_on_interaction_area_body_exited"]
 [connection signal="body_entered" from="Gates Collection/Gate3/InteractionArea" to="Gates Collection/Gate3" method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="Gates Collection/Gate3/InteractionArea" to="Gates Collection/Gate3" method="_on_interaction_area_body_exited"]
-[connection signal="body_entered" from="bgm_area2d/combat" to="." method="_on_combat_body_entered"]
-[connection signal="body_exited" from="bgm_area2d/combat" to="." method="_on_combat_body_exited"]
 
 [editable path="Gates Collection/Gate1"]
 [editable path="Key_1"]

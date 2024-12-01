@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=110 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://cmaaqi0hqotrk" path="res://scenes/objects/Cage/cage.tscn" id="28_iii3j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="30_sksh4"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="33_va0sa"]
+[ext_resource type="AudioStream" uid="uid://r0iipxnhaa8x" path="res://assets/Audios/bgm/swamp.mp3" id="39_3qrsa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9675,6 +9676,11 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_4obsk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="bgm" type="Node2D" parent="."]
+
+[node name="swamp_bgm" type="AudioStreamPlayer" parent="bgm"]
+stream = ExtResource("39_3qrsa")
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

@@ -1,8 +1,7 @@
-# level 1.gd
 extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
-@onready var combat = $bgm/combat
+
 @onready var lively = $bgm/lively
 
 
@@ -18,9 +17,20 @@ func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	nemean_lion.connect("LionDefeated", Callable(self, "on_lion_defeated"))
+	# Connect Dialogic "end" signal to handle audio playback
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene()
-	lively.play()
+
+# Handles the "end" signal from Dialogic
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if lively:
+			lively.play()
+		else:
+			print("Error: 'lively' AudioStreamPlayer not found!")
+
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

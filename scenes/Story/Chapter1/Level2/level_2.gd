@@ -1,6 +1,7 @@
 extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 2/level_2_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
+@onready var swamp_bgm = $bgm/swamp_bgm
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -8,13 +9,25 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 2/level_2_ope
 @export var victory_screen : Control
 @export var hydra : EnemyHydra
 
+
 var paused : bool = false
 
 func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	hydra.connect("HydraDefeated", Callable(self, "on_hydra_defeat"))
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	
 	opening_cutscene()
+	
+	
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if swamp_bgm:
+			swamp_bgm.play()
+		else:
+			print("Error: 'lively' AudioStreamPlayer not found!")
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
