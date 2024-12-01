@@ -24,10 +24,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var move_speed: float = 400
-
 @export var push = 40
 @export var SPEED: float = 200.0
 @export var weapon_ui: Control
@@ -84,8 +80,6 @@ func _string_to_vector2(string := "") -> Vector2:
 		return Vector2(int(array[0]), int(array[1]))
 	return Vector2.ZERO
 
-func _input(event: InputEvent) -> void:
-	pass
 
 # STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
 # STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS

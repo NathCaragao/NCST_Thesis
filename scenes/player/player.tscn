@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=40 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -323,6 +323,8 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
+zoom = Vector2(3, 3)
+
 [node name="player_sound" type="Node2D" parent="."]
 
 [node name="run" type="AudioStreamPlayer2D" parent="player_sound"]
