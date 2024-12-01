@@ -40,9 +40,9 @@ func update(delta: float) -> void:
 		randomize_wander()
 
 func physics_update(delta: float) -> void:
-	# apply gravity
-	actor.velocity.y += actor.gravity * delta
-	actor.move_and_slide()
+	# Add the gravity.
+	if not actor.is_on_floor():
+		actor.velocity.y += actor.gravity * delta
 	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
