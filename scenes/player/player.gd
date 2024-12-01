@@ -4,11 +4,13 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
 @export var push = 40
 @export var SPEED: float = 200.0
+@export var weapon_ui : Control
 var facing_right : bool = true
 
 # variables for switching weapon class
@@ -61,18 +63,20 @@ func flip_sprite() -> void:
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		weapon_mode = "Melee"
-		print("Mode: ", weapon_mode) # replace with fancy UI
 	elif mode == "Ranged":
 		weapon_mode = "Ranged"
-		print("Mode: ", weapon_mode) # replace with fancy UI
 
 # weapon input switching
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee-mode"):
-		switch_weapon_mode("Melee")
+		if weapon_mode != "Melee":
+			weapon_ui.rotate_roulette(180)
+			switch_weapon_mode("Melee")
 	
 	elif event.is_action_pressed("ranged-mode"):
-		switch_weapon_mode("Ranged")
+		if weapon_mode != "Ranged":
+			weapon_ui.rotate_roulette(180)
+			switch_weapon_mode("Ranged")
 
 # collect items
 func collect(item):

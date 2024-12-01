@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"
+uid="uid://d0lw3mjj8wsba"
+path="res://.godot/imported/weapon_roulette_frame.png-c190f01b7f67758a33e404a5b71d1d26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/Tiles.png"
-dest_files=["res://.godot/imported/Tiles.png-db514daf519573dc8f9f34d595995b63.ctex"]
+source_file="res://assets/ui/windows/weapon_roulette_frame.png"
+dest_files=["res://.godot/imported/weapon_roulette_frame.png-c190f01b7f67758a33e404a5b71d1d26.ctex"]
 
 [params]
 
