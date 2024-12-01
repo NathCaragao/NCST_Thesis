@@ -4,7 +4,7 @@ extends Node
 # Global variables for server-wide operations
 const SERVER_KEY : String = "TheousKai"
 # THIS IS THE CLOUD SERVER
-const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us116.gitpod.io"
+const serverURL : String = "7350-nathcaragao-nakamaserve-wqsrj0o3ahe.ws-us117.gitpod.io"
 @onready var nakamaClient : NakamaClient = Nakama.create_client(SERVER_KEY, serverURL, 443, "https")
 # THIS IS THE LOCAL SERVER
 #const serverURL : String = "127.0.0.1"
