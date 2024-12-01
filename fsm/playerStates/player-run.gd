@@ -4,7 +4,9 @@ extends State
 # references & variables
 @export var actor : CharacterBody2D
 @onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+@onready var RunForrestRun: AudioStreamPlayer2D = $"../../player_sound/run"
 
+var is_running_audio_playing = false
 
 func enter() -> void:
 	print("Entered Run State")
@@ -22,10 +24,21 @@ func physics_update(delta: float) -> void:
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
 		movement = actor.playerGameData.velocity.x
-	
+
 	actor.velocity.x = movement
+
+	# Play running sound if the player is moving and the sound isn't already playing
+	if actor.velocity.x != 0 and not is_running_audio_playing:
+		RunForrestRun.play()
+		is_running_audio_playing = true
+	elif actor.velocity.x == 0 and is_running_audio_playing:
+		# Stop the running sound if the player stops moving
+		RunForrestRun.stop()
+		is_running_audio_playing = false
+
 	actor._flip_sprite()
 	actor.move_and_slide()
+
 	
 	# Switch to other states if suitable
 	# transitions to idle state
@@ -35,20 +48,22 @@ func physics_update(delta: float) -> void:
 	if actor.playerGameData.isControlled:		
 		# transitions to jump state
 		if Input.is_action_just_pressed("jump"):
+			RunForrestRun.stop()
+			is_running_audio_playing = false
 			Transitioned.emit(self, "playerjump")
-		
+
 		# transitions to attack state
 		if Input.is_action_just_pressed("attack"):
 			Transitioned.emit(self, "playerattack")
 		
 		if Input.is_action_just_pressed("skill"):
 			Transitioned.emit(self, "playerskill")
-		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")
+
 	else:
 		# -- Switch if not controlled
 		if actor.playerGameData.isJumping:
+			RunForrestRun.stop()
+			is_running_audio_playing = false
 			Transitioned.emit(self, "playerjump")
 		
 		# transitions to attack state
@@ -56,8 +71,9 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerattack")
 		
 		if actor.playerGameData.isSkill:
-			Transitioned.emit(self, "playerskill")
-		
-		if player_health_component.current_health == 0:
-			Transitioned.emit(self, "playerdeath")
-	
+			Transitioned.emit(self, "playerskill")	
+
+	if player_health_component.current_health == 0:
+		RunForrestRun.stop()
+		is_running_audio_playing = false
+		Transitioned.emit(self, "playerdeath")

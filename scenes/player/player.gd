@@ -2,7 +2,6 @@ class_name PlayerHercules
 extends CharacterBody2D
 
 
-
 # FINAL VARIABLES
 # -- Updated and used for server-client comm
 # THIS IS ALREADY SETUP FOR DEFAULT VALUES
@@ -24,7 +23,22 @@ var playerGameData = {
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@export var inv : Inventory
+
+
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var move_speed: float = 400
+
+@export var push = 40
+@export var SPEED: float = 200.0
+@export var weapon_ui: Control
+var facing_right: bool = true
+
+# variables for switching weapon class
+var weapon_mode: String = "Melee" # default weapon mode
+var direction
+
+# player inventory reference
+@export var inv: Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
 # Signals
@@ -129,18 +143,33 @@ func _flip_sprite() -> void:
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		self.playerGameData.weaponMode = "Melee"
+		weapon_mode = "Melee"
 		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
 	elif mode == "Ranged":
 		self.playerGameData.weaponMode = "Ranged"
+		weapon_mode = "Ranged"
 		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
 
+# weapon input switching
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("melee-mode"):
+		if weapon_mode != "Melee":
+			weapon_ui.rotate_roulette(180)
+			switch_weapon_mode("Melee")
+	
+	elif event.is_action_pressed("ranged-mode"):
+		if weapon_mode != "Ranged":
+			weapon_ui.rotate_roulette(180)
+			switch_weapon_mode("Ranged")
+
+# collect items
 func collect(item):
 	inv.insert(item)
 
 func apply_item_effect(item):
 	match item["effect"]:
 		"Health_Potion":
-			var heal_amount : int = 30
+			var heal_amount: int = 30
 			player_hp.current_health += heal_amount
 			# update health bar UI
 			player_hp.phealth_bar.health = player_hp.current_health
@@ -148,7 +177,7 @@ func apply_item_effect(item):
 			print("Player Healed! ", str(player_hp.current_health))
 			EventNotifier.add_notif("Healed +30 HP")
 		"atk_boost":
-			var atk_amount : int = 20
+			var atk_amount: int = 20
 			#atk += atk_amount
 			#print("Player attack boosted: ", str(atk))
 
