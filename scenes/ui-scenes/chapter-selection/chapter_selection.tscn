@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3pptygqbe2kp"]
+[gd_scene load_steps=12 format=3 uid="uid://c3pptygqbe2kp"]
 
-[ext_resource type="Texture2D" uid="uid://5ulo648e4li0" path="res://assets/tilesets(idk how to categorize files inside yet)/temple-campaign-no-outline.png" id="1_bg8mm"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/chapter-selection/chapter_selection.gd" id="1_tb02e"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1utwf"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_tkop5"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_tkop5"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_i044p"]
+[ext_resource type="Texture2D" uid="uid://b3o08vcaxlf1x" path="res://assets/ui/windows/chapter-book.png" id="5_5vb80"]
+[ext_resource type="PackedScene" uid="uid://c4w8sfhjdxqw5" path="res://scenes/ui-scenes/level-selection/level_selection_2.tscn" id="6_3oih1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1vn7"]
 shader = ExtResource("2_1utwf")
@@ -19,7 +20,7 @@ bg_color = Color(1, 1, 1, 0.168627)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xi5a"]
 
-[node name="ChapterSelection" type="Control"]
+[node name="ChapterSelection" type="Control" node_paths=PackedStringArray("level_selection_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tb02e")
+level_selection_window = NodePath("LevelSelection2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -76,6 +78,7 @@ offset_right = 736.0
 offset_bottom = 291.0
 
 [node name="Border" type="ColorRect" parent="Chapter1"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,25 +94,28 @@ grow_vertical = 2
 color = Color(0.257352, 0.533257, 0.504194, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Chapter1"]
-custom_minimum_size = Vector2(528, 528)
+custom_minimum_size = Vector2(480, 580)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 508.0
-offset_bottom = 508.0
+offset_left = -253.0
+offset_top = -303.0
+offset_right = 227.0
+offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bg8mm")
+scale = Vector2(2, 2)
+texture = ExtResource("5_5vb80")
 
 [node name="ChBtn" type="Button" parent="Chapter1"]
 layout_mode = 0
-offset_right = 528.0
-offset_bottom = 528.0
+offset_left = -113.0
+offset_top = -209.0
+offset_right = 604.0
+offset_bottom = 803.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_bqajh")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_enci2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rl610")
@@ -123,15 +129,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = 521.0
-offset_right = 505.0
-offset_bottom = 557.0
+offset_left = -25.0
+offset_top = 28.0
+offset_right = 584.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_tkop5")
-theme_override_font_sizes/font_size = 35
-text = "12 Labors Of Hercules"
+theme_override_font_sizes/font_size = 48
+text = "12 Labors
+Of Hercules"
+horizontal_alignment = 1
 
 [node name="ChapterNum" type="Label" parent="Chapter1"]
 layout_mode = 1
@@ -140,10 +148,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 57.5
-offset_top = -101.0
-offset_right = 430.5
-offset_bottom = -41.0
+offset_left = 104.0
+offset_top = -74.0
+offset_right = 477.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_tkop5")
@@ -171,14 +179,18 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 736.0
+offset_left = 1414.0
 offset_top = -112.0
-offset_right = 1194.0
+offset_right = 1872.0
 offset_bottom = -44.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_tkop5")
 theme_override_font_sizes/font_size = 50
 text = "Multiplayer"
+
+[node name="LevelSelection2" parent="." instance=ExtResource("6_3oih1")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Chapter1/ChBtn" to="." method="_on_ch_btn_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

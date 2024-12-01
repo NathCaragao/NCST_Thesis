@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8em666yw7wu1"]
+
+[ext_resource type="Script" path="res://scenes/ui-scenes/almanac-screen/almanac.gd" id="1_fa3ej"]
+[ext_resource type="Texture2D" uid="uid://c2wypejo7t4hg" path="res://assets/ui/windows/open_book.png" id="1_k2p4c"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_g7ja5"]
+
+[node name="Almanac" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fa3ej")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k2p4c")
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1590.0
+offset_top = 46.0
+offset_right = 1638.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 48
+text = "X"
+flat = true
+
+[connection signal="pressed" from="CloseBtn" to="." method="almanac_close"]

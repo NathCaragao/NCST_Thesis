@@ -25,6 +25,13 @@ func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
 
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	move_and_slide()
+
 
 # flip sprite
 func flip_sprite() -> void:

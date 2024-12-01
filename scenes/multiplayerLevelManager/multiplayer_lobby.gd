@@ -35,10 +35,22 @@ func _switchGUI(currentGUI, newGUI) -> void:
 		newGUI.show()
 	else:
 		currentGUI.hide()
+		currentGUI.set_process(false)
+		currentGUI.set_physics_process(false)
+		newGUI.set_process(true)
+		newGUI.set_physics_process(true)
 		newGUI.show()
 
 # Do all subgui signals connections here and set the initial state
 func _ready() -> void:
+	# Set processes off for all GUI
+	noMatchGUI.set_process(false)
+	noMatchGUI.set_physics_process(false)
+	lobbyMatchGUI.set_process(false)
+	lobbyMatchGUI.set_physics_process(false)
+	ongoingMatchGUI.set_process(false)
+	ongoingMatchGUI.set_physics_process(false)
+	
 	# Signal connection for noMatchGUI
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
@@ -47,6 +59,11 @@ func _ready() -> void:
 	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
+	lobbyMatchGUI.matchCountdownTimeout.connect(_handleMatchCountdownTimeout)
+	
+	# Signal connection for ongoingMatchGUI
+	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
+	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -64,10 +81,14 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	for presenceId in self.currentGameState.presences:
 		if presenceId != self.currentPlayer.user.id:
 			otherPlayerData.append(self.currentGameState.presences[presenceId])
-	otherPlayerData.sort()
+	otherPlayerData.sort_custom(func (firstPlayer, secondPlayer):
+		return firstPlayer.playerData.displayName < secondPlayer.playerData.displayName
+	)
 	
 	if currentMatchState == MatchState.LOBBY_MATCH:
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
+	elif currentMatchState == MatchState.ONGOING_MATCH:
+		ongoingMatchGUI.update(currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
 # CHANGING SUBGUIS:
 # - Get the new match state and decide which GUI to show - done
@@ -90,7 +111,9 @@ func _handleMatchStateChange(newMatchState:MatchState):
 		lobbyMatchGUI.update(joinedMatchID, {}, [])
 		
 	elif newMatchState == MatchState.ONGOING_MATCH:
-		pass
+		_switchGUI(currentGUI, ongoingMatchGUI)
+		currentGUI = ongoingMatchGUI
+		ongoingMatchGUI.update({}, [])
 		
 	SceneManager.hideLoadingScreen()
 
@@ -121,11 +144,6 @@ func _handleMatchJoined(isPlayerHost:bool):
 ##------------------------------------------------------------------------------
 ## LobbyMatchGUI related functions
 ##------------------------------------------------------------------------------
-#func _handleMatchLeft() -> void:
-	#self.joinedMatchID = ""
-	#currentMatchState = MatchState.LOBBY_MATCH
-	#_handleMatchStateStatus(currentMatchState)
-	
 func _handlePlayerReadyStatusChanged() -> void:
 	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
 	var readyStatusChangePayload = {
@@ -140,3 +158,34 @@ func _handleCurrentPlayerLeftMatch():
 		Notification.showMessage("Failed to Leave Match", 3.0)
 		return
 	_handleMatchStateChange(MatchState.NO_MATCH)
+
+func _handleMatchCountdownTimeout():
+	_handleMatchStateChange(MatchState.ONGOING_MATCH)
+	# 
+
+##------------------------------------------------------------------------------
+## OngoingMatchGUI related functions
+##------------------------------------------------------------------------------
+func _handleLevelLoaded():
+	var startedStatusChangePayload = {
+	"userId" = self.currentPlayer.user.id,
+	"payload" = {"isStarted": true}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_STARTED_CHANGED, startedStatusChangePayload)
+	
+func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
+	var currentPlayerGameDataPayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {
+			"ongoingMatchData": {
+				"direction": currentPlayerNewGameData.direction,
+				"isJumping": currentPlayerNewGameData.isJumping,
+				"isAttacking": currentPlayerNewGameData.isAttacking,
+				"isSkill": currentPlayerNewGameData.isSkill,
+				"velocity": currentPlayerNewGameData.velocity,
+				"weaponMode": currentPlayerNewGameData.weaponMode,
+				"position": currentPlayerNewGameData.position,
+			}
+		}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)

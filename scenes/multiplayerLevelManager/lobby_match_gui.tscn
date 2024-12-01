@@ -140,3 +140,4 @@ text = "Match is about to start in ? seconds."
 
 [connection signal="pressed" from="VBoxContainer2/LobbyPlayerList/CurrentPlayer/ReadyBtn" to="." method="_on_ready_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer2/LeaveMatchBtn" to="." method="_on_leave_match_btn_pressed"]
+[connection signal="timeout" from="MatchCountdown/Timer" to="." method="_on_timer_timeout"]

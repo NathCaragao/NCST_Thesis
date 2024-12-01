@@ -35,3 +35,18 @@ func center_window() -> void:
 	var window_size = DisplayServer.window_get_size()
 	var centered_position = (screen_size - window_size) / 2
 	DisplayServer.window_set_position(centered_position)
+
+func settings_close() -> void:
+	# Create a new tween
+	var tween = create_tween()
+	
+	# Get the screen size
+	var screen_size = get_viewport_rect().size
+	
+	# Animate the window moving from center to bottom
+	tween.tween_property(self, "position:y", screen_size.y, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_IN)
+	
+	# After the animation completes, hide the window
+	tween.tween_callback(func(): visible = false)

@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://4wgrckquy3k5"]
+
+[ext_resource type="Texture2D" uid="uid://b3o08vcaxlf1x" path="res://assets/ui/windows/chapter-book.png" id="1_eactu"]
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_vx8so"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_eie4p"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="4_vypfn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jevif"]
+shader = ExtResource("1_vx8so")
+shader_parameter/scroll_speed = 0.03
+
+[node name="BookChSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgPattern" type="TextureRect" parent="."]
+self_modulate = Color(0.419813, 0.419813, 0.419813, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jevif")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eie4p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 427.0
+offset_right = -1013.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_eactu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 540.0
+offset_right = 1182.0
+offset_bottom = 659.0
+theme_override_fonts/font = ExtResource("4_vypfn")
+theme_override_font_sizes/font_size = 48
+text = "12 Labors
+of Hercules"
+horizontal_alignment = 1

@@ -2,7 +2,7 @@ class_name PlayerRun
 extends State
 
 # references & variables
-@export var actor: PlayerHercules
+@export var actor : CharacterBody2D
 @onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
 @onready var RunForrestRun: AudioStreamPlayer2D = $"../../player_sound/run"
 
@@ -12,17 +12,20 @@ func enter() -> void:
 	print("Entered Run State")
 
 func update(delta: float) -> void:
-	if actor.velocity.x != 0:
+	if actor.playerGameData.velocity.x != 0:
 		actor.animation_player.play("run")
 
 func physics_update(delta: float) -> void:
-	# Apply gravity
-	actor.velocity.y += actor.gravity * delta
+	# Adjust velocity y(gravity) and velocity x(horizontal movement)
+	var movement
+	if actor.playerGameData.isControlled:
+		actor.velocity.y += actor.gravity * delta
+		movement = Input.get_axis("move_left", "move_right") * actor.move_speed
+	else:
+		actor.velocity.y = actor.playerGameData.velocity.y
+		movement = actor.playerGameData.velocity.x
 
-	# Get horizontal movement input
-	var movement = Input.get_axis("move_left", "move_right") * actor.move_speed
 	actor.velocity.x = movement
-	actor.move_and_slide()
 
 	# Play running sound if the player is moving and the sound isn't already playing
 	if actor.velocity.x != 0 and not is_running_audio_playing:
@@ -33,29 +36,44 @@ func physics_update(delta: float) -> void:
 		RunForrestRun.stop()
 		is_running_audio_playing = false
 
-	# Transition to idle state
+	actor._flip_sprite()
+	actor.move_and_slide()
+
+	
+	# Switch to other states if suitable
+	# transitions to idle state
 	if actor.velocity.x == 0:
 		Transitioned.emit(self, "playeridle")
+	# -- Switch using Input if controlled
+	if actor.playerGameData.isControlled:		
+		# transitions to jump state
+		if Input.is_action_just_pressed("jump"):
+			RunForrestRun.stop()
+			is_running_audio_playing = false
+			Transitioned.emit(self, "playerjump")
 
-	# Transition to jump state
-	if Input.is_action_just_pressed("jump"):
-		RunForrestRun.stop()
-		is_running_audio_playing = false
-		Transitioned.emit(self, "playerjump")
+		# transitions to attack state
+		if Input.is_action_just_pressed("attack"):
+			Transitioned.emit(self, "playerattack")
+		
+		if Input.is_action_just_pressed("skill"):
+			Transitioned.emit(self, "playerskill")
 
-	# Transition to attack state
-	if Input.is_action_just_pressed("attack"):
-		Transitioned.emit(self, "playerattack")
+	else:
+		# -- Switch if not controlled
+		if actor.playerGameData.isJumping:
+			RunForrestRun.stop()
+			is_running_audio_playing = false
+			Transitioned.emit(self, "playerjump")
+		
+		# transitions to attack state
+		if actor.playerGameData.isAttacking:
+			Transitioned.emit(self, "playerattack")
+		
+		if actor.playerGameData.isSkill:
+			Transitioned.emit(self, "playerskill")	
 
-	# Transition to skill state
-	if Input.is_action_just_pressed("skill"):
-		Transitioned.emit(self, "playerskill")
-
-	# Transition to death state if health is zero
 	if player_health_component.current_health == 0:
 		RunForrestRun.stop()
 		is_running_audio_playing = false
 		Transitioned.emit(self, "playerdeath")
-
-	# Flip sprite based on movement direction
-	actor.flip_sprite()

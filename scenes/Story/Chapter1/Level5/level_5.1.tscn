@@ -1308,9 +1308,6 @@ tile_set = SubResource("TileSet_tgk4m")
 [node name="Player" parent="." instance=ExtResource("3_a0cjq")]
 position = Vector2(3844, -296)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="RotatingPlatform1" parent="." instance=ExtResource("4_kk0sn")]
 position = Vector2(2660, -124)
 

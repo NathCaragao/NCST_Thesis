@@ -208,5 +208,16 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "Linked Email: "
 
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1773.0
+offset_top = 126.0
+offset_right = 1808.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 32
+text = "X"
+
 [connection signal="item_selected" from="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer/ResOption" to="." method="_on_res_option_item_selected"]
 [connection signal="item_selected" from="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="pressed" from="CloseBtn" to="." method="settings_close"]

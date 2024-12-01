@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo45al2ctvxlt"]
+
+[ext_resource type="Texture2D" uid="uid://ct1c13cgecgom" path="res://assets/ui/windows/item_card.png" id="1_fnyub"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_jlwnh"]
+
+[node name="Item_card" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchor_right = 0.104
+anchor_bottom = 0.185
+offset_right = 200.32
+offset_bottom = 200.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fnyub")
+
+[node name="BuyBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -96.0
+offset_right = 34.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_jlwnh")
+theme_override_font_sizes/font_size = 24
+text = "BUY"

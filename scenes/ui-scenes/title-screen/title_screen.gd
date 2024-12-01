@@ -36,4 +36,4 @@ func _on_exit_btn_pressed() -> void:
 
 # Dev btn
 func _on_button_pressed() -> void:
-	SceneManager.changeScene("res://scenes/Story/Chapter1/Level1/level_1.tscn")
+	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")

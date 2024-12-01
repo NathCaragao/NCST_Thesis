@@ -18,9 +18,9 @@ func enter() -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	# apply gravity
-	actor.velocity.y += actor.gravity * delta
-	actor.move_and_slide()
+	# Add the gravity.
+	if not actor.is_on_floor():
+		actor.velocity.y += actor.gravity * delta
 	
 	
 	if is_knocked_back:

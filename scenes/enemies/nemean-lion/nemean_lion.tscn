@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="13_lw8uq"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="14_q4ryk"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_bl45y"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="16_7i8b8"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="16_7i8b8"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="17_4jqxf"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="19_4ow12"]
 
