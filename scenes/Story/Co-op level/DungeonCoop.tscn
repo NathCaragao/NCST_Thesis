@@ -623,7 +623,7 @@ autoplay = "crash3"
 [node name="Player" parent="." instance=ExtResource("4_xmj0y")]
 position = Vector2(626, 125)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(2.45, 2.45)
 
 [node name="DeathZone" parent="." instance=ExtResource("5_ftod6")]

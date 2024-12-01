@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=38 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]
@@ -1686,37 +1686,6 @@ sources/0 = SubResource("TileSetAtlasSource_d6omq")
 sources/1 = SubResource("TileSetAtlasSource_2snly")
 sources/2 = SubResource("TileSetAtlasSource_bi8eq")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_38nwc"]
-particles_animation = true
-particles_anim_h_frames = 5
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_ba1fk"]
-offsets = PackedFloat32Array(0, 0.289941, 0.739645, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tu47"]
-gradient = SubResource("Gradient_ba1fk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ir0l"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(2000, 200, 1)
-spread = 20.0
-initial_velocity_min = 20.0
-initial_velocity_max = 80.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 50.0
-gravity = Vector3(0, 10, 0)
-scale_min = 0.5
-scale_max = 1.2
-color_ramp = SubResource("GradientTexture1D_3tu47")
-anim_offset_max = 1.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qhi8t"]
-load_path = "res://.godot/imported/ELR_SpringlLeaf.png-6cf3ce2ad7d480cbd30b0f13b90ba6c6.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saacn"]
 size = Vector2(18, 358)
 
@@ -1772,16 +1741,8 @@ position = Vector2(9113, -478)
 z_index = 5
 position = Vector2(838, -28)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
-
-[node name="LeavesEffect" type="GPUParticles2D" parent="Player/Camera2D"]
-material = SubResource("CanvasItemMaterial_38nwc")
-position = Vector2(23, -163)
-amount = 350
-process_material = SubResource("ParticleProcessMaterial_3ir0l")
-texture = SubResource("CompressedTexture2D_qhi8t")
-visibility_rect = Rect2(-10000, -100, 20000, 400)
 
 [node name="Enemies" type="Node2D" parent="."]
 

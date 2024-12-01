@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://bo0x87cw7o0ia"]
+[gd_scene load_steps=86 format=4 uid="uid://bo0x87cw7o0ia"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level7/level_7.gd" id="1_irepw"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_l8w5r"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="8_ovgkg"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="10_w0uwp"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="16_0u3pn"]
-[ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="17_b8vi1"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="18_5kwfr"]
 [ext_resource type="PackedScene" uid="uid://djxdn6p6ig4br" path="res://scenes/enemies/boar/boar.tscn" id="19_llmbi"]
 [ext_resource type="PackedScene" uid="uid://nggtuo375nmp" path="res://scenes/enemies/spartan/spartan.tscn" id="20_p44ar"]
@@ -2668,34 +2667,6 @@ sources/0 = SubResource("TileSetAtlasSource_g2nmj")
 sources/1 = SubResource("TileSetAtlasSource_3k0uw")
 sources/2 = SubResource("TileSetAtlasSource_krsau")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjw67"]
-particles_animation = true
-particles_anim_h_frames = 5
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_00k24"]
-offsets = PackedFloat32Array(0, 0.289941, 0.739645, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_htnyu"]
-gradient = SubResource("Gradient_00k24")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jgsss"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(2000, 200, 1)
-spread = 20.0
-initial_velocity_min = 20.0
-initial_velocity_max = 80.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 50.0
-gravity = Vector3(0, 10, 0)
-scale_min = 0.5
-scale_max = 1.2
-color_ramp = SubResource("GradientTexture1D_htnyu")
-anim_offset_max = 1.0
-
 [sub_resource type="Animation" id="Animation_2jp8j"]
 length = 0.001
 tracks/0/type = "value"
@@ -2939,16 +2910,8 @@ tile_set = SubResource("TileSet_8koma")
 [node name="Player" parent="." instance=ExtResource("4_ngjcm")]
 position = Vector2(-2530.5, -232)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
-
-[node name="LeavesEffect" type="GPUParticles2D" parent="Player/Camera2D"]
-material = SubResource("CanvasItemMaterial_fjw67")
-position = Vector2(-34, -166)
-amount = 350
-process_material = SubResource("ParticleProcessMaterial_jgsss")
-texture = ExtResource("17_b8vi1")
-visibility_rect = Rect2(-10000, -100, 20000, 400)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

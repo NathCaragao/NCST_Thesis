@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=72 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]

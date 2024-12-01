@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="12_ju64h"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_m32fa"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="14_81tsr"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="15_8t4in"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="15_8t4in"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="16_slyus"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ylw6"]

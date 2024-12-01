@@ -3465,7 +3465,7 @@ tile_set = SubResource("TileSet_aci37")
 z_index = 5
 position = Vector2(-547, -32)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
 [node name="Enemies" type="Node2D" parent="."]

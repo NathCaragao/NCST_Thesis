@@ -2454,7 +2454,7 @@ tile_set = SubResource("TileSet_s4lav")
 [node name="Player" parent="." instance=ExtResource("14_54tts")]
 position = Vector2(130, -48)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
 [node name="Enemies" type="Node2D" parent="."]
