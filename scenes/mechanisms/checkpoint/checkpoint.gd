@@ -22,6 +22,9 @@ func _on_body_entered(body: Node2D) -> void:
 func respawn_player() -> void:
 	fail_screen.visible = false
 	
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
 	player_revive()
 	
 	GameSignals.emit_signal("playerrespawn")
