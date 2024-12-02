@@ -5750,6 +5750,7 @@ script = SubResource("GDScript_ktb04")
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("27_3di2u")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level1/level_1.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("28_ga2uk")]
 process_mode = 2
