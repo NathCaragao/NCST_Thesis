@@ -169,7 +169,7 @@ health_comp = NodePath("../../PlayerHealthComponent")
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects") instance=ExtResource("14_3d4tk")]
 anim_effects = NodePath("../AnimEffects")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_vta2c")
 debug_color = Color(0.983351, 0, 0.353836, 0.42)
@@ -200,7 +200,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("15_aah5w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthComponent/Hitbox"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hitbox"]
 position = Vector2(19, 0)
 shape = SubResource("CircleShape2D_rxg1p")
 disabled = true

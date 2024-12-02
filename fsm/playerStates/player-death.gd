@@ -5,13 +5,16 @@ extends State
 @export var actor : CharacterBody2D
 @onready var death : AudioStreamPlayer2D = $"../../player_sound/death"
 
+func _ready() -> void:
+	GameSignals.connect("playerrespawn", Callable(self, "on_player_respawn"))
+
 func enter() -> void:
 	print("PLAYER DIED")
 	actor.animation_player.play("player-dead")
 	death.play()
 	
 	# disable all phyics interactions
-	$"../../PlayerHealthComponent/Hurtbox/CollisionShape2D".set_deferred("disabled", true)
+	$"../../PlayerHealthComponent/Hurtbox/HurtboxCollision".set_deferred("disabled", true)
 	
 	# disable other processes
 	actor.set_physics_process(false)
@@ -22,6 +25,9 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	# do nothing we're dead
 	pass
+
+func on_player_respawn() -> void:
+	Transitioned.emit(self, "playeridle")
 
 
 func exit() -> void:

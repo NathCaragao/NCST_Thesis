@@ -23,6 +23,8 @@ var playerGameData = {
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hurtbox_collision: CollisionShape2D = $PlayerHealthComponent/Hurtbox/HurtboxCollision
+
 
 @export var push = 40
 @export var SPEED: float = 200.0
@@ -113,11 +115,11 @@ func _physics_process(delta: float) -> void:
 func _flip_sprite() -> void:
 	if self.playerGameData.direction > 0:
 		sprite.flip_h = false
-		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = 19
+		$PlayerHealthComponent/Hitbox/HitboxCollision.position.x = 19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = 27.75
 	if self.playerGameData.direction < 0:
 		sprite.flip_h = true
-		$PlayerHealthComponent/Hitbox/CollisionShape2D.position.x = -19
+		$PlayerHealthComponent/Hitbox/HitboxCollision.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
 	
 	if self.playerGameData.direction == 1:
