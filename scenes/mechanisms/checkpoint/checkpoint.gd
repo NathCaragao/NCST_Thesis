@@ -22,6 +22,15 @@ func _on_body_entered(body: Node2D) -> void:
 func respawn_player() -> void:
 	fail_screen.visible = false
 	
+	player_revive()
+	
+	GameSignals.emit_signal("playerrespawn")
+
+# Optional method to be called when player dies
+#func trigger_respawn() -> void:
+	#respawn_player()
+
+func player_revive() -> void:
 	# Check if player and spawn point exist
 	if player_node and spawn_point and checkpoint_reached:
 		# Reset player's global position to spawn point
@@ -44,10 +53,5 @@ func respawn_player() -> void:
 		player_node.set_physics_process(true)  # Re-enable physics
 		player_node.set_process(true)  # Re-enable processing
 		player_node.set_collision_layer_value(1, true)
+		player_node.set_process_input(true) # Re-enable input
 		player_node.set_collision_mask_value(1, true)
-		
-		GameSignals.emit_signal("playerrespawn")
-
-# Optional method to be called when player dies
-#func trigger_respawn() -> void:
-	#respawn_player()
