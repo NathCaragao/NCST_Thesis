@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="29_lkx74"]
 [ext_resource type="PackedScene" uid="uid://bjvvpyymm2qj1" path="res://scenes/objects/modular-lever/modular_lever.tscn" id="30_5dqdu"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="31_2oau8"]
+[ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="35_vsi4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -5216,6 +5217,10 @@ shape = SubResource("RectangleShape2D_qk462")
 debug_color = Color(0.219608, 0, 0.447059, 0.419608)
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="bgm_lvl3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_vsi4j")
+volume_db = -15.0
 
 [connection signal="body_entered" from="P1Area" to="RabbitP1/P1" method="_on_p_1_area_body_entered"]
 [connection signal="body_entered" from="P1Exit" to="RabbitP1/P1" method="_on_p_1_exit_body_entered"]

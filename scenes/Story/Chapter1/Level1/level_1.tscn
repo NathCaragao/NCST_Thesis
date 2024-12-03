@@ -5891,6 +5891,7 @@ debug_color = Color(0.546857, 0.403565, 1, 0.42)
 
 [node name="lively" type="AudioStreamPlayer" parent="bgm"]
 stream = ExtResource("45_pk4ft")
+volume_db = -15.0
 
 [node name="bgm_area2d" type="Node2D" parent="."]
 script = ExtResource("45_4hd1r")

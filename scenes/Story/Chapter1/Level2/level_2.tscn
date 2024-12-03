@@ -9688,6 +9688,7 @@ shape = SubResource("WorldBoundaryShape2D_4obsk")
 
 [node name="swamp_bgm" type="AudioStreamPlayer" parent="bgm"]
 stream = ExtResource("39_3qrsa")
+volume_db = -15.0
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

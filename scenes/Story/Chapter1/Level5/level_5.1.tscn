@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://e5loj8o5eudd" path="res://assets/ui/labels/melee_mode.png" id="19_1f2g8"]
 [ext_resource type="Texture2D" uid="uid://btiyw5lst4y1d" path="res://assets/ui/labels/ranged_mode.png" id="20_m763n"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="21_sudq2"]
-[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="22_ulv3o"]
+[ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="22_lvvsh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1436,8 +1436,9 @@ theme_override_font_sizes/font_size = 24
 text = "WEAPON"
 horizontal_alignment = 1
 
-[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("22_ulv3o")]
-visible = false
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_lvvsh")
+volume_db = -15.0
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]

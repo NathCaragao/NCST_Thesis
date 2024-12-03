@@ -5,10 +5,11 @@ Eurystheus: (smirking)"Hercules, your next labor will take you far to the northe
 join Eurystheus rightmost [animation="Fade In Down"]
 join Hercules leftmost [animation="Fade In Down"]
 Hercules: (narrowing his eyes)"Unnatural? What manner of beast are these mares?"
-Eurystheus:  (grinning maliciously)"These are no ordinary horses. Their appetites are for flesh, Hercules—human flesh. Diomedes feeds them with his enemies and any unfortunate enough to cross his path. Your task is to bring these beasts back to Mycenae, alive."
+Eurystheus: (grinning maliciously)"These are no ordinary horses. Their appetites are for flesh, Hercules—human flesh. Diomedes feeds them with his enemies and any unfortunate enough to cross his path. Your task is to bring these beasts back to Mycenae, alive."
 Hercules: (clenching his fists, voice firm)"Flesh-eating mares… they are as much a symbol of Diomedes’ cruelty as his rule. I will end this nightmare and bring the beasts here, as you command."
 Eurystheus: (mocking)"Oh, how noble of you, Hercules. But do not think this labor will be simple. Diomedes is no fool, and his warriors are loyal to the death. Do you truly believe you can take his prized mares from under his nose?"
 Hercules: (with conviction)"I have faced monsters and armies alike. Diomedes will not stop me."
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus began the eighth labor of Hercules\: to retrieve the Mares of Diomedes. In Thrace, he would face not only the monstrous horses but also the tyrant king and his legion of warriors. To succeed, Hercules would need to summon every ounce of his strength, courage, and cunning."
+[signal arg="end"]
