@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dycduwi3u3dv5"]
+[gd_scene load_steps=40 format=4 uid="uid://dycduwi3u3dv5"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1rn5h"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="1_blpod"]

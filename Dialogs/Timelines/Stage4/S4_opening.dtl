@@ -1,3 +1,4 @@
+[music path="res://assets/Audios/bgm/hall_of_the_king.mp3" fade="0.0" volume="-15.0"]
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 In the court of King Eurystheus. The air is tense, as Eurystheus paces near his throne, clearly unnerved by Hercules’ past victories. Hercules stands silently, his presence imposing, his lion pelt draped over his shoulders like a cloak of defiance. The king finally turns, his expression both annoyed and apprehensive.
 join Eurystheus center [animation="Fade In Down"]
@@ -13,4 +14,5 @@ Eurystheus’ face flushes with anger at the jab, but Hercules turns and strides
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus began the fourth labor of Hercules, a task to capture the fearsome Erymanthian Boar. Its tusks gleamed like swords, its roar shook the forest, and no mortal had ever dared approach it and lived. But Hercules was no mere mortal."
+[music fade="0.0" volume="0.0"]
 [signal arg="end"]

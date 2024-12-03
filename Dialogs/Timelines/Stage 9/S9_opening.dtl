@@ -1,3 +1,4 @@
+[music path="res://assets/Audios/bgm/hall_of_the_king.mp3" fade="0.0" volume="-15.0"]
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 In King Eurystheus’ throne room, where Hercules stands tall and resolute. Eurystheus leans forward on his throne, holding a goblet in one hand, his expression a mixture of mockery and malice. A map of Thrace lies unfurled on a table before him, depicting the kingdom of the warrior women—the Amazons.
 join Eurystheus rightmost [animation="Fade In Down"]
@@ -11,4 +12,5 @@ leave Eurystheus [animation="Fade Out Up"]
 leave Hercules [animation="Fade Out Up"]
 after walking out of the throne room, Hercules imediately prepares for his journey. He gathers his weapons and armor, boarding a ship that will take him to the shores of the Amazon kingdom. The sea is turbulent, foreshadowing the challenges to come.
 narrator: "The ninth labor of Hercules would lead him to the land of the Amazons, where courage and cunning would be tested in equal measure. To retrieve the girdle of Hippolyta, he would face a kingdom of warriors and a queen whose strength was matched only by her wisdom. Would he succeed through diplomacy or be forced to fight for his prize? Only time would tell."
+[music fade="0.0" volume="0.0"]
 [signal arg="end"]
