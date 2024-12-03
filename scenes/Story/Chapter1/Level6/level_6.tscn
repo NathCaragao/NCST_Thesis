@@ -1777,6 +1777,7 @@ scale = Vector2(0.7, 0.7)
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("11_q27lk")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level6/level_6.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("12_u0y86")]
 process_mode = 2

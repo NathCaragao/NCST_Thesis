@@ -1946,6 +1946,7 @@ debug_color = Color(0.58502, 0.379736, 1, 0.42)
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("22_gvwtt")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level10/level_10.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("23_3tc0c")]
 process_mode = 2

@@ -1,6 +1,6 @@
 extends Node2D
-@onready var combat = $"../bgm/combat"
 
+@onready var combat: AudioStreamPlayer = $combat/CollisionShape2D/combat
 
 func _on_combat_body_entered(body):
 	print("entered combat sone")

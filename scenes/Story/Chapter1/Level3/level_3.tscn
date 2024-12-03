@@ -4977,6 +4977,7 @@ shape = SubResource("WorldBoundaryShape2D_0nnkk")
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("22_b5bxq")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level3/level_3.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("23_vi2sa")]
 process_mode = 2

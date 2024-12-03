@@ -8224,6 +8224,7 @@ position = Vector2(-12013, -2)
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("25_sd7m3")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("26_mp6j1")]
 process_mode = 2

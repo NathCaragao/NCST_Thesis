@@ -9182,6 +9182,7 @@ frame_progress = 0.222005
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("9_40bfl")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
 
 [node name="PauseScreen" parent="ScoreUI" instance=ExtResource("10_666uw")]
 process_mode = 2
