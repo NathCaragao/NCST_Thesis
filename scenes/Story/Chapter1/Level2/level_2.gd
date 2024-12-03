@@ -13,6 +13,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 2/level_2_ope
 var paused : bool = false
 
 func _ready() -> void:
+	enable_score_ui()
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	hydra.connect("HydraDefeated", Callable(self, "on_hydra_defeat"))
@@ -44,3 +45,6 @@ func on_hydra_defeat() -> void:
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening1")
 	CutsceneManager.play_cutscene("opening1")
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()

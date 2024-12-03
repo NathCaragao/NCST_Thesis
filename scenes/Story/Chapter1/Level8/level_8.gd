@@ -21,6 +21,7 @@ var paused : bool = false
 
 
 func _ready() -> void:
+	enable_score_ui()
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	interaction_area.interact = Callable(self, "on_interact")
 	interaction_area_2.interact = Callable(self, "on_interact2")
@@ -106,3 +107,6 @@ func level_finish() -> void:
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening6")
 	CutsceneManager.play_cutscene("opening6")
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()

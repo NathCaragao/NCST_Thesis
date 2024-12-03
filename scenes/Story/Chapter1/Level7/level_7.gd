@@ -15,6 +15,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 7/level_7_ope
 var paused : bool = false
 
 func _ready() -> void:
+	enable_score_ui()
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_dialog_done)
@@ -75,3 +76,6 @@ func on_finish() -> void:
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening6")
 	CutsceneManager.play_cutscene("opening6")
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()

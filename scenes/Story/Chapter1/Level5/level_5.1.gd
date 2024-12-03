@@ -12,6 +12,7 @@ var scene_path_2 : String = "res://scenes/cutscenes-collection/level 5-1/level_5
 @export var victory_screen : Control
 
 func _ready() -> void:
+	enable_score_ui()
 	# set canvas layer for cutscenes to be added
 	CutsceneManager.set_canvas_layer(canvas_layer)
 	Dialogic.signal_event.connect(on_op1) # opening 1 dialog signal ending
@@ -49,3 +50,6 @@ func on_op1(argument : String) -> void:
 	if argument == "nextScene":
 		CutsceneManager.stop_cutscene("opening_1")
 		opening_2()
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()
