@@ -4,6 +4,7 @@ extends Control
 
 # restart btn
 func _on_restart_btn_pressed() -> void:
+	get_tree().paused = false
 	SceneManager.restartScene(current_level_path)
 	visible = false
 
