@@ -38,6 +38,8 @@ func player_revive() -> void:
 	if player_node and spawn_point and checkpoint_reached:
 		# Reset player's global position to spawn point
 		player_node.global_position = spawn_point.global_position
+		player_node.playerGameData.velocity = Vector2.ZERO
+		player_node.velocity = Vector2.ZERO
 		
 		# Reset player health
 		var player_hp_component = player.get_node_or_null("PlayerHealthComponent")
