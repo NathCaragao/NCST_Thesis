@@ -11,3 +11,4 @@ leave Eurystheus [animation="Fade Out Up"]
 leave Hercules [animation="Fade Out Up"]
 after walking out of the throne room, Hercules imediately prepares for his journey. He gathers his weapons and armor, boarding a ship that will take him to the shores of the Amazon kingdom. The sea is turbulent, foreshadowing the challenges to come.
 narrator: "The ninth labor of Hercules would lead him to the land of the Amazons, where courage and cunning would be tested in equal measure. To retrieve the girdle of Hippolyta, he would face a kingdom of warriors and a queen whose strength was matched only by her wisdom. Would he succeed through diplomacy or be forced to fight for his prize? Only time would tell."
+[signal arg="end"]

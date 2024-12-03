@@ -14,3 +14,4 @@ Hercules: *(grimacing)* "By the gods... Eurystheus truly knows how to humiliate 
 *(He exhales deeply, steadying himself.)*
 Hercules: *(to himself)* "But I am Herakles. This will not break me."
 leave Hercules [animation="Fade In Up" wait="true"]
+[signal arg="end"]

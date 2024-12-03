@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=115 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/p_3.gd" id="29_5cbke"]
 [ext_resource type="PackedScene" uid="uid://bjvvpyymm2qj1" path="res://scenes/objects/modular-lever/modular_lever.tscn" id="30_5dqdu"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="31_2oau8"]
+[ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="35_vsi4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -5209,6 +5210,10 @@ shape = SubResource("RectangleShape2D_qk462")
 debug_color = Color(0.219608, 0, 0.447059, 0.419608)
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="bgm_lvl3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_vsi4j")
+volume_db = -15.0
 
 [connection signal="body_entered" from="P1Area" to="RabbitP1/P1" method="_on_p_1_area_body_entered"]
 [connection signal="body_entered" from="P1Exit" to="RabbitP1/P1" method="_on_p_1_exit_body_entered"]

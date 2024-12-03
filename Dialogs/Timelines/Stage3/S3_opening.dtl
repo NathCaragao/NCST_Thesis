@@ -18,3 +18,4 @@ leave Hercules [animation="Fade Out Up" wait="true"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "And so, Hercules departed Mycenae, setting forth on a journey that would test not only his strength, but his endurance, cunning, and respect for the gods. To capture the Ceryneian Hind was no mere labor—it was a test of his very humanity."
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="2.0"]
+[signal arg="end"]
