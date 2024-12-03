@@ -15,3 +15,4 @@ Thus began Heracles' final labor, one that would take him to the very edge of mo
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 [signal arg="nextScene"]
+[signal arg="end"]

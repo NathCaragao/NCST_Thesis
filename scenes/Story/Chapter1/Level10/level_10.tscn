@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://d0l5vs3eae28c"]
+[gd_scene load_steps=51 format=4 uid="uid://d0l5vs3eae28c"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1y6gh"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level10/level_10.gd" id="1_8qe6w"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="23_3tc0c"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="24_nmnq5"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="26_ix0n1"]
+[ext_resource type="AudioStream" uid="uid://pv7ggcd6hyoc" path="res://assets/Audios/bgm/magical_forrest.mp3" id="27_cyi1m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57u3g"]
 texture = ExtResource("1_a7gcu")
@@ -1990,6 +1991,9 @@ scale = Vector2(1.3, 1.3)
 [node name="HealthPotion5" parent="Powerups" instance=ExtResource("26_ix0n1")]
 position = Vector2(14873, 137)
 scale = Vector2(1.3, 1.3)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_cyi1m")
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

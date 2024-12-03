@@ -10,6 +10,7 @@ $SpawnArea/Spawn4]
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
+@onready var bgm = $bgm
 
 var paused : bool = false
 
@@ -28,10 +29,16 @@ func _ready() -> void:
 	# dialogic signals
 	Dialogic.signal_event.connect(on_wave1)
 	Dialogic.signal_event.connect(on_level_complete)
-	
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	# disable the 3rd dialog
 	$NPCs/InteractionArea3/CollisionShape2D.disabled = true
 	opening_cutscene()
+
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

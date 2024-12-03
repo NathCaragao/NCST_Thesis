@@ -8,17 +8,25 @@ var scene_path2 : String = "res://scenes/cutscenes-collection/level 6/level_6_en
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
+@onready var bgm = $bgm
 
 var paused : bool = false
 
 func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	
 	opening_cutscene_lvl6()
 	
 	Dialogic.signal_event.connect(_on_bull_defeated)
 	Dialogic.signal_event.connect(_on_level_complete)
 	
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
