@@ -173,9 +173,12 @@ func arrow_fire() -> void:
 	#bow_cooldown = false
 	
 	var arrow_instance = arrow.instantiate()
+		
 	arrow_instance.global_position.x = $"../../ArrowPos/ArrowSpawn".global_position.x + (40 * actor.playerGameData.direction)
 	arrow_instance.global_position.y = $"../../ArrowPos/ArrowSpawn".global_position.y
 	arrow_instance.vel = $"../../ArrowPos".scale.x
+	if actor.playerGameData.direction < 0:
+		arrow_instance.flip_sprite(true)
 	get_parent().add_child(arrow_instance)
 
 

@@ -13,6 +13,7 @@ height = 40.0
 script = ExtResource("1_gqph8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("2_7kbgb")
 
 [node name="ProjectileHitbox" type="Area2D" parent="."]

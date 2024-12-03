@@ -16,6 +16,10 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	pass
 
+func flip_sprite(isFlip: bool) -> void:
+	if isFlip:
+		%Sprite2D.flip_h = true
+	
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
 	queue_free()
