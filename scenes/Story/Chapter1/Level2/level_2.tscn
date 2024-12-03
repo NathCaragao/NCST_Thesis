@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=111 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="8_scq41"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="9_40bfl"]
 [ext_resource type="PackedScene" uid="uid://c1xw27uhts1c6" path="res://scenes/Story/Chapter1/Level2/rasor.tscn" id="9_tq5kw"]
-[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="10_666uw"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="10_666uw"]
 [ext_resource type="PackedScene" uid="uid://jyppr62simqr" path="res://scenes/enemies/skeleton/skeleton.tscn" id="10_ddvwp"]
 [ext_resource type="PackedScene" uid="uid://cx174dldry8ge" path="res://scenes/enemies/Minotaur/minotaur.tscn" id="11_032d3"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="11_bnt4e"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/portal_out.gd" id="13_nnao2"]
 [ext_resource type="PackedScene" uid="uid://x0fbi0rvgu46" path="res://scenes/objects/Silverkey/silver_keys.tscn" id="14_7tmw0"]
 [ext_resource type="PackedScene" uid="uid://mdvqi3mnbb8e" path="res://scenes/enemies/wolf/wolf.tscn" id="14_177i6"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="15_lju37"]
 [ext_resource type="PackedScene" uid="uid://y3k7mcr40dpu" path="res://scenes/mechanisms/stone-gate/stone_gate.tscn" id="15_qkksp"]
 [ext_resource type="PackedScene" uid="uid://t5utnxu2jatq" path="res://scenes/mechanisms/lever/lever.tscn" id="16_s0gsb"]
 [ext_resource type="PackedScene" uid="uid://mrkhn0xb3trn" path="res://scenes/mechanisms/burning-vines/burning_vine.tscn" id="19_hvskf"]
@@ -9182,12 +9183,18 @@ frame_progress = 0.222005
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("9_40bfl")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("10_666uw")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("10_666uw")]
 process_mode = 2
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
+settings_window = NodePath("../SettingsScreen")
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("11_bnt4e")]
+visible = false
+
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("15_lju37")]
 visible = false
 
 [node name="Firehazard" parent="." instance=ExtResource("4_twdc1")]

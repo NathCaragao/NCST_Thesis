@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=32 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ylj8dqlqo50" path="res://assets/icons/buttons/exit_btn.png" id="10_u8w35"]
 [ext_resource type="Texture2D" uid="uid://dv41y8x1anf1a" path="res://assets/icons/buttons/account_icon.png" id="11_x7pf5"]
 [ext_resource type="Texture2D" uid="uid://dhya5qaxhxkmm" path="res://assets/icons/buttons/account_icon_pressed.png" id="12_ltmra"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="14_0kr0o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
 shader = ExtResource("2_ygjtw")
@@ -62,7 +63,7 @@ texture = ExtResource("12_ltmra")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7d3c"]
 texture = ExtResource("11_x7pf5")
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,6 +71,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh60y")
+settings_window = NodePath("CanvasLayer/SettingsScreen")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -288,8 +290,13 @@ offset_bottom = 971.0
 theme_override_font_sizes/font_size = 36
 text = "Level 1 Start"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("14_0kr0o")]
+visible = false
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_option_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="open_settings"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="SwitchAcc" to="." method="_on_switch_acc_pressed"]
 [connection signal="visibility_changed" from="UserInfo" to="UserInfo" method="_on_visibility_changed"]

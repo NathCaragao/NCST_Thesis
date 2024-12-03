@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=41 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="23_q8sdd"]
 [ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="25_7gieo"]
 [ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_nhbjn"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="27_xid83"]
 [ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ycbht"]
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_64w5q"]
@@ -315,6 +316,16 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("33_hbodq")
+
+[node name="WeaponMode" type="Label" parent="HUD"]
+offset_left = 1718.0
+offset_top = 921.0
+offset_right = 1844.0
+offset_bottom = 952.0
+theme_override_fonts/font = ExtResource("27_xid83")
+theme_override_font_sizes/font_size = 24
+text = "WEAPON"
+horizontal_alignment = 1
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {

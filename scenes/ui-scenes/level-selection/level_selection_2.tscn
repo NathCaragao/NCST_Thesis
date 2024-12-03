@@ -179,4 +179,15 @@ theme_override_font_sizes/font_size = 48
 text = "X"
 
 [connection signal="pressed" from="Column1/S1" to="." method="level_1"]
+[connection signal="pressed" from="Column1/S2" to="." method="level_2"]
+[connection signal="pressed" from="Column1/S3" to="." method="level_3"]
+[connection signal="pressed" from="Column1/S4" to="." method="level_4"]
+[connection signal="pressed" from="Column1/S5" to="." method="level_5"]
+[connection signal="pressed" from="Column1/S6" to="." method="level_6"]
+[connection signal="pressed" from="Column2/S7" to="." method="level_7"]
+[connection signal="pressed" from="Column2/S8" to="." method="level_8"]
+[connection signal="pressed" from="Column2/S9" to="." method="level_9"]
+[connection signal="pressed" from="Column2/S10" to="." method="level_10"]
+[connection signal="pressed" from="Column2/S11" to="." method="level_11"]
+[connection signal="pressed" from="Column2/S12" to="." method="level_12"]
 [connection signal="pressed" from="CloseBtn" to="." method="close_window"]

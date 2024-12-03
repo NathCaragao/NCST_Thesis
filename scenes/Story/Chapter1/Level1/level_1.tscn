@@ -37,10 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="24_konhc"]
 [ext_resource type="PackedScene" uid="uid://0uupk3tgidc2" path="res://scenes/enemies/nemean-lion/nemean_lion.tscn" id="27_0m45n"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="27_3di2u"]
-[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="28_ga2uk"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="28_ga2uk"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="29_1h0nh"]
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="39_v120m"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="39_ke52h"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="40_8q11v"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/combatareabgm.gd" id="45_4hd1r"]
 [ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="45_pk4ft"]
@@ -5752,22 +5752,17 @@ script = SubResource("GDScript_ktb04")
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level1/level_1.tscn"
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("28_ga2uk")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("28_ga2uk")]
 process_mode = 2
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level1/level_1.tscn"
+settings_window = NodePath("../SettingsScreen")
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("29_1h0nh")]
 visible = false
 
-[node name="WeaponMode" type="Label" parent="ScoreUI"]
-offset_left = 1718.0
-offset_top = 921.0
-offset_right = 1844.0
-offset_bottom = 952.0
-theme_override_fonts/font = ExtResource("39_v120m")
-theme_override_font_sizes/font_size = 24
-text = "WEAPON"
-horizontal_alignment = 1
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("39_ke52h")]
+visible = false
 
 [node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
