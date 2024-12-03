@@ -10,6 +10,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 10/level_10_o
 @export var victory_screen : Control
 
 func _ready() -> void:
+	enable_score_ui()
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	Dialogic.signal_event.connect(on_level_complete)
@@ -51,3 +52,6 @@ func _teleport(body: CharacterBody2D) -> void:
 	await LevelScreenTransition.on_transition_finished
 	
 	body.global_position = $Portal/PortalOut.global_position
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()

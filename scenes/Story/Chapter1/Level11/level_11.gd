@@ -21,6 +21,7 @@ var paused : bool = false
 
 
 func _ready() -> void:
+	enable_score_ui()
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	Dialogic.signal_event.connect(on_ceberus_fight)
 	Dialogic.signal_event.connect(on_level_complete)
@@ -112,3 +113,6 @@ func on_level_complete(argument : String) -> void:
 func finish_screen() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()

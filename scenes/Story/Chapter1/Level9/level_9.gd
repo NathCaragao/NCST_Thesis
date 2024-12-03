@@ -13,6 +13,7 @@ var scene_path_ed : String = "res://scenes/cutscenes-collection/level 9/level_9_
 
 
 func _ready() -> void:
+	enable_score_ui()
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	Dialogic.signal_event.connect(ending_scene)
@@ -57,3 +58,6 @@ func ending_cutscene() -> void:
 func ending_scene(argument : String) -> void:
 	if argument == "S10_Ending":
 		ending_cutscene()
+
+func enable_score_ui() -> void:
+	ScoreUi.get_node('CanvasLayer').show()
