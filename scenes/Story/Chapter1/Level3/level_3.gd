@@ -3,6 +3,8 @@ extends Node2D
 
 var scene_path : String = "res://scenes/cutscenes-collection/level 3/level_3_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CutsceneLayer
+@onready var bgm_lvl_3 = $bgm_lvl3
+
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -15,9 +17,16 @@ func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer) # sets where the cutscene.tscn will go
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_complete)
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene()
 
+
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm_lvl_3:
+			bgm_lvl_3.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

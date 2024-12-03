@@ -18,4 +18,4 @@ func update_scores() -> void:
 
 # retry level button
 func _on_retry_level_btn_pressed() -> void:
-	get_tree().reload_current_scene()
+	pass

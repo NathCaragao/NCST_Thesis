@@ -32,3 +32,7 @@ func changeScene(pathOfsceneToDisplay : String) -> void:
 		%CurrentScene.remove_child(n)
 		n.queue_free()
 	%CurrentScene.add_child(instanceOfLoadedScene)
+
+func restartScene(pathOfSceneToReload: String) -> void:
+	#Use the existing changeScene function to reload the specified scene
+	changeScene(pathOfSceneToReload)

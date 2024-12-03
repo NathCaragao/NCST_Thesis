@@ -2,6 +2,9 @@ extends Control
 
 
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 # Window Resolution Selection
 func _on_res_option_item_selected(index: int) -> void:
 	match index:

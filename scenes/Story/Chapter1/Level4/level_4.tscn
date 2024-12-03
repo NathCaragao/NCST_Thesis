@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=74 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -24,14 +24,16 @@
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="17_er8eb"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="18_011mj"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="18_iieoh"]
-[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="19_a5uen"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="19_a5uen"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="19_pwp6p"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="20_ldpk8"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="24_tir2g"]
 [ext_resource type="PackedScene" uid="uid://caxpvmw3y1bwl" path="res://scenes/friendly-npcs/pholos/pholos_npc.tscn" id="25_v7skj"]
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="26_t0sp2"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="28_bp1u5"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="28_olaph"]
 [ext_resource type="PackedScene" uid="uid://b4b5v5gh6gekm" path="res://scenes/enemies/centaur/centaur.tscn" id="30_bwgsj"]
+[ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="33_ko7wp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l8pk"]
 texture = ExtResource("1_aqg7f")
@@ -6581,12 +6583,18 @@ debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("18_iieoh")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level4/level_4.tscn"
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("19_a5uen")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("19_a5uen")]
 process_mode = 2
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level4/level_4.tscn"
+settings_window = NodePath("../SettingsScreen")
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("20_ldpk8")]
+visible = false
+
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("28_olaph")]
 visible = false
 
 [node name="EnemyBoundary" type="StaticBody2D" parent="."]
@@ -6850,6 +6858,10 @@ position = Vector2(7315, -721)
 
 [node name="Centaur4" parent="." instance=ExtResource("30_bwgsj")]
 position = Vector2(10642, -49)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_ko7wp")
+volume_db = -15.0
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

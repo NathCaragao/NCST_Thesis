@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=45 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -18,9 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://dri85m0vgceqx" path="res://autoloads/interaction-system/interaction-area/interaction_area.tscn" id="12_kg788"]
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="14_sk147"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="15_bb8r2"]
-[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="16_1exm2"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="16_1exm2"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="17_53f2o"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="21_8gftw"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="21_nebkk"]
+[ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="22_0yvpn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
 shader = ExtResource("6_ae62n")
@@ -3541,12 +3543,18 @@ position = Vector2(2591, 136)
 
 [node name="FailScreen" parent="ScoreUI" instance=ExtResource("15_bb8r2")]
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level8/level_8.tscn"
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("16_1exm2")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("16_1exm2")]
 process_mode = 2
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level8/level_8.tscn"
+settings_window = NodePath("../SettingsScreen")
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("17_53f2o")]
+visible = false
+
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("21_8gftw")]
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -3558,3 +3566,7 @@ position = Vector2(1733, 112)
 
 [node name="HealthPotion2" parent="Powerups" instance=ExtResource("21_nebkk")]
 position = Vector2(2161, 148)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_0yvpn")
+volume_db = -15.0

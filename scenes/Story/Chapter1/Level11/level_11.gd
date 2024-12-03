@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var cutscene_layer: CanvasLayer = $cutscenelvl11
 var scene_path : String = "res://scenes/cutscenes-collection/level_11/level_11_opening.tscn"
+@onready var bgm = $bgm
 
 @export var enemy_scenes : Array[PackedScene] = []
 @onready var spawn_points : Array = [$CeberusSpawn]
@@ -26,8 +27,15 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	interaction_area.interact = Callable(self, "on_ferryman")
 	interaction_area_2.interact = Callable(self, "on_ferryman_2")
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene_lvl11()
+
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

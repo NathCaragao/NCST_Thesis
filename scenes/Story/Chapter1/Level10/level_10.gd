@@ -3,6 +3,7 @@ extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 10/level_10_opening.tscn"
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var bgm = $bgm
 
 @export var fail_screen: Control
 @export var pause_screen : Control
@@ -12,7 +13,15 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	Dialogic.signal_event.connect(on_level_complete)
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	
 	opening_cutscene()
+	
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

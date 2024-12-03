@@ -1,9 +1,10 @@
 extends Control
 
+@export var current_level_path : String
 
 # restart btn
 func _on_restart_btn_pressed() -> void:
-	get_tree().reload_current_scene()
+	SceneManager.restartScene(current_level_path)
 	visible = false
 
 

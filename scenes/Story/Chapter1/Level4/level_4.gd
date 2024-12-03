@@ -2,6 +2,7 @@ extends Node2D
 
 var scene_path : String = "res://scenes/cutscenes-collection/level 4/level_4_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
+@onready var bgm = $bgm
 
 @export var player : PlayerHercules
 @export var fail_screen: Control
@@ -16,11 +17,16 @@ func _ready() -> void:
 	
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	boss_boar.connect("BossBoarDefeated", Callable(self, "on_defeat"))
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene()
 	# snow particle
 	%Snow.local_coords = false
-
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

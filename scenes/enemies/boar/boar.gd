@@ -13,7 +13,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_mapping = {
 	"enemy-run" : "boar-run",
 	"enemy-attack" : "boar-attack",
-	"enemy-idle" : "",
+	"enemy-idle" : "boar-idle",
 	"enemy-hit" : "boar-hit",
 	"enemy-dead" : "boar-death"
 }

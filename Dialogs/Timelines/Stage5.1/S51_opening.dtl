@@ -1,3 +1,4 @@
+[music path="res://assets/Audios/bgm/hall_of_the_king.mp3" fade="0.0" volume="-15.0"]
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 *(The throne room of Eurystheus is dimly lit. Hercules stands before the king, his lion-skin cloak draped over his shoulders, his expression a mix of weariness and frustration. Eurystheus smirks from his ornate throne, clearly relishing the moment.)*
 join Eurystheus rightmost [animation="Fade In Down"]
@@ -16,4 +17,5 @@ Hercules: *(calmly, but coldly)* "Very well. I will do as you ask. But know this
 *(He turns and storms out of the throne room, the echoes of Eurystheus’ laughter following him.)*
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
+[music fade="-1.0" volume="0.0"]
 [signal arg="nextScene"]

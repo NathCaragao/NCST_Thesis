@@ -3,6 +3,7 @@ extends Node2D
 var scene_path_1 : String = "res://scenes/cutscenes-collection/level 5-1/level_5_opening.tscn"
 var scene_path_2 : String = "res://scenes/cutscenes-collection/level 5-1/level_5_opening_2.tscn"
 @onready var canvas_layer: CanvasLayer = $CutsceneLayer
+@onready var bgm = $bgm
 
 
 @export var player : PlayerHercules
@@ -15,9 +16,15 @@ func _ready() -> void:
 	CutsceneManager.set_canvas_layer(canvas_layer)
 	Dialogic.signal_event.connect(on_op1) # opening 1 dialog signal ending
 	Dialogic.signal_event.connect(on_dialog_done) # dialogic signal
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_1()
-	
+
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # victory after dialog 3
 func on_dialog_done(argument: String) -> void:
 	if argument == "level5complete":

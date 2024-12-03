@@ -9,6 +9,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 7/level_7_ope
 @export var pause_screen : Control
 @export var victory_screen : Control
 @onready var spawn_points : Array = [$SpawnArea/Spawn1, $SpawnArea/Spawn2, $SpawnArea/Spawn3, $SpawnArea/Spawn4]
+@onready var bgm = $bgm
 
 
 var paused : bool = false
@@ -18,8 +19,15 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_dialog_done)
 	Dialogic.signal_event.connect(on_8complete)
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene()
+
+func on_dialogic_signal_play_bgm(event: String) -> void:
+	if event == "end":
+		# Play the lively audio
+		if bgm:
+			bgm.play()
 # when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()

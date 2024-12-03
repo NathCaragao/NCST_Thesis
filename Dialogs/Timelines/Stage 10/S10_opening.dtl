@@ -1,11 +1,12 @@
+[music path="res://assets/Audios/bgm/hall_of_the_king.mp3" fade="0.0" volume="-15.0"]
 [background arg="res://assets/Images/BackgroundImages/Cutscene/Throneroom.webp" fade="0.0"]
 In the grand, dimly lit throne room of King Eurystheus. Hercules stands tall, his muscles taut, his demeanor unshaken despite the labors thrust upon him. Eurystheus, seated on his elevated throne, leans forward with a sly grin, his eyes gleaming with malevolence.
 join Eurystheus center [animation="Fade In Down"]
-Eurystheus:  (mockingly)"Hercules, your feats thus far have been impressive, I'll admit. But this time, you face an adversary not of brute force but of distance and cunning. For your next labor, I command you to steal the cattle of Geryon."
+Eurystheus: (mockingly)"Hercules, your feats thus far have been impressive, I'll admit. But this time, you face an adversary not of brute force but of distance and cunning. For your next labor, I command you to steal the cattle of Geryon."
 join Eurystheus rightmost [animation="Fade In Down"]
 join Hercules leftmost [animation="Fade In Down"]
 Hercules: (unwavering)"Geryon? The monstrous herdsman with three Heads? His cattle are guarded not just by him but by Orthrus and countless perils. Do you truly think I will falter?"
-Eurystheus:  (grinning smugly)"It is not for me to think, Hercules, but for you to prove. Retrieve the cattle from the far-off island of Erytheia, across the vast sea. Let’s see if even the son of Zeus can match the will of the gods and the fury of Geryon."
+Eurystheus: (grinning smugly)"It is not for me to think, Hercules, but for you to prove. Retrieve the cattle from the far-off island of Erytheia, across the vast sea. Let’s see if even the son of Zeus can match the will of the gods and the fury of Geryon."
 Hercules: (nodding resolutely)"I will not falter, Eurystheus. Geryon, Orthrus, and any challenge that lies in my path will be overcome. The cattle of Erytheia will be yours."
 Hercules turns and begins to stride out of the throne room. The camera lingers on Eurystheus, who smirks and speaks softly to himself.
 leave Hercules [animation="Fade Out Up"]
@@ -13,3 +14,5 @@ join Eurystheus center [animation="Fade In Down"]
 "Your strength may be boundless, Hercules, but even you cannot conquer the will of the gods forever."
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus, Hercules set forth on his tenth labor, a journey across seas and through lands unknown. To claim the cattle of Geryon, he would face unimaginable trials, calling upon his strength, resilience, and wits to succeed where no mortal had dared to tread."
+[music fade="0.0" volume="0.0"]
+[signal arg="end"]
