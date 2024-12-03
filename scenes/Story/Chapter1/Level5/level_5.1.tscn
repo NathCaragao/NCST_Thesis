@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dmejmqs0r71mq"]
+[gd_scene load_steps=32 format=4 uid="uid://dmejmqs0r71mq"]
 
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_7fy37"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5/level_5.1.gd" id="1_qmr8m"]
@@ -17,10 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="15_ikprm"]
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="15_soeot"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="16_rpow0"]
-[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/pause-screen/pause_screen.tscn" id="17_n0u32"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="17_n0u32"]
 [ext_resource type="Texture2D" uid="uid://e5loj8o5eudd" path="res://assets/ui/labels/melee_mode.png" id="19_1f2g8"]
 [ext_resource type="Texture2D" uid="uid://btiyw5lst4y1d" path="res://assets/ui/labels/ranged_mode.png" id="20_m763n"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="21_sudq2"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="22_ulv3o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7n2u"]
 texture = ExtResource("1_7fy37")
@@ -1401,9 +1402,11 @@ debug_color = Color(0.590164, 0.376227, 1, 0.42)
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("17_n0u32")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("17_n0u32")]
 process_mode = 2
 visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
+settings_window = NodePath("../SettingsScreen")
 
 [node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("15_ikprm")]
 visible = false
@@ -1432,6 +1435,9 @@ theme_override_fonts/font = ExtResource("21_sudq2")
 theme_override_font_sizes/font_size = 24
 text = "WEAPON"
 horizontal_alignment = 1
+
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("22_ulv3o")]
+visible = false
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]
