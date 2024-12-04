@@ -44,4 +44,4 @@ func quit_level() -> void:
 	LevelScreenTransition.transition()
 	await LevelScreenTransition.on_transition_finished
 	
-	SceneManager.changeScene("res://scenes/ui-scenes/level-selection/level_selection_2.tscn")
+	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
