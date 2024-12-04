@@ -11,7 +11,9 @@ var isLoading = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
-	SceneManager.showLoadingScreen()
+	#SceneManager.showLoadingScreen()
+	setAccountName("Niggers")
+	setFreeCurrency(6969420)
 
 # shop button
 func _on_shop_btn_pressed() -> void:
@@ -73,3 +75,6 @@ func shop_open() -> void:
 
 func setAccountName(newAccountName: String) -> void:
 	%AccountName.text = newAccountName
+
+func setFreeCurrency(newFreeCurrency: int) -> void:
+	%OfflineCurrency2.text = "%s" % newFreeCurrency
