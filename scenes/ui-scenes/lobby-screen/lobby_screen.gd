@@ -13,7 +13,8 @@ func _ready() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
 	#SceneManager.showLoadingScreen()
 	setAccountName("Niggers")
-	setFreeCurrency(6969420)
+	setFreeCurrency(999999999)
+	setPremiumCurrency(69420)
 
 # shop button
 func _on_shop_btn_pressed() -> void:
@@ -78,3 +79,6 @@ func setAccountName(newAccountName: String) -> void:
 
 func setFreeCurrency(newFreeCurrency: int) -> void:
 	%OfflineCurrency2.text = "%s" % newFreeCurrency
+
+func setPremiumCurrency(newPremiumCurrency: int) -> void:
+	%PrCurrency.text = "%s" % newPremiumCurrency
