@@ -226,7 +226,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Acc" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+[node name="AccountName" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 138.0
 offset_top = 47.0
