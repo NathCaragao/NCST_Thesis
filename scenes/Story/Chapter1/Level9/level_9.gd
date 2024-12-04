@@ -4,15 +4,18 @@ extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 9/level_9_opening.tscn"
 var scene_path_ed : String = "res://scenes/cutscenes-collection/level 9/level_9_ending.tscn"
 
-@onready var player = get_tree().get_first_node_in_group("Player")
 
+@export var player : PlayerHercules
 @export var victory_screen : Control
 @export var fail_screen : Control
 @export var pause_screen : Control
+
 @onready var bgm = $bgm
 
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	CutsceneManager.set_canvas_layer(cutscene_layer)
@@ -61,3 +64,11 @@ func ending_scene(argument : String) -> void:
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

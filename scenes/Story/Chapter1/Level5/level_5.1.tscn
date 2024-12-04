@@ -1395,17 +1395,20 @@ debug_color = Color(0.590164, 0.376227, 1, 0.42)
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("15_soeot")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("16_rpow0")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("16_rpow0")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("17_n0u32")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("17_n0u32")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5/level_5.1.tscn"
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("15_ikprm")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("15_ikprm")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_lvvsh")

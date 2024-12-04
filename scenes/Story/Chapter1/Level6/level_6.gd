@@ -13,6 +13,8 @@ var scene_path2 : String = "res://scenes/cutscenes-collection/level 6/level_6_en
 var paused : bool = false
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
 	
 	CutsceneManager.set_canvas_layer(cutscene_layer)
@@ -58,3 +60,11 @@ func _on_level_complete(argument : String) -> void:
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

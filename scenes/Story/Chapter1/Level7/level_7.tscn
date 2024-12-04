@@ -3079,18 +3079,20 @@ libraries = {
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("25_wvwd4")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("26_fs02o")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("26_fs02o")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level7/level_7.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("27_32pje")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("27_32pje")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level7/level_7.tscn"
-settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("28_cqgju")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("28_cqgju")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("33_1hpib")]
 visible = false

@@ -2,11 +2,10 @@
 extends Control
 
 @export var current_level_path : String
-@export var settings_window : Control
 @export var player : PlayerHercules
 
 func _ready() -> void:
-	settings_window.process_mode = Node.PROCESS_MODE_ALWAYS
+	pass
 
 
 func open() -> void:
@@ -33,12 +32,6 @@ func restart_level() -> void:
 func _on_resume_btn_pressed() -> void:
 	close()
 	get_tree().paused = false
-
-
-func open_settings() -> void:
-	if get_tree().paused:
-		settings_window.process_mode = Node.PROCESS_MODE_ALWAYS
-		settings_window.visible = true
 
 func quit_level() -> void:
 	# unpause the game

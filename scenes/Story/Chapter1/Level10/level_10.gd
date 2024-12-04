@@ -2,14 +2,17 @@ extends Node2D
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
 var scene_path : String = "res://scenes/cutscenes-collection/level 10/level_10_opening.tscn"
 
-@onready var player = get_tree().get_first_node_in_group("Player")
+
 @onready var bgm = $bgm
 
+@export var player : PlayerHercules
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	CutsceneManager.set_canvas_layer(cutscene_layer)
@@ -55,3 +58,11 @@ func _teleport(body: CharacterBody2D) -> void:
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()
