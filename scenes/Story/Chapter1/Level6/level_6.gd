@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var cutscene_layer: CanvasLayer = $CutsceneLayer
+@onready var canvas_layer = $CanvasLayer
+
 var scene_path1 : String = "res://scenes/cutscenes-collection/level 6/level_6_opening.tscn"
 var scene_path2 : String = "res://scenes/cutscenes-collection/level 6/level_6_ending.tscn"
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 	
 	enable_score_ui()
 	
-	CutsceneManager.set_canvas_layer(cutscene_layer)
+	CutsceneManager.set_canvas_layer(canvas_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
