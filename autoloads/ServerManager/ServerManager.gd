@@ -129,17 +129,20 @@ func addUserInDB() -> int:
 		return FAILED
 	
 
-#func getUserInfoInDBasync():
-	#var storage_objects: NakamaAPI.ApiStorageObjects =  await nakamaClient.read_storage_objects_async(
-		#nakamaSession, 
-		#[NakamaStorageObjectId.new("playerData", "playerInfo", nakamaSession.user_id)]
-	#)
-	#
-	#if storage_objects.objects:
-		#var decodedObject = JSON.parse_string(storage_objects.objects[0].value) 
-		#return decodedObject
-	#
-	#return null
+func getUserInfoInDBasync():
+	if nakamaSocket == null:
+		await createSocketAsync()
+		
+	var storage_objects: NakamaAPI.ApiStorageObjects =  await nakamaClient.read_storage_objects_async(
+		nakamaSession, 
+		[NakamaStorageObjectId.new("playerData", "playerInfo", nakamaSession.user_id)]
+	)
+	
+	if storage_objects.objects:
+		var decodedObject = JSON.parse_string(storage_objects.objects[0].value) 
+		return decodedObject
+	
+	return null
 
 # Update this, might be better to break it to several individual functions
 # updateUserFreeCurrency, updateUserPremiumCurrency, etc.
