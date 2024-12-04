@@ -3,6 +3,7 @@ extends Area2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var spawn_point = %SpawnPoint
+@export var sprite : Node2D
 @export var fail_screen : Control
 @export var player_node : CharacterBody2D
 
@@ -15,9 +16,11 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		checkpoint_reached = true
-		print("Checkpoint reached!")
-		$"../ScoreUI/FailScreen/VBoxContainer/RespawnBtn".disabled = false
+		if !checkpoint_reached:
+			checkpoint_reached = true
+			sprite.enable_fire()
+			EventNotifier.add_notif("Checkpoint Activated")
+			$"../ScoreUI/FailScreen/VBoxContainer/RespawnBtn".disabled = false
 
 func respawn_player() -> void:
 	fail_screen.visible = false

@@ -12,6 +12,8 @@ var scene_path_2 : String = "res://scenes/cutscenes-collection/level 5-1/level_5
 @export var victory_screen : Control
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
 	# set canvas layer for cutscenes to be added
 	CutsceneManager.set_canvas_layer(canvas_layer)
@@ -19,7 +21,18 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(on_dialog_done) # dialogic signal
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
+	player.connect("PlayerFail", Callable(self, "on_player_fail"))
+	
 	opening_1()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pause_screen.open()
+		get_tree().paused = true
+
+func on_player_fail() -> void:
+	fail_screen.open()
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
@@ -51,5 +64,14 @@ func on_op1(argument : String) -> void:
 		CutsceneManager.stop_cutscene("opening_1")
 		opening_2()
 
+# shows player score 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

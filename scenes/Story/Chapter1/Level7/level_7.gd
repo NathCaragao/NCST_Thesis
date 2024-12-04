@@ -15,6 +15,8 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 7/level_7_ope
 var paused : bool = false
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
@@ -34,7 +36,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game"):
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true
@@ -79,3 +81,11 @@ func opening_cutscene() -> void:
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

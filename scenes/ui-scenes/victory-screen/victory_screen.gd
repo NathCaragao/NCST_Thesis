@@ -1,8 +1,10 @@
+# victory_screen.gd
 extends Control
 
 
 @onready var coins_val: Label = $VBoxContainer/HBoxContainer2/CoinsVal
 @onready var score_val: Label = $VBoxContainer/HBoxContainer/ScoreVal
+@export var player: PlayerHercules
 
 func _ready() -> void:
 	pass
@@ -14,8 +16,21 @@ func update_scores() -> void:
 	# displays the amount of coins collected
 	coins_val.text = str(ScoreManager.collected_items["coin"])
 	print("scores updated")
-	
 
-# retry level button
-func _on_retry_level_btn_pressed() -> void:
-	pass
+func menu_btn() -> void:
+	# play screen transition
+	LevelScreenTransition.transition()
+	player_state_reset()
+	await LevelScreenTransition.on_transition_finished
+	
+	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
+	# score UI
+	ScoreUi.get_node('CanvasLayer').hide()
+
+# resets players score and inv to a clean state
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

@@ -288,7 +288,7 @@ offset_top = 913.0
 offset_right = 355.0
 offset_bottom = 971.0
 theme_override_font_sizes/font_size = 36
-text = "Level 1 Start"
+text = "go to lobby"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=40 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_64w5q"]
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="32_r4hxl"]
-[ext_resource type="Texture2D" uid="uid://d0lw3mjj8wsba" path="res://assets/ui/windows/weapon_roulette_frame.png" id="33_hbodq"]
 [ext_resource type="AudioStream" uid="uid://dpnfdbh34a320" path="res://assets/Audios/SFXs/sword-swing.mp3" id="33_ytchi"]
 [ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="34_qxywh"]
 [ext_resource type="AudioStream" uid="uid://cohv5wu1hx3xb" path="res://assets/Audios/SFXs/on_hit.mp3" id="35_wemq0"]
@@ -301,21 +300,6 @@ offset_bottom = 1068.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(2.5, 2.5)
-
-[node name="TextureRect" type="TextureRect" parent="HUD"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -277.0
-offset_top = -126.0
-offset_right = -167.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("33_hbodq")
 
 [node name="WeaponMode" type="Label" parent="HUD"]
 offset_left = 1718.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=92 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -35,6 +35,8 @@
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="31_suar7"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="33_55jpc"]
 [ext_resource type="AudioStream" uid="uid://c2hh7o51pwf2a" path="res://assets/Audios/bgm/magickal_river.mp3" id="34_s6d57"]
+[ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="36_io81e"]
+[ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="37_xq8p2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -7906,6 +7908,9 @@ size = Vector2(7148, 172)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xheww"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3whq"]
+size = Vector2(57, 266)
+
 [node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_skfof")
 player = NodePath("Player")
@@ -8224,18 +8229,20 @@ position = Vector2(-12013, -2)
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("24_0umqr")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("25_sd7m3")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("25_sd7m3")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("26_mp6j1")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("26_mp6j1")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
-settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("27_57xek")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("27_57xek")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("31_suar7")]
 visible = false
@@ -8414,6 +8421,27 @@ volume_db = -15.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("36_io81e")]
+position = Vector2(-16790, -20)
+sprite = NodePath("CheckpointSprite")
+fail_screen = NodePath("../ScoreUI/FailScreen")
+player_node = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2(-1.5, -99)
+shape = SubResource("RectangleShape2D_s3whq")
+debug_color = Color(0.825778, 0.139433, 0.897436, 0.42)
+
+[node name="CheckpointSprite" parent="Checkpoint" node_paths=PackedStringArray("checkpoint_bool") instance=ExtResource("37_xq8p2")]
+position = Vector2(0, -13)
+checkpoint_bool = NodePath("..")
+
+[node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
+unique_name_in_owner = true
+position = Vector2(-51, -44)
+
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
@@ -8424,3 +8452,6 @@ volume_db = -15.0
 [connection signal="body_entered" from="Dialogs/DialogActivator8" to="Dialogs/DialogActivator8" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator9" to="Dialogs/DialogActivator9" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator10" to="Dialogs/DialogActivator10" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+
+[editable path="ScoreUI/FailScreen"]

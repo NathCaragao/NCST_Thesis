@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://mdvqi3mnbb8e"]
+[gd_scene load_steps=32 format=3 uid="uid://mdvqi3mnbb8e"]
 
 [ext_resource type="Texture2D" uid="uid://cknxbxpr1oghf" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Attack.png" id="1_4rwo2"]
 [ext_resource type="Texture2D" uid="uid://v56o4ugwpksw" path="res://assets/Enemies/wolf/sprites/Canine_Brown_Run.png" id="1_5yhd6"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="12_xl2cv"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_o74ag"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_f5cni"]
+[ext_resource type="AudioStream" uid="uid://cg1mx6arb31c1" path="res://assets/Audios/SFXs/enemies/Wolf fighting sound effect.mp3" id="18_gb5on"]
+[ext_resource type="AudioStream" uid="uid://ds2wiynhipnk6" path="res://assets/Audios/SFXs/enemies/DogWolf Hurt (Nr. 1  Minecraft Sound) - Sound Effect for editing.mp3" id="19_nd273"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlobw"]
 resource_local_to_scene = true
@@ -405,6 +407,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("10_ltghk")
+attack_audio_node = NodePath("../../wolfsound/atk")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
@@ -462,6 +465,14 @@ position = Vector2(0, -3)
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
 }
+
+[node name="wolfsound" type="Node2D" parent="."]
+
+[node name="atk" type="AudioStreamPlayer2D" parent="wolfsound"]
+stream = ExtResource("18_gb5on")
+
+[node name="death" type="AudioStreamPlayer2D" parent="wolfsound"]
+stream = ExtResource("19_nd273")
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 

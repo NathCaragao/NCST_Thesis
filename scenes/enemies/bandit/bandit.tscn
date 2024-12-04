@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://q551jhmymwnr"]
+[gd_scene load_steps=31 format=3 uid="uid://q551jhmymwnr"]
 
 [ext_resource type="Script" path="res://scenes/enemies/bandit/bandit.gd" id="1_2hdkl"]
 [ext_resource type="Texture2D" uid="uid://cwgg46w0rf7aw" path="res://assets/Enemies/bandit/Axe Bandit.png" id="1_ihgtc"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="12_ktapa"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="13_x2ifh"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_8s5sl"]
+[ext_resource type="AudioStream" uid="uid://xtaf04uwslbq" path="res://assets/Audios/SFXs/enemies/bandit attack sound.mp3" id="18_upthc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0eyc"]
 resource_local_to_scene = true
@@ -404,6 +405,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("8_2enhl")
+attack_audio_node = NodePath("../../enemy sound/atk")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
@@ -459,6 +461,11 @@ position = Vector2(0, -3)
 libraries = {
 "": SubResource("AnimationLibrary_jhimr")
 }
+
+[node name="enemy sound" type="Node2D" parent="."]
+
+[node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
+stream = ExtResource("18_upthc")
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
