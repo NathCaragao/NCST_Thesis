@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=48 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="21_8gftw"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="21_nebkk"]
 [ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="22_0yvpn"]
+[ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="24_jaggd"]
+[ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="25_rawow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
 shader = ExtResource("6_ae62n")
@@ -3429,6 +3431,9 @@ size = Vector2(162, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cubj7"]
 size = Vector2(160, 96)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk8rm"]
+size = Vector2(57, 266)
+
 [node name="Level8" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_ut154")
 enemy_scenes = Array[PackedScene]([ExtResource("12_12plr"), ExtResource("11_ge0fq")])
@@ -3570,3 +3575,28 @@ position = Vector2(2161, 148)
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_0yvpn")
 volume_db = -15.0
+
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("24_jaggd")]
+position = Vector2(1284.01, 126)
+sprite = NodePath("CheckpointSprite")
+fail_screen = NodePath("../ScoreUI/FailScreen")
+player_node = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2(-1.5, -99)
+shape = SubResource("RectangleShape2D_wk8rm")
+debug_color = Color(0.825778, 0.139433, 0.897436, 0.42)
+
+[node name="CheckpointSprite" parent="Checkpoint" node_paths=PackedStringArray("checkpoint_bool") instance=ExtResource("25_rawow")]
+position = Vector2(0, -13)
+checkpoint_bool = NodePath("..")
+
+[node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
+unique_name_in_owner = true
+position = Vector2(-51, -44)
+
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+
+[editable path="ScoreUI/FailScreen"]

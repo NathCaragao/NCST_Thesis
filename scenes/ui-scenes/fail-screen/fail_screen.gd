@@ -14,3 +14,9 @@ func open() -> void:
 
 func close() -> void:
 	hide()
+
+func quit_level() -> void:
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")

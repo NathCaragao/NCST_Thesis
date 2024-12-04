@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://da5ript0yijj4"]
+[gd_scene load_steps=119 format=4 uid="uid://da5ript0yijj4"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_1sny3"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level3/level_3.gd" id="1_btpqh"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://bjvvpyymm2qj1" path="res://scenes/objects/modular-lever/modular_lever.tscn" id="30_5dqdu"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="31_2oau8"]
 [ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="35_vsi4j"]
+[ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="37_rpfvs"]
+[ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="38_jo3em"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1n76"]
 texture = ExtResource("2_bconh")
@@ -4651,6 +4653,9 @@ size = Vector2(966, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk462"]
 size = Vector2(3420.5, 74)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kise6"]
+size = Vector2(57, 266)
+
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_btpqh")
 player = NodePath("Player")
@@ -5222,6 +5227,27 @@ debug_color = Color(0.219608, 0, 0.447059, 0.419608)
 stream = ExtResource("35_vsi4j")
 volume_db = -15.0
 
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("37_rpfvs")]
+position = Vector2(8692, -146)
+sprite = NodePath("CheckpointSprite")
+fail_screen = NodePath("../ScoreUI/FailScreen")
+player_node = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2(-1.5, -99)
+shape = SubResource("RectangleShape2D_kise6")
+debug_color = Color(0.825778, 0.139433, 0.897436, 0.42)
+
+[node name="CheckpointSprite" parent="Checkpoint" node_paths=PackedStringArray("checkpoint_bool") instance=ExtResource("38_jo3em")]
+position = Vector2(0, -13)
+checkpoint_bool = NodePath("..")
+
+[node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
+unique_name_in_owner = true
+position = Vector2(-51, -44)
+
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="P1Area" to="RabbitP1/P1" method="_on_p_1_area_body_entered"]
 [connection signal="body_entered" from="P1Exit" to="RabbitP1/P1" method="_on_p_1_exit_body_entered"]
 [connection signal="body_entered" from="P3Area3" to="RabbitP3/P3" method="_on_p_3_area_3_body_entered"]
@@ -5239,5 +5265,7 @@ volume_db = -15.0
 [connection signal="body_entered" from="Dialogs/DialogActivator9" to="Dialogs/DialogActivator9" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator10" to="Dialogs/DialogActivator10" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator11" to="Dialogs/DialogActivator11" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
 
 [editable path="Lever"]
+[editable path="ScoreUI/FailScreen"]

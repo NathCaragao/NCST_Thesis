@@ -1,10 +1,10 @@
-[gd_scene load_steps=50 format=4 uid="uid://pbp3yfpo4lji"]
+[gd_scene load_steps=53 format=4 uid="uid://pbp3yfpo4lji"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level9/level_9.gd" id="1_abivw"]
 [ext_resource type="Texture2D" uid="uid://dhbcf3kciq2wb" path="res://assets/Images/BackgroundImages/Background-1.png" id="1_cgawb"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="1_sq06d"]
 [ext_resource type="Texture2D" uid="uid://bf6e61vn8acqp" path="res://assets/Images/BackgroundImages/Background-4.png" id="2_2i1dw"]
-[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/tiles.png" id="2_ihg21"]
+[ext_resource type="Texture2D" uid="uid://bvg6a0adiievi" path="res://assets/tileset (world-building)/Tiles.png" id="2_ihg21"]
 [ext_resource type="Texture2D" uid="uid://b12a3dcg5ljso" path="res://assets/Images/BackgroundImages/Background-3.png" id="2_k4xn7"]
 [ext_resource type="Texture2D" uid="uid://rsi5vkuhymr" path="res://assets/tileset (world-building)/wheatfield.png" id="3_3ch0d"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="3_kc06w"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="26_086ck"]
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="26_pj6a2"]
 [ext_resource type="AudioStream" uid="uid://ic06u5dmjg08" path="res://assets/Audios/bgm/strange_farm.mp3" id="27_yydqg"]
+[ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="29_nlfpn"]
+[ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="30_nfr1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyp04"]
 texture = ExtResource("1_sq06d")
@@ -2388,6 +2390,9 @@ size = Vector2(873, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slhcm"]
 size = Vector2(1572.88, 13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_143jg"]
+size = Vector2(57, 266)
+
 [node name="Level9" type="Node2D" node_paths=PackedStringArray("victory_screen", "fail_screen", "pause_screen")]
 script = ExtResource("1_abivw")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
@@ -2605,8 +2610,32 @@ position = Vector2(9378, -1486)
 stream = ExtResource("27_yydqg")
 volume_db = -15.0
 
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("29_nlfpn")]
+position = Vector2(8221.44, -1119)
+sprite = NodePath("CheckpointSprite")
+fail_screen = NodePath("../ScoreUI/FailScreen")
+player_node = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2(-1.5, -99)
+shape = SubResource("RectangleShape2D_143jg")
+debug_color = Color(0.825778, 0.139433, 0.897436, 0.42)
+
+[node name="CheckpointSprite" parent="Checkpoint" node_paths=PackedStringArray("checkpoint_bool") instance=ExtResource("30_nfr1e")]
+position = Vector2(0, -13)
+checkpoint_bool = NodePath("..")
+
+[node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
+unique_name_in_owner = true
+position = Vector2(-51, -44)
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator4" to="Dialogs/DialogActivator4" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator5" to="Dialogs/DialogActivator5" method="_on_body_entered"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+
+[editable path="ScoreUI/FailScreen"]
