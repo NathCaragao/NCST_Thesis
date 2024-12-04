@@ -15,3 +15,10 @@ func insert(item: InventoryItem):
 			empty_slots[0].item = item
 			empty_slots[0].amount = 1
 	update.emit()
+
+# resets the inventory
+func reset():
+	for slot in slots:
+		slot.item = null
+		slot.amount = 0
+	update.emit()

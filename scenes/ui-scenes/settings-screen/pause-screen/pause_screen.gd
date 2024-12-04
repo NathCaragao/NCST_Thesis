@@ -3,6 +3,7 @@ extends Control
 
 @export var current_level_path : String
 @export var settings_window : Control
+@export var player : PlayerHercules
 
 func _ready() -> void:
 	settings_window.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -25,6 +26,8 @@ func restart_level() -> void:
 	
 	# change scene
 	SceneManager.restartScene(current_level_path)
+	player_state_reset()
+	
 	print("Level Restarted")
 
 func _on_resume_btn_pressed() -> void:
@@ -44,4 +47,15 @@ func quit_level() -> void:
 	LevelScreenTransition.transition()
 	await LevelScreenTransition.on_transition_finished
 	
+	# switch scenes
 	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
+	# hide score UI
+	ScoreUi.get_node('CanvasLayer').hide()
+
+# resets players score and inv to a clean state
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()

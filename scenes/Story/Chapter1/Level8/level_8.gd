@@ -12,6 +12,7 @@ $SpawnArea/Spawn4]
 @export var victory_screen : Control
 @onready var bgm = $bgm
 
+@export var player : PlayerHercules
 var paused : bool = false
 
 # npc interaction reference
@@ -26,6 +27,7 @@ func _ready() -> void:
 	interaction_area.interact = Callable(self, "on_interact")
 	interaction_area_2.interact = Callable(self, "on_interact2")
 	interaction_area_3.interact = Callable(self, "on_interact3")
+	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	
 	# dialogic signals
 	Dialogic.signal_event.connect(on_wave1)
@@ -45,7 +47,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game"):
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true

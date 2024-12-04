@@ -19,7 +19,18 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(on_dialog_done) # dialogic signal
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
+	player.connect("PlayerFail", Callable(self, "on_player_fail"))
+	
 	opening_1()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pause_screen.open()
+		get_tree().paused = true
+
+func on_player_fail() -> void:
+	fail_screen.open()
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":

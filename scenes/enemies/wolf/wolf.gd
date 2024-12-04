@@ -19,12 +19,9 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_dead_quota"))
-	enemy_attack.connect("attack_performed", Callable(self, "_on_enemy_attack"))
 
 
-func _on_enemy_attack():
-	print("wolf has attack")
-	atk.play()
+
 # mapping animations for FSM
 var animation_mapping = {
 	"enemy-run": "wolf-run",

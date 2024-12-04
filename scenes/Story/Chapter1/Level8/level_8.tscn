@@ -3434,12 +3434,13 @@ size = Vector2(160, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk8rm"]
 size = Vector2(57, 266)
 
-[node name="Level8" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen")]
+[node name="Level8" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen", "player")]
 script = ExtResource("1_ut154")
 enemy_scenes = Array[PackedScene]([ExtResource("12_12plr"), ExtResource("11_ge0fq")])
 fail_screen = NodePath("ScoreUI/FailScreen")
 pause_screen = NodePath("ScoreUI/PauseScreen")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
+player = NodePath("Player")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(1289.5, -514)
