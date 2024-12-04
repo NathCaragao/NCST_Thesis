@@ -9191,11 +9191,10 @@ visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
 player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window", "player") instance=ExtResource("10_666uw")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("10_666uw")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
-settings_window = NodePath("../SettingsScreen")
 player = NodePath("../../Player")
 
 [node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("11_bnt4e")]

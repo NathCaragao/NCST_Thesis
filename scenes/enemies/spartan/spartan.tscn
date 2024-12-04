@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://nggtuo375nmp"]
+[gd_scene load_steps=33 format=3 uid="uid://nggtuo375nmp"]
 
 [ext_resource type="Texture2D" uid="uid://dsf5ad5k010kd" path="res://assets/Enemies/spartan/RunningSpartan-Sheet.png" id="1_5c8b0"]
 [ext_resource type="Texture2D" uid="uid://cu7sywofklkgd" path="res://assets/Enemies/spartan/DeathSpartan-Sheet.png" id="1_7ux0o"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_vx6gm"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_4xhq3"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="17_vl1tm"]
+[ext_resource type="AudioStream" uid="uid://xtaf04uwslbq" path="res://assets/Audios/SFXs/enemies/bandit attack sound.mp3" id="19_lqsvl"]
+[ext_resource type="AudioStream" uid="uid://dp1j6ypgpx32t" path="res://assets/Audios/SFXs/enemies/male-death-sound-128357.mp3" id="20_uojcp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5v5s"]
 resource_local_to_scene = true
@@ -497,6 +499,7 @@ attack = NodePath("../../EnemyHealthComp/AttackComponent")
 script = ExtResource("12_gnsod")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
+death_audio_node = NodePath("../../enemy sound/death")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("13_1ttuh")]
 enemy_hp_bar = NodePath("EnemyHPbar")
@@ -534,6 +537,14 @@ position = Vector2(-6, -21)
 libraries = {
 "": SubResource("AnimationLibrary_jhimr")
 }
+
+[node name="enemy sound" type="Node2D" parent="."]
+
+[node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
+stream = ExtResource("19_lqsvl")
+
+[node name="death" type="AudioStreamPlayer2D" parent="enemy sound"]
+stream = ExtResource("20_uojcp")
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
