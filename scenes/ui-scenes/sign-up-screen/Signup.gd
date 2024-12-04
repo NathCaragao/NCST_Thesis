@@ -75,4 +75,5 @@ func _on_signup_btn_pressed() -> void:
 	await get_tree().create_timer(3.0).timeout
 	SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
 		
-		
+func _on_close_btn_pressed() -> void:
+	SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
