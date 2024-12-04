@@ -1,7 +1,6 @@
 class_name EnemyAttack
 extends State
-
-# references and variables
+@export var attack_audio_node: NodePath
 @export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 
@@ -29,6 +28,10 @@ func enter() -> void:
 	if direction.length() < player_length:
 		print("Within attack range, playing attack animation")
 		actor.play_animation("enemy-attack")
+		if attack_audio_node:
+			var audio_node = get_node(attack_audio_node) as AudioStreamPlayer2D
+			if audio_node:
+				audio_node.play()
 		timer.start()
 	else:
 		print("Not within attack range")

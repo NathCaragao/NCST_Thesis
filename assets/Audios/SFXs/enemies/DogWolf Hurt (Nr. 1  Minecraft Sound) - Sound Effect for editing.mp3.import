@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds2wiynhipnk6"
+path="res://.godot/imported/DogWolf Hurt (Nr. 1  Minecraft Sound) - Sound Effect for editing.mp3-2e903689967847f1bd8a24c404dbd870.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/enemies/DogWolf Hurt (Nr. 1  Minecraft Sound) - Sound Effect for editing.mp3"
+dest_files=["res://.godot/imported/DogWolf Hurt (Nr. 1  Minecraft Sound) - Sound Effect for editing.mp3-2e903689967847f1bd8a24c404dbd870.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

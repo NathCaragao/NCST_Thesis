@@ -21,7 +21,6 @@ Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 ServerManager="*res://autoloads/ServerManager/ServerManager.gd"
 Notification="*res://autoloads/Notification/Notification.tscn"
 SceneManager="*res://autoloads/SceneManager/SceneManager.tscn"
-Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DamageNumbers="*res://autoloads/DamageNumbers/damageNumbers.gd"
 GameUi="*res://quest-system/GameUI/GameUi.tscn"
 InteractionManager="*res://autoloads/interaction-system/InteractionManager.tscn"
@@ -32,6 +31,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 CutsceneManager="*res://autoloads/CutsceneManager/cutscene_manager.gd"
 EventNotifier="*res://autoloads/in-game-notifier/event_notifier.tscn"
 GameSignals="*res://autoloads/game-signals/game-signals.gd"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [dialogic]
 
