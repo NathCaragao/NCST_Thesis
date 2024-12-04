@@ -226,7 +226,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Acc" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+[node name="AccountName" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 138.0
 offset_top = 47.0
@@ -234,33 +235,38 @@ offset_right = 436.0
 offset_bottom = 83.0
 theme_override_fonts/font = ExtResource("2_22pfw")
 theme_override_font_sizes/font_size = 28
-text = "ACCOUNT NAME"
+text = "Account name"
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
 
 [node name="PrCurrency" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1251.0
 offset_top = 47.0
-offset_right = 1549.0
+offset_right = 1453.0
 offset_bottom = 83.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "000"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+clip_text = true
 
 [node name="OfflineCurrency2" type="Label" parent="CanvasLayer/Labels/TopLabels"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1622.0
+offset_left = 1674.0
 offset_top = 47.0
-offset_right = 1920.0
+offset_right = 1819.0
 offset_bottom = 83.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "000"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+clip_text = true
 
 [node name="BotLabels" type="Control" parent="CanvasLayer/Labels"]
 anchors_preset = 0

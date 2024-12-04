@@ -6,13 +6,15 @@ extends Node2D
 @export var almanac_window : Control
 @export var shop_window : Control
 
+var isLoading = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	#SceneManager.showLoadingScreen()
+	setAccountName("Niggers")
+	setFreeCurrency(999999999)
+	setPremiumCurrency(69420)
 
 # shop button
 func _on_shop_btn_pressed() -> void:
@@ -69,3 +71,14 @@ func shop_open() -> void:
 	# Animate the window moving from bottom to center
 	tween.tween_property(shop_window, "position:y", screen_size.y / 2 - shop_window.size.y / 2, 0.3) \
 		.set_trans(Tween.TRANS_BACK)
+
+
+
+func setAccountName(newAccountName: String) -> void:
+	%AccountName.text = newAccountName
+
+func setFreeCurrency(newFreeCurrency: int) -> void:
+	%OfflineCurrency2.text = "%s" % newFreeCurrency
+
+func setPremiumCurrency(newPremiumCurrency: int) -> void:
+	%PrCurrency.text = "%s" % newPremiumCurrency
