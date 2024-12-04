@@ -8229,18 +8229,20 @@ position = Vector2(-12013, -2)
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("24_0umqr")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("25_sd7m3")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("25_sd7m3")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("26_mp6j1")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("26_mp6j1")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level5_2/level_5.2.tscn"
-settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("27_57xek")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("27_57xek")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("31_suar7")]
 visible = false

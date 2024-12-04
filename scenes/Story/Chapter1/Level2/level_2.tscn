@@ -9186,18 +9186,21 @@ frame_progress = 0.222005
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("8_scq41")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("9_40bfl")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("9_40bfl")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("10_666uw")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window", "player") instance=ExtResource("10_666uw")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level2/level_2.tscn"
 settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("11_bnt4e")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("11_bnt4e")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("15_lju37")]
 visible = false

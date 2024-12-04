@@ -99,16 +99,10 @@ theme_override_fonts/font = ExtResource("1_pvrbw")
 theme_override_font_sizes/font_size = 48
 text = "MENU"
 
-[node name="RetryLevelBtn" type="Button" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pvrbw")
-theme_override_font_sizes/font_size = 48
-text = "RETRY"
-
 [node name="NextStageBtn" type="Button" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_pvrbw")
 theme_override_font_sizes/font_size = 48
 text = "NEXT LEVEL"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer3/RetryLevelBtn" to="." method="_on_retry_level_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/MenuBtn" to="." method="menu_btn"]

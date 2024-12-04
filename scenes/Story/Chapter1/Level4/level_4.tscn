@@ -6586,18 +6586,20 @@ debug_color = Color(0.416552, 0.462797, 1, 0.42)
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("17_er8eb")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("18_iieoh")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("18_iieoh")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level4/level_4.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("19_a5uen")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("19_a5uen")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level4/level_4.tscn"
-settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("20_ldpk8")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("20_ldpk8")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("28_olaph")]
 visible = false

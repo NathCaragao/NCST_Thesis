@@ -2393,8 +2393,9 @@ size = Vector2(1572.88, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_143jg"]
 size = Vector2(57, 266)
 
-[node name="Level9" type="Node2D" node_paths=PackedStringArray("victory_screen", "fail_screen", "pause_screen")]
+[node name="Level9" type="Node2D" node_paths=PackedStringArray("player", "victory_screen", "fail_screen", "pause_screen")]
 script = ExtResource("1_abivw")
+player = NodePath("Player")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
 fail_screen = NodePath("ScoreUI/FailScreen")
 pause_screen = NodePath("ScoreUI/PauseScreen")
@@ -2571,18 +2572,20 @@ debug_color = Color(0.55319, 0.399861, 1, 0.42)
 
 [node name="ScoreManager" parent="ScoreUI" instance=ExtResource("22_mhuyf")]
 
-[node name="FailScreen" parent="ScoreUI" instance=ExtResource("23_6wiy7")]
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("23_6wiy7")]
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level9/level_9.tscn"
+player = NodePath("../../Player")
 
-[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("settings_window") instance=ExtResource("24_yceyx")]
+[node name="PauseScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("24_yceyx")]
 process_mode = 2
 visible = false
 current_level_path = "res://scenes/Story/Chapter1/Level9/level_9.tscn"
-settings_window = NodePath("../SettingsScreen")
+player = NodePath("../../Player")
 
-[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("25_30xpn")]
+[node name="VictoryScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("25_30xpn")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("26_pj6a2")]
 visible = false

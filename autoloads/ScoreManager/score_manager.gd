@@ -44,3 +44,20 @@ func add_points(item_type: String) -> void:
 		"completion":
 			gen_score.text = "Score: " + str(total_score)
 			total_score += points["completion"]
+
+# Function to reset all scores and collected items to 0
+func reset_score() -> void:
+	# Reset total score to 0
+	total_score = 0
+	
+	# Reset collected items dictionary to 0
+	collected_items = {
+		"coin": 0,
+		"enemy": 0,
+		"powerup": 0,
+		"completion": 0
+	}
+	
+	# Update UI labels to reflect reset
+	gen_score.text = "Score: 0"
+	coin_score.text = "0"

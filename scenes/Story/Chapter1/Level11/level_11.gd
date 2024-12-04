@@ -7,12 +7,11 @@ var scene_path : String = "res://scenes/cutscenes-collection/level_11/level_11_o
 @export var enemy_scenes : Array[PackedScene] = []
 @onready var spawn_points : Array = [$CeberusSpawn]
 
-@onready var player = get_tree().get_first_node_in_group("Player")
 
 @export var fail_screen: Control
 @export var pause_screen : Control
 @export var victory_screen : Control
-@export var actor : PlayerHercules
+@export var player : PlayerHercules
 var paused : bool = false
 
 # ferryman area reference
@@ -21,14 +20,19 @@ var paused : bool = false
 
 
 func _ready() -> void:
+	player_state_reset()
+	
 	enable_score_ui()
+	
 	CutsceneManager.set_canvas_layer(cutscene_layer)
+	
 	Dialogic.signal_event.connect(on_ceberus_fight)
 	Dialogic.signal_event.connect(on_level_complete)
+	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	interaction_area.interact = Callable(self, "on_ferryman")
 	interaction_area_2.interact = Callable(self, "on_ferryman_2")
-	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	
 	opening_cutscene_lvl11()
 
@@ -42,7 +46,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game"):
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true
@@ -57,8 +61,8 @@ func player_teleport() -> void:
 	await LevelScreenTransition.on_transition_finished
 	
 	# teleport the player to the specified position
-	actor.position.x = 2635
-	actor.position.y = 4685
+	player.position.x = 2635
+	player.position.y = 4685
 
 func on_ferryman() -> void:
 	boat_teleport()
@@ -71,16 +75,16 @@ func boat_teleport() -> void:
 	LevelScreenTransition.transition()
 	await LevelScreenTransition.on_transition_finished
 	
-	actor.position.x = 9881
-	actor.position.y = 4460
+	player.position.x = 9881
+	player.position.y = 4460
 
 func boat_teleport2() -> void:
 	# in-game screen fade out transition
 	LevelScreenTransition.transition()
 	await LevelScreenTransition.on_transition_finished
 	
-	actor.position.x = 7462
-	actor.position.y = 4460
+	player.position.x = 7462
+	player.position.y = 4460
 func opening_cutscene_lvl11() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening12")
 	CutsceneManager.play_cutscene("opening12")
@@ -116,3 +120,11 @@ func finish_screen() -> void:
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
+
+# resets player score and inventory
+func player_state_reset() -> void:
+	# reset score
+	ScoreManager.reset_score()
+	
+	# reset player inventory
+	player.inv.reset()
