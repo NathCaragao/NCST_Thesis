@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://0uupk3tgidc2"]
+[gd_scene load_steps=35 format=3 uid="uid://0uupk3tgidc2"]
 
 [ext_resource type="Texture2D" uid="uid://ml4pq2ldwr8a" path="res://assets/Enemies/nemean-lion-sprite/lion_attack_2.png" id="1_1txbo"]
 [ext_resource type="Texture2D" uid="uid://cq56ktcbava3f" path="res://assets/Enemies/nemean-lion-sprite/lion_run.png" id="1_a121c"]
@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="16_7i8b8"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="17_4jqxf"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="19_4ow12"]
+[ext_resource type="AudioStream" uid="uid://e5bdog3ly5io" path="res://assets/Audios/SFXs/enemies/leopard-attack-193175.mp3" id="20_2blse"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wsb8"]
 shader = ExtResource("2_udxpx")
@@ -489,6 +490,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("11_8sil7")
+boss_attack_audio_node = NodePath("../../enemy sound/atk")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
@@ -574,6 +576,13 @@ libraries = {
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(4.76837e-07, 11.5)
 scale = Vector2(0.4, 1.45)
+
+[node name="enemy sound" type="Node2D" parent="."]
+
+[node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
+stream = ExtResource("20_2blse")
+
+[node name="death" type="AudioStreamPlayer2D" parent="enemy sound"]
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
