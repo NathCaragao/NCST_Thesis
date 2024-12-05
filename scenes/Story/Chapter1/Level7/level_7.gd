@@ -69,11 +69,23 @@ func on_dialog_done(argument: String) -> void:
 func on_8complete(argument: String) -> void:
 	if argument == "8LaborComplete":
 		on_finish()
+		# Await sending rewards update to server
+		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
+		# once done, enable buttons in victory screen
+		for i in range(1, 4):
+			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
+				victory_screen.enableButtons()
+				break
+			elif i == 3:
+				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
+		# reset score manager 
+		ScoreManager.reset_score()
 
 
 func on_finish() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+	ScoreUi.get_node('CanvasLayer').hide()
 	
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening6")
