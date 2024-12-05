@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxw6ovxhv2u2t"]
+[gd_scene load_steps=32 format=3 uid="uid://dxw6ovxhv2u2t"]
 
 [ext_resource type="Texture2D" uid="uid://bq5yivvjnribb" path="res://assets/Enemies/Hydra/HydraHyrdra_hit_sheett.png" id="1_28k3s"]
 [ext_resource type="Script" path="res://scenes/enemies/hydra/hydra.gd" id="1_ix77a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_3h406"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="11_k2172"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_avx37"]
+[ext_resource type="AudioStream" uid="uid://ddkn0qkm7hacs" path="res://assets/Audios/SFXs/enemies/hydra realistic roar.mp3" id="16_v3n8u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hyd"]
 shader = ExtResource("2_0ubxl")
@@ -382,6 +383,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="HydraAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "timer", "enemy_health_comp")]
 script = ExtResource("8_6m2u1")
+attack_audio_node = NodePath("../../enemy sound/atk")
 actor = NodePath("../..")
 timer = NodePath("Timer")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
@@ -482,6 +484,13 @@ libraries = {
 position = Vector2(-31, 8)
 
 [node name="PoisonSpawn" type="Marker2D" parent="PoisonPos"]
+
+[node name="enemy sound" type="Node2D" parent="."]
+
+[node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
+stream = ExtResource("16_v3n8u")
+
+[node name="death" type="AudioStreamPlayer2D" parent="enemy sound"]
 
 [connection signal="timeout" from="StateMachine/HydraAttack/Timer" to="StateMachine/HydraAttack" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DangerArea" to="StateMachine/HydraIdle" method="_on_danger_area_body_entered"]
