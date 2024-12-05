@@ -34,7 +34,7 @@ func _on_exit_btn_pressed() -> void:
 
 # Dev btn
 func _on_button_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
+	SceneManager.changeScene("res://scenes/ui-scenes/level-selection/level_selection_2.tscn")
 
 func open_settings() -> void:
 	settings_window.visible = true

@@ -1,5 +1,9 @@
-# lobby screen.gd
 extends Node2D
+
+# FLOW OF GUI:
+# 1. Show loading screen first
+# 2. Update labels: Account Name, Free and Premium Currency
+# 3. Remove loading screen
 
 # references
 @export var settings_window : Control
@@ -11,10 +15,17 @@ var isLoading = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
-	#SceneManager.showLoadingScreen()
-	setAccountName("Niggers")
-	setFreeCurrency(999999999)
-	setPremiumCurrency(69420)
+	# 1
+	SceneManager.showLoadingScreen()
+	# 2
+	var userStorageData = await ServerManager.getUserInfoInDBasync()
+	var userAccountData = await ServerManager.getUserLoggedInInfo()
+	setAccountName(userAccountData.user.display_name)
+	setFreeCurrency(userStorageData["freeCurrency"])
+	setPremiumCurrency(userStorageData["premiumCurrency"])
+	# 3
+	SceneManager.hideLoadingScreen()
+	
 
 # shop button
 func _on_shop_btn_pressed() -> void:
