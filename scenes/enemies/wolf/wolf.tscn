@@ -471,6 +471,7 @@ libraries = {
 
 [node name="atk" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("18_gb5on")
+volume_db = -10.0
 
 [node name="death" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("19_nd273")

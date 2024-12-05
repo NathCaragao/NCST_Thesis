@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=119 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -43,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://r0iipxnhaa8x" path="res://assets/Audios/bgm/swamp.mp3" id="39_3qrsa"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="41_cn7vg"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="42_lcff2"]
+[ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="44_ksdpg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9123,7 +9124,10 @@ size = Vector2(66, 104)
 size = Vector2(20, 296)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36yfp"]
-size = Vector2(661, 5)
+size = Vector2(860.5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn1ku"]
+size = Vector2(60, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8gx"]
 size = Vector2(10, 28)
@@ -9134,6 +9138,12 @@ size = Vector2(10, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ifk"]
 size = Vector2(57, 266)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfq5j"]
+size = Vector2(1034, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fovtn"]
+size = Vector2(2419.5, 156)
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "hydra")]
 script = ExtResource("1_4x2vf")
@@ -9798,6 +9808,31 @@ position = Vector2(3.5, 41.5)
 shape = SubResource("RectangleShape2D_36yfp")
 debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
 
+[node name="Area6" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1279.25, -86)
+shape = SubResource("RectangleShape2D_36yfp")
+debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
+
+[node name="Area2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2364, -66)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area3" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2310, -25)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2425, -25)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area5" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-2320, -132)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -9850,6 +9885,19 @@ checkpoint_bool = NodePath("..")
 [node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
 unique_name_in_owner = true
 position = Vector2(-51, -44)
+
+[node name="DeathZone2_overworld" parent="." instance=ExtResource("44_ksdpg")]
+position = Vector2(3316, -47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone2_overworld"]
+position = Vector2(-337, 378.75)
+shape = SubResource("RectangleShape2D_gfq5j")
+debug_color = Color(0.641469, 0.355654, 0.965066, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone2_overworld"]
+position = Vector2(2517.25, 468)
+shape = SubResource("RectangleShape2D_fovtn")
+debug_color = Color(0.620897, 0.353534, 1, 0.42)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]

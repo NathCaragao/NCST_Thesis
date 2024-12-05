@@ -474,6 +474,7 @@ libraries = {
 
 [node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
 stream = ExtResource("18_jv0gq")
+volume_db = -10.0
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
