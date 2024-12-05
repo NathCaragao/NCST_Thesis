@@ -56,6 +56,10 @@ func _process(delta: float) -> void:
 
 func on_lion_defeated() -> void:
 	level_cleared()
+	# Await sending rewards update to server
+	# once done, enable buttons in victory screen
+	await get_tree().create_timer(4.0).timeout
+	victory_screen.enableButtons()
 	
 # function for the opening scene
 func opening_cutscene() -> void:

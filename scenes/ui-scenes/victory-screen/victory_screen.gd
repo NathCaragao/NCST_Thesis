@@ -7,7 +7,8 @@ extends Control
 @export var player: PlayerHercules
 
 func _ready() -> void:
-	pass
+	%MenuBtn.disabled = true
+	%NextStageBtn.disabled = true
 
 func update_scores() -> void:
 	# Get the  current score from the ScoreManager
@@ -34,3 +35,7 @@ func player_state_reset() -> void:
 	
 	# reset player inventory
 	player.inv.reset()
+
+func enableButtons() -> void:
+	%MenuBtn.disabled = false
+	%NextStageBtn.disabled = false
