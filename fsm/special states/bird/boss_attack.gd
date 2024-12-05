@@ -3,6 +3,7 @@ class_name BossAttack
 extends State
 
 # references and variables
+@export var boss_attack_audio_node: NodePath
 @export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 
@@ -28,6 +29,10 @@ func enter() -> void:
 	
 	print("Within attack range, playing attack animation")
 	actor.play_animation("enemy-attack1")
+	if boss_attack_audio_node:
+			var boss_audio_node = get_node(boss_attack_audio_node) as AudioStreamPlayer2D
+			if boss_audio_node:
+				boss_audio_node.play()
 	timer.start()
 	
 	#if direction.length() <= 80:

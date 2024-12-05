@@ -1,6 +1,7 @@
 class_name HydraAttack
 extends State
 
+@export var attack_audio_node: NodePath
 @export var actor: CharacterBody2D
 @export var timer: Timer
 var poison = load("res://scenes/mechanisms/poison-projectile/poison.tscn") as PackedScene
@@ -31,6 +32,10 @@ func start_attack_sequence() -> void:
 	if not is_active:
 		return
 	actor.play_animation("enemy-attack")
+	if attack_audio_node:
+			var audio_node = get_node(attack_audio_node) as AudioStreamPlayer2D
+			if audio_node:
+				audio_node.play()
 	await actor.animation_player.animation_finished
 	if not is_active:
 		return

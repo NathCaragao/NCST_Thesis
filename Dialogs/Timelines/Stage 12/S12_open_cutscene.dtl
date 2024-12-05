@@ -15,6 +15,6 @@ As Eurystheus dismisses him, Heracles prepares for the journey. His face is reso
 Thus began Heracles' final labor, one that would take him to the very edge of mortality and beyond. To face Cerberus was to face death itself.
 leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
-[music path="res://assets/Audios/bgm/hall_of_the_king.mp3" fade="0.0" volume="0.0"]
+[music fade="0.0" volume="0.0"]
 [signal arg="nextScene"]
 [signal arg="end"]

@@ -4,13 +4,16 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var enemy_health_comp : Node2D
-
+@export var death_audio_node: NodePath
 
 func enter() -> void:
 	print("Enemy Entered Death State")
 	# plays the death animation
 	actor.play_animation("enemy-dead")
-	
+	if death_audio_node:
+		var death_node = get_node(death_audio_node) as AudioStreamPlayer2D
+		if death_node:
+			death_node.play()
 	
 	# disable all phyics interactions
 	#actor.hurt_box_shape.set_deferred("disablded", true)
