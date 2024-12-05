@@ -2222,6 +2222,21 @@ position = Vector2(13520, 136)
 [node name="coin61" parent="coin_collection" instance=ExtResource("32_67i6o")]
 position = Vector2(13593, 139)
 
+[node name="coin62" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16856, 144)
+
+[node name="coin63" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16872, 144)
+
+[node name="coin64" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16888, 144)
+
+[node name="coin65" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16904, 144)
+
+[node name="coin66" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16920, 144)
+
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
