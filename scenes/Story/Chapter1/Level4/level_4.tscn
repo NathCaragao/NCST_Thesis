@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=79 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -6278,6 +6278,9 @@ size = Vector2(236, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jioni"]
 size = Vector2(236, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b6by"]
+size = Vector2(453, 30)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbhjg"]
 size = Vector2(57, 266)
 
@@ -6854,6 +6857,11 @@ debug_color = Color(0.591559, 0.375261, 1, 0.42)
 position = Vector2(10982, 596)
 shape = SubResource("RectangleShape2D_jioni")
 debug_color = Color(0.591559, 0.375261, 1, 0.42)
+
+[node name="Area5" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(11022.5, -786)
+shape = SubResource("RectangleShape2D_5b6by")
+debug_color = Color(0.615533, 0.366492, 0.983335, 0.42)
 
 [node name="Centaur" parent="." instance=ExtResource("30_bwgsj")]
 position = Vector2(7545, -721)
