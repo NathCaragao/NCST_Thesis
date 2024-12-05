@@ -9172,7 +9172,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(1600, 818)
+position = Vector2(-352, -71.9999)
 scale = Vector2(1.5, 1.5)
 
 [node name="TorchItem" type="AnimatedSprite2D" parent="Player"]
