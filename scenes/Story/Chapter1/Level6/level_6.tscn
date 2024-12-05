@@ -1749,9 +1749,6 @@ position = Vector2(9113, -478)
 z_index = 5
 position = Vector2(838, -28)
 
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Wolf" parent="Enemies" instance=ExtResource("7_074ad")]
