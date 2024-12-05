@@ -46,10 +46,23 @@ func _process(delta: float) -> void:
 func on_complete(argument: String) -> void:
 	if argument == "lvl3Complete":
 		level_complete()
+		
+	# Await sending rewards update to server
+	var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
+	# once done, enable buttons in victory screen
+	for i in range(1, 4):
+		if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
+			victory_screen.enableButtons()
+			break
+		elif i == 3:
+			Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
+	# reset score manager for future use
+	ScoreManager.reset_score()
 
 func level_complete() -> void:
 	victory_screen.visible = true
 	victory_screen.update_scores()
+	ScoreUi.get_node('CanvasLayer').hide()
 	
 # function for the opening scene
 func opening_cutscene() -> void:
