@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://lc66sdyu2keh"]
+[gd_scene load_steps=49 format=4 uid="uid://lc66sdyu2keh"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_lhod4"]
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_stmp7"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="22_0yvpn"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="24_jaggd"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="25_rawow"]
+[ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="26_cg1cr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
 shader = ExtResource("6_ae62n")
@@ -3597,6 +3598,32 @@ checkpoint_bool = NodePath("..")
 [node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
 unique_name_in_owner = true
 position = Vector2(-51, -44)
+
+[node name="coin_collection" type="Node2D" parent="."]
+
+[node name="coin" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(500, -17)
+
+[node name="coin2" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(529, -18)
+
+[node name="coin3" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(565, -19)
+
+[node name="coin4" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(606, -17)
+
+[node name="coin5" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(1788, 142)
+
+[node name="coin6" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(1824, 141)
+
+[node name="coin7" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(1864, 139)
+
+[node name="coin8" parent="coin_collection" instance=ExtResource("26_cg1cr")]
+position = Vector2(1907, 142)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
