@@ -152,7 +152,7 @@ func writeToPlayerData(payload) -> void:
 		[
 			NakamaWriteStorageObject.new(
 				"playerData",
-				"wfwewfwfw",
+				"playerInfo",
 				ReadPermissions.OWNER_READ,
 				WritePermissions.OWNER_WRITE,
 				JSON.stringify(payload),
