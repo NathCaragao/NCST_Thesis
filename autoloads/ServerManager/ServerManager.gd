@@ -24,7 +24,6 @@ func createSocketAsync() -> int:
 	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
 	
 	if not result.is_exception():
-		nakamaSocket.connect("closed", Callable(self, "_on_NakamaSocket_closed"))
 		# Signal when socket connection is lost
 		nakamaSocket.closed.connect(_on_NakamaSocket_closed)
 		nakamaSocket.received_match_state.connect(_on_match_state_received)
