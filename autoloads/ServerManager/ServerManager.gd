@@ -142,10 +142,39 @@ func getUserInfoInDBasync():
 		var decodedObject = JSON.parse_string(storage_objects.objects[0].value) 
 		return decodedObject
 	
-	return null
+	return {}
 
 # Update this, might be better to break it to several individual functions
 # updateUserFreeCurrency, updateUserPremiumCurrency, etc.
+func writeToPlayerData(payload) -> void:
+	var result = await nakamaClient.write_storage_objects_async(
+		nakamaSession,
+		[
+			NakamaWriteStorageObject.new(
+				"playerData",
+				"wfwewfwfw",
+				ReadPermissions.OWNER_READ,
+				WritePermissions.OWNER_WRITE,
+				JSON.stringify(payload),
+				""
+			)
+		]
+	)
+	
+	if result.is_exception():
+		print_debug("nigger nigger on the wall")
+
+
+func updateUserFreeCurrency(freeCurrencyValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["freeCurrency"] += 100
+		
+	writeToPlayerData(currentUserGameData)
+	
+	return OK 
+
 #func updateUserInfoInDBasync(keyToUpdate, value):
 	#var currentUserInfo = await getUserInfoInDBasync()
 	#
