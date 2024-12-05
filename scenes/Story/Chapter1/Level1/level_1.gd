@@ -57,9 +57,18 @@ func _process(delta: float) -> void:
 func on_lion_defeated() -> void:
 	level_cleared()
 	# Await sending rewards update to server
+	var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
 	# once done, enable buttons in victory screen
-	await get_tree().create_timer(4.0).timeout
-	victory_screen.enableButtons()
+	for i in range(1, 4):
+		if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
+			victory_screen.enableButtons()
+			break
+		elif i == 3:
+			Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
+	# reset score manager for future use
+	ScoreManager.reset_score()
+	
+	
 	
 # function for the opening scene
 func opening_cutscene() -> void:

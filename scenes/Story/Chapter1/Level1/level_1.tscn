@@ -5700,6 +5700,7 @@ position = Vector2(288, -114)
 position = Vector2(1872, -46)
 
 [node name="coin5" parent="CoinsCollection" instance=ExtResource("15_exch3")]
+visible = false
 position = Vector2(1984, 125)
 
 [node name="coin6" parent="CoinsCollection" instance=ExtResource("15_exch3")]
