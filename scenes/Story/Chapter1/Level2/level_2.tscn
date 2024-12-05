@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=119 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -39,9 +39,11 @@
 [ext_resource type="PackedScene" uid="uid://cmaaqi0hqotrk" path="res://scenes/objects/Cage/cage.tscn" id="28_iii3j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="30_sksh4"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="33_va0sa"]
+[ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="38_6ngim"]
 [ext_resource type="AudioStream" uid="uid://r0iipxnhaa8x" path="res://assets/Audios/bgm/swamp.mp3" id="39_3qrsa"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="41_cn7vg"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="42_lcff2"]
+[ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="44_ksdpg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9122,7 +9124,10 @@ size = Vector2(66, 104)
 size = Vector2(20, 296)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36yfp"]
-size = Vector2(661, 5)
+size = Vector2(860.5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn1ku"]
+size = Vector2(60, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8gx"]
 size = Vector2(10, 28)
@@ -9133,6 +9138,12 @@ size = Vector2(10, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ifk"]
 size = Vector2(57, 266)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfq5j"]
+size = Vector2(1034, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fovtn"]
+size = Vector2(2419.5, 156)
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "hydra")]
 script = ExtResource("1_4x2vf")
@@ -9171,7 +9182,7 @@ tile_set = SubResource("TileSet_4f1xn")
 
 [node name="Player" parent="." instance=ExtResource("3_pvpr2")]
 z_index = 1
-position = Vector2(-373, -50)
+position = Vector2(-352, -71.9999)
 scale = Vector2(1.5, 1.5)
 
 [node name="TorchItem" type="AnimatedSprite2D" parent="Player"]
@@ -9540,6 +9551,140 @@ scale = Vector2(1.5, 1.5)
 cage_key = NodePath("../KeysCollection/CageKey")
 divine_torch = NodePath("../DivineTorch")
 
+[node name="CoinsCollection" type="Node2D" parent="."]
+
+[node name="coin" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1224, 224)
+
+[node name="coin2" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1248, 224)
+
+[node name="coin3" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1272, 224)
+
+[node name="coin4" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2776, 239)
+
+[node name="coin5" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(4011, 184)
+
+[node name="coin6" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(4902, 148)
+
+[node name="coin7" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5472, 168)
+
+[node name="coin8" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5512, 168)
+
+[node name="coin9" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(6232, 144)
+
+[node name="coin13" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(8088, 206)
+
+[node name="coin14" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(8104, 206)
+
+[node name="coin15" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(8120, 206)
+
+[node name="coin16" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(8008, 206)
+
+[node name="coin18" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(7992, 206)
+
+[node name="coin17" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(8024, 206)
+
+[node name="coin10" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5816, 208)
+
+[node name="coin11" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5744, 208)
+
+[node name="coin12" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5744, 208)
+
+[node name="coin19" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(7144, 3296)
+
+[node name="coin20" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(7144, 3210)
+
+[node name="coin21" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5664, 3220)
+
+[node name="coin22" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(5360, 3220)
+
+[node name="coin23" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(4304, 3281)
+
+[node name="coin24" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(4352, 3281)
+
+[node name="coin25" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2728, 3273)
+
+[node name="coin26" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2536, 3274)
+
+[node name="coin27" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1005, 3260)
+
+[node name="coin28" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1024, 3260)
+
+[node name="coin29" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1045, 3260)
+
+[node name="coin30" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(594, 3265)
+
+[node name="coin31" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(613, 3265)
+
+[node name="coin32" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(634, 3265)
+
+[node name="coin33" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1680, 848)
+
+[node name="coin34" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1704, 848)
+
+[node name="coin35" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(1728, 848)
+
+[node name="coin36" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2464, 847)
+
+[node name="coin37" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2488, 847)
+
+[node name="coin38" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2512, 847)
+
+[node name="coin39" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2600, 848)
+
+[node name="coin40" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2624, 848)
+
+[node name="coin41" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(2648, 848)
+
+[node name="coin42" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(3024, 880)
+
+[node name="coin43" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(3048, 880)
+
+[node name="coin44" parent="CoinsCollection" instance=ExtResource("38_6ngim")]
+position = Vector2(3072, 880)
+
 [node name="Dialogs" type="Node2D" parent="."]
 
 [node name="DialogActivator" type="Area2D" parent="Dialogs"]
@@ -9663,6 +9808,31 @@ position = Vector2(3.5, 41.5)
 shape = SubResource("RectangleShape2D_36yfp")
 debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
 
+[node name="Area6" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1279.25, -86)
+shape = SubResource("RectangleShape2D_36yfp")
+debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
+
+[node name="Area2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2364, -66)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area3" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2310, -25)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2425, -25)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
+[node name="Area5" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-2320, -132)
+shape = SubResource("RectangleShape2D_nn1ku")
+debug_color = Color(0.697652, 0.318258, 0.939313, 0.42)
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -9715,6 +9885,19 @@ checkpoint_bool = NodePath("..")
 [node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
 unique_name_in_owner = true
 position = Vector2(-51, -44)
+
+[node name="DeathZone2_overworld" parent="." instance=ExtResource("44_ksdpg")]
+position = Vector2(3316, -47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone2_overworld"]
+position = Vector2(-337, 378.75)
+shape = SubResource("RectangleShape2D_gfq5j")
+debug_color = Color(0.641469, 0.355654, 0.965066, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone2_overworld"]
+position = Vector2(2517.25, 468)
+shape = SubResource("RectangleShape2D_fovtn")
+debug_color = Color(0.620897, 0.353534, 1, 0.42)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]

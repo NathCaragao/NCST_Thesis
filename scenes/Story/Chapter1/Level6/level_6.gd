@@ -58,6 +58,18 @@ func _on_level_complete(argument : String) -> void:
 	
 		victory_screen.visible = true
 		victory_screen.update_scores()
+		ScoreUi.get_node('CanvasLayer').hide()
+		# Await sending rewards update to server
+		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
+		# once done, enable buttons in victory screen
+		for i in range(1, 4):
+			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
+				victory_screen.enableButtons()
+				break
+			elif i == 3:
+				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
+		# reset score manager 
+		ScoreManager.reset_score()
 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
