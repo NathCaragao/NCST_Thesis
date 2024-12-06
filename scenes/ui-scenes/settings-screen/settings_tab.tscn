@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cha4508ye1b32"]
+[gd_scene load_steps=18 format=3 uid="uid://cha4508ye1b32"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_tab.gd" id="1_x6hi8"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_yvoap"]
@@ -9,6 +9,30 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd15i"]
 texture = ExtResource("3_u7dxf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexcj"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fqri"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yokw"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic12j"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxqiq"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14m6w"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kax0o"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrvxk"]
+bg_color = Color(0.239216, 0.133333, 0.156863, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6k7u"]
 texture = ExtResource("6_o28ar")
@@ -41,10 +65,9 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 46
 theme_override_styles/panel = SubResource("StyleBoxTexture_cd15i")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -80,9 +103,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResOption" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(332, 62)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ocaw8")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_yexcj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8fqri")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5yokw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ic12j")
 selected = 0
 item_count = 3
 popup/item_0/text = "1920x1080"
@@ -104,9 +132,14 @@ theme_override_font_sizes/font_size = 51
 text = "Window mode"
 
 [node name="WindowMode" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(332, 62)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ocaw8")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_sxqiq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_14m6w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kax0o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mrvxk")
 selected = 0
 item_count = 2
 popup/item_0/text = "Fullscreen"
@@ -114,6 +147,7 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
