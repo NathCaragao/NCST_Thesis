@@ -37,7 +37,10 @@ var direction
 
 # player inventory reference
 @export var inv: Inventory
+# player HP
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
+
+@export var player_atk : AttackComponent
 
 # Signals
 signal PlayerFail

@@ -1,8 +1,8 @@
 class_name PlayerHpComp
 extends Node2D
 
-@export var max_health : int = 100
-var current_health : int
+@export var max_health : float = 100.0
+var current_health : float
 # reference player hurtbox here
 var is_dead : bool = false
 @onready var phealth_bar: ProgressBar = $Hp_bar/PlayerHPbar
@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	phealth_bar.init_health(max_health)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	current_health -= amount
 	clamp_health()
 	# update health bar value here
