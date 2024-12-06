@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=33 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/user_info.gd" id="3_v0kmf"]
+[ext_resource type="Texture2D" uid="uid://diiaove0aiwej" path="res://assets/ui/windows/wood_window.png" id="4_45eo7"]
 [ext_resource type="Texture2D" uid="uid://c4qvwcb26nxfy" path="res://assets/icons/buttons/start_btn_pressed.png" id="6_0kp8p"]
 [ext_resource type="Texture2D" uid="uid://o02372uwmudi" path="res://assets/icons/buttons/start_btn.png" id="6_btmyv"]
 [ext_resource type="Texture2D" uid="uid://c0sdm6w6s0ubk" path="res://assets/icons/buttons/options_btn.png" id="7_olya7"]
@@ -102,21 +103,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47451)
 
+[node name="BgPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -527.0
+offset_right = 306.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_45eo7")
+
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -604.5
-offset_top = -491.0
+offset_top = 125.0
 offset_right = 604.5
-offset_bottom = -315.0
+offset_bottom = 301.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
-theme_override_font_sizes/font_size = 141
+theme_override_font_sizes/font_size = 128
 text = "THEOUS KAI"
 horizontal_alignment = 1
 
