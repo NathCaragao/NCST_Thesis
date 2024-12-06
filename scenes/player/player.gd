@@ -25,9 +25,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox_collision: CollisionShape2D = $PlayerHealthComponent/Hurtbox/HurtboxCollision
 
-
+@export var defense : float = 10.0
 @export var push = 40
-@export var SPEED: float = 200.0
+#@export var SPEED: float = 200.0
 @export var weapon_ui: Control
 var facing_right: bool = true
 
