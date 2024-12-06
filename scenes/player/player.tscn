@@ -88,11 +88,12 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_ui") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_ui", "player_atk") groups=["Player"]]
 collision_layer = 8
 script = ExtResource("1_mahge")
 weapon_ui = NodePath("HUD/WeaponRoulette")
 inv = ExtResource("2_apivo")
+player_atk = NodePath("PlayerHealthComponent/AttackComponent")
 
 [node name="NameTag" type="Label" parent="."]
 unique_name_in_owner = true
@@ -166,8 +167,9 @@ script = ExtResource("18_ej16c")
 actor = NodePath("../..")
 health_comp = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects") instance=ExtResource("14_3d4tk")]
+[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("14_3d4tk")]
 anim_effects = NodePath("../AnimEffects")
+player = NodePath("..")
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
 position = Vector2(0, 4)
