@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cha4508ye1b32"]
+[gd_scene load_steps=24 format=3 uid="uid://cha4508ye1b32"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_tab.gd" id="1_x6hi8"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_yvoap"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://diiaove0aiwej" path="res://assets/ui/windows/wood_window.png" id="3_u7dxf"]
 [ext_resource type="Texture2D" uid="uid://btnsku7dyhmj3" path="res://assets/ui/buttons/volume_fill.png" id="6_o28ar"]
 [ext_resource type="Texture2D" uid="uid://bh8fctfe5h5s2" path="res://assets/ui/buttons/volume_handle.png" id="6_t5fu8"]
+[ext_resource type="Texture2D" uid="uid://bv6frk2pc3wux" path="res://assets/icons/buttons/change_btn.png" id="7_eja2u"]
+[ext_resource type="Texture2D" uid="uid://cgvvl7vpgj0ah" path="res://assets/icons/buttons/change_btn_pressed.png" id="8_tsnc2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd15i"]
 texture = ExtResource("3_u7dxf")
@@ -40,6 +42,18 @@ texture = ExtResource("6_o28ar")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qlvs6"]
 texture = ExtResource("6_o28ar")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhpmw"]
+texture = ExtResource("7_eja2u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpvii"]
+texture = ExtResource("7_eja2u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_julmm"]
+texture = ExtResource("8_tsnc2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3de2r"]
+texture = ExtResource("7_eja2u")
+
 [node name="SettingsTab" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -65,9 +79,10 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 46
 theme_override_styles/panel = SubResource("StyleBoxTexture_cd15i")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -212,7 +227,6 @@ tick_count = 5
 ticks_on_borders = true
 
 [node name="Account" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -223,10 +237,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_bottom = 96
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/MarginContainer"]
 layout_mode = 2
@@ -235,7 +248,8 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 939
+theme_override_constants/separation = 554
+alignment = 1
 
 [node name="AccLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -245,14 +259,19 @@ theme_override_font_sizes/font_size = 51
 text = "Account: "
 
 [node name="LogOutBtn" type="Button" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 31
-text = "Change Account"
+theme_override_styles/focus = SubResource("StyleBoxTexture_vhpmw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kpvii")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_julmm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3de2r")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 896
+theme_override_constants/separation = 419
+alignment = 1
 
 [node name="EmailLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 1
@@ -260,6 +279,13 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "Linked Email: "
+
+[node name="EmailVal" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yvoap")
+theme_override_font_sizes/font_size = 51
+text = "test@gmail"
 
 [node name="CloseBtn" type="Button" parent="."]
 layout_mode = 0
