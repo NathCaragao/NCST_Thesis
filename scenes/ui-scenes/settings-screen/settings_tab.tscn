@@ -79,7 +79,7 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 46
 theme_override_styles/panel = SubResource("StyleBoxTexture_cd15i")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
 visible = false
@@ -162,7 +162,6 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -227,6 +226,7 @@ tick_count = 5
 ticks_on_borders = true
 
 [node name="Account" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
