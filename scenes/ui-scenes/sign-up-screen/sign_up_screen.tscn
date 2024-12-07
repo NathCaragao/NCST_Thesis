@@ -137,6 +137,7 @@ theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("6_j7t1c")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "username"
 clear_button_enabled = true
 caret_blink = true
 
@@ -152,6 +153,7 @@ theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("6_j7t1c")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "email"
 clear_button_enabled = true
 caret_blink = true
 
@@ -167,8 +169,10 @@ theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("6_j7t1c")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "password"
 clear_button_enabled = true
 caret_blink = true
+secret = true
 
 [node name="PassInput2" type="LineEdit" parent="InputFields"]
 unique_name_in_owner = true
@@ -182,8 +186,10 @@ theme_override_fonts/font = ExtResource("3_fo5gn")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("6_j7t1c")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "confirm password"
 clear_button_enabled = true
 caret_blink = true
+secret = true
 
 [node name="Buttons" type="Control" parent="."]
 anchors_preset = 0

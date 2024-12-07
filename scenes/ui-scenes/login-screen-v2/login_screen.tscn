@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b25xaiokehkja"]
+[gd_scene load_steps=18 format=3 uid="uid://b25xaiokehkja"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/login-screen-v2/Login_v2.gd" id="1_85fsi"]
 [ext_resource type="Texture2D" uid="uid://co4pp03o3og3g" path="res://assets/ui/windows/wood_w_paper_window.png" id="2_40su8"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_vpic2"]
 [ext_resource type="Texture2D" uid="uid://4ji6mi3kpg06" path="res://assets/ui/buttons/input_field_clear.png" id="4_32arp"]
 [ext_resource type="Texture2D" uid="uid://durq8il5db0jf" path="res://assets/ui/windows/input_field_sprite.png" id="4_throl"]
@@ -144,6 +143,7 @@ theme_override_fonts/font = ExtResource("2_vpic2")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("4_32arp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "email"
 clear_button_enabled = true
 caret_blink = true
 
@@ -154,10 +154,11 @@ offset_left = 436.0
 offset_top = 312.0
 offset_right = 1072.0
 offset_bottom = 362.0
-theme_override_fonts/font = ExtResource("2_n6qj4")
+theme_override_fonts/font = ExtResource("2_vpic2")
 theme_override_font_sizes/font_size = 40
 theme_override_icons/clear = ExtResource("4_32arp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_sdofw")
+placeholder_text = "password"
 clear_button_enabled = true
 caret_blink = true
 secret = true
