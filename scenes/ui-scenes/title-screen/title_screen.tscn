@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=35 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dv41y8x1anf1a" path="res://assets/icons/buttons/account_icon.png" id="11_x7pf5"]
 [ext_resource type="Texture2D" uid="uid://dhya5qaxhxkmm" path="res://assets/icons/buttons/account_icon_pressed.png" id="12_ltmra"]
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="14_0kr0o"]
+[ext_resource type="PackedScene" uid="uid://b25xaiokehkja" path="res://scenes/ui-scenes/login-screen-v2/login_screen.tscn" id="16_v8yf8"]
+[ext_resource type="PackedScene" uid="uid://dfmhlyleul8db" path="res://scenes/ui-scenes/sign-up-screen/sign_up_screen.tscn" id="17_taywm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
 shader = ExtResource("2_ygjtw")
@@ -64,7 +66,7 @@ texture = ExtResource("12_ltmra")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7d3c"]
 texture = ExtResource("11_x7pf5")
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window", "login_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh60y")
 settings_window = NodePath("CanvasLayer/SettingsScreen")
+login_window = NodePath("CanvasLayer/LoginScreen")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -194,6 +197,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y1tc5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_klfsc")
 
 [node name="SwitchAcc" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -307,6 +311,15 @@ text = "go to level selection"
 
 [node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("14_0kr0o")]
 visible = false
+
+[node name="LoginScreen" parent="CanvasLayer" node_paths=PackedStringArray("signup_window") instance=ExtResource("16_v8yf8")]
+visible = false
+scale = Vector2(0.8, 0.8)
+signup_window = NodePath("../SignUpScreen")
+
+[node name="SignUpScreen" parent="CanvasLayer" node_paths=PackedStringArray("login_window") instance=ExtResource("17_taywm")]
+visible = false
+login_window = NodePath("../LoginScreen")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="open_settings"]
