@@ -6,6 +6,11 @@ extends Control
 @export var frame_hover_3 : TextureRect
 @export var frame_hover_4 : TextureRect
 
+# Cost Multiplier
+@export var cost_multiplier : float = 1.5
+@export var coins : int = 50
+@export var base_cost : int = 10
+
 # references
 @onready var statname: Label = $ItemDesc/Statname
 @onready var stat_effect: Label = $ItemDesc/StatEffect
@@ -30,6 +35,31 @@ extends Control
 @export var hp_desc : String
 @export var def_desc : String
 @export var speed_desc : String
+
+# attack stat information
+@export_category("Attack Cost")
+@export var atk_upgrade : float = 10.0
+@export var atk_cost : int = 10
+@export var atk_level : int = 1
+
+
+# health stat information
+@export_category("Health Cost")
+@export var hp_upgrade : float = 20.0
+@export var hp_cost : int = 10
+@export var hp_level : int = 1
+
+# defense stat information
+@export_category("Defense Cost")
+@export var def_upgrade : float = 10.0
+@export var def_cost : int = 10
+@export var def_level : int = 1
+
+# speed stat information
+@export var speed_upgrade : float = 5.0
+@export var speed_cost : int = 10
+@export var speed_level : int = 1
+
 
 # ITEM 1
 func item1_entered() -> void:
