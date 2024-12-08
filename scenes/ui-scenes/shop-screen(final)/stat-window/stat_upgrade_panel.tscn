@@ -39,6 +39,9 @@ frame_hover_3 = NodePath("ItemFrame3/FrameHover3")
 frame_hover_4 = NodePath("ItemFrame4/FrameHover4")
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.165656, 0.165656, 0.165656, 1)
+custom_minimum_size = Vector2(1456, 1080)
+layout_mode = 0
 offset_left = 464.0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -101,6 +104,18 @@ theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 text = "UPGRADE"
 
+[node name="AtkCost" type="Label" parent="ItemFrame1"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 121.0
+offset_right = 321.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("6_60cph")
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ItemFrame2" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
@@ -158,6 +173,18 @@ offset_bottom = 158.0
 theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 text = "UPGRADE"
+
+[node name="HpCost" type="Label" parent="ItemFrame2"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 121.0
+offset_right = 344.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("6_60cph")
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ItemFrame3" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
@@ -217,6 +244,18 @@ theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 text = "UPGRADE"
 
+[node name="DefCost" type="Label" parent="ItemFrame3"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 121.0
+offset_right = 334.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("6_60cph")
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ItemFrame4" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
@@ -275,11 +314,23 @@ theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 text = "UPGRADE"
 
+[node name="SpeedCost" type="Label" parent="ItemFrame4"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 121.0
+offset_right = 344.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("6_60cph")
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="ItemFrame1/HoverBtn" to="." method="item1_entered"]
 [connection signal="mouse_exited" from="ItemFrame1/HoverBtn" to="." method="item1_exited"]
 [connection signal="mouse_entered" from="ItemFrame2/HoverBtn2" to="." method="item2_entered"]
 [connection signal="mouse_exited" from="ItemFrame2/HoverBtn2" to="." method="item2_exited"]
 [connection signal="mouse_entered" from="ItemFrame3/HoverBtn3" to="." method="item3_entered"]
-[connection signal="mouse_exited" from="ItemFrame3/HoverBtn3" to="." method="item2_exited"]
+[connection signal="mouse_exited" from="ItemFrame3/HoverBtn3" to="." method="item3_exited"]
 [connection signal="mouse_entered" from="ItemFrame4/HoverBtn4" to="." method="item4_entered"]
 [connection signal="mouse_exited" from="ItemFrame4/HoverBtn4" to="." method="item4_exited"]

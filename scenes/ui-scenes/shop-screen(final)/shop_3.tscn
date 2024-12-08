@@ -1,14 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://48qovkw5aj6e"]
+[gd_scene load_steps=8 format=3 uid="uid://48qovkw5aj6e"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_i2cha"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/shop-screen(final)/shop_3.gd" id="1_xxvbm"]
+[ext_resource type="PackedScene" uid="uid://r13lg50en4gg" path="res://scenes/ui-scenes/shop-screen(final)/stat-window/stat_upgrade_panel.tscn" id="2_pmul3"]
+[ext_resource type="PackedScene" uid="uid://c7tx8b02joupy" path="res://scenes/ui-scenes/shop-screen(final)/skin-window/skin_window.tscn" id="3_otq3i"]
 
-[node name="Shop3" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p62v3"]
+bg_color = Color(0.3669, 0.72446, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43jax"]
+bg_color = Color(0.3669, 0.72446, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns2ul"]
+bg_color = Color(0.3669, 0.72446, 1, 1)
+
+[node name="Shop3" type="Control" node_paths=PackedStringArray("stat_window", "skin_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xxvbm")
+stat_window = NodePath("StatUpgradePanel")
+skin_window = NodePath("SkinWindow")
 
 [node name="MainBg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,6 +51,14 @@ text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StatUpgradePanel" parent="." instance=ExtResource("2_pmul3")]
+visible = false
+layout_mode = 1
+
+[node name="SkinWindow" parent="." instance=ExtResource("3_otq3i")]
+visible = false
+layout_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 464.0
@@ -46,16 +69,23 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2cha")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_p62v3")
 text = "STATS"
 
 [node name="SkinsSection" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2cha")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_43jax")
 text = "SKINS"
 
 [node name="GemsSection" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2cha")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxFlat_ns2ul")
 text = "GEMS"
+
+[connection signal="pressed" from="VBoxContainer/StatsSection" to="." method="_on_stats_section_pressed"]
+[connection signal="pressed" from="VBoxContainer/SkinsSection" to="." method="_on_skins_section_pressed"]
+[connection signal="pressed" from="VBoxContainer/GemsSection" to="." method="_on_gems_section_pressed"]
