@@ -32,7 +32,6 @@ CutsceneManager="*res://autoloads/CutsceneManager/cutscene_manager.gd"
 EventNotifier="*res://autoloads/in-game-notifier/event_notifier.tscn"
 GameSignals="*res://autoloads/game-signals/game-signals.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
-PlayerManager="*res://autoloads/player-manager/player_manager.gd"
 
 [dialogic]
 

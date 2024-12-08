@@ -166,9 +166,8 @@ script = ExtResource("18_ej16c")
 actor = NodePath("../..")
 health_comp = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("14_3d4tk")]
+[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects") instance=ExtResource("14_3d4tk")]
 anim_effects = NodePath("../AnimEffects")
-player = NodePath("..")
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
 position = Vector2(0, 4)

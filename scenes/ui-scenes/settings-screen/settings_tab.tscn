@@ -1,58 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://cha4508ye1b32"]
+[gd_scene load_steps=5 format=3 uid="uid://cha4508ye1b32"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/settings-screen/settings_tab.gd" id="1_x6hi8"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_yvoap"]
 [ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="2_ocaw8"]
-[ext_resource type="Texture2D" uid="uid://diiaove0aiwej" path="res://assets/ui/windows/wood_window.png" id="3_u7dxf"]
-[ext_resource type="Texture2D" uid="uid://btnsku7dyhmj3" path="res://assets/ui/buttons/volume_fill.png" id="6_o28ar"]
-[ext_resource type="Texture2D" uid="uid://bh8fctfe5h5s2" path="res://assets/ui/buttons/volume_handle.png" id="6_t5fu8"]
-[ext_resource type="Texture2D" uid="uid://bv6frk2pc3wux" path="res://assets/icons/buttons/change_btn.png" id="7_eja2u"]
-[ext_resource type="Texture2D" uid="uid://cgvvl7vpgj0ah" path="res://assets/icons/buttons/change_btn_pressed.png" id="8_tsnc2"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd15i"]
-texture = ExtResource("3_u7dxf")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexcj"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fqri"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yokw"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic12j"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxqiq"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14m6w"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kax0o"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrvxk"]
-bg_color = Color(0.239216, 0.133333, 0.156863, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6k7u"]
-texture = ExtResource("6_o28ar")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qlvs6"]
-texture = ExtResource("6_o28ar")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhpmw"]
-texture = ExtResource("7_eja2u")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpvii"]
-texture = ExtResource("7_eja2u")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_julmm"]
-texture = ExtResource("8_tsnc2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3de2r"]
-texture = ExtResource("7_eja2u")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khmdv"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 1)
 
 [node name="SettingsTab" type="Control"]
 process_mode = 3
@@ -77,12 +30,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/panel = SubResource("StyleBoxTexture_cd15i")
+theme_override_styles/panel = SubResource("StyleBoxFlat_khmdv")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -105,8 +57,7 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 714
-alignment = 1
+theme_override_constants/separation = 939
 
 [node name="ResLabel" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -118,14 +69,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResOption" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(332, 62)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ocaw8")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxFlat_yexcj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8fqri")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5yokw")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ic12j")
 selected = 0
 item_count = 3
 popup/item_0/text = "1920x1080"
@@ -136,8 +82,7 @@ popup/item_2/id = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 686
-alignment = 1
+theme_override_constants/separation = 896
 
 [node name="FullscreenLabel" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 1
@@ -147,14 +92,9 @@ theme_override_font_sizes/font_size = 51
 text = "Window mode"
 
 [node name="WindowMode" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(332, 62)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ocaw8")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxFlat_sxqiq")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_14m6w")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_kax0o")
-theme_override_styles/normal = SubResource("StyleBoxFlat_mrvxk")
 selected = 0
 item_count = 2
 popup/item_0/text = "Fullscreen"
@@ -162,6 +102,7 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -172,10 +113,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
 layout_mode = 2
@@ -184,8 +125,7 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 399
-alignment = 1
+theme_override_constants/separation = 834
 
 [node name="MasterVol" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -198,15 +138,12 @@ text = "MASTER VOL"
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_icons/grabber = ExtResource("6_t5fu8")
-theme_override_icons/grabber_highlight = ExtResource("6_t5fu8")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_i6k7u")
-tick_count = 5
+tick_count = 8
+ticks_on_borders = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 309
-alignment = 1
+theme_override_constants/separation = 749
 
 [node name="SE" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 1
@@ -219,10 +156,7 @@ text = "SOUND EFFECT"
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_icons/grabber = ExtResource("6_t5fu8")
-theme_override_icons/grabber_highlight = ExtResource("6_t5fu8")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_qlvs6")
-tick_count = 5
+tick_count = 8
 ticks_on_borders = true
 
 [node name="Account" type="TabBar" parent="TabContainer"]
@@ -237,9 +171,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 96
-theme_override_constants/margin_top = 96
-theme_override_constants/margin_bottom = 96
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/MarginContainer"]
 layout_mode = 2
@@ -248,8 +183,7 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 554
-alignment = 1
+theme_override_constants/separation = 939
 
 [node name="AccLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -259,19 +193,14 @@ theme_override_font_sizes/font_size = 51
 text = "Account: "
 
 [node name="LogOutBtn" type="Button" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 31
-theme_override_styles/focus = SubResource("StyleBoxTexture_vhpmw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_kpvii")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_julmm")
-theme_override_styles/normal = SubResource("StyleBoxTexture_3de2r")
+text = "Change Account"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Account/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 419
-alignment = 1
+theme_override_constants/separation = 896
 
 [node name="EmailLabel" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
 texture_filter = 1
@@ -279,13 +208,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "Linked Email: "
-
-[node name="EmailVal" type="Label" parent="TabContainer/Account/MarginContainer/VBoxContainer/HBoxContainer2"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yvoap")
-theme_override_font_sizes/font_size = 51
-text = "test@gmail"
 
 [node name="CloseBtn" type="Button" parent="."]
 layout_mode = 0
