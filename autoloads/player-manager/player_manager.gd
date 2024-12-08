@@ -1,3 +1,4 @@
+# player manager.gd
 extends Node
 
 signal StatUpgraded
