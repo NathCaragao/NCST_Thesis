@@ -88,12 +88,11 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_ui", "player_atk") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_ui") groups=["Player"]]
 collision_layer = 8
 script = ExtResource("1_mahge")
 weapon_ui = NodePath("HUD/WeaponRoulette")
 inv = ExtResource("2_apivo")
-player_atk = NodePath("PlayerHealthComponent/AttackComponent")
 
 [node name="NameTag" type="Label" parent="."]
 unique_name_in_owner = true
