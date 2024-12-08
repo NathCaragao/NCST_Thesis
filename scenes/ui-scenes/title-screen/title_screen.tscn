@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://d3l4b7il2xwqv"]
+[gd_scene load_steps=35 format=3 uid="uid://d3l4b7il2xwqv"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/user_info.gd" id="3_v0kmf"]
+[ext_resource type="Texture2D" uid="uid://diiaove0aiwej" path="res://assets/ui/windows/wood_window.png" id="4_45eo7"]
 [ext_resource type="Texture2D" uid="uid://c4qvwcb26nxfy" path="res://assets/icons/buttons/start_btn_pressed.png" id="6_0kp8p"]
 [ext_resource type="Texture2D" uid="uid://o02372uwmudi" path="res://assets/icons/buttons/start_btn.png" id="6_btmyv"]
 [ext_resource type="Texture2D" uid="uid://c0sdm6w6s0ubk" path="res://assets/icons/buttons/options_btn.png" id="7_olya7"]
@@ -14,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dv41y8x1anf1a" path="res://assets/icons/buttons/account_icon.png" id="11_x7pf5"]
 [ext_resource type="Texture2D" uid="uid://dhya5qaxhxkmm" path="res://assets/icons/buttons/account_icon_pressed.png" id="12_ltmra"]
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="14_0kr0o"]
+[ext_resource type="PackedScene" uid="uid://b25xaiokehkja" path="res://scenes/ui-scenes/login-screen-v2/login_screen.tscn" id="16_v8yf8"]
+[ext_resource type="PackedScene" uid="uid://dfmhlyleul8db" path="res://scenes/ui-scenes/sign-up-screen/sign_up_screen.tscn" id="17_taywm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d75kd"]
 shader = ExtResource("2_ygjtw")
@@ -63,7 +66,7 @@ texture = ExtResource("12_ltmra")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7d3c"]
 texture = ExtResource("11_x7pf5")
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window", "login_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,6 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh60y")
 settings_window = NodePath("CanvasLayer/SettingsScreen")
+login_window = NodePath("CanvasLayer/LoginScreen")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -102,21 +106,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47451)
 
+[node name="BgPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -527.0
+offset_right = 306.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_45eo7")
+
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -604.5
-offset_top = -491.0
+offset_top = 125.0
 offset_right = 604.5
-offset_bottom = -315.0
+offset_bottom = 301.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_l5igl")
-theme_override_font_sizes/font_size = 141
+theme_override_font_sizes/font_size = 128
 text = "THEOUS KAI"
 horizontal_alignment = 1
 
@@ -181,6 +197,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y1tc5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_klfsc")
 
 [node name="SwitchAcc" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -294,6 +311,15 @@ text = "go to lobby"
 
 [node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("14_0kr0o")]
 visible = false
+
+[node name="LoginScreen" parent="CanvasLayer" node_paths=PackedStringArray("signup_window") instance=ExtResource("16_v8yf8")]
+visible = false
+scale = Vector2(0.8, 0.8)
+signup_window = NodePath("../SignUpScreen")
+
+[node name="SignUpScreen" parent="CanvasLayer" node_paths=PackedStringArray("login_window") instance=ExtResource("17_taywm")]
+visible = false
+login_window = NodePath("../LoginScreen")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionBtn" to="." method="open_settings"]

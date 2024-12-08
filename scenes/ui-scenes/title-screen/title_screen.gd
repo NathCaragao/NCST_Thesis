@@ -3,9 +3,12 @@ extends Control
 @onready var isUserLoggedIn = false
 
 @export var settings_window : Control
+@export var login_window : Control
+@export var signup_window : Control
 
 func _ready() -> void:
 	%UserInfo.hide()
+	login_open()
 
 func _on_start_btn_pressed() -> void:
 	SceneManager.showLoadingScreen()
@@ -13,6 +16,7 @@ func _on_start_btn_pressed() -> void:
 	SceneManager.hideLoadingScreen()
 	if not isUserLoggedIn:
 		Notification.showMessage("Please login first.", 3.0)
+		login_open()
 		return
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
 
@@ -35,6 +39,19 @@ func _on_exit_btn_pressed() -> void:
 # Dev btn
 func _on_button_pressed() -> void:
 	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
+
+func login_open() -> void:
+	login_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	login_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(login_window, "position:y", screen_size.y / 2 - login_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK)
 
 func open_settings() -> void:
 	settings_window.visible = true
