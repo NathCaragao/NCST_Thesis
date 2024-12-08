@@ -2,7 +2,8 @@ extends Node2D
 var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
 
-@onready var lively = $bgm/lively
+@onready var lively: AudioStreamPlayer = $bgm/lively
+
 
 
 @export var player : PlayerHercules
@@ -14,14 +15,14 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_ope
 var paused : bool = false
 
 func _ready() -> void:
+	# set the canvas layer for cutscene instantiation
+	CutsceneManager.set_canvas_layer(cutscene_layer)
+	
 	# resets the score and player inventory for a clean state
 	player_state_reset()
 	
 	# show the score UI
 	enable_score_ui()
-	
-	# set the canvas layer for cutscene instantiation
-	CutsceneManager.set_canvas_layer(cutscene_layer)
 	
 	# signals connection
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))

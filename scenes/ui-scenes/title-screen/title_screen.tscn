@@ -66,7 +66,7 @@ texture = ExtResource("12_ltmra")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7d3c"]
 texture = ExtResource("11_x7pf5")
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window", "login_window")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("settings_window", "login_window", "signup_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,6 +76,7 @@ grow_vertical = 2
 script = ExtResource("1_mh60y")
 settings_window = NodePath("CanvasLayer/SettingsScreen")
 login_window = NodePath("CanvasLayer/LoginScreen")
+signup_window = NodePath("CanvasLayer/SignUpScreen")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

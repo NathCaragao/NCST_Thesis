@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var canvas_layer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $CutsceneLayer
 
 var scene_path1 : String = "res://scenes/cutscenes-collection/level 6/level_6_opening.tscn"
 var scene_path2 : String = "res://scenes/cutscenes-collection/level 6/level_6_ending.tscn"
