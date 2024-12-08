@@ -1,8 +1,8 @@
 class_name AttackComponent
 extends Node2D
 
-@export var base_dmg : float = 10.0
-@export var weap_dmg : float
+var base_dmg : float = PlayerManager.player_attack
+@export var weap_dmg : int
 @export var knockback_force : float = 500.0
 var knockback_pos : Vector2
 

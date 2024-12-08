@@ -52,6 +52,7 @@ func on_level_complete(argument : String) -> void:
 			elif i == 3:
 				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
 		# reset score manager 
+		ScoreUi.get_node('CanvasLayer').hide()
 		ScoreManager.reset_score()
 
 func level_completed_screen() -> void:
@@ -59,7 +60,7 @@ func level_completed_screen() -> void:
 	
 	victory_screen.visible = true
 	victory_screen.update_scores()
-	ScoreUi.get_node('CanvasLayer').hide()
+	
 	
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening_scene")

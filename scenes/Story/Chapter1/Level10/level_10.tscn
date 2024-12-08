@@ -1867,9 +1867,6 @@ position = Vector2(17542, 129)
 [node name="Player" parent="." instance=ExtResource("16_406ug")]
 position = Vector2(-2213, -229)
 
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="Dialogs" type="Node2D" parent="."]
 
 [node name="DialogActivator" type="Area2D" parent="Dialogs"]
@@ -2221,6 +2218,21 @@ position = Vector2(13520, 136)
 
 [node name="coin61" parent="coin_collection" instance=ExtResource("32_67i6o")]
 position = Vector2(13593, 139)
+
+[node name="coin62" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16856, 144)
+
+[node name="coin63" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16872, 144)
+
+[node name="coin64" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16888, 144)
+
+[node name="coin65" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16904, 144)
+
+[node name="coin66" parent="coin_collection" instance=ExtResource("32_67i6o")]
+position = Vector2(16920, 144)
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

@@ -8005,7 +8005,7 @@ tile_map_data = PackedByteArray("AAD9/Pn/AAANAAAAAAAI/fX/AAANAAAAAAAI/e7/AAANAAA
 tile_set = SubResource("TileSet_cu22k")
 
 [node name="Player" parent="." instance=ExtResource("14_ejtwu")]
-position = Vector2(-29535, -52)
+position = Vector2(-29648, -99)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -8814,6 +8814,21 @@ position = Vector2(-5260, -495)
 
 [node name="coin125" parent="coin_collection" instance=ExtResource("38_wynwg")]
 position = Vector2(-5578, -255)
+
+[node name="coin126" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2760, -327)
+
+[node name="coin127" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2776, -327)
+
+[node name="coin128" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2792, -327)
+
+[node name="coin129" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2808, -327)
+
+[node name="coin130" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2824, -327)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]

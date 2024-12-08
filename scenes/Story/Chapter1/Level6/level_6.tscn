@@ -1749,9 +1749,6 @@ position = Vector2(9113, -478)
 z_index = 5
 position = Vector2(838, -28)
 
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Wolf" parent="Enemies" instance=ExtResource("7_074ad")]
@@ -1989,6 +1986,21 @@ position = Vector2(9701, -498)
 
 [node name="coin25" parent="coin_collection" instance=ExtResource("24_qp8ap")]
 position = Vector2(9735, -493)
+
+[node name="coin26" parent="coin_collection" instance=ExtResource("24_qp8ap")]
+position = Vector2(11605, -576)
+
+[node name="coin27" parent="coin_collection" instance=ExtResource("24_qp8ap")]
+position = Vector2(11616, -576)
+
+[node name="coin28" parent="coin_collection" instance=ExtResource("24_qp8ap")]
+position = Vector2(11632, -576)
+
+[node name="coin29" parent="coin_collection" instance=ExtResource("24_qp8ap")]
+position = Vector2(11648, -576)
+
+[node name="coin30" parent="coin_collection" instance=ExtResource("24_qp8ap")]
+position = Vector2(11664, -576)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
