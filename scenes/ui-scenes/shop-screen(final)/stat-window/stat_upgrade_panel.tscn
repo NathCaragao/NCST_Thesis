@@ -435,9 +435,13 @@ autowrap_mode = 2
 
 [connection signal="mouse_entered" from="ItemFrame1/HoverBtn" to="." method="item1_entered"]
 [connection signal="mouse_exited" from="ItemFrame1/HoverBtn" to="." method="item1_exited"]
+[connection signal="pressed" from="ItemFrame1/AtkUpgrade" to="." method="_on_atk_upgrade_pressed"]
 [connection signal="mouse_entered" from="ItemFrame2/HoverBtn2" to="." method="item2_entered"]
 [connection signal="mouse_exited" from="ItemFrame2/HoverBtn2" to="." method="item2_exited"]
+[connection signal="pressed" from="ItemFrame2/HpUpgrade" to="." method="_on_hp_upgrade_pressed"]
 [connection signal="mouse_entered" from="ItemFrame3/HoverBtn3" to="." method="item3_entered"]
 [connection signal="mouse_exited" from="ItemFrame3/HoverBtn3" to="." method="item3_exited"]
+[connection signal="pressed" from="ItemFrame3/DefUpgrade" to="." method="_on_def_upgrade_pressed"]
 [connection signal="mouse_entered" from="ItemFrame4/HoverBtn4" to="." method="item4_entered"]
 [connection signal="mouse_exited" from="ItemFrame4/HoverBtn4" to="." method="item4_exited"]
+[connection signal="pressed" from="ItemFrame4/SpeedUpgrade" to="." method="_on_speed_upgrade_pressed"]
