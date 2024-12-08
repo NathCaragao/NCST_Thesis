@@ -1,6 +1,6 @@
 extends Control
 
-
+@export var signup_window : Control
 
 func _ready() -> void:
 	pass
@@ -11,7 +11,8 @@ func resetLoginWindow() -> void:
 
 func _on_signup_btn_pressed() -> void:
 	resetLoginWindow()
-	SceneManager.changeScene("res://scenes/ui-scenes/sign-up-screen/sign_up_screen.tscn")
+	close_tween_anim()
+	signup_open_window()
 	
 
 func _on_login_btn_pressed() -> void:
@@ -41,4 +42,32 @@ func _on_login_btn_pressed() -> void:
 	SceneManager.hideLoadingModal()
 
 func _on_close_btn_pressed():
-	SceneManager.changeScene("res://scenes/ui-scenes/title-screen/title_screen.tscn")
+	close_tween_anim()
+
+func close_tween_anim() -> void:
+	# Create a new tween
+	var tween = create_tween()
+	
+	# Get the screen size
+	var screen_size = get_viewport_rect().size
+	
+	# Animate the window moving from center to bottom
+	tween.tween_property(self, "position:y", screen_size.y, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_IN)
+	
+	# After the animation completes, hide the window
+	tween.tween_callback(func(): visible = false)
+
+func signup_open_window() -> void:
+	signup_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	signup_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(signup_window, "position:y", screen_size.y / 2 - signup_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK)

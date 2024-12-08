@@ -19,7 +19,8 @@ var playerGameData = {
 }
 
 # -- One time setup
-@export var move_speed: float = 200.0
+var move_speed: float
+var defense : float
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -46,6 +47,11 @@ var direction
 signal PlayerFail
 
 func _ready() -> void:
+	# initialize player stats on PlayerManager Autoload
+	move_speed = PlayerManager.player_move_speed
+	defense = PlayerManager.player_defense
+	
+	
 	#initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 

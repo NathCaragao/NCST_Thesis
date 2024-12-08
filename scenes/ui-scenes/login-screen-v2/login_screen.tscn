@@ -1,26 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://b25xaiokehkja"]
+[gd_scene load_steps=18 format=3 uid="uid://b25xaiokehkja"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/login-screen-v2/Login_v2.gd" id="1_85fsi"]
-[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_1wd8p"]
-[ext_resource type="FontFile" uid="uid://cd8ykjyygruw3" path="res://assets/fonts/Metropolis-Regular.otf" id="2_n6qj4"]
+[ext_resource type="Texture2D" uid="uid://co4pp03o3og3g" path="res://assets/ui/windows/wood_w_paper_window.png" id="2_40su8"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_vpic2"]
-[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_50j5j"]
-[ext_resource type="FontFile" uid="uid://csbucy5j8rvls" path="res://assets/fonts/PixelFJVerdana12pt.ttf" id="4_31jic"]
+[ext_resource type="Texture2D" uid="uid://4ji6mi3kpg06" path="res://assets/ui/buttons/input_field_clear.png" id="4_32arp"]
+[ext_resource type="Texture2D" uid="uid://durq8il5db0jf" path="res://assets/ui/windows/input_field_sprite.png" id="4_throl"]
+[ext_resource type="Texture2D" uid="uid://dgfmwer3enbq0" path="res://assets/icons/buttons/custom_buttons_2.png" id="7_7ecdx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wt87q"]
-shader = ExtResource("2_1wd8p")
-shader_parameter/scroll_speed = 0.03
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgisr"]
+texture = ExtResource("4_throl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdofw"]
+texture = ExtResource("4_throl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_18rfm"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(0, 188, 80, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1nen"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(96, 192, 80, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcmvq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0yuu"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(0, 124, 80, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tamu"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(96, 128, 80, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xf65"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(0, 124, 80, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uchfu"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(0, 156, 80, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b0nn"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(96, 160, 80, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sox81"]
+texture = ExtResource("7_7ecdx")
+region_rect = Rect2(0, 156, 80, 20)
 
 [node name="LoginScreen" type="Control"]
+custom_minimum_size = Vector2(1366, 768)
 layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -683.0
+offset_top = -384.0
+offset_right = 683.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(683, 362)
+script = ExtResource("1_85fsi")
+
+[node name="woodBG" type="NinePatchRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_85fsi")
+texture = ExtResource("2_40su8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,18 +83,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.118581, 0.118581, 0.118581, 1)
 
-[node name="BgPattern" type="TextureRect" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_wt87q")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_50j5j")
-
 [node name="Filter" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,94 +93,95 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47451)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
 [node name="Header" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.0
-offset_top = 34.0
-offset_right = 21.0
-offset_bottom = 57.0
+offset_left = -107.5
+offset_top = 76.0
+offset_right = 107.5
+offset_bottom = 134.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vpic2")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 48
 text = "LOGIN"
 horizontal_alignment = 1
 
 [node name="UserLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 262.0
-offset_top = 392.0
-offset_right = 645.0
-offset_bottom = 472.0
+offset_left = 169.0
+offset_top = 196.0
+offset_right = 552.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vpic2")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 32
 text = "EMAIL"
 
 [node name="PassLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 258.0
-offset_top = 504.0
-offset_right = 695.0
-offset_bottom = 584.0
+offset_left = 165.0
+offset_top = 308.0
+offset_right = 602.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_vpic2")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 32
 text = "PASSWORD"
 
 [node name="EmailInput" type="LineEdit" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 728.0
-offset_top = 384.0
-offset_right = 1576.0
-offset_bottom = 451.0
-theme_override_fonts/font = ExtResource("2_n6qj4")
-theme_override_font_sizes/font_size = 50
-placeholder_text = "Email"
+offset_left = 436.0
+offset_top = 186.0
+offset_right = 1072.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_font_sizes/font_size = 40
+theme_override_icons/clear = ExtResource("4_32arp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tgisr")
+placeholder_text = "email"
 clear_button_enabled = true
+caret_blink = true
 
 [node name="PassInput" type="LineEdit" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 728.0
-offset_top = 512.0
-offset_right = 1576.0
-offset_bottom = 576.0
-theme_override_fonts/font = ExtResource("2_n6qj4")
-theme_override_font_sizes/font_size = 50
-placeholder_text = "Password..."
+offset_left = 436.0
+offset_top = 312.0
+offset_right = 1072.0
+offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_font_sizes/font_size = 40
+theme_override_icons/clear = ExtResource("4_32arp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sdofw")
+placeholder_text = "password"
 clear_button_enabled = true
+caret_blink = true
 secret = true
 
 [node name="CloseBtn" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -99.5
-offset_top = -134.0
-offset_right = 99.5
-offset_bottom = -69.0
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = 215.0
+offset_right = 90.5
+offset_bottom = 273.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_vpic2")
-theme_override_font_sizes/font_size = 56
-text = "CLOSE"
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxTexture_18rfm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c1nen")
+theme_override_styles/normal = SubResource("StyleBoxTexture_18rfm")
+text = " "
 
 [node name="LoginBtn" type="Button" parent="."]
 unique_name_in_owner = true
@@ -146,50 +191,59 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 417.0
-offset_top = -471.0
-offset_right = 616.0
-offset_bottom = -406.0
+offset_left = 209.0
+offset_top = -380.0
+offset_right = 390.0
+offset_bottom = -323.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_vpic2")
 theme_override_font_sizes/font_size = 56
-text = "LOGIN"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bcmvq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q0yuu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1tamu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6xf65")
 
 [node name="SignUpBtn" type="Button" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(181, 57)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -121.0
-offset_top = -314.0
-offset_right = 121.0
-offset_bottom = -249.0
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = 117.0
+offset_right = 90.5
+offset_bottom = 174.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_vpic2")
 theme_override_font_sizes/font_size = 56
-text = "SIGN UP"
+theme_override_styles/hover = SubResource("StyleBoxTexture_uchfu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1b0nn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sox81")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -174.5
-offset_top = -361.0
-offset_right = 174.5
-offset_bottom = -329.0
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = 74.0
+offset_right = 224.5
+offset_bottom = 120.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_31jic")
-theme_override_font_sizes/font_size = 20
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vpic2")
+theme_override_font_sizes/font_size = 24
 text = "Don't have an account?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="LoginBtn" to="." method="_on_login_btn_pressed"]
