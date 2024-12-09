@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=121 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -9140,6 +9140,9 @@ size = Vector2(879, 13.625)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rd2ei"]
 size = Vector2(173, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umbqs"]
+size = Vector2(50, 11)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8gx"]
 size = Vector2(10, 28)
 
@@ -9512,8 +9515,6 @@ scale = Vector2(1.8, 1.8)
 animation_player = NodePath("AnimationPlayer")
 lever = NodePath("../Lever")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Mechanism/StoneDoor"]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mechanism/StoneDoor"]
 libraries = {
 "": SubResource("AnimationLibrary_alih5")
@@ -9837,6 +9838,11 @@ debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
 [node name="Area6" type="CollisionShape2D" parent="DeathZone"]
 position = Vector2(2364.5, -18.5)
 shape = SubResource("RectangleShape2D_rd2ei")
+debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
+
+[node name="Area7" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2365, -76)
+shape = SubResource("RectangleShape2D_umbqs")
 debug_color = Color(0.537005, 0.412042, 0.993602, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]

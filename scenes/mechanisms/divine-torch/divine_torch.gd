@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 				visible = false
 				torch_taken = true
 				torch_equipped()
-				print("You got Divine Torch!")
+				EventNotifier.add_notif("You got Divine Torch!")
 				Dialogic.start("S2_2-14_2")
 
 func torch_equipped() -> void:

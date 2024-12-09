@@ -4891,7 +4891,6 @@ scale = Vector2(0.352113, 0.694444)
 [node name="Bandit" parent="Enemies" instance=ExtResource("13_dmkbq")]
 position = Vector2(3016.2, 1081.25)
 scale = Vector2(0.528169, 1.04167)
-collision_mask = 65
 
 [node name="Bandit2" parent="Enemies" instance=ExtResource("13_dmkbq")]
 position = Vector2(3047.89, 1081.25)
@@ -4904,13 +4903,13 @@ scale = Vector2(0.528169, 1.04167)
 [node name="Bandit4" parent="Enemies" instance=ExtResource("13_dmkbq")]
 position = Vector2(3632.75, 1081.25)
 scale = Vector2(0.528169, 1.04167)
-collision_mask = 65
 
 [node name="Centaur" parent="Enemies" instance=ExtResource("10_ahso4")]
 light_mask = 0
 visibility_layer = 65
 position = Vector2(3412.32, 1068.06)
 scale = Vector2(0.352113, 0.694444)
+collision_mask = 65
 
 [node name="Log" parent="." node_paths=PackedStringArray("static_collision", "large_crate") instance=ExtResource("9_q76j5")]
 position = Vector2(2250, 105)
@@ -5354,7 +5353,7 @@ position = Vector2(0, 1283)
 shape = SubResource("WorldBoundaryShape2D_cr7qi")
 
 [node name="D1" type="CollisionShape2D" parent="DeathZones/DeathZone"]
-position = Vector2(11, -0.5)
+position = Vector2(11, 18)
 shape = SubResource("RectangleShape2D_2h1yp")
 debug_color = Color(0.221085, 0.000619395, 0.448725, 0.42)
 
