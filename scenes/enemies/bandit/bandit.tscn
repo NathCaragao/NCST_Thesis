@@ -373,6 +373,7 @@ _data = {
 }
 
 [node name="Bandit" type="CharacterBody2D"]
+collision_mask = 65
 script = ExtResource("1_2hdkl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -448,7 +449,6 @@ debug_color = Color(0.174875, 0.643358, 5.77569e-07, 0.42)
 
 [node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
 script = ExtResource("12_ktapa")
-base_dmg = 20
 
 [node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("13_x2ifh")]
 offset_left = -11.0
