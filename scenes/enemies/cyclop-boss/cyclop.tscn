@@ -402,6 +402,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_3n8c0")
 actor = NodePath("../..")
+move_speed = 40.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
@@ -409,6 +410,7 @@ script = ExtResource("10_v23jq")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
+player_length = 35
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0
@@ -452,7 +454,7 @@ offset_right = 594.0
 offset_bottom = 876.0
 theme_override_fonts/font = ExtResource("4_b6g3t")
 theme_override_font_sizes/font_size = 51
-text = "idk what to name"
+text = "Megalus"
 horizontal_alignment = 1
 
 [node name="EnemyHPbar" parent="EnemyHealthComp/CanvasLayer" instance=ExtResource("4_feuph")]

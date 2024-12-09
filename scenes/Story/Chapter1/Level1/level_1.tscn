@@ -5231,28 +5231,35 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-524, -190)
+position = Vector2(-293, 1162)
+scale = Vector2(1.4, 1.4)
 collision_mask = 35
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Bandit" parent="Enemies" instance=ExtResource("15_rswnq")]
-position = Vector2(826, -113)
+position = Vector2(826, -119)
+scale = Vector2(1.3, 1.3)
 
 [node name="Bandit2" parent="Enemies" instance=ExtResource("15_rswnq")]
-position = Vector2(899, -113)
+position = Vector2(899, -118)
+scale = Vector2(1.3, 1.3)
 
 [node name="Bandit3" parent="Enemies" instance=ExtResource("15_rswnq")]
-position = Vector2(3270, -113)
+position = Vector2(3270, -118)
+scale = Vector2(1.3, 1.3)
 
 [node name="Bandit4" parent="Enemies" instance=ExtResource("15_rswnq")]
-position = Vector2(1640, 459)
+position = Vector2(1640, 457)
+scale = Vector2(1.3, 1.3)
 
 [node name="Bandit5" parent="Enemies" instance=ExtResource("15_rswnq")]
-position = Vector2(1586, 459)
+position = Vector2(1586, 457)
+scale = Vector2(1.3, 1.3)
 
 [node name="Bandit6" parent="Enemies" instance=ExtResource("15_rswnq")]
 position = Vector2(3557, 2831)
+scale = Vector2(1.3, 1.3)
 
 [node name="BanditLeader" parent="Enemies" instance=ExtResource("19_hfrpi")]
 position = Vector2(-282, 456)
@@ -5263,8 +5270,8 @@ position = Vector2(-467, 1160)
 scale = Vector2(1.5, 1.5)
 
 [node name="BanditLeader3" parent="Enemies" instance=ExtResource("19_hfrpi")]
-position = Vector2(3615, 2267)
-scale = Vector2(2.5, 2.5)
+position = Vector2(3615, 2311)
+scale = Vector2(1.5, 1.5)
 
 [node name="Wolf" parent="Enemies" instance=ExtResource("9_touq4")]
 position = Vector2(122, -114)
@@ -5291,8 +5298,8 @@ position = Vector2(406, 453)
 position = Vector2(4265, 2800)
 
 [node name="Cyclop" parent="Enemies" instance=ExtResource("8_huhis")]
-position = Vector2(-356, 2308)
-scale = Vector2(0.4, 0.4)
+position = Vector2(-356, 2312)
+scale = Vector2(0.32, 0.32)
 collision_mask = 65
 
 [node name="NemeanLion" parent="Enemies" instance=ExtResource("27_0m45n")]

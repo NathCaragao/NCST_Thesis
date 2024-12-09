@@ -439,15 +439,16 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("7_jm8ku")
 actor = NodePath("../..")
+move_speed = 40.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
-direction_val = 45
+direction_val = 30
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
 script = ExtResource("8_etpip")
 actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 timer = NodePath("Timer")
-player_length = 45
+player_length = 30
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyAttack"]
 wait_time = 2.0
@@ -491,7 +492,6 @@ offset_bottom = -17.0
 
 [node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
 script = ExtResource("13_6sy3t")
-base_dmg = 15
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 
