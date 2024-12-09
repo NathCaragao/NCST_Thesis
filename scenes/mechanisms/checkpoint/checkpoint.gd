@@ -18,6 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if !checkpoint_reached:
 			checkpoint_reached = true
+			$"../ScoreUI/FailScreen/VBoxContainer/RespawnBtn".disabled = false
 			sprite.enable_fire()
 			EventNotifier.add_notif("Checkpoint Activated")
 			$"../ScoreUI/FailScreen/VBoxContainer/RespawnBtn".disabled = false
