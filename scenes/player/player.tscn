@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=42 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://fsm/playerStates/player-death.gd" id="14_oykdt"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="15_aah5w"]
 [ext_resource type="Script" path="res://scenes/components/skill-hitbox/skill_hit_box.gd" id="17_fp6gu"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="17_p4f2n"]
+[ext_resource type="Texture2D" uid="uid://cg8debiytau2d" path="res://assets/Images/HUD/hp_bar_icon_new.png" id="17_u4duo"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="18_6e8ig"]
 [ext_resource type="Script" path="res://fsm/playerStates/player-hit.gd" id="18_ej16c"]
 [ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="20_eusl1"]
@@ -177,12 +179,19 @@ debug_color = Color(0.983351, 0, 0.353836, 0.42)
 
 [node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
 
+[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_left = 253.0
+offset_top = 21.0
+offset_right = 308.0
+offset_bottom = 83.0
+texture = ExtResource("17_u4duo")
+
 [node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("23_q8sdd")]
 custom_minimum_size = Vector2(240, 10)
-offset_left = 240.0
-offset_top = 20.0
-offset_right = 520.0
-offset_bottom = 50.0
+offset_left = 310.0
+offset_top = 21.0
+offset_right = 590.0
+offset_bottom = 51.0
 scale = Vector2(2, 2)
 
 [node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
@@ -190,9 +199,16 @@ offset_top = -7.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 32
 
+[node name="PhotoFrame" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_right = 235.0
+offset_bottom = 235.0
+texture = ExtResource("17_p4f2n")
+
 [node name="PlayerIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
-offset_right = 23515.0
-offset_bottom = 23500.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 21510.0
+offset_bottom = 21609.0
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("20_eusl1")
 

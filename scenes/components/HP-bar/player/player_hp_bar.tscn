@@ -1,13 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://c03il47od01w5"]
 
 [ext_resource type="Script" path="res://scenes/components/HP-bar/player/player_hp_bar.gd" id="1_6jv7n"]
-[ext_resource type="Texture2D" uid="uid://bfx32k87tfvkw" path="res://assets/Images/HUD/hp_fill.png" id="1_wfw5l"]
-[ext_resource type="Texture2D" uid="uid://d2i4ifqsnqw34" path="res://assets/Images/HUD/hp_dmg_fill.png" id="3_o6ioj"]
+[ext_resource type="Texture2D" uid="uid://b1u6x5xd2nc0m" path="res://assets/Images/HUD/hp_bar_bg_new.png" id="1_ugbac"]
+[ext_resource type="Texture2D" uid="uid://t3w226fiw82w" path="res://assets/Images/HUD/hp_bar_fill_new.png" id="2_w27qe"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmn26"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s1xgb"]
+texture = ExtResource("1_ugbac")
+region_rect = Rect2(8, 0, 100, 10)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ohdhl"]
-texture = ExtResource("1_wfw5l")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nms33"]
+texture = ExtResource("2_w27qe")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqjia"]
 bg_color = Color(0.122252, 0.122252, 0.122252, 1)
@@ -18,23 +20,23 @@ expand_margin_bottom = 1.0
 shadow_color = Color(0, 0, 0, 0.27451)
 shadow_offset = Vector2(0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo2am"]
-texture = ExtResource("3_o6ioj")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a30nj"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="PlayerHPbar" type="ProgressBar"]
 z_index = 1
-custom_minimum_size = Vector2(192, 16)
-offset_right = 192.0
-offset_bottom = 16.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_pmn26")
-theme_override_styles/fill = SubResource("StyleBoxTexture_ohdhl")
+custom_minimum_size = Vector2(108, 10)
+offset_right = 108.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxTexture_s1xgb")
+theme_override_styles/fill = SubResource("StyleBoxTexture_nms33")
 value = 60.0
 show_percentage = false
 script = ExtResource("1_6jv7n")
 
 [node name="DmgBar" type="ProgressBar" parent="."]
 z_index = -1
-custom_minimum_size = Vector2(192, 16)
+custom_minimum_size = Vector2(108, 10)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_xqjia")
-theme_override_styles/fill = SubResource("StyleBoxTexture_yo2am")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a30nj")
 value = 80.0
 show_percentage = false
 
@@ -57,7 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
