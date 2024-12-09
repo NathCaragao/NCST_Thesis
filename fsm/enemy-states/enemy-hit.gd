@@ -4,7 +4,7 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
-@export var attack : AttackComponent
+@export var attack : Node2D
 @onready var player : PlayerHercules = get_tree().get_first_node_in_group("Player")
 
 
@@ -47,7 +47,7 @@ func knock_back() -> void:
 	knockback_direction.y = 0 # ensure 0 to keep the knockback horizontal
 	
 	actor.velocity = knockback_direction * attack.knockback_force
-	
+
 	actor.move_and_slide()
 	
 	is_knocked_back = true

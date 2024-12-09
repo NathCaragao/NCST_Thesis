@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="13_vwbug"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_elup6"]
 [ext_resource type="Script" path="res://fsm/special states/bird/bird_death.gd" id="14_x6l45"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_auuxh"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="16_2odl7"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="17_03l1g"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="19_wrwvg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fue4e"]
 shader = ExtResource("1_76jkb")
@@ -469,11 +469,10 @@ timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="StateMachine/BirdAttack"]
 wait_time = 1.5
 
-[node name="BirdHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
+[node name="BirdHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health")]
 script = ExtResource("13_04jlf")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
 
 [node name="BirdDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("14_x6l45")
@@ -490,17 +489,15 @@ position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_bwk02")
 debug_color = Color(0.982589, 0, 0.360821, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("14_elup6")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(27, 6)
 shape = SubResource("RectangleShape2D_v6lq3")
 disabled = true
 debug_color = Color(0, 0.648864, 0.166065, 0.42)
-
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("15_auuxh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="EnemyHealthComp"]
 
@@ -529,6 +526,9 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(5, 5)
+
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("19_wrwvg")
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {

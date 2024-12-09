@@ -14,7 +14,7 @@
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="10_v83g4"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_3h406"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="11_k2172"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="15_avx37"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="15_00y5x"]
 [ext_resource type="AudioStream" uid="uid://ddkn0qkm7hacs" path="res://assets/Audios/SFXs/enemies/hydra realistic roar.mp3" id="16_v3n8u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1hyd"]
@@ -394,7 +394,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 script = ExtResource("10_5sdga")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("11_3h406")
@@ -466,9 +466,8 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(5, 5)
 
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("15_avx37")
-base_dmg = 0
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("15_00y5x")
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -10)

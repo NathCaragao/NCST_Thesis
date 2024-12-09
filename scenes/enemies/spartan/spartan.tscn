@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="13_1ttuh"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_vx6gm"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_4xhq3"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="17_vl1tm"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="18_rvllq"]
 [ext_resource type="AudioStream" uid="uid://xtaf04uwslbq" path="res://assets/Audios/SFXs/enemies/bandit attack sound.mp3" id="19_lqsvl"]
 [ext_resource type="AudioStream" uid="uid://dp1j6ypgpx32t" path="res://assets/Audios/SFXs/enemies/male-death-sound-128357.mp3" id="20_uojcp"]
 
@@ -494,7 +494,7 @@ wait_time = 2.0
 script = ExtResource("11_13w0o")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("12_gnsod")
@@ -512,9 +512,10 @@ position = Vector2(-7, 7)
 shape = SubResource("CapsuleShape2D_twu16")
 debug_color = Color(0.991607, 0, 0.263324, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 position = Vector2(2, 0)
 script = ExtResource("14_vx6gm")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="HitboxArea" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(16, 12)
@@ -528,8 +529,8 @@ offset_top = -20.0
 offset_right = 21.0
 offset_bottom = -17.0
 
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("17_vl1tm")
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("18_rvllq")
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(-6, -21)

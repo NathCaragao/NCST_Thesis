@@ -5231,7 +5231,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-517, -153)
+position = Vector2(5082, 2788)
 scale = Vector2(1.4, 1.4)
 collision_mask = 35
 
