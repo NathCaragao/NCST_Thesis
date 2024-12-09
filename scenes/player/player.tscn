@@ -242,46 +242,42 @@ grow_vertical = 0
 scale = Vector2(2.5, 2.5)
 
 [node name="Guide1" type="TextureRect" parent="HUD"]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1220.0
+offset_left = 508.0
 offset_top = -126.0
-offset_right = 1284.0
+offset_right = 572.0
 offset_bottom = -86.0
 grow_vertical = 0
 scale = Vector2(3, 3)
 texture = ExtResource("25_7gieo")
 
 [node name="Guide2" type="TextureRect" parent="HUD"]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 450.0
-offset_top = -126.0
-offset_right = 514.0
-offset_bottom = -86.0
+offset_left = 1152.0
+offset_top = -124.0
+offset_right = 1216.0
+offset_bottom = -84.0
 grow_vertical = 0
 scale = Vector2(3, 3)
 texture = ExtResource("26_nhbjn")
 
 [node name="Guide3" type="TextureRect" parent="HUD"]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1532.0
-offset_top = -126.0
-offset_right = 1596.0
-offset_bottom = -86.0
+offset_left = 1686.0
+offset_top = -286.0
+offset_right = 1750.0
+offset_bottom = -246.0
 grow_vertical = 0
 scale = Vector2(3, 3)
 texture = ExtResource("27_ycbht")
 
 [node name="Guide4" type="TextureRect" parent="HUD"]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
