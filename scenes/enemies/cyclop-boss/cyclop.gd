@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 func on_cyclop_death() -> void:
 	if cyclop_hp_comp.current_health == 0:
-		emit_signal("OpenTrapdoor")
+		GameSignals.emit_signal("MegalusDefeated")
 		Dialogic.start("S1_1-11-2")
 
 # flip sprite

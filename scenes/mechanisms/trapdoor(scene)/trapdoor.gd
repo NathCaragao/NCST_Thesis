@@ -7,7 +7,7 @@ extends StaticBody2D
 @export var cyclops : Megalus
 
 func _ready() -> void:
-	cyclops.connect("OpenTrapdoor", Callable(self, "on_cyclops_defeat"))
+	GameSignals.connect("MegalusDefeated", Callable(self, "on_cyclops_defeat"))
 	sprite_close()
 
 func sprite_open() -> void:
