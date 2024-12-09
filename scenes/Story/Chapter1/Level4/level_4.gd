@@ -1,7 +1,5 @@
 extends Node2D
 
-# TESTED AND FUNCTIONAL
-
 var scene_path : String = "res://scenes/cutscenes-collection/level 4/level_4_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CanvasLayer
 @onready var bgm = $bgm

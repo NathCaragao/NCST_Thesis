@@ -371,6 +371,7 @@ _data = {
 }
 
 [node name="Wolf" type="CharacterBody2D"]
+collision_layer = 0
 collision_mask = 65
 script = ExtResource("1_07ycu")
 
@@ -470,7 +471,6 @@ libraries = {
 
 [node name="atk" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("18_gb5on")
-volume_db = -10.0
 
 [node name="death" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("19_nd273")

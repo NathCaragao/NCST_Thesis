@@ -1,7 +1,7 @@
 class_name Hitbox
 extends Area2D
 
-var total_dmg : float
+var total_dmg : int
 @onready var attack_component: AttackComponent = $"../AttackComponent"
 
 func _ready() -> void:
