@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=93 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://c2hh7o51pwf2a" path="res://assets/Audios/bgm/magickal_river.mp3" id="34_s6d57"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="36_io81e"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="37_xq8p2"]
+[ext_resource type="PackedScene" uid="uid://bf80co8lb440m" path="res://scenes/components/coin/coin.tscn" id="38_wynwg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2ywo"]
 texture = ExtResource("6_tphwu")
@@ -8004,7 +8005,7 @@ tile_map_data = PackedByteArray("AAD9/Pn/AAANAAAAAAAI/fX/AAANAAAAAAAI/e7/AAANAAA
 tile_set = SubResource("TileSet_cu22k")
 
 [node name="Player" parent="." instance=ExtResource("14_ejtwu")]
-position = Vector2(-29535, -52)
+position = Vector2(-29648, -99)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -8436,6 +8437,398 @@ checkpoint_bool = NodePath("..")
 [node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
 unique_name_in_owner = true
 position = Vector2(-51, -44)
+
+[node name="coin_collection" type="Node2D" parent="."]
+
+[node name="coin" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-29188, -15)
+
+[node name="coin2" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-29169, -16)
+
+[node name="coin3" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-29145, -17)
+
+[node name="coin4" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-28425, -51)
+
+[node name="coin5" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-28239, -116)
+
+[node name="coin6" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-28066, -159)
+
+[node name="coin7" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-27907, -193)
+
+[node name="coin8" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-27735, -199)
+
+[node name="coin9" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-27217, -195)
+
+[node name="coin10" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-27189, -195)
+
+[node name="coin11" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-27161, -195)
+
+[node name="coin12" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26939, -4)
+
+[node name="coin13" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26917, -3)
+
+[node name="coin14" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26887, -2)
+
+[node name="coin15" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26215, -149)
+
+[node name="coin16" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26495, -404)
+
+[node name="coin17" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-26623, -401)
+
+[node name="coin18" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-25862, -533)
+
+[node name="coin19" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-25864, -393)
+
+[node name="coin20" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-25824, -393)
+
+[node name="coin21" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-25090, -390)
+
+[node name="coin22" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-24881, -338)
+
+[node name="coin23" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-24629, -291)
+
+[node name="coin24" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-24396, -340)
+
+[node name="coin25" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-23301, 0)
+
+[node name="coin26" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-23278, 0)
+
+[node name="coin27" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-23255, -1)
+
+[node name="coin28" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-21678, -4)
+
+[node name="coin29" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-21649, -4)
+
+[node name="coin30" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-22008, -3)
+
+[node name="coin31" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-21977, -5)
+
+[node name="coin32" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-20423, 1)
+
+[node name="coin33" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-20641, -89)
+
+[node name="coin34" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-19822, -436)
+
+[node name="coin35" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-19799, -436)
+
+[node name="coin36" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-19769, -437)
+
+[node name="coin37" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17943, -442)
+
+[node name="coin38" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17909, -440)
+
+[node name="coin39" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17877, -442)
+
+[node name="coin40" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17732, -720)
+
+[node name="coin41" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18142, -739)
+
+[node name="coin42" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18115, -739)
+
+[node name="coin43" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18367, -776)
+
+[node name="coin44" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18565, -803)
+
+[node name="coin45" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18589, -804)
+
+[node name="coin46" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18612, -804)
+
+[node name="coin47" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18910, 34)
+
+[node name="coin48" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18911, 84)
+
+[node name="coin49" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18910, 139)
+
+[node name="coin50" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18909, 197)
+
+[node name="coin51" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18662, 601)
+
+[node name="coin52" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18617, 600)
+
+[node name="coin53" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-18570, 601)
+
+[node name="coin54" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17936, 611)
+
+[node name="coin55" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17313, 400)
+
+[node name="coin56" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17336, 398)
+
+[node name="coin57" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17364, 400)
+
+[node name="coin58" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17984, 265)
+
+[node name="coin59" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17983, 143)
+
+[node name="coin60" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17119, -1)
+
+[node name="coin61" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17086, -3)
+
+[node name="coin62" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-17047, 0)
+
+[node name="coin63" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15504, -31)
+
+[node name="coin64" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15476, -31)
+
+[node name="coin65" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15442, -30)
+
+[node name="coin66" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15409, -31)
+
+[node name="coin67" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15368, -31)
+
+[node name="coin68" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15438, -176)
+
+[node name="coin69" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15400, -175)
+
+[node name="coin70" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15364, -171)
+
+[node name="coin71" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15393, -284)
+
+[node name="coin72" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15352, -282)
+
+[node name="coin73" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15309, -282)
+
+[node name="coin74" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15055, -278)
+
+[node name="coin75" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-15002, -248)
+
+[node name="coin76" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14944, -199)
+
+[node name="coin77" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14897, -140)
+
+[node name="coin78" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14868, -82)
+
+[node name="coin79" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14844, -28)
+
+[node name="coin80" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14607, -16)
+
+[node name="coin81" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14576, -55)
+
+[node name="coin82" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14503, -55)
+
+[node name="coin83" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14489, -113)
+
+[node name="coin84" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14426, -151)
+
+[node name="coin85" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14357, -117)
+
+[node name="coin86" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-14029, -102)
+
+[node name="coin87" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-13701, -119)
+
+[node name="coin88" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11636, -9)
+
+[node name="coin89" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11609, -10)
+
+[node name="coin90" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11354, -144)
+
+[node name="coin91" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11321, -142)
+
+[node name="coin92" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11290, -141)
+
+[node name="coin93" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11244, -349)
+
+[node name="coin94" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11070, -477)
+
+[node name="coin95" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-11158, -551)
+
+[node name="coin96" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-10814, -509)
+
+[node name="coin97" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-10685, -91)
+
+[node name="coin98" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-10481, -96)
+
+[node name="coin99" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-9461, -320)
+
+[node name="coin100" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-9290, -301)
+
+[node name="coin101" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-9021, -287)
+
+[node name="coin102" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-9016, -449)
+
+[node name="coin103" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-8814, -209)
+
+[node name="coin104" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-8728, -322)
+
+[node name="coin105" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-8468, -398)
+
+[node name="coin106" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-8300, -146)
+
+[node name="coin107" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-8010, -160)
+
+[node name="coin108" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7934, -224)
+
+[node name="coin109" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7695, -302)
+
+[node name="coin110" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7693, -438)
+
+[node name="coin111" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7296, -407)
+
+[node name="coin112" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7264, -408)
+
+[node name="coin113" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-7230, -406)
+
+[node name="coin114" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-6857, -307)
+
+[node name="coin115" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-6451, -166)
+
+[node name="coin116" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-6179, -34)
+
+[node name="coin117" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-6081, -275)
+
+[node name="coin118" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5703, -190)
+
+[node name="coin119" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5679, -192)
+
+[node name="coin120" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5284, -144)
+
+[node name="coin121" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5256, -143)
+
+[node name="coin122" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-4984, -347)
+
+[node name="coin123" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5178, -364)
+
+[node name="coin124" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5260, -495)
+
+[node name="coin125" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-5578, -255)
+
+[node name="coin126" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2760, -327)
+
+[node name="coin127" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2776, -327)
+
+[node name="coin128" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2792, -327)
+
+[node name="coin129" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2808, -327)
+
+[node name="coin130" parent="coin_collection" instance=ExtResource("38_wynwg")]
+position = Vector2(-2824, -327)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
