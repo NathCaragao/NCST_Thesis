@@ -1,5 +1,13 @@
 extends Control
 
+
+@onready var heroes_section: ColorRect = $HeroesSection
+@onready var hercules_prof: ColorRect = $HerculesProf
+
+
+func _ready() -> void:
+	ScoreUi.get_node('CanvasLayer').hide()
+
 # close_btn
 func almanac_close() -> void:
 	# Create a new tween
@@ -15,3 +23,22 @@ func almanac_close() -> void:
 	
 	# After the animation completes, hide the window
 	tween.tween_callback(func(): visible = false)
+
+
+func _on_heroes_btn_pressed() -> void:
+	heroes_section.visible = true
+
+
+func _on_hercules_btn_pressed() -> void:
+	# hide other windows
+	#heroes_section.visible = false
+	# show active window
+	hercules_prof.visible = true
+
+# heroes section back button
+func _on_hs_backbtn_pressed() -> void:
+	heroes_section.visible = false
+
+# hercules profile back btn
+func _on_hercules_back_btn_pressed() -> void:
+	hercules_prof.visible = false

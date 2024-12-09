@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8em666yw7wu1"]
+[gd_scene load_steps=6 format=3 uid="uid://c8em666yw7wu1"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/almanac-screen/almanac.gd" id="1_fa3ej"]
 [ext_resource type="Texture2D" uid="uid://c2wypejo7t4hg" path="res://assets/ui/windows/open_book.png" id="1_k2p4c"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_g7ja5"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="4_vcgfu"]
+[ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="5_d1qiy"]
 
 [node name="Almanac" type="Control"]
 layout_mode = 3
@@ -33,4 +35,180 @@ theme_override_font_sizes/font_size = 48
 text = "X"
 flat = true
 
+[node name="HeaderTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 32.0
+offset_right = 785.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 64
+text = "ALMANAC"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 30.0
+offset_right = 931.0
+offset_bottom = 972.0
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="HeroesBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Heroes"
+flat = true
+alignment = 0
+
+[node name="GodsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "gods and goddesses"
+flat = true
+alignment = 0
+
+[node name="12LaborsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "THE 12 LAbORS"
+flat = true
+alignment = 0
+
+[node name="EnemiesBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "monsters and creatures"
+flat = true
+alignment = 0
+
+[node name="HeroesSection" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 193.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HeroesSection"]
+offset_top = 205.0
+offset_right = 626.0
+offset_bottom = 748.0
+theme_override_constants/separation = 60
+
+[node name="HerculesBtn" type="Button" parent="HeroesSection/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Hercules"
+flat = true
+alignment = 0
+
+[node name="HSBackbtn" type="Button" parent="HeroesSection"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 724.0
+offset_right = 640.0
+offset_bottom = 761.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="HerculesProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="HerculesProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Hercules (Heracles)
+heroes"
+
+[node name="Desc" type="Label" parent="HerculesProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Hercules, also known as Heracles in Greek mythology, is a demigod and one of the most renowned heroes of ancient Greece. Born as the son of Zeus, the king of the gods, and Alcmene, a mortal woman, Hercules possesses extraordinary strength, resilience, and courage. However, his life is marked by hardship and trials, largely due to the enmity of Hera, Zeus' wife, who despised him as a symbol of her husband's infidelity."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="HerculesProf"]
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="HerculesProf"]
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("5_d1qiy")
+
+[node name="HerculesBackBtn" type="Button" parent="HerculesProf"]
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
 [connection signal="pressed" from="CloseBtn" to="." method="almanac_close"]
+[connection signal="pressed" from="VBoxContainer/HeroesBtn" to="." method="_on_heroes_btn_pressed"]
+[connection signal="pressed" from="HeroesSection/VBoxContainer/HerculesBtn" to="." method="_on_hercules_btn_pressed"]
+[connection signal="pressed" from="HeroesSection/HSBackbtn" to="." method="_on_hs_backbtn_pressed"]
+[connection signal="pressed" from="HerculesProf/HerculesBackBtn" to="." method="_on_hercules_back_btn_pressed"]
