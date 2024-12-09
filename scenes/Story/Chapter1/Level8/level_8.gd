@@ -14,6 +14,7 @@ $SpawnArea/Spawn4]
 
 @export var player : PlayerHercules
 var paused : bool = false
+var isDialogPlaying = false
 
 # npc interaction reference
 @onready var interaction_area: InteractionArea = $NPCs/InteractionArea
@@ -35,9 +36,20 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(on_wave1)
 	Dialogic.signal_event.connect(on_level_complete)
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	Dialogic.timeline_started.connect(on_dialog_start)
+	Dialogic.timeline_ended.connect(on_dialog_end)
 	# disable the 3rd dialog
 	$NPCs/InteractionArea3/CollisionShape2D.disabled = true
 	opening_cutscene()
+
+# Handles the start signal from Dialogic
+func on_dialog_start():
+	isDialogPlaying = true
+	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+func on_dialog_end():
+	isDialogPlaying = false
+	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
@@ -49,7 +61,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !isDialogPlaying:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true

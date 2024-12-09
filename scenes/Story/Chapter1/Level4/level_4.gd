@@ -13,6 +13,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 4/level_4_ope
 @export var boss_boar : CharacterBody2D
 
 var paused : bool = false
+var isDialogPlaying = false
 
 func _ready() -> void:
 	player_state_reset()
@@ -24,10 +25,22 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	boss_boar.connect("BossBoarDefeated", Callable(self, "on_defeat"))
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	Dialogic.timeline_started.connect(on_dialog_start)
+	Dialogic.timeline_ended.connect(on_dialog_end)
 	
 	opening_cutscene()
 	# snow particle
 	%Snow.local_coords = false
+
+# Handles the start signal from Dialogic
+func on_dialog_start():
+	isDialogPlaying = true
+	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+func on_dialog_end():
+	isDialogPlaying = false
+	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
 		# Play the lively audio
@@ -38,7 +51,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !isDialogPlaying:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true

@@ -14,6 +14,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 3/level_3_ope
 @export var victory_screen : Control
 
 var paused : bool = false
+var isDialogPlaying = false
 
 func _ready() -> void:
 	# resets player score and inv
@@ -26,8 +27,19 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_complete)
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	Dialogic.timeline_started.connect(on_dialog_start)
+	Dialogic.timeline_ended.connect(on_dialog_end)
 	
 	opening_cutscene()
+
+# Handles the start signal from Dialogic
+func on_dialog_start():
+	isDialogPlaying = true
+	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+func on_dialog_end():
+	isDialogPlaying = false
+	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
 
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
@@ -40,7 +52,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !isDialogPlaying:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true

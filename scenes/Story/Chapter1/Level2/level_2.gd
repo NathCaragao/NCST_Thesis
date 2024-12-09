@@ -10,6 +10,7 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 2/level_2_ope
 @export var victory_screen : Control
 @export var hydra : EnemyHydra
 
+var isDialogPlaying = false
 
 var paused : bool = false
 
@@ -26,8 +27,19 @@ func _ready() -> void:
 	hydra.connect("HydraDefeated", Callable(self, "on_hydra_defeat"))
 	
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	Dialogic.timeline_started.connect(on_dialog_start)
+	Dialogic.timeline_ended.connect(on_dialog_end)
 	
 	opening_cutscene()
+
+# Handles the start signal from Dialogic
+func on_dialog_start():
+	isDialogPlaying = true
+	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+func on_dialog_end():
+	isDialogPlaying = false
+	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
 
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
@@ -42,7 +54,7 @@ func on_player_fail() -> void:
 	fail_screen.open()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !isDialogPlaying:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true

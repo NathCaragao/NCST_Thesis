@@ -12,6 +12,7 @@ var scene_path2 : String = "res://scenes/cutscenes-collection/level 6/level_6_en
 @onready var bgm = $bgm
 
 var paused : bool = false
+var isDialogPlaying = false
 
 func _ready() -> void:
 	player_state_reset()
@@ -21,12 +22,27 @@ func _ready() -> void:
 	CutsceneManager.set_canvas_layer(canvas_layer)
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
+	Dialogic.timeline_started.connect(on_dialog_start)
+	Dialogic.timeline_ended.connect(on_dialog_end)
 	
 	opening_cutscene_lvl6()
 	
 	Dialogic.signal_event.connect(_on_bull_defeated)
 	Dialogic.signal_event.connect(_on_level_complete)
-	
+
+
+# Handles the start signal from Dialogic
+func on_dialog_start():
+	isDialogPlaying = true
+	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+func on_dialog_end():
+	isDialogPlaying = false
+	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
+
+
+
+
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
 		# Play the lively audio
@@ -38,7 +54,7 @@ func on_player_fail() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !isDialogPlaying:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_screen.open()
 		get_tree().paused = true
