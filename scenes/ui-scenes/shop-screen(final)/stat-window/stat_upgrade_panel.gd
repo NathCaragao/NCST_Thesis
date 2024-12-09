@@ -61,6 +61,9 @@ extends Control
 @export var speed_max_level : int = 5
 
 
+func _ready() -> void:
+	clear_info_display()
+
 # ITEM 1
 func item1_entered() -> void:
 	frame_hover_1.visible = true
