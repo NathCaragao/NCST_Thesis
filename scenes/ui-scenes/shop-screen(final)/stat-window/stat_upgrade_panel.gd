@@ -68,7 +68,7 @@ func item1_entered() -> void:
 
 func item1_exited() -> void:
 	frame_hover_1.visible = false
-	clear_info_display()
+	#clear_info_display()
 
 
 # ITEM 2
@@ -78,7 +78,7 @@ func item2_entered() -> void:
 
 func item2_exited() -> void:
 	frame_hover_2.visible = false
-	clear_info_display()
+	#clear_info_display()
 
 
 # ITEM 3
@@ -88,7 +88,7 @@ func item3_entered() -> void:
 
 func item3_exited() -> void:
 	frame_hover_3.visible = false
-	clear_info_display()
+	#clear_info_display()
 
 
 # ITEM 4
@@ -98,7 +98,7 @@ func item4_entered() -> void:
 
 func item4_exited() -> void:
 	frame_hover_4.visible = false
-	clear_info_display()
+	#clear_info_display()
 
 # upgrading the attack stat
 func upgrade_attack() -> void:
