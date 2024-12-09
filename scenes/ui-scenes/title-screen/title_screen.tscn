@@ -300,6 +300,7 @@ theme_override_font_sizes/font_size = 40
 text = "Close"
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 133.0
 offset_top = 913.0
