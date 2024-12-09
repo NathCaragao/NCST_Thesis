@@ -1,8 +1,6 @@
 # level3.gd
 extends Node2D
 
-# TESTED AND FUNCTIONAL
-
 var scene_path : String = "res://scenes/cutscenes-collection/level 3/level_3_opening.tscn"
 @onready var cutscene_layer: CanvasLayer = $CutsceneLayer
 @onready var bgm_lvl_3 = $bgm_lvl3
