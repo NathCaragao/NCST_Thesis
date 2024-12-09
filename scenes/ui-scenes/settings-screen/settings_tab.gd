@@ -52,4 +52,4 @@ func settings_close() -> void:
 		.set_ease(Tween.EASE_IN)
 	
 	# After the animation completes, hide the window
-	#tween.tween_callback(func(): visible = false)
+	tween.tween_callback(func(): visible = false)

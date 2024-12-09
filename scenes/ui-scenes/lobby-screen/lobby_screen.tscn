@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=39 format=4 uid="uid://bew17a4cm663b"]
 
 [ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cha4508ye1b32" path="res://scenes/ui-scenes/settings-screen/settings_tab.tscn" id="10_ksrao"]
 [ext_resource type="PackedScene" uid="uid://c8em666yw7wu1" path="res://scenes/ui-scenes/almanac-screen/almanac.tscn" id="13_eq0bs"]
 [ext_resource type="Texture2D" uid="uid://c0kvmc4gwk40r" path="res://assets/dynamic assets/MonedaD.png" id="17_v45dv"]
+[ext_resource type="PackedScene" uid="uid://48qovkw5aj6e" path="res://scenes/ui-scenes/shop-screen(final)/shop_3.tscn" id="18_47jsh"]
 [ext_resource type="Texture2D" uid="uid://pydj505shwk1" path="res://assets/dynamic assets/premium_gems.png" id="18_bclf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dc7h"]
@@ -1378,7 +1379,7 @@ animations = [{
 script = ExtResource("1_oyntd")
 settings_window = NodePath("CanvasLayer/SettingsTab")
 almanac_window = NodePath("CanvasLayer/Almanac")
-shop_window = NodePath("")
+shop_window = NodePath("CanvasLayer/Shop3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -1588,6 +1589,16 @@ offset_bottom = 95.0
 texture = ExtResource("9_ee0k1")
 expand_mode = 1
 
+[node name="SettingsTab" parent="CanvasLayer" instance=ExtResource("10_ksrao")]
+visible = false
+offset_bottom = -139.0
+
+[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
+visible = false
+
+[node name="Shop3" parent="CanvasLayer" instance=ExtResource("18_47jsh")]
+visible = false
+
 [node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(1624, 63)
 scale = Vector2(3, 3)
@@ -1595,13 +1606,6 @@ sprite_frames = SubResource("SpriteFrames_vgjvk")
 animation = &"coin-idle"
 autoplay = "coin-idle"
 frame_progress = 0.767151
-
-[node name="SettingsTab" parent="CanvasLayer" instance=ExtResource("10_ksrao")]
-visible = false
-offset_bottom = -139.0
-
-[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
-visible = false
 
 [node name="GemsIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(1259, 64)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://r13lg50en4gg"]
+[gd_scene load_steps=18 format=3 uid="uid://r13lg50en4gg"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/shop-screen(final)/stat-window/stat_upgrade_panel.gd" id="1_2jc0p"]
 [ext_resource type="Texture2D" uid="uid://dxfg0ha6ocgcr" path="res://assets/ui/windows/shop_item_slot.png" id="1_4bh5a"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ds0my0p8o3gis" path="res://assets/icons/heart_icon.png" id="8_g41fd"]
 [ext_resource type="Texture2D" uid="uid://ddssxp4ebasa1" path="res://assets/icons/def_icon.png" id="9_x5lh0"]
 [ext_resource type="Texture2D" uid="uid://cdx4o4f8c6top" path="res://assets/icons/speed_icon.png" id="10_4lnpc"]
+[ext_resource type="Texture2D" uid="uid://dqpknnm6dqij6" path="res://assets/ui/windows/item_infor_sprite.png" id="11_4ix3h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01s6u"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -398,12 +399,13 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemDesc" type="Panel" parent="."]
+[node name="ItemDesc" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 464.0
 offset_top = 786.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+texture = ExtResource("11_4ix3h")
 
 [node name="Statname" type="Label" parent="ItemDesc"]
 layout_mode = 0
@@ -411,6 +413,7 @@ offset_left = 40.0
 offset_top = 40.0
 offset_right = 196.0
 offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 32
 
@@ -420,6 +423,7 @@ offset_left = 40.0
 offset_top = 113.0
 offset_right = 196.0
 offset_bottom = 152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 32
 
@@ -429,6 +433,7 @@ offset_left = 40.0
 offset_top = 178.0
 offset_right = 1442.0
 offset_bottom = 286.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
