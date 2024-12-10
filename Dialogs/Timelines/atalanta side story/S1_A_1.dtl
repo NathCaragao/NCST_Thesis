@@ -1,0 +1,5 @@
+join atalanta center
+atalanta:  "I've heard the roar of the Calydonian Boar. Today, I prove my worth."
+join artemis rightmost [animation="Fade In Down"]
+artemis: "Show them your strength, Atalanta."
+[signal arg="end"]
