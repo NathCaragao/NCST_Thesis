@@ -14,6 +14,8 @@ func on_key2_use() -> void:
 		if gate_zone == true:
 			totem_holder.activate_totem()
 			$GateAnim.play("gate-open")
+			QuestUi.transition_quest_box()
+			QuestUi.add_quest("Deeper in the Forest", "Continue exploring the forest.")
 
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:

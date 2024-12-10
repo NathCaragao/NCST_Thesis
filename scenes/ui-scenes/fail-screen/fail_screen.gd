@@ -40,3 +40,5 @@ func player_state_reset() -> void:
 	
 	# reset player inventory
 	player.inv.reset()
+	
+	QuestUi.hide_quest_box()

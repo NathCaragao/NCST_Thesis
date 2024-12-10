@@ -60,6 +60,10 @@ func lion_dialog() -> void:
 	print("Current dialog playing: S1_1-15-2")
 	# Wait for dialog to complete
 	await Dialogic.timeline_ended
+	
+	QuestUi.transition_quest_box()
+	QuestUi.add_quest("The First Labor", "Mission Complete!")
+	
 	# Then wait 1.5 seconds
 	await get_tree().create_timer(1.5).timeout
 	# Finally emit the victory signal
