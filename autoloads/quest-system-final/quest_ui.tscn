@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qke74hwrj66"]
+
+[ext_resource type="Script" path="res://autoloads/quest-system-final/quest_ui.gd" id="1_e01qp"]
+
+[node name="QuestUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e01qp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="QuestBox" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -317.0
+offset_top = 143.0
+offset_right = -48.0
+offset_bottom = 261.0
+grow_horizontal = 0
+color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="Title" type="Label" parent="CanvasLayer/QuestBox"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 54.0
+offset_bottom = 36.3333
+text = "test"
+
+[node name="Desc" type="Label" parent="CanvasLayer/QuestBox"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 45.0
+offset_right = 54.0
+offset_bottom = 68.0
+text = "test"
+
+[node name="Quota" type="Label" parent="CanvasLayer/QuestBox"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 81.0
+offset_right = 54.0
+offset_bottom = 104.0
+text = "1"
