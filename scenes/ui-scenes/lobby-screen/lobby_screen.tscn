@@ -1289,9 +1289,6 @@ sources/0 = SubResource("TileSetAtlasSource_bb10f")
 sources/2 = SubResource("TileSetAtlasSource_1wtu7")
 sources/3 = SubResource("TileSetAtlasSource_642xt")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeemb"]
-bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5c6s"]
 atlas = ExtResource("17_v45dv")
 region = Rect2(0, 0, 16, 16)
@@ -1370,6 +1367,9 @@ animations = [{
 "name": &"gems-idle",
 "speed": 10.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeemb"]
+bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pfp1e"]
 
@@ -1529,6 +1529,22 @@ text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1624, 63)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_vgjvk")
+animation = &"coin-idle"
+autoplay = "coin-idle"
+frame_progress = 0.734188
+
+[node name="GemsIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1259, 64)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bnkuh")
+animation = &"gems-idle"
+autoplay = "gems-idle"
+frame_progress = 0.618346
+
 [node name="SettingsBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
 offset_left = 489.0
@@ -1598,22 +1614,6 @@ visible = false
 
 [node name="Shop3" parent="CanvasLayer" instance=ExtResource("18_47jsh")]
 visible = false
-
-[node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(1624, 63)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_vgjvk")
-animation = &"coin-idle"
-autoplay = "coin-idle"
-frame_progress = 0.734188
-
-[node name="GemsIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(1259, 64)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_bnkuh")
-animation = &"gems-idle"
-autoplay = "gems-idle"
-frame_progress = 0.618346
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -29)
