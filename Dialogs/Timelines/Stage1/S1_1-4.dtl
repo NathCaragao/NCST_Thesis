@@ -2,3 +2,4 @@ join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: What a mess. This better be worth it—I hope there’s something valuable down\
 here.
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="end"]
