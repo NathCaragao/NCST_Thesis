@@ -8,22 +8,12 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "atalanta/atalanta",
+"default_portrait": "",
 "description": "",
-"display_name": "atalanta",
+"display_name": "caledonian_boar",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
-"portraits": {
-"atalanta/atalanta": {
-"export_overrides": {
-"image": "\"res://assets/character/portraits/Atalanta.png\""
-},
-"mirror": false,
-"offset": Vector2(100, 1150),
-"scale": 1,
-"scene": ""
-}
-},
-"scale": 2.0
+"portraits": {},
+"scale": 1.0
 }

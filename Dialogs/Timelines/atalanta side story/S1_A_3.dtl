@@ -1,0 +1,7 @@
+join caledonian_boar center
+join atalanta center
+caledonian_boar: "Roooooooooourrrrrrr!!!!!"
+atalanta: "Your tusks won't intimidate me!"
+leave atalanta
+leave atalanta
+[signal arg="end"]

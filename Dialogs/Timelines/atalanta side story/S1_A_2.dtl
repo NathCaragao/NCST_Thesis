@@ -1,0 +1,7 @@
+join Huntsman center
+Huntsman: "You think a woman can take down the boar?"
+join atalanta center [animation="Fade In Down"]
+atalanta: "I'll show you my sword's fury!"
+leave atalanta [animation="Fade Out Up"]
+leave Huntsman
+[signal arg="end"]

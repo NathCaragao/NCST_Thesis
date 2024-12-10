@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvg6a0adiievi"
-path="res://.godot/imported/tiles.png-d6ba12ef5e26f21615b7e82a0a7b7389.ctex"
+uid="uid://dgukit2rxjom4"
+path="res://.godot/imported/Atalanta.png-b3232182d614ec6057c03cdbe06780ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset (world-building)/tiles.png"
-dest_files=["res://.godot/imported/tiles.png-d6ba12ef5e26f21615b7e82a0a7b7389.ctex"]
+source_file="res://assets/character/portraits/Atalanta.png"
+dest_files=["res://.godot/imported/Atalanta.png-b3232182d614ec6057c03cdbe06780ad.ctex"]
 
 [params]
 

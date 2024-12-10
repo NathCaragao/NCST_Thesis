@@ -1087,3 +1087,9 @@ position = Vector2(8219, 611)
 
 [node name="spike wheel5" parent="." instance=ExtResource("7_p17i3")]
 position = Vector2(8742, 603)
+
+[node name="Firehazard" parent="." instance=ExtResource("2_pjyyb")]
+position = Vector2(5695, -254)
+
+[node name="Firehazard2" parent="." instance=ExtResource("2_pjyyb")]
+position = Vector2(5868, -328)
