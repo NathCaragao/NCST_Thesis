@@ -1,0 +1,9 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/elis.webp" fade="0.0"]
+narrator: In ancient Greece, where myth and legend roam, a legendary huntress emerged. Atalanta, daughter of King Iasus of Arcadia, was abandoned as a child and raised by bears. Trained by the goddess Artemis herself, she mastered unparalleled agility, strength and cunning.
+join atalanta center [animation="Fade In Down"]
+narrator: Now, the Calydonian Boar, a monstrous creature sent by the gods, terrorizes the land. With unwavering courage and her trusty sword, Atalanta embarks on a perilous quest to hunt the unyielding beast.
+atalanta: "just you wait Boar, your tusk shall be mine to claim"
+narrator: The fate of Calydon hangs in the balance. Atalanta's legend begins.
+leave atalanta [animation="Fade Out Up"]
+[background fade="0.0"]
+[signal arg="end"]
