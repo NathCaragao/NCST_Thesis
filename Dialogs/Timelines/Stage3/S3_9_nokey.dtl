@@ -1,3 +1,5 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "Another locked door? Olympus save me! That cave from earlier must hold some answers."
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Finding Rabbit", "Find the lever to unlock the gate")
