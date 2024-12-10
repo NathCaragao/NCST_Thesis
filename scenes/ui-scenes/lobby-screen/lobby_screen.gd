@@ -91,6 +91,7 @@ func setAccountName(newAccountName: String) -> void:
 func setFreeCurrency(newFreeCurrency: int) -> void:
 	%OfflineCurrency2.text = "%s" % newFreeCurrency
 	PlayerManager.coins = newFreeCurrency
+	print_debug("coints in player_manager: %s" % PlayerManager.coins)
 
 func setPremiumCurrency(newPremiumCurrency: int) -> void:
 	%PrCurrency.text = "%s" % newPremiumCurrency

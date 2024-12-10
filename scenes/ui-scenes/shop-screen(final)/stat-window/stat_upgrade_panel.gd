@@ -105,11 +105,15 @@ func item4_exited() -> void:
 
 # upgrading the attack stat
 func upgrade_attack() -> void:
+	# Disable button to prevent spamming
+	%AtkUpgrade.disabled = true
 	# check if users currency suffice
 	if PlayerManager.coins >= atk_cost:
 		if $ItemFrame1/AtkLevel.value < atk_max_level:
 			# subtract atk upgrade cost from player coins
 			PlayerManager.coins -= atk_cost
+			# Update the new coin of the player
+			await ServerManager.updateUserFreeCurrency(-1 * atk_cost)
 			# increase the attack
 			PlayerManager.player_attack += atk_upgrade
 			# update UI
@@ -120,6 +124,8 @@ func upgrade_attack() -> void:
 		print("Current attack:", str(PlayerManager.player_attack))
 	elif PlayerManager.coins < atk_cost:
 		print("You don't have enough coins")
+	# Restore button
+	%AtkUpgrade.disabled = false
 
 # upgrading the health stat
 func upgrade_health() -> void:

@@ -120,6 +120,7 @@ offset_bottom = 200.0
 flat = true
 
 [node name="AtkUpgrade" type="Button" parent="ItemFrame1"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 397.0
 offset_top = 121.0

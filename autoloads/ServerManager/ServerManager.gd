@@ -115,6 +115,12 @@ func addUserInDB() -> int:
 						equipmentInventory = [],
 						itemsInventory = [],
 						settings = [],
+						upgrades = {
+							"attack" = 0,
+							"health" = 0,
+							"defense" = 0,
+							"speed" = 0,
+						}
 					}
 				),
 				""
