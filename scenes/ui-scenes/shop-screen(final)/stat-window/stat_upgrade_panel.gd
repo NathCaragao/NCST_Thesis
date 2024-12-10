@@ -61,6 +61,12 @@ extends Control
 @export var speed_max_level : int = 5
 
 
+func _process(delta: float) -> void:
+	$ItemFrame1/AtkLevel.value = PlayerManager.attackUpgradeLevel
+	$ItemFrame2/HpLevel.value = PlayerManager.healthUpgradeLevel
+	$ItemFrame3/DefLevel.value = PlayerManager.defenseUpgradeLevel
+	$ItemFrame4/SpeedLevel.value = PlayerManager.speedUpgradeLevel
+
 func _ready() -> void:
 	clear_info_display()
 
@@ -109,7 +115,7 @@ func upgrade_attack() -> void:
 	%AtkUpgrade.disabled = true
 	# check if users currency suffice
 	if PlayerManager.coins >= atk_cost:
-		if $ItemFrame1/AtkLevel.value < atk_max_level:
+		if PlayerManager.attackUpgradeLevel < atk_max_level:
 			# subtract atk upgrade cost from player coins
 			PlayerManager.coins -= atk_cost
 			# Update the new coin of the player
@@ -117,8 +123,9 @@ func upgrade_attack() -> void:
 			# increase the attack
 			PlayerManager.player_attack += atk_upgrade
 			# update UI
+			await ServerManager.updateUserAttack(1)
 			$ItemFrame1/AtkLevel.value += 1
-		elif $ItemFrame1/AtkLevel.value == atk_max_level:
+		elif PlayerManager.attackUpgradeLevel == atk_max_level:
 			print("Already Reached the max level!")
 		
 		print("Current attack:", str(PlayerManager.player_attack))
@@ -129,16 +136,21 @@ func upgrade_attack() -> void:
 
 # upgrading the health stat
 func upgrade_health() -> void:
+	# Disable button to prevent spamming
+	%HpUpgrade.disabled = true
 	# check if users currency suffice
 	if PlayerManager.coins >= hp_cost:
-		if $ItemFrame2/HpLevel.value < hp_max_level:
+		if PlayerManager.healthUpgradeLevel < hp_max_level:
 			# subtract hp upgrade cost from player coins
 			PlayerManager.coins -= hp_cost
+			# Update the new coin of the player
+			await ServerManager.updateUserFreeCurrency(-1 * hp_cost)
 			# increase the health
 			PlayerManager.player_health += hp_upgrade
 			# update UI
+			await ServerManager.updateUserHealth(1)
 			$ItemFrame2/HpLevel.value += 1
-		elif $ItemFrame2/HpLevel.value == hp_max_level:
+		elif PlayerManager.healthUpgradeLevel == hp_max_level:
 			print("Already reached the max level!")
 	
 	elif PlayerManager.coins < hp_cost:
@@ -146,32 +158,42 @@ func upgrade_health() -> void:
 
 # upgrading the defense stat
 func upgrade_defense() -> void:
+	# Disable button to prevent spamming
+	%DefUpgrade.disabled = true
 	# check if users currency suffice
 	if PlayerManager.coins >= def_cost:
-		if $ItemFrame3/DefLevel.value < def_max_level:
+		if PlayerManager.defenseUpgradeLevel < def_max_level:
 			# subtract hp upgrade cost from player coins
 			PlayerManager.coins -= def_cost
+			# Update the new coin of the player
+			await ServerManager.updateUserFreeCurrency(-1 * def_cost)
 			# increase defense stat value
 			PlayerManager.player_defense += def_upgrade
-			# update the UI
+			# update UI
+			await ServerManager.updateUserDefense(1)
 			$ItemFrame3/DefLevel.value += 1
-		elif $ItemFrame3/DefLevel.value == def_max_level:
+		elif PlayerManager.defenseUpgradeLevel == def_max_level:
 			print("Already reached the max level!")
 	
 	elif PlayerManager.coins < def_cost:
 		print("You don't have enough coins")
 
 func upgrade_speed() -> void:
+		# Disable button to prevent spamming
+	%SpeedUpgrade.disabled = true
 	# check if users currency suffice
 	if PlayerManager.coins >= speed_cost:
-		if $ItemFrame4/SpeedLevel.value < speed_max_level:
+		if PlayerManager.speedUpgradeLevel < speed_max_level:
 			# subtract hp upgrade cost from player coins
 			PlayerManager.coins -= speed_cost
+			# Update the new coin of the player
+			await ServerManager.updateUserFreeCurrency(-1 * speed_cost)
 			# increase the speed stat
 			PlayerManager.player_move_speed += speed_upgrade
-			# update the UI
+			# update UI
+			await ServerManager.updateUserSpeed(1)
 			$ItemFrame4/SpeedLevel.value += 1
-		elif $ItemFrame4/SpeedLevel.value == speed_max_level:
+		elif PlayerManager.speedUpgradeLevel == speed_max_level:
 			print("Already reached the max level!")
 	
 	elif PlayerManager.coins < speed_cost:

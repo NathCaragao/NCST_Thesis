@@ -53,3 +53,8 @@ func shop_close() -> void:
 
 func _on_close_btn_pressed() -> void:
 	shop_close()
+
+
+func _on_visibility_changed() -> void:
+	%OfflineCurrency2.text = str(PlayerManager.coins)
+	%PrCurrency.text = str(PlayerManager.gems)

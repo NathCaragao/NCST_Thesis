@@ -23,6 +23,10 @@ func _ready() -> void:
 	setAccountName(userAccountData.user.display_name)
 	setFreeCurrency(userStorageData["freeCurrency"])
 	setPremiumCurrency(userStorageData["premiumCurrency"])
+	setAttackLevel(userStorageData["upgrades"]["attack"])
+	setHealthLevel(userStorageData["upgrades"]["health"])
+	setDefenseLevel(userStorageData["upgrades"]["defense"])
+	setSpeedLevel(userStorageData["upgrades"]["speed"])
 	# 3
 	SceneManager.hideLoadingScreen()
 	
@@ -95,3 +99,16 @@ func setFreeCurrency(newFreeCurrency: int) -> void:
 
 func setPremiumCurrency(newPremiumCurrency: int) -> void:
 	%PrCurrency.text = "%s" % newPremiumCurrency
+	PlayerManager.gems = newPremiumCurrency
+
+func setAttackLevel(newAttackLevel: int) -> void:
+	PlayerManager.attackUpgradeLevel = newAttackLevel
+	
+func setHealthLevel(newHealthLevel: int) -> void:
+	PlayerManager.healthUpgradeLevel = newHealthLevel
+	
+func setDefenseLevel(newDefenseLevel: int) -> void:
+	PlayerManager.defenseUpgradeLevel = newDefenseLevel
+	
+func setSpeedLevel(newSpeedLevel: int) -> void:
+	PlayerManager.speedUpgradeLevel = newSpeedLevel
