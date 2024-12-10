@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=127 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -36,6 +36,8 @@
 [ext_resource type="Script" path="res://scenes/friendly-npcs/Merchant/merchant.gd" id="24_jbt4r"]
 [ext_resource type="PackedScene" uid="uid://chmmu5rx8pg0w" path="res://scenes/objects/cage-key/cage_key.tscn" id="24_s3cve"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="24_ydv66"]
+[ext_resource type="PackedScene" uid="uid://ccq12hrhaxv5r" path="res://inventory-system/items (scenes)/atk_potion/atk_potion.tscn" id="26_cj83l"]
+[ext_resource type="PackedScene" uid="uid://ds0rg0pmx124r" path="res://inventory-system/items (scenes)/speed_potion/speed_potion.tscn" id="27_45ktp"]
 [ext_resource type="PackedScene" uid="uid://cmaaqi0hqotrk" path="res://scenes/objects/Cage/cage.tscn" id="28_iii3j"]
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="30_sksh4"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="33_va0sa"]
@@ -9466,6 +9468,21 @@ scale = Vector2(1.3, 1.3)
 [node name="HealthPotion8" parent="Powerups" instance=ExtResource("24_ydv66")]
 position = Vector2(2977, 884)
 scale = Vector2(1.3, 1.3)
+
+[node name="AtkPotion" parent="Powerups" instance=ExtResource("26_cj83l")]
+position = Vector2(2750, 853)
+
+[node name="SpeedPotion" parent="Powerups" instance=ExtResource("27_45ktp")]
+position = Vector2(3194, 219)
+
+[node name="HealthPotion9" parent="Powerups" instance=ExtResource("24_ydv66")]
+position = Vector2(7703, 18)
+
+[node name="AtkPotion2" parent="Powerups" instance=ExtResource("26_cj83l")]
+position = Vector2(7957, -113)
+
+[node name="SpeedPotion2" parent="Powerups" instance=ExtResource("27_45ktp")]
+position = Vector2(3295.42, 3265.68)
 
 [node name="Mechanism" type="Node2D" parent="."]
 

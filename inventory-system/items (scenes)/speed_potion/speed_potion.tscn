@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds0rg0pmx124r"]
+[gd_scene load_steps=5 format=3 uid="uid://ds0rg0pmx124r"]
 
 [ext_resource type="Script" path="res://inventory-system/items (scenes)/speed_potion/speed_potion.gd" id="1_uevjh"]
 [ext_resource type="Texture2D" uid="uid://bqc653sec01sg" path="res://assets/inv-items/tile082.png" id="1_yninh"]
+[ext_resource type="Resource" uid="uid://mcg0gpfhq4ry" path="res://inventory-system/items(res)/speed_potion.tres" id="2_4ft63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rey3d"]
 size = Vector2(12, 29)
 
 [node name="SpeedPotion" type="Node2D"]
 script = ExtResource("1_uevjh")
+item = ExtResource("2_4ft63")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yninh")
