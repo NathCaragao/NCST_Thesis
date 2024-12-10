@@ -1,6 +1,7 @@
 # QuestUI.gd
-extends Control
+extends Node
 
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var quest_box: ColorRect = $CanvasLayer/QuestBox
 @onready var title: Label = $CanvasLayer/QuestBox/Title
 @onready var desc: Label = $CanvasLayer/QuestBox/Desc

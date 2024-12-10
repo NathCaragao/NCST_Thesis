@@ -8,6 +8,8 @@ extends Control
 
 func _ready() -> void:
 	%UserInfo.hide()
+	# hide Ui hud related stuff
+	QuestUi.get_node('CanvasLayer').hide()
 	#login_open()
 
 func _on_start_btn_pressed() -> void:
