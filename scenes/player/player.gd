@@ -176,15 +176,28 @@ func apply_item_effect(item):
 			# update health bar UI
 			player_hp.phealth_bar.health = player_hp.current_health
 			# some debug text
-			print("Player Healed! ", str(player_hp.current_health))
 			EventNotifier.add_notif("Healed +30 HP")
 		"speed_buff":
 			var speed_amount: float = 30.0
 			PlayerManager.player_move_speed += speed_amount
-			print("Player speed: ", str(PlayerManager.player_move_speed))
+			EventNotifier.add_notif("Speed buff activated + 30")
 			await get_tree().create_timer(15).timeout
 			PlayerManager.player_move_speed -= speed_amount
-			print("Player speed: ", str(PlayerManager.player_move_speed))
+			EventNotifier.add_notif("Speed buff expired.")
+		"atk_boost":
+			var atk_amount : float = 15.0
+			PlayerManager.player_attack += atk_amount
+			EventNotifier.add_notif("Attack buff activated + 15")
+			await get_tree().create_timer(15).timeout
+			PlayerManager.player_attack -= atk_amount
+			EventNotifier.add_notif("Attack buff expired.")
+		"defense_buff":
+			var def_amount : float = 15.0
+			PlayerManager.player_defense += def_amount
+			EventNotifier.add_notif("Defense buff activated + 15")
+			await get_tree().create_timer(10).timeout
+			PlayerManager.player_defense -= def_amount
+			EventNotifier.add_notif("Defense buff expired.")
 
 func player_fail() -> void:
 	if player_hp.current_health == 0:
