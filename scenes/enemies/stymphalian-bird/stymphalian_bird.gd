@@ -8,6 +8,8 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : int = 30
 
+var if_reached : bool = false
+
 func _ready() -> void:
 	pass
 
@@ -33,3 +35,18 @@ func flip_sprite() -> void:
 
 func post_dialog() -> void:
 	Dialogic.start("S6_10")
+	QuestUi.transition_quest_box()
+	QuestUi.add_quest("6th Labor", "Mission Complete")
+
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	$EnemyHealthComp/CanvasLayer/Label.visible = true
+	$EnemyHealthComp/CanvasLayer/EnemyHPbar.visible = true
+	if !if_reached:
+		QuestUi.transition_quest_box()
+		QuestUi.add_quest("Battle with th Sky", "Defeat the Stymphalian Bird")
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	$EnemyHealthComp/CanvasLayer/Label.visible = false
+	$EnemyHealthComp/CanvasLayer/EnemyHPbar.visible = false

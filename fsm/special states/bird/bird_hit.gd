@@ -4,7 +4,7 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
-@export var attack : AttackComponent
+@export var attack : Node2D
 @onready var player : PlayerHercules = get_tree().get_first_node_in_group("Player")
 
 

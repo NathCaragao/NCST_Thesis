@@ -178,10 +178,13 @@ func apply_item_effect(item):
 			# some debug text
 			print("Player Healed! ", str(player_hp.current_health))
 			EventNotifier.add_notif("Healed +30 HP")
-		"atk_boost":
-			var atk_amount: int = 20
-			#atk += atk_amount
-			#print("Player attack boosted: ", str(atk))
+		"speed_buff":
+			var speed_amount: float = 30.0
+			PlayerManager.player_move_speed += speed_amount
+			print("Player speed: ", str(PlayerManager.player_move_speed))
+			await get_tree().create_timer(15).timeout
+			PlayerManager.player_move_speed -= speed_amount
+			print("Player speed: ", str(PlayerManager.player_move_speed))
 
 func player_fail() -> void:
 	if player_hp.current_health == 0:

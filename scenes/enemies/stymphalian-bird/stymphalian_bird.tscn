@@ -458,6 +458,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 [node name="BirdFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_d1a2q")
 actor = NodePath("../..")
+move_speed = 200.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="BirdAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp", "timer")]
@@ -469,10 +470,11 @@ timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="StateMachine/BirdAttack"]
 wait_time = 1.5
 
-[node name="BirdHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health")]
+[node name="BirdHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health", "attack")]
 script = ExtResource("13_04jlf")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="BirdDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("14_x6l45")
@@ -509,7 +511,7 @@ offset_right = 594.0
 offset_bottom = 876.0
 theme_override_fonts/font = ExtResource("16_2odl7")
 theme_override_font_sizes/font_size = 51
-text = "idk what to name"
+text = "Stymphalian bird"
 horizontal_alignment = 1
 
 [node name="EnemyHPbar" parent="EnemyHealthComp/CanvasLayer" instance=ExtResource("17_03l1g")]
@@ -538,6 +540,12 @@ libraries = {
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -8)
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.3, 1)
+
 [connection signal="timeout" from="StateMachine/BirdAttack/Timer" to="StateMachine/BirdAttack" method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
 
 [editable path="EnemyHealthComp"]

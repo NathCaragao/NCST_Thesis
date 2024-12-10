@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://cobuxhq2t2b43"]
+[gd_scene load_steps=93 format=4 uid="uid://cobuxhq2t2b43"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level5_2/level_5_2.gd" id="1_skfof"]
 [ext_resource type="Texture2D" uid="uid://dd14dovax0ert" path="res://assets/Images/BackgroundImages/parallax/MorningLayer6.png" id="1_ur12v"]
@@ -7911,6 +7911,9 @@ size = Vector2(7148, 172)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3whq"]
 size = Vector2(57, 266)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0icm"]
+size = Vector2(2037, 17)
+
 [node name="Level6" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen")]
 script = ExtResource("1_skfof")
 player = NodePath("Player")
@@ -8004,7 +8007,7 @@ tile_map_data = PackedByteArray("AAD9/Pn/AAANAAAAAAAI/fX/AAANAAAAAAAI/e7/AAANAAA
 tile_set = SubResource("TileSet_cu22k")
 
 [node name="Player" parent="." instance=ExtResource("14_ejtwu")]
-position = Vector2(-29535, -52)
+position = Vector2(-3327, -329)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -8436,6 +8439,16 @@ checkpoint_bool = NodePath("..")
 [node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
 unique_name_in_owner = true
 position = Vector2(-51, -44)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(-3453.13, -378.316)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(-297.367, -58.1838)
+shape = SubResource("RectangleShape2D_u0icm")
+debug_color = Color(0.389815, 0.471732, 1, 0.42)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
