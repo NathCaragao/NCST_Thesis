@@ -1,4 +1,6 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
-*(Pauses as faint singing echoes from above)* 
+*(Pauses as faint singing echoes from above)*
 Hercules: What’s this? Singing? Out here in the wild? Let’s see who—or what—has such a voice.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Erymanthos Peak", "Find where the singing voice where")

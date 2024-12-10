@@ -35,4 +35,6 @@ func flip_sprite() -> void:
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 33
 
 func boss_boar_defeated() -> void:
+	QuestUi.transition_quest_box()
+	QuestUi.add_quest("4th Labor", "Mission Complete")
 	emit_signal("BossBoarDefeated")

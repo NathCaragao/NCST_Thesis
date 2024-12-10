@@ -5,3 +5,5 @@ Pholos: *(looking up, startled at first but quickly smiling)*
 join Pholos rightmost [animation="Fade In Down" wait="true"]
 Pholos: Ah, a traveler! By the gods, you gave me a fright! Come in, come in.
 leave Pholos [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Erymanthos Peak", "Talk to the caretaker of the hills")
