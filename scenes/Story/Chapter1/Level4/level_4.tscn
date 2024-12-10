@@ -6336,7 +6336,7 @@ tile_set = SubResource("TileSet_iicjh")
 
 [node name="Player" parent="." instance=ExtResource("3_5jl48")]
 unique_name_in_owner = true
-position = Vector2(11940, -990)
+position = Vector2(697, -38)
 scale = Vector2(1.3, 1.3)
 
 [node name="Snow" parent="Player" instance=ExtResource("11_njeaq")]

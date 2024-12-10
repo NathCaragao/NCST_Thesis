@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="3_6vjeg"]
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="4_8p4bt"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="5_sj1il"]
-[ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="6_ovegh"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="7_p17i3"]
+[ext_resource type="PackedScene" uid="uid://br24vp0cle48w" path="res://scenes/atalanta-player/atalanta.tscn" id="10_6ctxv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qcq"]
 texture = ExtResource("2_saqnf")
@@ -1095,9 +1095,6 @@ large_crate = NodePath("../LargeCrate")
 position = Vector2(5212, -492)
 collision_layer = 33
 
-[node name="Player" parent="." instance=ExtResource("6_ovegh")]
-position = Vector2(354, -27)
-
 [node name="spike wheel" parent="." instance=ExtResource("7_p17i3")]
 position = Vector2(5975, 656)
 
@@ -1118,3 +1115,6 @@ position = Vector2(5695, -254)
 
 [node name="Firehazard2" parent="." instance=ExtResource("2_pjyyb")]
 position = Vector2(5868, -328)
+
+[node name="Atalanta" parent="." instance=ExtResource("10_6ctxv")]
+position = Vector2(176, -28)
