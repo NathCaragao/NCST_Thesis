@@ -1,6 +1,6 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "Now, what do we have here? A house... in the middle of nowhere.
-Hercules:  Looks abandoned, but who would build here unless they had a reason?
+Hercules: Looks abandoned, but who would build here unless they had a reason?
 Tries to open the door
 Hercules: Locked. Well, maybe a little force will do the trick.
 Strains to push it open but fails
@@ -9,3 +9,5 @@ Hercules: Could this be from the same wood as those vines?
 Hercules: Cursed, blessed, or something in between, I’d say.
 Hercules: "If I’m going to get through, I’ll need a key... or maybe something stronger. Let’s see what else this area has to offer.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Swamp of Lerna", "Find the key to enter the house")

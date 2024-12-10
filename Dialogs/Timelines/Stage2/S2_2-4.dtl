@@ -3,3 +3,5 @@ Hercules: Well, well, well... What do we have here? A minotaur? Or perhaps just 
 Hercules: "Alright, wolf. Let’s see if you’re any match for the son of Zeus
 Hercules: Come on, beast! Let’s make this quick. I have bigger prey to hunt.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Swamp of Lerna", "Defeat the Minotaur")
