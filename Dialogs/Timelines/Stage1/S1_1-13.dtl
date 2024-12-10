@@ -1,3 +1,4 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: "I’m close... I can feel it. The lion’s here, hiding somewhere in these shadows.
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="end"]

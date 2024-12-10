@@ -1545,6 +1545,22 @@ text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1624, 63)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_vgjvk")
+animation = &"coin-idle"
+autoplay = "coin-idle"
+frame_progress = 0.734188
+
+[node name="GemsIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1259, 64)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bnkuh")
+animation = &"gems-idle"
+autoplay = "gems-idle"
+frame_progress = 0.618346
+
 [node name="SettingsBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
 offset_left = 489.0

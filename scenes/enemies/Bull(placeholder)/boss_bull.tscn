@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="13_qh0j1"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_nwi5p"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="15_gfeof"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="16_vegls"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="16_niuqx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8uqk"]
 resource_local_to_scene = true
@@ -419,7 +419,7 @@ wait_time = 2.0
 script = ExtResource("11_y6jbm")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("12_itli0")
@@ -437,8 +437,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_aqqe8")
 debug_color = Color(0.941572, 0.209211, 0.319502, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("14_nwi5p")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(-6, -27)
@@ -454,8 +455,8 @@ offset_bottom = -19.0
 max_value = 150.0
 value = 130.0
 
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("16_vegls")
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("16_niuqx")
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -14)

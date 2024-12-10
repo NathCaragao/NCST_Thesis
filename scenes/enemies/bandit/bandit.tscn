@@ -14,9 +14,9 @@
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="9_ehqdq"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="10_qtsaa"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="11_d1tqh"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="12_ktapa"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="13_x2ifh"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="14_8s5sl"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="17_u8cec"]
 [ext_resource type="AudioStream" uid="uid://xtaf04uwslbq" path="res://assets/Audios/SFXs/enemies/bandit attack sound.mp3" id="18_upthc"]
 [ext_resource type="AudioStream" uid="uid://dp1j6ypgpx32t" path="res://assets/Audios/SFXs/enemies/male-death-sound-128357.mp3" id="19_yq0jl"]
 
@@ -419,7 +419,7 @@ wait_time = 2.0
 script = ExtResource("9_ehqdq")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("10_qtsaa")
@@ -438,8 +438,9 @@ position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_ot0jm")
 debug_color = Color(0.981707, 0, 0.368701, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("14_8s5sl")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(16, 4)
@@ -447,14 +448,15 @@ shape = SubResource("CircleShape2D_qds6q")
 disabled = true
 debug_color = Color(0.174875, 0.643358, 5.77569e-07, 0.42)
 
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("12_ktapa")
-
 [node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("13_x2ifh")]
 offset_left = -11.0
 offset_top = -13.0
 offset_right = 18.0
 offset_bottom = -10.0
+
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("17_u8cec")
+base_dmg = 15.0
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -3)

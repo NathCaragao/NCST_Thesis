@@ -3,6 +3,10 @@ extends Control
 
 @export var current_level_path : String
 @export var player : PlayerHercules
+@onready var respawn_btn: Button = $VBoxContainer/RespawnBtn
+
+func _ready() -> void:
+	respawn_btn.disabled = true
 
 # restart btn
 func _on_restart_btn_pressed() -> void:
@@ -36,3 +40,5 @@ func player_state_reset() -> void:
 	
 	# reset player inventory
 	player.inv.reset()
+	
+	QuestUi.hide_quest_box()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=182 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="46_kiukr"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="46_wvyl6"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="47_sy3af"]
+[ext_resource type="Script" path="res://autoloads/quest-system-final/activator/quest_activator.gd" id="48_0iq4p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4989,6 +4990,36 @@ size = Vector2(57, 266)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfqb1"]
 size = Vector2(20, 255)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sj8y"]
+size = Vector2(20, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnb86"]
+size = Vector2(20, 365)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipgh5"]
+size = Vector2(58, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypwr"]
+size = Vector2(20, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vgys"]
+size = Vector2(31.9999, 201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmgbq"]
+size = Vector2(52.6147, 147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhl3q"]
+size = Vector2(87, 337)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq23x"]
+size = Vector2(94, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugtlt"]
+size = Vector2(61, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvyqu"]
+size = Vector2(62, 388)
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -5231,7 +5262,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-517, -153)
+position = Vector2(-450, -119)
 scale = Vector2(1.4, 1.4)
 collision_mask = 35
 
@@ -5942,6 +5973,121 @@ position = Vector2(36.6016, -97.9839)
 shape = SubResource("RectangleShape2D_dfqb1")
 debug_color = Color(0.605924, 0.364976, 1, 0.42)
 
+[node name="Quests" type="Node2D" parent="."]
+
+[node name="QuestActivator1" type="Area2D" parent="Quests"]
+position = Vector2(-227, -120)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Explore the forest."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator1"]
+position = Vector2(0, -139.5)
+shape = SubResource("RectangleShape2D_1sj8y")
+debug_color = Color(0.548623, 0.564359, 0, 0.42)
+
+[node name="QuestActivator" type="Area2D" parent="Quests"]
+position = Vector2(2913.65, -143.013)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Find a way to navigate through the forest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator"]
+position = Vector2(0, -104.487)
+shape = SubResource("RectangleShape2D_nnb86")
+debug_color = Color(0.764512, 0.449122, 0, 0.42)
+
+[node name="QuestActivator2" type="Area2D" parent="Quests"]
+position = Vector2(2887, 1171.73)
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Find a way to open the gates"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator2"]
+position = Vector2(35, -92.2312)
+shape = SubResource("RectangleShape2D_ipgh5")
+debug_color = Color(0.761447, 0.450715, 0.0496272, 0.42)
+
+[node name="QuestActivator3" type="Area2D" parent="Quests"]
+position = Vector2(2188, 12)
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Use the totem to unlock the gate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator3"]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_hypwr")
+debug_color = Color(0.725784, 0.476119, 0, 0.42)
+
+[node name="QuestActivator4" type="Area2D" parent="Quests"]
+position = Vector2(-528.814, 1147.97)
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "use the totem to unlock the 2nd gate."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator4"]
+position = Vector2(-0.186157, -58.472)
+shape = SubResource("RectangleShape2D_5vgys")
+debug_color = Color(0.703631, 0.490031, 0, 0.42)
+
+[node name="QuestActivator5" type="Area2D" parent="Quests"]
+position = Vector2(4559.39, 1654.3)
+script = ExtResource("48_0iq4p")
+quest_name = "Deeper in the Forest"
+description = "Continue navigating underground to find ways to the lion's den"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator5"]
+position = Vector2(16.3071, -46.8015)
+shape = SubResource("RectangleShape2D_mmgbq")
+debug_color = Color(0.730697, 0.472891, 0, 0.42)
+
+[node name="QuestActivator6" type="Area2D" parent="Quests"]
+position = Vector2(2479.6, 1975.07)
+script = ExtResource("48_0iq4p")
+quest_name = "Megalus the Cyclops"
+description = "Find a way to unlock the trapdoor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator6"]
+position = Vector2(-6.10156, -109.573)
+shape = SubResource("RectangleShape2D_mhl3q")
+debug_color = Color(0.703499, 0.49011, 0, 0.42)
+
+[node name="QuestActivator7" type="Area2D" parent="Quests"]
+position = Vector2(4435.92, 2765.35)
+script = ExtResource("48_0iq4p")
+quest_name = "The Lion's Den"
+description = "Find the totem to unlock the gate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator7"]
+position = Vector2(-93.9248, -9.85181)
+shape = SubResource("RectangleShape2D_hq23x")
+debug_color = Color(0.756485, 0.455024, 1.92523e-07, 0.42)
+
+[node name="QuestActivator8" type="Area2D" parent="Quests"]
+position = Vector2(4646.28, 2789.27)
+script = ExtResource("48_0iq4p")
+quest_name = "The Nemean Lion"
+description = "Find the Nemean Lion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator8"]
+shape = SubResource("RectangleShape2D_ugtlt")
+debug_color = Color(0.767786, 0.446665, 3.85046e-07, 0.42)
+
+[node name="QuestActivator9" type="Area2D" parent="Quests"]
+position = Vector2(5764.69, 2852.72)
+script = ExtResource("48_0iq4p")
+quest_name = "The Lion's Den"
+description = "Defeat the Nemean Lion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator9"]
+position = Vector2(11.3145, -111.719)
+shape = SubResource("RectangleShape2D_yvyqu")
+debug_color = Color(0.762137, 0.450887, 0, 0.42)
+
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator3" to="DialogsCollection/DialogActivator3" method="_on_body_entered"]
@@ -5969,6 +6115,16 @@ debug_color = Color(0.605924, 0.364976, 1, 0.42)
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator1" to="Quests/QuestActivator1" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator" to="Quests/QuestActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator2" to="Quests/QuestActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator3" to="Quests/QuestActivator3" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator4" to="Quests/QuestActivator4" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator5" to="Quests/QuestActivator5" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator6" to="Quests/QuestActivator6" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator7" to="Quests/QuestActivator7" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator8" to="Quests/QuestActivator8" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator9" to="Quests/QuestActivator9" method="_on_body_entered"]
 
 [editable path="Gates Collection/Gate1"]
 [editable path="Key_1"]

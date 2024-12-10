@@ -23,3 +23,5 @@ func sprite_close() -> void:
 
 func on_cyclops_defeat() -> void:
 	sprite_open()
+	QuestUi.transition_quest_box()
+	QuestUi.add_quest("The Lion's Den", "Continue exploring underground")

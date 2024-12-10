@@ -1,3 +1,5 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: A large hole... just what I needed. Down we go, then. Let’s hope the divine flame isn’t too far.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Swamp of Lerna", "Explore the underground dungeon")

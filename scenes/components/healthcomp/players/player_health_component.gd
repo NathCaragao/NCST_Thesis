@@ -7,7 +7,7 @@ var current_health : int
 var is_dead : bool = false
 @onready var phealth_bar: ProgressBar = $Hp_bar/PlayerHPbar
 @export var anim_effects: AnimationPlayer
-@export var player : PlayerHercules
+@export var player : CharacterBody2D
 
 signal ObstacleHit
 signal PlayerDead

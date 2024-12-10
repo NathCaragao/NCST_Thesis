@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="6_81nok"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="7_71gxf"]
 [ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="7_ovbf3"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="8_o7di3"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-wander.gd" id="8_w6gdy"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-follow.gd" id="9_qq4s7"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-attack.gd" id="10_33coo"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-hit.gd" id="11_tf4y7"]
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="12_gtotr"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="16_dqc5l"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="17_xsx14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8kwy"]
 resource_local_to_scene = true
@@ -433,7 +433,7 @@ wait_time = 1.5
 script = ExtResource("11_tf4y7")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("12_gtotr")
@@ -450,8 +450,9 @@ position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_vlt32")
 debug_color = Color(0.963138, 1.34766e-06, 0.500482, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("7_71gxf")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="HitboxShape" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(47.5, 2.5)
@@ -459,14 +460,14 @@ shape = SubResource("RectangleShape2D_odpxe")
 disabled = true
 debug_color = Color(0.0587249, 0.649918, 0, 0.42)
 
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("8_o7di3")
-
 [node name="EnemyHPbar" parent="EnemyHealthComp" instance=ExtResource("16_dqc5l")]
 offset_left = -40.0
 offset_top = -43.0
 offset_right = 55.0
 offset_bottom = -38.0
+
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("17_xsx14")
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -17)

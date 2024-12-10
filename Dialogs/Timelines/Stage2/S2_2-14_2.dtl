@@ -1,3 +1,5 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: I finally got apollo's flame!
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Apollo's Flame", "Use the apollo's flame to burn the vines")

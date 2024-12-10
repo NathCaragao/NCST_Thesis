@@ -39,3 +39,10 @@ func player_state_reset() -> void:
 func enableButtons() -> void:
 	%MenuBtn.disabled = false
 	%NextStageBtn.disabled = false
+
+# next level btn
+func _on_next_stage_btn_pressed() -> void:
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")

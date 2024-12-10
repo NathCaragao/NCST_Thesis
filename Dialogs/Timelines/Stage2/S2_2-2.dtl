@@ -2,3 +2,5 @@ join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: A cave, blocked by vines. And... did I just hear a growl? I never thought I would find you so early, Hydra.
 Hercules: This might not be as tough as I thought!
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Swamp of Lerna", "Find a way to burn the vines")

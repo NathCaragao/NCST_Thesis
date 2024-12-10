@@ -1,0 +1,8 @@
+join atalanta center [animation="Fade In Down"]
+atalanta: "The boar falls! My legend grows!"
+join atalanta leftmost [animation="Fade In Down"]
+join artemis rightmost [animation="Fade In"]
+artemis: "Well done, Atalanta. Your bravery shines."
+leave atalanta [animation="Fade Out Up"]
+leave artemis
+[signal arg="end"]

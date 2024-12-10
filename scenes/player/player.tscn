@@ -218,10 +218,11 @@ offset_bottom = 21609.0
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("20_eusl1")
 
-[node name="Hitbox" type="Area2D" parent="PlayerHealthComponent"]
+[node name="Hitbox" type="Area2D" parent="PlayerHealthComponent" node_paths=PackedStringArray("attack_component")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("15_aah5w")
+attack_component = NodePath("../AttackComponent")
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hitbox"]
 position = Vector2(19, 0)

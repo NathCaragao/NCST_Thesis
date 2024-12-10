@@ -1,0 +1,7 @@
+join atalanta leftmost [animation="Fade In Down"]
+atalanta: "I've heard the roar of the Calydonian Boar. Today, I prove my worth."
+join artemis rightmost [animation="Fade In Down"]
+artemis: "Show them your strength, Atalanta."
+leave artemis [animation="Fade Out Up"]
+leave atalanta [animation="Fade Out Up"]
+[signal arg="end"]

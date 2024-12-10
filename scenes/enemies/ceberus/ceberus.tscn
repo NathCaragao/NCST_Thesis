@@ -15,9 +15,9 @@
 [ext_resource type="Script" path="res://fsm/enemy-states/enemy-death.gd" id="11_l0y7a"]
 [ext_resource type="PackedScene" uid="uid://tiwuf42urbrg" path="res://scenes/components/healthcomp/enemy/enemy_health_comp.tscn" id="12_ju64h"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="13_m32fa"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="14_81tsr"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="15_8t4in"]
 [ext_resource type="PackedScene" uid="uid://dfnl3gfcu8o67" path="res://scenes/components/HP-bar/enemy/enemy_hp_bar.tscn" id="16_slyus"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/enemy-attack-comp/enemy_attack_component.gd" id="18_jx7gj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ylw6"]
 resource_local_to_scene = true
@@ -417,7 +417,7 @@ wait_time = 1.5
 script = ExtResource("10_grd28")
 actor = NodePath("../..")
 enemy_health = NodePath("../../EnemyHealthComp")
-attack = NodePath("../../EnemyHealthComp/AttackComponent")
+attack = NodePath("../../EnemyHealthComp/EnemyAttackComponent")
 
 [node name="EnemyDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("11_l0y7a")
@@ -435,17 +435,15 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_326k1")
 debug_color = Color(0.983454, 0, 0.35288, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="EnemyHealthComp"]
+[node name="Hitbox" type="Area2D" parent="EnemyHealthComp" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("13_m32fa")
+attack_component = NodePath("../EnemyAttackComponent")
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="EnemyHealthComp/Hitbox"]
 position = Vector2(-46, 16)
 shape = SubResource("CircleShape2D_xegyd")
 disabled = true
 debug_color = Color(7.21961e-07, 0.648134, 0.190548, 0.42)
-
-[node name="AttackComponent" type="Node2D" parent="EnemyHealthComp"]
-script = ExtResource("14_81tsr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="EnemyHealthComp"]
 visible = false
@@ -473,6 +471,9 @@ offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(5, 5)
+
+[node name="EnemyAttackComponent" type="Node2D" parent="EnemyHealthComp"]
+script = ExtResource("18_jx7gj")
 
 [node name="DmgNumPos" type="Node2D" parent="."]
 position = Vector2(0, -14)

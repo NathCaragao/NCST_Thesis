@@ -33,6 +33,7 @@ EventNotifier="*res://autoloads/in-game-notifier/event_notifier.tscn"
 GameSignals="*res://autoloads/game-signals/game-signals.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 PlayerManager="*res://autoloads/player-manager/player_manager.gd"
+QuestUi="*res://autoloads/quest-system-final/quest_ui.tscn"
 
 [dialogic]
 
@@ -51,6 +52,7 @@ directories/dch_directory={
 "Hades": "res://Dialogs/Characters/Hades.dch",
 "Helios": "res://Dialogs/Characters/Helios.dch",
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
+"Huntsman": "res://Dialogs/Characters/Huntsman.dch",
 "Hypolita": "res://Dialogs/Characters/Hypolita.dch",
 "King_Diomedes": "res://Dialogs/Characters/King_Diomedes.dch",
 "Ladon": "res://Dialogs/Characters/Ladon.dch",
@@ -60,7 +62,9 @@ directories/dch_directory={
 "Villager 1": "res://Dialogs/Characters/Villager 1.dch",
 "Villager 2": "res://Dialogs/Characters/Villager 2.dch",
 "artemis": "res://Dialogs/Characters/artemis.dch",
+"atalanta": "res://Dialogs/Characters/atalanta.dch",
 "augeas": "res://Dialogs/Characters/augeas.dch",
+"caledonian_boar": "res://Dialogs/Characters/caledonian_boar.dch",
 "narrator": "res://Dialogs/Characters/narrator.dch",
 "scholar": "res://Dialogs/Characters/scholar.dch"
 }
@@ -114,6 +118,11 @@ directories/dtl_directory={
 "S1_1-7": "res://Dialogs/Timelines/Stage1/S1_1-7.dtl",
 "S1_1-8": "res://Dialogs/Timelines/Stage1/S1_1-8.dtl",
 "S1_1-9": "res://Dialogs/Timelines/Stage1/S1_1-9.dtl",
+"S1_A_1": "res://Dialogs/Timelines/atalanta side story/S1_A_1.dtl",
+"S1_A_2": "res://Dialogs/Timelines/atalanta side story/S1_A_2.dtl",
+"S1_A_3": "res://Dialogs/Timelines/atalanta side story/S1_A_3.dtl",
+"S1_A_4": "res://Dialogs/Timelines/atalanta side story/S1_A_4.dtl",
+"S1_A_opening": "res://Dialogs/Timelines/atalanta side story/S1_A_opening.dtl",
 "S1_opening": "res://Dialogs/Timelines/Stage1/S1_opening.dtl",
 "S2_2-1": "res://Dialogs/Timelines/Stage2/S2_2-1.dtl",
 "S2_2-10": "res://Dialogs/Timelines/Stage2/S2_2-10.dtl",

@@ -3,3 +3,5 @@ Hercules: Not much of a challenge, were you? Still, you fought well, wolf. I’l
 Hercules notices movement above.
 Hercules: "Looks like I wasn’t the only one keeping an eye on this cave. Who’s that up there?
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Swamp of Lerna", "Talk to the merchant")

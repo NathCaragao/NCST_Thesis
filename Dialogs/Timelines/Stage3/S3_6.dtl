@@ -4,3 +4,5 @@ Centaur: "Turn back, mortal! The Hind belongs to the goddess, not a brute like y
 Hercules: "You think your spear frightens me? I’ve wrestled lions and strangled serpents. You’re just another obstacle in my way!"
 leave Hercules [animation="Fade Out Up" wait="true"]
 (The fight begins.)
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("the 3rd Labor:  The Centaur", "Defeat the Centaur")

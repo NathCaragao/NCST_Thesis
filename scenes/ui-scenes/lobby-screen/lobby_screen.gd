@@ -15,6 +15,7 @@ var isLoading = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
+	QuestUi.get_node('CanvasLayer').hide()
 	# 1
 	SceneManager.showLoadingScreen()
 	# 2

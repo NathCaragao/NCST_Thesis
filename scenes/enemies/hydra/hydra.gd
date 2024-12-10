@@ -44,6 +44,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func post_dialog() -> void:
 	Dialogic.start("S2_2-20")
 	print("Current dialog playing: S2_2-20")
+	QuestUi.transition_quest_box()
+	
+	QuestUi.add_quest("Lernaean Hydra", "Labor Complete!")
+	
 	await Dialogic.timeline_ended
 	# Then wait 1.5 seconds
 	await get_tree().create_timer(1.5).timeout
