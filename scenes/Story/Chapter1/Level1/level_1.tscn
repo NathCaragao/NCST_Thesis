@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=174 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="46_kiukr"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="46_wvyl6"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="47_sy3af"]
+[ext_resource type="Script" path="res://autoloads/quest-system-final/activator/quest_activator.gd" id="48_0iq4p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4989,6 +4990,12 @@ size = Vector2(57, 266)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfqb1"]
 size = Vector2(20, 255)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sj8y"]
+size = Vector2(20, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnb86"]
+size = Vector2(20, 365)
+
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
@@ -5231,7 +5238,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(5082, 2788)
+position = Vector2(-450, -119)
 scale = Vector2(1.4, 1.4)
 collision_mask = 35
 
@@ -5942,6 +5949,34 @@ position = Vector2(36.6016, -97.9839)
 shape = SubResource("RectangleShape2D_dfqb1")
 debug_color = Color(0.605924, 0.364976, 1, 0.42)
 
+[node name="Quests" type="Node2D" parent="."]
+
+[node name="QuestActivator1" type="Area2D" parent="Quests"]
+position = Vector2(-227, -120)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Explore the forest."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator1"]
+position = Vector2(0, -139.5)
+shape = SubResource("RectangleShape2D_1sj8y")
+debug_color = Color(0.548623, 0.564359, 0, 0.42)
+
+[node name="QuestActivator" type="Area2D" parent="Quests"]
+position = Vector2(2913.65, -143.013)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("48_0iq4p")
+quest_name = "Let the Adventure Begin!"
+description = "Find a way to navigate through the forest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator"]
+position = Vector2(0, -104.487)
+shape = SubResource("RectangleShape2D_nnb86")
+debug_color = Color(0.764512, 0.449122, 0, 0.42)
+
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator3" to="DialogsCollection/DialogActivator3" method="_on_body_entered"]
@@ -5969,6 +6004,8 @@ debug_color = Color(0.605924, 0.364976, 1, 0.42)
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator1" to="Quests/QuestActivator1" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator" to="Quests/QuestActivator" method="_on_body_entered"]
 
 [editable path="Gates Collection/Gate1"]
 [editable path="Key_1"]
