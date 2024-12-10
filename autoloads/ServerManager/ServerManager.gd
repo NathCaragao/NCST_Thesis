@@ -115,6 +115,12 @@ func addUserInDB() -> int:
 						equipmentInventory = [],
 						itemsInventory = [],
 						settings = [],
+						upgrades = {
+							"attack" = 0,
+							"health" = 0,
+							"defense" = 0,
+							"speed" = 0,
+						}
 					}
 				),
 				""
@@ -174,6 +180,37 @@ func updateUserFreeCurrency(freeCurrencyValueToAdd: int) -> int:
 		
 	return await writeToPlayerData(currentUserGameData)
 
+func updateUserAttack(attackValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["upgrades"]["attack"] += attackValueToAdd
+		
+	return await writeToPlayerData(currentUserGameData)
+	
+func updateUserHealth(healthValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["upgrades"]["health"] += healthValueToAdd
+		
+	return await writeToPlayerData(currentUserGameData)
+	
+func updateUserDefense(defenseValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["upgrades"]["defense"] += defenseValueToAdd
+		
+	return await writeToPlayerData(currentUserGameData)
+	
+func updateUserSpeed(speedValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["upgrades"]["speed"] += speedValueToAdd
+		
+	return await writeToPlayerData(currentUserGameData)
 
 
 
