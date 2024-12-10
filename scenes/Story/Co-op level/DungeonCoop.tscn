@@ -1,9 +1,8 @@
-[gd_scene load_steps=40 format=4 uid="uid://ra4by1tl7ybs"]
+[gd_scene load_steps=39 format=4 uid="uid://ra4by1tl7ybs"]
 
 [ext_resource type="Texture2D" uid="uid://eguo0fdf0tbi" path="res://assets/tileset (world-building)/Assets.png" id="1_4fov8"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="2_7oxps"]
 [ext_resource type="PackedScene" uid="uid://b27oog3y0ws1r" path="res://scenes/Story/Chapter1/Level2/crusher.tscn" id="3_6ckvs"]
-[ext_resource type="PackedScene" uid="uid://ds8dik2oajky" path="res://scenes/player/player.tscn" id="4_xmj0y"]
 [ext_resource type="PackedScene" uid="uid://concxuoyfkgod" path="res://scenes/components/deathzone/death_zone.tscn" id="5_ftod6"]
 [ext_resource type="PackedScene" uid="uid://dfunk44stdk6t" path="res://scenes/mechanisms/fire-hazard/firehazard.tscn" id="6_vf0cc"]
 
@@ -658,12 +657,6 @@ libraries = {
 "": SubResource("AnimationLibrary_7hhbq")
 }
 autoplay = "crash3"
-
-[node name="Player" parent="." instance=ExtResource("4_xmj0y")]
-position = Vector2(12535, 8)
-
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(2.45, 2.45)
 
 [node name="DeathZone" parent="." instance=ExtResource("5_ftod6")]
 position = Vector2(1881, 330)

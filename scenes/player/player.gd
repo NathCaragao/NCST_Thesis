@@ -61,8 +61,11 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 	self.playerGameData.position = initSpawnPosition
 	#%Camera2D.enabled = self.playerGameData.isControlled
 	if self.playerGameData.isControlled:
-		%NameTag.text = "\"YOU\""
+		%NameTag.hide()
+		$"Arrow-down".show()
 	else:
+		$"Arrow-down".hide()
+		%NameTag.show()
 		%NameTag.text = self.playerGameData.displayName
 
 # ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdp5lo7hga3qh"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
-[ext_resource type="PackedScene" uid="uid://dvxp1oct6k8n2" path="res://testFolder/testScenes/multi_test_lvl.tscn" id="2_rrulh"]
+[ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
 
 [node name="OngoingMatchGUI" type="Node2D"]
 script = ExtResource("1_bh0op")
@@ -9,7 +9,8 @@ script = ExtResource("1_bh0op")
 [node name="LevelWorld" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="MultiTestLvl" parent="LevelWorld" instance=ExtResource("2_rrulh")]
+[node name="DungeonCoop" parent="LevelWorld" instance=ExtResource("2_pccb5")]
+position = Vector2(-589.534, 139.118)
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
