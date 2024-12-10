@@ -1,3 +1,5 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: There we go. Thank you, brother Apollo. Now, Hydra, it’s just you and me.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Hydra's Lair", "Proceed exploring the  pit and find Hydra's Lair")

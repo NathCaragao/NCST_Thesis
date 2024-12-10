@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=125 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -9157,6 +9157,12 @@ size = Vector2(57, 266)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqh4u"]
 size = Vector2(35, 435)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inoom"]
+size = Vector2(87.9999, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbsmh"]
+size = Vector2(9.34509, 239)
+
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "hydra")]
 script = ExtResource("1_4x2vf")
 player = NodePath("Player")
@@ -9916,6 +9922,28 @@ position = Vector2(37.271, -183.411)
 shape = SubResource("RectangleShape2D_iqh4u")
 debug_color = Color(0.762919, 0.450308, 1.34766e-06, 0.42)
 
+[node name="QuestActivator2" type="Area2D" parent="Quests"]
+position = Vector2(3742.29, 3242.45)
+script = ExtResource("44_jslk3")
+quest_name = "Apollp's Flame"
+description = "Find the key to unlocking apollo's cage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator2"]
+position = Vector2(-5.2937, -26.9453)
+shape = SubResource("RectangleShape2D_inoom")
+debug_color = Color(0.731747, 0.232271, 1, 0.42)
+
+[node name="QuestActivator3" type="Area2D" parent="Quests"]
+position = Vector2(500.655, 3213.99)
+script = ExtResource("44_jslk3")
+quest_name = "Apollo's Flame"
+description = "Use the key to unlock the cage and get the flame"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator3"]
+position = Vector2(-6.65491, -84.4902)
+shape = SubResource("RectangleShape2D_vbsmh")
+debug_color = Color(0.502174, 0.427251, 1, 0.42)
+
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
@@ -9932,5 +9960,7 @@ debug_color = Color(0.762919, 0.450308, 1.34766e-06, 0.42)
 [connection signal="body_entered" from="Dialogs/DialogActivator12" to="Dialogs/DialogActivator12" method="_on_body_entered"]
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
 [connection signal="body_entered" from="Quests/QuestActivator" to="Quests/QuestActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator2" to="Quests/QuestActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator3" to="Quests/QuestActivator3" method="_on_body_entered"]
 
 [editable path="ScoreUI/FailScreen"]

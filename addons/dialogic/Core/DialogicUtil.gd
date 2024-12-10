@@ -598,4 +598,3 @@ static func get_portrait_position_suggestions(search_text := "") -> Dictionary:
 			suggestions.erase(search_text)
 
 	return suggestions
-
