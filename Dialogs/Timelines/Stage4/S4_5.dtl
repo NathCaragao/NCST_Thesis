@@ -1,4 +1,6 @@
-*(Herakles confronts the centaur leader in a clearing.)* 
+*(Herakles confronts the centaur leader in a clearing.)*
 join Hercules leftmost [animation="Fade In Down" wait="true"]
-Hercules: Your greed and wrath have cost me a friend. I will not rest until you pay for what you’ve done!" 
+Hercules: Your greed and wrath have cost me a friend. I will not rest until you pay for what you’ve done!"
 Centaur_Leader: You meddle in the affairs of centaurs, mortal. Prepare to meet your end!
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Erymanthos Peak", "Defeat the Centaur Leader")

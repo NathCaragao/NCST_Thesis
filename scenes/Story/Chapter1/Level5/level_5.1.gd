@@ -28,6 +28,10 @@ func _ready() -> void:
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	
 	opening_1()
+	
+	QuestUi.transition_quest_box()
+	QuestUi.add_quest("Clean!, Clean!, Clean!", "Clean all the stools in the area")
+	
 
 # Handles the start signal from Dialogic
 func on_dialog_start():
@@ -55,6 +59,10 @@ func on_dialogic_signal_play_bgm(event: String) -> void:
 # victory after dialog 3
 func on_dialog_done(argument: String) -> void:
 	if argument == "level5complete":
+		
+		QuestUi.transition_quest_box()
+		QuestUi.add_quest("Clean!, Clean!, Clean!", "Mission Complete")
+		
 		on_finish()
 		# Await sending rewards update to server
 		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]

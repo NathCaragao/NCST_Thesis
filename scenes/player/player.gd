@@ -20,16 +20,19 @@ var playerGameData = {
 
 # -- One time setup
 var move_speed: float
-var defense : float
+var defense : float = 5.0
+var base_dmg : float = 10.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox_collision: CollisionShape2D = $PlayerHealthComponent/Hurtbox/HurtboxCollision
+@onready var hitbox: Hitbox = $PlayerHealthComponent/Hitbox
 
 
 @export var push = 40
 @export var SPEED: float = 200.0
 @export var weapon_ui: Control
+
 var facing_right: bool = true
 
 # variables for switching weapon class
@@ -179,12 +182,28 @@ func apply_item_effect(item):
 			# update health bar UI
 			player_hp.phealth_bar.health = player_hp.current_health
 			# some debug text
-			print("Player Healed! ", str(player_hp.current_health))
 			EventNotifier.add_notif("Healed +30 HP")
+		"speed_buff":
+			var speed_amount: float = 30.0
+			move_speed += speed_amount
+			EventNotifier.add_notif("Speed buff activated + 30")
+			await get_tree().create_timer(15).timeout
+			move_speed -= speed_amount
+			EventNotifier.add_notif("Speed buff expired.")
 		"atk_boost":
-			var atk_amount: int = 20
-			#atk += atk_amount
-			#print("Player attack boosted: ", str(atk))
+			var atk_amount : float = 15.0
+			hitbox.total_dmg += atk_amount
+			EventNotifier.add_notif("Attack buff activated + 15")
+			await get_tree().create_timer(15).timeout
+			hitbox.total_dmg -= atk_amount
+			EventNotifier.add_notif("Attack buff expired.")
+		"defense_buff":
+			var def_amount : float = 15.0
+			defense += def_amount
+			EventNotifier.add_notif("Defense buff activated + 15")
+			await get_tree().create_timer(10).timeout
+			defense -= def_amount
+			EventNotifier.add_notif("Defense buff expired.")
 
 func player_fail() -> void:
 	if player_hp.current_health == 0:

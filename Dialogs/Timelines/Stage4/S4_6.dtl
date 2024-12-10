@@ -1,4 +1,6 @@
-*(Herakles carefully navigates a narrow ledge, wind howling around him.)* 
+*(Herakles carefully navigates a narrow ledge, wind howling around him.)*
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: So high up... One misstep, and I’ll join the clouds below. Focus, Herakles. Focus.
 leave Hercules [animation="Fade Out Up" wait="true"]
+do QuestUi.transition_quest_box()
+do QuestUi.add_quest("Erymanthos Peak", "Find a way to the peak of the mountain")

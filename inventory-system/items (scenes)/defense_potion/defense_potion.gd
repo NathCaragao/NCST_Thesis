@@ -1,3 +1,4 @@
+class_name DefensePotion
 extends Node2D
 
 
@@ -7,6 +8,7 @@ extends Node2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if player:
+		print("collided")
 		player.collect(item)
-		EventNotifier.add_notif("You got an ATK Potion!")
+		EventNotifier.add_notif("You got Defense Potion")
 		queue_free()

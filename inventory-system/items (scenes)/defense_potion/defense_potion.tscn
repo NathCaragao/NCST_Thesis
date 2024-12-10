@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://kk3rnv06esh3"]
+
+[ext_resource type="Texture2D" uid="uid://8v0ttet6cqse" path="res://assets/inv-items/tile088.png" id="1_jiwqo"]
+[ext_resource type="Script" path="res://inventory-system/items (scenes)/defense_potion/defense_potion.gd" id="1_xduud"]
+[ext_resource type="Resource" uid="uid://3csu8l7pe5ve" path="res://inventory-system/items(res)/defense_potion.tres" id="2_4ouda"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6kwh"]
+size = Vector2(12, 30)
+
+[node name="DefensePotion" type="Node2D"]
+script = ExtResource("1_xduud")
+item = ExtResource("2_4ouda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jiwqo")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_m6kwh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

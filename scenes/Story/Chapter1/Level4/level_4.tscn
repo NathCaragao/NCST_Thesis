@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://celssdpyqabr4"]
+[gd_scene load_steps=81 format=4 uid="uid://celssdpyqabr4"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level4/level_4.gd" id="1_0sjf7"]
 [ext_resource type="Texture2D" uid="uid://dg25cu8bkxylv" path="res://assets/tileset (world-building)/Tiles_snow.png" id="1_aqg7f"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="33_ko7wp"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="35_v8jyx"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="36_ffyem"]
+[ext_resource type="Script" path="res://autoloads/quest-system-final/activator/quest_activator.gd" id="37_7m575"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l8pk"]
 texture = ExtResource("1_aqg7f")
@@ -6280,6 +6281,15 @@ size = Vector2(236, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbhjg"]
 size = Vector2(57, 266)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3yie"]
+size = Vector2(20, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jems0"]
+size = Vector2(20, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdaov"]
+size = Vector2(20, 188)
+
 [node name="Level4" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "boss_boar")]
 script = ExtResource("1_0sjf7")
 player = NodePath("Player")
@@ -6879,6 +6889,41 @@ checkpoint_bool = NodePath("..")
 unique_name_in_owner = true
 position = Vector2(-51, -44)
 
+[node name="Quests" type="Node2D" parent="."]
+
+[node name="QuestActivator" type="Area2D" parent="Quests"]
+position = Vector2(854.982, -29.6913)
+script = ExtResource("37_7m575")
+quest_name = "Erymanthos Peak"
+description = "Explore the snowy summit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator"]
+position = Vector2(0, -112.809)
+shape = SubResource("RectangleShape2D_c3yie")
+debug_color = Color(0.34239, 0.620966, 5.77569e-07, 0.42)
+
+[node name="QuestActivator2" type="Area2D" parent="Quests"]
+position = Vector2(3137.15, -1151.87)
+script = ExtResource("37_7m575")
+quest_name = "Erymanthos Peak"
+description = "Traverse through the cliffs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator2"]
+position = Vector2(0, -44.1274)
+shape = SubResource("RectangleShape2D_jems0")
+debug_color = Color(0.238982, 0.636817, 1.92523e-07, 0.42)
+
+[node name="QuestActivator3" type="Area2D" parent="Quests"]
+position = Vector2(14959.2, -2171.83)
+script = ExtResource("37_7m575")
+quest_name = "Erymanthos Peak"
+description = "Defeat the Erymanthian Boar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quests/QuestActivator3"]
+position = Vector2(0, -48.1682)
+shape = SubResource("RectangleShape2D_fdaov")
+debug_color = Color(0.419537, 0.604171, 0, 0.42)
+
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
@@ -6892,5 +6937,8 @@ position = Vector2(-51, -44)
 [connection signal="body_entered" from="Dialogs/DialogActivator9" to="Dialogs/DialogActivator9" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator10" to="Dialogs/DialogActivator10" method="_on_body_entered"]
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator" to="Quests/QuestActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator2" to="Quests/QuestActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Quests/QuestActivator3" to="Quests/QuestActivator3" method="_on_body_entered"]
 
 [editable path="ScoreUI/FailScreen"]
