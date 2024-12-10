@@ -17,6 +17,7 @@ corner_radius_bottom_left = 5
 corner_detail = 12
 
 [node name="Notification" type="CanvasLayer"]
+layer = 128
 script = ExtResource("1_14uid")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

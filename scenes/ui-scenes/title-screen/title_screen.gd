@@ -8,7 +8,7 @@ extends Control
 
 func _ready() -> void:
 	%UserInfo.hide()
-	login_open()
+	#login_open()
 
 func _on_start_btn_pressed() -> void:
 	SceneManager.showLoadingScreen()
