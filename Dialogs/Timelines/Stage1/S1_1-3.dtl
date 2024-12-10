@@ -1,3 +1,4 @@
 join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: That roar... that’s gotta be it. The lion’s close. Time to see what I’m made of.
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="end"]

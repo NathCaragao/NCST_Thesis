@@ -1,3 +1,4 @@
 join Hercules center [animation="Fade In Down" wait="true"]
 Hercules: There you are. The hunt ends here, lion. It’s just you... and me now.
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="end"]

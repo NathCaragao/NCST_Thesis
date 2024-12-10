@@ -6,3 +6,4 @@ Hercules: "You’re just another barrier in my way. Move, or I’ll show you the
 son of Zeus!
 leave Hercules [animation="Fade Out Up" wait="true"]
 leave Bandit_leader
+[signal arg="end"]

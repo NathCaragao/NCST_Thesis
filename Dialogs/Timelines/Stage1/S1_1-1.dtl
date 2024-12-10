@@ -2,3 +2,4 @@ join Hercules leftmost [animation="Fade In Down" wait="true"]
 Hercules: Alright, Herakles... You’ve faced worse than a lion. It’s just another beast—\
 except this one has a hide tougher than iron. Let’s find it, and let’s end this.
 leave Hercules [animation="Fade Out Up" wait="true"]
+[signal arg="end"]
