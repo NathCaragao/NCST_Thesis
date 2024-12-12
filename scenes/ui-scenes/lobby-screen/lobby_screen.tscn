@@ -1545,7 +1545,7 @@ text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="CoinIcon2" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(1624, 63)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_vgjvk")
@@ -1553,7 +1553,7 @@ animation = &"coin-idle"
 autoplay = "coin-idle"
 frame_progress = 0.734188
 
-[node name="GemsIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="GemsIcon2" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(1259, 64)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bnkuh")

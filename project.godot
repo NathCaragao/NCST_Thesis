@@ -269,7 +269,8 @@ folder_colors={
 "res://inventory-system/": "pink",
 "res://quest-system/": "orange",
 "res://scenes/": "teal",
-"res://shaders/": "yellow"
+"res://shaders/": "yellow",
+"res://tutorial-system/": "green"
 }
 
 [global_group]
