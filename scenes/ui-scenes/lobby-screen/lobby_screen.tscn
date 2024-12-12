@@ -1,6 +1,5 @@
-[gd_scene load_steps=41 format=4 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=42 format=4 uid="uid://bew17a4cm663b"]
 
-[ext_resource type="Texture2D" uid="uid://dnjy37qbefga7" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_02.png" id="1_72mr3"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_22pfw"]
 [ext_resource type="Texture2D" uid="uid://2piwp0dft3w6" path="res://assets/tileset (world-building)/World-Tileset_1.0.0.png" id="2_h4bue"]
@@ -11,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://t3njmjdk8exw" path="res://assets/icons/almanac-icon.png" id="5_187xu"]
 [ext_resource type="Texture2D" uid="uid://cefkrru2fbive" path="res://assets/tileset (world-building)/forest Tiles 2.png" id="5_c1xm3"]
 [ext_resource type="Texture2D" uid="uid://nhwtw7bum50o" path="res://assets/icons/inv-icon.png" id="6_3110w"]
+[ext_resource type="Texture2D" uid="uid://denn5l5r6qr4k" path="res://assets/ui/backgrounds/main-lobby-png/main_lobby_final.png" id="7_3kxh8"]
 [ext_resource type="Texture2D" uid="uid://ssgiaqk380dd" path="res://assets/icons/shop-icon.png" id="7_wvu18"]
 [ext_resource type="Texture2D" uid="uid://fr4evcq8gxc8" path="res://assets/icons/play-icon.png" id="8_psrj4"]
 [ext_resource type="Texture2D" uid="uid://dgin82a3d0l7r" path="res://assets/icons/gold-coins-icon.png" id="9_ee0k1"]
 [ext_resource type="PackedScene" uid="uid://cha4508ye1b32" path="res://scenes/ui-scenes/settings-screen/settings_tab.tscn" id="10_ksrao"]
 [ext_resource type="PackedScene" uid="uid://c8em666yw7wu1" path="res://scenes/ui-scenes/almanac-screen/almanac.tscn" id="13_eq0bs"]
+[ext_resource type="Texture2D" uid="uid://cgul7xtoxavcv" path="res://assets/icons/character_icon.png" id="15_8i4ky"]
 [ext_resource type="Texture2D" uid="uid://c0kvmc4gwk40r" path="res://assets/dynamic assets/MonedaD.png" id="17_v45dv"]
 [ext_resource type="PackedScene" uid="uid://48qovkw5aj6e" path="res://scenes/ui-scenes/shop-screen(final)/shop_3.tscn" id="18_47jsh"]
 [ext_resource type="Texture2D" uid="uid://pydj505shwk1" path="res://assets/dynamic assets/premium_gems.png" id="18_bclf8"]
@@ -1883,7 +1884,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_72mr3")
+texture = ExtResource("7_3kxh8")
 
 [node name="CoinIcon" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(1624, 63)
@@ -1961,60 +1962,72 @@ offset_bottom = 40.0
 
 [node name="Shop" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 layout_mode = 0
-offset_left = 1104.0
+offset_left = 995.0
 offset_top = 1025.0
-offset_right = 1250.0
+offset_right = 1141.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 layout_mode = 0
-offset_left = 1302.0
+offset_left = 1431.0
 offset_top = 1025.0
-offset_right = 1448.0
+offset_right = 1577.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character" type="Label" parent="CanvasLayer/Labels/BotLabels"]
+layout_mode = 0
+offset_left = 1183.0
+offset_top = 1025.0
+offset_right = 1392.0
+offset_bottom = 1059.0
+theme_override_fonts/font = ExtResource("2_22pfw")
+theme_override_font_sizes/font_size = 24
+text = "Character"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 layout_mode = 0
-offset_left = 461.0
+offset_left = 335.0
 offset_top = 1025.0
-offset_right = 647.0
+offset_right = 521.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Almanac" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 layout_mode = 0
-offset_left = 676.0
+offset_left = 561.0
 offset_top = 1025.0
-offset_right = 838.0
+offset_right = 723.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "ALMANAC"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Inv" type="Label" parent="CanvasLayer/Labels/BotLabels"]
 layout_mode = 0
-offset_left = 871.0
+offset_left = 746.0
 offset_top = 1025.0
-offset_right = 1080.0
+offset_right = 955.0
 offset_bottom = 1059.0
 theme_override_fonts/font = ExtResource("2_22pfw")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2039,20 +2052,20 @@ frame_progress = 0.618346
 
 [node name="SettingsBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
-offset_left = 489.0
-offset_top = 887.0
-offset_right = 603.0
-offset_bottom = 1002.0
+offset_left = 365.0
+offset_top = 884.0
+offset_right = 479.0
+offset_bottom = 999.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 icon = ExtResource("4_bg4yb")
 icon_alignment = 1
 
 [node name="AlamanacBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
-offset_left = 696.0
-offset_top = 887.0
-offset_right = 810.0
-offset_bottom = 1002.0
+offset_left = 577.0
+offset_top = 884.0
+offset_right = 691.0
+offset_bottom = 999.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 text = "																																																																																																																																																																																																																																																																															"
 icon = ExtResource("5_187xu")
@@ -2060,30 +2073,42 @@ icon_alignment = 1
 
 [node name="InvBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
-offset_left = 912.0
-offset_top = 887.0
-offset_right = 1026.0
-offset_bottom = 1002.0
+offset_left = 791.0
+offset_top = 883.0
+offset_right = 907.0
+offset_bottom = 998.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 icon = ExtResource("6_3110w")
 icon_alignment = 1
 
 [node name="ShopBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
-offset_left = 1118.0
-offset_top = 887.0
-offset_right = 1232.0
-offset_bottom = 1002.0
+offset_left = 1009.0
+offset_top = 885.0
+offset_right = 1123.0
+offset_bottom = 1000.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 icon = ExtResource("7_wvu18")
 icon_alignment = 1
 
+[node name="CharaBtn" type="Button" parent="CanvasLayer"]
+offset_left = 1225.0
+offset_top = 885.0
+offset_right = 1337.0
+offset_bottom = 998.0
+icon = ExtResource("15_8i4ky")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
+visible = false
+
 [node name="PlayBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
-offset_left = 1317.0
-offset_top = 887.0
-offset_right = 1431.0
-offset_bottom = 1002.0
+offset_left = 1439.0
+offset_top = 884.0
+offset_right = 1553.0
+offset_bottom = 999.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_eeemb")
 icon = ExtResource("8_psrj4")
 icon_alignment = 1
@@ -2100,9 +2125,6 @@ expand_mode = 1
 [node name="SettingsTab" parent="CanvasLayer" instance=ExtResource("10_ksrao")]
 visible = false
 offset_bottom = -139.0
-
-[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
-visible = false
 
 [node name="Shop3" parent="CanvasLayer" instance=ExtResource("18_47jsh")]
 visible = false
