@@ -397,12 +397,13 @@ initial_state = NodePath("EnemyWander")
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_f6837")
 actor = NodePath("../..")
+move_speed = 20.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "enemy_health_comp")]
 script = ExtResource("9_7lvdy")
 actor = NodePath("../..")
-move_speed = 40.0
+move_speed = 50.0
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 direction_val = 30
 
@@ -430,7 +431,7 @@ enemy_health_comp = NodePath("../../EnemyHealthComp")
 death_audio_node = NodePath("../../wolfsound/death")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("11_qkhtx")]
-max_health = 50
+max_health = 60
 enemy_hp_bar = NodePath("EnemyHPbar")
 anim_effects = NodePath("../AnimEffects")
 dmg_num_pos = NodePath("../DmgNumPos")
@@ -474,9 +475,11 @@ libraries = {
 
 [node name="atk" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("18_gb5on")
+bus = &"Sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="wolfsound"]
 stream = ExtResource("19_nd273")
+bus = &"Sfx"
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 

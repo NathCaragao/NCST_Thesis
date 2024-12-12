@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf8rthjawuuun"]
+
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_mqq8s"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_3pq7b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjy4v"]
+shader = ExtResource("1_mqq8s")
+shader_parameter/scroll_speed = 0.03
+
+[node name="CharacterInfoScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgPattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_rjy4v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3pq7b")
+
+[node name="Filter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47451)

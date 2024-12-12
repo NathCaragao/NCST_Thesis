@@ -3,7 +3,7 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
-@onready var death : AudioStreamPlayer2D = $"../../player_sound/death"
+@export var death : AudioStreamPlayer2D
 
 func _ready() -> void:
 	GameSignals.connect("playerrespawn", Callable(self, "on_player_respawn"))

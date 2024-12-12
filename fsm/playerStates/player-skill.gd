@@ -3,7 +3,7 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
+@export var player_health_component: PlayerHpComp
 @onready var arrow = load("res://scenes/mechanisms/arrow/arrow.tscn") as PackedScene
 
 var skillCooldown: float = 0.0
