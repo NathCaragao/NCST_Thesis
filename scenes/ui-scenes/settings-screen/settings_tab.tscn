@@ -194,7 +194,8 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "MASTER VOL"
 
-[node name="VolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Master" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -215,7 +216,8 @@ theme_override_fonts/font = ExtResource("1_yvoap")
 theme_override_font_sizes/font_size = 51
 text = "SOUND EFFECT"
 
-[node name="VolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Sfx" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -299,4 +301,6 @@ text = "X"
 
 [connection signal="item_selected" from="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer/ResOption" to="." method="_on_res_option_item_selected"]
 [connection signal="item_selected" from="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer2/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/Sfx" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="CloseBtn" to="." method="settings_close"]

@@ -1,5 +1,7 @@
 extends Control
 
+@onready var master: HSlider = %Master
+@onready var sfx: HSlider = %Sfx
 
 
 func _ready() -> void:
@@ -53,3 +55,11 @@ func settings_close() -> void:
 	
 	# After the animation completes, hide the window
 	tween.tween_callback(func(): visible = false)
+
+# MASTER VOLUME
+func _on_master_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+
+# SFX volume
+func _on_sfx_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(1, value)
