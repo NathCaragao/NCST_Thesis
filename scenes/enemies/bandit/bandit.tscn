@@ -470,9 +470,11 @@ libraries = {
 
 [node name="atk" type="AudioStreamPlayer2D" parent="enemy sound"]
 stream = ExtResource("18_upthc")
+bus = &"BGM"
 
 [node name="death" type="AudioStreamPlayer2D" parent="enemy sound"]
 stream = ExtResource("19_yq0jl")
+bus = &"Sfx"
 
 [connection signal="timeout" from="StateMachine/EnemyAttack/Timer" to="StateMachine/EnemyAttack" method="_on_timer_timeout"]
 
