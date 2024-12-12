@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c7w2vcb45ltjg"]
+[gd_scene load_steps=21 format=4 uid="uid://c7w2vcb45ltjg"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_7vxp4"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="1_q3ek3"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="5_sj1il"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="7_p17i3"]
 [ext_resource type="PackedScene" uid="uid://br24vp0cle48w" path="res://scenes/atalanta-player/atalanta.tscn" id="10_6ctxv"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_wm66m"]
+[ext_resource type="PackedScene" uid="uid://cvoeystalnfdy" path="res://scenes/enemies/Calydonian boss-boar/CAlydonian_boss_boar.tscn" id="12_522hw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qcq"]
 texture = ExtResource("2_saqnf")
@@ -1027,10 +1029,13 @@ sources/0 = SubResource("TileSetAtlasSource_6g760")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0lhm"]
 size = Vector2(193, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmjf1"]
+size = Vector2(16, 270)
+
 [node name="AtalantaAndTheCalydonianBoarHunt" type="Node2D"]
 
 [node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(7334, -732)
+position = Vector2(7400, -737)
 scale = Vector2(20.5988, 23.1659)
 texture = ExtResource("1_7vxp4")
 
@@ -1118,3 +1123,34 @@ position = Vector2(5868, -328)
 
 [node name="Atalanta" parent="." instance=ExtResource("10_6ctxv")]
 position = Vector2(176, -28)
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(393, -138)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(6863, 463)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="DialogActivator3" type="Area2D" parent="."]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
+position = Vector2(12514, 694)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="BossBoar" parent="." instance=ExtResource("12_522hw")]
+position = Vector2(12781, 800)
+move_speed = 1400.0
