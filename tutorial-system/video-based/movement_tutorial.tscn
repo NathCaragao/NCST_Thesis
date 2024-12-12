@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh051fg2usf0p"]
+[gd_scene load_steps=5 format=3 uid="uid://bh051fg2usf0p"]
 
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_kvtav"]
 [ext_resource type="Script" path="res://tutorial-system/video-based/movement_tutorial.gd" id="1_sx87j"]
+[ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="3_ounny"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_wmqeu"]
+file = "res://assets/videos/movement_video.ogg"
 
 [node name="MovementTutorial" type="Control"]
 layout_mode = 3
@@ -52,18 +56,31 @@ text = "Movement Tutorial"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Desc" type="Label" parent="."]
+[node name="Desc" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -616.0
-offset_top = 337.0
+offset_top = 336.0
 offset_right = 2.0
-offset_bottom = 881.0
+offset_bottom = 880.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_kvtav")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/normal_font = ExtResource("3_ounny")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "To move your character:
+
+
+
+  Move Left: [color=red]Press A[/color]
+
+
+  Move Right: [color=red]Press D[/color]
+
+
+  Jump: [color=red]Press Spacebar[/color]"
+autowrap_mode = 2
 
 [node name="CloseBtn" type="Button" parent="."]
 layout_mode = 1
@@ -87,7 +104,9 @@ offset_right = 1547.0
 offset_bottom = 687.0
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(573, 350)
 layout_mode = 2
+stream = SubResource("VideoStreamTheora_wmqeu")
 autoplay = true
 expand = true
 loop = true
