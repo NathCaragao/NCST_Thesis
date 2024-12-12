@@ -33,9 +33,9 @@ func update(currentPlayerData, otherPlayersData):
 	else:
 		SceneManager.showLoadingScreen()
 		
-	_loadLevel()
 	_loadCurrentPlayer(currentPlayerData)
 	_loadOtherPlayers(otherPlayersData)
+	_loadLevel()
 	
 func _loadLevel():
 	if isLoaded == false:
@@ -59,7 +59,7 @@ func _loadOtherPlayers(otherPlayersData: Array):
 		# Instantiate characters
 		if otherPlayersCharacter.is_empty():
 			#var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
-			var otherPlayerNewCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
+			var otherPlayerNewCharacter: CharacterBody2D = load("res://scenes/player/player.tscn").instantiate()
 			otherPlayerNewCharacter.initialize($SpawnPoint.position, false, otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, otherPlayersData[otherPlayerFromServer].playerData.displayName)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
@@ -68,11 +68,5 @@ func _loadOtherPlayers(otherPlayersData: Array):
 			for localOtherPlayer in range(0, otherPlayersCharacter.size()):
 				if otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId == otherPlayersCharacter[localOtherPlayer].playerGameData.playerId:
 					#Update Player's playerGameData
+					otherPlayersCharacter[localOtherPlayer].hud.hide()
 					otherPlayersCharacter[localOtherPlayer].updatePlayer(otherPlayersData[otherPlayerFromServer])
-			
-					#otherPlayersCharacter[localOtherPlayer].playerGameData.direction = otherPlayersData[otherPlayerFromServer].ongoingMatchData.direction
-					#otherPlayersCharacter[localOtherPlayer].playerGameData.isJumping = otherPlayersData[otherPlayerFromServer].ongoingMatchData.isJumping
-					#otherPlayersData[otherPlayerFromServer].ongoingMatchData.isAttacking = otherPlayersData[otherPlayerFromServer].ongoingMatchData.isAttacking
-					#self.playerGameData.isSkill = updateDictionary["isSkill"]
-					#self.playerGameData.velocity = updateDictionary["velocity"]
-					#self.playerGameData.weaponMode = updateDictionary["weaponMode"]

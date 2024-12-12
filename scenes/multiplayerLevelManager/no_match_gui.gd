@@ -35,6 +35,13 @@ func _on_join_match_btn_pressed() -> void:
 	matchCreated.emit(%MatchIdField.text)
 	await _joinMatch(%MatchIdField.text, false)
 
+func _on_join_random_btn_pressed() -> void:
+	var newMatchID = await ServerManager.joinRandomMatch()
+	if newMatchID == "":
+		Notification.showMessage("No Match found, try again later or Create your own.", 3.0)
+		return
+	matchCreated.emit(newMatchID)
+	await _joinMatch(newMatchID, false)
 
 func _on_go_back_btn_pressed() -> void:
 	returnToLevelSelector.emit()

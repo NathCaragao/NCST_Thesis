@@ -27,6 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox_collision: CollisionShape2D = $PlayerHealthComponent/Hurtbox/HurtboxCollision
 @onready var hitbox: Hitbox = $PlayerHealthComponent/Hitbox
+@onready var hud: CanvasLayer = $HUD
 
 
 @export var push = 40

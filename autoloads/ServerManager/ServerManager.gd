@@ -237,6 +237,13 @@ func createMatch(matchName:String = "") -> String:
 	print_debug("CREATED MATCH: %s", result)
 	return JSON.parse_string(result.payload)["matchId"]
 	
+func joinRandomMatch() -> String:
+	if nakamaSocket == null:
+		await createSocketAsync()
+	var result = await nakamaSocket.rpc_async("findMatchRPC")
+	return JSON.parse_string(result.payload)["matchId"]
+	#print_debug(result)
+	return ""
 
 func joinMatch(matchId:String) -> int:
 	if nakamaSocket == null:
