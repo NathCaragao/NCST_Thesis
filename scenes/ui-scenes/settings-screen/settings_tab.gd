@@ -2,6 +2,7 @@ extends Control
 
 @onready var master: HSlider = %Master
 @onready var sfx: HSlider = %Sfx
+@onready var music: HSlider = %MusicVal
 
 
 func _ready() -> void:
@@ -60,6 +61,10 @@ func settings_close() -> void:
 func _on_master_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, value)
 
-# SFX volume
+# SFX VOLUME
 func _on_sfx_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(1, value)
+
+# MUSIC VOLUME
+func _on_music_val_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, value)

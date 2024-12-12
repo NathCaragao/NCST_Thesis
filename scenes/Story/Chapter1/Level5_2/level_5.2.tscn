@@ -8418,6 +8418,7 @@ scale = Vector2(1.3, 1.3)
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("34_s6d57")
 volume_db = -15.0
+bus = &"BGM"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

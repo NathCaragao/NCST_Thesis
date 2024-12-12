@@ -5394,6 +5394,7 @@ debug_color = Color(0.219608, 0, 0.447059, 0.419608)
 [node name="bgm_lvl3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_vsi4j")
 volume_db = -15.0
+bus = &"BGM"
 
 [node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("37_rpfvs")]
 position = Vector2(8692, -146)
