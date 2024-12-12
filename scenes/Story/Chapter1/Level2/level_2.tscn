@@ -9836,7 +9836,6 @@ shape = SubResource("RectangleShape2D_kblv6")
 [node name="DeathZone" type="Area2D" parent="."]
 position = Vector2(4355, 3444)
 script = ExtResource("33_va0sa")
-insta_dmg = 1000
 
 [node name="Area1" type="CollisionShape2D" parent="DeathZone"]
 position = Vector2(3.5, 41.5)
