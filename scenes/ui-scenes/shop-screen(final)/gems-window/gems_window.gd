@@ -15,4 +15,25 @@ func _on_buy_btn_1_pressed() -> void:
 	var user = await ServerManager.getUserLoggedInInfo()
 	var userId = user.user.id
 	print_debug(userId)
-	OS.shell_open("http://localhost:5173/buy/gem/500/%s" % userId)
+	OS.shell_open("http://localhost:5173/buy/gem/60/%s" % userId)
+
+
+func _on_buy_btn_2_pressed() -> void:
+	var user = await ServerManager.getUserLoggedInInfo()
+	var userId = user.user.id
+	print_debug(userId)
+	OS.shell_open("http://localhost:5173/buy/gem/200/%s" % userId)
+
+
+func _on_buy_btn_4_pressed() -> void:
+	var user = await ServerManager.getUserLoggedInInfo()
+	var userId = user.user.id
+	print_debug(userId)
+	OS.shell_open("http://localhost:5173/buy/gem/700/%s" % userId)
+
+
+func _on_buy_btn_5_pressed() -> void:
+	var user = await ServerManager.getUserLoggedInInfo()
+	var userId = user.user.id
+	print_debug(userId)
+	OS.shell_open("http://localhost:5173/buy/gem/900/%s" % userId)
