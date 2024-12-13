@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2uxf3foy63r3"]
 
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_r2fg4"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_r2fg4"]
 [ext_resource type="Texture2D" uid="uid://cdsqma8qh6vuw" path="res://assets/Images/GameObjectImages/coins/coin_icon.png" id="2_rbche"]
 
 [node name="ScoreUI" type="Node"]
