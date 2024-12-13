@@ -34,6 +34,7 @@ GameSignals="*res://autoloads/game-signals/game-signals.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 PlayerManager="*res://autoloads/player-manager/player_manager.gd"
 QuestUi="*res://autoloads/quest-system-final/quest_ui.tscn"
+GearManager="*res://gear-system/autoload/gear_manager.gd"
 
 [dialogic]
 
@@ -266,6 +267,7 @@ folder_colors={
 "res://discardedFiles/": "purple",
 "res://enums/": "purple",
 "res://fsm/": "gray",
+"res://gear-system/": "green",
 "res://inventory-system/": "pink",
 "res://quest-system/": "orange",
 "res://scenes/": "teal",
