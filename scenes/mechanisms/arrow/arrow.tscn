@@ -9,8 +9,9 @@
 radius = 1.0
 height = 40.0
 
-[node name="Arrow" type="Node2D" groups=["Projectiles"]]
+[node name="Arrow" type="Node2D" node_paths=PackedStringArray("attack_component") groups=["Projectiles"]]
 script = ExtResource("1_gqph8")
+attack_component = NodePath("AttackComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true

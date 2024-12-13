@@ -3578,6 +3578,7 @@ position = Vector2(2161, 148)
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_0yvpn")
 volume_db = -15.0
+bus = &"BGM"
 
 [node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("24_jaggd")]
 position = Vector2(1284.01, 126)

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TutorialTextData" load_steps=2 format=3 uid="uid://8ltiurmvok5o"]
+
+[ext_resource type="Script" path="res://tutorial-system/tutorial_text_data.gd" id="1_41mw3"]
+
+[resource]
+script = ExtResource("1_41mw3")
+tutorial_steps = ["first text", "second text", "third text"]

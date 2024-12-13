@@ -145,34 +145,44 @@ script = ExtResource("8_q5yvf")
 initial_state = NodePath("PlayerIdle")
 actor = NodePath("..")
 
-[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("9_rwas3")
 actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "RunForrestRun")]
 script = ExtResource("10_om8j4")
 actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+RunForrestRun = NodePath("../../player_sound/run")
 
-[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("11_jx4ow")
 actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "Sword_swing", "bow_sound")]
 script = ExtResource("12_btdkg")
 actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+Sword_swing = NodePath("../../player_sound/SwordSwing")
+bow_sound = NodePath("../../player_sound/bow")
 
-[node name="PlayerSkill" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerSkill" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("13_6yucp")
 actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="PlayerDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "death")]
 script = ExtResource("14_oykdt")
 actor = NodePath("../..")
+death = NodePath("../../player_sound/death")
 
-[node name="PlayerHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "health_comp")]
+[node name="PlayerHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "health_comp", "on_hit")]
 script = ExtResource("18_ej16c")
 actor = NodePath("../..")
 health_comp = NodePath("../../PlayerHealthComponent")
+on_hit = NodePath("../../player_sound/on_hit")
 
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("14_3d4tk")]
 anim_effects = NodePath("../AnimEffects")
@@ -345,18 +355,23 @@ zoom = Vector2(2.75, 2.75)
 
 [node name="run" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("32_64w5q")
+bus = &"Sfx"
 
 [node name="SwordSwing" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("33_ytchi")
+bus = &"Sfx"
 
 [node name="bow" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("34_qxywh")
+bus = &"Sfx"
 
 [node name="on_hit" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("35_wemq0")
+bus = &"Sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="player_sound"]
 stream = ExtResource("36_n8yop")
+bus = &"Sfx"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 

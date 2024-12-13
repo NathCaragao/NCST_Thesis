@@ -3,8 +3,8 @@ extends State
 
 # references & variables
 @export var actor : CharacterBody2D
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
-@onready var RunForrestRun: AudioStreamPlayer2D = $"../../player_sound/run"
+@export var player_health_component: PlayerHpComp
+@export var RunForrestRun: AudioStreamPlayer2D
 
 var is_running_audio_playing = false
 

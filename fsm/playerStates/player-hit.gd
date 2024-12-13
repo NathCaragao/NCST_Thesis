@@ -4,7 +4,7 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var health_comp : PlayerHpComp
-@onready var on_hit : AudioStreamPlayer2D = $"../../player_sound/on_hit"
+@export var on_hit : AudioStreamPlayer2D
 func _ready() -> void:
 	health_comp.connect("ObstacleHit", Callable(self, "on_obstacle_hit"))
 

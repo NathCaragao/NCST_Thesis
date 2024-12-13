@@ -1,179 +1,42 @@
-[gd_scene load_steps=27 format=3 uid="uid://br24vp0cle48w"]
+[gd_scene load_steps=44 format=3 uid="uid://br24vp0cle48w"]
 
 [ext_resource type="Script" path="res://scenes/atalanta-player/atalanta.gd" id="1_0bgvw"]
 [ext_resource type="Texture2D" uid="uid://c7bsfkxy2a14u" path="res://assets/character/atalanta-sprites/atalanta_idle.png" id="1_8x3y2"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_5qdks"]
+[ext_resource type="Resource" uid="uid://xpwbllut5klj" path="res://inventory-system/inventories/player_inv.tres" id="2_c1dbi"]
 [ext_resource type="Texture2D" uid="uid://b23pw3l7gy3wx" path="res://assets/character/atalanta-sprites/atalanta_run.png" id="2_r0wd8"]
 [ext_resource type="Texture2D" uid="uid://davr5n72vlvg6" path="res://assets/character/atalanta-sprites/atalanta_attack.png" id="3_vrwl0"]
 [ext_resource type="Texture2D" uid="uid://cto4kpn71rrur" path="res://assets/character/atalanta-sprites/atalanta_hit.png" id="4_xkd70"]
 [ext_resource type="Texture2D" uid="uid://7owmemyf6yjb" path="res://assets/character/atalanta-sprites/atalanta_jump.png" id="5_j2o6a"]
 [ext_resource type="Texture2D" uid="uid://d1vhtw7c8t1ra" path="res://assets/character/atalanta-sprites/atalanta_death.png" id="6_c56rd"]
 [ext_resource type="PackedScene" uid="uid://r2t80cgmn41l" path="res://scenes/components/healthcomp/players/player_health_component.tscn" id="8_8aq8d"]
-[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="10_pxupd"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="9_p78y3"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_idle.gd" id="10_iqjom"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_run.gd" id="11_nbj2u"]
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="11_y8jnf"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_jump.gd" id="12_jlngh"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="12_pm1w1"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="13_ofhs1"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_attack.gd" id="13_u4378"]
+[ext_resource type="Texture2D" uid="uid://cg8debiytau2d" path="res://assets/Images/HUD/hp_bar_icon_new.png" id="14_l8xtl"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_death.gd" id="14_tlv2a"]
+[ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="16_fypbp"]
+[ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="17_6vj1a"]
+[ext_resource type="Script" path="res://scenes/mechanisms/arrow/arrow.gd" id="17_8dt2d"]
+[ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="18_mroae"]
+[ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="19_5mrdt"]
+[ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="20_f4l7e"]
+[ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="21_hqffl"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="22_g3uox"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="22_qru2a"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wra0k"]
+load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c7341.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bep3t"]
 shader = ExtResource("2_5qdks")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_sealr"]
-resource_name = "atalanta-idle"
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8x3y2")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_3xq74"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8x3y2")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_g5epw"]
-resource_name = "atalanta-run"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_r0wd8")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
 
 [sub_resource type="Animation" id="Animation_0dkcc"]
 resource_name = "atalanta-attack"
@@ -228,9 +91,9 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
-[sub_resource type="Animation" id="Animation_1sdk0"]
-resource_name = "atalanta-hit"
-length = 0.4
+[sub_resource type="Animation" id="Animation_sealr"]
+resource_name = "atalanta-idle"
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -242,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_xkd70")]
+"values": [ExtResource("1_8x3y2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -275,10 +138,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_gqr4d"]
@@ -335,7 +198,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_uk02a"]
 resource_name = "atalanta-death"
-length = 1.5
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -385,26 +248,141 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHealthComponent/Hurtbox/HurtboxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1sdk0"]
+resource_name = "atalanta-hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xkd70")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_g5epw"]
+resource_name = "atalanta-run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r0wd8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ov5mn"]
 _data = {
-"RESET": SubResource("Animation_3xq74"),
-"atalanta-attack": SubResource("Animation_0dkcc"),
-"atalanta-death": SubResource("Animation_uk02a"),
-"atalanta-hit": SubResource("Animation_1sdk0"),
-"atalanta-idle": SubResource("Animation_sealr"),
-"atalanta-jump": SubResource("Animation_gqr4d"),
-"atalanta-run": SubResource("Animation_g5epw")
+"attack1": SubResource("Animation_0dkcc"),
+"idle": SubResource("Animation_sealr"),
+"jump": SubResource("Animation_gqr4d"),
+"player-dead": SubResource("Animation_uk02a"),
+"player-hit": SubResource("Animation_1sdk0"),
+"run": SubResource("Animation_g5epw")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kybb1"]
 radius = 5.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4w0y"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sqcw"]
 radius = 5.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p2b5d"]
-load_path = "res://.godot/imported/hp_bar_icon_new.png-99a398d4de8fbf24f7c1330ec1c62cd5.ctex"
 
 [sub_resource type="Animation" id="Animation_6hcam"]
 length = 0.001
@@ -444,8 +422,38 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Atalanta" type="CharacterBody2D"]
+[node name="Atalanta" type="CharacterBody2D" node_paths=PackedStringArray("player_hp")]
 script = ExtResource("1_0bgvw")
+inv = ExtResource("2_c1dbi")
+player_hp = NodePath("PlayerHealthComponent")
+
+[node name="NameTag" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -42.0
+offset_top = -38.0
+offset_right = 45.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 16
+text = "\"YOU\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow-down" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.0351563, 0.0351563)
+texture = SubResource("CompressedTexture2D_wra0k")
+
+[node name="State" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 60.0
+offset_top = -63.0
+offset_right = 147.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 16
+text = "\"YOU\""
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bep3t")
@@ -456,47 +464,182 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_ov5mn")
 }
-autoplay = "atalanta-idle"
+autoplay = "idle"
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_kybb1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("9_p78y3")
+initial_state = NodePath("AtalantaIdle")
+actor = NodePath("..")
+
+[node name="AtalantaIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("10_iqjom")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("11_nbj2u")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("12_jlngh")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("13_u4378")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("14_tlv2a")
+actor = NodePath("../..")
 
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("8_8aq8d")]
 anim_effects = NodePath("../AnimEffects")
 player = NodePath("..")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
 position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_s4w0y")
-debug_color = Color(0.987479, 0, 0.312574, 0.42)
+shape = SubResource("CapsuleShape2D_2sqcw")
+debug_color = Color(0.988201, 0, 0.304645, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="PlayerHealthComponent" node_paths=PackedStringArray("attack_component")]
+script = ExtResource("12_pm1w1")
+attack_component = NodePath("../AttackComponent")
+
+[node name="ArrowHitbox" type="Node2D" parent="PlayerHealthComponent" node_paths=PackedStringArray("attack_component")]
+script = ExtResource("17_8dt2d")
+attack_component = NodePath("../AttackComponent")
+
+[node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
+
+[node name="PhotoFrame" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_right = 235.0
+offset_bottom = 235.0
+texture = ExtResource("13_ofhs1")
+
+[node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("11_y8jnf")]
+custom_minimum_size = Vector2(240, 10)
+offset_left = 310.0
+offset_top = 21.0
+offset_right = 590.0
+offset_bottom = 51.0
+scale = Vector2(2, 2)
+
+[node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
+theme_override_font_sizes/font_size = 32
+
+[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_left = 253.0
+offset_top = 21.0
+offset_right = 308.0
+offset_bottom = 83.0
+texture = ExtResource("14_l8xtl")
 
 [node name="AttackComponent" type="Node2D" parent="PlayerHealthComponent"]
-script = ExtResource("10_pxupd")
+script = ExtResource("22_g3uox")
 
-[node name="hpHUD" type="CanvasLayer" parent="PlayerHealthComponent"]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/hpHUD"]
-offset_left = 23.0
-offset_top = 15.0
-offset_right = 32.0
-offset_bottom = 25.0
-scale = Vector2(5, 5)
-texture = SubResource("CompressedTexture2D_p2b5d")
+[node name="InventoryUI" parent="HUD" instance=ExtResource("16_fypbp")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -258.0
+offset_top = -122.0
+offset_right = -70.0
+offset_bottom = -62.0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
 
-[node name="PlayerHPbar" parent="PlayerHealthComponent/hpHUD" instance=ExtResource("11_y8jnf")]
-offset_left = 68.0
-offset_top = 15.0
-offset_right = 176.0
-offset_bottom = 25.0
-scale = Vector2(5, 5)
+[node name="Guide1" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 508.0
+offset_top = -126.0
+offset_right = 572.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("17_6vj1a")
+
+[node name="Guide2" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_top = -124.0
+offset_right = 1216.0
+offset_bottom = -84.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("18_mroae")
+
+[node name="Guide3" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1686.0
+offset_top = -322.0
+offset_right = 1750.0
+offset_bottom = -282.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("19_5mrdt")
+
+[node name="Guide4" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.00002
+offset_top = -126.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("20_f4l7e")
+
+[node name="WeaponRoulette" parent="HUD" instance=ExtResource("21_hqffl")]
+offset_left = 1643.0
+offset_top = 958.0
+offset_right = 1753.0
+offset_bottom = 1068.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2.5, 2.5)
+
+[node name="WeaponMode" type="Label" parent="HUD"]
+offset_left = 1718.0
+offset_top = 890.0
+offset_right = 1844.0
+offset_bottom = 951.0
+theme_override_fonts/font = ExtResource("22_qru2a")
+theme_override_font_sizes/font_size = 24
+text = "WEAPON
+z|x"
+horizontal_alignment = 1
+
+[node name="ArrowPos" type="Node2D" parent="."]
+position = Vector2(15, 0)
+
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowPos"]
+position = Vector2(19, 0)
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
 }
 
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(2.75, 2.75)
+
 [editable path="PlayerHealthComponent"]
+[editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]

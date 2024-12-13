@@ -3,9 +3,9 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
-@onready var player_health_component: PlayerHpComp = $"../../PlayerHealthComponent"
-@onready var Sword_swing :  AudioStreamPlayer2D = $"../../player_sound/SwordSwing"
-@onready var bow_sound : AudioStreamPlayer2D = $"../../player_sound/bow"
+@export var player_health_component: PlayerHpComp
+@export var Sword_swing :  AudioStreamPlayer2D
+@export var bow_sound : AudioStreamPlayer2D
 # variables
 var attack_index : int = 0
 var attack_animations : Array = ["attack1", "attack2"]

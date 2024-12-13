@@ -1413,6 +1413,7 @@ player = NodePath("../../Player")
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_lvvsh")
 volume_db = -15.0
+bus = &"BGM"
 
 [connection signal="body_entered" from="DialogActivator" to="DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogActivator2" to="DialogActivator2" method="_on_body_entered"]

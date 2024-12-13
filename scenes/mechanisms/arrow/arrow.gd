@@ -2,7 +2,7 @@ class_name ArrowHitbox
 extends Node2D
 
 @export var speed : float = 500.0
-@onready var attack_component: AttackComponent = $AttackComponent as AttackComponent
+@export var attack_component: AttackComponent
 @onready var arrow_col: CollisionShape2D = $ProjectileHitbox/ArrowCol
 
 
