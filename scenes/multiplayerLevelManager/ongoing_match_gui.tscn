@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="3_vg1p2"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="3_vg1p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al3hv"]
-size = Vector2(42, 97)
+size = Vector2(373, 185.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k02ci"]
 
@@ -175,7 +175,7 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
 z_index = 2
-position = Vector2(-11, -19.5)
+position = Vector2(17724, -415)
 shape = SubResource("RectangleShape2D_al3hv")
 debug_color = Color(0.607843, 0.513726, 0.466667, 1)
 
