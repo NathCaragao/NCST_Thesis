@@ -70,3 +70,8 @@ func _loadOtherPlayers(otherPlayersData: Array):
 					#Update Player's playerGameData
 					otherPlayersCharacter[localOtherPlayer].hud.hide()
 					otherPlayersCharacter[localOtherPlayer].updatePlayer(otherPlayersData[otherPlayerFromServer])
+
+
+func _on_finish_line_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, PlayerHercules):
+		print_debug(body.playerGameData)

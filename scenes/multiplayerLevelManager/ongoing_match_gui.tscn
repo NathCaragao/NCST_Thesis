@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdp5lo7hga3qh"]
+[gd_scene load_steps=4 format=3 uid="uid://cdp5lo7hga3qh"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al3hv"]
+size = Vector2(42, 97)
 
 [node name="OngoingMatchGUI" type="Node2D"]
 script = ExtResource("1_bh0op")
@@ -16,4 +19,16 @@ position = Vector2(-589.534, 139.118)
 unique_name_in_owner = true
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(-48, -48)
+position = Vector2(-522, 270)
+
+[node name="FinishLine" type="Area2D" parent="."]
+position = Vector2(74, 285)
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
+z_index = 2
+position = Vector2(-11, -19.5)
+shape = SubResource("RectangleShape2D_al3hv")
+debug_color = Color(0.607843, 0.513726, 0.466667, 1)
+
+[connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
