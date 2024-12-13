@@ -5,23 +5,31 @@ extends State
 @export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
 @export var attack : Node2D
-@onready var player : PlayerHercules = get_tree().get_first_node_in_group("Player")
+@onready var player = get_tree().get_nodes_in_group("Player")
 
 
 var is_knocked_back: bool = false
 var deceleration: float = 800.0
 
 func _ready() -> void:
+	
 	enemy_health.connect("Hit", Callable(self, "on_hit"))
 
 func enter() -> void:
 	pass
+
+func find_valid_player() -> Node2D:
+	for player in player:
+		if is_instance_valid(player):
+			return player
+	return null
 
 func physics_update(delta: float) -> void:
 	# Add the gravity.
 	if not actor.is_on_floor():
 		actor.velocity.y += actor.gravity * delta
 	
+	var player = find_valid_player()
 	
 	if is_knocked_back:
 		# Decelerate the velocity
@@ -43,14 +51,17 @@ func on_hit() -> void:
 
 func knock_back() -> void:
 	# enemy knockback
-	var knockback_direction = (actor.global_position - player.global_position).normalized()
-	knockback_direction.y = 0 # ensure 0 to keep the knockback horizontal
+	var player = find_valid_player()
 	
-	actor.velocity = knockback_direction * attack.knockback_force
+	if player:
+		var knockback_direction = (actor.global_position - player.global_position).normalized()
+		knockback_direction.y = 0 # ensure 0 to keep the knockback horizontal
+		
+		actor.velocity = knockback_direction * attack.knockback_force
 
-	actor.move_and_slide()
-	
-	is_knocked_back = true
+		actor.move_and_slide()
+		
+		is_knocked_back = true
 
 # gets activated when the enemy gets hit
 func freeze_time(timescale, duration) -> void:

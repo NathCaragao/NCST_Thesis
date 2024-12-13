@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf8rthjawuuun"]
+[gd_scene load_steps=19 format=3 uid="uid://cf8rthjawuuun"]
 
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_mqq8s"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/character-info-screen/character_info_screen.gd" id="1_s4j28"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_3pq7b"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="3_crdnb"]
+[ext_resource type="FontFile" uid="uid://ckp1y2ms66xv8" path="res://assets/fonts/pixelmplus/PixelMplus12-Bold.ttf" id="4_qocg8"]
+[ext_resource type="Texture2D" uid="uid://ct1c13cgecgom" path="res://assets/ui/windows/item_card.png" id="4_x5hae"]
+[ext_resource type="PackedScene" uid="uid://xpiayqiguetf" path="res://scenes/components/character-display/character-profiles/character_profile.tscn" id="5_7ry1b"]
+[ext_resource type="Texture2D" uid="uid://bru2ne26xqxaa" path="res://assets/icons/hercules_pixel_icon.png" id="5_arb1n"]
+[ext_resource type="Resource" uid="uid://ctjwp7gwtarfb" path="res://scenes/components/character-display/hercules_stats.tres" id="6_fovad"]
+[ext_resource type="Texture2D" uid="uid://cjrl47epccsy5" path="res://assets/icons/atalanta_pixel_icon.png" id="6_i2843"]
+[ext_resource type="Resource" uid="uid://bu2dym0hdn4c2" path="res://scenes/components/character-display/atalanta_stats.tres" id="8_1lj8j"]
+[ext_resource type="Texture2D" uid="uid://ddssxp4ebasa1" path="res://assets/icons/def_icon.png" id="9_aveh8"]
+[ext_resource type="Texture2D" uid="uid://cdx4o4f8c6top" path="res://assets/icons/speed_icon.png" id="10_2yo5g"]
+[ext_resource type="FontFile" uid="uid://b8tfg5iy6fj8w" path="res://assets/fonts/pixelmplus/PixelMplus10-Regular.ttf" id="10_romny"]
+[ext_resource type="Texture2D" uid="uid://ds0my0p8o3gis" path="res://assets/icons/heart_icon.png" id="11_1kfoy"]
+[ext_resource type="Texture2D" uid="uid://4diwa16kvpl" path="res://assets/icons/attack_icon.png" id="12_shm3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rjy4v"]
 shader = ExtResource("1_mqq8s")
 shader_parameter/scroll_speed = 0.03
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4dux"]
+load_path = "res://.godot/imported/hud_photo_frame.png-ad14246061e750b4942cfbd668a26b2e.ctex"
 
 [node name="CharacterInfoScreen" type="Control"]
 layout_mode = 3
@@ -14,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s4j28")
 
 [node name="BgPattern" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -34,3 +52,196 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47451)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_qocg8")
+theme_override_font_sizes/font_size = 96
+text = "CHARACTERS"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 155.0
+offset_right = 1920.0
+offset_bottom = 345.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CharacterFrame1" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("3_crdnb")
+stretch_mode = 4
+
+[node name="Photo" type="TextureRect" parent="MarginContainer/HBoxContainer/CharacterFrame1"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 140.0
+texture = ExtResource("5_arb1n")
+
+[node name="Btn1" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame1"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="CharacterFrame2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_w4dux")
+stretch_mode = 4
+
+[node name="Photo2" type="TextureRect" parent="MarginContainer/HBoxContainer/CharacterFrame2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 143.0
+offset_bottom = 139.0
+texture = ExtResource("6_i2843")
+
+[node name="Btn2" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame2"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="CharacterFrame3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_w4dux")
+stretch_mode = 4
+
+[node name="Btn3" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame3"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="Border" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 4.0
+offset_right = 200.0
+offset_bottom = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_x5hae")
+
+[node name="Hercules" parent="." instance=ExtResource("5_7ry1b")]
+position = Vector2(960, 789)
+scale = Vector2(10, 10)
+character_data = ExtResource("6_fovad")
+
+[node name="Atalanta" parent="." instance=ExtResource("5_7ry1b")]
+visible = false
+position = Vector2(960, 789)
+scale = Vector2(10, 10)
+character_data = ExtResource("8_1lj8j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 544.0
+offset_right = 671.0
+offset_bottom = 1080.0
+theme_override_constants/separation = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Hp" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("11_1kfoy")
+stretch_mode = 4
+
+[node name="HpLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_romny")
+theme_override_font_sizes/font_size = 48
+text = "Health"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Atk" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("12_shm3r")
+stretch_mode = 4
+
+[node name="AtkLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_romny")
+theme_override_font_sizes/font_size = 48
+text = "Attack"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1243.0
+offset_top = 544.0
+offset_right = 1739.0
+offset_bottom = 1080.0
+theme_override_constants/separation = 120
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Def" type="TextureRect" parent="VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_aveh8")
+stretch_mode = 4
+
+[node name="DefLabel" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_romny")
+theme_override_font_sizes/font_size = 48
+text = "Defense
+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Spd" type="TextureRect" parent="VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("10_2yo5g")
+stretch_mode = 4
+
+[node name="SpdLabel" type="Label" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_romny")
+theme_override_font_sizes/font_size = 48
+text = "Speed
+"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame1/Btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame2/Btn2" to="." method="_on_btn_2_pressed"]

@@ -2,7 +2,7 @@
 extends Control
 
 @export var current_level_path : String
-@export var player : PlayerHercules
+@export var player : CharacterBody2D
 @onready var respawn_btn: Button = $VBoxContainer/RespawnBtn
 
 func _ready() -> void:

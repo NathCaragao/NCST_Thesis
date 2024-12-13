@@ -7,7 +7,7 @@ extends State
 
 # variables
 var attack_index : int = 0
-var attack_animations : Array = ["attack1", "attack2"]
+var attack_animations : Array = ["attack1"]
 var is_attacking : bool = false
 
 # projectie references
@@ -17,6 +17,7 @@ var bow_cooldown : bool = true
 var attackCooldown = 0.5
 
 func enter() -> void:
+	print("Entered attack state")
 	bow_attack()
 
 func physics_update(delta: float) -> void:
@@ -30,7 +31,7 @@ func physics_update(delta: float) -> void:
 		actor.velocity.y = actor.playerGameData.velocity.y
 		movement = actor.playerGameData.velocity.x
 	
-	if !actor.animation_player.current_animation.begins_with("player-shoot"):
+	if !actor.animation_player.current_animation.begins_with("attack"):
 		actor.velocity.x = movement
 	actor._flip_sprite()
 	actor.move_and_slide()
@@ -49,40 +50,40 @@ func physics_update(delta: float) -> void:
 	actor.playerGameData.isAttacking = false
 	if actor.playerGameData.isControlled:
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-			Transitioned.emit(self, "playerrun")
+			Transitioned.emit(self, "atalantarun")
 		# transitions to jump state
 		if Input.is_action_just_pressed("jump"):
-			Transitioned.emit(self, "playerjump")
+			Transitioned.emit(self, "atalantajump")
 		
 		if Input.is_action_just_pressed("skill"):
-			Transitioned.emit(self, "playerskill")
+			Transitioned.emit(self, "atalantaskill")
 	else:
 		if actor.playerGameData.velocity.x != 0:
-			Transitioned.emit(self, "playerrun")
+			Transitioned.emit(self, "atalantarun")
 		# transitions to jump state
 		if actor.playerGameData.isJumping:
-			Transitioned.emit(self, "playerjump")
+			Transitioned.emit(self, "atalantajump")
 		
 		if actor.playerGameData.isSkill:
-			Transitioned.emit(self, "playerskill")
+			Transitioned.emit(self, "atalantaskill")
 	
 	if player_health_component.current_health == 0:
-		Transitioned.emit(self, "playerdeath")
+		Transitioned.emit(self, "atalantadeath")
 		
-	Transitioned.emit(self, "playeridle")
+	Transitioned.emit(self, "atalantaidle")
 
 # Ranged mode attack
 func bow_attack() -> void:
 	print("Entered bow_attack state")
 	actor.velocity.x = 0
-	actor.animation_player.play("player-shoot")
+	actor.animation_player.play("attack1")
 	#if actor.playerGameData.isControlled:
 		#actor.playerGameData.isAttacking = true
 	# Connect the signal for when the attack animation finishes
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
 		actor.animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
 	
-	arrow_fire()
+	
 
 # bow projectile
 func arrow_fire() -> void:
@@ -102,6 +103,8 @@ func _on_animation_finished(animation_name: String) -> void:
 	actor.animation_player.play("idle")
 	if animation_name == "attack":
 		attackCooldown = float(10.0/60.0)
+	
+	arrow_fire()
 
 func exit() -> void:
 	actor.velocity = Vector2.ZERO

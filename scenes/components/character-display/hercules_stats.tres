@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=14 format=3 uid="uid://ctjwp7gwtarfb"]
+
+[ext_resource type="Script" path="res://scenes/components/character-display/character_resource.gd" id="1_oegyh"]
+[ext_resource type="Texture2D" uid="uid://bvqapb2xuothr" path="res://assets/character/sprites/hercules_idle1.png" id="1_p02m3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xyri"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1plsr"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bcjk"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ygr"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lyey"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddb7q"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fukhy"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwtwr"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qllbl"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkjgd"]
+atlas = ExtResource("1_p02m3")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jg0k3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xyri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1plsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bcjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ygr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lyey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddb7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fukhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwtwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qllbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkjgd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_oegyh")
+character_name = "Hercules"
+idle_anim = SubResource("SpriteFrames_jg0k3")

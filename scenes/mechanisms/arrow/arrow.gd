@@ -3,7 +3,7 @@ extends Node2D
 
 @export var speed : float = 500.0
 @export var attack_component: AttackComponent
-@onready var arrow_col: CollisionShape2D = $ProjectileHitbox/ArrowCol
+@onready var arrow_col: CollisionShape2D
 
 
 var vel : float
