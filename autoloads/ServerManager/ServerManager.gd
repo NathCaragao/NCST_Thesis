@@ -225,6 +225,9 @@ enum MessageOpCode {
   LOBBY_PLAYER_READY_CHANGED,
   ONGOING_PLAYER_STARTED_CHANGED,
   ONGOING_PLAYER_DATA_UPDATE,
+  ONGOING_PLAYER_FINISHED,
+  DECLARED_WINNER,
+  ONGOING_PLAYER_LEFT,
 }
 
 signal matchStateReceived(matchState: NakamaRTAPI.MatchData)
@@ -237,6 +240,13 @@ func createMatch(matchName:String = "") -> String:
 	print_debug("CREATED MATCH: %s", result)
 	return JSON.parse_string(result.payload)["matchId"]
 	
+func joinRandomMatch() -> String:
+	if nakamaSocket == null:
+		await createSocketAsync()
+	var result = await nakamaSocket.rpc_async("findMatchRPC")
+	return JSON.parse_string(result.payload)["matchId"]
+	#print_debug(result)
+	return ""
 
 func joinMatch(matchId:String) -> int:
 	if nakamaSocket == null:
@@ -256,6 +266,10 @@ func joinMatch(matchId:String) -> int:
 	return OK
 	
 func leaveMatch(matchId:String) -> int:
+	if nakamaSocket == null:
+		SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
+		
+	
 	var leaveResult : NakamaAsyncResult = await nakamaSocket.leave_match_async(matchId)
 	if leaveResult.is_exception():
 		print_debug("An error occurred: %s" % leaveResult)
@@ -264,7 +278,8 @@ func leaveMatch(matchId:String) -> int:
 	return OK
 
 func sendMatchState(matchId:String, messageOpCode:MessageOpCode, message:Dictionary) -> void:
-	await nakamaSocket.send_match_state_async(matchId, messageOpCode, JSON.stringify(message))
+	if nakamaSocket:
+		await nakamaSocket.send_match_state_async(matchId, messageOpCode, JSON.stringify(message))
 
 
 func _on_match_state_received(p_state : NakamaRTAPI.MatchData):
