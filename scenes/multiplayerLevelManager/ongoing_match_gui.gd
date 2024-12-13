@@ -64,7 +64,7 @@ func _loadCurrentPlayer(currentPlayerData):
 		return
 	# Else create new player for this user
 	var playerCharacter: PlayerHercules = load("res://scenes/player/player.tscn").instantiate()
-	playerCharacter.initialize($SpawnPoint.position, true, currentPlayerData.playerData.nakamaData.userId, currentPlayerData.playerData.displayName)
+	playerCharacter.initialize($SpawnPoint/Spawn1.position, true, currentPlayerData.playerData.nakamaData.userId, currentPlayerData.playerData.displayName)
 	%Players.add_child(playerCharacter)
 	currentPlayerCharacter = playerCharacter
 	
@@ -74,7 +74,7 @@ func _loadOtherPlayers(otherPlayersData: Array):
 		if otherPlayersCharacter.is_empty():
 			#var otherPlayerNewCharacter: MultiplayerPlayer = load("res://scenes/multiplayerPlayer/MultiplayerPlayer.tscn").instantiate()
 			var otherPlayerNewCharacter: CharacterBody2D = load("res://scenes/player/player.tscn").instantiate()
-			otherPlayerNewCharacter.initialize($SpawnPoint.position, false, otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, otherPlayersData[otherPlayerFromServer].playerData.displayName)
+			otherPlayerNewCharacter.initialize($SpawnPoint/Spawn1.position, false, otherPlayersData[otherPlayerFromServer].playerData.nakamaData.userId, otherPlayersData[otherPlayerFromServer].playerData.displayName)
 			otherPlayersCharacter.append(otherPlayerNewCharacter)
 			%Players.add_child(otherPlayerNewCharacter)
 		else:
@@ -87,7 +87,7 @@ func _loadOtherPlayers(otherPlayersData: Array):
 
 
 func _on_finish_line_body_entered(body: Node2D) -> void:
-	if is_instance_of(body, PlayerHercules):
+	if is_instance_of(body, CharacterBody2D):
 		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
 			CurrentPlayerReachedFinish.emit()
 			
@@ -104,3 +104,45 @@ func removePlayer(playerIdToRemove):
 	for n in %Players.get_children():
 		if n.playerGameData.playerId == playerIdToRemove:
 			n.queue_free()
+
+
+func _on_zones_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn1.position
+
+
+func _on_zones_2_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn2.position
+
+
+func _on_zones_3_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn3.position
+
+
+func _on_zones_4_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn4.position
+
+
+func _on_zones_5_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn5.position
+
+
+func _on_zones_6_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn6.position
+
+
+func _on_zones_7_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, CharacterBody2D):
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			currentPlayerCharacter.position = $SpawnPoint/Spawn7.position

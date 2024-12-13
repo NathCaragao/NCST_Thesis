@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dojfisnyas7t8"]
+
+[ext_resource type="Script" path="res://scenes/multiplayerLevelManager/teleport_zone.gd" id="1_2dwnk"]
+
+[node name="TeleportZone" type="Area2D"]
+position = Vector2(448, 552)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_2dwnk")
