@@ -61,3 +61,7 @@ func player_state_reset() -> void:
 	
 	# reset player inventory
 	player.inv.reset()
+
+
+func _on_finish_line_body_entered(body: Node2D) -> void:
+	level_cleared()
