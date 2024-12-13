@@ -12,23 +12,34 @@ var otherPlayersCharacter: Array = []
 
 var timer: float = 0
 
+var finishedPlayers: Array = []
+
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if currentPlayerCharacter == null:
+		SceneManager.showLoadingScreen()
+	elif otherPlayersCharacter.size() == 0:
+		SceneManager.showLoadingScreen()
+	else:
+		SceneManager.hideLoadingScreen()
+		
 	timer += delta
 	if timer >= float(1.0/10.0) and currentPlayerCharacter != null:
 		CurrentPlayerGameDataUpdate.emit(currentPlayerCharacter.playerGameData)
 		timer = 0
 
 func update(currentPlayerData, otherPlayersData):
+	
+	
 	if currentPlayerData != {} && currentPlayerData.isStarted && otherPlayersData.size() >= 1:
 	# Loop thru otherPlayers and only set a flag to true if everyone is started.
 		var startLevel = true
 		for otherPlayer in otherPlayersData:
 			if otherPlayer.isStarted == false:
 				startLevel = false
-		if startLevel	== true:
+		if startLevel == true:
 			SceneManager.hideLoadingScreen()
 	else:
 		SceneManager.showLoadingScreen()
@@ -74,4 +85,11 @@ func _loadOtherPlayers(otherPlayersData: Array):
 
 func _on_finish_line_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, PlayerHercules):
-		print_debug(body.playerGameData)
+		var addToFinishedPlayers = true
+		for player in finishedPlayers:
+			if player.playerGameData.playerId == body.playerGameData.playerId:
+				addToFinishedPlayers = false
+		if addToFinishedPlayers:
+			finishedPlayers.append(body)
+			
+	print_debug(finishedPlayers)
