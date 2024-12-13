@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2u1y0t4jw3qb"]
+
+[ext_resource type="Script" path="res://inventory-system/account-inv/account_inv_slot.gd" id="1_ahnx5"]
+[ext_resource type="Texture2D" uid="uid://cbj5yq7l03low" path="res://assets/ui/inventory-ui/hot_bar_slot.png" id="1_cfbfl"]
+
+[node name="AccountInvSlot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_ahnx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.13333, 2.28571)
+texture = ExtResource("1_cfbfl")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+z_index = 10
+custom_minimum_size = Vector2(19, 23)
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "99"
+horizontal_alignment = 2
+
+[node name="ItemDisplay" type="Sprite2D" parent="CenterContainer"]
+centered = false
+
+[node name="ItemDesc" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="ItemDesc"]
+visible = false
+offset_left = 11.0
+offset_top = 116.0
+offset_right = 197.0
+offset_bottom = 323.0
+
+[node name="Item_type" type="Label" parent="ItemDesc/Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 43.0
+text = "Item type"
+
+[node name="Item_name" type="Label" parent="ItemDesc/Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 104.0
+offset_bottom = 83.0
+text = "Item name"
+
+[node name="Item_desc" type="Label" parent="ItemDesc/Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 104.0
+offset_bottom = 123.0
+text = "Item desc"
+
+[node name="UtilWindow" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -25.0
+offset_right = 32.0

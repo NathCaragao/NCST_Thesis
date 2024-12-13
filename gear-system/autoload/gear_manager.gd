@@ -32,16 +32,16 @@ const BASE_STATS = {
 
 func randomize_gear_stats(gear : GearItem) -> void:
 	# Get the multiplier range for the gear's rarity
-	var multipliers = RARITY_STAT_MULTIPLIERS[gear.rarity]
+	var multipliers = RARITY_STAT_MULTIPLIERS[gear.gear_rarity]
 	
 	# Randomize each stat
 	gear.hp = _randomize_stat(BASE_STATS["hp"], multipliers)
-	gear.attack = _randomize_stat(BASE_STATS["atk"], multipliers)
-	gear.defense = _randomize_stat(BASE_STATS["def"], multipliers)
-	gear.speed = _randomize_stat(BASE_STATS["spd"], multipliers)
+	gear.atk = _randomize_stat(BASE_STATS["atk"], multipliers)
+	gear.def = _randomize_stat(BASE_STATS["def"], multipliers)
+	gear.spd = _randomize_stat(BASE_STATS["spd"], multipliers)
 	
 	 # Generate a random name based on rarity
-	gear.name = _generate_gear_name(gear.rarity)
+	gear.name = _generate_gear_name(gear.gear_rarity)
 
 # Helper function to randomize a single stat
 func _randomize_stat(base_value: float, multipliers : Dictionary) -> float:

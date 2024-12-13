@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://ds8dik2oajky"]
+[gd_scene load_steps=45 format=3 uid="uid://ds8dik2oajky"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mahge"]
 [ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="2_2ril3"]
 [ext_resource type="Resource" uid="uid://xpwbllut5klj" path="res://inventory-system/inventories/player_inv.tres" id="2_apivo"]
+[ext_resource type="Resource" uid="uid://dbch2e7eqo0fs" path="res://inventory-system/inventories/account_inv.tres" id="3_ce2qx"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="3_cxdj6"]
 [ext_resource type="Texture2D" uid="uid://miv2pw4bw5v8" path="res://assets/icons/arrow-down.png" id="3_f7pck"]
 [ext_resource type="AnimationLibrary" uid="uid://dvkr1rxw24ckx" path="res://HerculesAnimations.res" id="5_blrcp"]
@@ -28,6 +29,7 @@
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="27_xid83"]
 [ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ycbht"]
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
+[ext_resource type="PackedScene" uid="uid://cg7drnxfkh2kl" path="res://inventory-system/account-inv/account_inv_ui.tscn" id="31_1dvma"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_64w5q"]
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="32_r4hxl"]
 [ext_resource type="AudioStream" uid="uid://dpnfdbh34a320" path="res://assets/Audios/SFXs/sword-swing.mp3" id="33_ytchi"]
@@ -96,6 +98,7 @@ collision_layer = 8
 script = ExtResource("1_mahge")
 weapon_ui = NodePath("HUD/WeaponRoulette")
 inv = ExtResource("2_apivo")
+acc_inv = ExtResource("3_ce2qx")
 
 [node name="NameTag" type="Label" parent="."]
 unique_name_in_owner = true
@@ -341,6 +344,14 @@ theme_override_font_sizes/font_size = 24
 text = "WEAPON
 z|x"
 horizontal_alignment = 1
+
+[node name="AccountInvUI" parent="HUD" instance=ExtResource("31_1dvma")]
+visible = false
+offset_left = 402.0
+offset_top = 136.0
+offset_right = 402.0
+offset_bottom = 136.0
+scale = Vector2(5, 5)
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {

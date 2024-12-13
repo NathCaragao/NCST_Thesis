@@ -26,7 +26,7 @@ enum Rarity {
 
 # optional additional properties
 @export_category("Appearance")
-@export var icon : Texture2D
+@export var texture : Texture2D
 @export var description : String
 
 # Function to create a string representation of the gear

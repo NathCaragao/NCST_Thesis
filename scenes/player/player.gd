@@ -41,6 +41,7 @@ var direction
 
 # player inventory reference
 @export var inv: Inventory
+@export var acc_inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
 # Signals
@@ -173,6 +174,10 @@ func _input(event: InputEvent) -> void:
 # collect items
 func collect(item):
 	inv.insert(item)
+
+# collect items to acc inventory
+func acc_collect(item):
+	acc_inv.account_insert(item)
 
 func apply_item_effect(item):
 	match item["effect"]:
