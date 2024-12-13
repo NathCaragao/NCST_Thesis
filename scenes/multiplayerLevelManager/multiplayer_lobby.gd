@@ -82,6 +82,9 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	if gameState.op_code == ServerManager.MessageOpCode.DECLARED_WINNER:
 		ongoingMatchGUI.endMatch(self.currentGameState.user.playerData.displayName)
 		return
+	elif gameState.op_code == ServerManager.MessageOpCode.ONGOING_PLAYER_LEFT:
+		ongoingMatchGUI.removePlayer(self.currentGameState.userId)
+		return
 	# Separate this player's data from other players
 	var otherPlayerData:Array = []
 	for presenceId in self.currentGameState.presences:

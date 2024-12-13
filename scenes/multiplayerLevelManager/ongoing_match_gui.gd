@@ -36,16 +36,16 @@ func _physics_process(delta: float) -> void:
 func update(currentPlayerData, otherPlayersData):
 	
 	
-	if currentPlayerData != {} && currentPlayerData.isStarted && otherPlayersData.size() >= 1:
-	# Loop thru otherPlayers and only set a flag to true if everyone is started.
-		var startLevel = true
-		for otherPlayer in otherPlayersData:
-			if otherPlayer.isStarted == false:
-				startLevel = false
-		if startLevel == true:
-			SceneManager.hideLoadingScreen()
-	else:
-		SceneManager.showLoadingScreen()
+	#if currentPlayerData != {} && currentPlayerData.isStarted && otherPlayersData.size() >= 1:
+	## Loop thru otherPlayers and only set a flag to true if everyone is started.
+		#var startLevel = true
+		#for otherPlayer in otherPlayersData:
+			#if otherPlayer.isStarted == false:
+				#startLevel = false
+		#if startLevel == true:
+			#SceneManager.hideLoadingScreen()
+	#else:
+		#SceneManager.showLoadingScreen()
 		
 	_loadCurrentPlayer(currentPlayerData)
 	_loadOtherPlayers(otherPlayersData)
@@ -99,3 +99,8 @@ func endMatch(winnerUsername):
 
 func _on_back_to_lobby_btn_pressed() -> void:
 	BackToLobby.emit()
+
+func removePlayer(playerIdToRemove):
+	for n in %Players.get_children():
+		if n.playerGameData.playerId == playerIdToRemove:
+			n.queue_free()
