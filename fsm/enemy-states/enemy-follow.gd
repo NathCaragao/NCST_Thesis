@@ -5,7 +5,7 @@ extends State
 @export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 @export var enemy_health_comp : Node2D
-var player : PlayerHercules
+@onready var player = get_tree().get_nodes_in_group("Player")
 var direction
 
 @export var direction_val : int = 35
@@ -17,13 +17,21 @@ func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead2"))
 
 func enter() -> void:
-	player = get_tree().get_first_node_in_group("Player")
 	#enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead"))
+	pass
+
+func find_valid_player() -> Node2D:
+	for player in player:
+		if is_instance_valid(player):
+			return player
+	return null
 
 func physics_update(delta: float) -> void:
 	# Add the gravity.
 	if not actor.is_on_floor():
 		actor.velocity.y += actor.gravity * delta
+	
+	var player = find_valid_player()
 	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position

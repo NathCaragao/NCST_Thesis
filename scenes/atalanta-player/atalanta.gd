@@ -26,7 +26,6 @@ var base_dmg : float = 10.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var arrow_hitbox: ArrowHitbox = $PlayerHealthComponent/ArrowHitbox
 @export var push = 40
 @export var SPEED: float = 200.0
 
@@ -141,10 +140,10 @@ func apply_item_effect(item):
 			EventNotifier.add_notif("Speed buff expired.")
 		"atk_boost":
 			var atk_amount : float = 15.0
-			arrow_hitbox.total_dmg += atk_amount
+			#arrow_hitbox.total_dmg += atk_amount
 			EventNotifier.add_notif("Attack buff activated + 15")
 			await get_tree().create_timer(15).timeout
-			arrow_hitbox.total_dmg -= atk_amount
+			#arrow_hitbox.total_dmg -= atk_amount
 			EventNotifier.add_notif("Attack buff expired.")
 		"defense_buff":
 			var def_amount : float = 15.0

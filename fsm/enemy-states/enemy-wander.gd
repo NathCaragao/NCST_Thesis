@@ -3,13 +3,19 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var move_speed : float = 10.0
-var player : PlayerHercules
+@onready var player = get_tree().get_nodes_in_group("Player")
 var is_signal_connected : bool = false
 var direction
 @export var player_distance : int = 110
 var move_direction : Vector2
 var wander_time : float
 @export var enemy_health_comp : Node2D
+
+func find_valid_player() -> Node2D:
+	for player in player:
+		if is_instance_valid(player):
+			return player
+	return null
 
 func randomize_wander() -> void:
 	move_direction = Vector2(randf_range(-1, 1), 0).normalized()
@@ -20,7 +26,6 @@ func _ready() -> void:
 
 func enter() -> void:
 	randomize_wander()
-	player = get_tree().get_first_node_in_group("Player")
 
 func update(delta: float) -> void:
 	if wander_time > 0:
@@ -29,6 +34,8 @@ func update(delta: float) -> void:
 		randomize_wander()
 
 func physics_update(delta: float) -> void:
+	var player = find_valid_player()
+	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
 		
@@ -50,7 +57,7 @@ func physics_update(delta: float) -> void:
 		actor.move_and_slide()
 	
 	# transitions to enemy follow
-	if direction.length() < player_distance:
+	if player and direction and direction.length() < player_distance:
 		print("ENEMY is following the player")
 		Transitioned.emit(self, "enemyfollow")
 
