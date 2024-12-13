@@ -35,6 +35,7 @@ Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 PlayerManager="*res://autoloads/player-manager/player_manager.gd"
 QuestUi="*res://autoloads/quest-system-final/quest_ui.tscn"
 GearManager="*res://gear-system/autoload/gear_manager.gd"
+LootDropSystem="*res://autoloads/loot-drop-system/loot_drop_system.gd"
 
 [dialogic]
 
