@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://br24vp0cle48w"]
+[gd_scene load_steps=38 format=3 uid="uid://br24vp0cle48w"]
 
 [ext_resource type="Script" path="res://scenes/atalanta-player/atalanta.gd" id="1_0bgvw"]
 [ext_resource type="Texture2D" uid="uid://c7bsfkxy2a14u" path="res://assets/character/atalanta-sprites/atalanta_idle.png" id="1_8x3y2"]
@@ -13,9 +13,12 @@
 [ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_idle.gd" id="10_iqjom"]
 [ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_run.gd" id="11_nbj2u"]
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="11_y8jnf"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_jump.gd" id="12_jlngh"]
 [ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="12_pm1w1"]
 [ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="13_ofhs1"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_attack.gd" id="13_u4378"]
 [ext_resource type="Texture2D" uid="uid://cg8debiytau2d" path="res://assets/Images/HUD/hp_bar_icon_new.png" id="14_l8xtl"]
+[ext_resource type="Script" path="res://fsm/playerStates/atalanta-states/atalanta_death.gd" id="14_tlv2a"]
 [ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="16_fypbp"]
 [ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="17_6vj1a"]
 [ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="18_mroae"]
@@ -441,6 +444,20 @@ player_health_component = NodePath("../../PlayerHealthComponent")
 script = ExtResource("11_nbj2u")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("12_jlngh")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("13_u4378")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="AtalantaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("14_tlv2a")
+actor = NodePath("../..")
 
 [node name="PlayerHealthComponent" parent="." instance=ExtResource("8_8aq8d")]
 
