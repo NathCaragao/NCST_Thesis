@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=6 format=3 uid="uid://bu2dym0hdn4c2"]
+
+[ext_resource type="Texture2D" uid="uid://c7bsfkxy2a14u" path="res://assets/character/atalanta-sprites/atalanta_idle.png" id="1_5opae"]
+[ext_resource type="Script" path="res://scenes/components/character-display/character_resource.gd" id="1_frij7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy07o"]
+atlas = ExtResource("1_5opae")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrkhs"]
+atlas = ExtResource("1_5opae")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hei0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy07o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrkhs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_frij7")
+character_name = "Atalanta"
+idle_anim = SubResource("SpriteFrames_2hei0")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xpiayqiguetf"]
+
+[ext_resource type="Script" path="res://scenes/components/character-display/character-profiles/character_profile.gd" id="1_f0n8r"]
+
+[node name="CharacterProfile" type="CharacterBody2D"]
+script = ExtResource("1_f0n8r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

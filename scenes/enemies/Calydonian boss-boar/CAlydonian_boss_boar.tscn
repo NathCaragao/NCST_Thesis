@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://cvoeystalnfdy"]
 
-[ext_resource type="Script" path="res://scenes/enemies/boss-boar/boss_boar.gd" id="1_cvpna"]
+[ext_resource type="Script" path="res://scenes/enemies/Calydonian boss-boar/calydonian_boss_boar_2.gd" id="1_beaed"]
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="2_qhey8"]
 [ext_resource type="Texture2D" uid="uid://w0nkyjabny3l" path="res://assets/Enemies/boss-boar/boss_boar_idle-spritesheet.png" id="3_vl5at"]
 [ext_resource type="Texture2D" uid="uid://dcgmcy7imuh4r" path="res://assets/Enemies/boss-boar/boss_boar_attack-spritesheet.png" id="4_l2tp8"]
@@ -367,7 +367,7 @@ _data = {
 }
 
 [node name="BossBoar" type="CharacterBody2D"]
-script = ExtResource("1_cvpna")
+script = ExtResource("1_beaed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_o8uqk")

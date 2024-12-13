@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf8rthjawuuun"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8rthjawuuun"]
 
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_mqq8s"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/character-info-screen/character_info_screen.gd" id="1_s4j28"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_3pq7b"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="3_crdnb"]
+[ext_resource type="Texture2D" uid="uid://ct1c13cgecgom" path="res://assets/ui/windows/item_card.png" id="4_x5hae"]
+[ext_resource type="PackedScene" uid="uid://xpiayqiguetf" path="res://scenes/components/character-display/character-profiles/character_profile.tscn" id="5_7ry1b"]
+[ext_resource type="Resource" uid="uid://ctjwp7gwtarfb" path="res://scenes/components/character-display/hercules_stats.tres" id="6_fovad"]
+[ext_resource type="Resource" uid="uid://bu2dym0hdn4c2" path="res://scenes/components/character-display/atalanta_stats.tres" id="8_1lj8j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rjy4v"]
 shader = ExtResource("1_mqq8s")
 shader_parameter/scroll_speed = 0.03
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4dux"]
+load_path = "res://.godot/imported/hud_photo_frame.png-ad14246061e750b4942cfbd668a26b2e.ctex"
 
 [node name="CharacterInfoScreen" type="Control"]
 layout_mode = 3
@@ -14,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s4j28")
 
 [node name="BgPattern" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -34,3 +44,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47451)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 264.0
+offset_right = 1920.0
+offset_bottom = 454.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CharacterFrame1" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("3_crdnb")
+stretch_mode = 4
+
+[node name="Btn1" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame1"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="CharacterFrame2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_w4dux")
+stretch_mode = 4
+
+[node name="Btn2" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame2"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="CharacterFrame3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_w4dux")
+stretch_mode = 4
+
+[node name="Btn3" type="Button" parent="MarginContainer/HBoxContainer/CharacterFrame3"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 145.0
+flat = true
+
+[node name="Border" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 4.0
+offset_right = 200.0
+offset_bottom = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_x5hae")
+
+[node name="Hercules" parent="." instance=ExtResource("5_7ry1b")]
+position = Vector2(960, 789)
+scale = Vector2(10, 10)
+character_data = ExtResource("6_fovad")
+
+[node name="Atalanta" parent="." instance=ExtResource("5_7ry1b")]
+visible = false
+position = Vector2(960, 789)
+scale = Vector2(10, 10)
+character_data = ExtResource("8_1lj8j")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame1/Btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame2/Btn2" to="." method="_on_btn_2_pressed"]
