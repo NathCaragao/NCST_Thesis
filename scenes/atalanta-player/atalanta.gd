@@ -32,7 +32,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right: bool = true
 # player inventory reference
 @export var inv: Inventory
+
 @export var player_hp : PlayerHpComp
+@export var hurtbox_collision : CollisionShape2D
 
 # Signals
 signal PlayerFail

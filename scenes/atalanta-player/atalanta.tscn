@@ -259,6 +259,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_fail"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1sdk0"]
 resource_name = "atalanta-hit"
@@ -421,10 +435,12 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
-[node name="Atalanta" type="CharacterBody2D" node_paths=PackedStringArray("player_hp") groups=["Player"]]
+[node name="Atalanta" type="CharacterBody2D" node_paths=PackedStringArray("player_hp", "hurtbox_collision") groups=["Player"]]
+collision_layer = 8
 script = ExtResource("1_0bgvw")
 inv = ExtResource("2_c1dbi")
 player_hp = NodePath("PlayerHealthComponent")
+hurtbox_collision = NodePath("PlayerHealthComponent/Hurtbox/HurtboxCollision")
 
 [node name="NameTag" type="Label" parent="."]
 unique_name_in_owner = true
@@ -456,8 +472,8 @@ vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bep3t")
-texture = ExtResource("3_vrwl0")
-hframes = 11
+texture = ExtResource("1_8x3y2")
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -479,10 +495,10 @@ script = ExtResource("10_iqjom")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+[node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp")]
 script = ExtResource("11_nbj2u")
 actor = NodePath("../..")
-player_health_component = NodePath("../../PlayerHealthComponent")
+player_hp = NodePath("../../PlayerHealthComponent")
 
 [node name="AtalantaJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("12_jlngh")

@@ -150,10 +150,10 @@ script = ExtResource("9_rwas3")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "RunForrestRun")]
+[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp", "RunForrestRun")]
 script = ExtResource("10_om8j4")
 actor = NodePath("../..")
-player_health_component = NodePath("../../PlayerHealthComponent")
+player_hp = NodePath("../../PlayerHealthComponent")
 RunForrestRun = NodePath("../../player_sound/run")
 
 [node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]

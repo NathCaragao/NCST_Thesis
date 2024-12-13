@@ -7,6 +7,7 @@ extends State
 
 func enter() -> void:
 	print("Entered Idle State")
+	
 
 func update(delta: float) -> void:
 	pass

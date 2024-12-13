@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c7w2vcb45ltjg"]
+[gd_scene load_steps=41 format=4 uid="uid://c7w2vcb45ltjg"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_7vxp4"]
 [ext_resource type="Script" path="res://scenes/Story/side story/atalanta_and_the_calydonian_boar_hunt.gd" id="1_pmpx0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5meydxd08djm" path="res://assets/tileset (world-building)/Green-Tree.png" id="2_saqnf"]
 [ext_resource type="PackedScene" uid="uid://b7aucmrptov3l" path="res://scenes/Story/Chapter1/Level3/log.tscn" id="3_6vjeg"]
 [ext_resource type="PackedScene" uid="uid://bj3qjwbfdee0n" path="res://scenes/Story/Chapter1/Level3/rope.tscn" id="4_8p4bt"]
+[ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="4_h2cud"]
 [ext_resource type="Texture2D" uid="uid://cquirvhx6wj0i" path="res://assets/tileset (world-building)/Game_Assets.png" id="5_2qenc"]
 [ext_resource type="PackedScene" uid="uid://crvpprqrwgng1" path="res://scenes/mechanisms/box-crate/Large_crate.tscn" id="5_sj1il"]
 [ext_resource type="PackedScene" uid="uid://c6f2olnf0alya" path="res://scenes/Story/Chapter1/Level2/circle spinning platform.tscn" id="7_p17i3"]
@@ -15,6 +16,17 @@
 [ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="11_wm66m"]
 [ext_resource type="PackedScene" uid="uid://cvoeystalnfdy" path="res://scenes/enemies/Calydonian boss-boar/CAlydonian_boss_boar.tscn" id="12_522hw"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="14_scqy5"]
+[ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="17_ykquh"]
+[ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="18_0oqas"]
+[ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="19_842c6"]
+[ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="20_dhfsg"]
+[ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="21_2d71j"]
+[ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="22_glc2m"]
+[ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="23_pcth4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_io1m1"]
+shader = ExtResource("4_h2cud")
+shader_parameter/wind_strength = 5.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qcq"]
 texture = ExtResource("2_saqnf")
@@ -1174,13 +1186,6 @@ sources/1 = SubResource("TileSetAtlasSource_tgpj5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0lhm"]
 size = Vector2(193, 23)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmjf1"]
-size = Vector2(16, 270)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j1idq"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_73hjy"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb3ch"]
 size = Vector2(1481, 21)
 
@@ -1193,8 +1198,23 @@ size = Vector2(891, 19.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kei6f"]
 size = Vector2(891, 19.5)
 
-[node name="AtalantaAndTheCalydonianBoarHunt" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmjf1"]
+size = Vector2(16, 270)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j1idq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_73hjy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f15u"]
+size = Vector2(57, 266)
+
+[node name="AtalantaAndTheCalydonianBoarHunt" type="Node2D" node_paths=PackedStringArray("fail_screen", "pause_screen", "victory_screen", "player", "boss_boar")]
 script = ExtResource("1_pmpx0")
+fail_screen = NodePath("ScoreUI/FailScreen")
+pause_screen = NodePath("ScoreUI/PauseScreen")
+victory_screen = NodePath("ScoreUI/VictoryScreen")
+player = NodePath("Atalanta")
+boss_boar = NodePath("BossBoar")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(6518.49, -737)
@@ -1220,6 +1240,7 @@ scale = Vector2(2.88736, 8.96622)
 texture = ExtResource("1_q3ek3")
 
 [node name="trees" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_io1m1")
 tile_map_data = PackedByteArray("AAADAPT/AQAAAAAAAAAIAPb/AQAAABkAAAANAPb/AQAAABkAAAASAPb/AQAAABkAAAAXAPb/AQAAABkAAAAdAPv/AQAAAAAAAAAkAPv/AQAAAAAAAAArAAAAAQAAAC0AAAAvAAAAAQAAAC0AAAAzAP//AQAAAC0AAAA4AP//AQAAAC0AAAA7AP//AQAAAC0AAAAhAP//AQAAAC0AAAAbAP//AQAAAC0AAACZAPn/AQAAABkAAACcAPn/AQAAABkAAACfAPn/AQAAABkAAACjAPz/AQAAAC0AAACmAPz/AQAAAC0AAACpAPf/AQAAAAAAAACtAPf/AQAAAAAAAACyAPn/AQAAABkAAAC1APn/AQAAABkAAAC5AP//AQAAAEQAAAC9AP//AQAAAEQAAADAAP//AQAAAEQAAAC8APz/AQAAAC0AAADDAPf/AQAAAAAAAADIAPf/AQAAAAAAAADMAPf/AQAAAAAAAADRAPf/AQAAAAAAAADXAPf/AQAAAAAAAADcAPn/AQAAABkAAADhAPn/AQAAABkAAADmAPn/AQAAABkAAADpAPn/AQAAABkAAADuAPn/AQAAABkAAADzAPn/AQAAABkAAAD2APn/AQAAABkAAAAJAfn/AQAAABkAAAAFAfn/AQAAABkAAAACAfn/AQAAABkAAAD+APf/AQAAAAAAAAD7APf/AQAAAAAAAAD4APf/AQAAAAAAAAANAfL/AQAAAAAAAAARAfL/AQAAAAAAAAAVAfT/AQAAABkAAAAYAfT/AQAAABkAAAAbAfL/AQAAAAAAAAAeAfL/AQAAAAAAAAAiAfL/AQAAAAAAAAA9Ae3/AQAAAAAAAAA5Ae//AQAAABkAAAA2Ae//AQAAABkAAAAzAfL/AQAAAC0AAAAwAfL/AQAAAC0AAAAsAe//AQAAABkAAAAoAe//AQAAABkAAABLAe//AQAAABkAAABPAe//AQAAABkAAABTAe//AQAAABkAAACrARsAAQAAABkAAACvARsAAQAAABkAAACzARkAAQAAAAAAAAC4ARkAAQAAAAAAAAC9AR4AAQAAAC0AAADBAR4AAQAAAC0AAADEAR4AAQAAAC0AAADIARsAAQAAABkAAADNARsAAQAAABkAAADRARsAAQAAABkAAADVARsAAQAAABkAAADaARsAAQAAABkAAADeARsAAQAAABkAAABFAhsAAQAAABkAAABLAhsAAQAAABkAAABPAhsAAQAAABkAAABUAhsAAQAAABkAAABZAhsAAQAAABkAAABeAhsAAQAAABkAAABjAhsAAQAAABkAAABoAhsAAQAAABkAAABsAhsAAQAAABkAAAByAhsAAQAAABkAAAB4AhsAAQAAABkAAAB/AiIAAQAAABkAAACHAi0AAQAAAC0AAACKAi0AAQAAAC0AAACLAi0AAQAAAC0AAACTAi0AAQAAAC0AAACZAi0AAQAAAC0AAACPAi0AAQAAAC0AAADOAigAAQAAAAAAAADSAigAAQAAAAAAAADXAigAAQAAAAAAAADbAioAAQAAABkAAADgAioAAQAAABkAAADmAioAAQAAABkAAADyAiUAAQAAABkAAADuAiUAAQAAABkAAAD3Ah8AAQAAABkAAAD7Ah8AAQAAABkAAAD/Ah8AAQAAABkAAAAGAygAAQAAAAAAAAAKAygAAQAAAAAAAAA3AygAAQAAAAAAAAAzAygAAQAAAAAAAAAvAyoAAQAAABkAAAArAyoAAQAAABkAAAANAyoAAQAAABkAAAAQAyoAAQAAABkAAAAUAy0AAQAAAC0AAAAXAy0AAQAAAC0AAAAnAy0AAQAAAC0AAAAkAy0AAQAAAC0AAAAaAy8AAQAAADsAAAAgAy8AAQAAADsAAAAdAzAAAQAAAEQAAAA=")
 tile_set = SubResource("TileSet_gj76k")
 
@@ -1286,50 +1307,7 @@ position = Vector2(5695, -254)
 position = Vector2(5868, -328)
 
 [node name="Atalanta" parent="." instance=ExtResource("10_6ctxv")]
-position = Vector2(12397, 761)
-
-[node name="DialogActivator" type="Area2D" parent="."]
-script = ExtResource("11_wm66m")
-dialog_file = "S1_A_1"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
-position = Vector2(393, -138)
-shape = SubResource("RectangleShape2D_rmjf1")
-debug_color = Color(0.7426, 0.214237, 1, 0.42)
-
-[node name="DialogActivator2" type="Area2D" parent="."]
-script = ExtResource("11_wm66m")
-dialog_file = "S1_A_2"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
-position = Vector2(6863, 463)
-shape = SubResource("RectangleShape2D_rmjf1")
-debug_color = Color(0.7426, 0.214237, 1, 0.42)
-
-[node name="DialogActivator3" type="Area2D" parent="."]
-script = ExtResource("11_wm66m")
-dialog_file = "S1_A_3"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator3"]
-position = Vector2(12514, 694)
-shape = SubResource("RectangleShape2D_rmjf1")
-debug_color = Color(0.7426, 0.214237, 1, 0.42)
-
-[node name="BossBoar" parent="." instance=ExtResource("12_522hw")]
-position = Vector2(12781, 800)
-move_speed = 1400.0
-
-[node name="WorldBoundary" type="StaticBody2D" parent="."]
-
-[node name="Start" type="CollisionShape2D" parent="WorldBoundary"]
-position = Vector2(0, -30)
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_j1idq")
-
-[node name="End" type="CollisionShape2D" parent="WorldBoundary"]
-position = Vector2(13220, 322)
-rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_73hjy")
+position = Vector2(272, -26)
 
 [node name="DeathZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -1355,3 +1333,99 @@ debug_color = Color(0.655787, 0.400136, 0.839442, 0.42)
 position = Vector2(6019, 817)
 shape = SubResource("RectangleShape2D_kei6f")
 debug_color = Color(0.655787, 0.400136, 0.839442, 0.42)
+
+[node name="Dialogs" type="Node2D" parent="."]
+
+[node name="DialogActivator" type="Area2D" parent="Dialogs"]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator"]
+position = Vector2(393, -138)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="DialogActivator2" type="Area2D" parent="Dialogs"]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator2"]
+position = Vector2(6863, 463)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="DialogActivator3" type="Area2D" parent="Dialogs"]
+script = ExtResource("11_wm66m")
+dialog_file = "S1_A_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogs/DialogActivator3"]
+position = Vector2(12514, 694)
+shape = SubResource("RectangleShape2D_rmjf1")
+debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="BossBoar" parent="." instance=ExtResource("12_522hw")]
+position = Vector2(12781, 800)
+move_speed = 1400.0
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+
+[node name="Start" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(0, -30)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_j1idq")
+
+[node name="End" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(13220, 322)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_73hjy")
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreManager" parent="ScoreUI" instance=ExtResource("17_ykquh")]
+
+[node name="FailScreen" parent="ScoreUI" node_paths=PackedStringArray("player") instance=ExtResource("18_0oqas")]
+visible = false
+current_level_path = "res://scenes/Story/side story/Atalanta and the calydonian boar hunt.tscn"
+player = NodePath("../../Atalanta")
+
+[node name="PauseScreen" parent="ScoreUI" instance=ExtResource("19_842c6")]
+process_mode = 2
+visible = false
+current_level_path = "res://scenes/Story/Chapter1/Level1/level_1.tscn"
+
+[node name="VictoryScreen" parent="ScoreUI" instance=ExtResource("20_dhfsg")]
+visible = false
+
+[node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("21_2d71j")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("sprite", "fail_screen", "player_node") instance=ExtResource("22_glc2m")]
+position = Vector2(917.538, 62)
+sprite = NodePath("CheckpointSprite")
+fail_screen = NodePath("../ScoreUI/FailScreen")
+player_node = NodePath("../Atalanta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint"]
+position = Vector2(-1.5, -99)
+shape = SubResource("RectangleShape2D_0f15u")
+debug_color = Color(0.825778, 0.139433, 0.897436, 0.42)
+
+[node name="CheckpointSprite" parent="Checkpoint" node_paths=PackedStringArray("checkpoint_bool") instance=ExtResource("23_pcth4")]
+z_index = 1
+position = Vector2(0, -13)
+checkpoint_bool = NodePath("..")
+
+[node name="SpawnPoint" type="Marker2D" parent="Checkpoint"]
+unique_name_in_owner = true
+position = Vector2(-51, -44)
+
+[connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogs/DialogActivator3" to="Dialogs/DialogActivator3" method="_on_body_entered"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
+[connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+
+[editable path="ScoreUI/FailScreen"]

@@ -3,7 +3,7 @@ extends State
 
 # references & variables
 @export var actor : CharacterBody2D
-@export var player_health_component: PlayerHpComp
+@export var player_hp: PlayerHpComp
 
 func enter() -> void:
 	print("Entered Run State")
@@ -61,7 +61,7 @@ func physics_update(delta: float) -> void:
 		if actor.playerGameData.isSkill:
 			Transitioned.emit(self, "atalantaskill")	
 
-	if player_health_component.current_health == 0:
+	if player_hp.current_health == 0:
 		#RunForrestRun.stop()
 		#is_running_audio_playing = false
 		Transitioned.emit(self, "atalantadeath")

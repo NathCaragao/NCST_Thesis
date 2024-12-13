@@ -9,7 +9,7 @@ extends Area2D
 
 var checkpoint_reached: bool = false
 
-func _ready():
+func _ready() -> void:
 	# Ensure spawn point exists
 	if not spawn_point:
 		print("WARNING: No spawn point found!")
