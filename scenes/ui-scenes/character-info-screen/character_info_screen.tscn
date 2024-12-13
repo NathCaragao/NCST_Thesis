@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cf8rthjawuuun"]
+[gd_scene load_steps=20 format=3 uid="uid://cf8rthjawuuun"]
 
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_mqq8s"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/character-info-screen/character_info_screen.gd" id="1_s4j28"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://b8tfg5iy6fj8w" path="res://assets/fonts/pixelmplus/PixelMplus10-Regular.ttf" id="10_romny"]
 [ext_resource type="Texture2D" uid="uid://ds0my0p8o3gis" path="res://assets/icons/heart_icon.png" id="11_1kfoy"]
 [ext_resource type="Texture2D" uid="uid://4diwa16kvpl" path="res://assets/icons/attack_icon.png" id="12_shm3r"]
+[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="17_xg6x7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rjy4v"]
 shader = ExtResource("1_mqq8s")
@@ -32,6 +33,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s4j28")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
 
 [node name="BgPattern" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -243,5 +253,18 @@ theme_override_font_sizes/font_size = 48
 text = "Speed
 "
 
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("17_xg6x7")
+theme_override_font_sizes/font_size = 64
+text = "X"
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame1/Btn1" to="." method="_on_btn_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterFrame2/Btn2" to="." method="_on_btn_2_pressed"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]

@@ -46,3 +46,22 @@ func update_character_stats() -> void:
 	atk_label.text = "Attack: " + str(atk_val)
 	def_label.text = "Defense: " + str(def_val)
 	spd_label.text = "Speed: " + str(spd_val)
+
+
+func _on_close_btn_pressed() -> void:
+	character_info_close()
+
+func character_info_close() -> void:
+	# Create a new tween
+	var tween = create_tween()
+	
+	# Get the screen size
+	var screen_size = get_viewport_rect().size
+	
+	# Animate the window moving from center to bottom
+	tween.tween_property(self, "position:y", screen_size.y, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_IN)
+	
+	# After the animation completes, hide the window
+	tween.tween_callback(func(): visible = false)
