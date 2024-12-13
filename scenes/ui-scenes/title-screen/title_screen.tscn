@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://d3l4b7il2xwqv"]
 
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="1_l5igl"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="1_l5igl"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/title-screen/title_screen.gd" id="1_mh60y"]
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="2_ygjtw"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="3_kqhcj"]

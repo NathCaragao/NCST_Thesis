@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="20_f4l7e"]
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="21_hqffl"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="22_g3uox"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="22_qru2a"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="22_qru2a"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wra0k"]
 load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c7341.ctex"

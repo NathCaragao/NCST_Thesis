@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="23_q8sdd"]
 [ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="25_7gieo"]
 [ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_nhbjn"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="27_xid83"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="27_xid83"]
 [ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ycbht"]
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_fwbhh"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_64w5q"]

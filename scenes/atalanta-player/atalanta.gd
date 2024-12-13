@@ -85,7 +85,7 @@ func _string_to_vector2(string := "") -> Vector2:
 # STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
 # STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
-	%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
+	#%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
 	
 	if self.playerGameData.isControlled:
 		# Horizontal Movement
