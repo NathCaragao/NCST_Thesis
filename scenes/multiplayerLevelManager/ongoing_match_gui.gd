@@ -4,6 +4,8 @@ extends Node2D
 
 signal LevelLoaded()
 signal CurrentPlayerGameDataUpdate(newCurrentPlayerGameData)
+signal CurrentPlayerReachedFinish()
+signal BackToLobby()
 
 var isLoaded = false
 
@@ -13,9 +15,10 @@ var otherPlayersCharacter: Array = []
 var timer: float = 0
 
 var finishedPlayers: Array = []
+var isFinished: bool = false
 
 func _ready() -> void:
-	pass
+	%EndScreen.hide()
 
 func _physics_process(delta: float) -> void:
 	if currentPlayerCharacter == null:
@@ -85,11 +88,14 @@ func _loadOtherPlayers(otherPlayersData: Array):
 
 func _on_finish_line_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, PlayerHercules):
-		var addToFinishedPlayers = true
-		for player in finishedPlayers:
-			if player.playerGameData.playerId == body.playerGameData.playerId:
-				addToFinishedPlayers = false
-		if addToFinishedPlayers:
-			finishedPlayers.append(body)
+		if body.playerGameData.playerId == currentPlayerCharacter.playerGameData.playerId:
+			CurrentPlayerReachedFinish.emit()
 			
-	print_debug(finishedPlayers)
+func endMatch(winnerUsername):
+	isFinished = true
+	%WinnerLabel.text ="%s finished 1st!" % winnerUsername
+	%EndScreen.show()
+
+
+func _on_back_to_lobby_btn_pressed() -> void:
+	BackToLobby.emit()

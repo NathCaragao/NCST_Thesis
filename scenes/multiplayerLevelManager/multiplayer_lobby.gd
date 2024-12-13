@@ -64,6 +64,8 @@ func _ready() -> void:
 	# Signal connection for ongoingMatchGUI
 	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
 	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
+	ongoingMatchGUI.CurrentPlayerReachedFinish.connect(_handleCurrentPlayerReachedFinish)
+	ongoingMatchGUI.BackToLobby.connect(_handleOngoingMatchBackToLobby)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -73,9 +75,13 @@ func _ready() -> void:
 	
 
 func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
+	
 	#if gameState.op_code == ServerManager.MessageOpCode.DATA_FROM_SERVER: might be unnecessary
 	self.currentGameState = JSON.parse_string(gameState.data)
 	
+	if gameState.op_code == ServerManager.MessageOpCode.DECLARED_WINNER:
+		ongoingMatchGUI.endMatch(self.currentGameState.user.playerData.displayName)
+		return
 	# Separate this player's data from other players
 	var otherPlayerData:Array = []
 	for presenceId in self.currentGameState.presences:
@@ -189,3 +195,14 @@ func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
 		}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)
+
+func _handleCurrentPlayerReachedFinish():
+	var currentPlayerFinishedPayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_FINISHED, currentPlayerFinishedPayload)
+
+func _handleOngoingMatchBackToLobby():
+	await ServerManager.leaveMatch(joinedMatchID)
+	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")

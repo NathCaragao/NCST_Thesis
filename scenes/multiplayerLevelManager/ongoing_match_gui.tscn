@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdp5lo7hga3qh"]
+[gd_scene load_steps=7 format=3 uid="uid://cdp5lo7hga3qh"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="3_vg1p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al3hv"]
 size = Vector2(42, 97)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k02ci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pygfp"]
 
 [node name="OngoingMatchGUI" type="Node2D"]
 script = ExtResource("1_bh0op")
@@ -31,4 +36,73 @@ position = Vector2(-11, -19.5)
 shape = SubResource("RectangleShape2D_al3hv")
 debug_color = Color(0.607843, 0.513726, 0.466667, 1)
 
+[node name="EndScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="EndScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -196.5
+offset_right = 164.0
+offset_bottom = 196.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EndScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vg1p2")
+theme_override_font_sizes/font_size = 40
+text = "END OF MATCH!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k02ci")
+
+[node name="WinnerLabel" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vg1p2")
+theme_override_font_sizes/font_size = 30
+text = "%s finished 1st!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pygfp")
+
+[node name="RewardLabel" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vg1p2")
+theme_override_font_sizes/font_size = 25
+text = "Your Reward:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToLobbyBtn" type="Button" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Go to Lobby"
+
 [connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
+[connection signal="pressed" from="EndScreen/PanelContainer/MarginContainer/VBoxContainer/BackToLobbyBtn" to="." method="_on_back_to_lobby_btn_pressed"]
