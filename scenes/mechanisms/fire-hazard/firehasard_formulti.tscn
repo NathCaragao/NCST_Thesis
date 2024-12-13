@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhlxerseqnqfk"]
+
+[ext_resource type="Texture2D" uid="uid://ctuvj6qg4v5k0" path="res://assets/in-game-objects/round_platform.png" id="1_8o26l"]
+[ext_resource type="Texture2D" uid="uid://tjcx8wgtwsxv" path="res://assets/in-game-objects/fireballs.png" id="2_5ptsd"]
+[ext_resource type="PackedScene" uid="uid://d136cr3cryq5h" path="res://scenes/components/fire-hazard-hitbox/firehazard_hitbox.tscn" id="3_lr3ay"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_grlp8"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_35j10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_ppmly"]
+resource_name = "Rotating_fireballs"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4nue"]
+_data = {
+"RESET": SubResource("Animation_35j10"),
+"Rotating_fireballs": SubResource("Animation_ppmly")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8v6b"]
+radius = 9.0
+height = 55.8817
+
+[node name="Firehazard" type="Node2D"]
+rotation = 6.28319
+
+[node name="Base" type="StaticBody2D" parent="."]
+
+[node name="base" type="Sprite2D" parent="Base"]
+texture = ExtResource("1_8o26l")
+
+[node name="base2" type="CollisionShape2D" parent="Base"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_grlp8")
+disabled = true
+
+[node name="fireballL" type="Sprite2D" parent="."]
+position = Vector2(-24, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="fireballL2" type="Sprite2D" parent="."]
+position = Vector2(-42, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="fireballL3" type="Sprite2D" parent="."]
+position = Vector2(-61, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="FireballR" type="Sprite2D" parent="."]
+position = Vector2(22, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="FireballR2" type="Sprite2D" parent="."]
+position = Vector2(40, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="FireballR3" type="Sprite2D" parent="."]
+position = Vector2(58, 0)
+texture = ExtResource("2_5ptsd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e4nue")
+}
+autoplay = "Rotating_fireballs"
+
+[node name="Firehazard_hitbox" parent="." instance=ExtResource("3_lr3ay")]
+fire_dmg = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Firehazard_hitbox"]
+position = Vector2(-42, 0.000187755)
+rotation = 1.56856
+shape = SubResource("CapsuleShape2D_x8v6b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Firehazard_hitbox"]
+position = Vector2(40, -0.000178666)
+rotation = 1.56856
+shape = SubResource("CapsuleShape2D_x8v6b")
