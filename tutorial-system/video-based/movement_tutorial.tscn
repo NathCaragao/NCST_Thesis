@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://88m34joq3qm0" path="res://assets/fonts/kongtext.ttf" id="3_ounny"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_wmqeu"]
-file = "res://assets/videos/movement_video.ogg"
+file = "res://assets/videos/Battle_Tutorial.ogg"
 
 [node name="MovementTutorial" type="Control"]
 layout_mode = 3

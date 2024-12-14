@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://bu2dym0hdn4c2" path="res://scenes/components/character-display/atalanta_stats.tres" id="8_1lj8j"]
 [ext_resource type="Texture2D" uid="uid://ddssxp4ebasa1" path="res://assets/icons/def_icon.png" id="9_aveh8"]
 [ext_resource type="Texture2D" uid="uid://cdx4o4f8c6top" path="res://assets/icons/speed_icon.png" id="10_2yo5g"]
-[ext_resource type="FontFile" uid="uid://b8tfg5iy6fj8w" path="res://assets/fonts/pixelmplus/PixelMplus10-Regular.ttf" id="10_romny"]
+[ext_resource type="FontFile" uid="uid://b8tfg5iy6fj8w" path="res://assets/tilesets(idk how to categorize files inside yet)/PixelMplus10-Regular.ttf" id="10_romny"]
 [ext_resource type="Texture2D" uid="uid://ds0my0p8o3gis" path="res://assets/icons/heart_icon.png" id="11_1kfoy"]
 [ext_resource type="Texture2D" uid="uid://4diwa16kvpl" path="res://assets/icons/attack_icon.png" id="12_shm3r"]
 [ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="17_xg6x7"]
