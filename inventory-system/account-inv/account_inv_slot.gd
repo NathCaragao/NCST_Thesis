@@ -37,11 +37,6 @@ func update(slot: InvSlotAmount) -> void:
 		label.text = str(slot.amount)
 
 
-func _on_hover_btn_mouse_entered() -> void:
-	if current_slot and current_slot.acc_item:
-		display_item_info(current_slot.acc_item)
-		print("Item info hovered")
-
 func display_item_info(item: GearItem) -> void:
 	if item:
 		panel.visible = true
@@ -54,9 +49,6 @@ func display_item_info(item: GearItem) -> void:
 		item_name.text = ""
 		item_desc.text = ""
 
-func _on_hover_btn_mouse_exited() -> void:
-	panel.visible = false
-	print("Item info hovered exited")
 
 func transfer_item() -> void:
 	# check if user is in the character screen
@@ -78,3 +70,14 @@ func _on_transfer_btn_pressed() -> void:
 
 func _on_item_unequipped(item: GearItem):
 	pass
+
+
+func _on_transfer_btn_mouse_entered() -> void:
+	if current_slot and current_slot.acc_item:
+		display_item_info(current_slot.acc_item)
+		print("Item info hovered")
+
+
+func _on_transfer_btn_mouse_exited() -> void:
+	panel.visible = false
+	print("Item info hovered exited")

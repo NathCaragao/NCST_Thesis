@@ -56,4 +56,4 @@ func on_dead_quota() -> void:
 	emit_signal("QuestQuota")
 
 func wolf_loot() -> void:
-	LootDropSystem.drop_multiple_items(global_position, ["coin", "gear"], randi_range(1, 2))
+	LootDropSystem.drop_multiple_items(global_position, ["gear"], randi_range(1, 8))

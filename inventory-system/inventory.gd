@@ -17,16 +17,35 @@ func insert(item: InventoryItem):
 			empty_slots[0].amount = 1
 	update.emit()
 
+#func account_insert(item: GearItem):
+	#var item_slots = slots.filter(func(slot): return slot.acc_item == item)
+	#if !item_slots.is_empty():
+		#item_slots[0].amount = 1
+	#else:
+		#var empty_slots = slots.filter(func(slot): return slot.item == null)
+		#if !empty_slots.is_empty():
+			#empty_slots[0].acc_item = item
+			#empty_slots[0].amount = 1
+			#print("Item Gear collected successfully")
+	#update.emit()
+
 func account_insert(item: GearItem):
-	var item_slots = slots.filter(func(slot): return slot.acc_item == item)
-	if !item_slots.is_empty():
-		item_slots[0].amount = 1
+	# Filter slots where the item has the same texture
+	var matching_slots = slots.filter(func(slot): 
+		return slot.acc_item != null and slot.acc_item.texture == item.texture
+	)
+
+	# If a matching slot is found, stack the item
+	if !matching_slots.is_empty():
+		matching_slots[0].amount += 1
 	else:
-		var empty_slots = slots.filter(func(slot): return slot.item == null)
+		# Find an empty slot if no matching slot exists
+		var empty_slots = slots.filter(func(slot): return slot.acc_item == null)
 		if !empty_slots.is_empty():
 			empty_slots[0].acc_item = item
 			empty_slots[0].amount = 1
-			print("Item Gear collected successfully")
+			print("New Gear item inserted successfully")
+	# update INVENTORY UI
 	update.emit()
 
 
