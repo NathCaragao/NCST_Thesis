@@ -36,12 +36,13 @@ func _ready() -> void:
 	
 var timer: float = 0.0
 func _process(delta: float) -> void:
-	timer += delta
-	if timer >= 10.0:
-		var userStorageData = await ServerManager.getUserInfoInDBasync()
-		setFreeCurrency(userStorageData["freeCurrency"])
-		setPremiumCurrency(userStorageData["premiumCurrency"])
-		timer = 0
+	pass
+	#timer += delta
+	#if timer >= 10.0:
+		#var userStorageData = await ServerManager.getUserInfoInDBasync()
+		#setFreeCurrency(userStorageData["freeCurrency"])
+		#setPremiumCurrency(userStorageData["premiumCurrency"])
+		#timer = 0
 
 # shop button
 func _on_shop_btn_pressed() -> void:
