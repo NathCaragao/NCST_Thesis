@@ -34,7 +34,7 @@ func instantiate_item(item_name: String, position: Vector2, parent: Node2D = nul
 		return item_instance
 	
 	# Vertical fountain parameters
-	var max_height: float = 150.0  # Peak height of the fountain
+	var max_height: float = 80.0  # Peak height of the fountain
 	var up_horizontal_scatter: float = 50.0  # Horizontal scatter when going up
 	var down_horizontal_scatter: float = 100.0  # Wider scatter when coming down
 	var drop_duration: float = 0.8  # Total animation time

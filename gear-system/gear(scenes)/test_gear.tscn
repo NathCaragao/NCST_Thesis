@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6172bscklui7"]
 
 [ext_resource type="Script" path="res://gear-system/gear(scenes)/test_gear.gd" id="1_nnvmh"]
-[ext_resource type="Resource" uid="uid://d3q20wobsbrui" path="res://gear-system/gear(tres)/test_gear.tres" id="2_abc64"]
+[ext_resource type="Resource" uid="uid://218ift6r227d" path="res://gear-system/gear(tres)/gear_template.tres" id="2_3p7o6"]
 [ext_resource type="Texture2D" uid="uid://bm3lwlg6pi37x" path="res://gear-system/assets/Roman_GuildCrafter00.png" id="3_rgqdc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_skwp7"]
 
 [node name="CommonGear" type="Node2D"]
 script = ExtResource("1_nnvmh")
-gear_data = ExtResource("2_abc64")
+gear_data = ExtResource("2_3p7o6")
 gear_sprite = ExtResource("3_rgqdc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

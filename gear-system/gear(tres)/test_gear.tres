@@ -1,15 +1,13 @@
-[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://d3q20wobsbrui"]
+[gd_resource type="Resource" script_class="GearItem" load_steps=2 format=3 uid="uid://d3q20wobsbrui"]
 
-[ext_resource type="Texture2D" uid="uid://bm3lwlg6pi37x" path="res://gear-system/assets/Roman_GuildCrafter00.png" id="1_cjqct"]
 [ext_resource type="Script" path="res://gear-system/scripts/gear_item.gd" id="2_8nhwa"]
 
 [resource]
 script = ExtResource("2_8nhwa")
 name = "Unnamed Gear"
 gear_rarity = 0
-hp = 10.0
-atk = 7.0
-def = 6.0
-spd = 20.0
-texture = ExtResource("1_cjqct")
+hp = 0.0
+atk = 0.0
+def = 0.0
+spd = 0.0
 description = "commonly used armor by spartans"

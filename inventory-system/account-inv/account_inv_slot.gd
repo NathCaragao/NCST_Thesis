@@ -1,3 +1,4 @@
+# ACCOUNT INVENTORY SLOT
 extends Panel
 
 @onready var item_display: Sprite2D = $CenterContainer/ItemDisplay
@@ -31,13 +32,9 @@ func update(slot: InvSlotAmount) -> void:
 	else:
 		item_display.visible = true
 		item_display.texture = slot.acc_item.texture
+		print("Slot Texture:", slot.acc_item.texture)
 		label.visible = true
 		label.text = str(slot.amount)
-		#if slot.amount > 1:
-			#label.visible = true
-			#label.text = str(slot.amount)
-		#else:
-			#label.visible = false
 
 
 func _on_hover_btn_mouse_entered() -> void:
