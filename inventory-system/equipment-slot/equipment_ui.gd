@@ -23,22 +23,12 @@ func _on_item_transferred(item: GearItem):
 
 
 func apply_gear_stats(gear_item: GearItem) -> void:
+	# Reset the Player's Stat to BASE STATS
+	PlayerManager.reset_to_base_stats()
+	
 	# Access the autoloaded PlayerManager and update its stats
-	print("Stats before")
-	print(str(PlayerManager.player_health))
-	print(str(PlayerManager.player_attack))
-	print(str(PlayerManager.player_defense))
-	print(str(PlayerManager.player_move_speed))
-	
-	
 	
 	PlayerManager.player_health += gear_item.hp
 	PlayerManager.player_attack += gear_item.atk
 	PlayerManager.player_defense += gear_item.def
 	PlayerManager.player_move_speed += gear_item.spd
-	
-	print("Stats after")
-	print(str(PlayerManager.player_health))
-	print(str(PlayerManager.player_attack))
-	print(str(PlayerManager.player_defense))
-	print(str(PlayerManager.player_move_speed))

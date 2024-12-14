@@ -18,6 +18,7 @@ extends Control
 
 func _ready() -> void:
 	GameSignals.connect("GearStatsApplied", Callable(self, "_on_gear_stats_apply"))
+	GameSignals.connect("GearStatsRemoved", Callable(self, "_on_gear_stats_removed"))
 	ScoreUi.get_node('CanvasLayer').hide()
 	update_character_stats()
 
@@ -34,6 +35,9 @@ func _on_btn_2_pressed() -> void:
 	atalanta.visible = true
 
 func _on_gear_stats_apply() -> void:
+	update_character_stats()
+
+func _on_gear_stats_removed() -> void:
 	update_character_stats()
 
 func update_character_stats() -> void:

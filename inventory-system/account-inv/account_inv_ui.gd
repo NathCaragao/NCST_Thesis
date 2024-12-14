@@ -47,3 +47,16 @@ func acc_inv_close() -> void:
 
 func _on_item_unequipped(item: GearItem):
 	inv.account_insert(item)
+	remove_gear_stats(item)
+	GameSignals.emit_signal("GearStatsRemoved")
+
+func remove_gear_stats(gear_item: GearItem) -> void:
+	# reset player's stat to BASE STATS
+	PlayerManager.reset_to_base_stats()
+	
+	# Access the autoloaded PlayerManager and update its stats
+	PlayerManager.player_health -= gear_item.hp
+	PlayerManager.player_attack -= gear_item.atk
+	PlayerManager.player_defense -= gear_item.def
+	PlayerManager.player_move_speed -= gear_item.spd
+	

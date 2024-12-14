@@ -10,6 +10,7 @@ signal AtkPowerup
 signal ItemEquipped
 signal ItemUnequipped
 signal GearStatsApplied
+signal GearStatsRemoved
 
 # level 1 signals:
 signal MegalusDefeated
