@@ -6,9 +6,12 @@ extends Node2D
 # 3. Remove loading screen
 
 # references
+@export_category("UI Screens")
 @export var settings_window : Control
 @export var almanac_window : Control
 @export var shop_window : Control
+@export var inv_window : Control
+@export var character_window : Control
 
 var isLoading = true
 
@@ -96,6 +99,42 @@ func shop_open() -> void:
 	tween.tween_property(shop_window, "position:y", screen_size.y / 2 - shop_window.size.y / 2, 0.3) \
 		.set_trans(Tween.TRANS_BACK)
 
+
+func _on_inv_btn_pressed() -> void:
+	inventory_open()
+
+
+func _on_chara_btn_pressed() -> void:
+	PlayerManager.character_info = true
+	character_info_open()
+
+
+func inventory_open() -> void:
+	inv_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	inv_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(inv_window, "position:y", screen_size.y / 2 - inv_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK)
+
+func character_info_open() -> void:
+	character_window.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	character_window.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(character_window, "position:y", screen_size.y / 2 - character_window.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
 
 
 func setAccountName(newAccountName: String) -> void:

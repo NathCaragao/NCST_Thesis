@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=44 format=4 uid="uid://bew17a4cm663b"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="2_22pfw"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://c0kvmc4gwk40r" path="res://assets/dynamic assets/MonedaD.png" id="17_v45dv"]
 [ext_resource type="PackedScene" uid="uid://48qovkw5aj6e" path="res://scenes/ui-scenes/shop-screen(final)/shop_3.tscn" id="18_47jsh"]
 [ext_resource type="Texture2D" uid="uid://pydj505shwk1" path="res://assets/dynamic assets/premium_gems.png" id="18_bclf8"]
+[ext_resource type="PackedScene" uid="uid://cg7drnxfkh2kl" path="res://inventory-system/account-inv/account_inv_ui.tscn" id="21_sij2f"]
+[ext_resource type="PackedScene" uid="uid://cf8rthjawuuun" path="res://scenes/ui-scenes/character-info-screen/character_info_screen.tscn" id="22_ny543"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dc7h"]
 texture = ExtResource("3_n5nrb")
@@ -1850,11 +1852,13 @@ bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7ceik"]
 
-[node name="LobbyScreen" type="Node2D" node_paths=PackedStringArray("settings_window", "almanac_window", "shop_window")]
+[node name="LobbyScreen" type="Node2D" node_paths=PackedStringArray("settings_window", "almanac_window", "shop_window", "inv_window", "character_window")]
 script = ExtResource("1_oyntd")
 settings_window = NodePath("CanvasLayer/SettingsTab")
 almanac_window = NodePath("CanvasLayer/Almanac")
 shop_window = NodePath("CanvasLayer/Shop3")
+inv_window = NodePath("CanvasLayer/AccountInvUI")
+character_window = NodePath("CanvasLayer/CharacterInfoScreen")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -2100,9 +2104,6 @@ icon = ExtResource("15_8i4ky")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
-visible = false
-
 [node name="PlayBtn" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(96, 96)
 offset_left = 1439.0
@@ -2122,11 +2123,25 @@ offset_bottom = 95.0
 texture = ExtResource("9_ee0k1")
 expand_mode = 1
 
+[node name="Almanac" parent="CanvasLayer" instance=ExtResource("13_eq0bs")]
+visible = false
+
 [node name="SettingsTab" parent="CanvasLayer" instance=ExtResource("10_ksrao")]
 visible = false
 offset_bottom = -139.0
 
 [node name="Shop3" parent="CanvasLayer" instance=ExtResource("18_47jsh")]
+visible = false
+
+[node name="AccountInvUI" parent="CanvasLayer" instance=ExtResource("21_sij2f")]
+visible = false
+offset_left = 379.0
+offset_top = 91.0
+offset_right = 379.0
+offset_bottom = 91.0
+scale = Vector2(5, 5)
+
+[node name="CharacterInfoScreen" parent="CanvasLayer" instance=ExtResource("22_ny543")]
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -2147,5 +2162,7 @@ shape = SubResource("WorldBoundaryShape2D_7ceik")
 
 [connection signal="pressed" from="CanvasLayer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/AlamanacBtn" to="." method="_on_alamanac_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/InvBtn" to="." method="_on_inv_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/CharaBtn" to="." method="_on_chara_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayBtn" to="." method="_on_play_btn_pressed"]

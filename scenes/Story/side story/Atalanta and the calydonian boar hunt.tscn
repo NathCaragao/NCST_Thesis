@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://c7w2vcb45ltjg"]
+[gd_scene load_steps=50 format=4 uid="uid://c7w2vcb45ltjg"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_7vxp4"]
 [ext_resource type="Script" path="res://scenes/Story/side story/atalanta_and_the_calydonian_boar_hunt.gd" id="1_pmpx0"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c2uxf3foy63r3" path="res://autoloads/ScoreManager/score_ui.tscn" id="17_ykquh"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="18_0oqas"]
 [ext_resource type="PackedScene" uid="uid://cvti3njf1lus6" path="res://scenes/ui-scenes/settings-screen/pause-screen/pause_screen.tscn" id="19_842c6"]
+[ext_resource type="PackedScene" uid="uid://c2t65sskdxxw3" path="res://scenes/enemies/boss-spartan/boss_spartan.tscn" id="19_c76e6"]
 [ext_resource type="PackedScene" uid="uid://cp34m8ecv7ea6" path="res://scenes/ui-scenes/victory-screen/victory_screen.tscn" id="20_dhfsg"]
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="21_2d71j"]
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="22_glc2m"]
@@ -1424,6 +1425,9 @@ dialog_file = "S1_A_3"
 position = Vector2(12514, 694)
 shape = SubResource("RectangleShape2D_rmjf1")
 debug_color = Color(0.7426, 0.214237, 1, 0.42)
+
+[node name="BossSpartan" parent="Dialogs" instance=ExtResource("19_c76e6")]
+position = Vector2(7060, 562)
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 

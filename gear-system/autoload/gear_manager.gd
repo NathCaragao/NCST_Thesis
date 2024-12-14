@@ -22,6 +22,43 @@ const RARITY_STAT_MULTIPLIERS = {
 	},
 }
 
+# SPRITE APPEARANCES FOR DIFFERENT RARITIES
+const GEAR_SPRITES = {
+	GearItem.Rarity.COMMON: [
+		"res://gear-system/assets/Roman_GuildCrafter00.png",
+		"res://gear-system/assets/Roman_EmeraldPath00.png",
+		"res://gear-system/assets/Roman_SeasideCityState00.png"
+	],
+	GearItem.Rarity.RARE: [
+		"res://gear-system/assets/Roman_DarkCenturion00.png",
+		"res://gear-system/assets/Roman_BronzeSmith00.png",
+		"res://gear-system/assets/Roman_AncientHero00.png"
+	],
+	GearItem.Rarity.EPIC: [
+		"res://gear-system/assets/Roman_Salamander00.png",
+		"res://gear-system/assets/Roman_HellforgedLegion00.png",
+		"res://gear-system/assets/Roman_CherryBlossomCourt00.png"
+	],
+	GearItem.Rarity.LEGENDARY: [
+		"res://gear-system/assets/Roman_StormDrooper00.png",
+		"res://gear-system/assets/Roman_Triarii00.png",
+		"res://gear-system/assets/Roman_Tribune00.png"
+	]
+}
+
+# Add this function to your existing GearManager script
+func get_random_sprite_for_rarity(rarity: GearItem.Rarity) -> Texture2D:
+	# Ensure the rarity exists in the GEAR_SPRITES dictionary
+	if rarity in GEAR_SPRITES:
+		# Get the array of sprites for this rarity
+		var sprites = GEAR_SPRITES[rarity]
+		
+		# Return a random sprite from the array
+		return load(sprites[randi() % sprites.size()])
+		
+	# Fallback to a default sprite if something goes wrong
+	return load("res://gear-system/assets/Roman_GuildCrafter00.png")
+
 # base stat values
 const BASE_STATS = {
 	"hp": 10,
@@ -69,6 +106,6 @@ func _generate_gear_name(rarity: GearItem.Rarity) -> String:
 # Optional: Generate a complete random gear item
 func generate_random_gear(desired_rarity: GearItem.Rarity = GearItem.Rarity.COMMON) -> GearItem:
 	var new_gear = GearItem.new()
-	new_gear.rarity = desired_rarity
+	new_gear.gear_rarity = desired_rarity
 	randomize_gear_stats(new_gear)
 	return new_gear

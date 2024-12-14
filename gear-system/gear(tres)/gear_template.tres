@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GearItem" load_steps=3 format=3 uid="uid://218ift6r227d"]
+
+[ext_resource type="Script" path="res://gear-system/scripts/gear_item.gd" id="1_1hom0"]
+[ext_resource type="Texture2D" uid="uid://bm3lwlg6pi37x" path="res://gear-system/assets/Roman_GuildCrafter00.png" id="2_nrcr0"]
+
+[resource]
+script = ExtResource("1_1hom0")
+name = "Unnamed Gear"
+gear_rarity = 0
+hp = 0.0
+atk = 0.0
+def = 0.0
+spd = 0.0
+texture = ExtResource("2_nrcr0")
+description = ""
