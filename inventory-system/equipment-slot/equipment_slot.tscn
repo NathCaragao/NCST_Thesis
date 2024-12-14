@@ -45,10 +45,9 @@ centered = false
 
 [node name="Panel" type="Panel" parent="ItemDesc"]
 visible = false
-offset_left = 11.0
-offset_top = 42.0
-offset_right = 197.0
-offset_bottom = 363.0
+offset_top = 757.0
+offset_right = 541.0
+offset_bottom = 1078.0
 
 [node name="Item_type" type="Label" parent="ItemDesc/Panel"]
 layout_mode = 0
