@@ -15,6 +15,9 @@ var slot_number: int = -1
 # If you have a custom class, replace with your exact class name
 var current_slot : InvSlotAmount = null
 
+func _ready() -> void:
+	pass
+
 func initialize(slot_idx: int) -> void:
 	slot_number = slot_idx
 	set_process_input(true)
@@ -75,3 +78,6 @@ func transfer_item() -> void:
 
 func _on_transfer_btn_pressed() -> void:
 	transfer_item()
+
+func _on_item_unequipped(item: GearItem):
+	pass
