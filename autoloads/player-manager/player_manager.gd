@@ -16,3 +16,5 @@ var attackUpgradeLevel: int = 0
 var defenseUpgradeLevel: int = 0
 var speedUpgradeLevel: int = 0
 var healthUpgradeLevel: int = 0
+
+var character_info : bool = false

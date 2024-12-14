@@ -7,9 +7,9 @@
 script = ExtResource("2_8nhwa")
 name = "Unnamed Gear"
 gear_rarity = 0
-hp = 0.0
-atk = 0.0
-def = 0.0
-spd = 0.0
+hp = 10.0
+atk = 7.0
+def = 6.0
+spd = 20.0
 texture = ExtResource("1_cjqct")
 description = "commonly used armor by spartans"

@@ -6,9 +6,7 @@ extends Control
 @onready var slots : Array = $NinePatchRect/GridContainer.get_children()
 
 func _ready():
-	## Initialize each slot with its index
-	#for i in range(slots.size()):
-		#slots[i].initialize(i)
+	GameSignals.connect("ItemUnequipped", Callable(self, "_on_item_unequipped"))
 	
 	inv.update.connect(update_slots)
 	update_slots()
@@ -46,3 +44,6 @@ func acc_inv_close() -> void:
 	
 	# After the animation completes, hide the window
 	tween.tween_callback(func(): visible = false)
+
+func _on_item_unequipped(item: GearItem):
+	inv.account_insert(item)

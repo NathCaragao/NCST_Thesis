@@ -97,6 +97,7 @@ func _on_inv_btn_pressed() -> void:
 
 
 func _on_chara_btn_pressed() -> void:
+	PlayerManager.character_info = true
 	character_info_open()
 
 
