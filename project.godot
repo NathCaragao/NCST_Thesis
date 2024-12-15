@@ -36,6 +36,7 @@ PlayerManager="*res://autoloads/player-manager/player_manager.gd"
 QuestUi="*res://autoloads/quest-system-final/quest_ui.tscn"
 GearManager="*res://gear-system/autoload/gear_manager.gd"
 LootDropSystem="*res://autoloads/loot-drop-system/loot_drop_system.gd"
+SkinManager="*res://autoloads/skin-manager/skin_manager.gd"
 
 [dialogic]
 

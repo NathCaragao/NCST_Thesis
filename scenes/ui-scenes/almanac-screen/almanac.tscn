@@ -413,6 +413,7 @@ flat = true
 
 [node name="HerculesProf" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 1021.0
 offset_top = 191.0
 offset_right = 1646.0

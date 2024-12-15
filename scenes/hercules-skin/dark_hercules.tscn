@@ -1,0 +1,390 @@
+[gd_scene load_steps=45 format=3 uid="uid://dsk8esyce3po6"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ll4lf"]
+[ext_resource type="Resource" uid="uid://xpwbllut5klj" path="res://inventory-system/inventories/player_inv.tres" id="2_pirpk"]
+[ext_resource type="Resource" uid="uid://cle48vd41yqtc" path="res://inventory-system/inventories/account_inv.tres" id="3_6w7xw"]
+[ext_resource type="Texture2D" uid="uid://miv2pw4bw5v8" path="res://assets/icons/arrow-down.png" id="4_x5lml"]
+[ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="5_s28ih"]
+[ext_resource type="Texture2D" uid="uid://bdb8ks24j52p8" path="res://assets/character/sprites/player shoot 2H 48x48.png" id="6_mn4ek"]
+[ext_resource type="AnimationLibrary" uid="uid://dvkr1rxw24ckx" path="res://HerculesAnimations.res" id="7_g8fcr"]
+[ext_resource type="Script" path="res://fsm/base-state/state-machine.gd" id="8_nbr5d"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-idle.gd" id="9_ebcsk"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-run.gd" id="10_5kyop"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-jump.gd" id="11_6h4cu"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-attack.gd" id="12_0hc0t"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-skill.gd" id="13_x7ytu"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-death.gd" id="14_h4sux"]
+[ext_resource type="Script" path="res://fsm/playerStates/player-hit.gd" id="15_1apj0"]
+[ext_resource type="PackedScene" uid="uid://r2t80cgmn41l" path="res://scenes/components/healthcomp/players/player_health_component.tscn" id="16_fcdvb"]
+[ext_resource type="Texture2D" uid="uid://cg8debiytau2d" path="res://assets/Images/HUD/hp_bar_icon_new.png" id="17_bvw40"]
+[ext_resource type="PackedScene" uid="uid://c03il47od01w5" path="res://scenes/components/HP-bar/player/player_hp_bar.tscn" id="18_n7wj7"]
+[ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="19_0n6v0"]
+[ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="20_xxdny"]
+[ext_resource type="Script" path="res://scenes/components/hitbox/hitbox.gd" id="21_5r4ye"]
+[ext_resource type="Script" path="res://scenes/components/skill-hitbox/skill_hit_box.gd" id="22_ataw1"]
+[ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="23_qejxy"]
+[ext_resource type="PackedScene" uid="uid://cy13k4iq36aik" path="res://inventory-system/inv-ui/inventory_ui.tscn" id="24_ht0ja"]
+[ext_resource type="Texture2D" uid="uid://et13mh5w7nt5" path="res://assets/ui/labels/guide_1.png" id="25_wp77r"]
+[ext_resource type="Texture2D" uid="uid://cdpyp3u8du00i" path="res://assets/ui/labels/guide_2.png" id="26_5lv8o"]
+[ext_resource type="Texture2D" uid="uid://cu54h8qe0pbir" path="res://assets/ui/labels/guide_3.png" id="27_ttxeq"]
+[ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="28_g170d"]
+[ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="29_umio1"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="30_688bj"]
+[ext_resource type="PackedScene" uid="uid://cg7drnxfkh2kl" path="res://inventory-system/account-inv/account_inv_ui.tscn" id="31_hsgnv"]
+[ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="32_fb3go"]
+[ext_resource type="AudioStream" uid="uid://dpnfdbh34a320" path="res://assets/Audios/SFXs/sword-swing.mp3" id="33_fwxbp"]
+[ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="34_k6kq1"]
+[ext_resource type="AudioStream" uid="uid://cohv5wu1hx3xb" path="res://assets/Audios/SFXs/on_hit.mp3" id="35_nurno"]
+[ext_resource type="AudioStream" uid="uid://dsmaxqe8l5tck" path="res://assets/Audios/SFXs/death.mp3" id="36_r4q2p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_014y4"]
+shader = ExtResource("5_s28ih")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5c1ox"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vta2c"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxg1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dfk3"]
+size = Vector2(32.5, 14.5)
+
+[sub_resource type="Animation" id="Animation_6hcam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_86xlx"]
+resource_name = "hit-flash"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffg0m"]
+_data = {
+"RESET": SubResource("Animation_6hcam"),
+"hit-flash": SubResource("Animation_86xlx")
+}
+
+[node name="DarkHercules" type="CharacterBody2D" node_paths=PackedStringArray("weapon_ui") groups=["Player"]]
+collision_layer = 8
+script = ExtResource("1_ll4lf")
+weapon_ui = NodePath("HUD/WeaponRoulette")
+inv = ExtResource("2_pirpk")
+acc_inv = ExtResource("3_6w7xw")
+
+[node name="NameTag" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -42.0
+offset_top = -38.0
+offset_right = 45.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 16
+text = "\"YOU\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow-down" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.0351563, 0.0351563)
+texture = ExtResource("4_x5lml")
+
+[node name="State" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 60.0
+offset_top = -63.0
+offset_right = 147.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 16
+text = "\"YOU\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_014y4")
+texture = ExtResource("6_mn4ek")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("7_g8fcr")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_5c1ox")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("8_nbr5d")
+initial_state = NodePath("PlayerIdle")
+actor = NodePath("..")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("9_ebcsk")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="PlayerRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp", "RunForrestRun")]
+script = ExtResource("10_5kyop")
+actor = NodePath("../..")
+player_hp = NodePath("../../PlayerHealthComponent")
+RunForrestRun = NodePath("../../player_sound/run")
+
+[node name="PlayerJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("11_6h4cu")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "Sword_swing", "bow_sound")]
+script = ExtResource("12_0hc0t")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+Sword_swing = NodePath("../../player_sound/SwordSwing")
+bow_sound = NodePath("../../player_sound/bow")
+
+[node name="PlayerSkill" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+script = ExtResource("13_x7ytu")
+actor = NodePath("../..")
+player_health_component = NodePath("../../PlayerHealthComponent")
+
+[node name="PlayerDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "death")]
+script = ExtResource("14_h4sux")
+actor = NodePath("../..")
+death = NodePath("../../player_sound/death")
+
+[node name="PlayerHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "health_comp", "on_hit")]
+script = ExtResource("15_1apj0")
+actor = NodePath("../..")
+health_comp = NodePath("../../PlayerHealthComponent")
+on_hit = NodePath("../../player_sound/on_hit")
+
+[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("16_fcdvb")]
+anim_effects = NodePath("../AnimEffects")
+player = NodePath("..")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hurtbox" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_vta2c")
+debug_color = Color(0.983351, 0, 0.353836, 0.42)
+
+[node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
+
+[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_left = 253.0
+offset_top = 21.0
+offset_right = 308.0
+offset_bottom = 83.0
+texture = ExtResource("17_bvw40")
+
+[node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("18_n7wj7")]
+custom_minimum_size = Vector2(240, 10)
+offset_left = 310.0
+offset_top = 21.0
+offset_right = 590.0
+offset_bottom = 45.0
+scale = Vector2(2, 2)
+
+[node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
+offset_top = -7.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 32
+
+[node name="PhotoFrame" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_right = 235.0
+offset_bottom = 235.0
+texture = ExtResource("19_0n6v0")
+
+[node name="PlayerIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 21510.0
+offset_bottom = 21609.0
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("20_xxdny")
+
+[node name="Hitbox" type="Area2D" parent="PlayerHealthComponent" node_paths=PackedStringArray("attack_component")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("21_5r4ye")
+attack_component = NodePath("../AttackComponent")
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="PlayerHealthComponent/Hitbox"]
+position = Vector2(19, 0)
+shape = SubResource("CircleShape2D_rxg1p")
+disabled = true
+debug_color = Color(1.99743e-06, 0.646472, 0.236208, 0.42)
+
+[node name="SkillHitbox" type="Area2D" parent="PlayerHealthComponent"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("22_ataw1")
+skill_dmg = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthComponent/SkillHitbox"]
+position = Vector2(27.75, 3.75)
+shape = SubResource("RectangleShape2D_8dfk3")
+disabled = true
+debug_color = Color(0, 0.617883, 0.582327, 0.42)
+
+[node name="AttackComponent" type="Node2D" parent="PlayerHealthComponent"]
+script = ExtResource("23_qejxy")
+
+[node name="ArrowPos" type="Node2D" parent="."]
+
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowPos"]
+position = Vector2(19, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="HUD" instance=ExtResource("24_ht0ja")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -258.0
+offset_top = -122.0
+offset_right = -70.0
+offset_bottom = -62.0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+
+[node name="Guide1" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 508.0
+offset_top = -126.0
+offset_right = 572.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("25_wp77r")
+
+[node name="Guide2" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_top = -124.0
+offset_right = 1216.0
+offset_bottom = -84.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("26_5lv8o")
+
+[node name="Guide3" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1686.0
+offset_top = -322.0
+offset_right = 1750.0
+offset_bottom = -282.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("27_ttxeq")
+
+[node name="Guide4" type="TextureRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.00002
+offset_top = -126.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture = ExtResource("28_g170d")
+
+[node name="WeaponRoulette" parent="HUD" instance=ExtResource("29_umio1")]
+offset_left = 1643.0
+offset_top = 958.0
+offset_right = 1753.0
+offset_bottom = 1068.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2.5, 2.5)
+
+[node name="WeaponMode" type="Label" parent="HUD"]
+offset_left = 1718.0
+offset_top = 890.0
+offset_right = 1844.0
+offset_bottom = 951.0
+theme_override_fonts/font = ExtResource("30_688bj")
+theme_override_font_sizes/font_size = 24
+text = "WEAPON
+z|x"
+horizontal_alignment = 1
+
+[node name="AccountInvUI" parent="HUD" instance=ExtResource("31_hsgnv")]
+visible = false
+offset_left = 402.0
+offset_top = 136.0
+offset_right = 402.0
+offset_bottom = 136.0
+scale = Vector2(5, 5)
+
+[node name="AnimEffects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ffg0m")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(2.75, 2.75)
+
+[node name="player_sound" type="Node2D" parent="."]
+
+[node name="run" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("32_fb3go")
+bus = &"Sfx"
+
+[node name="SwordSwing" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("33_fwxbp")
+bus = &"Sfx"
+
+[node name="bow" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("34_k6kq1")
+bus = &"Sfx"
+
+[node name="on_hit" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("35_nurno")
+bus = &"Sfx"
+
+[node name="death" type="AudioStreamPlayer2D" parent="player_sound"]
+stream = ExtResource("36_r4q2p")
+bus = &"Sfx"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[editable path="PlayerHealthComponent"]
+[editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
