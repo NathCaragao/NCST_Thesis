@@ -685,10 +685,6 @@ offset_right = 100.0
 offset_bottom = 71.0
 texture = ExtResource("18_ls1sl")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-zoom = Vector2(3, 3)
-
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ffg0m")
@@ -801,7 +797,7 @@ stream = SubResource("AudioStreamRandomizer_8aucs")
 [node name="idle" type="AudioStreamPlayer2D" parent="sound effect"]
 stream = SubResource("AudioStreamRandomizer_6hqhm")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D2" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [connection signal="timeout" from="StateMachine/HypolitaIdle/Timer" to="StateMachine/HypolitaIdle" method="_on_timer_timeout"]

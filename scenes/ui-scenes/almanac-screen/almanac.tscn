@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8em666yw7wu1"]
+[gd_scene load_steps=7 format=3 uid="uid://c8em666yw7wu1"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/almanac-screen/almanac.gd" id="1_fa3ej"]
 [ext_resource type="Texture2D" uid="uid://c2wypejo7t4hg" path="res://assets/ui/windows/open_book.png" id="1_k2p4c"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="3_g7ja5"]
 [ext_resource type="Texture2D" uid="uid://m6hx2wc67eo2" path="res://assets/Images/HUD/hud_photo_frame.png" id="4_vcgfu"]
 [ext_resource type="Texture2D" uid="uid://c1d7sbnkuts45" path="res://assets/character/portraits/heracles_comm_portrait_icon.png" id="5_d1qiy"]
+[ext_resource type="Texture2D" uid="uid://dbjuua8yas0j7" path="res://assets/character/portraits/atalanta_blonde.png" id="6_qypnk"]
 
 [node name="Almanac" type="Control"]
 layout_mode = 3
@@ -113,6 +114,7 @@ offset_bottom = 941.0
 color = Color(0.964706, 0.890196, 0.756863, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HeroesSection"]
+layout_mode = 0
 offset_top = 205.0
 offset_right = 626.0
 offset_bottom = 748.0
@@ -129,7 +131,272 @@ text = "Hercules"
 flat = true
 alignment = 0
 
+[node name="AtalantaBtn" type="Button" parent="HeroesSection/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Atalanta
+"
+flat = true
+alignment = 0
+
+[node name="Hypolita" type="Button" parent="HeroesSection/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Hypolita
+
+"
+flat = true
+alignment = 0
+
 [node name="HSBackbtn" type="Button" parent="HeroesSection"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 724.0
+offset_right = 640.0
+offset_bottom = 761.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Gods and Goddesses" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 193.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Gods and Goddesses"]
+layout_mode = 0
+offset_top = 205.0
+offset_right = 626.0
+offset_bottom = 748.0
+theme_override_constants/separation = 60
+
+[node name="Artemis" type="Button" parent="Gods and Goddesses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Artemis
+"
+flat = true
+alignment = 0
+
+[node name="Athena" type="Button" parent="Gods and Goddesses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Athena
+"
+flat = true
+alignment = 0
+
+[node name="Hades" type="Button" parent="Gods and Goddesses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Hades
+
+"
+flat = true
+alignment = 0
+
+[node name="Prometheus" type="Button" parent="Gods and Goddesses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Prometheus
+
+"
+flat = true
+alignment = 0
+
+[node name="GGBackbtn" type="Button" parent="Gods and Goddesses"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 724.0
+offset_right = 640.0
+offset_bottom = 761.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="monster and creatures" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 193.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="monster and creatures"]
+layout_mode = 0
+offset_top = 205.0
+offset_right = 626.0
+offset_bottom = 748.0
+theme_override_constants/separation = 60
+
+[node name="Nermean_lion" type="Button" parent="monster and creatures/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Nermean Lion
+"
+flat = true
+alignment = 0
+
+[node name="Lernean_hydra" type="Button" parent="monster and creatures/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Lernean Hydra
+"
+flat = true
+alignment = 0
+
+[node name="Hind of Ceryneia" type="Button" parent="monster and creatures/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Hind of Ceryneia
+
+"
+flat = true
+alignment = 0
+
+[node name="Erymanthian Boar" type="Button" parent="monster and creatures/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "Erymanthian Boar
+
+"
+flat = true
+alignment = 0
+
+[node name="MMBackbtn" type="Button" parent="monster and creatures"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 724.0
+offset_right = 640.0
+offset_bottom = 761.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="12labors" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 193.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="12labors"]
+layout_mode = 0
+offset_top = 205.0
+offset_right = 626.0
+offset_bottom = 748.0
+theme_override_constants/separation = 60
+
+[node name="1st labor" type="Button" parent="12labors/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "1st labor"
+flat = true
+alignment = 0
+
+[node name="2nd labor" type="Button" parent="12labors/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "2nd labor"
+flat = true
+alignment = 0
+
+[node name="3rd labor" type="Button" parent="12labors/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "3rd labor
+
+"
+flat = true
+alignment = 0
+
+[node name="4th labor" type="Button" parent="12labors/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 32
+text = "4th labor
+"
+flat = true
+alignment = 0
+
+[node name="LLBackbtn" type="Button" parent="12labors"]
 layout_mode = 0
 offset_left = 552.0
 offset_top = 724.0
@@ -179,6 +446,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="PhotoFrame" type="TextureRect" parent="HerculesProf"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = -157.0
 offset_right = 267.0
@@ -186,6 +454,7 @@ offset_bottom = 78.0
 texture = ExtResource("4_vcgfu")
 
 [node name="PlayerIcon" type="TextureRect" parent="HerculesProf"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = -148.0
 offset_right = 21542.0
@@ -194,6 +463,918 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("5_d1qiy")
 
 [node name="HerculesBackBtn" type="Button" parent="HerculesProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="AtalantaProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="AtalantaProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Atalanta
+heroes"
+
+[node name="Desc" type="Label" parent="AtalantaProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Atalanta, a famed Greek heroine, was a swift-footed huntress raised by a bear and devoted to Artemis. Known for the Calydonian Boar Hunt and challenging suitors to footraces, she symbolized strength, independence, and defiance of traditional gender roles."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="AtalantaProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="AtalantaProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("6_qypnk")
+
+[node name="AtalantaBackBtn" type="Button" parent="AtalantaProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Hypolita" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Hypolita"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Hypolita
+heroes"
+
+[node name="Desc" type="Label" parent="Hypolita"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "The noble and fierce queen of the Amazons, Hippolyta is a warrior of unmatched skill and a leader who commands respect. Her girdle, a gift from Ares, symbolizes her divine favor and authority. Though known for her strength, Hippolyta also possesses wisdom and grace, embodying the ideals of Amazonian culture."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Hypolita"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Hypolita"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("6_qypnk")
+
+[node name="HypolitaBackBtn" type="Button" parent="Hypolita"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="ArtemisProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="ArtemisProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Athena
+Goddess"
+
+[node name="Desc" type="Label" parent="ArtemisProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Artemis is the goddess of the hunt, wilderness, and the moon. She is the twin sister of Apollo and is often depicted as a fierce protector of wildlife and the natural world. Artemis is both a nurturing and vengeful goddess, offering protection to animals and punishing those who violate her sacred domain. Armed with her bow and accompanied by her nymphs, Artemis is a guardian of purity and independence, representing the untamed forces of nature."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="ArtemisProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="ArtemisProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="BackBtn" type="Button" parent="ArtemisProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="AthenaProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="AthenaProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Athena
+Gods"
+
+[node name="Desc" type="Label" parent="AthenaProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "The goddess of wisdom, warfare, and strategy, Athena is one of the most revered deities in the Greek pantheon. Born from the head of Zeus, she represents reason, justice, and courage. Known for her strategic mind and her skill in battle, Athena is a protector of cities, particularly Athens, and a guiding force for heroes. Her wisdom extends beyond warfare, as she also embodies the values of fairness, justice, and peace.
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="AthenaProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="AthenaProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="AthenaBackBtn" type="Button" parent="AthenaProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Hades" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Hades"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Hades
+Gods"
+
+[node name="Desc" type="Label" parent="Hades"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "The god of the underworld, Hades rules over the realm of the dead with a solemn and unyielding presence. Though often misunderstood as cruel, Hades is fair and just, ensuring that the souls of the departed are properly judged. He is the keeper of the riches beneath the earth and is often depicted with his helm of darkness, which allows him to remain unseen. Hades’ domain is one of solemnity and balance, where the forces of life and death are carefully maintained."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Hades"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Hades"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="HadesBackBtn" type="Button" parent="Hades"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Prometheus" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Prometheus"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Prometheus
+Gods"
+
+[node name="Desc" type="Label" parent="Prometheus"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "A titan known for his intelligence and defiance, Prometheus is famous for stealing fire from the gods and gifting it to humanity, an act that brought both enlightenment and punishment. As a symbol of rebellion and progress, Prometheus represents the struggle for knowledge and the costs that come with it. His punishment from Zeus—being bound to a rock where an eagle consumes his liver—reflects his eternal sacrifice for the betterment of mankind."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Prometheus"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Prometheus"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="PrometheusBackBtn" type="Button" parent="Prometheus"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Nemean_lionProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Nemean_lionProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Nermean Lion
+Monster"
+
+[node name="Desc" type="Label" parent="Nemean_lionProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "The Nemean Lion is a colossal beast of extraordinary power, renowned for its impervious golden hide that no mortal weapon can pierce. It prowls the dense forests of Nemea, attacking villages and spreading terror among the people. With razor-sharp claws and a roar so powerful it shakes the earth, this creature has become a symbol of fear and invulnerability, challenging even the bravest warriors to face its wrath."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Nemean_lionProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Nemean_lionProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="nermeanBackBtn" type="Button" parent="Nemean_lionProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Lernean_hydraProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Lernean_hydraProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Lernean Hydra
+Monster"
+
+[node name="Desc" type="Label" parent="Lernean_hydraProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Dwelling in the dark and fetid swamps of Lerna, the Lernean Hydra is a monstrous serpent with numerous heads that regenerate twofold when severed. Its breath and blood are deadly, exuding a toxic vapor capable of withering life. The Hydra's lair is a nightmare of tangled roots and noxious fumes, making the approach as perilous as the creature itself. Its cunning and regenerative ability make it a nearly insurmountable foe."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Lernean_hydraProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Lernean_hydraProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="LerneanBackBtn" type="Button" parent="Lernean_hydraProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Cerynian_hindProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Cerynian_hindProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Hind of Ceryneia
+Monster"
+
+[node name="Desc" type="Label" parent="Cerynian_hindProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "A titan known for his intelligence and defiance, Prometheus is famous for stealing fire from the gods and gifting it to humanity, an act that brought both enlightenment and punishment. As a symbol of rebellion and progress, Prometheus represents the struggle for knowledge and the costs that come with it. His punishment from Zeus—being bound to a rock where an eagle consumes his liver—reflects his eternal sacrifice for the betterment of mankind."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Cerynian_hindProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Cerynian_hindProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="CerynianBackBtn" type="Button" parent="Cerynian_hindProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="Erymanthian_boarProf" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="Erymanthian_boarProf"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Erymanthian Boar
+Monsters"
+
+[node name="Desc" type="Label" parent="Erymanthian_boarProf"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "This massive and aggressive boar is a force of destruction, roaming the snowy peaks of Mount Erymanthos. Known for its feral rage, the Erymanthian Boar tramples through forests and villages alike, leaving a path of ruin in its wake. Its tusks, sharp as swords, are its primary weapons, and its stamina is unmatched. Facing this beast requires not only strength but also unyielding endurance."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="Erymanthian_boarProf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="Erymanthian_boarProf"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="ErymanthianBackBtn" type="Button" parent="Erymanthian_boarProf"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="1st labor" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="1st labor"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "1st labor"
+
+[node name="Desc" type="Label" parent="1st labor"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Heracles' first labor was to slay the fearsome Nemean Lion, a beast with impenetrable skin. Using his immense strength, he strangled the lion and later fashioned its hide into an invulnerable cloak."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="1st labor"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="1st labor"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="1stBackBtn" type="Button" parent="1st labor"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="2nd labor" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="2nd labor"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "2nd labor"
+
+[node name="Desc" type="Label" parent="2nd labor"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "For his second task, Heracles faced the multi-headed Hydra, a venomous serpent that regrew two heads for each one severed. With the help of his nephew Iolaus, he burned the stumps to prevent regrowth and buried its immortal head."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="2nd labor"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="2nd labor"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="2ndBackBtn" type="Button" parent="2nd labor"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="3rd labor" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="3rd labor"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "3rd labor"
+
+[node name="Desc" type="Label" parent="3rd labor"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "Her third labor required capturing the Ceryneian Hind, a sacred deer of Artemis with golden antlers. Heracles pursued the swift creature for a year before catching it without harm, appeasing the goddess."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="3rd labor"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="3rd labor"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="3rdBackBtn" type="Button" parent="3rd labor"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 734.0
+offset_right = 640.0
+offset_bottom = 771.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "back"
+flat = true
+
+[node name="4th labor" type="ColorRect" parent="."]
+visible = false
+offset_left = 1021.0
+offset_top = 191.0
+offset_right = 1646.0
+offset_bottom = 941.0
+color = Color(0.964706, 0.890196, 0.756863, 1)
+
+[node name="Name" type="Label" parent="4th labor"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 109.0
+offset_right = 452.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "4th labor"
+
+[node name="Desc" type="Label" parent="4th labor"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 197.0
+offset_right = 606.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g7ja5")
+theme_override_font_sizes/font_size = 24
+text = "In his fourth labor, Heracles subdued the Erymanthian Boar, a rampaging beast terrorizing Mount Erymanthos. He cleverly drove it into deep snow to trap it and brought it alive to King Eurystheus, who hid in fear."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PhotoFrame" type="TextureRect" parent="4th labor"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -157.0
+offset_right = 267.0
+offset_bottom = 78.0
+texture = ExtResource("4_vcgfu")
+
+[node name="PlayerIcon" type="TextureRect" parent="4th labor"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -148.0
+offset_right = 21542.0
+offset_bottom = 21452.0
+scale = Vector2(0.01, 0.01)
+
+[node name="4thtBackBtn" type="Button" parent="4th labor"]
+layout_mode = 0
 offset_left = 552.0
 offset_top = 734.0
 offset_right = 640.0
@@ -209,6 +1390,40 @@ flat = true
 
 [connection signal="pressed" from="CloseBtn" to="." method="almanac_close"]
 [connection signal="pressed" from="VBoxContainer/HeroesBtn" to="." method="_on_heroes_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/GodsBtn" to="." method="_on_gods_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/12LaborsBtn" to="." method="_on_labors_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/EnemiesBtn" to="." method="_on_enemies_btn_pressed"]
 [connection signal="pressed" from="HeroesSection/VBoxContainer/HerculesBtn" to="." method="_on_hercules_btn_pressed"]
+[connection signal="pressed" from="HeroesSection/VBoxContainer/AtalantaBtn" to="." method="_on_atalanta_btn_pressed"]
+[connection signal="pressed" from="HeroesSection/VBoxContainer/Hypolita" to="." method="_on_hypolita_pressed"]
 [connection signal="pressed" from="HeroesSection/HSBackbtn" to="." method="_on_hs_backbtn_pressed"]
+[connection signal="pressed" from="Gods and Goddesses/VBoxContainer/Artemis" to="." method="_on_artemis_pressed"]
+[connection signal="pressed" from="Gods and Goddesses/VBoxContainer/Athena" to="." method="_on_athena_pressed"]
+[connection signal="pressed" from="Gods and Goddesses/VBoxContainer/Hades" to="." method="_on_hades_pressed"]
+[connection signal="pressed" from="Gods and Goddesses/VBoxContainer/Prometheus" to="." method="_on_prometheus_pressed"]
+[connection signal="pressed" from="Gods and Goddesses/GGBackbtn" to="." method="_on_gg_backbtn_pressed"]
+[connection signal="pressed" from="monster and creatures/VBoxContainer/Nermean_lion" to="." method="_on_nermean_lion_pressed"]
+[connection signal="pressed" from="monster and creatures/VBoxContainer/Lernean_hydra" to="." method="_on_lernean_hydra_pressed"]
+[connection signal="pressed" from="monster and creatures/VBoxContainer/Hind of Ceryneia" to="." method="_on_hind_of_ceryneia_pressed"]
+[connection signal="pressed" from="monster and creatures/VBoxContainer/Erymanthian Boar" to="." method="_on_erymanthian_boar_pressed"]
+[connection signal="pressed" from="monster and creatures/MMBackbtn" to="." method="_on_mm_backbtn_pressed"]
+[connection signal="pressed" from="12labors/VBoxContainer/1st labor" to="." method="_on_st_labor_pressed"]
+[connection signal="pressed" from="12labors/VBoxContainer/2nd labor" to="." method="_on_nd_labor_pressed"]
+[connection signal="pressed" from="12labors/VBoxContainer/3rd labor" to="." method="_on_rd_labor_pressed"]
+[connection signal="pressed" from="12labors/VBoxContainer/4th labor" to="." method="_on_th_labor_pressed"]
+[connection signal="pressed" from="12labors/LLBackbtn" to="." method="_on_ll_backbtn_pressed"]
 [connection signal="pressed" from="HerculesProf/HerculesBackBtn" to="." method="_on_hercules_back_btn_pressed"]
+[connection signal="pressed" from="AtalantaProf/AtalantaBackBtn" to="." method="_on_atalanta_back_btn_pressed"]
+[connection signal="pressed" from="Hypolita/HypolitaBackBtn" to="." method="_on_hypolita_back_btn_pressed"]
+[connection signal="pressed" from="ArtemisProf/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="AthenaProf/AthenaBackBtn" to="." method="_on_athena_back_btn_pressed"]
+[connection signal="pressed" from="Hades/HadesBackBtn" to="." method="_on_hades_back_btn_pressed"]
+[connection signal="pressed" from="Prometheus/PrometheusBackBtn" to="." method="_on_prometheus_back_btn_pressed"]
+[connection signal="pressed" from="Nemean_lionProf/nermeanBackBtn" to="." method="_on_nermean_back_btn_pressed"]
+[connection signal="pressed" from="Lernean_hydraProf/LerneanBackBtn" to="." method="_on_lernean_back_btn_pressed"]
+[connection signal="pressed" from="Cerynian_hindProf/CerynianBackBtn" to="." method="_on_cerynian_back_btn_pressed"]
+[connection signal="pressed" from="Erymanthian_boarProf/ErymanthianBackBtn" to="." method="_on_erymanthian_back_btn_pressed"]
+[connection signal="pressed" from="1st labor/1stBackBtn" to="." method="_on_st_back_btn_pressed"]
+[connection signal="pressed" from="2nd labor/2ndBackBtn" to="." method="_on_nd_back_btn_pressed"]
+[connection signal="pressed" from="3rd labor/3rdBackBtn" to="." method="_on_rd_back_btn_pressed"]
+[connection signal="pressed" from="4th labor/4thtBackBtn" to="." method="_on_tht_back_btn_pressed"]
