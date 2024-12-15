@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://ccqsjx3r848ap" path="res://assets/ui/labels/guide4.png" id="20_f4l7e"]
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="21_hqffl"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="22_g3uox"]
-[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="22_qru2a"]
+[ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/Fonts/joystix monospace.otf" id="22_qru2a"]
 [ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="29_khake"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="30_pbo8v"]
 [ext_resource type="AudioStream" uid="uid://p73sxqfks4jl" path="res://assets/Audios/SFXs/female voice/THORN/Bleedout/i detest the taste of my own blood youll pay for this.wav" id="31_7mgns"]

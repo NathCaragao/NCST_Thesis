@@ -59,9 +59,11 @@ func _on_confirm_btn_pressed() -> void:
 	if index_number == 0:
 		print("HERCULES SELECTED")
 		Notification.showMessage("Selected \"Hercules\"", 3.0)
+		await ServerManager.updateUserCharacter(ServerManager.PlayableCharacter.HERCULES)
 	elif index_number == 1:
 		print("ATALANTA SELECTED")
 		Notification.showMessage("Selected \"Atalanta\"", 3.0)
+		await ServerManager.updateUserCharacter(ServerManager.PlayableCharacter.ATALANTA)
 
 # AFTER USER PRESSED CONFIRM BUTTON REDIRECT THEM
 # TO THE MULTIPLAYER SCREEN TO

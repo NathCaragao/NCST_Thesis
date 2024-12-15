@@ -66,6 +66,7 @@ func _ready() -> void:
 	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
 	ongoingMatchGUI.CurrentPlayerReachedFinish.connect(_handleCurrentPlayerReachedFinish)
 	ongoingMatchGUI.BackToLobby.connect(_handleOngoingMatchBackToLobby)
+	#ongoingMatchGUI.updateUsedCharacter.connect(_handleUpdateUsedCharacter)
 	
 	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
@@ -223,3 +224,10 @@ func _handleOngoingMatchBackToLobby(gemReward, coinReward):
 	
 	await ServerManager.leaveMatch(joinedMatchID)
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
+
+func _handleUpdateUsedCharacter(characterName):
+	var currentPlayerCharacterPayload = {
+		"userId" = self.currentPlayer.user.id,
+		"payload" = {"character": characterName}
+	}
+	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.PLAYER_UPDATE_USED_CHARACTER, currentPlayerCharacterPayload)

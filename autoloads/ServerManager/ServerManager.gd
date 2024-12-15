@@ -111,7 +111,7 @@ func addUserInDB() -> int:
 						freeCurrency = 0,
 						premiumCurrency = 0,
 						skins = [],
-						characters = [],
+						character = "hercules",
 						latestCompletedLevel = "",
 						equipmentInventory = [],
 						itemsInventory = [],
@@ -221,7 +221,23 @@ func updateUserSpeed(speedValueToAdd: int) -> int:
 		
 	return await writeToPlayerData(currentUserGameData)
 
+enum PlayableCharacter {
+	HERCULES = 1,
+	ATALANTA,
+}
 
+func updateUserCharacter(character: PlayableCharacter):
+		# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		var decodedCharacter
+		if character == PlayableCharacter.HERCULES:
+			decodedCharacter = "hercules"
+		elif character == PlayableCharacter.ATALANTA:
+			decodedCharacter = "atalanta"
+		currentUserGameData["character"] = decodedCharacter
+		
+	return await writeToPlayerData(currentUserGameData)
 
 
 #-------------------------------------------------------------------------------
@@ -237,6 +253,7 @@ enum MessageOpCode {
   ONGOING_PLAYER_FINISHED,
   DECLARED_WINNER,
   ONGOING_PLAYER_LEFT,
+	PLAYER_UPDATE_USED_CHARACTER
 }
 
 signal matchStateReceived(matchState: NakamaRTAPI.MatchData)

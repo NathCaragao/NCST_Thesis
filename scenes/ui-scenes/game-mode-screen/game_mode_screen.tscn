@@ -3,10 +3,10 @@
 [ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_d3my4"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/game-mode-screen/game_mode_screen.gd" id="1_gcrab"]
 [ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_3812d"]
-[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="3_1d5sb"]
+[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/Fonts/pixelmplus/PixelMplus10-Bold.ttf" id="3_1d5sb"]
 [ext_resource type="Texture2D" uid="uid://dnl45y83xjwii" path="res://assets/ui/windows/chapter_book_maroon.png" id="4_j2dnx"]
 [ext_resource type="Texture2D" uid="uid://d4f54dtbuy3lq" path="res://assets/ui/windows/chapter_book_emerald.png" id="5_ixis7"]
-[ext_resource type="FontFile" uid="uid://ckp1y2ms66xv8" path="res://assets/fonts/pixelmplus/PixelMplus12-Bold.ttf" id="5_y5e28"]
+[ext_resource type="FontFile" uid="uid://ckp1y2ms66xv8" path="res://assets/Fonts/pixelmplus/PixelMplus12-Bold.ttf" id="5_y5e28"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xf7gr"]
 shader = ExtResource("1_d3my4")
