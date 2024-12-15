@@ -4,7 +4,7 @@ extends State
 # references and variables
 @export var actor : CharacterBody2D
 @export var health_comp : PlayerHpComp
-
+@export var on_hit : AudioStreamPlayer2D
 func _ready() -> void:
 	health_comp.connect("ObstacleHit", Callable(self, "on_obstacle_hit"))
 
@@ -20,4 +20,4 @@ func freeze_time(timescale, duration) -> void:
 
 func on_obstacle_hit() -> void:
 	freeze_time(0.1, 0.4)
-	#on_hit.play()
+	on_hit.play()

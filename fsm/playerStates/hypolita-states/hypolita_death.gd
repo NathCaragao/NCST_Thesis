@@ -3,14 +3,14 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
-
+@export var death : AudioStreamPlayer2D
 func _ready() -> void:
 	GameSignals.connect("playerrespawn", Callable(self, "on_player_respawn"))
 
 func enter() -> void:
 	print("PLAYER DIED")
 	actor.animation_player.play("death")
-	
+	death.play()
 	# disable all phyics interactions
 	$"../../PlayerHealthComponent/Hurtbox/HurtboxCollision".set_deferred("disabled", true)
 	

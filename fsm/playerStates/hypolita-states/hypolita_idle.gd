@@ -4,10 +4,13 @@ extends State
 # references
 @export var actor : CharacterBody2D
 @export var player_health_component: PlayerHpComp
+@export var idle : AudioStreamPlayer2D
+@onready var delay_timer = $Timer
 
 func enter() -> void:
 	print("Entered Idle State")
-
+	delay_timer.start()
+	
 func physics_update(delta: float) -> void:
 	# Adjust velocity y(gravity)
 	if actor.playerGameData.isControlled:
@@ -59,3 +62,9 @@ func physics_update(delta: float) -> void:
 		# transitions to skill state
 		if actor.playerGameData.isSkill:
 			Transitioned.emit(self, "hypolitaskill")
+
+
+func _on_timer_timeout():
+	idle.play()
+	
+	delay_timer.start()
