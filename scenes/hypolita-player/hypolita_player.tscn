@@ -620,9 +620,9 @@ debug_color = Color(0, 0.641835, 0.32785, 0.42)
 script = ExtResource("15_gb4yk")
 weap_dmg = 10
 
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerHealthComponent"]
+[node name="Hp_bar" type="CanvasLayer" parent="PlayerHealthComponent"]
 
-[node name="PlayerHPbar" parent="PlayerHealthComponent/CanvasLayer" instance=ExtResource("17_li8e8")]
+[node name="PlayerHPbar" parent="PlayerHealthComponent/Hp_bar" instance=ExtResource("17_li8e8")]
 custom_minimum_size = Vector2(280, 24)
 offset_left = 100.0
 offset_top = 20.0
@@ -630,15 +630,19 @@ offset_right = 380.0
 offset_bottom = 44.0
 scale = Vector2(2, 2)
 
-[node name="Label" parent="PlayerHealthComponent/CanvasLayer/PlayerHPbar" index="2"]
+[node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]
 theme_override_font_sizes/font_size = 24
 
-[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/CanvasLayer"]
+[node name="HpbarIcon" type="TextureRect" parent="PlayerHealthComponent/Hp_bar"]
 offset_left = 45.0
 offset_top = 20.0
 offset_right = 100.0
 offset_bottom = 71.0
 texture = ExtResource("18_ls1sl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(3, 3)
 
 [node name="AnimEffects" type="AnimationPlayer" parent="."]
 libraries = {
@@ -736,4 +740,4 @@ offset_bottom = 136.0
 scale = Vector2(5, 5)
 
 [editable path="PlayerHealthComponent"]
-[editable path="PlayerHealthComponent/CanvasLayer/PlayerHPbar"]
+[editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
