@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4jusr3k3nmfs"]
+[gd_scene load_steps=6 format=3 uid="uid://4jusr3k3nmfs"]
 
 [ext_resource type="Texture2D" uid="uid://c2wypejo7t4hg" path="res://assets/ui/windows/open_book.png" id="1_1jryu"]
 [ext_resource type="Script" path="res://scenes/ui-scenes/greek-tales-screen/greek_tales_levels.gd" id="1_x4vy1"]
 [ext_resource type="FontFile" uid="uid://ckp1y2ms66xv8" path="res://assets/fonts/pixelmplus/PixelMplus12-Bold.ttf" id="2_it6on"]
 [ext_resource type="FontFile" uid="uid://cbcrd6cct3w7v" path="res://assets/fonts/pixelmplus/BestTen-DOT.otf" id="3_llrm1"]
+[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="5_by3hx"]
 
 [node name="GreekTalesLevels" type="Control"]
 layout_mode = 3
@@ -99,5 +100,16 @@ theme_override_font_sizes/font_size = 64
 text = "PLAY"
 flat = true
 
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 65.0
+offset_right = 1628.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("5_by3hx")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
 [connection signal="pressed" from="AtalantaPlay" to="." method="_on_atalanta_play_pressed"]
 [connection signal="pressed" from="HypolitaPlat" to="." method="_on_hypolita_plat_pressed"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]

@@ -33,3 +33,7 @@ func _on_hypolita_plat_pressed() -> void:
 	await LevelScreenTransition.on_transition_finished
 	
 	SceneManager.changeScene(hypolita_level)
+
+
+func _on_close_btn_pressed() -> void:
+	close_window()

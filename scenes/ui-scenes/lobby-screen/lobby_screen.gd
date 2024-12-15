@@ -53,7 +53,10 @@ func _on_shop_btn_pressed() -> void:
 
 # play button
 func _on_play_btn_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	SceneManager.changeScene("res://scenes/ui-scenes/game-mode-screen/game_mode_screen.tscn")
 
 # settings button
 func _on_settings_btn_pressed() -> void:
