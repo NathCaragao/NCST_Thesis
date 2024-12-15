@@ -109,11 +109,11 @@ const losingReward = {
 func updateReward(isWinner: bool):
 	self.isWinner = isWinner
 	if isWinner:
-		%RewardGemAmt.text = winningReward.gems
-		%RewardCoinAmt.text = winningReward.coins
+		%RewardGemAmt.text = str(winningReward.gems)
+		%RewardCoinAmt.text = str(winningReward.coins)
 	else:
-		%RewardGemAmt.text = losingReward.gems
-		%RewardCoinAmt.text = losingReward.coins
+		%RewardGemAmt.text = str(losingReward.gems)
+		%RewardCoinAmt.text = str(losingReward.coins)
 
 func _on_back_to_lobby_btn_pressed() -> void:
 	if isWinner:
