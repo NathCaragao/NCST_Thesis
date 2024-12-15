@@ -12,9 +12,9 @@ var is_attacking : bool = false
 var attackCooldown = 0.5
 
 func enter() -> void:
-	actor.animation_player("attack")
-	Sword_swing.play()
 	sword_attack()
+	Sword_swing.play()
+	
 
 func physics_update(delta: float) -> void:
 	# Keep the player as isAttacking true during the animation
