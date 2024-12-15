@@ -21,6 +21,7 @@ func createSocketAsync() -> int:
 	# Socket is needed for multiplayer functions
 	# no socket should be grounds for halting of operations
 	nakamaSocket = await Nakama.create_socket_from(nakamaClient)
+		
 	var result: NakamaAsyncResult = await nakamaSocket.connect_async(nakamaSession)
 	
 	if not result.is_exception():
@@ -277,9 +278,15 @@ func leaveMatch(matchId:String) -> int:
 	print_debug("Match left")
 	return OK
 
-func sendMatchState(matchId:String, messageOpCode:MessageOpCode, message:Dictionary) -> void:
-	if nakamaSocket:
-		await nakamaSocket.send_match_state_async(matchId, messageOpCode, JSON.stringify(message))
+func sendMatchState(matchId:String, messageOpCode:MessageOpCode, message:Dictionary) -> int:
+	if !nakamaSocket:
+		createSocketAsync()
+		
+	var result = await nakamaSocket.send_match_state_async(matchId, messageOpCode, JSON.stringify(message))
+	if result.is_exception():
+		return FAILED
+	else:
+		return OK
 
 
 func _on_match_state_received(p_state : NakamaRTAPI.MatchData):

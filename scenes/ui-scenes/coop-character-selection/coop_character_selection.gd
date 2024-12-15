@@ -58,12 +58,15 @@ func atalanta_show() -> void:
 func _on_confirm_btn_pressed() -> void:
 	if index_number == 0:
 		print("HERCULES SELECTED")
+		Notification.showMessage("Selected \"Hercules\"", 3.0)
 	elif index_number == 1:
 		print("ATALANTA SELECTED")
+		Notification.showMessage("Selected \"Atalanta\"", 3.0)
 
 # AFTER USER PRESSED CONFIRM BUTTON REDIRECT THEM
 # TO THE MULTIPLAYER SCREEN TO
 # CREATE MATCH OR JOIN A MATCH
+	SceneManager.changeScene("res://scenes/multiplayerLevelManager/MultiplayerLevelManager.tscn")
 
 #  BACK BUTTON PRESSED
 func _on_back_btn_pressed() -> void:

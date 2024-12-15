@@ -197,7 +197,14 @@ func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
 			}
 		}
 	}
-	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)
+	for i in range(0, 3):
+		var result = await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)
+		if result == OK:
+			break
+		elif i == 2:
+			Notification.showMessage("Error in sending match data. Returning player to lobby.", 5.0)
+			await ServerManager.leaveMatch(joinedMatchID)
+			SceneManager.changeScene("res://scenes/ui-scenes/game-mode-screen/game_mode_screen.tscn")
 
 func _handleCurrentPlayerReachedFinish():
 	var currentPlayerFinishedPayload = {
