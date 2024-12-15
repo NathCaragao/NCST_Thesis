@@ -14,4 +14,5 @@ leave Hercules [animation="Fade Out Up"]
 leave Eurystheus [animation="Fade Out Up"]
 narrator: "Thus, Hercules set out on his first labor, a task that would test not only his strength but his cunning and resolve. The Nemean Lion awaited him, a beast born of the gods' wrath, prowling the hills of Nemea and spreading fear across the land. Little did Hercules know, this was only the beginning of the trials that lay ahead."
 [signal arg="end"]
+[signal arg="movement"]
 [music fade="-1.0" volume="0.0"]

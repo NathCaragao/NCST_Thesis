@@ -18,6 +18,7 @@ func _ready() -> void:
 	current_health = max_health
 	
 	phealth_bar.init_health(max_health)
+	phealth_bar.max_value = max_health
 
 func take_damage(amount: int) -> void:
 	# damage calculation with def stat

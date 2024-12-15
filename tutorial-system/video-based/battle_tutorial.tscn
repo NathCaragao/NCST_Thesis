@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c0j3jst85cjsx" path="res://assets/fonts/pixelmplus/PixelMplus12-Regular.ttf" id="2_fi0no"]
 [ext_resource type="FontFile" uid="uid://cbcrd6cct3w7v" path="res://assets/fonts/pixelmplus/BestTen-DOT.otf" id="3_pq73s"]
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_wmqeu"]
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_b0g3e"]
 file = "res://assets/videos/Battle_Tutorial.ogg"
 
 [node name="BattleTutorial" type="Control"]
@@ -87,7 +87,7 @@ offset_bottom = 687.0
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
 custom_minimum_size = Vector2(573, 350)
 layout_mode = 2
-stream = SubResource("VideoStreamTheora_wmqeu")
+stream = SubResource("VideoStreamTheora_b0g3e")
 autoplay = true
 expand = true
 loop = true

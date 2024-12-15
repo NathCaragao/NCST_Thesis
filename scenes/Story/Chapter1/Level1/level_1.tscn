@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=189 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -45,6 +45,9 @@
 [ext_resource type="Texture2D" uid="uid://cgmw4h4krcbev" path="res://assets/dynamic assets/ELR_SpringlLeaf.png" id="39_imt48"]
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="39_ke52h"]
 [ext_resource type="Script" path="res://scenes/components/deathzone/death_zone.gd" id="40_8q11v"]
+[ext_resource type="PackedScene" uid="uid://bh051fg2usf0p" path="res://tutorial-system/video-based/movement_tutorial.tscn" id="42_tm1a4"]
+[ext_resource type="PackedScene" uid="uid://c7f44bn6fsiex" path="res://tutorial-system/photo-based/gate_mechanics.tscn" id="43_k82oq"]
+[ext_resource type="PackedScene" uid="uid://dlqaropgctsnq" path="res://tutorial-system/video-based/battle_tutorial.tscn" id="44_6tss5"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/combatareabgm.gd" id="45_4hd1r"]
 [ext_resource type="AudioStream" uid="uid://0en4ih54nqs1" path="res://assets/Audios/bgm/time_for_adventure.mp3" id="45_pk4ft"]
 [ext_resource type="AudioStream" uid="uid://b4p4cepxj1gia" path="res://assets/Audios/bgm/storm.mp3" id="46_kiukr"]
@@ -5023,7 +5026,10 @@ size = Vector2(61, 108)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvyqu"]
 size = Vector2(62, 388)
 
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion") groups=["Levels"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsk1o"]
+size = Vector2(29.8866, 217)
+
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "fail_screen", "pause_screen", "victory_screen", "nemean_lion", "movement_tutorial", "gate_mechanics", "battle_tutorial") groups=["Levels"]]
 position = Vector2(1931, 886)
 script = ExtResource("1_efops")
 player = NodePath("Player")
@@ -5031,6 +5037,9 @@ fail_screen = NodePath("ScoreUI/FailScreen")
 pause_screen = NodePath("ScoreUI/PauseScreen")
 victory_screen = NodePath("ScoreUI/VictoryScreen")
 nemean_lion = NodePath("Enemies/NemeanLion")
+movement_tutorial = NodePath("ScoreUI/MovementTutorial")
+gate_mechanics = NodePath("ScoreUI/GateMechanics")
+battle_tutorial = NodePath("ScoreUI/BattleTutorial")
 
 [node name="TileCollection" type="Node2D" parent="."]
 
@@ -5822,6 +5831,15 @@ player = NodePath("../../Player")
 [node name="SettingsScreen" parent="ScoreUI" instance=ExtResource("39_ke52h")]
 visible = false
 
+[node name="MovementTutorial" parent="ScoreUI" instance=ExtResource("42_tm1a4")]
+visible = false
+
+[node name="GateMechanics" parent="ScoreUI" instance=ExtResource("43_k82oq")]
+visible = false
+
+[node name="BattleTutorial" parent="ScoreUI" instance=ExtResource("44_6tss5")]
+visible = false
+
 [node name="Trapdoor" parent="." node_paths=PackedStringArray("cyclops") instance=ExtResource("20_n2v2w")]
 position = Vector2(2482, 2041)
 scale = Vector2(1.9, 1.9)
@@ -6101,6 +6119,16 @@ position = Vector2(11.3145, -111.719)
 shape = SubResource("RectangleShape2D_yvyqu")
 debug_color = Color(0.762137, 0.450887, 0, 0.42)
 
+[node name="Tutorial1" type="Area2D" parent="."]
+position = Vector2(-108.113, -151.271)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial1"]
+position = Vector2(-4.94324, -55.229)
+shape = SubResource("RectangleShape2D_dsk1o")
+debug_color = Color(0.53957, 0.407714, 1, 0.42)
+
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator3" to="DialogsCollection/DialogActivator3" method="_on_body_entered"]
@@ -6138,6 +6166,7 @@ debug_color = Color(0.762137, 0.450887, 0, 0.42)
 [connection signal="body_entered" from="Quests/QuestActivator7" to="Quests/QuestActivator7" method="_on_body_entered"]
 [connection signal="body_entered" from="Quests/QuestActivator8" to="Quests/QuestActivator8" method="_on_body_entered"]
 [connection signal="body_entered" from="Quests/QuestActivator9" to="Quests/QuestActivator9" method="_on_body_entered"]
+[connection signal="body_entered" from="Tutorial1" to="." method="_on_tutorial_1_body_entered"]
 
 [editable path="Gates Collection/Gate1"]
 [editable path="Key_1"]
