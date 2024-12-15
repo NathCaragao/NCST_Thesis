@@ -38,6 +38,7 @@ theme_override_font_sizes/font_size = 64
 text = "ATALANTA"
 
 [node name="Header2" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1202.0
 offset_top = 56.0
@@ -63,6 +64,7 @@ Hunt"
 horizontal_alignment = 1
 
 [node name="HypolitaSS" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1086.0
 offset_top = 274.0
@@ -89,6 +91,7 @@ text = "PLAY"
 flat = true
 
 [node name="HypolitaPlat" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1282.0
 offset_top = 506.0
