@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://nvxa50pldric"]
+[gd_scene load_steps=128 format=4 uid="uid://nvxa50pldric"]
 
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level2/level_2.gd" id="1_4x2vf"]
 [ext_resource type="Texture2D" uid="uid://bol63vp21a24n" path="res://assets/tileset (world-building)/Swamp Kingdom - Tileset.png" id="1_afnon"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="41_cn7vg"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="42_lcff2"]
 [ext_resource type="Script" path="res://autoloads/quest-system-final/activator/quest_activator.gd" id="44_jslk3"]
+[ext_resource type="PackedScene" uid="uid://b6172bscklui7" path="res://gear-system/gear(scenes)/test_gear.tscn" id="47_2v0ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nntn"]
 texture = ExtResource("1_pluxy")
@@ -9960,6 +9961,15 @@ description = "Use the key to unlock the cage and get the flame"
 position = Vector2(-6.65491, -84.4902)
 shape = SubResource("RectangleShape2D_vbsmh")
 debug_color = Color(0.502174, 0.427251, 1, 0.42)
+
+[node name="CommonGear" parent="." instance=ExtResource("47_2v0ol")]
+position = Vector2(7225.68, 3103)
+
+[node name="CommonGear" parent="CommonGear" instance=ExtResource("47_2v0ol")]
+position = Vector2(-5559.68, -40)
+
+[node name="CommonGear" parent="CommonGear/CommonGear" instance=ExtResource("47_2v0ol")]
+position = Vector2(6618, -2918)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/RespawnBtn" to="Checkpoint" method="respawn_player"]
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]

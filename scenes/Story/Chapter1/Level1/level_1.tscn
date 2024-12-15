@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=4 uid="uid://cc23awc8q1tk0"]
+[gd_scene load_steps=188 format=4 uid="uid://cc23awc8q1tk0"]
 
 [ext_resource type="Texture2D" uid="uid://bxllbfddk7tj4" path="res://assets/tileset (world-building)/tilemap_V2-export.png" id="1_64lh2"]
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/level_1.gd" id="1_efops"]
@@ -34,7 +34,6 @@
 [ext_resource type="Script" path="res://scenes/Story/Chapter1/Level1/gate_2.gd" id="19_r7mjr"]
 [ext_resource type="PackedScene" uid="uid://fcnyprgtbuq8" path="res://scenes/mechanisms/totem-holder/totem_holder.tscn" id="19_wbsl1"]
 [ext_resource type="PackedScene" uid="uid://388rf61vip3o" path="res://scenes/mechanisms/trapdoor(scene)/trapdoor.tscn" id="20_n2v2w"]
-[ext_resource type="PackedScene" uid="uid://b7itnt3xnhdyf" path="res://scenes/objects/chest/chest.tscn" id="24_konhc"]
 [ext_resource type="PackedScene" uid="uid://0uupk3tgidc2" path="res://scenes/enemies/nemean-lion/nemean_lion.tscn" id="27_0m45n"]
 [ext_resource type="PackedScene" uid="uid://qkpib13jg7qo" path="res://scenes/ui-scenes/fail-screen/fail_screen.tscn" id="27_3di2u"]
 [ext_resource type="PackedScene" uid="uid://ds0rg0pmx124r" path="res://inventory-system/items (scenes)/speed_potion/speed_potion.tscn" id="27_dik7a"]
@@ -54,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://c1hwnayo0cxfp" path="res://scenes/mechanisms/checkpoint/checkpoint.tscn" id="46_wvyl6"]
 [ext_resource type="PackedScene" uid="uid://bgc4xp5f1midm" path="res://scenes/mechanisms/checkpoint/checkpoint-sprite/checkpoint_sprite.tscn" id="47_sy3af"]
 [ext_resource type="Script" path="res://autoloads/quest-system-final/activator/quest_activator.gd" id="48_0iq4p"]
+[ext_resource type="PackedScene" uid="uid://b6172bscklui7" path="res://gear-system/gear(scenes)/test_gear.tscn" id="55_kyius"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bd6s"]
 texture = ExtResource("2_t8yjt")
@@ -4895,9 +4895,6 @@ func _on_body_entered(body: Node2D) -> void:
 			visible = false
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl0bv"]
-size = Vector2(53, 43)
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ihr68"]
 particles_animation = true
 particles_anim_h_frames = 5
@@ -5274,7 +5271,7 @@ position = Vector2(-2, -125.5)
 shape = SubResource("RectangleShape2D_bpast")
 
 [node name="Player" parent="." instance=ExtResource("2_5kjul")]
-position = Vector2(-450, -119)
+position = Vector2(-465, -126)
 scale = Vector2(1.4, 1.4)
 collision_mask = 35
 
@@ -5845,36 +5842,6 @@ position = Vector2(2482, 2041)
 scale = Vector2(1.9, 1.9)
 cyclops = NodePath("../Enemies/Cyclop")
 
-[node name="Chest" parent="." instance=ExtResource("24_konhc")]
-position = Vector2(3485, -108)
-scale = Vector2(1.5, 1.5)
-
-[node name="InteractionArea" parent="Chest" instance=ExtResource("10_aj2yc")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/InteractionArea"]
-position = Vector2(1.5, -13)
-shape = SubResource("RectangleShape2D_gl0bv")
-
-[node name="Chest2" parent="." instance=ExtResource("24_konhc")]
-position = Vector2(4744, 1422)
-scale = Vector2(1.5, 1.5)
-
-[node name="InteractionArea" parent="Chest2" instance=ExtResource("10_aj2yc")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest2/InteractionArea"]
-position = Vector2(1.5, -13)
-shape = SubResource("RectangleShape2D_gl0bv")
-
-[node name="Chest3" parent="." instance=ExtResource("24_konhc")]
-position = Vector2(3287, 2834)
-scale = Vector2(1.5, 1.5)
-
-[node name="InteractionArea" parent="Chest3" instance=ExtResource("10_aj2yc")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest3/InteractionArea"]
-position = Vector2(1.5, -13)
-shape = SubResource("RectangleShape2D_gl0bv")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LeavesEffect" type="GPUParticles2D" parent="."]
@@ -6128,6 +6095,15 @@ collision_mask = 8
 position = Vector2(-4.94324, -55.229)
 shape = SubResource("RectangleShape2D_dsk1o")
 debug_color = Color(0.53957, 0.407714, 1, 0.42)
+
+[node name="CommonGear" parent="." instance=ExtResource("55_kyius")]
+position = Vector2(3488, -115)
+
+[node name="CommonGear2" parent="." instance=ExtResource("55_kyius")]
+position = Vector2(3287, 2829)
+
+[node name="CommonGear3" parent="." instance=ExtResource("55_kyius")]
+position = Vector2(-429, 2315)
 
 [connection signal="body_entered" from="DialogsCollection/DialogActivator" to="DialogsCollection/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogsCollection/DialogActivator2" to="DialogsCollection/DialogActivator2" method="_on_body_entered"]

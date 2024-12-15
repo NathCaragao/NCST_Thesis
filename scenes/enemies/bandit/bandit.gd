@@ -41,3 +41,7 @@ func flip_sprite() -> void:
 	elif velocity.x < 0:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -16
+
+func enemy_loot() -> void:
+	LootDropSystem.drop_multiple_items(global_position, ["coin"], randi_range(1, 5))
+	print("Loot drop successful")
