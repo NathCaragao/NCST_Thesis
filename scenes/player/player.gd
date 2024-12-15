@@ -49,6 +49,9 @@ var direction
 signal PlayerFail
 
 func _ready() -> void:
+	var current_idle_sprite = SkinManager.get_sprite("idle")
+	sprite.texture = current_idle_sprite
+	
 	# initialize player stats on PlayerManager Autoload
 	move_speed = PlayerManager.player_move_speed
 	defense = PlayerManager.player_defense
