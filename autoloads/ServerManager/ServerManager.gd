@@ -181,6 +181,14 @@ func updateUserFreeCurrency(freeCurrencyValueToAdd: int) -> int:
 		
 	return await writeToPlayerData(currentUserGameData)
 
+func updateUserPremiumCurrency(premiumCurrencyValueToAdd: int) -> int:
+	# Get user current game data
+	var currentUserGameData = await getUserInfoInDBasync()
+	if currentUserGameData != {}:
+		currentUserGameData["premiumCurrency"] += premiumCurrencyValueToAdd
+		
+	return await writeToPlayerData(currentUserGameData)
+
 func updateUserAttack(attackValueToAdd: int) -> int:
 	# Get user current game data
 	var currentUserGameData = await getUserInfoInDBasync()

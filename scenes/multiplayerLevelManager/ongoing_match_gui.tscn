@@ -182,7 +182,6 @@ debug_color = Color(0.607843, 0.513726, 0.466667, 1)
 [node name="EndScreen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 50
-visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="EndScreen"]
 anchors_preset = 8
@@ -232,7 +231,7 @@ vertical_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pygfp")
 
 [node name="RewardLabel" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
@@ -240,6 +239,30 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vg1p2")
 theme_override_font_sizes/font_size = 25
 text = "Your Reward:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GemReward" type="HBoxContainer" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RewardGemAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer/GemReward"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vg1p2")
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinReward" type="HBoxContainer" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RewardCoinAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer/CoinReward"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vg1p2")
+theme_override_font_sizes/font_size = 25
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

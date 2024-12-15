@@ -5,7 +5,7 @@ extends Node2D
 signal LevelLoaded()
 signal CurrentPlayerGameDataUpdate(newCurrentPlayerGameData)
 signal CurrentPlayerReachedFinish()
-signal BackToLobby()
+signal BackToLobby(gemReward, coinReward)
 
 var isLoaded = false
 
@@ -16,6 +16,8 @@ var timer: float = 0
 
 var finishedPlayers: Array = []
 var isFinished: bool = false
+
+var isWinner: bool = false
 
 func _ready() -> void:
 	%EndScreen.hide()
@@ -96,9 +98,28 @@ func endMatch(winnerUsername):
 	%WinnerLabel.text ="%s finished 1st!" % winnerUsername
 	%EndScreen.show()
 
+const winningReward = {
+	"gems": 5,
+	"coins": 50
+}
+const losingReward = {
+	"gems": 1,
+	"coins": 20
+}
+func updateReward(isWinner: bool):
+	self.isWinner = isWinner
+	if isWinner:
+		%RewardGemAmt.text = winningReward.gems
+		%RewardCoinAmt.text = winningReward.coins
+	else:
+		%RewardGemAmt.text = losingReward.gems
+		%RewardCoinAmt.text = losingReward.coins
 
 func _on_back_to_lobby_btn_pressed() -> void:
-	BackToLobby.emit()
+	if isWinner:
+		BackToLobby.emit(5, 50)
+	else:
+		BackToLobby.emit(1, 20)
 
 func removePlayer(playerIdToRemove):
 	for n in %Players.get_children():

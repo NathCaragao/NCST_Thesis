@@ -80,6 +80,9 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	self.currentGameState = JSON.parse_string(gameState.data)
 	
 	if gameState.op_code == ServerManager.MessageOpCode.DECLARED_WINNER:
+		var isWinner = self.currentGameState.user.playerData.nakamaData.userId == self.currentPlayer.user.id
+		ongoingMatchGUI.updateReward(isWinner)
+		
 		ongoingMatchGUI.endMatch(self.currentGameState.user.playerData.displayName)
 		return
 	elif gameState.op_code == ServerManager.MessageOpCode.ONGOING_PLAYER_LEFT:
@@ -213,6 +216,10 @@ func _handleCurrentPlayerReachedFinish():
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_FINISHED, currentPlayerFinishedPayload)
 
-func _handleOngoingMatchBackToLobby():
+func _handleOngoingMatchBackToLobby(gemReward, coinReward):
+	# Give rewards first before going to lobby
+	await ServerManager.updateUserFreeCurrency(coinReward)
+	await ServerManager.updateUserPremiumCurrency(gemReward)
+	
 	await ServerManager.leaveMatch(joinedMatchID)
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
