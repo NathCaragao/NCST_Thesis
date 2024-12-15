@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm5p0m6rhj00w"
+path="res://.godot/imported/the clouds are shifting a storm approaches.wav-c5a6e51ee74e748217cf4e1b3bb72bba.sample"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/female voice/THORN/idle/the clouds are shifting a storm approaches.wav"
+dest_files=["res://.godot/imported/the clouds are shifting a storm approaches.wav-c5a6e51ee74e748217cf4e1b3bb72bba.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

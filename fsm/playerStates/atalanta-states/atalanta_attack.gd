@@ -4,7 +4,8 @@ extends State
 # references
 @export var actor : CharacterBody2D
 @export var player_health_component: PlayerHpComp
-
+@export var Sword_swing :  AudioStreamPlayer2D
+@export var bow_sound : AudioStreamPlayer2D
 # variables
 var attack_index : int = 0
 var attack_animations : Array = ["attack1"]
@@ -18,7 +19,9 @@ var attackCooldown = 0.5
 
 func enter() -> void:
 	print("Entered attack state")
+	bow_sound.play()
 	bow_attack()
+	
 
 func physics_update(delta: float) -> void:
 	# Keep the player as isAttacking true during the animation

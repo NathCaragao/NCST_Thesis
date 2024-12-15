@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://c7w2vcb45ltjg"]
+[gd_scene load_steps=51 format=4 uid="uid://c7w2vcb45ltjg"]
 
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="1_7vxp4"]
 [ext_resource type="Script" path="res://scenes/Story/side story/atalanta_and_the_calydonian_boar_hunt.gd" id="1_pmpx0"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://ds0rg0pmx124r" path="res://inventory-system/items (scenes)/speed_potion/speed_potion.tscn" id="27_ednm1"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="28_8cqvm"]
 [ext_resource type="PackedScene" uid="uid://ccq12hrhaxv5r" path="res://inventory-system/items (scenes)/atk_potion/atk_potion.tscn" id="29_u83us"]
+[ext_resource type="AudioStream" uid="uid://pv7ggcd6hyoc" path="res://assets/Audios/bgm/magical_forrest.mp3" id="31_cw3ht"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_io1m1"]
 shader = ExtResource("4_h2cud")
@@ -1640,6 +1641,18 @@ collision_mask = 8
 position = Vector2(24.7412, -91.788)
 shape = SubResource("RectangleShape2D_73y71")
 debug_color = Color(0.328802, 0.488915, 1, 0.42)
+
+[node name="Cutscene" type="CanvasLayer" parent="."]
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_cw3ht")
+volume_db = -15.0
+
+[node name="spike wheel" parent="." instance=ExtResource("7_p17i3")]
+position = Vector2(1833, 63)
+
+[node name="spike wheel2" parent="." instance=ExtResource("7_p17i3")]
+position = Vector2(2242, 64)
 
 [connection signal="body_entered" from="Dialogs/DialogActivator" to="Dialogs/DialogActivator" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogs/DialogActivator2" to="Dialogs/DialogActivator2" method="_on_body_entered"]

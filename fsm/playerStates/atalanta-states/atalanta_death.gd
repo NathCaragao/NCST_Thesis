@@ -3,6 +3,7 @@ extends State
 
 # references
 @export var actor : CharacterBody2D
+@export var death : AudioStreamPlayer2D
 
 func _ready() -> void:
 	GameSignals.connect("playerrespawn", Callable(self, "on_player_respawn"))
@@ -10,7 +11,8 @@ func _ready() -> void:
 func enter() -> void:
 	print("PLAYER DIED")
 	actor.animation_player.play("player-dead")
-	#death.play()
+	
+	death.play()
 	
 	# disable other processes
 	actor.set_physics_process(false)
