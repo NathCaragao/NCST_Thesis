@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://br24vp0cle48w"]
+[gd_scene load_steps=54 format=3 uid="uid://br24vp0cle48w"]
 
 [ext_resource type="Script" path="res://scenes/atalanta-player/atalanta.gd" id="1_0bgvw"]
 [ext_resource type="Texture2D" uid="uid://c7bsfkxy2a14u" path="res://assets/character/atalanta-sprites/atalanta_idle.png" id="1_8x3y2"]
@@ -30,6 +30,13 @@
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="22_qru2a"]
 [ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="29_khake"]
 [ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="30_pbo8v"]
+[ext_resource type="AudioStream" uid="uid://p73sxqfks4jl" path="res://assets/Audios/SFXs/female voice/THORN/Bleedout/i detest the taste of my own blood youll pay for this.wav" id="31_7mgns"]
+[ext_resource type="AudioStream" uid="uid://toy0qo6gd7nu" path="res://assets/Audios/SFXs/female voice/THORN/Bleedout/i reap what i sow isnt that the saying.wav" id="32_c4gmq"]
+[ext_resource type="AudioStream" uid="uid://ddt32vbg218ki" path="res://assets/Audios/SFXs/female voice/THORN/Bleedout/the cold hands reaching for me.wav" id="33_imt2n"]
+[ext_resource type="AudioStream" uid="uid://bm5p0m6rhj00w" path="res://assets/Audios/SFXs/female voice/THORN/idle/the clouds are shifting a storm approaches.wav" id="34_312st"]
+[ext_resource type="AudioStream" uid="uid://vbkq4ao2mpsl" path="res://assets/Audios/SFXs/female voice/THORN/idle/the scent of death is near.wav" id="35_3ex3g"]
+[ext_resource type="AudioStream" uid="uid://cg8f75u0qywjq" path="res://assets/Audios/SFXs/female voice/THORN/idle/this place is quiet peaceful and yet terribly dull.wav" id="36_1e8u7"]
+[ext_resource type="AudioStream" uid="uid://lbe5rsumxvxd" path="res://assets/Audios/SFXs/female voice/THORN/idle/to where is our destination.wav" id="37_8ckf7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wra0k"]
 load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c7341.ctex"
@@ -437,6 +444,19 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eej6y"]
+streams_count = 3
+stream_0/stream = ExtResource("31_7mgns")
+stream_1/stream = ExtResource("32_c4gmq")
+stream_2/stream = ExtResource("33_imt2n")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ltuxa"]
+streams_count = 4
+stream_0/stream = ExtResource("34_312st")
+stream_1/stream = ExtResource("35_3ex3g")
+stream_2/stream = ExtResource("36_1e8u7")
+stream_3/stream = ExtResource("37_8ckf7")
+
 [node name="Atalanta" type="CharacterBody2D" node_paths=PackedStringArray("player_hp", "hurtbox_collision") groups=["Player"]]
 collision_layer = 8
 script = ExtResource("1_0bgvw")
@@ -492,10 +512,14 @@ script = ExtResource("9_p78y3")
 initial_state = NodePath("AtalantaIdle")
 actor = NodePath("..")
 
-[node name="AtalantaIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+[node name="AtalantaIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "idle")]
 script = ExtResource("10_iqjom")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
+idle = NodePath("../../sound  effect/idle")
+
+[node name="Timer" type="Timer" parent="StateMachine/AtalantaIdle"]
+wait_time = 25.0
 
 [node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp", "RunForrestRun")]
 script = ExtResource("11_nbj2u")
@@ -514,9 +538,10 @@ actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 bow_sound = NodePath("../../sound  effect/bow")
 
-[node name="AtalantaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="AtalantaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "death")]
 script = ExtResource("14_tlv2a")
 actor = NodePath("../..")
+death = NodePath("../../sound  effect/death")
 
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("8_8aq8d")]
 anim_effects = NodePath("../AnimEffects")
@@ -662,6 +687,14 @@ stream = ExtResource("29_khake")
 
 [node name="walking" type="AudioStreamPlayer2D" parent="sound  effect"]
 stream = ExtResource("30_pbo8v")
+
+[node name="death" type="AudioStreamPlayer2D" parent="sound  effect"]
+stream = SubResource("AudioStreamRandomizer_eej6y")
+
+[node name="idle" type="AudioStreamPlayer2D" parent="sound  effect"]
+stream = SubResource("AudioStreamRandomizer_ltuxa")
+
+[connection signal="timeout" from="StateMachine/AtalantaIdle/Timer" to="StateMachine/AtalantaIdle" method="_on_timer_timeout"]
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
