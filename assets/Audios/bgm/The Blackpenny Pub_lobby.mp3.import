@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b12iq0iy480a5"
+path="res://.godot/imported/The Blackpenny Pub_lobby.mp3-2c1cf0bf817be26d5de661df758f01ab.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/bgm/The Blackpenny Pub_lobby.mp3"
+dest_files=["res://.godot/imported/The Blackpenny Pub_lobby.mp3-2c1cf0bf817be26d5de661df758f01ab.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
