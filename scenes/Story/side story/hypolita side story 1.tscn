@@ -1,5 +1,6 @@
-[gd_scene load_steps=53 format=4 uid="uid://uw6vsryokm8q"]
+[gd_scene load_steps=56 format=4 uid="uid://uw6vsryokm8q"]
 
+[ext_resource type="Script" path="res://scenes/Story/side story/hypolita_side_story_1.gd" id="1_sas1w"]
 [ext_resource type="Texture2D" uid="uid://c04736aj45lgu" path="res://assets/Images/BackgroundImages/sky.png" id="4_dtv0h"]
 [ext_resource type="Texture2D" uid="uid://vd5833lwgjbw" path="res://assets/Images/BackgroundImages/pine1.png" id="5_8ifja"]
 [ext_resource type="Shader" uid="uid://dbjeoe3jrhm0m" path="res://shaders/swaying_tree.tres" id="6_u2vm0"]
@@ -21,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://do2iqe61jb5ok" path="res://scenes/ui-scenes/settings-screen/settings_screen.tscn" id="21_xar6s"]
 [ext_resource type="PackedScene" uid="uid://ctc56wsd6rj13" path="res://inventory-system/items (scenes)/health_potion/health_potion.tscn" id="22_6xf5q"]
 [ext_resource type="AudioStream" uid="uid://rs2bb2erkj51" path="res://assets/Audios/bgm/lostcity.mp3" id="23_ip2dp"]
+[ext_resource type="Script" path="res://scenes/components/dialog-activator/dialog_activator.gd" id="24_eep6w"]
 [ext_resource type="PackedScene" uid="uid://d4ainh8qfayhe" path="res://scenes/mechanisms/moving-platform/moving_platform.tscn" id="27_wxupc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1saxt"]
@@ -3595,7 +3597,11 @@ _data = {
 "h": SubResource("Animation_ko051")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85h8v"]
+size = Vector2(20, 231)
+
 [node name="Level8" type="Node2D"]
+script = ExtResource("1_sas1w")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(-5110.46, -388.149)
@@ -3613,7 +3619,7 @@ texture = ExtResource("5_8ifja")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 material = SubResource("ShaderMaterial_1saxt")
-tile_map_data = PackedByteArray("AAA+AAYAAgAAAEQAAABBAAYAAgAAAEQAAABEAAUAAgAAADsAAABRAAUAAgAAADsAAABfAAUAAgAAADsAAABjAAUAAAAAADsAAABnAAUAAAAAADsAAABrAAYAAAAAAEQAAAB4AAcAAgAAAEQAAAB7AAUAAgAAADsAAAB/AAUAAgAAADsAAACVAAYAAgAAAEQAAACYAAYAAgAAAEQAAACbAAUAAgAAADsAAACfAAUAAAAAADsAAACjAAUAAAAAADsAAACnAAUAAAAAADsAAAAHAPb/AAAAABkAAAAEAPb/AAAAABkAAAD///b/AgAAABgAAAD7//b/AgAAABgAAAD2//n/AgAAAC0AAADy//b/AAAAABkAAADu//b/AAAAABkAAADq//n/AAAAAC0AAADn//T/AgAAAAAAAADk//b/AgAAABgAAADg//b/AgAAABgAAADb//b/AgAAABgAAADY//T/AgAAAAAAAADU//b/AAAAABkAAADQ//b/AAAAABkAAADL//b/AAAAABkAAADI//b/AAAAABkAAADE//X/AAAAAAAAAADA//b/AgAAABgAAAC8//b/AgAAABgAAAC4//b/AgAAABgAAAC0//X/AAAAAAAAAACx//f/AAAAABkAAACt//b/AAAAABkAAAA=")
+tile_map_data = PackedByteArray("AAA+AAYAAgAAAEQAAABBAAYAAgAAAEQAAABEAAUAAgAAADsAAABRAAUAAgAAADsAAABfAAUAAgAAADsAAABjAAUAAAAAADsAAABnAAUAAAAAADsAAABrAAYAAAAAAEQAAAB4AAcAAgAAAEQAAAB7AAUAAgAAADsAAAB/AAUAAgAAADsAAACVAAYAAgAAAEQAAACYAAYAAgAAAEQAAACbAAUAAgAAADsAAACfAAUAAAAAADsAAACjAAUAAAAAADsAAACnAAUAAAAAADsAAAAHAPb/AAAAABkAAAAEAPb/AAAAABkAAAD///b/AgAAABgAAAD7//b/AgAAABgAAAD2//n/AgAAAC0AAADy//b/AAAAABkAAADu//b/AAAAABkAAADq//n/AAAAAC0AAADn//T/AgAAAAAAAADk//b/AgAAABgAAADg//b/AgAAABgAAADb//b/AgAAABgAAADY//T/AgAAAAAAAADU//b/AAAAABkAAADQ//b/AAAAABkAAADL//b/AAAAABkAAADI//b/AAAAABkAAADE//X/AAAAAAAAAADA//b/AgAAABgAAAC8//b/AgAAABgAAAC4//b/AgAAABgAAAC0//X/AAAAAAAAAACx//f/AAAAABkAAACt//b/AAAAABkAAAD2/f7/AAAAABkAAADw/f7/AAAAABkAAADp/f7/AAAAABkAAADk/f7/AAAAABkAAADr/vb/AAAAABkAAADv/vb/AAAAABkAAAD1/vb/AAAAABkAAAD6/vb/AAAAABkAAAD//vb/AAAAABkAAAAD//b/AAAAABkAAAAI//b/AAAAABkAAAAN//b/AAAAABkAAADg/uv/AgAAABgAAADy/vb/AgAAABgAAADZ/uv/AgAAABgAAADc/un/AgAAAAAAAAD9/vT/AgAAAAAAAAAK//T/AgAAAAAAAACq/uv/AgAAABgAAACv/uv/AgAAABgAAADl/vH/AgAAABgAAADS/uv/AgAAABgAAADO/uv/AgAAABgAAADK/uv/AgAAABgAAAC1/ur/AAAAAAAAAADW/ur/AAAAAAAAAADG/uv/AAAAABkAAADA/uv/AAAAABkAAAC8/uv/AAAAABkAAADD/uv/AgAAABgAAAC5/uz/AgAAABgAAAD6/f7/AgAAABgAAADz/f7/AgAAABgAAADs/f7/AgAAABgAAADX/f7/AgAAABgAAADg/f3/AgAAABgAAADb/f7/AAAAABkAAABU/f//AAAAABkAAABZ/f7/AAAAABkAAABe/f7/AAAAABkAAABH/fT/AAAAAAAAAABi/f3/AAAAAAAAAABn/f3/AAAAAAAAAAAE/fT/AAAAAAAAAAAJ/fX/AAAAABkAAAAN/fX/AAAAABkAAAAU/fX/AAAAABkAAAAa/fX/AgAAABgAAAAR/fX/AgAAABgAAABR/f7/AgAAABgAAABb/f7/AgAAABgAAABl/f7/AgAAABgAAAAX/fX/AgAAABgAAAAd/fX/AgAAABgAAAAk/fX/AgAAABgAAAA8/fX/AgAAABgAAABC/fX/AgAAABgAAAAx/fX/AgAAABgAAAAr/fP/AgAAAAAAAAA2/fP/AgAAAAAAAAD//PT/AgAAAAAAAADP/PT/AgAAAAAAAADK/PT/AgAAAAAAAABg/PT/AgAAAAAAAABl/PT/AgAAAAAAAADH/PT/AgAAAAAAAADV/PX/AgAAABgAAAD2/PX/AgAAABgAAADl/PX/AgAAABgAAADk/PX/AgAAABgAAACc/PX/AgAAABgAAACt/PX/AgAAABgAAACo/PX/AgAAABgAAACx/PT/AgAAABgAAABq/PX/AgAAABgAAABw/PX/AgAAABgAAACY/PX/AgAAABgAAACh/PX/AgAAABgAAAC1/Pb/AgAAABgAAADD/Pb/AgAAABgAAAC6/Pb/AAAAABkAAAC+/Pb/AAAAABkAAADB/PX/AAAAABkAAADT/PX/AAAAABkAAADe/PX/AAAAABkAAADb/PX/AAAAABkAAADY/Pb/AAAAABkAAADz/PX/AAAAABkAAADq/PX/AAAAABkAAADu/PX/AAAAABkAAACk/Pb/AAAAABkAAACq/PX/AAAAABkAAAD7/PX/AAAAABkAAAAh/fX/AAAAABkAAAAn/fX/AAAAABkAAAAu/fX/AAAAABkAAABd/PX/AAAAABkAAABX/PX/AAAAABkAAABa/PX/AAAAABkAAABi/PX/AAAAABkAAABn/PX/AAAAABkAAABt/Pb/AAAAABkAAACA/PX/AAAAABkAAAB3/PX/AAAAABkAAACS/PX/AAAAABkAAACN/PX/AAAAABkAAACK/PX/AAAAABkAAABz/PP/AAAAAAAAAAC3/PT/AAAAAAAAAACf/PT/AAAAAAAAAADN/PT/AAAAAAAAAADh/PX/AAAAAAAAAAA6/fT/AAAAAAAAAAA//fT/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_uhfsm")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
@@ -3640,13 +3646,31 @@ zoom = Vector2(3, 3)
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="AmasonNPC" parent="NPCs" instance=ExtResource("14_kbahv")]
-position = Vector2(180, -21)
+position = Vector2(1977, 140)
 
 [node name="AmasonNPC2" parent="NPCs" instance=ExtResource("14_kbahv")]
-position = Vector2(206, -21)
+position = Vector2(2003, 140)
 
 [node name="AmasonNPC3" parent="NPCs" instance=ExtResource("14_kbahv")]
-position = Vector2(155, -21)
+position = Vector2(1952, 140)
+
+[node name="AmasonNPC7" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2070, 141)
+
+[node name="AmasonNPC8" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2096, 141)
+
+[node name="AmasonNPC9" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2045, 141)
+
+[node name="AmasonNPC10" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2159, 140)
+
+[node name="AmasonNPC11" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2185, 140)
+
+[node name="AmasonNPC12" parent="NPCs" instance=ExtResource("14_kbahv")]
+position = Vector2(2134, 140)
 
 [node name="AmasonNPC4" parent="NPCs" instance=ExtResource("14_kbahv")]
 position = Vector2(2468, 140)
@@ -3769,6 +3793,26 @@ libraries = {
 "": SubResource("AnimationLibrary_0b1he")
 }
 autoplay = "h"
+
+[node name="cutscene" type="CanvasLayer" parent="."]
+
+[node name="DialogActivator" type="Area2D" parent="."]
+script = ExtResource("24_eep6w")
+dialog_file = "HS_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator"]
+position = Vector2(2430, 40.5)
+shape = SubResource("RectangleShape2D_85h8v")
+debug_color = Color(0.676598, 0.314532, 0.98159, 0.42)
+
+[node name="DialogActivator2" type="Area2D" parent="."]
+script = ExtResource("24_eep6w")
+dialog_file = "HS_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogActivator2"]
+position = Vector2(-11948, -133)
+shape = SubResource("RectangleShape2D_85h8v")
+debug_color = Color(0.676598, 0.314532, 0.98159, 0.42)
 
 [connection signal="pressed" from="ScoreUI/FailScreen/VBoxContainer/QuitBtn" to="ScoreUI/FailScreen" method="quit_level"]
 
