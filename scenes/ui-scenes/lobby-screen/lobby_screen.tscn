@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bew17a4cm663b"]
+[gd_scene load_steps=46 format=4 uid="uid://bew17a4cm663b"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/lobby-screen/lobby_screen.gd" id="1_oyntd"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="2_22pfw"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://pydj505shwk1" path="res://assets/dynamic assets/premium_gems.png" id="18_bclf8"]
 [ext_resource type="PackedScene" uid="uid://cg7drnxfkh2kl" path="res://inventory-system/account-inv/account_inv_ui.tscn" id="21_sij2f"]
 [ext_resource type="PackedScene" uid="uid://cf8rthjawuuun" path="res://scenes/ui-scenes/character-info-screen/character_info_screen.tscn" id="22_ny543"]
+[ext_resource type="PackedScene" uid="uid://bgvaplaxyab7m" path="res://tutorial-system/text-based/text_based_tutorial.tscn" id="23_asb63"]
+[ext_resource type="Resource" uid="uid://e5gcw5ujr7ow" path="res://tutorial-system/text-based/data-tres/lobby_screen_guide.tres" id="24_nf8w7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dc7h"]
 texture = ExtResource("3_n5nrb")
@@ -1852,13 +1854,14 @@ bg_color = Color(0.776471, 0.776471, 0.776471, 0.309804)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7ceik"]
 
-[node name="LobbyScreen" type="Node2D" node_paths=PackedStringArray("settings_window", "almanac_window", "shop_window", "inv_window", "character_window")]
+[node name="LobbyScreen" type="Node2D" node_paths=PackedStringArray("settings_window", "almanac_window", "shop_window", "inv_window", "character_window", "lobby_tutorial")]
 script = ExtResource("1_oyntd")
 settings_window = NodePath("CanvasLayer/SettingsTab")
 almanac_window = NodePath("CanvasLayer/Almanac")
 shop_window = NodePath("CanvasLayer/Shop3")
 inv_window = NodePath("CanvasLayer/AccountInvUI")
 character_window = NodePath("CanvasLayer/CharacterInfoScreen")
+lobby_tutorial = NodePath("CanvasLayer/TextBasedTutorial")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -2144,6 +2147,14 @@ scale = Vector2(5, 5)
 [node name="CharacterInfoScreen" parent="CanvasLayer" instance=ExtResource("22_ny543")]
 visible = false
 
+[node name="TextBasedTutorial" parent="CanvasLayer" instance=ExtResource("23_asb63")]
+visible = false
+offset_left = -1192.0
+offset_top = 235.0
+offset_right = -1192.24
+offset_bottom = 92.0
+text_data = ExtResource("24_nf8w7")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -29)
 zoom = Vector2(3, 3)
@@ -2166,3 +2177,4 @@ shape = SubResource("WorldBoundaryShape2D_7ceik")
 [connection signal="pressed" from="CanvasLayer/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/CharaBtn" to="." method="_on_chara_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="next_tutorial" from="CanvasLayer/TextBasedTutorial" to="." method="_on_tutorial_text_next_tutorial"]
