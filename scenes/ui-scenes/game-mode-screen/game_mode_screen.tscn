@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://qmjse1f062k5"]
+
+[ext_resource type="Shader" path="res://shaders/scroll-pattern1.gdshader" id="1_d3my4"]
+[ext_resource type="Script" path="res://scenes/ui-scenes/game-mode-screen/game_mode_screen.gd" id="1_gcrab"]
+[ext_resource type="Texture2D" uid="uid://cgbl1h00rbxnk" path="res://scenes/ui-scenes/background-pattern/pattern-3.png" id="2_3812d"]
+[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="3_1d5sb"]
+[ext_resource type="Texture2D" uid="uid://dnl45y83xjwii" path="res://assets/ui/windows/chapter_book_maroon.png" id="4_j2dnx"]
+[ext_resource type="Texture2D" uid="uid://d4f54dtbuy3lq" path="res://assets/ui/windows/chapter_book_emerald.png" id="5_ixis7"]
+[ext_resource type="FontFile" uid="uid://ckp1y2ms66xv8" path="res://assets/fonts/pixelmplus/PixelMplus12-Bold.ttf" id="5_y5e28"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xf7gr"]
+shader = ExtResource("1_d3my4")
+shader_parameter/scroll_speed = 0.03
+
+[node name="GameModeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gcrab")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0962048, 0.0962047, 0.0962047, 1)
+
+[node name="BgPattern" type="TextureRect" parent="."]
+self_modulate = Color(0.419813, 0.419813, 0.419813, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xf7gr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3812d")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -336.0
+offset_top = 43.0
+offset_right = 336.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_1d5sb")
+theme_override_font_sizes/font_size = 96
+text = "Hall of Trials"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 209.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Campaign" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(616, 762)
+layout_mode = 2
+texture = ExtResource("4_j2dnx")
+
+[node name="CampaignLabel" type="Label" parent="HBoxContainer/Campaign"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 109.0
+offset_right = 539.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("5_y5e28")
+theme_override_font_sizes/font_size = 88
+text = "CAMPAIGN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CampaignBtn" type="Button" parent="HBoxContainer/Campaign"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 54.0
+offset_right = 539.0
+offset_bottom = 713.0
+flat = true
+
+[node name="Multiplayer" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(616, 762)
+layout_mode = 2
+texture = ExtResource("5_ixis7")
+
+[node name="CooLabel" type="Label" parent="HBoxContainer/Multiplayer"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 109.0
+offset_right = 545.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("5_y5e28")
+theme_override_font_sizes/font_size = 88
+text = "PANTHEON
+PARKOUR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerBtn" type="Button" parent="HBoxContainer/Multiplayer"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 51.0
+offset_right = 541.0
+offset_bottom = 710.0
+flat = true
+
+[node name="BackBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -81.0
+offset_right = 124.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_y5e28")
+theme_override_font_sizes/font_size = 48
+text = "BACK"
+
+[connection signal="pressed" from="HBoxContainer/Campaign/CampaignBtn" to="." method="_on_campaign_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/Multiplayer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
