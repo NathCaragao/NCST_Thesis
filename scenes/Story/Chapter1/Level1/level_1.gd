@@ -37,6 +37,7 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(on_dialog_start)
 	Dialogic.timeline_ended.connect(on_dialog_end)
 	Dialogic.signal_event.connect(on_level_start)
+	Dialogic.signal_event.connect(on_mechanics)
 	
 	# play opening cutscene
 	opening_cutscene()
@@ -46,6 +47,9 @@ func on_level_start(argument : String) -> void:
 		await get_tree().create_timer(1).timeout
 		movement_tutorial_open()
 
+func on_mechanics(argument: String) -> void:
+	if argument == "gatemech":
+		tutorial2_open()
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -127,7 +131,10 @@ func tutorial1_open() -> void:
 		.set_ease(Tween.EASE_OUT)
 
 func _on_tutorial_1_body_entered(body: Node2D) -> void:
-	tutorial1_open()
+	var tutorial1_played : bool = false
+	if !tutorial1_played:
+		tutorial1_open()
+		tutorial1_played = true
 
 func tutorial2_open() -> void:
 	gate_mechanics.visible = true

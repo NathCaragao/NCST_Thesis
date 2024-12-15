@@ -3,3 +3,4 @@ Hercules: Another door blocking me? This beast is practically taunting me. Fine,
 around and figure out how to get through.
 leave Hercules [animation="Fade Out Up" wait="true"]
 [signal arg="end"]
+[signal arg="gatemech"]
