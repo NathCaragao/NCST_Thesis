@@ -17,13 +17,13 @@
 "portraits": {
 "atalanta/atalanta": {
 "export_overrides": {
-"image": "\"res://assets/character/portraits/Atalanta.png\""
+"image": "\"res://assets/character/portraits/atalanta_blonde.png\""
 },
 "mirror": false,
-"offset": Vector2(100, 1150),
+"offset": Vector2(80, 600),
 "scale": 1,
 "scene": ""
 }
 },
-"scale": 2.0
+"scale": 1.6
 }

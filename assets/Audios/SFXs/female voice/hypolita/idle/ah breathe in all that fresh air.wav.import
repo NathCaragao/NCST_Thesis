@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2weuvse61uco"
+path="res://.godot/imported/ah breathe in all that fresh air.wav-f4b5c80859e3f3747e5a4fbbe6d97b99.sample"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/female voice/hypolita/idle/ah breathe in all that fresh air.wav"
+dest_files=["res://.godot/imported/ah breathe in all that fresh air.wav-f4b5c80859e3f3747e5a4fbbe6d97b99.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

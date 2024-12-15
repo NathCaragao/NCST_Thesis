@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgkgqm7y6a51w"]
+
+[ext_resource type="Script" path="res://scenes/cutscenes-collection/Atalanta_and_the_calydonian_boar_hunt/atalanta_and_the_calydonian_boar_hunt.gd" id="1_vulfw"]
+
+[node name="AtalantaAndTheCalydonianBoarHunt" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vulfw")

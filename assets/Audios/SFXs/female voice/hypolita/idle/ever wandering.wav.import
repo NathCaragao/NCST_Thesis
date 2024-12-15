@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wc7pvmruvdij"
+path="res://.godot/imported/ever wandering.wav-c9ae3c5822a2ce1069dc2fc87d3d9231.sample"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/female voice/hypolita/idle/ever wandering.wav"
+dest_files=["res://.godot/imported/ever wandering.wav-c9ae3c5822a2ce1069dc2fc87d3d9231.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

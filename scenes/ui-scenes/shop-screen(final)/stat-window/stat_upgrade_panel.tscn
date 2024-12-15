@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r13lg50en4gg"]
+[gd_scene load_steps=25 format=3 uid="uid://r13lg50en4gg"]
 
 [ext_resource type="Script" path="res://scenes/ui-scenes/shop-screen(final)/stat-window/stat_upgrade_panel.gd" id="1_2jc0p"]
 [ext_resource type="Texture2D" uid="uid://dxfg0ha6ocgcr" path="res://assets/ui/windows/shop_item_slot.png" id="1_4bh5a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddssxp4ebasa1" path="res://assets/icons/def_icon.png" id="9_x5lh0"]
 [ext_resource type="Texture2D" uid="uid://cdx4o4f8c6top" path="res://assets/icons/speed_icon.png" id="10_4lnpc"]
 [ext_resource type="Texture2D" uid="uid://dqpknnm6dqij6" path="res://assets/ui/windows/item_infor_sprite.png" id="11_4ix3h"]
+[ext_resource type="Texture2D" uid="uid://c0kvmc4gwk40r" path="res://assets/dynamic assets/MonedaD.png" id="12_n5da5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01s6u"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -29,6 +30,49 @@ load_path = "res://.godot/imported/shop_item_slot.png-b3e26341882ddf689c55c549c4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t3pet"]
 load_path = "res://.godot/imported/shop_item_slot.png-b3e26341882ddf689c55c549c43e5b04.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5c6s"]
+atlas = ExtResource("12_n5da5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kh31"]
+atlas = ExtResource("12_n5da5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ujd6"]
+atlas = ExtResource("12_n5da5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0tar"]
+atlas = ExtResource("12_n5da5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t8ac"]
+atlas = ExtResource("12_n5da5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w13sd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5c6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kh31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ujd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0tar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t8ac")
+}],
+"loop": true,
+"name": &"coin-idle",
+"speed": 10.0
+}]
 
 [node name="StatUpgradePanel" type="Control" node_paths=PackedStringArray("frame_hover_1", "frame_hover_2", "frame_hover_3", "frame_hover_4")]
 layout_mode = 3
@@ -441,6 +485,34 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_60cph")
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
+
+[node name="FreeCurrency2" type="AnimatedSprite2D" parent="."]
+position = Vector2(767, 200)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_w13sd")
+animation = &"coin-idle"
+autoplay = "coin-idle"
+
+[node name="FreeCurrency3" type="AnimatedSprite2D" parent="."]
+position = Vector2(778, 614)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_w13sd")
+animation = &"coin-idle"
+autoplay = "coin-idle"
+
+[node name="FreeCurrency4" type="AnimatedSprite2D" parent="."]
+position = Vector2(1516, 205)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_w13sd")
+animation = &"coin-idle"
+autoplay = "coin-idle"
+
+[node name="FreeCurrency5" type="AnimatedSprite2D" parent="."]
+position = Vector2(1518, 613)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_w13sd")
+animation = &"coin-idle"
+autoplay = "coin-idle"
 
 [connection signal="mouse_entered" from="ItemFrame1/HoverBtn" to="." method="item1_entered"]
 [connection signal="mouse_exited" from="ItemFrame1/HoverBtn" to="." method="item1_exited"]

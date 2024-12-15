@@ -6,13 +6,19 @@ extends Control
 
 # insert text_data (tres file)
 @export var text_data : TutorialTextData
+@onready var label: Label = $TextBox/Label
 
 
 # Keep track of the current step
 var current_step : int = 0
 
+var blink_tween : Tween
+
 # signal to make consecutive tutorial text
 signal next_tutorial
+
+func _ready() -> void:
+	label_text_blink()
 
 func _input(event: InputEvent) -> void:
 	# check for a mouse click event
@@ -22,11 +28,17 @@ func _input(event: InputEvent) -> void:
 		
 		# If we've reached the end of the tutorial, reset to the beginning
 		if current_step >= text_data.tutorial_steps.size():
-			current_step = 0
-			visible = false
+			# code below loops back to the first line of text
+			#current_step = 0
+			
+			# the code below sets it to hide
+			#visible = false
+			
+			# emits the signal to make do whatever
 			next_tutorial.emit()
 		
-		update_tutorial_text()
+		else:
+			update_tutorial_text()
 
 # updating the text data
 func update_tutorial_text() -> void:
@@ -37,3 +49,16 @@ func update_tutorial_text() -> void:
 # changing the position of the textbox
 func set_text_box_position(x: int, y: int) -> void:
 	text_box.position = Vector2(x, y)
+
+func label_text_blink() -> void:
+	# create new tween for blinking
+	blink_tween = create_tween()
+	
+	# set the tween to loop
+	blink_tween.set_loops()
+	
+	# fade out
+	blink_tween.tween_property(label, "modulate:a", 0.0, 0.5)
+	
+	# fade in
+	blink_tween.tween_property(label, "modulate:a", 1.0, 0.5)

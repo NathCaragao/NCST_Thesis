@@ -12,6 +12,7 @@ extends Node2D
 @export var shop_window : Control
 @export var inv_window : Control
 @export var character_window : Control
+@export var lobby_tutorial : Control
 
 var isLoading = true
 
@@ -34,14 +35,17 @@ func _ready() -> void:
 	# 3
 	SceneManager.hideLoadingScreen()
 	
+	run_lobby_tutorial()
+	
 var timer: float = 0.0
 func _process(delta: float) -> void:
-	timer += delta
-	if timer >= 10.0:
-		var userStorageData = await ServerManager.getUserInfoInDBasync()
-		setFreeCurrency(userStorageData["freeCurrency"])
-		setPremiumCurrency(userStorageData["premiumCurrency"])
-		timer = 0
+	pass
+	#timer += delta
+	#if timer >= 10.0:
+		#var userStorageData = await ServerManager.getUserInfoInDBasync()
+		#setFreeCurrency(userStorageData["freeCurrency"])
+		#setPremiumCurrency(userStorageData["premiumCurrency"])
+		#timer = 0
 
 # shop button
 func _on_shop_btn_pressed() -> void:
@@ -49,7 +53,10 @@ func _on_shop_btn_pressed() -> void:
 
 # play button
 func _on_play_btn_pressed() -> void:
-	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
+	LevelScreenTransition.transition()
+	await LevelScreenTransition.on_transition_finished
+	
+	SceneManager.changeScene("res://scenes/ui-scenes/game-mode-screen/game_mode_screen.tscn")
 
 # settings button
 func _on_settings_btn_pressed() -> void:
@@ -160,3 +167,53 @@ func setDefenseLevel(newDefenseLevel: int) -> void:
 	
 func setSpeedLevel(newSpeedLevel: int) -> void:
 	PlayerManager.speedUpgradeLevel = newSpeedLevel
+
+# new variables to setup in the PLAYER'S ACCOUNT
+func setLobbyTutorial(newBoolValue : bool) -> void:
+	PlayerManager.lobby_tutorial_played = newBoolValue
+
+func run_lobby_tutorial() -> void:
+	# put buffer
+	await get_tree().create_timer(1).timeout
+	# display tutorial
+	if !PlayerManager.lobby_tutorial_played:
+		open_lobby_tutorial()
+		lobby_tutorial.visible = true
+		lobby_tutorial.update_tutorial_text()
+
+func open_lobby_tutorial() -> void:
+	lobby_tutorial.visible = true
+	
+	# Create a tween
+	var tween = create_tween()
+	
+	# Set the initial position of the inventory window off-screen to the right
+	var screen_size = get_viewport_rect().size
+	lobby_tutorial.position.x = -screen_size.x
+	
+	# Animate the window moving from the right to the center
+	tween.tween_property(lobby_tutorial, "position:x", 215, 0.3) \
+		.set_trans(Tween.TRANS_BACK)
+
+func close_lobby_tutorial() -> void:
+	# Create a tween
+	var tween = create_tween()
+	
+	# Set the initial position of the inventory window off-screen to the right
+	var screen_size = get_viewport_rect().size
+	
+	# Animate the window moving from the right to the center
+	tween.tween_property(lobby_tutorial, "position:x", -1192, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_IN)
+	
+	# After the animation completes, hide the window
+	tween.tween_callback(func(): lobby_tutorial.visible = false)
+
+
+func _on_tutorial_text_next_tutorial() -> void:
+	await get_tree().create_timer(0.5).timeout
+	close_lobby_tutorial()
+	# set the player played lobby tutorial boolean to true
+	# to prevent from playing again
+	PlayerManager.lobby_tutorial_played = true

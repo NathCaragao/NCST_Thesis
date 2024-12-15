@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg0ann1118m7c"
+path="res://.godot/imported/dying wasnt on my to do list.wav-e6d31eb189bbf48a20fff6c0fa6b79b1.sample"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/female voice/hypolita/Bleedout/dying wasnt on my to do list.wav"
+dest_files=["res://.godot/imported/dying wasnt on my to do list.wav-e6d31eb189bbf48a20fff6c0fa6b79b1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_41mw3")
-tutorial_steps = ["first text", "second text", "third text"]
+tutorial_steps = Array[String](["first text", "second text", "third text"])

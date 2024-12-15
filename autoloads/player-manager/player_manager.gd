@@ -25,6 +25,7 @@ var speedUpgradeLevel: int = 0
 var healthUpgradeLevel: int = 0
 
 var character_info : bool = false
+var lobby_tutorial_played : bool = false
 
 func reset_to_base_stats() -> void:
 	player_health = base_health

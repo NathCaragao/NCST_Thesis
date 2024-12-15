@@ -1,0 +1,7 @@
+join "Invasion Commander" center
+"Invasion Commander": "So, the Amazon queen herself comes to meet her doom? Brave, but foolish."
+join Hypolita center
+Hypolita: "Foolish is underestimating the Amazons. Your raid ends here, and so do you."
+"Invasion Commander": "Let’s see if your sword speaks as loudly as your words!"
+leave Hypolita
+leave "Invasion Commander"

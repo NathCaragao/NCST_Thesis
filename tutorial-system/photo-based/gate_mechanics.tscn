@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7f44bn6fsiex"]
+
+[ext_resource type="Script" path="res://tutorial-system/photo-based/gate_mechanics.gd" id="1_kbw6r"]
+[ext_resource type="FontFile" uid="uid://c0j3jst85cjsx" path="res://assets/fonts/pixelmplus/PixelMplus12-Regular.ttf" id="1_mdnh7"]
+[ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="3_hgsgl"]
+[ext_resource type="FontFile" uid="uid://blbgqr5335rsa" path="res://assets/fonts/pixelmplus/BestTen-CRT.otf" id="3_ou26r"]
+
+[node name="GateMechanics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kbw6r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.188235, 1, 1, 1)
+layout_mode = 0
+offset_left = 974.0
+offset_top = 331.0
+offset_right = 1547.0
+offset_bottom = 687.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -338.0
+offset_top = 217.0
+offset_right = 338.0
+offset_bottom = 275.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_mdnh7")
+theme_override_font_sizes/font_size = 64
+text = "LOCKED GATES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -616.0
+offset_top = 336.0
+offset_right = 2.0
+offset_bottom = 880.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_mdnh7")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[p]Locked gates prevent the player from progressing until certain conditions are met.[/p]
+‎ 
+[p]Some gates require looking for a [color=red]key[/color], which can be obtained through exploration or by completing tasks.[/p]
+‎ 
+[p]Some gates require activating nearby [color=red]levers[/color] to unlock specific gates. Levers may be hidden or guarded.[/p]
+‎ 
+[p]Occasionally, gates unlock after [color=red]defeating specific enemies[/color]. Look out for gates linked to enemy encounters.[/p]"
+scroll_following = true
+autowrap_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 337.0
+offset_right = 1547.0
+offset_bottom = 687.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(573, 350)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NextBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 687.0
+offset_right = 1306.0
+offset_bottom = 749.0
+theme_override_fonts/font = ExtResource("3_hgsgl")
+theme_override_font_sizes/font_size = 48
+text = ">"
+
+[node name="PrevBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1223.0
+offset_top = 687.0
+offset_right = 1255.0
+offset_bottom = 749.0
+theme_override_fonts/font = ExtResource("3_hgsgl")
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1562.0
+offset_top = 180.0
+offset_right = 1599.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("3_ou26r")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[connection signal="pressed" from="NextBtn" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="PrevBtn" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]

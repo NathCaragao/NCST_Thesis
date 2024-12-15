@@ -1,0 +1,6 @@
+join Antiope center
+Antiope: "Their forces are dwindling here, but more are regrouping outside the city. If we wait, they will attack again."
+join Hypolita center
+Hypolita: "No, we take the fight to them. Let them know the wrath of the Amazons firsthand. Gather those who can ride; we hunt."
+leave Antiope
+leave Hypolita

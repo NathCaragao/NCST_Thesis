@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TutorialTextData" load_steps=2 format=3 uid="uid://e5gcw5ujr7ow"]
+
+[ext_resource type="Script" path="res://tutorial-system/tutorial_text_data.gd" id="1_13v2u"]
+
+[resource]
+script = ExtResource("1_13v2u")
+tutorial_steps = Array[String](["Welcome to the lobby screen!", "Your premium currency is shown as green gems, and gold coins represent standard currency.", "Explore the Almanac to learn about heroes, gods, and places.", "Open the Inventory to manage your items and gear.", "Visit the Shop to purchase upgrades and items using your coins.", "Settings provide an option to change resolution or adjust audio.", "When you’re ready, click Play to jump into the action."])

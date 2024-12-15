@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nds62s3d12r8"
+path="res://.godot/imported/urk.wav-e406c3789deb2264fec80d7aa457d8a2.sample"
+
+[deps]
+
+source_file="res://assets/Audios/SFXs/female voice/THORN/Get Hit/urk.wav"
+dest_files=["res://.godot/imported/urk.wav-e406c3789deb2264fec80d7aa457d8a2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
