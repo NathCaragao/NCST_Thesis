@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://blbgqr5335rsa"
-path="res://.godot/imported/BestTen-CRT.otf-04d677b34949dd589d9f4771f2bf2354.fontdata"
+path="res://.godot/imported/BestTen-CRT.otf-019c2b3200a3d3a0a9b4cd3efa09fd3a.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/pixelmplus/BestTen-CRT.otf"
-dest_files=["res://.godot/imported/BestTen-CRT.otf-04d677b34949dd589d9f4771f2bf2354.fontdata"]
+source_file="res://assets/Fonts/pixelmplus/BestTen-CRT.otf"
+dest_files=["res://.godot/imported/BestTen-CRT.otf-019c2b3200a3d3a0a9b4cd3efa09fd3a.fontdata"]
 
 [params]
 

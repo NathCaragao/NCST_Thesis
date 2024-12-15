@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cbcrd6cct3w7v"
-path="res://.godot/imported/BestTen-DOT.otf-9de8fd7bdb0bcb854b0aab7afaabd572.fontdata"
+path="res://.godot/imported/BestTen-DOT.otf-2bfca451bd14dbfed60297085223d191.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/pixelmplus/BestTen-DOT.otf"
-dest_files=["res://.godot/imported/BestTen-DOT.otf-9de8fd7bdb0bcb854b0aab7afaabd572.fontdata"]
+source_file="res://assets/Fonts/pixelmplus/BestTen-DOT.otf"
+dest_files=["res://.godot/imported/BestTen-DOT.otf-2bfca451bd14dbfed60297085223d191.fontdata"]
 
 [params]
 
