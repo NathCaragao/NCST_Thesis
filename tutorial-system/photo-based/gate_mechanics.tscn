@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7f44bn6fsiex"]
+[gd_scene load_steps=5 format=3 uid="uid://c7f44bn6fsiex"]
 
 [ext_resource type="Script" path="res://tutorial-system/photo-based/gate_mechanics.gd" id="1_kbw6r"]
 [ext_resource type="FontFile" uid="uid://c0j3jst85cjsx" path="res://assets/fonts/pixelmplus/PixelMplus12-Regular.ttf" id="1_mdnh7"]
 [ext_resource type="FontFile" uid="uid://dnqrr5bqdwh7h" path="res://assets/fonts/pixelmplus/PixelMplus10-Bold.ttf" id="3_hgsgl"]
+[ext_resource type="FontFile" uid="uid://blbgqr5335rsa" path="res://assets/fonts/pixelmplus/BestTen-CRT.otf" id="3_ou26r"]
 
 [node name="GateMechanics" type="Control"]
 layout_mode = 3
@@ -66,13 +67,13 @@ grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("1_mdnh7")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Locked gates prevent the player from progressing until certain conditions are met.
-
-Some gates requires looking for a [color=red]key[/color], which can be obtained through exploration or by completing tasks.
-
-Some gates requires to activate nearby [color=red]levers[/color] to unlock specific gates. Levers may be hidden or guarded.
-
-Occasionally, gates unlock after [color=red]defeating specific enemies.[/color] Look out for gates linked to enemy encounters."
+text = "[p]Locked gates prevent the player from progressing until certain conditions are met.[/p]
+‎ 
+[p]Some gates require looking for a [color=red]key[/color], which can be obtained through exploration or by completing tasks.[/p]
+‎ 
+[p]Some gates require activating nearby [color=red]levers[/color] to unlock specific gates. Levers may be hidden or guarded.[/p]
+‎ 
+[p]Occasionally, gates unlock after [color=red]defeating specific enemies[/color]. Look out for gates linked to enemy encounters.[/p]"
 scroll_following = true
 autowrap_mode = 2
 
@@ -109,5 +110,16 @@ theme_override_fonts/font = ExtResource("3_hgsgl")
 theme_override_font_sizes/font_size = 48
 text = "<"
 
+[node name="CloseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1562.0
+offset_top = 180.0
+offset_right = 1599.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("3_ou26r")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
 [connection signal="pressed" from="NextBtn" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="PrevBtn" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]
