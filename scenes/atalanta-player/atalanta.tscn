@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://br24vp0cle48w"]
+[gd_scene load_steps=45 format=3 uid="uid://br24vp0cle48w"]
 
 [ext_resource type="Script" path="res://scenes/atalanta-player/atalanta.gd" id="1_0bgvw"]
 [ext_resource type="Texture2D" uid="uid://c7bsfkxy2a14u" path="res://assets/character/atalanta-sprites/atalanta_idle.png" id="1_8x3y2"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="21_hqffl"]
 [ext_resource type="Script" path="res://scenes/components/attackcomp/attack_component.gd" id="22_g3uox"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="22_qru2a"]
+[ext_resource type="AudioStream" uid="uid://bgx4utf6tip32" path="res://assets/Audios/SFXs/bow.mp3" id="29_khake"]
+[ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="30_pbo8v"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wra0k"]
 load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c7341.ctex"
@@ -495,20 +497,22 @@ script = ExtResource("10_iqjom")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp")]
+[node name="AtalantaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp", "RunForrestRun")]
 script = ExtResource("11_nbj2u")
 actor = NodePath("../..")
 player_hp = NodePath("../../PlayerHealthComponent")
+RunForrestRun = NodePath("../../sound  effect/walking")
 
 [node name="AtalantaJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("12_jlngh")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="AtalantaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+[node name="AtalantaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "bow_sound")]
 script = ExtResource("13_u4378")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
+bow_sound = NodePath("../../sound  effect/bow")
 
 [node name="AtalantaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("14_tlv2a")
@@ -650,6 +654,14 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 zoom = Vector2(2.75, 2.75)
+
+[node name="sound  effect" type="Node2D" parent="."]
+
+[node name="bow" type="AudioStreamPlayer2D" parent="sound  effect"]
+stream = ExtResource("29_khake")
+
+[node name="walking" type="AudioStreamPlayer2D" parent="sound  effect"]
+stream = ExtResource("30_pbo8v")
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]

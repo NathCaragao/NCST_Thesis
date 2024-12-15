@@ -1,0 +1,9 @@
+[background arg="res://assets/Images/BackgroundImages/Cutscene/Themyscira.webp" fade="0.0"]
+narrator: "For centuries, Themyscira stood as a bastion of strength, wisdom, and peace. The Amazons, daughters of Ares and Artemis, were warriors forged in divine fire, sworn to protect humanity and uphold justice. Blessed by the gods, they lived in harmony, untouched by the strife of the mortal world."
+narrator: "But peace is never eternal. In the shadows beyond their sacred shores, the envy and greed of men festered. Driven by tales of their unmatched riches and divine blessings, raiders set their sights on the unconquered paradise. United under a cruel and ambitious commander, they sailed to claim what the Amazons would never freely give\: their land, their treasures, and their spirit."
+narrator: "Suddenly, the tranquility is shattered as horns blare and watchtowers signal the incoming attack. Amazons scramble to defend their homeland, donning armor and readying their weapons."
+join Hypolita center [animation="Fade In Down"]
+Hypolita: "Themyscira stands not just as our home but as a symbol of freedom and divine will. These invaders will learn that the daughters of the gods bow to no one. Sisters, to arms!"
+leave Hypolita
+[signal arg="end"]
+[background fade="0.0"]

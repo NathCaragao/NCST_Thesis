@@ -41,6 +41,7 @@ LootDropSystem="*res://autoloads/loot-drop-system/loot_drop_system.gd"
 
 directories/dch_directory={
 "Amazon_Guard": "res://Dialogs/Characters/Amazon_Guard.dch",
+"Antiope": "res://Dialogs/Characters/Antiope.dch",
 "Athena": "res://Dialogs/Characters/Athena.dch",
 "Atlas": "res://Dialogs/Characters/Atlas.dch",
 "Bandit_leader": "res://Dialogs/Characters/Bandit_leader.dch",
@@ -56,6 +57,7 @@ directories/dch_directory={
 "Hercules": "res://Dialogs/Characters/Hercules.dch",
 "Huntsman": "res://Dialogs/Characters/Huntsman.dch",
 "Hypolita": "res://Dialogs/Characters/Hypolita.dch",
+"Invasion Commander": "res://Dialogs/Characters/Invasion Commander.dch",
 "King_Diomedes": "res://Dialogs/Characters/King_Diomedes.dch",
 "Ladon": "res://Dialogs/Characters/Ladon.dch",
 "Megalus": "res://Dialogs/Characters/Megalus.dch",
@@ -71,6 +73,11 @@ directories/dch_directory={
 "scholar": "res://Dialogs/Characters/scholar.dch"
 }
 directories/dtl_directory={
+"HS_1": "res://Dialogs/Timelines/hypolita side story/HS_1.dtl",
+"HS_2": "res://Dialogs/Timelines/hypolita side story/HS_2.dtl",
+"HS_3": "res://Dialogs/Timelines/hypolita side story/HS_3.dtl",
+"HS_4_after_boss_defeat": "res://Dialogs/Timelines/hypolita side story/HS_4_after_boss_defeat.dtl",
+"HS_Opening": "res://Dialogs/Timelines/hypolita side story/HS_Opening.dtl",
 "S10_1": "res://Dialogs/Timelines/Stage 10/S10_1.dtl",
 "S10_1-1": "res://Dialogs/Timelines/Stage 10/S10_1-1.dtl",
 "S10_1-2": "res://Dialogs/Timelines/Stage 10/S10_1-2.dtl",
