@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
-[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="3_vg1p2"]
+[ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/fonts/Metropolis-Black.otf" id="3_vg1p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al3hv"]
 size = Vector2(373, 185.5)

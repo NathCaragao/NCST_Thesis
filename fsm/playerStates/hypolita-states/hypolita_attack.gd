@@ -4,6 +4,7 @@ extends State
 # references
 @export var actor : CharacterBody2D
 @export var player_health_component: PlayerHpComp
+@export var Sword_swing :  AudioStreamPlayer2D
 
 var attack_index : int = 0
 var attack_animations : Array = ["attack"]
@@ -11,6 +12,8 @@ var is_attacking : bool = false
 var attackCooldown = 0.5
 
 func enter() -> void:
+	actor.animation_player("attack")
+	Sword_swing.play()
 	sword_attack()
 
 func physics_update(delta: float) -> void:

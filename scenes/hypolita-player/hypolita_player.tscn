@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bwui6t8s8figc"]
+[gd_scene load_steps=64 format=3 uid="uid://bwui6t8s8figc"]
 
 [ext_resource type="Shader" uid="uid://4l703uteubdf" path="res://shaders/enemy-hit-flash.tres" id="1_jjb36"]
 [ext_resource type="Script" path="res://scenes/hypolita-player/hypolita_player.gd" id="1_q5oms"]
@@ -29,6 +29,21 @@
 [ext_resource type="PackedScene" uid="uid://dgea8e3vf6niy" path="res://scenes/weapon/weapon_roulette.tscn" id="25_tikjp"]
 [ext_resource type="FontFile" uid="uid://dxfyisbd2ylri" path="res://assets/fonts/joystix monospace.otf" id="26_vs65n"]
 [ext_resource type="PackedScene" uid="uid://cg7drnxfkh2kl" path="res://inventory-system/account-inv/account_inv_ui.tscn" id="27_hx7qk"]
+[ext_resource type="AudioStream" uid="uid://dpnfdbh34a320" path="res://assets/Audios/SFXs/sword-swing.mp3" id="30_cvcew"]
+[ext_resource type="AudioStream" uid="uid://dg0ann1118m7c" path="res://assets/Audios/SFXs/female voice/hypolita/Bleedout/dying wasnt on my to do list.wav" id="30_s146p"]
+[ext_resource type="AudioStream" uid="uid://drs1kioxhtxf3" path="res://assets/Audios/SFXs/female voice/hypolita/Get Hit/augh.wav" id="30_t6rp8"]
+[ext_resource type="AudioStream" uid="uid://cqpa13oa4okuu" path="res://assets/Audios/SFXs/running-on-concrete.mp3" id="31_1e11p"]
+[ext_resource type="AudioStream" uid="uid://cjlcjlgvg152t" path="res://assets/Audios/SFXs/female voice/hypolita/Bleedout/follow the stranger they said itll be fun they said.wav" id="31_dut8q"]
+[ext_resource type="AudioStream" uid="uid://c1wit3gmb0pss" path="res://assets/Audios/SFXs/female voice/hypolita/Get Hit/oof.wav" id="31_krsu3"]
+[ext_resource type="AudioStream" uid="uid://dhyb5rhvmrn8u" path="res://assets/Audios/SFXs/female voice/hypolita/Bleedout/i could use some help.wav" id="32_17fj2"]
+[ext_resource type="AudioStream" uid="uid://beye8lfcggash" path="res://assets/Audios/SFXs/female voice/hypolita/Get Hit/ow.wav" id="32_d4hra"]
+[ext_resource type="AudioStream" uid="uid://b2weuvse61uco" path="res://assets/Audios/SFXs/female voice/hypolita/idle/ah breathe in all that fresh air.wav" id="38_nynyq"]
+[ext_resource type="AudioStream" uid="uid://cgtbafqs2s12y" path="res://assets/Audios/SFXs/female voice/hypolita/idle/can we find someting to do already im bored.wav" id="39_orrif"]
+[ext_resource type="AudioStream" uid="uid://wc7pvmruvdij" path="res://assets/Audios/SFXs/female voice/hypolita/idle/ever wandering.wav" id="40_cu1yd"]
+[ext_resource type="AudioStream" uid="uid://dvx3pivk5qjjy" path="res://assets/Audios/SFXs/female voice/hypolita/idle/never seen that before oh wait yes i have.wav" id="41_36g0c"]
+[ext_resource type="AudioStream" uid="uid://bhhyav5cpdsij" path="res://assets/Audios/SFXs/female voice/hypolita/idle/ugh think theres a rock in my boot.wav" id="42_kq3kb"]
+[ext_resource type="AudioStream" uid="uid://b03pgqrexda37" path="res://assets/Audios/SFXs/female voice/hypolita/idle/where are we going again.wav" id="43_roe84"]
+[ext_resource type="AudioStream" uid="uid://brigyubq5osmn" path="res://assets/Audios/SFXs/female voice/hypolita/idle/whistling tune.wav" id="44_88387"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nqjxn"]
 load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c7341.ctex"
@@ -37,60 +52,6 @@ load_path = "res://.godot/imported/arrow-down.png-f747a3131249902269c4c46ad40c73
 shader = ExtResource("1_jjb36")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_iui57"]
-resource_name = "idle"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_07ox5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
 
 [sub_resource type="Animation" id="Animation_uh4km"]
 length = 0.001
@@ -167,60 +128,6 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_jhhj1"]
-resource_name = "run"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_lvnru")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
 [sub_resource type="Animation" id="Animation_hhuk2"]
 resource_name = "attack"
 length = 1.2
@@ -284,112 +191,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_rwt1w"]
-resource_name = "jump"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_lvnru")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_shhds"]
-resource_name = "hit"
-length = 0.4
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_we18y")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_uj635"]
@@ -457,6 +258,220 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_shhds"]
+resource_name = "hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_we18y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_iui57"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_07ox5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_rwt1w"]
+resource_name = "jump"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_lvnru")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_jhhj1"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_lvnru")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e4llb"]
 _data = {
 "RESET": SubResource("Animation_uh4km"),
@@ -514,6 +529,28 @@ _data = {
 "hit-flash": SubResource("Animation_86xlx")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg8mh"]
+streams_count = 3
+stream_0/stream = ExtResource("30_s146p")
+stream_1/stream = ExtResource("31_dut8q")
+stream_2/stream = ExtResource("32_17fj2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8aucs"]
+streams_count = 3
+stream_0/stream = ExtResource("30_t6rp8")
+stream_1/stream = ExtResource("31_krsu3")
+stream_2/stream = ExtResource("32_d4hra")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6hqhm"]
+streams_count = 7
+stream_0/stream = ExtResource("38_nynyq")
+stream_1/stream = ExtResource("39_orrif")
+stream_2/stream = ExtResource("40_cu1yd")
+stream_3/stream = ExtResource("41_36g0c")
+stream_4/stream = ExtResource("42_kq3kb")
+stream_5/stream = ExtResource("43_roe84")
+stream_6/stream = ExtResource("44_88387")
+
 [node name="HypolitaPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_q5oms")
 inv = ExtResource("2_rt83f")
@@ -568,34 +605,42 @@ script = ExtResource("6_4drt2")
 initial_state = NodePath("HypolitaIdle")
 actor = NodePath("..")
 
-[node name="HypolitaIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+[node name="HypolitaIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "idle")]
 script = ExtResource("7_2kxfs")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
+idle = NodePath("../../sound effect/idle")
 
-[node name="HypolitaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp")]
+[node name="Timer" type="Timer" parent="StateMachine/HypolitaIdle"]
+wait_time = 25.0
+
+[node name="HypolitaRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_hp", "RunForrestRun")]
 script = ExtResource("8_32rbj")
 actor = NodePath("../..")
 player_hp = NodePath("../../PlayerHealthComponent")
+RunForrestRun = NodePath("../../sound effect/run")
 
-[node name="HypolitaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
+[node name="HypolitaAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component", "Sword_swing")]
 script = ExtResource("9_s7158")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
+Sword_swing = NodePath("../../sound effect/sword")
 
 [node name="HypolitaJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "player_health_component")]
 script = ExtResource("10_s8f8h")
 actor = NodePath("../..")
 player_health_component = NodePath("../../PlayerHealthComponent")
 
-[node name="HypolitaHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "health_comp")]
+[node name="HypolitaHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "health_comp", "on_hit")]
 script = ExtResource("11_y642q")
 actor = NodePath("../..")
 health_comp = NodePath("../../PlayerHealthComponent")
+on_hit = NodePath("../../sound effect/hit")
 
-[node name="HypolitaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+[node name="HypolitaDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor", "death")]
 script = ExtResource("12_xvlt5")
 actor = NodePath("../..")
+death = NodePath("../../sound effect/death")
 
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("anim_effects", "player") instance=ExtResource("2_mgaan")]
 anim_effects = NodePath("../AnimEffects")
@@ -738,6 +783,28 @@ offset_top = 136.0
 offset_right = 402.0
 offset_bottom = 136.0
 scale = Vector2(5, 5)
+
+[node name="sound effect" type="Node2D" parent="."]
+
+[node name="sword" type="AudioStreamPlayer2D" parent="sound effect"]
+stream = ExtResource("30_cvcew")
+
+[node name="run" type="AudioStreamPlayer2D" parent="sound effect"]
+stream = ExtResource("31_1e11p")
+
+[node name="death" type="AudioStreamPlayer2D" parent="sound effect"]
+stream = SubResource("AudioStreamRandomizer_kg8mh")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="sound effect"]
+stream = SubResource("AudioStreamRandomizer_8aucs")
+
+[node name="idle" type="AudioStreamPlayer2D" parent="sound effect"]
+stream = SubResource("AudioStreamRandomizer_6hqhm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[connection signal="timeout" from="StateMachine/HypolitaIdle/Timer" to="StateMachine/HypolitaIdle" method="_on_timer_timeout"]
 
 [editable path="PlayerHealthComponent"]
 [editable path="PlayerHealthComponent/Hp_bar/PlayerHPbar"]
