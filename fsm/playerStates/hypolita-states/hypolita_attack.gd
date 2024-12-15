@@ -14,6 +14,7 @@ var attackCooldown = 0.5
 func enter() -> void:
 	actor.animation_player("attack")
 	Sword_swing.play()
+	sword_attack()
 
 func physics_update(delta: float) -> void:
 	# Keep the player as isAttacking true during the animation
@@ -74,10 +75,6 @@ func play_next_attack_animation():
 # Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
 	actor.animation_player.play("idle")
-	if animation_name == "attack1" or animation_name == "attack2":
-		attackCooldown = float(10.0/60.0)
-	elif animation_name == "player-shoot":
-		attackCooldown = float(10.0/60.0)
 
 # Melee mode attack
 func sword_attack() -> void:
