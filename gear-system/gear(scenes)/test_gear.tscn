@@ -7,6 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_skwp7"]
 
 [node name="CommonGear" type="Node2D"]
+z_index = 10
 script = ExtResource("1_nnvmh")
 gear_data = ExtResource("2_3p7o6")
 gear_sprite = ExtResource("3_rgqdc")

@@ -210,7 +210,7 @@ custom_minimum_size = Vector2(240, 10)
 offset_left = 310.0
 offset_top = 21.0
 offset_right = 590.0
-offset_bottom = 51.0
+offset_bottom = 45.0
 scale = Vector2(2, 2)
 
 [node name="Label" parent="PlayerHealthComponent/Hp_bar/PlayerHPbar" index="2"]

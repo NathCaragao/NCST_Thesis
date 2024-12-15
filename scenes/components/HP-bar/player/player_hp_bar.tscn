@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c03il47od01w5"]
+[gd_scene load_steps=6 format=3 uid="uid://c03il47od01w5"]
 
 [ext_resource type="Script" path="res://scenes/components/HP-bar/player/player_hp_bar.gd" id="1_6jv7n"]
-[ext_resource type="Texture2D" uid="uid://t3w226fiw82w" path="res://assets/Images/HUD/hp_bar_fill_new.png" id="2_w27qe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66vnj"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25p3i"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nms33"]
-texture = ExtResource("2_w27qe")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggvit"]
+bg_color = Color(0.178517, 0.631493, 0.541053, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhl36"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gj0nk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a30nj"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,9 +18,10 @@ z_index = 1
 custom_minimum_size = Vector2(108, 10)
 offset_right = 108.0
 offset_bottom = 10.0
-theme_override_styles/background = SubResource("StyleBoxFlat_66vnj")
-theme_override_styles/fill = SubResource("StyleBoxTexture_nms33")
-value = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_25p3i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ggvit")
+max_value = 150.0
+value = 100.0
 show_percentage = false
 script = ExtResource("1_6jv7n")
 
@@ -34,9 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_bhl36")
+theme_override_styles/background = SubResource("StyleBoxEmpty_gj0nk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a30nj")
-value = 80.0
+max_value = 150.0
+value = 150.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]

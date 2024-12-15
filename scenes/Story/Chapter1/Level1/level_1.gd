@@ -11,6 +11,9 @@ var scene_path : String = "res://scenes/cutscenes-collection/level 1/level_1_ope
 @export var pause_screen : Control
 @export var victory_screen : Control
 @export var nemean_lion : CharacterBody2D
+@export var movement_tutorial : Control
+@export var gate_mechanics : Control
+@export var battle_tutorial : Control
 
 var paused : bool = false
 var isDialogPlaying = false
@@ -33,10 +36,20 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	Dialogic.timeline_started.connect(on_dialog_start)
 	Dialogic.timeline_ended.connect(on_dialog_end)
+	Dialogic.signal_event.connect(on_level_start)
+	Dialogic.signal_event.connect(on_mechanics)
 	
 	# play opening cutscene
 	opening_cutscene()
 
+func on_level_start(argument : String) -> void:
+	if argument == "movement":
+		await get_tree().create_timer(1).timeout
+		movement_tutorial_open()
+
+func on_mechanics(argument: String) -> void:
+	if argument == "gatemech":
+		tutorial2_open()
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -102,3 +115,51 @@ func player_state_reset() -> void:
 	
 	# reset player inventory
 	player.inv.reset()
+
+func tutorial1_open() -> void:
+	battle_tutorial.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	battle_tutorial.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(battle_tutorial, "position:y", screen_size.y / 2 - battle_tutorial.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
+
+func _on_tutorial_1_body_entered(body: Node2D) -> void:
+	var tutorial1_played : bool = false
+	if !tutorial1_played:
+		tutorial1_open()
+		tutorial1_played = true
+
+func tutorial2_open() -> void:
+	gate_mechanics.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	gate_mechanics.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(gate_mechanics, "position:y", screen_size.y / 2 - gate_mechanics.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
+
+func movement_tutorial_open() -> void:
+	movement_tutorial.visible = true
+	
+	# create a tween
+	var tween = create_tween()
+	
+	 # Set the initial position of the almanac window to below the screen
+	var screen_size = get_viewport_rect().size
+	movement_tutorial.position.y = screen_size.y
+	# Animate the window moving from bottom to center
+	tween.tween_property(movement_tutorial, "position:y", screen_size.y / 2 - movement_tutorial.size.y / 2, 0.3) \
+		.set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)

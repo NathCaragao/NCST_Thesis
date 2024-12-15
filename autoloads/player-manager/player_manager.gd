@@ -4,7 +4,7 @@ extends Node
 signal StatUpgraded
 
 # Player Base Stats (CONSTANT , DOES NOT CHANGE)
-var base_health : float = 200.0
+var base_health : float = 150.0
 var base_attack : float = 10.0
 var base_weapon_dmg : float = 3.0
 var base_defense : float = 10.0

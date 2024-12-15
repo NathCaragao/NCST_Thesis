@@ -509,6 +509,7 @@ actor = NodePath("../..")
 enemy_health_comp = NodePath("../../EnemyHealthComp")
 
 [node name="EnemyHealthComp" parent="." node_paths=PackedStringArray("enemy_hp_bar", "anim_effects", "dmg_num_pos") instance=ExtResource("14_q4ryk")]
+max_health = 200
 enemy_hp_bar = NodePath("HPUI/EnemyHPbar")
 anim_effects = NodePath("../AnimEffects")
 dmg_num_pos = NodePath("../DmgNumPos")
@@ -534,6 +535,7 @@ offset_right = 624.0
 offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 0
+max_value = 200.0
 
 [node name="Label" type="Label" parent="EnemyHealthComp/HPUI"]
 visible = false

@@ -36,3 +36,6 @@ func flip_sprite() -> void:
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
+
+func loot_drop() -> void:
+	LootDropSystem.drop_multiple_items(global_position, ["coin"], randi_range(1, 6))

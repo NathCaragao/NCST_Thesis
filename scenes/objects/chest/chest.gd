@@ -1,4 +1,3 @@
-class_name Chest
 extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
@@ -9,6 +8,7 @@ func _ready() -> void:
 func open() -> void:
 	$Closed.visible = false
 	$Opened.visible = true
+	$"../CommonGear".visible = true
 
 func close() -> void:
 	$Opened.visible = false
