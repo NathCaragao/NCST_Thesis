@@ -1,8 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://cdp5lo7hga3qh"]
+[gd_scene load_steps=61 format=3 uid="uid://cdp5lo7hga3qh"]
 
 [ext_resource type="Script" path="res://scenes/multiplayerLevelManager/ongoing_match_gui.gd" id="1_bh0op"]
 [ext_resource type="PackedScene" uid="uid://ra4by1tl7ybs" path="res://scenes/Story/Co-op level/DungeonCoop.tscn" id="2_pccb5"]
 [ext_resource type="FontFile" uid="uid://8qpbh3r20i6s" path="res://assets/Fonts/Metropolis-Black.otf" id="3_vg1p2"]
+[ext_resource type="Texture2D" uid="uid://pydj505shwk1" path="res://assets/dynamic assets/premium_gems.png" id="4_4avur"]
+[ext_resource type="Texture2D" uid="uid://c0kvmc4gwk40r" path="res://assets/dynamic assets/MonedaD.png" id="5_ic6hm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al3hv"]
 size = Vector2(373, 185.5)
@@ -10,6 +12,85 @@ size = Vector2(373, 185.5)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k02ci"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pygfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2qvp"]
+atlas = ExtResource("4_4avur")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ce8"]
+atlas = ExtResource("4_4avur")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shi5k"]
+atlas = ExtResource("4_4avur")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn575"]
+atlas = ExtResource("4_4avur")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhaop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2qvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ce8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shi5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn575")
+}],
+"loop": true,
+"name": &"gems-idle",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5c6s"]
+atlas = ExtResource("5_ic6hm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kh31"]
+atlas = ExtResource("5_ic6hm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ujd6"]
+atlas = ExtResource("5_ic6hm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0tar"]
+atlas = ExtResource("5_ic6hm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t8ac"]
+atlas = ExtResource("5_ic6hm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_poxw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5c6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kh31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ujd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0tar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t8ac")
+}],
+"loop": true,
+"name": &"coin-idle",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c75ve"]
 size = Vector2(1906, 20)
@@ -175,7 +256,7 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
 z_index = 2
-position = Vector2(17724, -415)
+position = Vector2(17726, -413)
 shape = SubResource("RectangleShape2D_al3hv")
 debug_color = Color(0.607843, 0.513726, 0.466667, 1)
 
@@ -242,10 +323,14 @@ text = "Your Reward:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GemReward" type="HBoxContainer" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="PremiumCurrency" type="AnimatedSprite2D" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(108, 245.5)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_lhaop")
+animation = &"gems-idle"
+autoplay = "gems-idle"
 
-[node name="RewardGemAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer/GemReward"]
+[node name="RewardGemAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vg1p2")
@@ -254,10 +339,14 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoinReward" type="HBoxContainer" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="FreeCurrency" type="AnimatedSprite2D" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
+position = Vector2(108, 295.5)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_poxw0")
+animation = &"coin-idle"
+autoplay = "coin-idle"
 
-[node name="RewardCoinAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer/CoinReward"]
+[node name="RewardCoinAmt" type="Label" parent="EndScreen/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vg1p2")
