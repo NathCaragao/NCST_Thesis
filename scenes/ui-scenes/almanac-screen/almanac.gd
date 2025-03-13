@@ -30,15 +30,12 @@ func _on_heroes_btn_pressed() -> void:
 
 
 func _on_hercules_btn_pressed() -> void:
-	# hide other windows
-	#heroes_section.visible = false
-	# show active window
 	hercules_prof.visible = true
 
-# heroes section back button
+
 func _on_hs_backbtn_pressed() -> void:
 	heroes_section.visible = false
 
-# hercules profile back btn
+
 func _on_hercules_back_btn_pressed() -> void:
 	hercules_prof.visible = false

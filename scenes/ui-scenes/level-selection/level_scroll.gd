@@ -1,8 +1,7 @@
 extends ScrollContainer
 
-# references
-@export var card_scale : float = 1.0 # (float, 0.5, 1, 0.1)
-@export var card_current_scale : float = 1.3 # (float, 1, 1.5, 0.1)
+@export var card_scale : float = 1.0
+@export var card_current_scale : float = 1.3
 @export var scroll_duration : float = 1.3
 
 var card_current_index : int = 0

@@ -4,11 +4,6 @@ extends Control
 @onready var atalanta: AnimatedSprite2D = $Panel/Atalanta
 @onready var character_name: Label = $CharacterName
 
-
-# 0 FOR HERCULES
-# 1 FOR ATALANTA
-# 2 FOR HYPOLITA
-
 var index_number : int = 0
 var max_index : int = 1
 
@@ -54,17 +49,12 @@ func atalanta_show() -> void:
 	atalanta.visible = true
 
 
-# CONFIRM BUTTON PRESSED
 func _on_confirm_btn_pressed() -> void:
 	if index_number == 0:
 		print("HERCULES SELECTED")
 	elif index_number == 1:
 		print("ATALANTA SELECTED")
 
-# AFTER USER PRESSED CONFIRM BUTTON REDIRECT THEM
-# TO THE MULTIPLAYER SCREEN TO
-# CREATE MATCH OR JOIN A MATCH
 
-#  BACK BUTTON PRESSED
 func _on_back_btn_pressed() -> void:
 	SceneManager.changeScene("res://scenes/ui-scenes/game-mode-screen/game_mode_screen.tscn")

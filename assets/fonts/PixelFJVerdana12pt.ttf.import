@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://csbucy5j8rvls"
-path="res://.godot/imported/PixelFJVerdana12pt.ttf-14d13f3f4c72d9b842dd875c50bfe23c.fontdata"
+path="res://.godot/imported/PixelFJVerdana12pt.ttf-fb999cf27bca51a9acb848aac15afb12.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/PixelFJVerdana12pt.ttf"
-dest_files=["res://.godot/imported/PixelFJVerdana12pt.ttf-14d13f3f4c72d9b842dd875c50bfe23c.fontdata"]
+source_file="res://assets/fonts/PixelFJVerdana12pt.ttf"
+dest_files=["res://.godot/imported/PixelFJVerdana12pt.ttf-fb999cf27bca51a9acb848aac15afb12.fontdata"]
 
 [params]
 

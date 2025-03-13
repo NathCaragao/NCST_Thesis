@@ -14,20 +14,19 @@ extends Control
 @export var level_11_path: String
 @export var level_12_path: String
 
-# close the window
+
 func close_window() -> void:
-	# Create a new tween
+
 	var tween = create_tween()
 	
-	# Get the screen size
+
 	var screen_size = get_viewport_rect().size
 	
-	# Animate the window moving from center to bottom
+
 	tween.tween_property(self, "position:y", screen_size.y, 0.3) \
 		.set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_IN)
 	
-	# After the animation completes, hide the window
 	tween.tween_callback(func(): visible = false)
 
 func level_1() -> void:

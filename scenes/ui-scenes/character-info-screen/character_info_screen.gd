@@ -12,6 +12,7 @@ extends Control
 @onready var spd_label: Label = $VBoxContainer2/HBoxContainer3/SpdLabel
 @onready var hp_label: Label = $VBoxContainer/HBoxContainer/HpLabel
 
+# inventory window
 @export var inv_window : Control
 
 
