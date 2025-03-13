@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var key : Area2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export var totem_holder: Node2D
@@ -17,10 +16,8 @@ func on_key2_use() -> void:
 			QuestUi.transition_quest_box()
 			QuestUi.add_quest("Deeper in the Forest", "Continue exploring the forest.")
 
-
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	gate_zone = true
-
 
 func _on_interaction_area_body_exited(body: Node2D) -> void:
 	gate_zone = false
