@@ -1,12 +1,14 @@
 class_name EnemyWander
 extends State
-# references and variables
+
 @export var actor : CharacterBody2D
 @export var move_speed : float = 10.0
 @onready var player = get_tree().get_nodes_in_group("Player")
+
 var is_signal_connected : bool = false
 var direction
 @export var player_distance : int = 110
+
 var move_direction : Vector2
 var wander_time : float
 @export var enemy_health_comp : Node2D
@@ -38,29 +40,22 @@ func physics_update(delta: float) -> void:
 	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
-		
-		# Set the y-component to 0 to restrict movement to the x-axis (horizontal only)
 		direction.y = 0
 	
 	if actor:
-		# Apply gravity
 		if not actor.is_on_floor():
 			actor.velocity.y += actor.gravity * delta
-			# Change to idle animation when falling
 			actor.play_animation("enemy-idle")
 		else:
-			# Horizontal movement only when on floor
 			actor.velocity.x = move_direction.x * move_speed
 			actor.play_animation("enemy-run")
 		
 		actor.flip_sprite()
 		actor.move_and_slide()
 	
-	# transitions to enemy follow
 	if player and direction and direction.length() < player_distance:
 		print("ENEMY is following the player")
 		Transitioned.emit(self, "enemyfollow")
 
-# transitions to enemy death
 func on_enemy_dead1() -> void:
 	Transitioned.emit(self, "enemydeath")

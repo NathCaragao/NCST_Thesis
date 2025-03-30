@@ -1,7 +1,6 @@
 class_name PlayerSkill
 extends State
 
-# references
 @export var actor : CharacterBody2D
 @export var player_health_component: PlayerHpComp
 @onready var arrow = load("res://scenes/mechanisms/arrow/arrow.tscn") as PackedScene
@@ -10,7 +9,7 @@ var skillCooldown: float = 0.0
 
 func enter() -> void:
 	if !(skillCooldown > 0):
-		actor.velocity.x = 0 # Makes the player be stuck in place before doing skill attack
+		actor.velocity.x = 0 
 		skill_activate()
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +34,6 @@ func physics_update(delta: float) -> void:
 	
 	if not actor.animation_player.is_playing():
 		actor.playerGameData.isSkill = false
-		# Animation ended, decide what to do next
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			Transitioned.emit(self, "playerrun")
 		
@@ -51,7 +49,6 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playeridle")
 
 func skill_activate() -> void:
-	#actor.animation_player.play("player-shoot")
 	bow_attack()
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
 		actor.animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
@@ -65,7 +62,6 @@ func _on_animation_finished(animation_name: String) -> void:
 		if not actor.animation_player.is_playing():
 			actor.animation_player.stop()
 			
-	# Disconnect the signal when exiting the skill state
 	actor.velocity = Vector2.ZERO
 	actor.animation_player.animation_finished.disconnect(_on_animation_finished)
 
@@ -73,9 +69,6 @@ func _on_animation_finished(animation_name: String) -> void:
 func bow_attack():
 	actor.velocity.x = 0
 	actor.animation_player.play("player-shoot")
-	#if actor.playerGameData.isControlled:
-		#actor.playerGameData.isAttacking = true
-	# Connect the signal for when the attack animation finishes
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
 		actor.animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
 	arrow_fire()

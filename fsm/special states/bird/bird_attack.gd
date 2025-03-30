@@ -1,7 +1,6 @@
 class_name BirdAttack
 extends State
 
-# references and variables
 @export var actor : CharacterBody2D
 @export var move_speed : float = 20.0
 
@@ -11,10 +10,6 @@ extends State
 var direction
 
 @export var player_length : int = 40
-
-# state machine ref
-#@onready var state_machine : StateMachine = get_parent()
-
 
 func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_enemy_dead3"))
@@ -34,16 +29,13 @@ func enter() -> void:
 		print("Not within attack range")
 
 func physics_update(delta: float) -> void:
-	# apply gravity
 	actor.velocity.y += actor.gravity * delta
 	
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
 		
-		# Set the y-component to 0 to restrict movement to the x-axis (horizontal only)
 		direction.y = 0
-	
-	# Set the y-component to 0 to restrict movement to the x-axis (horizontal only)
+
 	direction.y = 0
 	
 	
@@ -52,7 +44,6 @@ func physics_update(delta: float) -> void:
 	elif direction.length() > 110:
 		Transitioned.emit(self, "birdwander")
 
-# transitions to enemy death
 func on_enemy_dead3() -> void:
 	timer.stop()
 	Transitioned.emit(self, "birddeath")

@@ -1,13 +1,11 @@
 class_name AtalantaJump
 extends State
 
-# variables and references
 @export var actor : CharacterBody2D
-@export var jump_force : float = -450.0  # Negative for upwards
-@export var jump_force2 : float = -350.0 # for double jump
+@export var jump_force : float = -450.0  
+@export var jump_force2 : float = -350.0 
 @export var player_health_component: PlayerHpComp
 
-# double jump count variable
 var jump_count : int = 0
 
 func _ready() -> void:
@@ -22,7 +20,6 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	if ((Input.is_action_just_pressed("jump") and actor.playerGameData.isControlled) or
 	(actor.playerGameData.isJumping and !actor.playerGameData.isControlled)) and jump_count < 1:
-		# Allow the double jump if the player hasn't double jumped yet
 		actor.velocity.y = jump_force2
 		print("Entered double jump state")
 		jump_count += 1
@@ -38,12 +35,10 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = movement
 	actor.move_and_slide()
 	
-	# Transition to fall if the player is falling down
 	if actor.velocity.y > 0:
 		Transitioned.emit(self, "atalantafall")
 
 	if actor.playerGameData.isControlled:
-	# transitions to attack state
 		if Input.is_action_just_pressed("attack"):
 			Transitioned.emit(self, "atalantaattack")
 	else:
@@ -60,6 +55,5 @@ func physics_update(delta: float) -> void:
 func on_player_dead3() -> void:
 	Transitioned.emit(self, "atalantadeath")
 	
-# resets the jump count to 0
 func exit() -> void:
 	jump_count = 0

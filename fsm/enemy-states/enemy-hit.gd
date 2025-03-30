@@ -1,7 +1,7 @@
 class_name EnemyHit
 extends State
 
-# references and variables
+
 @export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
 @export var attack : Node2D

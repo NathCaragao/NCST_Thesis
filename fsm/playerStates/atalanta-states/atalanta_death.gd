@@ -1,7 +1,6 @@
 class_name AtalantaDeath
 extends State
 
-# references
 @export var actor : CharacterBody2D
 @export var death : AudioStreamPlayer2D
 
@@ -14,14 +13,12 @@ func enter() -> void:
 	
 	death.play()
 	
-	# disable other processes
 	actor.set_physics_process(false)
 	actor.set_process_input(false)
 	actor.set_collision_layer_value(1, false)
 	actor.set_collision_mask_value(1, false)
 
 func physics_update(delta: float) -> void:
-	# do nothing we're dead
 	pass
 
 func on_player_respawn() -> void:
@@ -29,5 +26,4 @@ func on_player_respawn() -> void:
 
 
 func exit() -> void:
-	# no such thing as exiting, bro's dead already
 	pass

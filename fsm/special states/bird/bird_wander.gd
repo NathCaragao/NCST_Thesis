@@ -11,9 +11,8 @@ var direction : Vector2
 var move_direction : Vector2
 var wander_time : float
 
-# Optional: Add height constraints for the bird
-@export var min_height : float = 50.0  # Adjust these values
-@export var max_height : float = 200.0 # based on your game
+@export var min_height : float = 50.0  
+@export var max_height : float = 200.0 
 
 func randomize_wander() -> void:
 	var new_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -37,24 +36,14 @@ func physics_update(delta: float) -> void:
 	if is_instance_valid(player) and is_instance_valid(actor):
 		direction = player.global_position - actor.global_position
 		
-		# For flying enemies, we want to keep the y direction
-		# Remove this line since birds should move vertically:
-		# direction.y = 0
-		
-		# Check if player is within range
 		if direction.length() < 120:
 			Transitioned.emit(self, "birdfollow")
 	
 	if actor:
-		# Remove gravity for flying enemies
-		# actor.velocity.y += actor.gravity * delta  # Remove this line
-		
-		# Apply movement
 		actor.velocity = move_direction * move_speed * delta
 		actor.play_animation("enemy-run")  # You might want to change this to a flying animation
 		actor.flip_sprite()
 		
-		# Optional: Add height constraints
 		if actor.global_position.y < min_height:
 			actor.velocity.y = max(0, actor.velocity.y)
 		elif actor.global_position.y > max_height:

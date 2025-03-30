@@ -1,10 +1,8 @@
 class_name State
 extends Node
 
-# signal for transitioning state
 signal Transitioned
 
-# enter the state
 func enter() -> void:
 	pass
 

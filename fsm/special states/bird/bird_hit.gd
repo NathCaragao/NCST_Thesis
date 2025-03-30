@@ -1,7 +1,6 @@
 class_name BirdHit
 extends State
 
-# references and variables
 @export var actor : CharacterBody2D
 @export var enemy_health : EnemyHealthComp
 @export var attack : Node2D
@@ -18,19 +17,14 @@ func enter() -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	# apply gravity
 	actor.velocity.y += actor.gravity * delta
 	actor.move_and_slide()
 	
 	
 	if is_knocked_back:
-		# Decelerate the velocity
 		actor.velocity.x = move_toward(actor.velocity.x, 0, deceleration * delta)
-
-		# Apply the movement with deceleration
 		actor.move_and_slide()
 
-		# If velocity is very small, stop knockback
 		if abs(actor.velocity.x) < 0.1:
 			is_knocked_back = false
 			actor.velocity = Vector2.ZERO
@@ -42,7 +36,6 @@ func on_hit() -> void:
 	knock_back()
 
 func knock_back() -> void:
-	# enemy knockback
 	var knockback_direction = (actor.global_position - player.global_position).normalized()
 	knockback_direction.y = 0 # ensure 0 to keep the knockback horizontal
 	
@@ -52,7 +45,6 @@ func knock_back() -> void:
 	
 	is_knocked_back = true
 
-# gets activated when the enemy gets hit
 func freeze_time(timescale, duration) -> void:
 	Engine.time_scale = timescale
 	await(get_tree().create_timer(duration * timescale).timeout)

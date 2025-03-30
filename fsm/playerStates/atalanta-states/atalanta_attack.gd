@@ -1,17 +1,15 @@
 class_name AtalantaAttack
 extends State
 
-# references
 @export var actor : CharacterBody2D
 @export var player_health_component: PlayerHpComp
 @export var Sword_swing :  AudioStreamPlayer2D
 @export var bow_sound : AudioStreamPlayer2D
-# variables
+
 var attack_index : int = 0
 var attack_animations : Array = ["attack1"]
 var is_attacking : bool = false
 
-# projectie references
 @onready var arrow = load("res://scenes/mechanisms/arrow/arrow.tscn") as PackedScene
 var bow_cooldown : bool = true
 
@@ -24,8 +22,6 @@ func enter() -> void:
 	
 
 func physics_update(delta: float) -> void:
-	# Keep the player as isAttacking true during the animation
-	
 	var movement
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
@@ -39,12 +35,10 @@ func physics_update(delta: float) -> void:
 	actor._flip_sprite()
 	actor.move_and_slide()
 	
-	# While animation is playing, set isAttacking of Player to true and keep player from switching to other states
 	if actor.animation_player.is_playing() and (actor.animation_player.current_animation.begins_with("attack") or actor.animation_player.current_animation.begins_with("player-shoot")):
 		actor.playerGameData.isAttacking = true
 		return
 	
-	# When attack anim finishes, lock the player in attack state to prevent atk anim spam
 	if attackCooldown > 0:
 		actor.playerGameData.isAttacking = false
 		attackCooldown -= delta
@@ -54,7 +48,7 @@ func physics_update(delta: float) -> void:
 	if actor.playerGameData.isControlled:
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			Transitioned.emit(self, "atalantarun")
-		# transitions to jump state
+	
 		if Input.is_action_just_pressed("jump"):
 			Transitioned.emit(self, "atalantajump")
 		
@@ -63,7 +57,7 @@ func physics_update(delta: float) -> void:
 	else:
 		if actor.playerGameData.velocity.x != 0:
 			Transitioned.emit(self, "atalantarun")
-		# transitions to jump state
+
 		if actor.playerGameData.isJumping:
 			Transitioned.emit(self, "atalantajump")
 		
@@ -75,7 +69,6 @@ func physics_update(delta: float) -> void:
 		
 	Transitioned.emit(self, "atalantaidle")
 
-# Ranged mode attack
 func bow_attack() -> void:
 	print("Entered bow_attack state")
 	actor.velocity.x = 0
@@ -86,12 +79,7 @@ func bow_attack() -> void:
 	if not actor.animation_player.animation_finished.is_connected(Callable(self, "_on_animation_finished")):
 		actor.animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
 	
-	
-
-# bow projectile
 func arrow_fire() -> void:
-	#bow_cooldown = false
-	
 	var arrow_instance = arrow.instantiate()
 		
 	arrow_instance.global_position.x = $"../../ArrowPos/ArrowSpawn".global_position.x + (40 * actor.playerGameData.direction)
@@ -101,7 +89,6 @@ func arrow_fire() -> void:
 		arrow_instance.flip_sprite(true)
 	get_parent().add_child(arrow_instance)
 
-# Handle what happens when an attack animation finishes
 func _on_animation_finished(animation_name: String) -> void:
 	actor.animation_player.play("idle")
 	if animation_name == "attack":
@@ -111,7 +98,6 @@ func _on_animation_finished(animation_name: String) -> void:
 
 func exit() -> void:
 	actor.velocity = Vector2.ZERO
-	# Disconnect the signal when exiting the attack state
 	actor.animation_player.animation_finished.disconnect(_on_animation_finished)
 
 func update_animation(movement):

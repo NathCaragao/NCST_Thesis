@@ -1,7 +1,6 @@
 class_name PlayerHit
 extends State
 
-# references and variables
 @export var actor : CharacterBody2D
 @export var health_comp : PlayerHpComp
 @export var on_hit : AudioStreamPlayer2D

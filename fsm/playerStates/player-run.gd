@@ -1,7 +1,6 @@
 class_name PlayerRun
 extends State
 
-# references & variables
 @export var actor : CharacterBody2D
 @export var player_hp: PlayerHpComp
 @export var RunForrestRun: AudioStreamPlayer2D
@@ -16,7 +15,6 @@ func update(delta: float) -> void:
 		actor.animation_player.play("run")
 
 func physics_update(delta: float) -> void:
-	# Adjust velocity y(gravity) and velocity x(horizontal movement)
 	var movement
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
@@ -27,32 +25,24 @@ func physics_update(delta: float) -> void:
 
 	actor.velocity.x = movement
 
-	# Play running sound if the player is moving and the sound isn't already playing
 	if actor.velocity.x != 0 and not is_running_audio_playing:
 		RunForrestRun.play()
 		is_running_audio_playing = true
 	elif actor.velocity.x == 0 and is_running_audio_playing:
-		# Stop the running sound if the player stops moving
 		RunForrestRun.stop()
 		is_running_audio_playing = false
 
 	actor._flip_sprite()
 	actor.move_and_slide()
 
-	
-	# Switch to other states if suitable
-	# transitions to idle state
 	if actor.velocity.x == 0:
 		Transitioned.emit(self, "playeridle")
-	# -- Switch using Input if controlled
 	if actor.playerGameData.isControlled:		
-		# transitions to jump state
 		if Input.is_action_just_pressed("jump"):
 			RunForrestRun.stop()
 			is_running_audio_playing = false
 			Transitioned.emit(self, "playerjump")
 
-		# transitions to attack state
 		if Input.is_action_just_pressed("attack"):
 			Transitioned.emit(self, "playerattack")
 		
@@ -60,13 +50,11 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerskill")
 
 	else:
-		# -- Switch if not controlled
 		if actor.playerGameData.isJumping:
 			RunForrestRun.stop()
 			is_running_audio_playing = false
 			Transitioned.emit(self, "playerjump")
 		
-		# transitions to attack state
 		if actor.playerGameData.isAttacking:
 			Transitioned.emit(self, "playerattack")
 		
