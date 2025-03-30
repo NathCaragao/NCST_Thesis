@@ -1,7 +1,5 @@
-# Atalanta Side story level 1
 extends Node2D
 
-# onready
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var cutscene = $Cutscene
 var scene_path : String = "res://scenes/cutscenes-collection/Atalanta_and_the_calydonian_boar_hunt/Atalanta_and_the_calydonian_boar_hunt.tscn"
@@ -42,7 +40,6 @@ func on_dialog_end():
 	isDialogPlaying = false
 	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
 
-# when player dies: fail screen opens
 func on_player_fail() -> void:
 	fail_screen.open()
 
@@ -58,25 +55,19 @@ func level_cleared() -> void:
 	ScoreUi.get_node('CanvasLayer').hide()
 
 
-# displays the score UI in the viewport
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
 
 func player_state_reset() -> void:
-	# reset score
 	ScoreManager.reset_score()
-	
-	# reset player inventory
 	player.inv.reset()
 
-# function for the opening scene
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening")
 	CutsceneManager.play_cutscene("opening")
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm:
 			bgm.play()
 		else:
