@@ -1,4 +1,3 @@
-# ACCOUNT INVENTORY SLOT
 extends Panel
 
 @onready var item_display: Sprite2D = $CenterContainer/ItemDisplay
@@ -9,11 +8,8 @@ extends Panel
 @onready var item_desc: Label = $ItemDesc/Panel/Item_desc
 
 
-# Add slot number variable
 var slot_number: int = -1
 
-# Ensure this matches the exact type of slot you're using
-# If you have a custom class, replace with your exact class name
 var current_slot : InvSlotAmount = null
 
 func _ready() -> void:
@@ -51,12 +47,10 @@ func display_item_info(item: GearItem) -> void:
 
 
 func transfer_item() -> void:
-	# check if user is in the character screen
 	if PlayerManager.character_info == true:
 		if current_slot and current_slot.acc_item:
 			GameSignals.emit_signal("ItemEquipped", current_slot.acc_item)
 	
-		# remove the item after
 		current_slot.amount -= 1
 		if current_slot.amount <= 0:
 			current_slot.acc_item = null

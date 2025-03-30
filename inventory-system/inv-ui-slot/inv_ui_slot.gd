@@ -3,16 +3,15 @@ extends Panel
 @onready var item_display: Sprite2D = $CenterContainer/ItemDisplay
 @onready var label: Label = $CenterContainer/Panel/Label
 @onready var panel: Panel = $ItemDesc/Panel
-# items information references
+
 @onready var item_type: Label = $ItemDesc/Panel/Item_type
 @onready var item_name: Label = $ItemDesc/Panel/Item_name
 @onready var item_desc: Label = $ItemDesc/Panel/Item_desc
 var current_slot : InvSlotAmount = null
 @onready var player = get_tree().get_first_node_in_group("Player")
-# use window references
+
 @onready var util_window: Panel = $UtilWindow
 
-# Add slot number variable
 var slot_number: int = -1
 
 func initialize(slot_idx: int) -> void:
@@ -20,7 +19,6 @@ func initialize(slot_idx: int) -> void:
 	set_process_input(true)
 
 func _input(_event: InputEvent) -> void:
-	# Check if this specific slot's hotkey was pressed
 	var action_name = "use_slot_" + str(slot_number + 1)
 	if Input.is_action_just_pressed(action_name):
 		if current_slot and current_slot.item:
@@ -66,7 +64,6 @@ func use_item(item: InventoryItem) -> void:
 	if item != null and item["effect"] != "":
 		player.apply_item_effect(item)
 		
-	# Remove the used item from THIS slot only
 	current_slot.amount -= 1
 	if current_slot.amount <= 0:
 		current_slot.item = null

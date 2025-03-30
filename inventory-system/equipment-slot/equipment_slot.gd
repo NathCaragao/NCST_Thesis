@@ -8,11 +8,8 @@ extends Panel
 @onready var item_name: Label = $ItemDesc/Panel/Item_name
 @onready var item_desc: Label = $ItemDesc/Panel/Item_desc
 
-# Add slot number variable
 var slot_number: int = -1
 
-# Ensure this matches the exact type of slot you're using
-# If you have a custom class, replace with your exact class name
 var current_slot : InvSlotAmount = null
 
 func initialize(slot_idx: int) -> void:

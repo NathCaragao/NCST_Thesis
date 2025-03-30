@@ -9,21 +9,16 @@ extends Node2D
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready() -> void:
-	# Generate gear rarity randomly
 	var random_rarity = GearItem.Rarity.values()[randi() % GearItem.Rarity.size()]
 	gear_data = GearManager.generate_random_gear(random_rarity)
 	
-	# generate random stats for the gear
 	GearManager.randomize_gear_stats(gear_data)
 	
-	# generate a gear sprite based on the rarity
 	gear_data.texture = GearManager.get_random_sprite_for_rarity(gear_data.gear_rarity)
 	
-	# Set the sprite texture for the Sprite2D node
 	if sprite:
 		sprite.texture = gear_data.texture
 	
-	# 4. Update label with the gear stats (name, rarity, and stats)
 	if label:
 		label.text = gear_data.get_stat_string()
 
