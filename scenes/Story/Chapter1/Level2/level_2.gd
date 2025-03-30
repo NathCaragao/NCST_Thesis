@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 
 func on_hydra_defeat() -> void:
 	victory_screen.visible = true
-	victory_screen.update_scores() # updates scores
+	victory_screen.update_scores()
 	ScoreUi.get_node("CanvasLayer").hide()
 	
 	var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]

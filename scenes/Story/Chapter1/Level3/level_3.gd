@@ -1,4 +1,3 @@
-# level3.gd
 extends Node2D
 
 var scene_path : String = "res://scenes/cutscenes-collection/level 3/level_3_opening.tscn"
@@ -15,10 +14,8 @@ var paused : bool = false
 var isDialogPlaying = false
 
 func _ready() -> void:
-	# resets player score and inv
 	player_state_reset()
 	
-	# shows score UI
 	enable_score_ui()
 	
 	CutsceneManager.set_canvas_layer(cutscene_layer) # sets where the cutscene.tscn will go
@@ -30,7 +27,7 @@ func _ready() -> void:
 	
 	opening_cutscene()
 
-# Handles the start signal from Dialogic
+
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -67,7 +64,6 @@ func on_complete(argument: String) -> void:
 				break
 			elif i == 3:
 				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
-		# reset score manager for future use
 		ScoreManager.reset_score()
 
 func level_complete() -> void:

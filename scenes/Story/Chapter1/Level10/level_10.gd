@@ -25,7 +25,6 @@ func _ready() -> void:
 	
 	opening_cutscene()
 
-# Handles the start signal from Dialogic
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -36,10 +35,9 @@ func on_dialog_end():
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm:
 			bgm.play()
-# when player dies: fail screen opens
+
 func on_player_fail() -> void:
 	fail_screen.open()
 
@@ -52,16 +50,13 @@ func _process(delta: float) -> void:
 func on_level_complete(argument : String) -> void:
 	if argument == "11labordone":
 		level_complete_screen()
-		# Await sending rewards update to server
 		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
-		# once done, enable buttons in victory screen
 		for i in range(1, 4):
 			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
 				victory_screen.enableButtons()
 				break
 			elif i == 3:
 				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
-		# reset score manager 
 		ScoreManager.reset_score()
 
 func level_complete_screen() -> void:
@@ -85,10 +80,7 @@ func _teleport(body: CharacterBody2D) -> void:
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
 
-# resets player score and inventory
+
 func player_state_reset() -> void:
-	# reset score
 	ScoreManager.reset_score()
-	
-	# reset player inventory
 	player.inv.reset()

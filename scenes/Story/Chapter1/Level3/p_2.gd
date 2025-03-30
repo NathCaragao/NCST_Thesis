@@ -2,7 +2,7 @@ extends PathFollow2D
 
 @onready var rabbit: CharacterBody2D = $Rabbit
 var player_entered: bool = false
-var rabbit_running: bool = false  # Add this variable to track running state
+var rabbit_running: bool = false
 
 func _process(delta: float) -> void:
 	rabbit_run(delta)

@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export var actor : PlayerHercules
 @export var silver_key1 : Node2D

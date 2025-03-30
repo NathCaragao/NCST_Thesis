@@ -13,7 +13,6 @@ extends CharacterBody2D
 
 signal QuestQuota
 
-# wolf stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed: float = 1000
 
@@ -22,7 +21,7 @@ func _ready() -> void:
 
 
 
-# mapping animations for FSM
+
 var animation_mapping = {
 	"enemy-run": "wolf-run",
 	"enemy-attack": "wolf-attack",
@@ -44,12 +43,12 @@ func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
 
-# Trigger attack sound
+
 func perform_attack() -> void:
 	print("wolf has attack")
 	play_animation("enemy-attack")
 	if atk.is_playing():
-		atk.stop()  # Ensure it doesn't overlap
+		atk.stop()
 	atk.play()
 
 func on_dead_quota() -> void:
@@ -57,4 +56,3 @@ func on_dead_quota() -> void:
 
 func wolf_loot() -> void:
 	pass
-	#LootDropSystem.drop_multiple_items(global_position, ["gear"], randi_range(1, 8))

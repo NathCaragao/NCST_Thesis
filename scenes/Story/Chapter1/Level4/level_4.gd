@@ -71,7 +71,7 @@ func after_battle_dialog() -> void:
 			break
 		elif i == 3:
 			Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
-	# reset score manager for future use
+	
 	ScoreManager.reset_score()
 
 func level_complete() -> void:

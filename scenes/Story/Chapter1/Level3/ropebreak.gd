@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 @onready var joint = $PinJoint2D
 @onready var sprite_2d = $Sprite2D
-# Function to break the rope
+
 func  break_rope():
 	joint.queue_free()
 	sprite_2d.queue_free()

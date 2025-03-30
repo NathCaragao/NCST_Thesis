@@ -37,14 +37,13 @@ func on_dialog_end():
 	print_debug("Ended dialog, isDialogPlaying: %s" % str(isDialogPlaying))
 
 
-#on dialog end play bgm
+
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm:
 			bgm.play()
 			
-# when player dies: fail screen opens
+
 func on_player_fail() -> void:
 	fail_screen.open()
 
@@ -57,16 +56,16 @@ func _process(delta: float) -> void:
 func on_level_complete(argument: String) -> void:
 	if argument == "6LaborDone":
 		level_complete()
-		# Await sending rewards update to server
+
 		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
-		# once done, enable buttons in victory screen
+
 		for i in range(1, 4):
 			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
 				victory_screen.enableButtons()
 				break
 			elif i == 3:
 				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
-		# reset score manager 
+	
 		ScoreManager.reset_score()
 
 func level_complete() -> void:

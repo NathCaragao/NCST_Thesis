@@ -33,7 +33,7 @@ func _ready() -> void:
 	QuestUi.add_quest("Clean!, Clean!, Clean!", "Clean all the stools in the area")
 	
 
-# Handles the start signal from Dialogic
+
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -56,7 +56,7 @@ func on_dialogic_signal_play_bgm(event: String) -> void:
 		# Play the lively audio
 		if bgm:
 			bgm.play()
-# victory after dialog 3
+
 func on_dialog_done(argument: String) -> void:
 	if argument == "level5complete":
 		
@@ -73,7 +73,7 @@ func on_dialog_done(argument: String) -> void:
 				break
 			elif i == 3:
 				Notification.showMessage("Failed to save rewards to Server. Please restart the game", 5.0)
-		# reset score manager 
+	
 		ScoreManager.reset_score()
 
 func on_finish() -> void:
