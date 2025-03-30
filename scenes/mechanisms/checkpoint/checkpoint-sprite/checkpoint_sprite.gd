@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var checkpoint_bool : Node2D

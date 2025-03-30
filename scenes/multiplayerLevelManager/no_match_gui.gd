@@ -7,7 +7,6 @@ signal returnToLevelSelector()
 
 
 func update(gameData):
-	# Doesn't need game data, defined just to avoid errors
 	pass
 
 func cleanup():

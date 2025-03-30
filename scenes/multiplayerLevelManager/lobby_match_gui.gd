@@ -1,28 +1,12 @@
 class_name LobbyMatchGUI
 extends CanvasLayer
 
-# PROCESS:
-# - JoinedMatchID Label will show the joined match's id
-# - whenever player clicks ready button, it will change to Cancel or Ready
-# - whenever player receives state updates, it should show other players and their ready status
-# - whenever all players are in ready state, a countdown should start and once it reaches 0
-#	this gui will send out a signal saying it is good 
-
-# Other players info (might be used for current player):
-#{
-	#playerInfo: PlayerMultiplayerData
-	#username: String
-#}
-
 signal playerReadyStatusChanged()
 signal currentPlayerLeftMatch
 signal matchCountdownTimeout
 
-func _ready():
-	pass
 
 func _process(delta: float) -> void:
-	# Update Timer for starting match
 	if %Timer.is_stopped() == false:
 		%Label2.text = "Match is about to start in %s seconds." % floor(%Timer.time_left) 
 
@@ -31,7 +15,7 @@ func update(matchID:String, currentPlayerData, otherPlayersData:Array):
 	_updateCurrentPlayer(currentPlayerData)
 	_updateOtherPlayer(otherPlayersData)
 	if currentPlayerData != {} && currentPlayerData.isReady && otherPlayersData.size() >= 1:
-		# Loop thru otherPlayers and only set a flag to true if everyone is Ready.
+		
 		var startTimer = true
 		for otherPlayer in otherPlayersData:
 			if otherPlayer.isReady == false:

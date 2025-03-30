@@ -39,10 +39,9 @@ func on_dialog_end():
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm_lvl_3:
 			bgm_lvl_3.play()
-# when player dies: fail screen opens
+
 func on_player_fail() -> void:
 	fail_screen.open()
 
@@ -55,9 +54,7 @@ func _process(delta: float) -> void:
 func on_complete(argument: String) -> void:
 	if argument == "lvl3Complete":
 		level_complete()
-		# Await sending rewards update to server
 		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
-		# once done, enable buttons in victory screen
 		for i in range(1, 4):
 			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
 				victory_screen.enableButtons()
@@ -71,18 +68,13 @@ func level_complete() -> void:
 	victory_screen.update_scores()
 	ScoreUi.get_node('CanvasLayer').hide()
 	
-# function for the opening scene
 func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening1")
 	CutsceneManager.play_cutscene("opening1")
 
-# displays the score UI in the viewport
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
 
 func player_state_reset() -> void:
-	# reset score
 	ScoreManager.reset_score()
-	
-	# reset player inventory
 	player.inv.reset()

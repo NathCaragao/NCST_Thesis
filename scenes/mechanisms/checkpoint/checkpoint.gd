@@ -10,7 +10,6 @@ extends Area2D
 var checkpoint_reached: bool = false
 
 func _ready() -> void:
-	# Ensure spawn point exists
 	if not spawn_point:
 		print("WARNING: No spawn point found!")
 
@@ -33,32 +32,23 @@ func respawn_player() -> void:
 	
 	GameSignals.emit_signal("playerrespawn")
 
-# Optional method to be called when player dies
-#func trigger_respawn() -> void:
-	#respawn_player()
-
 func player_revive() -> void:
-	# Check if player and spawn point exist
 	if player_node and spawn_point and checkpoint_reached:
-		# Reset player's global position to spawn point
+
 		player_node.global_position = spawn_point.global_position
 		player_node.playerGameData.velocity = Vector2.ZERO
 		player_node.velocity = Vector2.ZERO
 		
-		# Reset player health
 		var player_hp_component = player.get_node_or_null("PlayerHealthComponent")
 		if player_hp_component:
 			player_hp_component.reset_health()
 		
-		 #Reset animation
 		var animation_player = player.get_node_or_null("AnimationPlayer")
 		if animation_player:
-			# Play idle or default animation
 			animation_player.play("idle")  # Use your default animation name
 		
 		player_node.hurtbox_collision.set_deferred("disabled", false)
 		
-		# Optional: Additional revival logic
 		player_node.set_physics_process(true)  # Re-enable physics
 		player_node.set_process(true)  # Re-enable processing
 		player_node.set_collision_layer_value(1, true)

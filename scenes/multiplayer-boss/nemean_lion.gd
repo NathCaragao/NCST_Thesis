@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @onready var sprite: Sprite2D = $Sprite2D as Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var body_collision: CollisionShape2D = $BodyCollision
@@ -39,7 +38,6 @@ func play_animation(animation_name: String) -> void:
 func lion_defeated() -> void:
 	lion_dialog()
 
-# when the lion is on the screen
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
 	hp_bar_open()
 
@@ -58,9 +56,9 @@ func hp_bar_close() -> void:
 func lion_dialog() -> void:
 	Dialogic.start("S1_1-15-2")
 	print("Current dialog playing: S1_1-15-2")
-	# Wait for dialog to complete
+
 	await Dialogic.timeline_ended
-	# Then wait 1.5 seconds
+	
 	await get_tree().create_timer(1.5).timeout
-	# Finally emit the victory signal
+	
 	emit_signal("LionDefeated")

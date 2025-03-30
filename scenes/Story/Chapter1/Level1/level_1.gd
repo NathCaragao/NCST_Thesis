@@ -16,14 +16,14 @@ func _ready() -> void:
 	CutsceneManager.set_canvas_layer(cutscene_layer)
 	player_state_reset()
 	enable_score_ui()
-	# signals connection
+
 	player.connect("PlayerFail", Callable(self, "on_player_fail"))
 	nemean_lion.connect("LionDefeated", Callable(self, "on_lion_defeated"))
-	# Connect Dialogic "end" signal to handle audio playback
+	
 	Dialogic.signal_event.connect(on_dialogic_signal_play_bgm)
 	Dialogic.timeline_started.connect(on_dialog_start)
 	Dialogic.timeline_ended.connect(on_dialog_end)
-	# play opening cutscene
+
 	opening_cutscene()
 
 func on_dialog_start():

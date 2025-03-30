@@ -17,7 +17,7 @@ func _ready() -> void:
 	player_state_reset()
 	
 	enable_score_ui()
-	# set canvas layer for cutscenes to be added
+	
 	CutsceneManager.set_canvas_layer(canvas_layer)
 	Dialogic.signal_event.connect(on_op1) # opening 1 dialog signal ending
 	Dialogic.signal_event.connect(on_dialog_done) # dialogic signal
@@ -53,7 +53,6 @@ func on_player_fail() -> void:
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm:
 			bgm.play()
 
@@ -64,9 +63,9 @@ func on_dialog_done(argument: String) -> void:
 		QuestUi.add_quest("Clean!, Clean!, Clean!", "Mission Complete")
 		
 		on_finish()
-		# Await sending rewards update to server
 		var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
-		# once done, enable buttons in victory screen
+	
+
 		for i in range(1, 4):
 			if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
 				victory_screen.enableButtons()
@@ -83,7 +82,6 @@ func on_finish() -> void:
 	victory_screen.update_scores()
 	ScoreUi.get_node('CanvasLayer').hide()
 
-# cutscenes
 func opening_1() -> void:
 	CutsceneManager.add_cutscene(scene_path_1, "opening_1")
 	CutsceneManager.play_cutscene("opening_1")
@@ -97,14 +95,9 @@ func on_op1(argument : String) -> void:
 		CutsceneManager.stop_cutscene("opening_1")
 		opening_2()
 
-# shows player score 
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
 
-# resets player score and inventory
 func player_state_reset() -> void:
-	# reset score
 	ScoreManager.reset_score()
-	
-	# reset player inventory
 	player.inv.reset()

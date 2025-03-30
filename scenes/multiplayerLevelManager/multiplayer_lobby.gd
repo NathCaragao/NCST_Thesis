@@ -1,27 +1,17 @@
 extends Control
 
-# RESPONSIBLE FOR:
-# - Invoking ServerManager funcs to send data to server
-# - Connecting to ServerManager's signals to receive updates from server
-# - Storing variables that contains data that subguis' ui elements will use
-# - Invoking subguis' funcs to update their UI
-# - Connecting to subguis' signals to listen for their events and act accordingly
-# TLDR: THIS FILE WILL BE BOTH THE MODEL AND CONTROLLER FOR ALL OF ITS GUIs
-
-
-
 enum MatchState {
 	NO_MATCH,
 	LOBBY_MATCH,
 	ONGOING_MATCH
 }
 
-# Sub GUIs path
+
 @onready var noMatchGUI = %NoMatchGUI
 @onready var lobbyMatchGUI = %LobbyMatchGUI
 @onready var ongoingMatchGUI = %OngoingMatchGUI
 
-# Common Variables between subgui
+
 var currentGUI = null
 var joinedMatchID:String = ""
 var currentMatchState:MatchState
@@ -41,9 +31,8 @@ func _switchGUI(currentGUI, newGUI) -> void:
 		newGUI.set_physics_process(true)
 		newGUI.show()
 
-# Do all subgui signals connections here and set the initial state
+
 func _ready() -> void:
-	# Set processes off for all GUI
 	noMatchGUI.set_process(false)
 	noMatchGUI.set_physics_process(false)
 	lobbyMatchGUI.set_process(false)
@@ -51,32 +40,24 @@ func _ready() -> void:
 	ongoingMatchGUI.set_process(false)
 	ongoingMatchGUI.set_physics_process(false)
 	
-	# Signal connection for noMatchGUI
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
 	noMatchGUI.returnToLevelSelector.connect(_handleReturnToLevelSelector)
 	
-	# Signal connection for lobbyMatchGUI
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
 	lobbyMatchGUI.matchCountdownTimeout.connect(_handleMatchCountdownTimeout)
 	
-	# Signal connection for ongoingMatchGUI
 	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
 	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
 	ongoingMatchGUI.CurrentPlayerReachedFinish.connect(_handleCurrentPlayerReachedFinish)
 	ongoingMatchGUI.BackToLobby.connect(_handleOngoingMatchBackToLobby)
 	
-	# Signal from ServerManager
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
-	
-	# Initial Match State initialization
 	_handleMatchStateChange(MatchState.NO_MATCH)
 	
 
 func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
-	
-	#if gameState.op_code == ServerManager.MessageOpCode.DATA_FROM_SERVER: might be unnecessary
 	self.currentGameState = JSON.parse_string(gameState.data)
 	
 	if gameState.op_code == ServerManager.MessageOpCode.DECLARED_WINNER:
@@ -85,7 +66,7 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	elif gameState.op_code == ServerManager.MessageOpCode.ONGOING_PLAYER_LEFT:
 		ongoingMatchGUI.removePlayer(self.currentGameState.userId)
 		return
-	# Separate this player's data from other players
+	
 	var otherPlayerData:Array = []
 	for presenceId in self.currentGameState.presences:
 		if presenceId != self.currentPlayer.user.id:
@@ -99,11 +80,6 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	elif currentMatchState == MatchState.ONGOING_MATCH:
 		ongoingMatchGUI.update(currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 		
-# CHANGING SUBGUIS:
-# - Get the new match state and decide which GUI to show - done
-# - Clear the current showing GUI - done in _switchtGUI
-# - Load the new GUI - done in _switchtGUI
-# - Invoke .updateGUI() or similar func to supply initial data to show - will be called separately
 
 func _handleMatchStateChange(newMatchState:MatchState):
 	SceneManager.showLoadingScreen()
@@ -128,19 +104,16 @@ func _handleMatchStateChange(newMatchState:MatchState):
 
 func _handleReturnToLevelSelector():
 	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
-#------------------------------------------------------------------------------
-# NoMatchGUI related functions
-#------------------------------------------------------------------------------
+
 func _handleMatchCreated(createdMatchID:String):
 	self.joinedMatchID = createdMatchID
 
 func _handleMatchJoined(isPlayerHost:bool):
-	# If player is host, send a update to server
 	var isHostPayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {"isHost": isPlayerHost}
 	}
-	# Send the user's display_name to server
+
 	var displayNamePayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {"displayName": self.currentPlayer.user.display_name}
@@ -149,10 +122,7 @@ func _handleMatchJoined(isPlayerHost:bool):
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_HOST, isHostPayload)
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_DISPLAY_NAME, displayNamePayload)
 	_handleMatchStateChange(MatchState.LOBBY_MATCH)
-#
-##------------------------------------------------------------------------------
-## LobbyMatchGUI related functions
-##------------------------------------------------------------------------------
+
 func _handlePlayerReadyStatusChanged() -> void:
 	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
 	var readyStatusChangePayload = {
@@ -170,11 +140,7 @@ func _handleCurrentPlayerLeftMatch():
 
 func _handleMatchCountdownTimeout():
 	_handleMatchStateChange(MatchState.ONGOING_MATCH)
-	# 
-
-##------------------------------------------------------------------------------
-## OngoingMatchGUI related functions
-##------------------------------------------------------------------------------
+	
 func _handleLevelLoaded():
 	var startedStatusChangePayload = {
 	"userId" = self.currentPlayer.user.id,

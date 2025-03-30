@@ -9,11 +9,9 @@ func _ready() -> void:
 
 func on_portal_enter() -> void:
 	if silver_key1.key_taken == true:
-		# in-game screen fade out transition
 		LevelScreenTransition.transition()
 		await LevelScreenTransition.on_transition_finished
 		
-		# teleport the player into the specified position
 		actor.position.x = 7079
 		actor.position.y = 3099
 		print("teleported")

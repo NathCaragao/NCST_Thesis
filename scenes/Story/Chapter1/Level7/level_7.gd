@@ -60,7 +60,7 @@ func spawn_enemy(index : int, spawn_point_index: int) -> void:
 	
 	var enemy = enemy_scenes[index].instantiate()
 	enemy.global_position = spawn_points[spawn_point_index].global_position
-	#get_parent().add_child(enemy)
+
 	call_deferred("add_child", enemy)
 	print("Enemy spawned")
 

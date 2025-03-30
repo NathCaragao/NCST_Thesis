@@ -1,7 +1,6 @@
 class_name Gate
 extends Node2D
 
-# references
 @onready var gate_anim: AnimationPlayer = $GateAnim
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export var key_1 : Area2D

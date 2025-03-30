@@ -9,7 +9,6 @@ func _init() -> void:
 func _ready() -> void:
 	connect("area_entered", Callable(self, "on_rope_hit"))
 	
-	# makes the box freeze at the rope initiallt
 	if large_crate and large_crate is RigidBody2D:
 		large_crate.freeze = true
 

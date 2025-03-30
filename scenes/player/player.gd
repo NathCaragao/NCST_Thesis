@@ -1,10 +1,6 @@
 class_name PlayerHercules
 extends CharacterBody2D
 
-
-# FINAL VARIABLES
-# -- Updated and used for server-client comm
-# THIS IS ALREADY SETUP FOR DEFAULT VALUES
 var playerGameData = {
 	"playerId" = "",
 	"displayName" = "",
@@ -18,7 +14,6 @@ var playerGameData = {
 	"position" = Vector2(0, 0),
 }
 
-# -- One time setup
 var move_speed: float
 var defense : float = 5.0
 var base_dmg : float = 10.0
@@ -36,25 +31,18 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var facing_right: bool = true
 
-# variables for switching weapon class
 var weapon_mode: String = "Melee" # default weapon mode
 var direction
 
-# player inventory reference
 @export var inv: Inventory
 @export var acc_inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
 
-# Signals
 signal PlayerFail
 
 func _ready() -> void:
-	# initialize player stats on PlayerManager Autoload
 	move_speed = PlayerManager.player_move_speed
 	defense = PlayerManager.player_defense
-	
-	
-	#initialize(self.position, false, "", "NOTTTTTTTTTTTTTTTT")
 	pass
 
 
@@ -64,7 +52,7 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
 	self.playerGameData.position = initSpawnPosition
-	#%Camera2D.enabled = self.playerGameData.isControlled
+
 	if self.playerGameData.isControlled:
 		%NameTag.hide()
 		$"Arrow-down".show()
@@ -73,7 +61,6 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 		%NameTag.show()
 		%NameTag.text = self.playerGameData.displayName
 
-# ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
 func updatePlayer(updateDictionary):
 	self.playerGameData.isJumping = updateDictionary["ongoingMatchData"]["isJumping"]
 	self.playerGameData.isAttacking = updateDictionary["ongoingMatchData"]["isAttacking"]
@@ -97,30 +84,21 @@ func _string_to_vector2(string := "") -> Vector2:
 	return Vector2.ZERO
 
 
-# STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
-# STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS
-# STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
-# STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
 	%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
 	
 	if self.playerGameData.isControlled:
-		# Horizontal Movement
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")
-		# Capture jumping
 		self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
-		# Capture attack usage
 		self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
-		# Capture skill usage
 		self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
-		# Weapon Mode switching
 		if Input.is_action_just_pressed("melee-mode"):
 			self.playerGameData.weaponMode = "Melee"
 			switch_weapon_mode("Melee")
 		elif Input.is_action_just_pressed("ranged-mode"):
 			self.playerGameData.weaponMode = "Ranged"
 			switch_weapon_mode("Ranged")
-		# Velocity update even if there is no input directly affecting this
+	
 		self.playerGameData.velocity = self.velocity
 		self.playerGameData.position = self.position
 	
@@ -143,13 +121,6 @@ func _flip_sprite() -> void:
 		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
 
-# function for pushing objects such as boxes
-#func push_objects() -> void:
-	#for i in get_slide_collision_count():
-		#var c = get_slide_collision(i)
-		#if c.get_collider() is RigidBody2D:
-			#c.get_collider().apply_central_impulse(-c.get_normal() * (push + SPEED))
-
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		self.playerGameData.weaponMode = "Melee"
@@ -160,7 +131,6 @@ func switch_weapon_mode(mode) -> void:
 		weapon_mode = "Ranged"
 		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
 
-# weapon input switching
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee-mode"):
 		if weapon_mode != "Melee":
@@ -172,11 +142,9 @@ func _input(event: InputEvent) -> void:
 			weapon_ui.rotate_roulette(180)
 			switch_weapon_mode("Ranged")
 
-# collect items
 func collect(item):
 	inv.insert(item)
 
-# collect items to acc inventory
 func acc_collect(item):
 	acc_inv.account_insert(item)
 
@@ -185,9 +153,7 @@ func apply_item_effect(item):
 		"Health_Potion":
 			var heal_amount: int = 30
 			player_hp.current_health += heal_amount
-			# update health bar UI
 			player_hp.phealth_bar.health = player_hp.current_health
-			# some debug text
 			EventNotifier.add_notif("Healed +30 HP")
 		"speed_buff":
 			var speed_amount: float = 30.0

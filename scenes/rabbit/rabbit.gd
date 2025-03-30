@@ -8,12 +8,9 @@ extends CharacterBody2D
 func _ready() -> void:
 	visible = false
 
-
 func _process(delta: float) -> void:
 	flip_sprite()
 	animation()
-
-
 
 func rabbit_appear() -> void:
 	visible = true
@@ -28,7 +25,6 @@ func flip_sprite() -> void:
 		animated_sprite.flip_h = false
 	else:
 		animated_sprite.flip_h = true
-
 
 func animation() -> void:
 	if velocity.x > 0:

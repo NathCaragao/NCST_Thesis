@@ -27,10 +27,8 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(on_dialog_end)
 	
 	opening_cutscene()
-	# snow particle
 	%Snow.local_coords = false
 
-# Handles the start signal from Dialogic
 func on_dialog_start():
 	isDialogPlaying = true
 	print_debug("Started dialog, isDialogPlaying: %s" % str(isDialogPlaying))
@@ -41,10 +39,9 @@ func on_dialog_end():
 
 func on_dialogic_signal_play_bgm(event: String) -> void:
 	if event == "end":
-		# Play the lively audio
 		if bgm:
 			bgm.play()
-# when player dies: fail screen opens
+
 func on_player_fail() -> void:
 	fail_screen.open()
 
@@ -62,9 +59,7 @@ func after_battle_dialog() -> void:
 	await Dialogic.timeline_ended # waits for the dialog to finish
 	
 	level_complete()
-	# Await sending rewards update to server
 	var freeCurrencyCollectedThisLevel = ScoreManager.collected_items["coin"]
-	# once done, enable buttons in victory screen
 	for i in range(1, 4):
 		if await ServerManager.updateUserFreeCurrency(freeCurrencyCollectedThisLevel) == OK:
 			victory_screen.enableButtons()
@@ -83,14 +78,9 @@ func opening_cutscene() -> void:
 	CutsceneManager.add_cutscene(scene_path, "opening1")
 	CutsceneManager.play_cutscene("opening1")
 
-# displays the score UI in the viewport
 func enable_score_ui() -> void:
 	ScoreUi.get_node('CanvasLayer').show()
 
-# resets player score and inventory
 func player_state_reset() -> void:
-	# reset score
 	ScoreManager.reset_score()
-	
-	# reset player inventory
 	player.inv.reset()
