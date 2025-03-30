@@ -1,8 +1,6 @@
 class_name Hurtbox
 extends Area2D
 
-# references
-
 
 func _init() -> void:
 	collision_layer = 0
@@ -18,28 +16,26 @@ func _ready() -> void:
 	connect("area_entered", Callable(self, "on_razor_hit"))
 	connect("area_entered", Callable(self, "on_death_zone"))
 
-# BASIC ATK hitbox
+
 func on_atk_entered(area: Area2D) -> void:
 	if area == null:
 		return
 	
 	
-	# to differentiate types of attacks
+
 	if area is Hitbox:
 		if owner.has_method("take_damage"):
 			owner.take_damage(area.total_dmg)
 
-# skill hitbox
 func on_skill_entered(skill_hitbox : Area2D) -> void:
 	if skill_hitbox == null:
 		return
 	
-	# to differentiate types of attacks
+
 	if skill_hitbox is SkillHitbox:
 		if owner.has_method("take_damage"):
 			owner.take_damage(skill_hitbox.skill_dmg)
 
-# arrow projectile
 func on_arrow_hit(projectile: Area2D) -> void:
 	if projectile == null:
 		return
@@ -51,7 +47,6 @@ func on_arrow_hit(projectile: Area2D) -> void:
 				owner.take_damage(projectile.projectile_dmg)
 				projectile.on_collide()
 
-# fire hazard obstacle
 func on_fire_hazard(fire_hitbox : Area2D) -> void:
 	if fire_hitbox == null:
 		return
@@ -60,7 +55,6 @@ func on_fire_hazard(fire_hitbox : Area2D) -> void:
 		if owner.has_method("take_damage"):
 			owner.take_damage(fire_hitbox.fire_dmg)
 
-# spike wheel obstacle
 func on_spike_wheel(spike_hitbox : Area2D) -> void:
 	if spike_hitbox == null:
 		return
@@ -69,7 +63,6 @@ func on_spike_wheel(spike_hitbox : Area2D) -> void:
 		if owner.has_method("take_damage"):
 			owner.take_damage(spike_hitbox.spike_dmg)
 
-# circular razor obstacle
 func on_razor_hit(razor_hitbox : Area2D) -> void:
 	if razor_hitbox == null:
 		return
@@ -78,7 +71,6 @@ func on_razor_hit(razor_hitbox : Area2D) -> void:
 		if owner.has_method("take_damage"):
 			owner.take_damage(razor_hitbox.razor_dmg)
 
-# Death Zone Area
 func on_death_zone(death_zone: Area2D) -> void:
 	if death_zone == null:
 		return

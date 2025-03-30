@@ -4,8 +4,6 @@ extends Area2D
 @export var projectile_dmg : int = 20
 var already_hit : bool = false
 
-func _ready() -> void:
-	pass
 
 func _init() -> void:
 	collision_layer = 2 # set to hitbox layer

@@ -15,7 +15,5 @@ func _ready() -> void:
 	defense += PlayerManager.player_defense
 	speed += PlayerManager.player_move_speed
 	
-	# set idle animation
-	
 	animated_sprite.sprite_frames = character_data.idle_anim
 	animated_sprite.play("default")

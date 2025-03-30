@@ -1,11 +1,11 @@
 extends Control
 
 func play() -> void:
-	Dialogic.start("S51_opening_2") # plays the dialog
-	await Dialogic.timeline_ended # waits for the dialog to end
+	Dialogic.start("S51_opening_2")
+	await Dialogic.timeline_ended 
 	
-	LevelScreenTransition.transition() # play fade in transition
-	await LevelScreenTransition.on_transition_finished # wait for the transtion to finished
+	LevelScreenTransition.transition() 
+	await LevelScreenTransition.on_transition_finished 
 	
 	close()
 

@@ -1,7 +1,6 @@
 class_name EnemyHealthComp
 extends Node2D
 
-# reference and variables
 @export var max_health : int = 100
 var current_health : int
 @export var enemy_hp_bar : ProgressBar
@@ -9,7 +8,7 @@ var current_health : int
 @export var dmg_num_pos : Node2D
 
 var is_dead : bool = false
-# signals
+
 signal EnemyDead
 signal Hit
 
@@ -38,11 +37,9 @@ func enemy_died() -> void:
 	current_health = 0
 	emit_signal("EnemyDead")
 
-# clamp health to prevent negative value
 func clamp_health() -> void:
 	current_health = clamp(current_health, 0, max_health)
 
-# for reviving or respawing
 func reset_health() -> void:
 	current_health = max_health
 	is_dead = false

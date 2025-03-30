@@ -1,7 +1,6 @@
 class_name EnemyHealthBar
 extends ProgressBar
 
-# references and variables
 @onready var dmg_bar: ProgressBar = $DmgBar
 @onready var timer: Timer = $Timer
 

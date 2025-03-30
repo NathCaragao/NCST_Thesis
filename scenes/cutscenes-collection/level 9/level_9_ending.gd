@@ -2,14 +2,14 @@ extends Control
 
 func play() -> void:
 	
-	LevelScreenTransition.transition() # play fade in transition
-	await LevelScreenTransition.on_transition_finished # wait for the transtion to finished
+	LevelScreenTransition.transition() 
+	await LevelScreenTransition.on_transition_finished 
 	
-	Dialogic.start("S10_ending") # plays the dialog
-	await Dialogic.timeline_ended # waits for the dialog to end
+	Dialogic.start("S10_ending") 
+	await Dialogic.timeline_ended 
 	
-	LevelScreenTransition.transition() # play fade in transition
-	await LevelScreenTransition.on_transition_finished # wait for the transtion to finished
+	LevelScreenTransition.transition() 
+	await LevelScreenTransition.on_transition_finished 
 	
 	close()
 	

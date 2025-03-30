@@ -4,12 +4,7 @@ extends Area2D
 @export var large_crate :RigidBody2D
 
 func destroy_log() -> void:
-	# put destory log animation here
-	# disable collision in the animation track
-	# queue free the whole log scene in the animation track
 	sprite_2d.queue_free()
-	$CollisionShape2D.queue_free()
-	$StaticBody2D/CollisionShape2D.queue_free()
 	large_crate.call_deferred("queue_free")
 
 func _on_body_entered(body: Node2D) -> void:
