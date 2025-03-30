@@ -1,10 +1,7 @@
 extends CanvasLayer
-
 @onready var isShowing : bool = false
-
 func _ready() -> void:
 	$".".hide()
-
 func showMessage(message: String, timeToShow: float) -> void :
 	if not isShowing:
 		isShowing = true
