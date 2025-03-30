@@ -8,7 +8,6 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
-# mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "orthrus-run",
 	"enemy-attack" : "orthrus-attack",

@@ -8,7 +8,6 @@ extends CharacterBody2D
 
 signal OpenTrapdoor
 
-# stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
@@ -20,7 +19,6 @@ func on_cyclop_death() -> void:
 		GameSignals.emit_signal("MegalusDefeated")
 		Dialogic.start("S1_1-11-2")
 
-# flip sprite
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
@@ -31,7 +29,6 @@ func flip_sprite() -> void:
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -106
 		$EnemyHealthComp/Hurtbox/CollisionShape2D.position.x = -9
 
-# mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "cyclop-run",
 	"enemy-attack" : "cyclop-attack",

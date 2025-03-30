@@ -5,11 +5,9 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurt_box_shape: CollisionShape2D = $BodyCollision
 
-
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
-# mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "boar-run",
 	"enemy-attack" : "boar-attack",
@@ -18,7 +16,6 @@ var animation_mapping = {
 	"enemy-dead" : "boar-death"
 }
 
-# flip sprite
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = false

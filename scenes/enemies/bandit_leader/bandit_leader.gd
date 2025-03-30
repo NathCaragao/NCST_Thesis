@@ -8,12 +8,9 @@ extends CharacterBody2D
 
 signal QuestQuota
 
-# bandit stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
-
-# mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "bandit-leader-run",
 	"enemy-attack" : "bandit-leader-attack",
@@ -22,7 +19,6 @@ var animation_mapping = {
 	"enemy-dead" : "bandit-leader-death"
 }
 
-# flip sprite
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
@@ -30,8 +26,6 @@ func flip_sprite() -> void:
 	elif velocity.x < 0:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = -17
-
-
 
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:

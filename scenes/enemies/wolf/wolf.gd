@@ -19,9 +19,6 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_dead_quota"))
 
-
-
-
 var animation_mapping = {
 	"enemy-run": "wolf-run",
 	"enemy-attack": "wolf-attack",
@@ -30,7 +27,7 @@ var animation_mapping = {
 	"enemy-dead": "wolf-dead"
 }
 
-# flip sprite
+
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = false

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var enemy_health_comp: EnemyHealthComp = $EnemyHealthComp
 @onready var hurt_box_shape: CollisionShape2D = $EnemyHealthComp/Hurtbox/HurtboxShape
 
-# stats
+
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : float = 400
 
@@ -26,14 +26,10 @@ func play_animation(animation_name: String) -> void:
 		animation_player.play(animation_mapping[animation_name])
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
 	move_and_slide()
 
-
-# flip sprite
 func flip_sprite() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false

@@ -11,7 +11,6 @@ func _ready() -> void:
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# mapping animations for fsm
 var animation_mapping = {
 	"enemy-run" : "hydra-run",
 	"enemy-attack" : "hydra-attack",
@@ -49,7 +48,6 @@ func post_dialog() -> void:
 	QuestUi.add_quest("Lernaean Hydra", "Labor Complete!")
 	
 	await Dialogic.timeline_ended
-	# Then wait 1.5 seconds
 	await get_tree().create_timer(1.5).timeout
 	emit_signal("HydraDefeated")
 	print("signal emited")

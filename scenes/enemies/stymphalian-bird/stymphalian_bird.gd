@@ -4,14 +4,10 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_health_comp: EnemyHealthComp = $EnemyHealthComp
 
-# stats
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed : int = 30
 
 var if_reached : bool = false
-
-func _ready() -> void:
-	pass
 
 var animation_mapping = {
 	"enemy-run" : "bird-run",
