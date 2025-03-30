@@ -1,11 +1,6 @@
 class_name PlayerAtalanta
 extends CharacterBody2D
 
-
-
-# FINAL VARIABLES
-# -- Updated and used for server-client comm
-# THIS IS ALREADY SETUP FOR DEFAULT VALUES
 var playerGameData = {
 	"playerId" = "",
 	"displayName" = "",
@@ -19,7 +14,6 @@ var playerGameData = {
 	"position" = Vector2(0, 0),
 }
 
-# -- One time setup
 var move_speed: float
 var defense : float = 5.0
 var base_dmg : float = 10.0
@@ -30,13 +24,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var SPEED: float = 200.0
 
 var facing_right: bool = true
-# player inventory reference
+
 @export var inv: Inventory
 
 @export var player_hp : PlayerHpComp
 @export var hurtbox_collision : CollisionShape2D
 
-# Signals
+
 signal PlayerFail
 
 func _ready() -> void:
@@ -50,7 +44,7 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
 	self.playerGameData.position = initSpawnPosition
-	#%Camera2D.enabled = self.playerGameData.isControlled
+
 	if self.playerGameData.isControlled:
 		%NameTag.hide()
 		$"Arrow-down".show()
@@ -59,7 +53,7 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 		%NameTag.show()
 		%NameTag.text = self.playerGameData.displayName
 
-# ONLY CALLED IF THE PLAYER IS NOT BEING CONTROLLED (PRIMARILY USED TO ONLY SUPPLY VARIABLE UPDATES)
+
 func updatePlayer(updateDictionary):
 	self.playerGameData.isJumping = updateDictionary["ongoingMatchData"]["isJumping"]
 	self.playerGameData.isAttacking = updateDictionary["ongoingMatchData"]["isAttacking"]
@@ -81,24 +75,14 @@ func _string_to_vector2(string := "") -> Vector2:
 		return Vector2(int(array[0]), int(array[1]))
 	return Vector2.ZERO
 
-# STEP 1: IF CONTROLLED, INPUTS SHOULD BE CAPTURED
-# STEP 2: PLAYERGAMEDATA IS TO BE UPDATED WITH THE VALUES GOTTEN FROM INPUTS
-# STEP 3: THINGS ARE TO BE UPDATED SINCE PLAYERGAMEDATA HAS CHANGED
-# STEP 4: PLAYERGAMEDATA IS SENT TO THE SERVER - DONE EXTERNALLY
 func _physics_process(delta: float) -> void:
-	#%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
 	
 	if self.playerGameData.isControlled:
-		# Horizontal Movement
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")
-		# Capture jumping
 		self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
-		# Capture attack usage
 		self.playerGameData.isAttacking = Input.is_action_just_pressed("attack")
-		# Capture skill usage
 		self.playerGameData.isSkill = Input.is_action_just_pressed("skill")
 		
-		# Velocity update even if there is no input directly affecting this
 		self.playerGameData.velocity = self.velocity
 		self.playerGameData.position = self.position
 		
@@ -108,10 +92,8 @@ func _physics_process(delta: float) -> void:
 func _flip_sprite() -> void:
 	if self.playerGameData.direction > 0:
 		sprite.flip_h = false
-		# put other hitboxes here
 	if self.playerGameData.direction < 0:
 		sprite.flip_h = true
-		# put other hitboxes here
 	
 	if self.playerGameData.direction == 1:
 		$ArrowPos.scale.x = 1
@@ -120,7 +102,7 @@ func _flip_sprite() -> void:
 		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
 
-# collect items
+
 func collect(item):
 	inv.insert(item)
 
@@ -129,9 +111,7 @@ func apply_item_effect(item):
 		"Health_Potion":
 			var heal_amount: int = 30
 			player_hp.current_health += heal_amount
-			# update health bar UI
 			player_hp.phealth_bar.health = player_hp.current_health
-			# some debug text
 			EventNotifier.add_notif("Healed +30 HP")
 		"speed_buff":
 			var speed_amount: float = 30.0
@@ -142,10 +122,8 @@ func apply_item_effect(item):
 			EventNotifier.add_notif("Speed buff expired.")
 		"atk_boost":
 			var atk_amount : float = 15.0
-			#arrow_hitbox.total_dmg += atk_amount
 			EventNotifier.add_notif("Attack buff activated + 15")
 			await get_tree().create_timer(15).timeout
-			#arrow_hitbox.total_dmg -= atk_amount
 			EventNotifier.add_notif("Attack buff expired.")
 		"defense_buff":
 			var def_amount : float = 15.0
