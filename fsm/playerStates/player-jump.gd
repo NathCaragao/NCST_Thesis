@@ -1,31 +1,25 @@
 class_name PlayerJump
 extends State
-
 @export var actor : CharacterBody2D
 @export var jump_force : float = -450.0 
 @export var jump_force2 : float = -350.0 
 @export var player_health_component: PlayerHpComp
-
 var jump_count : int = 0
 func _ready() -> void:
 	player_health_component.connect("PlayerDead", Callable(self, "on_player_dead3"))
 	pass
-	
 func enter() -> void:
 	print("Entered Jump State")
-	actor.velocity.y = jump_force  # Apply the jump force
-	actor.animation_player.play("jump")  # Play jump animation\
-
+	actor.velocity.y = jump_force  
+	actor.animation_player.play("jump")
 func update(delta: float) -> void:
 	pass
-	
 func physics_update(delta: float) -> void:
 	if ((Input.is_action_just_pressed("jump") and actor.playerGameData.isControlled) or
 	(actor.playerGameData.isJumping and !actor.playerGameData.isControlled)) and jump_count < 1:
 		actor.velocity.y = jump_force2
 		print("Entered double jump state")
 		jump_count += 1
-
 	var movement
 	if actor.playerGameData.isControlled:
 		actor.velocity.y += actor.gravity * delta
@@ -33,13 +27,10 @@ func physics_update(delta: float) -> void:
 	else:
 		actor.velocity.y = actor.playerGameData.velocity.y
 		movement = actor.playerGameData.velocity.x
-
 	actor.velocity.x = movement
 	actor.move_and_slide()
-
 	if actor.velocity.y > 0:
 		Transitioned.emit(self, "playerfall")
-
 	if actor.playerGameData.isControlled:
 		if Input.is_action_just_pressed("attack"):
 			Transitioned.emit(self, "playerattack")
@@ -51,9 +42,7 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit(self, "playerrun")
 		else:
 			Transitioned.emit(self, "playeridle")
-			
 func on_player_dead3() -> void:
 	Transitioned.emit(self, "playerdeath")
-	
 func exit() -> void:
 	jump_count = 0
