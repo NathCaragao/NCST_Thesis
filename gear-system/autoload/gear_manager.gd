@@ -1,7 +1,4 @@
-# GEAR MANAGER AUTOLOAD
 extends Node
-
-
 const RARITY_STAT_MULTIPLIERS = {
 	GearItem.Rarity.COMMON: {
 		"min_multiplier": 0.5,
@@ -20,7 +17,6 @@ const RARITY_STAT_MULTIPLIERS = {
 		"max_multiplier": 2.5
 	},
 }
-
 const GEAR_SPRITES = {
 	GearItem.Rarity.COMMON: [
 		"res://gear-system/assets/Roman_GuildCrafter00.png",
@@ -43,36 +39,28 @@ const GEAR_SPRITES = {
 		"res://gear-system/assets/Roman_Tribune00.png"
 	]
 }
-
 func get_random_sprite_for_rarity(rarity: GearItem.Rarity) -> Texture2D:
 	if rarity in GEAR_SPRITES:
 		var sprites = GEAR_SPRITES[rarity]
 		return load(sprites[randi() % sprites.size()])
-		
 	return load("res://gear-system/assets/Roman_GuildCrafter00.png")
-
 const BASE_STATS = {
 	"hp": 10,
 	"atk": 5,
 	"def": 5,
 	"spd": 5
 }
-
 func randomize_gear_stats(gear : GearItem) -> void:
 	var multipliers = RARITY_STAT_MULTIPLIERS[gear.gear_rarity]
-	
 	gear.hp = _randomize_stat(BASE_STATS["hp"], multipliers)
 	gear.atk = _randomize_stat(BASE_STATS["atk"], multipliers)
 	gear.def = _randomize_stat(BASE_STATS["def"], multipliers)
 	gear.spd = _randomize_stat(BASE_STATS["spd"], multipliers)
-	
 	gear.name = _generate_gear_name(gear.gear_rarity)
-
 func _randomize_stat(base_value: float, multipliers : Dictionary) -> float:
 	var min_value = base_value * multipliers["min_multiplier"]
 	var max_value = base_value * multipliers["max_multiplier"]
 	return int(randf_range(min_value, max_value))
-
 func _generate_gear_name(rarity: GearItem.Rarity) -> String:
 	var prefixes = {
 		GearItem.Rarity.COMMON: ["Simple", "Basic", "Plain"],
@@ -80,15 +68,10 @@ func _generate_gear_name(rarity: GearItem.Rarity) -> String:
 		GearItem.Rarity.EPIC: ["Heroic", "Magnificent", "Powerful"],
 		GearItem.Rarity.LEGENDARY: ["Divine", "Mythical", "Transcendent"]
 	}
-	
 	var suffixes = ["Armor", "Gear", "Equipment", "Piece"]
-	
 	var prefix = prefixes[rarity][randi() % prefixes[rarity].size()]
 	var suffix = suffixes[randi() % suffixes.size()]
-	
 	return "%s %s" % [prefix, suffix]
-
-
 func generate_random_gear(desired_rarity: GearItem.Rarity = GearItem.Rarity.COMMON) -> GearItem:
 	var new_gear = GearItem.new()
 	new_gear.gear_rarity = desired_rarity
