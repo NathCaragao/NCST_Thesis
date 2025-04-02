@@ -1,7 +1,6 @@
 class_name EnemyWolf
 extends CharacterBody2D
 @onready var wolf = $"."
-
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_health_comp: EnemyHealthComp = $EnemyHealthComp
@@ -9,16 +8,11 @@ extends CharacterBody2D
 @onready var atk = $wolfsound/atk
 @onready var death = $wolfsound/death
 @onready var enemy_attack = $StateMachine/EnemyAttack
-
-
 signal QuestQuota
-
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var move_speed: float = 1000
-
 func _ready() -> void:
 	enemy_health_comp.connect("EnemyDead", Callable(self, "on_dead_quota"))
-
 var animation_mapping = {
 	"enemy-run": "wolf-run",
 	"enemy-attack": "wolf-attack",
@@ -26,8 +20,6 @@ var animation_mapping = {
 	"enemy-hit": "wolf-hit",
 	"enemy-dead": "wolf-dead"
 }
-
-
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		sprite.flip_h = false
@@ -35,21 +27,16 @@ func flip_sprite() -> void:
 	else:
 		sprite.flip_h = true
 		$EnemyHealthComp/Hitbox/CollisionShape2D.position.x = 28
-
 func play_animation(animation_name: String) -> void:
 	if animation_name in animation_mapping:
 		animation_player.play(animation_mapping[animation_name])
-
-
 func perform_attack() -> void:
 	print("wolf has attack")
 	play_animation("enemy-attack")
 	if atk.is_playing():
 		atk.stop()
 	atk.play()
-
 func on_dead_quota() -> void:
 	emit_signal("QuestQuota")
-
 func wolf_loot() -> void:
 	pass
