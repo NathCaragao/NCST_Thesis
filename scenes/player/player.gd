@@ -1,6 +1,5 @@
 class_name PlayerHercules
 extends CharacterBody2D
-
 var playerGameData = {
 	"playerId" = "",
 	"displayName" = "",
@@ -13,7 +12,6 @@ var playerGameData = {
 	"velocity" = Vector2(0, 0),
 	"position" = Vector2(0, 0),
 }
-
 var move_speed: float
 var defense : float = 5.0
 var base_dmg : float = 10.0
@@ -23,36 +21,26 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var hurtbox_collision: CollisionShape2D = $PlayerHealthComponent/Hurtbox/HurtboxCollision
 @onready var hitbox: Hitbox = $PlayerHealthComponent/Hitbox
 @onready var hud: CanvasLayer = $HUD
-
-
 @export var push = 40
 @export var SPEED: float = 200.0
 @export var weapon_ui: Control
-
 var facing_right: bool = true
-
-var weapon_mode: String = "Melee" # default weapon mode
+var weapon_mode: String = "Melee" 
 var direction
-
 @export var inv: Inventory
 @export var acc_inv : Inventory
 @onready var player_hp: PlayerHpComp = $PlayerHealthComponent
-
 signal PlayerFail
-
 func _ready() -> void:
 	move_speed = PlayerManager.player_move_speed
 	defense = PlayerManager.player_defense
 	pass
-
-
 func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String = "", initDisplayName: String = ""):
 	self.playerGameData.playerId = initPlayerId
 	self.playerGameData.displayName = initDisplayName
 	self.playerGameData.isControlled = initIsControlled
 	self.position = initSpawnPosition
 	self.playerGameData.position = initSpawnPosition
-
 	if self.playerGameData.isControlled:
 		%NameTag.hide()
 		$"Arrow-down".show()
@@ -60,33 +48,25 @@ func initialize(initSpawnPosition, initIsControlled: bool, initPlayerId: String 
 		$"Arrow-down".hide()
 		%NameTag.show()
 		%NameTag.text = self.playerGameData.displayName
-
 func updatePlayer(updateDictionary):
 	self.playerGameData.isJumping = updateDictionary["ongoingMatchData"]["isJumping"]
 	self.playerGameData.isAttacking = updateDictionary["ongoingMatchData"]["isAttacking"]
 	self.playerGameData.direction = updateDictionary["ongoingMatchData"]["direction"]
 	self.playerGameData.isSkill = updateDictionary["ongoingMatchData"]["isSkill"]
 	self.playerGameData.weaponMode = updateDictionary["ongoingMatchData"]["weaponMode"]
-	
 	self.playerGameData.velocity = _string_to_vector2(updateDictionary["ongoingMatchData"]["velocity"])
 	self.playerGameData.position = _string_to_vector2(updateDictionary["ongoingMatchData"]["position"])
 	self.position = self.playerGameData.position
-	
-
 func _string_to_vector2(string := "") -> Vector2:
 	if string:
 		var new_string: String = string
 		new_string = new_string.erase(0, 1)
 		new_string = new_string.erase(new_string.length() - 1, 1)
 		var array: Array = new_string.split(", ")
-
 		return Vector2(int(array[0]), int(array[1]))
 	return Vector2.ZERO
-
-
 func _physics_process(delta: float) -> void:
 	%State.text = "Skill CD: %s" % str(ceil($StateMachine/PlayerSkill.skillCooldown))
-	
 	if self.playerGameData.isControlled:
 		self.playerGameData.direction = Input.get_axis("move_left", "move_right")
 		self.playerGameData.isJumping = Input.is_action_just_pressed("jump")
@@ -98,12 +78,9 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("ranged-mode"):
 			self.playerGameData.weaponMode = "Ranged"
 			switch_weapon_mode("Ranged")
-	
 		self.playerGameData.velocity = self.velocity
 		self.playerGameData.position = self.position
-	
 	_flip_sprite()
-
 func _flip_sprite() -> void:
 	if self.playerGameData.direction > 0:
 		sprite.flip_h = false
@@ -113,41 +90,34 @@ func _flip_sprite() -> void:
 		sprite.flip_h = true
 		$PlayerHealthComponent/Hitbox/HitboxCollision.position.x = -19
 		$PlayerHealthComponent/SkillHitbox/CollisionShape2D.position.x = -27.75
-	
 	if self.playerGameData.direction == 1:
 		$ArrowPos.scale.x = 1
 		$PlayerHealthComponent/Hurtbox.scale.x = 1
 	elif self.playerGameData.direction == -1:
 		$PlayerHealthComponent/Hurtbox.scale.x = -1
 		$ArrowPos.scale.x = -1
-
 func switch_weapon_mode(mode) -> void:
 	if mode == "Melee":
 		self.playerGameData.weaponMode = "Melee"
 		weapon_mode = "Melee"
-		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
+		print("Mode: ", self.playerGameData.weaponMode) 
 	elif mode == "Ranged":
 		self.playerGameData.weaponMode = "Ranged"
 		weapon_mode = "Ranged"
-		print("Mode: ", self.playerGameData.weaponMode) # replace with fancy UI
-
+		print("Mode: ", self.playerGameData.weaponMode) 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee-mode"):
 		if weapon_mode != "Melee":
 			weapon_ui.rotate_roulette(180)
 			switch_weapon_mode("Melee")
-	
 	elif event.is_action_pressed("ranged-mode"):
 		if weapon_mode != "Ranged":
 			weapon_ui.rotate_roulette(180)
 			switch_weapon_mode("Ranged")
-
 func collect(item):
 	inv.insert(item)
-
 func acc_collect(item):
 	acc_inv.account_insert(item)
-
 func apply_item_effect(item):
 	match item["effect"]:
 		"Health_Potion":
@@ -176,7 +146,6 @@ func apply_item_effect(item):
 			await get_tree().create_timer(10).timeout
 			defense -= def_amount
 			EventNotifier.add_notif("Defense buff expired.")
-
 func player_fail() -> void:
 	if player_hp.current_health == 0:
 		emit_signal("PlayerFail")
