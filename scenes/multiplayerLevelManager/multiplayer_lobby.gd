@@ -1,25 +1,18 @@
 extends Control
-
 enum MatchState {
 	NO_MATCH,
 	LOBBY_MATCH,
 	ONGOING_MATCH
 }
-
-
 @onready var noMatchGUI = %NoMatchGUI
 @onready var lobbyMatchGUI = %LobbyMatchGUI
 @onready var ongoingMatchGUI = %OngoingMatchGUI
-
-
 var currentGUI = null
 var joinedMatchID:String = ""
 var currentMatchState:MatchState
 @onready var currentPlayer = await ServerManager.getUserLoggedInInfo()
 var currentGameState = null
 var otherPlayers: Array = []
-
-
 func _switchGUI(currentGUI, newGUI) -> void:
 	if currentGUI == null:
 		newGUI.show()
@@ -30,8 +23,6 @@ func _switchGUI(currentGUI, newGUI) -> void:
 		newGUI.set_process(true)
 		newGUI.set_physics_process(true)
 		newGUI.show()
-
-
 func _ready() -> void:
 	noMatchGUI.set_process(false)
 	noMatchGUI.set_physics_process(false)
@@ -39,34 +30,26 @@ func _ready() -> void:
 	lobbyMatchGUI.set_physics_process(false)
 	ongoingMatchGUI.set_process(false)
 	ongoingMatchGUI.set_physics_process(false)
-	
 	noMatchGUI.matchCreated.connect(_handleMatchCreated)
 	noMatchGUI.matchJoined.connect(_handleMatchJoined)
 	noMatchGUI.returnToLevelSelector.connect(_handleReturnToLevelSelector)
-	
 	lobbyMatchGUI.playerReadyStatusChanged.connect(_handlePlayerReadyStatusChanged)
 	lobbyMatchGUI.currentPlayerLeftMatch.connect(_handleCurrentPlayerLeftMatch)
 	lobbyMatchGUI.matchCountdownTimeout.connect(_handleMatchCountdownTimeout)
-	
 	ongoingMatchGUI.LevelLoaded.connect(_handleLevelLoaded)
 	ongoingMatchGUI.CurrentPlayerGameDataUpdate.connect(_handleCurrentPlayerGameDataUpdate)
 	ongoingMatchGUI.CurrentPlayerReachedFinish.connect(_handleCurrentPlayerReachedFinish)
 	ongoingMatchGUI.BackToLobby.connect(_handleOngoingMatchBackToLobby)
-	
 	ServerManager.matchStateReceived.connect(_handleGameStateUpdate)
 	_handleMatchStateChange(MatchState.NO_MATCH)
-	
-
 func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	self.currentGameState = JSON.parse_string(gameState.data)
-	
 	if gameState.op_code == ServerManager.MessageOpCode.DECLARED_WINNER:
 		ongoingMatchGUI.endMatch(self.currentGameState.user.playerData.displayName)
 		return
 	elif gameState.op_code == ServerManager.MessageOpCode.ONGOING_PLAYER_LEFT:
 		ongoingMatchGUI.removePlayer(self.currentGameState.userId)
 		return
-	
 	var otherPlayerData:Array = []
 	for presenceId in self.currentGameState.presences:
 		if presenceId != self.currentPlayer.user.id:
@@ -74,80 +57,62 @@ func _handleGameStateUpdate(gameState:NakamaRTAPI.MatchData):
 	otherPlayerData.sort_custom(func (firstPlayer, secondPlayer):
 		return firstPlayer.playerData.displayName < secondPlayer.playerData.displayName
 	)
-	
 	if currentMatchState == MatchState.LOBBY_MATCH:
 		lobbyMatchGUI.update(self.joinedMatchID, currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
 	elif currentMatchState == MatchState.ONGOING_MATCH:
 		ongoingMatchGUI.update(currentGameState.presences[self.currentPlayer.user.id], otherPlayerData)
-		
-
 func _handleMatchStateChange(newMatchState:MatchState):
 	SceneManager.showLoadingScreen()
 	self.currentMatchState = newMatchState
-	
 	if newMatchState == MatchState.NO_MATCH:
 		_switchGUI(currentGUI, noMatchGUI)
 		currentGUI = noMatchGUI
 		noMatchGUI.update(null)
-		
 	elif newMatchState == MatchState.LOBBY_MATCH:
 		_switchGUI(currentGUI, lobbyMatchGUI)
 		currentGUI = lobbyMatchGUI
 		lobbyMatchGUI.update(joinedMatchID, {}, [])
-		
 	elif newMatchState == MatchState.ONGOING_MATCH:
 		_switchGUI(currentGUI, ongoingMatchGUI)
 		currentGUI = ongoingMatchGUI
 		ongoingMatchGUI.update({}, [])
-		
 	SceneManager.hideLoadingScreen()
-
 func _handleReturnToLevelSelector():
 	SceneManager.changeScene("res://scenes/ui-scenes/chapter-selection/chapter_selection.tscn")
-
 func _handleMatchCreated(createdMatchID:String):
 	self.joinedMatchID = createdMatchID
-
 func _handleMatchJoined(isPlayerHost:bool):
 	var isHostPayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {"isHost": isPlayerHost}
 	}
-
 	var displayNamePayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {"displayName": self.currentPlayer.user.display_name}
 	}
-	
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_HOST, isHostPayload)
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.UPDATE_DISPLAY_NAME, displayNamePayload)
 	_handleMatchStateChange(MatchState.LOBBY_MATCH)
-
 func _handlePlayerReadyStatusChanged() -> void:
-	# SEND OUT DATA THAT ACCESS THE GAME STATE JSON AND REVERSING THE CURRENT isReady value
 	var readyStatusChangePayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {"isReady": !self.currentGameState.presences[currentPlayer.user.id].isReady}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.LOBBY_PLAYER_READY_CHANGED, readyStatusChangePayload)
-
 func _handleCurrentPlayerLeftMatch():
 	var leaveResult = await ServerManager.leaveMatch(joinedMatchID)
 	if leaveResult != OK:
 		Notification.showMessage("Failed to Leave Match", 3.0)
 		return
 	_handleMatchStateChange(MatchState.NO_MATCH)
-
 func _handleMatchCountdownTimeout():
 	_handleMatchStateChange(MatchState.ONGOING_MATCH)
-	
 func _handleLevelLoaded():
 	var startedStatusChangePayload = {
 	"userId" = self.currentPlayer.user.id,
 	"payload" = {"isStarted": true}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_STARTED_CHANGED, startedStatusChangePayload)
-	
 func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
 	var currentPlayerGameDataPayload = {
 		"userId" = self.currentPlayer.user.id,
@@ -164,14 +129,12 @@ func _handleCurrentPlayerGameDataUpdate(currentPlayerNewGameData):
 		}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_DATA_UPDATE, currentPlayerGameDataPayload)
-
 func _handleCurrentPlayerReachedFinish():
 	var currentPlayerFinishedPayload = {
 		"userId" = self.currentPlayer.user.id,
 		"payload" = {}
 	}
 	await ServerManager.sendMatchState(self.joinedMatchID, ServerManager.MessageOpCode.ONGOING_PLAYER_FINISHED, currentPlayerFinishedPayload)
-
 func _handleOngoingMatchBackToLobby():
 	await ServerManager.leaveMatch(joinedMatchID)
 	SceneManager.changeScene("res://scenes/ui-scenes/lobby-screen/lobby_screen.tscn")
